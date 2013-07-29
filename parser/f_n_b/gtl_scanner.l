@@ -43,7 +43,6 @@
 /* Keywords and symbols definitions */
 (?i:LET)         { return (token::LET); }
 (?i:BE)          { return (token::BE); }
-(?i:PLAYERS)     { return (token::PLAYERS); }
 (?i:PLAYER)      { return (token::PLAYER); }
 (?i:GAME)        { return (token::GAME); }
 (?i:PURE)        { return (token::PURE); }
@@ -54,7 +53,10 @@
 (?i:AS)          { return (token::AS); }
 (?i:FIND)        { return (token::FIND); }
 (?i:FOR)         { return (token::FOR); }
-(?i:EQUILIBRIUM) { return (token::EQUILIBRIUM); }
+"{"              { return (token::LCBR); }
+"}"              { return (token::RCBR);
+":"              { return (token::COLON); }
+","              { return (token::COMA); }
 ";"              { return (token::EOC); }
 
 /* Numbers definitions */

@@ -11,13 +11,26 @@
     #include "gtl_parser.hpp"
 
     namespace GTL {
+        /**
+         * Scanns for tokens declared by Parser class in given stream.
+         */
         class Scanner : public yyFlexLexer {
         public:
+            /**
+             * Initiates scanner with insput stream that serves as data source.
+             *
+             * @param in input stream initiating scanner
+             */
             Scanner(std::instream in) :
                 yyFlexLexer(in),
                 yylval(nullptr)
                 {};
-                
+
+            /**
+             * Scans for next token.
+             * 
+             * @param lval initiates next scanning with value
+             */    
             int yylex(GTL::Parser::semantic_type *lval) {
                 yylval = lval;
                 return yylex();
