@@ -17,6 +17,9 @@
     #include <cstdlib>  /* C Standard library */
     #include <string>   /* String library */
 
+    /* Boost libraries */
+    #include <boost/containers/slist.hpp>
+
     /* GTL prototypes */
     #include "gtl/driver.hpp"     /* GTL::Driver class */
     #include "gtl/scanner.hpp"    /* GTL::Scanner class */

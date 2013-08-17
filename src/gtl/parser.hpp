@@ -38,7 +38,7 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 38 "src/gtl/f_n_b/parser.y"
+#line 41 "src/gtl/f_n_b/parser.y"
 
     namespace GTL {
         class Driver;
@@ -92,7 +92,7 @@ namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 52 "src/gtl/f_n_b/parser.y"
+#line 55 "src/gtl/f_n_b/parser.y"
 
     std::string identifier;
     double      number;
