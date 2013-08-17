@@ -1,9 +1,11 @@
 /******************************* Code for header ****************************/
 
 %{
-/************************************************************************
- * GTL Lexer 
- ************************************************************************/
+/**
+ * @brief Scanner used for processing input for GTL.
+ *
+ * @author Mateusz Kubuszok
+ */
  
 /* System libraries */
 #include <cstdlib>         /* Standard library */
@@ -14,7 +16,7 @@
 #include "gtl/parser.hpp"  /* Parser's prototypes */
 
 typedef                    /* Shorten token's type name */
-    GTL::Parser::token
+    Parser::token
     token;
 
 /* Define yyterminate as this instead of NULL */

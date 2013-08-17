@@ -7,9 +7,11 @@
 %define parser_class_name "Parser"
 
 %code top {
-    /************************************************************************
-     *                              GTL Parser                              *
-     ************************************************************************/
+    /**
+     * @brief Parser used for processing input for GTL.
+     *
+     * @author Mateusz Kubuszok
+     */
      
     /* System libraries */
     #include <iostream> /* Default I/O streams library */
@@ -34,8 +36,19 @@
     #include "gtl/param.hpp"      /* GTL::Param class */
     #include "gtl/player.hpp"     /* GTL::Player class */
 
-    /* Override default yylex function */
-    static int yylex(GTL::Parser::semantic_type *yylval, GTL::Scanner &scanner, GTL::Driver &driver);
+    /**
+     * @brief Override default yylex function.
+     * 
+     * @param yylval  matched content
+     * @param scanner scanner instance
+     * @param driver  driver instance
+     * @return        next found token number
+     */
+    static int yylex(
+        Parser::semantic_type *yylval,
+        Scanner               &scanner,
+        Driver                &driver
+    );
 }
 
 %code requires {
@@ -53,50 +66,51 @@
 
 /* Union containing values as either double or string */
 %union {
-    std::string identifier;
-    double      number;
-    Condition&  condition;
-    Data&       data;
-    DataPiece&  dataPiece;
-    Definition& definition;
-    Details&    details;
-    Game&       game;
-    Query&      query;
-    Object&     object;
-    Param&      param;
-    Player&     player;
-    boost::containers::slist<Condition>&   conditions;
-    boost::containers::slist<std::string>& identifiers;
-    boost::containers::slist<Object>&      objects;
-    boost::containers::slist<Param>&       params;
+    Identifier   identifier;
+    Identifiers& identifiers;
+    double       number;
+    Condition&   condition;
+    Conditions&  conditions;
+    Data&        data;
+    DataPiece&   dataPiece;
+    Definition&  definition;
+    Details&     details;
+    Game&        game;
+    Query&       query;
+    Object&      object;
+    Objects&     objects;
+    Param&       param;
+    Params&      params;
+    Player&      player;
 }
 
 /* Declared tokens */
 
-%token LET               /*  */
-%token BE                /*  */
-%token PLAYER            /*  */
-%token GAME              /*  */
-%token PURE              /*  */
-%token MIXED             /*  */
-%token TREE              /*  */
-%token WITH              /*  */
-%token SUCH              /*  */
-%token AS                /*  */
-%token FIND              /*  */
-%token FOR               /*  */
-%token CHOOSE            /*  */
-%token LCBR              /* { */
-%token RCBR              /* } */
-%token COLON             /* : */
-%token COMA              /* , */
-%token EOC               /* ; */
-%token error             /* error marker */
+%token LET               /* LET keyword */
+%token BE                /* BE keyword */
+%token PLAYER            /* PLAYER keyword */
+%token GAME              /* GAME keyword */
+%token PURE              /* PURE keyword */
+%token MIXED             /* MIXED keyword */
+%token TREE              /* TREE keyword */
+%token WITH              /* WITH keyword */
+%token SUCH              /* SUCH keyword */
+%token AS                /* AS keyword */
+%token FIND              /* FIND keyword */
+%token FOR               /* FOR keyword */
+%token CHOOSE            /* CHOOSE keyword */
+%token LCBR              /* { charakter */
+%token RCBR              /* } charakter */
+%token COLON             /* : charakter */
+%token COMA              /* , charakter */
+%token EOC               /* ; charakter */
+%token error             /* Error marker */
 
-%token <string>     identifier /* Identifier */
-%token <identifier> number     /* Double number */
+%token <identifier> identifier /* Identifier */
+%token <number>     number     /* Double number */
 
  /* Declared types */
+ 
 %type <condition>   condition
 %type <data>        data
 %type <dataPiece>   data_piece
@@ -206,12 +220,30 @@ params
 
 %%
 
-/* Error handling */
-void GTL::Parser::error(const GTL::Parser::location_type &location, const std::string &message) {
+/**
+ * @brief Handles errors occuring during parsing.
+ *
+ * @param location location of error occurance
+ * @param message  error message
+ */
+void Parser::error(
+    const Parser::location_type &location,
+    const std::string &message
+) {
     driver.errorInformation(loc, message);
 }
 
-/* Include for scanner.yylex */
-static int yylex(GTL::Parser::semantic_type *yylval, GTL::Scanner &scanner, GTL::Driver &driver) {
+/**
+ * @brief Include for scanner.yylex.
+ *
+ * @param yylval  matched content
+ * @param scanner scanner instance
+ * @param driver  driver instance
+ */
+static int yylex(
+    Parser::semantic_type *yylval,
+    Scanner &scanner,
+    Driver  &driver
+) {
     return scanner.yylex(yylval);
 }

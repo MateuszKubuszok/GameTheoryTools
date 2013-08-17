@@ -1,18 +1,7 @@
 #ifndef __GTL_DRIVER_HPP__
 #define __GTL_DRIVER_HPP__ 1
 
-#include <boost/container/slist.hpp>
-
-#include "gtl/condition.hpp"
-#include "gtl/data.hpp"
-#include "gtl/data_piece.hpp"
-#include "gtl/definition.hpp"
-#include "gtl/details.hpp"
-#include "gtl/game.hpp"
-#include "gtl/query.hpp"
-#include "gtl/object.hpp"
-#include "gtl/param.hpp"
-#include "gtl/player.hpp"
+#include "gtl/common.hpp"
 
 namespace GTL {
 class Driver {
@@ -30,27 +19,27 @@ public:
     );
 
     virtual Definition& createDefinition(
-    	Object &object,
-    	std::string &identifier
+    	Object     &object,
+    	Identifier &identifier
     );
 
     virtual Query& createQuery(
-    	boost::containers::slist<std::string> &identifiers,
-    	boost::containers::slist<Object> &objects,
-    	boost::containers::slist<Condition> &conditions
+    	Identifiers &identifiers,
+    	Objects     &objects,
+    	Conditions  &conditions
     );
 
-	virtual boost::containers::slist<Object>& createObjectsCollection(
+	virtual Objects& createObjectsCollection(
 		Object &object
 	);
 
-	virtual boost::containers::slist<Object>& addObjectToCollection(
-		Object &object,
-		boost::containers::slist<Object> &objects
+	virtual Objects& addObjectToCollection(
+		Object  &object,
+		Objects &objects
 	);
 
 	virtual Object& getValueForIdentifier(
-		std::string &identifier
+		Identifier &identifier
 	);
 
 	virtual Game& createPureGameForDetails(
@@ -66,55 +55,55 @@ public:
 	);
 
 	virtual Details& createDetailsForGame(
-		boost::containers::slist<Object> &objects,
-		Data &data
+		Objects &objects,
+		Data    &data
 	);
 
 	virtual Player& createPlayerWithStrategies(
-		std::string &identifier,
-		boost::containers::slist<Object> &objects
+		Identifier &identifier,
+		Objects    &objects
 	);
 
 	virtual Param& getValueForIdentifier(
-		std::string &identifier
+		Identifier &identifier
 	);
 
 	virtual Param& getValueForNumber(
 		double number
 	);
 
-	virtual boost::containers::slist<Param> createParamsCollection(
+	virtual Params& createParamsCollection(
 		Param& param
 	);
 
-	virtual boost::containers::slist<Param> addParamToCollection(
-		Param& param,
-		boost::containers::slist<Param> params
+	virtual Params& addParamToCollection(
+		Param&  param,
+		Params& params
 	);
 
-	virtual boost::containers::slist<std::string> createIdentifiersCollection(
-		std::string &identifier
+	virtual Identifiers& createIdentifiersCollection(
+		Identifier &identifier
 	);
 
-	virtual boost::containers::slist<std::string> addIdentifierToCollection(
-		std::string &identifier,
-		boost::containers::slist<std::string> &identifiers
+	virtual Identifiers& addIdentifierToCollection(
+		Identifier  &identifier,
+		Identifiers &identifiers
 	);
 
 	virtual Condition& createPlayerChoiceCondition(
-		Object &object,
-		Object &object
+		Object &player,
+		Object &strategy
 	);
 
-	virtual boost::containers::slist<Condition> createConditionsCollection(
+	virtual Conditions& createConditionsCollection(
 		Condition &condition
 	);
 
-	virtual boost::containes::slist<Condition> emptyConditionsCollection();
+	virtual Conditions& emptyConditionsCollection();
 
-	virtual boost::containers::slist<Condition> addConditionToCollection(
-		Condition &condition,
-		boost::containers::slist<Condition> conditions
+	virtual Conditions& addConditionToCollection(
+		Condition   &condition,
+		Conditions& conditions
 	);
 
 	virtual Data& createData(
@@ -123,23 +112,23 @@ public:
 
 	virtual Data& addDataPieceToData(
 		DataPiece &dataPiece,
-		Data& data
+		Data      &data
 	);
 
 	virtual DataPiece& createOneDimensionData(
-		std::string &identifier,
-		Param &param
+		Identifier &identifier,
+		Param      &param
 	);
 
 	virtual DataPiece& createTwoDimensionData(
-		boost::containers::slist<std::string> &identifiers,
-		std::string &identifier,
-		boost::containers::slist<Param> &params
+		Identifiers &identifiers,
+		Identifier  &identifier,
+		Params      &params
 	);
 
 	virtual DataPiece& createMultiDimensionalData(
-		boost::containers::slist<std::string> &identifiers,
-		boost::containers::slist<Param> &params
+		Identifiers &identifiers,
+		Params      &params
 	);
 } /* END class Driver */
 } /* END namespace GTL */

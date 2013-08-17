@@ -38,7 +38,7 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 41 "src/gtl/f_n_b/parser.y"
+#line 54 "src/gtl/f_n_b/parser.y"
 
     namespace GTL {
         class Driver;
@@ -92,24 +92,24 @@ namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 55 "src/gtl/f_n_b/parser.y"
+#line 68 "src/gtl/f_n_b/parser.y"
 
-    std::string identifier;
-    double      number;
-    Condition&  condition;
-    Data&       data;
-    DataPiece&  dataPiece;
-    Definition& definition;
-    Details&    details;
-    Game&       game;
-    Query&      query;
-    Object&     object;
-    Param&      param;
-    Player&     player;
-    boost::containers::slist<Condition>&   conditions;
-    boost::containers::slist<std::string>& identifiers;
-    boost::containers::slist<Object>&      objects;
-    boost::containers::slist<Param>&       params;
+    Identifier   identifier;
+    Identifiers& identifiers;
+    double       number;
+    Condition&   condition;
+    Conditions&  conditions;
+    Data&        data;
+    DataPiece&   dataPiece;
+    Definition&  definition;
+    Details&     details;
+    Game&        game;
+    Query&       query;
+    Object&      object;
+    Objects&     objects;
+    Param&       param;
+    Params&      params;
+    Player&      player;
 
 
 
