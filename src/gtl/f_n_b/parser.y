@@ -18,8 +18,8 @@
     #include <string>   /* String library */
 
     /* GTL prototypes */
-    #include "gtl_driver.hpp"  /* GTL::Driver class */
-    #include "gtl_scanner.hpp" /* GTL::Scanner class */
+    #include "gtl/driver.hpp"  /* GTL::Driver class */
+    #include "gtl/scanner.hpp" /* GTL::Scanner class */
     
     /* Override default yylex function */
     static int yylex(GTL::Parser::semantic_type *yylval, GTL::Scanner &scanner, GTL::Driver &driver);
@@ -64,7 +64,7 @@
 %token COLON             /* : */
 %token COMA              /* , */
 %token EOC               /* ; */
-%token lexerror          /* error marker */
+%token error             /* error marker */
 
 /* Terminals */
 %token <svar> identifier /* Identifier */
@@ -102,12 +102,12 @@ object
 /* Games */
 
 game
- : PURE  GAME game_details { $$ = driver.createPureGameForDetails($3); }
- | MIXED GAME game_details { $$ = driver.createMixedGameForDetails($3); }
- | TREE  GAME game_details { $$ = driver.createTreeGameForDetails($3); }
+ : PURE  GAME details { $$ = driver.createPureGameForDetails($3); }
+ | MIXED GAME details { $$ = driver.createMixedGameForDetails($3); }
+ | TREE  GAME details { $$ = driver.createTreeGameForDetails($3); }
  ;
 
-game_details
+details
  : WITH objects SUCH AS data { $$ = driver.createDetailsForGame($2, $5); }
  ;
  
@@ -140,7 +140,7 @@ conditions
  ;
 
 condition
- : PLAYER object CHOOSE object { $$ = driver.playersChoiceCondition($2, $4); }
+ : PLAYER object CHOOSE object { $$ = driver.createPlayerChoiceCondition($2, $4); }
  ;
  
 /* Data */
@@ -158,7 +158,7 @@ data_piece
 
 params
  : params COMA param { $$ = driver.addParamToCollection($3, $1); }
- | param             { $$ = driver.createParamCollection($1); }
+ | param             { $$ = driver.createParamsCollection($1); }
  ;
 
 %%
@@ -169,7 +169,6 @@ void GTL::Parser::error(const GTL::Parser::location_type &location, const std::s
 }
 
 /* Include for scanner.yylex */
-#include "gtl_scanner.hpp"
 static int yylex(GTL::Parser::semantic_type *yylval, GTL::Scanner &scanner, GTL::Driver &driver) {
     return scanner.yylex(yylval);
 }
