@@ -10,7 +10,7 @@ parser_code : src/gtl/parser.cpp src/gtl/parser.hpp src/gtl/scanner.cpp
 
 # Generate C++ scanner.
 src/gtl/scanner.cpp : src/gtl/f_n_b/scanner.l
-	flex --verbose --outfile=src/gtl/scanner.cpp src/gtl/f_n_b/scanner.l
+	flex --verbose src/gtl/f_n_b/scanner.l
 
 # Generates C++ parser.
 src/gtl/parser.cpp src/gtl/parser.hpp : src/gtl/f_n_b/parser.y

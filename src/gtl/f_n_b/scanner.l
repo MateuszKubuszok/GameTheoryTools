@@ -52,6 +52,26 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
 
+ /* Keywords and symbols definitions */
+(?i:LET)         { return (token::LET); }
+(?i:BE)          { return (token::BE); }
+(?i:PLAYER)      { return (token::PLAYER); }
+(?i:GAME)        { return (token::GAME); }
+(?i:PURE)        { return (token::PURE); }
+(?i:MIXED)       { return (token::MIXED); }
+(?i:TREE)        { return (token::TREE); }
+(?i:WITH)        { return (token::WITH); }
+(?i:SUCH)        { return (token::SUCH); }
+(?i:AS)          { return (token::AS); }
+(?i:FIND)        { return (token::FIND); }
+(?i:FOR)         { return (token::FOR); }
+(?i:CHOOSE)      { return (token::CHOOSE); }
+{                { return (token::LCBR); }
+}                { return (token::RCBR); }
+:                { return (token::COLON); }
+,                { return (token::COMA); }
+;                { return (token::EOC); }
+
  /* Numbers definitions */
 -?{scientific} {
         yyval->dval = atof(yytext);

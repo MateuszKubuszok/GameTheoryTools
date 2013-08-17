@@ -5,11 +5,14 @@
 
 #include "gtl/condition.hpp"
 #include "gtl/data.hpp"
+#include "gtl/data_piece.hpp"
 #include "gtl/definition.hpp"
 #include "gtl/details.hpp"
 #include "gtl/game.hpp"
 #include "gtl/query.hpp"
 #include "gtl/object.hpp"
+#include "gtl/param.hpp"
+#include "gtl/player.hpp"
 
 namespace GTL {
 class Driver {
@@ -112,6 +115,31 @@ public:
 	virtual boost::containers::slist<Condition> addConditionToCollection(
 		Condition &condition,
 		boost::containers::slist<Condition> conditions
+	);
+
+	virtual Data& createData(
+		DataPiece &dataPiece
+	);
+
+	virtual Data& addDataPieceToData(
+		DataPiece &dataPiece,
+		Data& data
+	);
+
+	virtual DataPiece& createOneDimensionData(
+		std::string &identifier,
+		Param &param
+	);
+
+	virtual DataPiece& createTwoDimensionData(
+		boost::containers::slist<std::string> &identifiers,
+		std::string &identifier,
+		boost::containers::slist<Param> &params
+	);
+
+	virtual DataPiece& createMultiDimensionalData(
+		boost::containers::slist<std::string> &identifiers,
+		boost::containers::slist<Param> &params
 	);
 } /* END class Driver */
 } /* END namespace GTL */

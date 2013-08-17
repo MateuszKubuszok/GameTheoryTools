@@ -18,9 +18,19 @@
     #include <string>   /* String library */
 
     /* GTL prototypes */
-    #include "gtl/driver.hpp"  /* GTL::Driver class */
-    #include "gtl/scanner.hpp" /* GTL::Scanner class */
-    
+    #include "gtl/driver.hpp"     /* GTL::Driver class */
+    #include "gtl/scanner.hpp"    /* GTL::Scanner class */
+    #include "gtl/condition.hpp"  /* GTL::Condition class */
+    #include "gtl/data.hpp"       /* GTL::Data class */
+    #include "gtl/data_piece.hpp" /* GTL::DataPiece class */
+    #include "gtl/definition.hpp" /* GTL::Definition class */
+    #include "gtl/details.hpp"    /* GTL::Details class */
+    #include "gtl/game.hpp"       /* GTL::Game class */
+    #include "gtl/query.hpp"      /* GTL::Query class */
+    #include "gtl/object.hpp"     /* GTL::Object class */
+    #include "gtl/param.hpp"      /* GTL::Param class */
+    #include "gtl/player.hpp"     /* GTL::Player class */
+
     /* Override default yylex function */
     static int yylex(GTL::Parser::semantic_type *yylval, GTL::Scanner &scanner, GTL::Driver &driver);
 }
@@ -40,13 +50,26 @@
 
 /* Union containing values as either double or string */
 %union {
-    STD::string sval;
-    double      dval;
+    std::string identifier;
+    double      number;
+    Condition&  condition;
+    Data&       data;
+    DataPiece&  dataPiece;
+    Definition& definition;
+    Details&    details;
+    Game&       game;
+    Query&      query;
+    Object&     object;
+    Param&      param;
+    Player&     player;
+    boost::containers::slist<Condition>&   conditions;
+    boost::containers::slist<std::string>& identifiers;
+    boost::containers::slist<Object>&      objects;
+    boost::containers::slist<Param>&       params;
 }
 
 /* Declared tokens */
 
-/* Non-terminals */
 %token LET               /*  */
 %token BE                /*  */
 %token PLAYER            /*  */
@@ -59,6 +82,7 @@
 %token AS                /*  */
 %token FIND              /*  */
 %token FOR               /*  */
+%token CHOOSE            /*  */
 %token LCBR              /* { */
 %token RCBR              /* } */
 %token COLON             /* : */
@@ -66,9 +90,25 @@
 %token EOC               /* ; */
 %token error             /* error marker */
 
-/* Terminals */
-%token <svar> identifier /* Identifier */
-%token <dvar> number     /* Double number */
+%token <string>     identifier /* Identifier */
+%token <identifier> number     /* Double number */
+
+ /* Declared types */
+%type <condition>   condition
+%type <data>        data
+%type <dataPiece>   data_piece
+%type <definition>  definition
+%type <details>     details
+%type <game>        game
+%type <query>       query
+%type <object>      object
+%type <param>       param
+%type <player>      player
+
+%type <conditions>  conditions
+%type <identifiers> identifiers
+%type <objects>     objects
+%type <params>      params
 
 %%
 
@@ -151,7 +191,7 @@ data
  ;
 
 data_piece
- : identifier param                              { $$ = driver.createOneDimensionData($1, $2); }
+ : identifier COLON param                        { $$ = driver.createOneDimensionData($1, $3); }
  | identifiers LCBR identifier COLON params RCBR { $$ = driver.createTwoDimensionalData($1, $3, $5); }
  | identifiers COLON data_piece                  { $$ = driver.createMultiDimensionalData($1, $3); }
  ;

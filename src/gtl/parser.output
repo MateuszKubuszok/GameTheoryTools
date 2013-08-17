@@ -1,0 +1,751 @@
+State 25 conflicts: 1 shift/reduce
+State 53 conflicts: 1 shift/reduce
+State 55 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: statement $end
+
+    1 statement: definition EOC
+    2          | query EOC
+
+    3 definition: LET identifier BE object
+
+    4 query: FIND identifiers FOR objects conditions
+
+    5 objects: objects COMA object
+    6        | object
+
+    7 object: game
+    8       | player
+    9       | param
+
+   10 game: PURE GAME details
+   11     | MIXED GAME details
+   12     | TREE GAME details
+
+   13 details: WITH objects SUCH AS data
+
+   14 player: PLAYER identifier LCBR objects RCBR
+
+   15 param: identifier
+   16      | number
+
+   17 identifiers: identifiers COMA identifier
+   18            | identifier
+
+   19 conditions: conditions COMA condition
+   20           | WITH condition
+   21           | /* empty */
+
+   22 condition: PLAYER object CHOOSE object
+
+   23 data: data COMA data_piece
+   24     | data_piece
+
+   25 data_piece: identifier COLON param
+   26           | identifiers LCBR identifier COLON params RCBR
+   27           | identifiers COLON data_piece
+
+   28 params: params COMA param
+   29       | param
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+LET (258) 3
+BE (259) 3
+PLAYER (260) 14 22
+GAME (261) 10 11 12
+PURE (262) 10
+MIXED (263) 11
+TREE (264) 12
+WITH (265) 13 20
+SUCH (266) 13
+AS (267) 13
+FIND (268) 4
+FOR (269) 4
+CHOOSE (270) 22
+LCBR (271) 14 26
+RCBR (272) 14 26
+COLON (273) 25 26 27
+COMA (274) 5 17 19 23 28
+EOC (275) 1 2
+identifier (276) 3 14 15 17 18 25 26
+number (277) 16
+
+
+Nonterminals, with rules where they appear
+
+$accept (23)
+    on left: 0
+statement (24)
+    on left: 1 2, on right: 0
+definition (25)
+    on left: 3, on right: 1
+query (26)
+    on left: 4, on right: 2
+objects (27)
+    on left: 5 6, on right: 4 5 13 14
+object (28)
+    on left: 7 8 9, on right: 3 5 6 22
+game (29)
+    on left: 10 11 12, on right: 7
+details (30)
+    on left: 13, on right: 10 11 12
+player (31)
+    on left: 14, on right: 8
+param (32)
+    on left: 15 16, on right: 9 25 28 29
+identifiers (33)
+    on left: 17 18, on right: 4 17 26 27
+conditions (34)
+    on left: 19 20 21, on right: 4 19
+condition (35)
+    on left: 22, on right: 19 20
+data (36)
+    on left: 23 24, on right: 13 23
+data_piece (37)
+    on left: 25 26 27, on right: 23 24 27
+params (38)
+    on left: 28 29, on right: 26 28
+
+
+state 0
+
+    0 $accept: . statement $end
+
+    LET   shift, and go to state 1
+    FIND  shift, and go to state 2
+
+    statement   go to state 3
+    definition  go to state 4
+    query       go to state 5
+
+
+state 1
+
+    3 definition: LET . identifier BE object
+
+    identifier  shift, and go to state 6
+
+
+state 2
+
+    4 query: FIND . identifiers FOR objects conditions
+
+    identifier  shift, and go to state 7
+
+    identifiers  go to state 8
+
+
+state 3
+
+    0 $accept: statement . $end
+
+    $end  shift, and go to state 9
+
+
+state 4
+
+    1 statement: definition . EOC
+
+    EOC  shift, and go to state 10
+
+
+state 5
+
+    2 statement: query . EOC
+
+    EOC  shift, and go to state 11
+
+
+state 6
+
+    3 definition: LET identifier . BE object
+
+    BE  shift, and go to state 12
+
+
+state 7
+
+   18 identifiers: identifier .
+
+    $default  reduce using rule 18 (identifiers)
+
+
+state 8
+
+    4 query: FIND identifiers . FOR objects conditions
+   17 identifiers: identifiers . COMA identifier
+
+    FOR   shift, and go to state 13
+    COMA  shift, and go to state 14
+
+
+state 9
+
+    0 $accept: statement $end .
+
+    $default  accept
+
+
+state 10
+
+    1 statement: definition EOC .
+
+    $default  reduce using rule 1 (statement)
+
+
+state 11
+
+    2 statement: query EOC .
+
+    $default  reduce using rule 2 (statement)
+
+
+state 12
+
+    3 definition: LET identifier BE . object
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    object  go to state 21
+    game    go to state 22
+    player  go to state 23
+    param   go to state 24
+
+
+state 13
+
+    4 query: FIND identifiers FOR . objects conditions
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    objects  go to state 25
+    object   go to state 26
+    game     go to state 22
+    player   go to state 23
+    param    go to state 24
+
+
+state 14
+
+   17 identifiers: identifiers COMA . identifier
+
+    identifier  shift, and go to state 27
+
+
+state 15
+
+   14 player: PLAYER . identifier LCBR objects RCBR
+
+    identifier  shift, and go to state 28
+
+
+state 16
+
+   10 game: PURE . GAME details
+
+    GAME  shift, and go to state 29
+
+
+state 17
+
+   11 game: MIXED . GAME details
+
+    GAME  shift, and go to state 30
+
+
+state 18
+
+   12 game: TREE . GAME details
+
+    GAME  shift, and go to state 31
+
+
+state 19
+
+   15 param: identifier .
+
+    $default  reduce using rule 15 (param)
+
+
+state 20
+
+   16 param: number .
+
+    $default  reduce using rule 16 (param)
+
+
+state 21
+
+    3 definition: LET identifier BE object .
+
+    $default  reduce using rule 3 (definition)
+
+
+state 22
+
+    7 object: game .
+
+    $default  reduce using rule 7 (object)
+
+
+state 23
+
+    8 object: player .
+
+    $default  reduce using rule 8 (object)
+
+
+state 24
+
+    9 object: param .
+
+    $default  reduce using rule 9 (object)
+
+
+state 25
+
+    4 query: FIND identifiers FOR objects . conditions
+    5 objects: objects . COMA object
+
+    WITH  shift, and go to state 32
+    COMA  shift, and go to state 33
+
+    COMA      [reduce using rule 21 (conditions)]
+    $default  reduce using rule 21 (conditions)
+
+    conditions  go to state 34
+
+
+state 26
+
+    6 objects: object .
+
+    $default  reduce using rule 6 (objects)
+
+
+state 27
+
+   17 identifiers: identifiers COMA identifier .
+
+    $default  reduce using rule 17 (identifiers)
+
+
+state 28
+
+   14 player: PLAYER identifier . LCBR objects RCBR
+
+    LCBR  shift, and go to state 35
+
+
+state 29
+
+   10 game: PURE GAME . details
+
+    WITH  shift, and go to state 36
+
+    details  go to state 37
+
+
+state 30
+
+   11 game: MIXED GAME . details
+
+    WITH  shift, and go to state 36
+
+    details  go to state 38
+
+
+state 31
+
+   12 game: TREE GAME . details
+
+    WITH  shift, and go to state 36
+
+    details  go to state 39
+
+
+state 32
+
+   20 conditions: WITH . condition
+
+    PLAYER  shift, and go to state 40
+
+    condition  go to state 41
+
+
+state 33
+
+    5 objects: objects COMA . object
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    object  go to state 42
+    game    go to state 22
+    player  go to state 23
+    param   go to state 24
+
+
+state 34
+
+    4 query: FIND identifiers FOR objects conditions .
+   19 conditions: conditions . COMA condition
+
+    COMA  shift, and go to state 43
+
+    $default  reduce using rule 4 (query)
+
+
+state 35
+
+   14 player: PLAYER identifier LCBR . objects RCBR
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    objects  go to state 44
+    object   go to state 26
+    game     go to state 22
+    player   go to state 23
+    param    go to state 24
+
+
+state 36
+
+   13 details: WITH . objects SUCH AS data
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    objects  go to state 45
+    object   go to state 26
+    game     go to state 22
+    player   go to state 23
+    param    go to state 24
+
+
+state 37
+
+   10 game: PURE GAME details .
+
+    $default  reduce using rule 10 (game)
+
+
+state 38
+
+   11 game: MIXED GAME details .
+
+    $default  reduce using rule 11 (game)
+
+
+state 39
+
+   12 game: TREE GAME details .
+
+    $default  reduce using rule 12 (game)
+
+
+state 40
+
+   22 condition: PLAYER . object CHOOSE object
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    object  go to state 46
+    game    go to state 22
+    player  go to state 23
+    param   go to state 24
+
+
+state 41
+
+   20 conditions: WITH condition .
+
+    $default  reduce using rule 20 (conditions)
+
+
+state 42
+
+    5 objects: objects COMA object .
+
+    $default  reduce using rule 5 (objects)
+
+
+state 43
+
+   19 conditions: conditions COMA . condition
+
+    PLAYER  shift, and go to state 40
+
+    condition  go to state 47
+
+
+state 44
+
+    5 objects: objects . COMA object
+   14 player: PLAYER identifier LCBR objects . RCBR
+
+    RCBR  shift, and go to state 48
+    COMA  shift, and go to state 33
+
+
+state 45
+
+    5 objects: objects . COMA object
+   13 details: WITH objects . SUCH AS data
+
+    SUCH  shift, and go to state 49
+    COMA  shift, and go to state 33
+
+
+state 46
+
+   22 condition: PLAYER object . CHOOSE object
+
+    CHOOSE  shift, and go to state 50
+
+
+state 47
+
+   19 conditions: conditions COMA condition .
+
+    $default  reduce using rule 19 (conditions)
+
+
+state 48
+
+   14 player: PLAYER identifier LCBR objects RCBR .
+
+    $default  reduce using rule 14 (player)
+
+
+state 49
+
+   13 details: WITH objects SUCH . AS data
+
+    AS  shift, and go to state 51
+
+
+state 50
+
+   22 condition: PLAYER object CHOOSE . object
+
+    PLAYER      shift, and go to state 15
+    PURE        shift, and go to state 16
+    MIXED       shift, and go to state 17
+    TREE        shift, and go to state 18
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    object  go to state 52
+    game    go to state 22
+    player  go to state 23
+    param   go to state 24
+
+
+state 51
+
+   13 details: WITH objects SUCH AS . data
+
+    identifier  shift, and go to state 53
+
+    identifiers  go to state 54
+    data         go to state 55
+    data_piece   go to state 56
+
+
+state 52
+
+   22 condition: PLAYER object CHOOSE object .
+
+    $default  reduce using rule 22 (condition)
+
+
+state 53
+
+   18 identifiers: identifier .
+   25 data_piece: identifier . COLON param
+
+    COLON  shift, and go to state 57
+
+    COLON     [reduce using rule 18 (identifiers)]
+    $default  reduce using rule 18 (identifiers)
+
+
+state 54
+
+   17 identifiers: identifiers . COMA identifier
+   26 data_piece: identifiers . LCBR identifier COLON params RCBR
+   27           | identifiers . COLON data_piece
+
+    LCBR   shift, and go to state 58
+    COLON  shift, and go to state 59
+    COMA   shift, and go to state 14
+
+
+state 55
+
+   13 details: WITH objects SUCH AS data .
+   23 data: data . COMA data_piece
+
+    COMA  shift, and go to state 60
+
+    COMA      [reduce using rule 13 (details)]
+    $default  reduce using rule 13 (details)
+
+
+state 56
+
+   24 data: data_piece .
+
+    $default  reduce using rule 24 (data)
+
+
+state 57
+
+   25 data_piece: identifier COLON . param
+
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    param  go to state 61
+
+
+state 58
+
+   26 data_piece: identifiers LCBR . identifier COLON params RCBR
+
+    identifier  shift, and go to state 62
+
+
+state 59
+
+   27 data_piece: identifiers COLON . data_piece
+
+    identifier  shift, and go to state 53
+
+    identifiers  go to state 54
+    data_piece   go to state 63
+
+
+state 60
+
+   23 data: data COMA . data_piece
+
+    identifier  shift, and go to state 53
+
+    identifiers  go to state 54
+    data_piece   go to state 64
+
+
+state 61
+
+   25 data_piece: identifier COLON param .
+
+    $default  reduce using rule 25 (data_piece)
+
+
+state 62
+
+   26 data_piece: identifiers LCBR identifier . COLON params RCBR
+
+    COLON  shift, and go to state 65
+
+
+state 63
+
+   27 data_piece: identifiers COLON data_piece .
+
+    $default  reduce using rule 27 (data_piece)
+
+
+state 64
+
+   23 data: data COMA data_piece .
+
+    $default  reduce using rule 23 (data)
+
+
+state 65
+
+   26 data_piece: identifiers LCBR identifier COLON . params RCBR
+
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    param   go to state 66
+    params  go to state 67
+
+
+state 66
+
+   29 params: param .
+
+    $default  reduce using rule 29 (params)
+
+
+state 67
+
+   26 data_piece: identifiers LCBR identifier COLON params . RCBR
+   28 params: params . COMA param
+
+    RCBR  shift, and go to state 68
+    COMA  shift, and go to state 69
+
+
+state 68
+
+   26 data_piece: identifiers LCBR identifier COLON params RCBR .
+
+    $default  reduce using rule 26 (data_piece)
+
+
+state 69
+
+   28 params: params COMA . param
+
+    identifier  shift, and go to state 19
+    number      shift, and go to state 20
+
+    param  go to state 70
+
+
+state 70
+
+   28 params: params COMA param .
+
+    $default  reduce using rule 28 (params)
