@@ -1,3 +1,5 @@
+#include <boost/foreach.hpp>
+
 #include "gtl/object.hpp"
 
 namespace GTL {
@@ -6,12 +8,14 @@ class ObjectType;
 // class Object {
 // public:
 Object::Object() {
-    registerProperty("type", new ObjectKnownProperties(this));
+    registerProperty("properties", new ObjectKnownProperties(this));
     registerProperty("type", new ObjectType());
 }
 
 Object::~Object() {
-    // foreach delete
+    BOOST_FOREACH(ObjectProperty &property, registeredProperties) {
+    	delete property;
+    }
     delete registeredProperties;
 }
 
@@ -50,7 +54,6 @@ ObjectProperty Object::getProperty(
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
-    // TODO: add name of a property and object type
     throw std::invalid_argument("Property not found for this Object");
 }
 

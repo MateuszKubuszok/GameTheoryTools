@@ -18,10 +18,10 @@ class ObjectKnownProperties;
  * @author Mateusz Kubuszok
  */
 class Object {
-public:
     /* Friends declarations */
     friend ObjectKnownProperties;
 
+public:
     /**
      * @brief Object's constructor.
      * 
@@ -57,8 +57,9 @@ public:
     /**
      * @brief Finds Objects' property and returns it as a result.
      *
-     * @param  propertyName property's name
-     * @return              Result for sought property
+     * @param  propertyName          property's name
+     * @return                       Result for sought property
+     * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result& findProperty(
         Identifier &propertyName
@@ -67,9 +68,10 @@ public:
     /**
      * @brief Finds Objects' property for giver conditions and returns it as a result. 
      *
-     * @param propertyName property's name
-     * @param conditions   conditions to consider
-     * @return             Result for sought property
+     * @param propertyName           property's name
+     * @param conditions             conditions to consider
+     * @return                       Result for sought property
+     * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result& findPropertyWithConditions(
         Identifier &propertyName,
@@ -90,8 +92,9 @@ protected:
     /**
      * @brief Obtains ObjectProperty by name under which it was registered.
      *
-     * @param propertyName name of a required property
-     * @return             required ObjectProperty
+     * @param propertyName           name of a required property
+     * @return                       required ObjectProperty
+     * @throws std::invalid_argument thrown when property is not available for an Object
      */
     ObjectProperty getProperty(
         Identifier &propertyName
@@ -126,10 +129,10 @@ private:
  * @author Mateusz Kubuszok
  */
 class ObjectProperty {
-public:
     /* Friends declarations */
     friend Object;
 
+public:
     /**
      * @brief Finds results for given conditions.
      *
