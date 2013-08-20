@@ -1,6 +1,9 @@
 #ifndef __GTL_COMMON_HPP__
 #define __GTL_COMMON_HPP__ 1
 
+/* Include standard libraries */
+#include <stdexcept>
+
 /* Includes boost libraries */
 #include <boost/container/slist.hpp>
 
