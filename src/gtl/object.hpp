@@ -167,4 +167,4 @@ private:
 }
 
 } /* END namespace GTL */
-#endif /* END ifndef __GTL_OBJECT_HPP__ */
+#endif /* END #ifndef __GTL_OBJECT_HPP__ */

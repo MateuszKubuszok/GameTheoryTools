@@ -8,6 +8,8 @@
 #include <boost/container/slist.hpp>
 
 /* Includes GTL elements headers */
+#include "gtl/result.hpp"
+#include "gtl/object.hpp"
 #include "gtl/condition.hpp"
 #include "gtl/data.hpp"
 #include "gtl/data_piece.hpp"
@@ -15,7 +17,6 @@
 #include "gtl/details.hpp"
 #include "gtl/game.hpp"
 #include "gtl/query.hpp"
-#include "gtl/object.hpp"
 #include "gtl/param.hpp"
 #include "gtl/player.hpp"
 
@@ -31,4 +32,4 @@ typedef boost::containers::slist<Condition>  Conditions;
 typedef boost::containers::slist<Objects>    Objects;
 typedef boost::containers::slist<Param>      Params;
 
-#ifndef /* END #ifndef __GTL_COMMON_HPP__ */
+#endif /* END #ifndef __GTL_COMMON_HPP__ */

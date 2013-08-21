@@ -11,6 +11,7 @@
 #include "gtl/common.hpp"
 
 namespace GTL {
+
 /**
  * Scanns for tokens declared by Parser class in given stream.
  *
@@ -55,6 +56,7 @@ private:
      * Field used during token scanning - contains actual value of parsed chain.
      */
     Parser::semantic_type *yylval;
-} /* ENC class Scanner */
+} /* END class Scanner */
+
 } /* END namespace GTL */
-#endif /* END __GTL_SCANNER_HPP__ */
+#endif /* END #ifndef __GTL_SCANNER_HPP__ */
