@@ -1,5 +1,5 @@
-#ifndef __GTL_SCANNER_HPP__
-#define __GTL_SCANNER_HPP__ 1
+#ifndef __GT_GTL_SCANNER_HPP__
+#define __GT_GTL_SCANNER_HPP__ 1
 
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
@@ -8,8 +8,9 @@
 #undef  YY_DECL
 #define YY_DECL int GTL::Scanner::yylex()
 
-#include "gtl/common.hpp"
+#include "gt/gtl/common.hpp"
 
+namespace GT {
 namespace GTL {
 
 /**
@@ -59,4 +60,5 @@ private:
 } /* END class Scanner */
 
 } /* END namespace GTL */
+} /* END namespace GT */
 #endif /* END #ifndef __GTL_SCANNER_HPP__ */

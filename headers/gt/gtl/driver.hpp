@@ -1,8 +1,9 @@
-#ifndef __GTL_DRIVER_HPP__
-#define __GTL_DRIVER_HPP__ 1
+#ifndef __GT_GTL_DRIVER_HPP__
+#define __GT_GTL_DRIVER_HPP__ 1
 
-#include "gtl/common.hpp"
+#include "gt/gtl/common.hpp"
 
+namespace GT {
 namespace GTL {
 class Driver {
 public:
@@ -131,5 +132,7 @@ public:
 		Params      &params
 	);
 } /* END class Driver */
+
 } /* END namespace GTL */
-#endif /* END __GTL_DRIVER_HPP__ */
+} /* END namespace GT */
+#endif /* END __GT_GTL_DRIVER_HPP__ */

@@ -38,17 +38,19 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 54 "src/gtl/f_n_b/parser.y"
+#line 43 "f_n_b/parser.y"
 
-    namespace GTL {
-        class Driver;
-        class Scanner;
+    namespace GT {
+        namespace GTL {
+            class Driver;
+            class Scanner;
+        }
     }
 
 
 
 /* Line 35 of lalr1.cc  */
-#line 52 "src/gtl/parser.hpp"
+#line 54 "headers/gt/gtl/parser.hpp"
 
 
 #include <string>
@@ -76,11 +78,11 @@
 
 
 /* Line 35 of lalr1.cc  */
-#line 6 "src/gtl/f_n_b/parser.y"
-namespace GTL {
+#line 6 "f_n_b/parser.y"
+namespace GT { namespace GTL {
 
 /* Line 35 of lalr1.cc  */
-#line 84 "src/gtl/parser.hpp"
+#line 86 "headers/gt/gtl/parser.hpp"
 
   /// A Bison parser.
   class Parser
@@ -92,7 +94,7 @@ namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 68 "src/gtl/f_n_b/parser.y"
+#line 59 "f_n_b/parser.y"
 
     Identifier   identifier;
     Identifiers& identifiers;
@@ -114,7 +116,7 @@ namespace GTL {
 
 
 /* Line 35 of lalr1.cc  */
-#line 118 "src/gtl/parser.hpp"
+#line 120 "headers/gt/gtl/parser.hpp"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -321,11 +323,11 @@ namespace GTL {
   };
 
 /* Line 35 of lalr1.cc  */
-#line 6 "src/gtl/f_n_b/parser.y"
-} // GTL
+#line 6 "f_n_b/parser.y"
+} } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 329 "src/gtl/parser.hpp"
+#line 331 "headers/gt/gtl/parser.hpp"
 
 
 

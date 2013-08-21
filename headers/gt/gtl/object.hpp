@@ -1,10 +1,11 @@
-#ifndef __GTL_OBJECT_HPP__
-#define __GTL_OBJECT_HPP__ 1
+#ifndef __GT_GTL_OBJECT_HPP__
+#define __GT_GTL_OBJECT_HPP__ 1
 
 #include <boost/container/map.hpp>
 
-#include "gtl/common.hpp"
+#include "gt/gtl/common.hpp"
 
+namespace GT {
 namespace GTL {
 
 /* Class declarations */
@@ -167,4 +168,5 @@ private:
 }
 
 } /* END namespace GTL */
+} /* END namespace GT */
 #endif /* END #ifndef __GTL_OBJECT_HPP__ */

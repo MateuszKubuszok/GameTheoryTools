@@ -1,8 +1,11 @@
 #include <boost/foreach.hpp>
 
-#include "gtl/object.hpp"
+#include "gt/gtl/object.hpp"
 
+namespace GT {
 namespace GTL {
+
+/* Class declarations */
 class ObjectType;
 
 // class Object {
@@ -86,3 +89,6 @@ public:
         return NULL;
     }
 }
+
+} /* END namespace GTL */
+} /* END namespace GT */
