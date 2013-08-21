@@ -9,11 +9,9 @@
  
 /* System libraries */
 #include <cstdlib>         /* Standard library */
-#include <string>          /* String library */
 
 /* GTL prototypes */
-#include "gt/gtl/scanner.hpp" /* Lexer's prototypes */
-#include "gt/gtl/parser.hpp"  /* Parser's prototypes */
+#include "gt/gtl/common.hpp"
 
 typedef                    /* Shorten token's type name */
     Parser::token
@@ -90,7 +88,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
  /* Identifiers */
 {identifier} {
-        yyval->sval = new std::string(yytext);
+        yyval->sval = new Identifier(yytext);
         return (token::identifier);
     }
 

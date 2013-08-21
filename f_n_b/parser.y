@@ -17,7 +17,6 @@
     #include <iostream> /* Default I/O streams library */
     #include <fstream>  /* File Streams library */
     #include <cstdlib>  /* C Standard library */
-    #include <string>   /* String library */
 
     /* Boost libraries */
     #include <boost/containers/slist.hpp>
