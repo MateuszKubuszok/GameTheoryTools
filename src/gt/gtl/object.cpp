@@ -76,7 +76,7 @@ Result& ObjectKnownProperties::findPropertyWithConditions(
     Conditions conditions
 ) {
     // TODO: create ResultBuilder that fills it up
-    return NULL;
+    return ResultFactory::getInstance()->constResult("TODO");;
 }
 // }
 
@@ -85,8 +85,7 @@ public:
     Result& findForConditions(
         Conditions &conditions
     ) {
-        // TODO: create ResultBuilder that fills it up
-        return NULL;
+        return ResultFactory::getInstance()->constResult("Object");
     }
 }
 

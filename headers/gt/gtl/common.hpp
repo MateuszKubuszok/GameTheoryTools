@@ -1,14 +1,10 @@
 #ifndef __GT_GTL_COMMON_HPP__
 #define __GT_GTL_COMMON_HPP__ 1
 
-/* Include standard libraries */
-#include <stdexcept>
-
-/* Includes boost libraries */
-#include <boost/container/slist.hpp>
+/* Includes GT model headers  */
+#include "gt/model/common.hpp"
 
 /* Includes GTL elements headers */
-#include "gt/gtl/result.hpp"
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"
 #include "gt/gtl/data.hpp"
@@ -26,10 +22,8 @@
 #include "gt/gtl/parser.hpp"
 
 /* Shortens comonly used names */
-typedef std::string                          Identifier;
-typedef boost::containers::slist<Identifier> Identifiers;
-typedef boost::containers::slist<Condition>  Conditions;
-typedef boost::containers::slist<Objects>    Objects;
-typedef boost::containers::slist<Param>      Params;
+typedef boost::containers::slist<GT::GTL::Condition> Conditions;
+typedef boost::containers::slist<GT::GTL::Objects>   Objects;
+typedef boost::containers::slist<GT::GTL::Param>     Params;
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */

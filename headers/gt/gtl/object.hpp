@@ -62,7 +62,7 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result& findProperty(
+    GT::Model::Result& findProperty(
         Identifier &propertyName
     );
 
@@ -74,12 +74,17 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result& findPropertyWithConditions(
+    GT::Model::Result& findPropertyWithConditions(
         Identifier &propertyName,
         Conditions &conditions
     );
 
 protected:
+    /**
+     * Used for queries without conditions.
+     */
+    static const Conditions &noConditions = new Conditions();
+
     /**
      * @brief Whether property is registered or not.
      *
@@ -112,11 +117,6 @@ protected:
         ObjectProperty &property
     );
 
-    /**
-     * Used for queries without conditions.
-     */
-    static const Conditions &noConditions = new Conditions();
-
 private:
     /**
      * @brief Map containing ObjectProperties bound to their name.
@@ -140,7 +140,7 @@ public:
      * @param  conditions conditions to check
      * @result            search result
      */
-    virtual Result& findForConditions(
+    virtual GT::Model::Result& findForConditions(
         Conditions &conditions
     ) = 0;
 
@@ -149,7 +149,7 @@ protected:
      * @brief Constructor locked for all classes except Object (which can create it in its own constructor). 
      */
     ObjectProperty() {}
-}
+} /* END class ObjectProperty */
 
 /**
  * @brief Lists all known properties of an Object.
@@ -161,11 +161,11 @@ class ObjectKnownProperties : ObjectProperty {
     friend Object;
 
 private:
-    ObjectKnownProperties(Object &listedObject) :
-        object(listedObject); // TODO: check whether this shit doesn't use copy constrictor by any chance
+    const Object &object;
 
-    const Object &object; 
-}
+    ObjectKnownProperties(Object &listedObject) :
+        object(listedObject);
+} /* END class ObjectKnownProperties */
 
 } /* END namespace GTL */
 } /* END namespace GT */
