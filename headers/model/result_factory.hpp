@@ -36,10 +36,10 @@ public:
 
     /**
      * @brief Returns results with predefined const content.
-	 * 
-	 * @param content content to be contained by the Result
-	 * @return        Result with constant content
-	 */
+     * 
+     * @param content content to be contained by the Result
+     * @return        Result with constant content
+     */
     Result& constResult(
         const std::string &content
     );
@@ -68,7 +68,7 @@ public:
         ResultBuilderMode builderMode
     );
 
-	/**
+    /**
      * @brief Returns current indentation mode.
      *
      * @return currently used indentation mode
@@ -86,9 +86,9 @@ public:
     );
 
 private:
-	/**
-	 * @brief Contains pointer to a ResultFactory instance.
-	 */
+    /**
+     * @brief Contains pointer to a ResultFactory instance.
+     */
     static ResultFactory volatile *instance = 0;
 
     /**
