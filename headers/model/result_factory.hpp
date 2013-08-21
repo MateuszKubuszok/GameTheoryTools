@@ -40,7 +40,7 @@ public:
      * @param content content to be contained by the Result
      * @return        Result with constant content
      */
-    Result& constResult(
+    Result constResult(
         const std::string &content
     );
 
@@ -49,7 +49,7 @@ public:
      *
      * @return an empty result
      */
-    Result& emptyResult();
+    Result emptyResult();
 
     /**
      * @brief Returns current builder mode.
@@ -120,6 +120,6 @@ private:
 }
 
 } /* END namespace Model */
-} /* END namepsace GT */
+} /* END namespace GT */
 
 #endif /* #ifndef __GT_MODEL_RESULT_FACTORY_HPP__ */

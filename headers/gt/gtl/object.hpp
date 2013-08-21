@@ -62,7 +62,7 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    GT::Model::Result& findProperty(
+    Result findProperty(
         Identifier &propertyName
     );
 
@@ -74,7 +74,7 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    GT::Model::Result& findPropertyWithConditions(
+    Result findPropertyWithConditions(
         Identifier &propertyName,
         Conditions &conditions
     );
@@ -83,7 +83,7 @@ protected:
     /**
      * Used for queries without conditions.
      */
-    static const Conditions &noConditions = new Conditions();
+    static const Conditions noConditions = Conditions();
 
     /**
      * @brief Whether property is registered or not.
@@ -140,7 +140,7 @@ public:
      * @param  conditions conditions to check
      * @result            search result
      */
-    virtual GT::Model::Result& findForConditions(
+    virtual Result findForConditions(
         Conditions &conditions
     ) = 0;
 
@@ -161,7 +161,7 @@ class ObjectKnownProperties : ObjectProperty {
     friend Object;
 
 private:
-    const Object &object;
+    const Object object;
 
     ObjectKnownProperties(Object &listedObject) :
         object(listedObject);

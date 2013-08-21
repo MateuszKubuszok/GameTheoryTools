@@ -32,13 +32,13 @@ bool Object::respondsTo(
     return isPropertyRegistered(propertyName);
 }
 
-Result& Object::findProperty(
+Result Object::findProperty(
     Identifier &propertyName
 ) {
     return findPropertyWithConditions(propertyName, noConditions);
 }
 
-Result& Object::findPropertyWithConditions(
+Result Object::findPropertyWithConditions(
     Identifier &propertyName,
     Conditions &conditions
 ) {
@@ -62,7 +62,7 @@ ObjectProperty Object::getProperty(
 
 void Object::registerProperty(
     Identifier     &propertyName,
-    ObjectProperty property
+    ObjectProperty &property
 ) {
     if (registeredProperties.count(propertyName))
         delete registeredProperties[propertyName];
@@ -72,7 +72,7 @@ void Object::registerProperty(
 
 // class ObjectKnownProperties
 // public:
-Result& ObjectKnownProperties::findPropertyWithConditions(
+Result ObjectKnownProperties::findPropertyWithConditions(
     Conditions conditions
 ) {
     // TODO: create ResultBuilder that fills it up
@@ -82,7 +82,7 @@ Result& ObjectKnownProperties::findPropertyWithConditions(
 
 class ObjectType : ObjectProperty {
 public:
-    Result& findForConditions(
+    Result findForConditions(
         Conditions &conditions
     ) {
         return ResultFactory::getInstance()->constResult("Object");

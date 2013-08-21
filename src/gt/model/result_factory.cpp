@@ -1,7 +1,11 @@
+#include <boost/thread/mutex.hpp>
+
 #include "gt/model/common.hpp"
 
 namespace GT {
 namespace Model {
+
+boost::mutex resultFactoryMutex;
 
 class EmptyResult;
 class ConstResult;
@@ -9,24 +13,28 @@ class ConstResult;
 // class ResultFactory {
 // public:
 static ResultFactory& ResultFactory::getInstance() {
+    // Singleton implemented according to:
+    // "C++ and the Perils of Double-Checked Locking"
+    // but without executing constructor inside getInstance() method
+    // since it's an eyesore. 
     if (!instance) {
-        Lock lock;
+        boost::mutex::scoped_lock lock;
         if (!instance) {
             ResultFactory* volatile tmp = new ResultFactory();
             instance = tmp;
         }
     }
-    return (*instance);
+    return *instance;
 }
 
-Result& ResultFactory::constResult(
+Result ResultFactory::constResult(
     const std::string &content
 ) {
-    return new ConstResult(content);
+    return ConstResult(content);
 }
 
-Result& ResultFactory::emptyResult() {
-    return new EmptyResult();
+Result ResultFactory::emptyResult() {
+    return EmptyResult();
 }
 
 ResultBuilderMode ResultFactory::getBuilderMode() {
@@ -37,7 +45,7 @@ ResultFactory& ResultFactory::setBuilderMode(
     ResultBuilderMode newBuilderMode
 ) {
     builderMode = newBuilderMode;
-    return this;
+    return *this;
 }
 
 ResultIndentationMode ResultFactory::getIndentationMode() {
@@ -48,7 +56,7 @@ ResultFactory& ResultFactory::setIndentationMode(
     ResultIndentationMode newIndentationMode
 ) {
     indentationMode = newIndentationMode;
-    return this;
+    return *this;
 }
 
 // private:
@@ -60,7 +68,7 @@ ResultFactory::ResultFactory() {
 
 class EmptyResult : Result {
 public:
-    std::string& getResult() {
+    std::string getResult() {
         return "";
     }
 } /* END class EmptyString */
@@ -75,12 +83,12 @@ public:
         delete result;
     }
 
-    std::string& getResult() {
+    std::string getResult() {
         return result;
     }
 
 private:
-    const std::string &result; 
+    const std::string result; 
 } /* END class ConstResult */
 
 } /* END namespace Model */

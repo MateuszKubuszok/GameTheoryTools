@@ -25,5 +25,6 @@
 typedef boost::containers::slist<GT::GTL::Condition> Conditions;
 typedef boost::containers::slist<GT::GTL::Objects>   Objects;
 typedef boost::containers::slist<GT::GTL::Param>     Params;
+typedef GTL::Model::Result                           Result;
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */
