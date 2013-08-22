@@ -2,11 +2,14 @@
 env  = Environment()
 conf = Configure(env)
 
+validInstallation = True
+
 # C++ check
 if not conf.CheckCXX():
-    print('Your Environment/C++ compiler is not configured installed correctly!!. Interrupting.')
-    Exit(0)
+    print('Your Environment/C++ compiler is not configured installed correctly!!')
+    validInstallation = False
 
+# Header check
 for header in [
     'FlexLexer.h',
     'iostream', 'fstream', 'cstdlib',
@@ -15,8 +18,11 @@ for header in [
     'boost/thread/mutex.hpp',
 ]:
     if not conf.CheckCXXHeader(header):
-        print('Your environment does not seem to have header '+header+'!! Interrupting.')
-        Exit(1)
+        print('Your environment does not seem to have header '+header+'!!')
+        validInstallation = False
+
+if not validInstallation:
+    Exit(1)
 
 conf.Finish()
 # End of Environment configuration
@@ -47,4 +53,3 @@ parserCppBuilder, parserHppBuilder = env.CXXFile(source=parserYY,  target=parser
 scannerCppBuilder                  = env.CXXFile(source=scannerLL, target=scannerCpp)
 
 ################################################################################
-
