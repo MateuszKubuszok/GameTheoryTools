@@ -37,7 +37,7 @@
 
 
 /* Line 1149 of lalr1.cc  */
-#line 6 "f_n_b/parser.y"
+#line 6 "f_n_b/parser.yy"
 namespace GT { namespace GTL {
 
 /* Line 1149 of lalr1.cc  */
@@ -129,7 +129,7 @@ namespace GT { namespace GTL {
   };
 
 /* Line 1235 of lalr1.cc  */
-#line 6 "f_n_b/parser.y"
+#line 6 "f_n_b/parser.yy"
 } } // GT::GTL
 
 /* Line 1235 of lalr1.cc  */

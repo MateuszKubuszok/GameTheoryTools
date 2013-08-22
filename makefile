@@ -19,12 +19,12 @@ all : parser_code
 # 
 
 # Generate C++ scanner (.cpp only).
-$(SRC)/$(GTL)/scanner.cpp : $(FNB)/scanner.l
-	$(FLEX) $(FNB)/scanner.l
+$(SRC)/$(GTL)/scanner.cpp : $(FNB)/scanner.ll
+	$(FLEX) $(FNB)/scanner.ll
 
 # Generates C++ parser (.cpp and .hpp).
-$(HEAD)/$(GTL)/parser.hpp $(SRC)/$(GTL)/parser.cpp : $(FNB)/parser.y
-	$(BISON) --defines=$(HEAD)/$(GTL)/parser.hpp --output=$(SRC)/$(GTL)/parser.cpp $(FNB)/parser.y
+$(HEAD)/$(GTL)/parser.hpp $(SRC)/$(GTL)/parser.cpp : $(FNB)/parser.yy
+	$(BISON) --defines=$(HEAD)/$(GTL)/parser.hpp --output=$(SRC)/$(GTL)/parser.cpp $(FNB)/parser.yy
 
 # Build parser's classes - both scanner and actual parser.
 bison : $(FNB_BUILT)

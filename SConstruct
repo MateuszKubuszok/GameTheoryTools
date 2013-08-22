@@ -1,0 +1,50 @@
+# Begining of Environment configuration
+env  = Environment()
+conf = Configure(env)
+
+# C++ check
+if not conf.CheckCXX():
+    print('Your Environment/C++ compiler is not configured installed correctly!!. Interrupting.')
+    Exit(0)
+
+for header in [
+    'FlexLexer.h',
+    'iostream', 'fstream', 'cstdlib',
+    'boost/container/map.hpp',
+    'boost/container/slist.hpp',
+    'boost/thread/mutex.hpp',
+]:
+    if not conf.CheckCXXHeader(header):
+        print('Your environment does not seem to have header '+header+'!! Interrupting.')
+        Exit(1)
+
+conf.Finish()
+# End of Environment configuration
+
+################################################################################
+
+# Main directories
+fnb     = 'f_n_b/'
+headers = 'headers/'
+source  = 'src/'
+
+# Packages directories
+gtl   = 'gt/gtl/'
+model = 'gt/model/'
+
+################################################################################
+
+# Builds parser and scanner classes
+
+parserYY   = fnb+'parser.yy'
+parserCpp  = source+gtl+'parser.cpp'
+parserHpp  = headers+gtl+'parser.hpp'
+scannerLL  = fnb+'scanner.ll'
+scannerCpp = source+gtl+'scanner.cpp'
+
+env.Append(YACCFLAGS='--defines='+parserHpp)
+parserCppBuilder, parserHppBuilder = env.CXXFile(source=parserYY,  target=parserCpp)
+scannerCppBuilder                  = env.CXXFile(source=scannerLL, target=scannerCpp)
+
+################################################################################
+
