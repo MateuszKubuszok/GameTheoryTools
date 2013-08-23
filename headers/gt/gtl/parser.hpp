@@ -96,27 +96,29 @@ namespace GT { namespace GTL {
 /* Line 35 of lalr1.cc  */
 #line 58 "f_n_b/parser.yy"
 
-    Identifier   identifier;
-    Identifiers& identifiers;
-    double       number;
-    Condition&   condition;
-    Conditions&  conditions;
-    Data&        data;
-    DataPiece&   dataPiece;
-    Definition&  definition;
-    Details&     details;
-    Game&        game;
-    Query&       query;
-    Object&      object;
-    Objects&     objects;
-    Param&       param;
-    Params&      params;
-    Player&      player;
+    Identifier    identifier;
+    Identifiers&  identifiers;
+    double        number;
+    Condition&    condition;
+    Conditions&   conditions;
+    Data&         data;
+    DataPiece&    dataPiece;
+    DataPieceMap& dataPieceMap;
+    DataPieces&   dataPieces;
+    Definition&   definition;
+    Details&      details;
+    Game&         game;
+    Query&        query;
+    Object&       object;
+    Objects&      objects;
+    Param&        param;
+    Params&       params;
+    Player&       player;
 
 
 
 /* Line 35 of lalr1.cc  */
-#line 120 "headers/gt/gtl/parser.hpp"
+#line 122 "headers/gt/gtl/parser.hpp"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -327,7 +329,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 331 "headers/gt/gtl/parser.hpp"
+#line 333 "headers/gt/gtl/parser.hpp"
 
 
 

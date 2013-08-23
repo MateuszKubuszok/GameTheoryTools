@@ -56,22 +56,24 @@
 
 /* Union containing values as either double or string */
 %union {
-    Identifier   identifier;
-    Identifiers& identifiers;
-    double       number;
-    Condition&   condition;
-    Conditions&  conditions;
-    Data&        data;
-    DataPiece&   dataPiece;
-    Definition&  definition;
-    Details&     details;
-    Game&        game;
-    Query&       query;
-    Object&      object;
-    Objects&     objects;
-    Param&       param;
-    Params&      params;
-    Player&      player;
+    Identifier    identifier;
+    Identifiers&  identifiers;
+    double        number;
+    Condition&    condition;
+    Conditions&   conditions;
+    Data&         data;
+    DataPiece&    dataPiece;
+    DataPieceMap& dataPieceMap;
+    DataPieces&   dataPieces;
+    Definition&   definition;
+    Details&      details;
+    Game&         game;
+    Query&        query;
+    Object&       object;
+    Objects&      objects;
+    Param&        param;
+    Params&       params;
+    Player&       player;
 }
 
 /* Declared tokens */
@@ -101,21 +103,24 @@
 
  /* Declared types */
  
-%type <condition>   condition
-%type <data>        data
-%type <dataPiece>   data_piece
-%type <definition>  definition
-%type <details>     details
-%type <game>        game
-%type <query>       query
-%type <object>      object
-%type <param>       param
-%type <player>      player
+%type <condition>    condition
+%type <data>         data
+%type <dataPiece>    data_piece
+%type <dataPieceMap> data_piece_cb
+%type <definition>   definition
+%type <details>      details
+%type <game>         game
+%type <query>        query
+%type <object>       object
+%type <param>        param
+%type <player>       player
 
-%type <conditions>  conditions
-%type <identifiers> identifiers
-%type <objects>     objects
-%type <params>      params
+%type <conditions>   condition_collection
+%type <conditions>   conditions
+%type <dataPieces>   data_pieces
+%type <identifiers>  identifiers
+%type <objects>      objects
+%type <params>       params
 
 %%
 
@@ -143,7 +148,7 @@ objects
 object
  : game   { $$ = $1; }
  | player { $$ = $1; }
- | param  { $$ = driver.getValueForIdentifier($1); }
+ | param  { $$ = $1; }
  ;
  
 /* Games */
@@ -181,9 +186,13 @@ identifiers
 /* Conditions */
 
 conditions
- : conditions COMA condition { $$ = driver.addConditionToCollection($3, $1); }
- | WITH condition            { $$ = driver.createConditionsCollection($2); }
- |                           { $$ = driver.emptyConditionCollection(); }
+ : condition_collection { $$ = $1; }
+ |                      { $$ = driver.emptyConditionCollection(); }
+ ;
+
+condition_collection
+ : condition_collection COMA condition { $$ = driver.addConditionToCollection($3, $1); }
+ | WITH condition                      { $$ = driver.createConditionsCollection($2); }
  ;
 
 condition
@@ -193,14 +202,21 @@ condition
 /* Data */
 
 data
- : data COMA data_piece  { $$ = driver.addDataPieceToData($1, $3); }
- | data_piece            { $$ = driver.createData($1); }
+ : data_pieces { $$ = driver.createData($1); }
+ ;
+
+data_pieces
+ : data_pieces COMA data_piece_cb { $$ = driver.addDataPieceToCollection($3, $1); }
+ | data_piece_cb                  { $$ = driver.createDataPieceCollection($1); }
+ ;
+
+data_piece_cb
+ : LCBR identifiers COLON data_piece RCBR { $$ = driver.bindDataPiecesToIdentifiers($4, $2); }
  ;
 
 data_piece
- : identifier COLON param                        { $$ = driver.createOneDimensionData($1, $3); }
- | identifiers LCBR identifier COLON params RCBR { $$ = driver.createTwoDimensionalData($1, $3, $5); }
- | identifiers COLON data_piece                  { $$ = driver.createMultiDimensionalData($1, $3); }
+ : data_pieces { $$ = driver.createMultiDimensionalDataPiece($1); }
+ | params      { $$ = driver.createOneDimensionDataPiece($1); }
  ;
 
 params

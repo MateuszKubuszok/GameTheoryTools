@@ -12,125 +12,126 @@ public:
     virtual ~Driver();
 
     virtual void storeDefinedObject(
-    	Definition &definition
+        Definition &definition
     );
 
     virtual void executeQuery(
-    	Query &query
+        Query &query
     );
 
     virtual Definition createDefinition(
-    	Object     &object,
-    	Identifier &identifier
+        Object     &object,
+        Identifier &identifier
     );
 
     virtual Query createQuery(
-    	Identifiers &identifiers,
-    	Objects     &objects,
-    	Conditions  &conditions
+        Identifiers &identifiers,
+        Objects     &objects,
+        Conditions  &conditions
     );
 
-	virtual Objects createObjectsCollection(
-		Object &object
-	);
+    virtual Objects createObjectsCollection(
+        Object &object
+    );
 
-	virtual Objects addObjectToCollection(
-		Object  &object,
-		Objects &objects
-	);
+    virtual Objects addObjectToCollection(
+        Object  &object,
+        Objects &objects
+    );
 
-	virtual Object getValueForIdentifier(
-		Identifier &identifier
-	);
+    virtual Object getValueForIdentifier(
+        Identifier &identifier
+    );
 
-	virtual Game createPureGameForDetails(
-		Details &details
-	);
+    virtual Game createPureGameForDetails(
+        Details &details
+    );
 
-	virtual Game createMixedGameForDetails(
-		Details &details
-	);
+    virtual Game createMixedGameForDetails(
+        Details &details
+    );
 
-	virtual Game createTreeGameForDetails(
-		Details &details
-	);
+    virtual Game createTreeGameForDetails(
+        Details &details
+    );
 
-	virtual Details createDetailsForGame(
-		Objects &objects,
-		Data    &data
-	);
+    virtual Details createDetailsForGame(
+        Objects &objects,
+        Data    &data
+    );
 
-	virtual Player createPlayerWithStrategies(
-		Identifier &identifier,
-		Objects    &objects
-	);
+    virtual Player createPlayerWithStrategies(
+        Identifier &identifier,
+        Objects    &objects
+    );
 
-	virtual Param getValueForIdentifier(
-		Identifier &identifier
-	);
+    virtual Param getValueForIdentifier(
+        Identifier &identifier
+    );
 
-	virtual Param&getValueForNumber(
-		double number
-	);
+    virtual Param&getValueForNumber(
+        double number
+    );
 
-	virtual Params createParamsCollection(
-		Param& param
-	);
+    virtual Params createParamsCollection(
+        Param& param
+    );
 
-	virtual Params addParamToCollection(
-		Param&  param,
-		Params& params
-	);
+    virtual Params addParamToCollection(
+        Param&  param,
+        Params& params
+    );
 
-	virtual Identifiers createIdentifiersCollection(
-		Identifier &identifier
-	);
+    virtual Identifiers createIdentifiersCollection(
+        Identifier &identifier
+    );
 
-	virtual Identifiers addIdentifierToCollection(
-		Identifier  &identifier,
-		Identifiers &identifiers
-	);
+    virtual Identifiers addIdentifierToCollection(
+        Identifier  &identifier,
+        Identifiers &identifiers
+    );
 
-	virtual Condition createPlayerChoiceCondition(
-		Object &player,
-		Object &strategy
-	);
+    virtual Condition createPlayerChoiceCondition(
+        Object &player,
+        Object &strategy
+    );
 
-	virtual Conditions createConditionsCollection(
-		Condition &condition
-	);
+    virtual Conditions createConditionsCollection(
+        Condition &condition
+    );
 
-	virtual Conditions emptyConditionsCollection();
+    virtual Conditions emptyConditionsCollection();
 
-	virtual Conditions addConditionToCollection(
-		Condition   &condition,
-		Conditions& conditions
-	);
+    virtual Conditions addConditionToCollection(
+        Condition   &condition,
+        Conditions& conditions
+    );
 
-	virtual Data createData(
-		DataPiece &dataPiece
-	);
+    virtual Data createData(
+        DataPieces &dataPieces
+    );
 
-	virtual Data addDataPieceToData(
-		DataPiece &dataPiece,
-		Data      &data
-	);
+    virtual DataPieces createDataPieceCollection(
+    	DataPiece &dataPiece
+    );
 
-	virtual DataPiece createOneDimensionData(
-		Identifier &identifier,
-		Param      &param
-	);
+    virtual DataPieces addDataPieceToCollection(
+    	DataPiece  &dataPiece,
+    	DataPieces &dataPieces
+    );
 
-	virtual DataPiece createTwoDimensionData(
-		Identifiers &identifiers,
-		Identifier  &identifier,
-		Params      &params
-	);
+    virtual DataPiece createOneDimensionDataPiece(
+        Params      &params
+    );
 
-	virtual DataPiece createMultiDimensionalData(
-		Identifiers &identifiers,
-		Params      &params
-	);
+    virtual DataPiece createMultiDimensionalDataPiece(
+        DataPieces  &dataPieces
+    );
+
+    virtual DataPieceMap bindDataPiecesToIdentifiers(
+    	DataPieces  &dataPieces,
+    	Identifiers &identifiers
+    );
 } /* END class Driver */
 
 } /* END namespace GTL */
