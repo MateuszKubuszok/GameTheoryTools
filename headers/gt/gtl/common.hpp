@@ -7,6 +7,7 @@
 /* Includes GTL elements headers */
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"
+#include "gt/gtl/condition_factory.hpp"
 #include "gt/gtl/data.hpp"
 #include "gt/gtl/data_piece.hpp"
 #include "gt/gtl/definition.hpp"
@@ -22,9 +23,11 @@
 #include "gt/gtl/parser.hpp"
 
 /* Shortens comonly used names */
-typedef boost::containers::slist<GT::GTL::Condition> Conditions;
-typedef boost::containers::slist<GT::GTL::Objects>   Objects;
-typedef boost::containers::slist<GT::GTL::Param>     Params;
-typedef GTL::Model::Result                           Result;
+typedef boost::containers::map<Identifier, GT::GTL::DataPiece> DataPieceMap;
+typedef boost::containers::slist<GT::GTL::Condition>           Conditions;
+typedef boost::containers::slist<DataPieceMap>                 DataPieces;
+typedef boost::containers::slist<GT::GTL::Objects>             Objects;
+typedef boost::containers::slist<GT::GTL::Param>               Params;
+typedef GTL::Model::Result                                     Result;
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */
