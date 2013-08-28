@@ -27,12 +27,17 @@ public:
      * @parma strategy strategy Object
      * @result         Condition for a player
      */
-    Condition playerChoosedStrategy(
-        Object &player,
-        Object &strategy
+    Condition createPlayerChoiceCondition(
+        Object& player,
+        Object& strategy
     );
 
 private:
+    /**
+     * @brief Contains pointer to a ParamFactory instance.
+     */
+    static ConditionFactory volatile *instance = 0;
+
     /**
      * @brief Default constructor hidden from programmers.
      */
@@ -44,7 +49,7 @@ private:
      * @param object to copy
      */
     ConditionFactory(
-        const ConditionFactory &conditionFactory
+        const ConditionFactory& conditionFactory
     );
 
     /**
