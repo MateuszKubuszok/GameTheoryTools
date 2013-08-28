@@ -58,30 +58,33 @@ public:
     /**
      * @brief Finds Objects' property and returns it as a result.
      *
+     * @param  context               context with values
      * @param  propertyName          property's name
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result findProperty(
-        Identifier &propertyName
+        Context&    context,
+        Identifier& propertyName
     );
 
     /**
      * @brief Finds Objects' property for giver conditions and returns it as a result. 
      *
-     * @param propertyName           property's name
+     * @param context                context with values
      * @param conditions             conditions to consider
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result findPropertyWithConditions(
-        Identifier &propertyName,
-        Conditions &conditions
+        Context&    context,
+        Identifier& propertyName,
+        Conditions& conditions
     );
 
 protected:
     /**
-     * Used for queries without conditions.
+     * @brief Used for queries without conditions.
      */
     static const Conditions noConditions = Conditions();
 
@@ -92,7 +95,7 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        Identifier &propertyName
+        Identifier& propertyName
     );
 
     /**
@@ -103,7 +106,7 @@ protected:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     ObjectProperty getProperty(
-        Identifier &propertyName
+        Identifier& propertyName
     );
 
     /**
@@ -113,15 +116,15 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        Identifier     &propertyName,
-        ObjectProperty &property
+        Identifier&     propertyName,
+        ObjectProperty& property
     );
 
 private:
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
-    boost::containers::map<Identifier, ObjectProperty> registeredProperties;
+    boost::container::map<Identifier, ObjectProperty> registeredProperties;
 } /* END class Object */
 
 /**
@@ -137,11 +140,13 @@ public:
     /**
      * @brief Finds results for given conditions.
      *
+     * @param  context    contxt with values
      * @param  conditions conditions to check
      * @result            search result
      */
     virtual Result findForConditions(
-        Conditions &conditions
+        Context&    context,
+        Conditions& conditions
     ) = 0;
 
 protected:
@@ -163,7 +168,7 @@ class ObjectKnownProperties : ObjectProperty {
 private:
     const Object object;
 
-    ObjectKnownProperties(Object &listedObject) :
+    ObjectKnownProperties(Object& listedObject) :
         object(listedObject);
 } /* END class ObjectKnownProperties */
 

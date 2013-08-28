@@ -11,12 +11,12 @@ class ObjectType;
 // class Object {
 // public:
 Object::Object() {
-    registerProperty("properties", new ObjectKnownProperties(this));
-    registerProperty("type", new ObjectType());
+    registerProperty("properties", ObjectKnownProperties(this));
+    registerProperty("type", ObjectType());
 }
 
 Object::~Object() {
-    BOOST_FOREACH(ObjectProperty &property, registeredProperties) {
+    BOOST_FOREACH(ObjectProperty& property, registeredProperties) {
     	delete property;
     }
     delete registeredProperties;
@@ -27,33 +27,35 @@ bool Object::isValid() {
 }
 
 bool Object::respondsTo(
-    Identifier &propertyName
+    Identifier& propertyName
 ) {
     return isPropertyRegistered(propertyName);
 }
 
 Result Object::findProperty(
-    Identifier &propertyName
+    Context&    context,
+    Identifier& propertyName
 ) {
-    return findPropertyWithConditions(propertyName, noConditions);
+    return findPropertyWithConditions(context, propertyName, noConditions);
 }
 
 Result Object::findPropertyWithConditions(
-    Identifier &propertyName,
-    Conditions &conditions
+    Context&    context,
+    Identifier& propertyName,
+    Conditions& conditions
 ) {
-    return getProperty(propertyName)(conditions);
+    return getProperty(propertyName)(context, conditions);
 }
 
 // protected:
 bool Object::isPropertyRegistered(
-    Identifier &propertyName
+    Identifier& propertyName
 ) {
     return registeredProperties.count(propertyName);
 }
 
 ObjectProperty Object::getProperty(
-    Identifier &propertyName
+    Identifier& propertyName
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
@@ -61,8 +63,8 @@ ObjectProperty Object::getProperty(
 }
 
 void Object::registerProperty(
-    Identifier     &propertyName,
-    ObjectProperty &property
+    Identifier&     propertyName,
+    ObjectProperty& property
 ) {
     if (registeredProperties.count(propertyName))
         delete registeredProperties[propertyName];
@@ -73,7 +75,8 @@ void Object::registerProperty(
 // class ObjectKnownProperties
 // public:
 Result ObjectKnownProperties::findPropertyWithConditions(
-    Conditions conditions
+    Context&    context,
+    Conditions& conditions
 ) {
     // TODO: create ResultBuilder that fills it up
     return ResultFactory::getInstance()->constResult("TODO");;
@@ -83,7 +86,8 @@ Result ObjectKnownProperties::findPropertyWithConditions(
 class ObjectType : ObjectProperty {
 public:
     Result findForConditions(
-        Conditions &conditions
+        Context&    context,
+        Conditions& conditions
     ) {
         return ResultFactory::getInstance()->constResult("Object");
     }
