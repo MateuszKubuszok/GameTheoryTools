@@ -18,9 +18,6 @@
     #include <fstream>  /* File Streams library */
     #include <cstdlib>  /* C Standard library */
 
-    /* Boost libraries */
-    #include <boost/containers/slist.hpp>
-
     /* GTL prototypes */
     #include "gt/gtl/common.hpp"
 
@@ -57,23 +54,23 @@
 /* Union containing values as either double or string */
 %union {
     Identifier    identifier;
-    Identifiers&  identifiers;
-    double        number;
-    Condition&    condition;
-    Conditions&   conditions;
-    Data&         data;
-    DataPiece&    dataPiece;
-    DataPieceMap& dataPieceMap;
-    DataPieces&   dataPieces;
-    Definition&   definition;
-    Details&      details;
-    Game&         game;
-    Query&        query;
-    Object&       object;
-    Objects&      objects;
-    Param&        param;
-    Params&       params;
-    Player&       player;
+    Identifiers   identifiers;
+    Number        number;
+    Condition     condition;
+    Conditions    conditions;
+    Data          data;
+    DataPieceMap  dataPiece;
+    DataPieces    dataPieces;
+    Definition    definition;
+    Details       details;
+    Game          game;
+    Query         query;
+    Object        object;
+    Objects       objects;
+    Param         param;
+    PathPair      pathPair;
+    PathPairs     pathPairs;
+    Player        player;
 }
 
 /* Declared tokens */
@@ -93,6 +90,7 @@
 %token CHOOSE            /* CHOOSE keyword */
 %token LCBR              /* { charakter */
 %token RCBR              /* } charakter */
+%token EQUAL             /* = charakter */
 %token COLON             /* : charakter */
 %token COMA              /* , charakter */
 %token EOC               /* ; charakter */
@@ -106,13 +104,13 @@
 %type <condition>    condition
 %type <data>         data
 %type <dataPiece>    data_piece
-%type <dataPieceMap> data_piece_cb
 %type <definition>   definition
 %type <details>      details
 %type <game>         game
 %type <query>        query
 %type <object>       object
 %type <param>        param
+%type <pathPair>     path_pair
 %type <player>       player
 
 %type <conditions>   condition_collection
@@ -120,7 +118,7 @@
 %type <dataPieces>   data_pieces
 %type <identifiers>  identifiers
 %type <objects>      objects
-%type <params>       params
+%type <pathPairs>    path_pairs
 
 %%
 
@@ -206,22 +204,22 @@ data
  ;
 
 data_pieces
- : data_pieces COMA data_piece_cb { $$ = driver.addDataPieceToCollection($3, $1); }
- | data_piece_cb                  { $$ = driver.createDataPieceCollection($1); }
- ;
-
-data_piece_cb
- : LCBR identifiers COLON data_piece RCBR { $$ = driver.bindDataPiecesToIdentifiers($4, $2); }
+ : data_pieces COMA data_piece { $$ = driver.addDataPieceToCollection($3, $1); }
+ | data_piece                  { $$ = driver.createDataPieceCollection($1); }
  ;
 
 data_piece
- : data_pieces { $$ = driver.createMultiDimensionalDataPiece($1); }
- | params      { $$ = driver.createOneDimensionDataPiece($1); }
+ : LCBR path_pairs COLON data_pieces RCBR { $$ = driver.createMultiDimensionalDataPieces($2, $4); }
+ | LCBR path_pairs COLON param RCBR { $$ = driver.createOneDimensionDataPieces($2, $4); }
  ;
 
-params
- : params COMA param { $$ = driver.addParamToCollection($3, $1); }
- | param             { $$ = driver.createParamsCollection($1); }
+path_pairs
+ : path_pairs COMA path_pair {}
+ | path_pair {}
+ ;
+
+path_pair
+ : identifier EQUAL identifier {}
  ;
 
 %%

@@ -7,70 +7,71 @@ namespace GT {
 namespace GTL {
 class Driver {
 public:
-    Driver();
+    Driver() :
+        context();
 
     virtual ~Driver();
 
     virtual void storeDefinedObject(
-        Definition &definition
+        Definition& definition
     );
 
     virtual void executeQuery(
-        Query &query
+        Query& query
     );
 
     virtual Definition createDefinition(
-        Object     &object,
-        Identifier &identifier
+        Object&     object,
+        Identifier& identifier
     );
 
     virtual Query createQuery(
-        Identifiers &identifiers,
-        Objects     &objects,
-        Conditions  &conditions
+        Identifiers& identifiers,
+        Objects&     objects,
+        Conditions&  conditions
     );
 
     virtual Objects createObjectsCollection(
-        Object &object
+        Object& object
     );
 
     virtual Objects addObjectToCollection(
-        Object  &object,
-        Objects &objects
+        Object&  object,
+        Objects& objects
     );
 
     virtual Object getValueForIdentifier(
-        Identifier &identifier
+        Identifier& identifier
     );
 
     virtual Game createPureGameForDetails(
-        Details &details
+        Details& details
     );
 
     virtual Game createMixedGameForDetails(
-        Details &details
+        Details& details
     );
 
     virtual Game createTreeGameForDetails(
-        Details &details
+        Details& details
     );
 
     virtual Details createDetailsForGame(
-        Objects &objects,
-        Data    &data
+        Objects& objects,
+        Data&    data
     );
 
     virtual Player createPlayerWithStrategies(
-        Identifier &identifier,
-        Objects    &objects
+        Identifier& identifier,
+        Objects&    objects
     );
 
     virtual Param getValueForIdentifier(
-        Identifier &identifier
+        Identifier& identifier
     );
 
-    virtual Param&getValueForNumber(
-        double number
+    virtual Param& getValueForNumber(
+        Number& number
     );
 
     virtual Params createParamsCollection(
@@ -83,55 +84,55 @@ public:
     );
 
     virtual Identifiers createIdentifiersCollection(
-        Identifier &identifier
+        Identifier& identifier
     );
 
     virtual Identifiers addIdentifierToCollection(
-        Identifier  &identifier,
-        Identifiers &identifiers
+        Identifier&  identifier,
+        Identifiers& identifiers
     );
 
     virtual Condition createPlayerChoiceCondition(
-        Object &player,
-        Object &strategy
+        Object& player,
+        Object& strategy
     );
 
     virtual Conditions createConditionsCollection(
-        Condition &condition
+        Condition& condition
     );
 
     virtual Conditions emptyConditionsCollection();
 
     virtual Conditions addConditionToCollection(
-        Condition   &condition,
+        Condition&  condition,
         Conditions& conditions
     );
 
     virtual Data createData(
-        DataPieces &dataPieces
+        DataPieces& dataPieces
     );
 
     virtual DataPieces createDataPieceCollection(
-    	DataPiece &dataPiece
+        DataPiece& dataPiece
     );
 
     virtual DataPieces addDataPieceToCollection(
-    	DataPiece  &dataPiece,
-    	DataPieces &dataPieces
+        DataPiece&  dataPiece,
+        DataPieces& dataPieces
     );
 
-    virtual DataPiece createOneDimensionDataPiece(
-        Params      &params
+    virtual DataPiece createOneDimensionDataPieces(
+        Identifiers& identifiers,
+        Params&      params
     );
 
     virtual DataPiece createMultiDimensionalDataPiece(
-        DataPieces  &dataPieces
+        Identifiers& identifiers,
+        DataPieces&  dataPieces
     );
 
-    virtual DataPieceMap bindDataPiecesToIdentifiers(
-    	DataPieces  &dataPieces,
-    	Identifiers &identifiers
-    );
+private:
+    Context context;
 } /* END class Driver */
 
 } /* END namespace GTL */

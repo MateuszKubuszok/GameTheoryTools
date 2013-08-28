@@ -66,6 +66,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 (?i:FIND)        { return (token::FIND); }
 (?i:FOR)         { return (token::FOR); }
 (?i:CHOOSE)      { return (token::CHOOSE); }
+=                { return (token::EQUAL); }
 {                { return (token::LCBR); }
 }                { return (token::RCBR); }
 :                { return (token::COLON); }
@@ -73,22 +74,14 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 ;                { return (token::EOC); }
 
  /* Numbers definitions */
--?{scientific} {
-        yyval->dval = atof(yytext);
-        return (token::number);
-    }
--?{float} {
-        yyval->dval = atof(yytext);
-        return (token::number);
-    }
--?{integer} {
-        yyval->dval = (int) atoi(yytext);
+-?({scientific}|{float}|{integer}) {
+        yyval->number = Number(yytext);
         return (token::number);
     }
 
  /* Identifiers */
 {identifier} {
-        yyval->sval = new Identifier(yytext);
+        yyval->identifier = Identifier(yytext);
         return (token::identifier);
     }
 

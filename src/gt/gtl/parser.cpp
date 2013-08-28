@@ -45,9 +45,6 @@
     #include <fstream>  /* File Streams library */
     #include <cstdlib>  /* C Standard library */
 
-    /* Boost libraries */
-    #include <boost/containers/slist.hpp>
-
     /* GTL prototypes */
     #include "gt/gtl/common.hpp"
 
@@ -68,14 +65,14 @@
 
 
 /* Line 286 of lalr1.cc  */
-#line 72 "src/gt/gtl/parser.cpp"
+#line 69 "src/gt/gtl/parser.cpp"
 
 
 /* First part of user declarations.  */
 
 
 /* Line 293 of lalr1.cc  */
-#line 79 "src/gt/gtl/parser.cpp"
+#line 76 "src/gt/gtl/parser.cpp"
 
 
 #include "parser.hpp"
@@ -84,7 +81,7 @@
 
 
 /* Line 299 of lalr1.cc  */
-#line 88 "src/gt/gtl/parser.cpp"
+#line 85 "src/gt/gtl/parser.cpp"
 
 #ifndef YY_
 # if defined YYENABLE_NLS && YYENABLE_NLS
@@ -172,7 +169,7 @@ do {					\
 namespace GT { namespace GTL {
 
 /* Line 382 of lalr1.cc  */
-#line 176 "src/gt/gtl/parser.cpp"
+#line 173 "src/gt/gtl/parser.cpp"
 
   /// Build a parser object.
   Parser::Parser (Scanner &scanner_yyarg, Driver &driver_yyarg)
@@ -436,224 +433,224 @@ namespace GT { namespace GTL {
 	  case 2:
 
 /* Line 690 of lalr1.cc  */
-#line 130 "f_n_b/parser.yy"
+#line 128 "f_n_b/parser.yy"
     { driver.storeDefinedObject((yysemantic_stack_[(2) - (1)].definition)); }
     break;
 
   case 3:
 
 /* Line 690 of lalr1.cc  */
-#line 131 "f_n_b/parser.yy"
+#line 129 "f_n_b/parser.yy"
     { driver.executeQuery((yysemantic_stack_[(2) - (1)].query)); }
     break;
 
   case 4:
 
 /* Line 690 of lalr1.cc  */
-#line 135 "f_n_b/parser.yy"
+#line 133 "f_n_b/parser.yy"
     { (yyval.definition) = driver.createDefinition((yysemantic_stack_[(4) - (4)].object), (yysemantic_stack_[(4) - (2)].identifier)); }
     break;
 
   case 5:
 
 /* Line 690 of lalr1.cc  */
-#line 139 "f_n_b/parser.yy"
+#line 137 "f_n_b/parser.yy"
     { (yyval.query) = driver.createQuery((yysemantic_stack_[(5) - (2)].identifiers), (yysemantic_stack_[(5) - (4)].objects), (yysemantic_stack_[(5) - (5)].conditions)); }
     break;
 
   case 6:
 
 /* Line 690 of lalr1.cc  */
-#line 145 "f_n_b/parser.yy"
+#line 143 "f_n_b/parser.yy"
     { (yyval.objects) = driver.addObjectToCollection((yysemantic_stack_[(3) - (3)].object), (yysemantic_stack_[(3) - (1)].objects)); }
     break;
 
   case 7:
 
 /* Line 690 of lalr1.cc  */
-#line 146 "f_n_b/parser.yy"
+#line 144 "f_n_b/parser.yy"
     { (yyval.objects) = driver.createObjectsCollection((yysemantic_stack_[(1) - (1)].object)); }
     break;
 
   case 8:
 
 /* Line 690 of lalr1.cc  */
-#line 149 "f_n_b/parser.yy"
+#line 147 "f_n_b/parser.yy"
     { (yyval.object) = (yysemantic_stack_[(1) - (1)].game); }
     break;
 
   case 9:
 
 /* Line 690 of lalr1.cc  */
-#line 150 "f_n_b/parser.yy"
+#line 148 "f_n_b/parser.yy"
     { (yyval.object) = (yysemantic_stack_[(1) - (1)].player); }
     break;
 
   case 10:
 
 /* Line 690 of lalr1.cc  */
-#line 151 "f_n_b/parser.yy"
+#line 149 "f_n_b/parser.yy"
     { (yyval.object) = (yysemantic_stack_[(1) - (1)].param); }
     break;
 
   case 11:
 
 /* Line 690 of lalr1.cc  */
-#line 157 "f_n_b/parser.yy"
+#line 155 "f_n_b/parser.yy"
     { (yyval.game) = driver.createPureGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 12:
 
 /* Line 690 of lalr1.cc  */
-#line 158 "f_n_b/parser.yy"
+#line 156 "f_n_b/parser.yy"
     { (yyval.game) = driver.createMixedGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 13:
 
 /* Line 690 of lalr1.cc  */
-#line 159 "f_n_b/parser.yy"
+#line 157 "f_n_b/parser.yy"
     { (yyval.game) = driver.createTreeGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 14:
 
 /* Line 690 of lalr1.cc  */
-#line 163 "f_n_b/parser.yy"
+#line 161 "f_n_b/parser.yy"
     { (yyval.details) = driver.createDetailsForGame((yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].data)); }
     break;
 
   case 15:
 
 /* Line 690 of lalr1.cc  */
-#line 169 "f_n_b/parser.yy"
+#line 167 "f_n_b/parser.yy"
     { (yyval.player) = driver.createPlayerWithStrategies((yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].objects)); }
     break;
 
   case 16:
 
 /* Line 690 of lalr1.cc  */
-#line 175 "f_n_b/parser.yy"
+#line 173 "f_n_b/parser.yy"
     { (yyval.param) = driver.getValueForIdentifier((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 17:
 
 /* Line 690 of lalr1.cc  */
-#line 176 "f_n_b/parser.yy"
+#line 174 "f_n_b/parser.yy"
     { (yyval.param) = driver.getValueForNumber((yysemantic_stack_[(1) - (1)].number)); }
     break;
 
   case 18:
 
 /* Line 690 of lalr1.cc  */
-#line 182 "f_n_b/parser.yy"
+#line 180 "f_n_b/parser.yy"
     { (yyval.identifiers) = driver.addIdentifierToCollection((yysemantic_stack_[(3) - (3)].identifier), (yysemantic_stack_[(3) - (1)].identifiers)); }
     break;
 
   case 19:
 
 /* Line 690 of lalr1.cc  */
-#line 183 "f_n_b/parser.yy"
+#line 181 "f_n_b/parser.yy"
     { (yyval.identifiers) = driver.createIdentifiersCollection((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 20:
 
 /* Line 690 of lalr1.cc  */
-#line 189 "f_n_b/parser.yy"
+#line 187 "f_n_b/parser.yy"
     { (yyval.conditions) = (yysemantic_stack_[(1) - (1)].conditions); }
     break;
 
   case 21:
 
 /* Line 690 of lalr1.cc  */
-#line 190 "f_n_b/parser.yy"
+#line 188 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.emptyConditionCollection(); }
     break;
 
   case 22:
 
 /* Line 690 of lalr1.cc  */
-#line 194 "f_n_b/parser.yy"
+#line 192 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.addConditionToCollection((yysemantic_stack_[(3) - (3)].condition), (yysemantic_stack_[(3) - (1)].conditions)); }
     break;
 
   case 23:
 
 /* Line 690 of lalr1.cc  */
-#line 195 "f_n_b/parser.yy"
+#line 193 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.createConditionsCollection((yysemantic_stack_[(2) - (2)].condition)); }
     break;
 
   case 24:
 
 /* Line 690 of lalr1.cc  */
-#line 199 "f_n_b/parser.yy"
+#line 197 "f_n_b/parser.yy"
     { (yyval.condition) = driver.createPlayerChoiceCondition((yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
     break;
 
   case 25:
 
 /* Line 690 of lalr1.cc  */
-#line 205 "f_n_b/parser.yy"
+#line 203 "f_n_b/parser.yy"
     { (yyval.data) = driver.createData((yysemantic_stack_[(1) - (1)].dataPieces)); }
     break;
 
   case 26:
 
 /* Line 690 of lalr1.cc  */
-#line 209 "f_n_b/parser.yy"
-    { (yyval.dataPieces) = driver.addDataPieceToCollection((yysemantic_stack_[(3) - (3)].dataPieceMap), (yysemantic_stack_[(3) - (1)].dataPieces)); }
+#line 207 "f_n_b/parser.yy"
+    { (yyval.dataPieces) = driver.addDataPieceToCollection((yysemantic_stack_[(3) - (3)].dataPiece), (yysemantic_stack_[(3) - (1)].dataPieces)); }
     break;
 
   case 27:
 
 /* Line 690 of lalr1.cc  */
-#line 210 "f_n_b/parser.yy"
-    { (yyval.dataPieces) = driver.createDataPieceCollection((yysemantic_stack_[(1) - (1)].dataPieceMap)); }
+#line 208 "f_n_b/parser.yy"
+    { (yyval.dataPieces) = driver.createDataPieceCollection((yysemantic_stack_[(1) - (1)].dataPiece)); }
     break;
 
   case 28:
 
 /* Line 690 of lalr1.cc  */
-#line 214 "f_n_b/parser.yy"
-    { (yyval.dataPieceMap) = driver.bindDataPiecesToIdentifiers((yysemantic_stack_[(5) - (4)].dataPiece), (yysemantic_stack_[(5) - (2)].identifiers)); }
+#line 212 "f_n_b/parser.yy"
+    { (yyval.dataPiece) = driver.createMultiDimensionalDataPieces((yysemantic_stack_[(5) - (2)].pathPairs), (yysemantic_stack_[(5) - (4)].dataPieces)); }
     break;
 
   case 29:
 
 /* Line 690 of lalr1.cc  */
-#line 218 "f_n_b/parser.yy"
-    { (yyval.dataPiece) = driver.createMultiDimensionalDataPiece((yysemantic_stack_[(1) - (1)].dataPieces)); }
+#line 213 "f_n_b/parser.yy"
+    { (yyval.dataPiece) = driver.createOneDimensionDataPieces((yysemantic_stack_[(5) - (2)].pathPairs), (yysemantic_stack_[(5) - (4)].param)); }
     break;
 
   case 30:
 
 /* Line 690 of lalr1.cc  */
-#line 219 "f_n_b/parser.yy"
-    { (yyval.dataPiece) = driver.createOneDimensionDataPiece((yysemantic_stack_[(1) - (1)].params)); }
+#line 217 "f_n_b/parser.yy"
+    {}
     break;
 
   case 31:
 
 /* Line 690 of lalr1.cc  */
-#line 223 "f_n_b/parser.yy"
-    { (yyval.params) = driver.addParamToCollection((yysemantic_stack_[(3) - (3)].param), (yysemantic_stack_[(3) - (1)].params)); }
+#line 218 "f_n_b/parser.yy"
+    {}
     break;
 
   case 32:
 
 /* Line 690 of lalr1.cc  */
-#line 224 "f_n_b/parser.yy"
-    { (yyval.params) = driver.createParamsCollection((yysemantic_stack_[(1) - (1)].param)); }
+#line 222 "f_n_b/parser.yy"
+    {}
     break;
 
 
 
 /* Line 690 of lalr1.cc  */
-#line 657 "src/gt/gtl/parser.cpp"
+#line 654 "src/gt/gtl/parser.cpp"
 	default:
           break;
       }
@@ -839,17 +836,18 @@ namespace GT { namespace GTL {
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char Parser::yypact_ninf_ = -53;
+  const signed char Parser::yypact_ninf_ = -14;
   const signed char
   Parser::yypact_[] =
   {
-        -1,   -11,     2,    13,     0,    18,    22,   -53,     8,   -53,
-     -53,   -53,    -4,    -4,     7,    19,    35,    36,    37,   -53,
-     -53,   -53,   -53,   -53,   -53,    -3,   -53,   -53,    28,    38,
-      38,    38,    40,    -4,   -53,    27,    -4,    -4,   -53,   -53,
-     -53,    -4,   -53,   -53,    40,    -8,    -5,    32,   -53,   -53,
-      39,    -4,    33,   -53,     2,   -53,    31,   -53,    12,    33,
-       3,   -53,   -53,    31,    41,    34,   -53,    11,   -53
+        -1,   -13,   -11,    20,     9,    12,    24,   -14,    -6,   -14,
+     -14,   -14,    -4,    -4,    14,    15,    32,    34,    35,   -14,
+     -14,   -14,   -14,   -14,   -14,    -3,   -14,   -14,    26,    33,
+      33,    33,    39,    -4,   -14,    25,    -4,    -4,   -14,   -14,
+     -14,    -4,   -14,   -14,    39,    -7,    -5,    31,   -14,   -14,
+      36,    -4,    37,   -14,    27,   -14,    30,   -14,    29,     6,
+     -14,    37,    38,     0,    27,   -14,   -14,    40,     7,   -14,
+     -14,   -14
   };
 
   /* YYDEFACT[S] -- default reduction number in state S.  Performed when
@@ -864,15 +862,16 @@ namespace GT { namespace GTL {
        0,     0,     0,     0,     5,    20,     0,     0,    11,    12,
       13,     0,    23,     6,     0,     0,     0,     0,    22,    15,
        0,     0,     0,    24,     0,    14,    25,    27,     0,     0,
-       0,    26,    32,    29,     0,    30,    28,     0,    31
+      31,     0,     0,     0,     0,    26,    32,     0,     0,    30,
+      29,    28
   };
 
   /* YYPGOTO[NTERM-NUM].  */
   const signed char
   Parser::yypgoto_[] =
   {
-       -53,   -53,   -53,   -53,    -2,   -12,   -53,     6,   -53,   -52,
-       1,   -53,   -53,    10,   -53,     4,    -7,   -53,   -53
+       -14,   -14,   -14,   -14,    -2,   -12,   -14,     1,   -14,    -9,
+     -14,   -14,   -14,     8,   -14,    -8,   -10,   -14,     2
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -880,7 +879,7 @@ namespace GT { namespace GTL {
   Parser::yydefgoto_[] =
   {
         -1,     3,     4,     5,    25,    26,    22,    38,    23,    24,
-       8,    34,    35,    42,    55,    56,    57,    64,    65
+       8,    34,    35,    42,    55,    56,    57,    59,    60
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -890,26 +889,26 @@ namespace GT { namespace GTL {
   const unsigned char
   Parser::yytable_[] =
   {
-        21,    15,     1,    16,    17,    18,    50,    32,    62,    49,
-       6,    33,     2,     9,    33,    68,    33,    19,    20,    54,
-      10,    43,    13,     7,    19,    20,    12,    14,    27,    47,
-      60,    14,    19,    20,    45,    46,    39,    40,    11,    53,
-      28,    29,    30,    31,    36,    41,    44,    51,    37,    54,
-      59,    52,    61,    67,    48,    58,     0,     0,    66,     0,
-       0,     0,     0,     0,    63
+        21,    15,     1,    16,    17,    18,    50,    32,    13,     6,
+      49,     7,     2,    33,    14,    33,    54,    33,    19,    20,
+       9,    43,    19,    20,    71,    63,    64,    61,    12,    47,
+      10,    39,    40,    11,    45,    46,    27,    28,    29,    53,
+      30,    31,    36,    37,    41,    44,    51,    62,    52,    58,
+      61,    65,    48,    54,    67,    68,     0,    70,     0,     0,
+      66,     0,     0,     0,     0,     0,    69
   };
 
   /* YYCHECK.  */
   const signed char
   Parser::yycheck_[] =
   {
-        12,     5,     3,     7,     8,     9,    11,    10,    60,    17,
-      21,    19,    13,     0,    19,    67,    19,    21,    22,    16,
-      20,    33,    14,    21,    21,    22,     4,    19,    21,    41,
-      18,    19,    21,    22,    36,    37,    30,    31,    20,    51,
-      21,     6,     6,     6,    16,     5,    19,    15,    10,    16,
-      19,    12,    59,    19,    44,    54,    -1,    -1,    17,    -1,
-      -1,    -1,    -1,    -1,    60
+        12,     5,     3,     7,     8,     9,    11,    10,    14,    22,
+      17,    22,    13,    20,    20,    20,    16,    20,    22,    23,
+       0,    33,    22,    23,    17,    19,    20,    20,     4,    41,
+      21,    30,    31,    21,    36,    37,    22,    22,     6,    51,
+       6,     6,    16,    10,     5,    20,    15,    18,    12,    22,
+      20,    61,    44,    16,    63,    63,    -1,    17,    -1,    -1,
+      22,    -1,    -1,    -1,    -1,    -1,    64
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -917,13 +916,14 @@ namespace GT { namespace GTL {
   const unsigned char
   Parser::yystos_[] =
   {
-         0,     3,    13,    24,    25,    26,    21,    21,    33,     0,
-      20,    20,     4,    14,    19,     5,     7,     8,     9,    21,
-      22,    28,    29,    31,    32,    27,    28,    21,    21,     6,
-       6,     6,    10,    19,    34,    35,    16,    10,    30,    30,
-      30,     5,    36,    28,    19,    27,    27,    28,    36,    17,
-      11,    15,    12,    28,    16,    37,    38,    39,    33,    19,
-      18,    39,    32,    38,    40,    41,    17,    19,    32
+         0,     3,    13,    25,    26,    27,    22,    22,    34,     0,
+      21,    21,     4,    14,    20,     5,     7,     8,     9,    22,
+      23,    29,    30,    32,    33,    28,    29,    22,    22,     6,
+       6,     6,    10,    20,    35,    36,    16,    10,    31,    31,
+      31,     5,    37,    29,    20,    28,    28,    29,    37,    17,
+      11,    15,    12,    29,    16,    38,    39,    40,    22,    41,
+      42,    20,    18,    19,    20,    40,    22,    33,    39,    42,
+      17,    17
   };
 
 #if YYDEBUG
@@ -934,7 +934,7 @@ namespace GT { namespace GTL {
   {
          0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277
+     275,   276,   277,   278
   };
 #endif
 
@@ -942,10 +942,10 @@ namespace GT { namespace GTL {
   const unsigned char
   Parser::yyr1_[] =
   {
-         0,    23,    24,    24,    25,    26,    27,    27,    28,    28,
-      28,    29,    29,    29,    30,    31,    32,    32,    33,    33,
-      34,    34,    35,    35,    36,    37,    38,    38,    39,    40,
-      40,    41,    41
+         0,    24,    25,    25,    26,    27,    28,    28,    29,    29,
+      29,    30,    30,    30,    31,    32,    33,    33,    34,    34,
+      35,    35,    36,    36,    37,    38,    39,    39,    40,    40,
+      41,    41,    42
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -954,8 +954,8 @@ namespace GT { namespace GTL {
   {
          0,     2,     2,     2,     4,     5,     3,     1,     1,     1,
        1,     3,     3,     3,     5,     5,     1,     1,     3,     1,
-       1,     0,     3,     2,     4,     1,     3,     1,     5,     1,
-       1,     3,     1
+       1,     0,     3,     2,     4,     1,     3,     1,     5,     5,
+       3,     1,     3
   };
 
 #if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
@@ -966,11 +966,11 @@ namespace GT { namespace GTL {
   {
     "$end", "error", "$undefined", "LET", "BE", "PLAYER", "GAME", "PURE",
   "MIXED", "TREE", "WITH", "SUCH", "AS", "FIND", "FOR", "CHOOSE", "LCBR",
-  "RCBR", "COLON", "COMA", "EOC", "identifier", "number", "$accept",
-  "statement", "definition", "query", "objects", "object", "game",
-  "details", "player", "param", "identifiers", "conditions",
-  "condition_collection", "condition", "data", "data_pieces",
-  "data_piece_cb", "data_piece", "params", 0
+  "RCBR", "EQUAL", "COLON", "COMA", "EOC", "identifier", "number",
+  "$accept", "statement", "definition", "query", "objects", "object",
+  "game", "details", "player", "param", "identifiers", "conditions",
+  "condition_collection", "condition", "data", "data_pieces", "data_piece",
+  "path_pairs", "path_pair", 0
   };
 #endif
 
@@ -979,17 +979,18 @@ namespace GT { namespace GTL {
   const Parser::rhs_number_type
   Parser::yyrhs_[] =
   {
-        24,     0,    -1,    25,    20,    -1,    26,    20,    -1,     3,
-      21,     4,    28,    -1,    13,    33,    14,    27,    34,    -1,
-      27,    19,    28,    -1,    28,    -1,    29,    -1,    31,    -1,
-      32,    -1,     7,     6,    30,    -1,     8,     6,    30,    -1,
-       9,     6,    30,    -1,    10,    27,    11,    12,    37,    -1,
-       5,    21,    16,    27,    17,    -1,    21,    -1,    22,    -1,
-      33,    19,    21,    -1,    21,    -1,    35,    -1,    -1,    35,
-      19,    36,    -1,    10,    36,    -1,     5,    28,    15,    28,
-      -1,    38,    -1,    38,    19,    39,    -1,    39,    -1,    16,
-      33,    18,    40,    17,    -1,    38,    -1,    41,    -1,    41,
-      19,    32,    -1,    32,    -1
+        25,     0,    -1,    26,    21,    -1,    27,    21,    -1,     3,
+      22,     4,    29,    -1,    13,    34,    14,    28,    35,    -1,
+      28,    20,    29,    -1,    29,    -1,    30,    -1,    32,    -1,
+      33,    -1,     7,     6,    31,    -1,     8,     6,    31,    -1,
+       9,     6,    31,    -1,    10,    28,    11,    12,    38,    -1,
+       5,    22,    16,    28,    17,    -1,    22,    -1,    23,    -1,
+      34,    20,    22,    -1,    22,    -1,    36,    -1,    -1,    36,
+      20,    37,    -1,    10,    37,    -1,     5,    29,    15,    29,
+      -1,    39,    -1,    39,    20,    40,    -1,    40,    -1,    16,
+      41,    19,    39,    17,    -1,    16,    41,    19,    33,    17,
+      -1,    41,    20,    42,    -1,    42,    -1,    22,    18,    22,
+      -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -1000,17 +1001,17 @@ namespace GT { namespace GTL {
          0,     0,     3,     6,     9,    14,    20,    24,    26,    28,
       30,    32,    36,    40,    44,    50,    56,    58,    60,    64,
       66,    68,    69,    73,    76,    81,    83,    87,    89,    95,
-      97,    99,   103
+     101,   105,   107
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   const unsigned char
   Parser::yyrline_[] =
   {
-         0,   130,   130,   131,   135,   139,   145,   146,   149,   150,
-     151,   157,   158,   159,   163,   169,   175,   176,   182,   183,
-     189,   190,   194,   195,   199,   205,   209,   210,   214,   218,
-     219,   223,   224
+         0,   128,   128,   129,   133,   137,   143,   144,   147,   148,
+     149,   155,   156,   157,   161,   167,   173,   174,   180,   181,
+     187,   188,   192,   193,   197,   203,   207,   208,   212,   213,
+     217,   218,   222
   };
 
   // Print the state stack on the debug stream.
@@ -1077,7 +1078,7 @@ namespace GT { namespace GTL {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21,    22
+      15,    16,    17,    18,    19,    20,    21,    22,    23
     };
     if ((unsigned int) t <= yyuser_token_number_max_)
       return translate_table[t];
@@ -1086,15 +1087,15 @@ namespace GT { namespace GTL {
   }
 
   const int Parser::yyeof_ = 0;
-  const int Parser::yylast_ = 64;
+  const int Parser::yylast_ = 66;
   const int Parser::yynnts_ = 19;
   const int Parser::yyempty_ = -2;
   const int Parser::yyfinal_ = 9;
   const int Parser::yyterror_ = 1;
   const int Parser::yyerrcode_ = 256;
-  const int Parser::yyntokens_ = 23;
+  const int Parser::yyntokens_ = 24;
 
-  const unsigned int Parser::yyuser_token_number_max_ = 277;
+  const unsigned int Parser::yyuser_token_number_max_ = 278;
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
 
@@ -1103,11 +1104,11 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 1136 of lalr1.cc  */
-#line 1107 "src/gt/gtl/parser.cpp"
+#line 1108 "src/gt/gtl/parser.cpp"
 
 
 /* Line 1138 of lalr1.cc  */
-#line 227 "f_n_b/parser.yy"
+#line 225 "f_n_b/parser.yy"
 
 
 /**

@@ -38,7 +38,7 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 42 "f_n_b/parser.yy"
+#line 39 "f_n_b/parser.yy"
 
     namespace GT {
         namespace GTL {
@@ -94,26 +94,26 @@ namespace GT { namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 58 "f_n_b/parser.yy"
+#line 55 "f_n_b/parser.yy"
 
     Identifier    identifier;
-    Identifiers&  identifiers;
-    double        number;
-    Condition&    condition;
-    Conditions&   conditions;
-    Data&         data;
-    DataPiece&    dataPiece;
-    DataPieceMap& dataPieceMap;
-    DataPieces&   dataPieces;
-    Definition&   definition;
-    Details&      details;
-    Game&         game;
-    Query&        query;
-    Object&       object;
-    Objects&      objects;
-    Param&        param;
-    Params&       params;
-    Player&       player;
+    Identifiers   identifiers;
+    Number        number;
+    Condition     condition;
+    Conditions    conditions;
+    Data          data;
+    DataPieceMap  dataPiece;
+    DataPieces    dataPieces;
+    Definition    definition;
+    Details       details;
+    Game          game;
+    Query         query;
+    Object        object;
+    Objects       objects;
+    Param         param;
+    PathPair      pathPair;
+    PathPairs     pathPairs;
+    Player        player;
 
 
 
@@ -145,11 +145,12 @@ namespace GT { namespace GTL {
      CHOOSE = 270,
      LCBR = 271,
      RCBR = 272,
-     COLON = 273,
-     COMA = 274,
-     EOC = 275,
-     identifier = 276,
-     number = 277
+     EQUAL = 273,
+     COLON = 274,
+     COMA = 275,
+     EOC = 276,
+     identifier = 277,
+     number = 278
    };
 
     };
@@ -329,7 +330,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 333 "headers/gt/gtl/parser.hpp"
+#line 334 "headers/gt/gtl/parser.hpp"
 
 
 

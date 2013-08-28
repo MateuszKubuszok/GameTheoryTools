@@ -36,7 +36,7 @@ public:
      * @param lval initiates next scanning with value
      * @return     returns number of next token
      */    
-    int yylex(Parser::semantic_type *lval) {
+    int yylex(Parser::semantic_type* lval) {
         yylval = lval;
         return yylex();
     }
@@ -56,7 +56,7 @@ private:
     /**
      * Field used during token scanning - contains actual value of parsed chain.
      */
-    Parser::semantic_type *yylval;
+    Parser::semantic_type* yylval;
 } /* END class Scanner */
 
 } /* END namespace GTL */

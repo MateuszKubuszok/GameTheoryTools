@@ -11,11 +11,12 @@ if not conf.CheckCXX():
 
 # Header check
 for header in [
-    'FlexLexer.h',
     'iostream', 'fstream', 'cstdlib',
     'boost/container/map.hpp',
     'boost/container/slist.hpp',
     'boost/thread/mutex.hpp',
+    'FlexLexer.h',
+    'gmpxx.h',
 ]:
     if not conf.CheckCXXHeader(header):
         print('Your environment does not seem to have header '+header+'!!')
