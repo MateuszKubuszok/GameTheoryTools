@@ -27,35 +27,35 @@ bool Object::isValid() {
 }
 
 bool Object::respondsTo(
-    Identifier& propertyName
+    const Identifier& propertyName
 ) {
     return isPropertyRegistered(propertyName);
 }
 
 Result Object::findProperty(
-    Context&    context,
-    Identifier& propertyName
+    const Context&    context,
+    const Identifier& propertyName
 ) {
     return findPropertyWithConditions(context, propertyName, noConditions);
 }
 
 Result Object::findPropertyWithConditions(
-    Context&    context,
-    Identifier& propertyName,
-    Conditions& conditions
+    const Context&    context,
+    const Identifier& propertyName,
+    const Conditions& conditions
 ) {
     return getProperty(propertyName)(context, conditions);
 }
 
 // protected:
 bool Object::isPropertyRegistered(
-    Identifier& propertyName
+    const Identifier& propertyName
 ) {
     return registeredProperties.count(propertyName);
 }
 
 ObjectProperty Object::getProperty(
-    Identifier& propertyName
+    const Identifier& propertyName
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
@@ -63,8 +63,8 @@ ObjectProperty Object::getProperty(
 }
 
 void Object::registerProperty(
-    Identifier&     propertyName,
-    ObjectProperty& property
+    const Identifier&     propertyName,
+    const ObjectProperty& property
 ) {
     if (registeredProperties.count(propertyName))
         delete registeredProperties[propertyName];
@@ -75,8 +75,8 @@ void Object::registerProperty(
 // class ObjectKnownProperties
 // public:
 Result ObjectKnownProperties::findPropertyWithConditions(
-    Context&    context,
-    Conditions& conditions
+    const Context&    context,
+    const Conditions& conditions
 ) {
     // TODO: create ResultBuilder that fills it up
     return ResultFactory::getInstance()->constResult("TODO");;
@@ -86,12 +86,12 @@ Result ObjectKnownProperties::findPropertyWithConditions(
 class ObjectType : public ObjectProperty {
 public:
     Result findForConditions(
-        Context&    context,
-        Conditions& conditions
+        const Context&    context,
+        const Conditions& conditions
     ) {
         return ResultFactory::getInstance()->constResult("Object");
     }
-}
+} /* END class ObjectType */
 
 } /* END namespace GTL */
 } /* END namespace GT */

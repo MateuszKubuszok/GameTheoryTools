@@ -25,7 +25,7 @@ public:
      * @brief Constructor with parental context inheritance. 
      */
     Context(
-        Context& parentContext
+        const Context& parentContext
     ) :
         knownObjects();
 
@@ -42,8 +42,8 @@ public:
      * @return           reference to context for chaining
      */
     Context& registerObject(
-        Identifier identifier,
-        Object     object
+        const Identifier& identifier,
+        const Object&     object
     );
 
     /**
@@ -52,8 +52,8 @@ public:
      * @param identifier identifier to obtain
      * @return           value to retur
      */
-    Object& getObject(
-        Identifier& identifier
+    Object getObject(
+        const Identifier& identifier
     );
 
     /**
@@ -64,13 +64,19 @@ public:
      * @param param param to obtain
      * @return      value to retur
      */
-    Param& getParam(
-        Param& param
+    Param getParam(
+        const Param& param
     );
     
 private:
+    /**
+     * @brief Possible parent Context.
+     */
     Context* parentContext = 0;
 
+    /**
+     * @brief Registerd Objects.
+     */
     boost::container::map<Identifier, Object> knownObjects;
 } /* END class Context */
 

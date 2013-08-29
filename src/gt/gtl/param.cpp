@@ -6,10 +6,13 @@ namespace GTL {
 class ParamTypeProperty;
 class ParamValueProperty;
 
+// class Param
+// public:
 Param::Param() {
     registerProperty("value", ParamValueProperty(this));
     registerProperty("type", ParamTypeProperty());
 }
+// }
 
 class ParamTypeProperty : public ObjectProperty {
 public: 
@@ -22,7 +25,7 @@ public:
     
 private:
     Param& param;
-}
+} /* END class ParamTypeProperty */
 
 class ParamValueProperty : public ObjectProperty {
 public: 
@@ -37,7 +40,7 @@ public:
     
 private:
     Param& param;
-}
+} /* END class ParamTypeProperty */
 
 } /* END namespace GTL */
 } /* END namespace GT */

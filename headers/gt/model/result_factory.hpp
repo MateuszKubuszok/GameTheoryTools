@@ -41,7 +41,7 @@ public:
      * @return        Result with constant content
      */
     Result constResult(
-        const std::string &content
+        const std::string& content
     );
 
     /**
@@ -65,7 +65,7 @@ public:
      * @return             ResultsFactory for chaining
      */
     ResultFactory& setBuilderMode(
-        ResultBuilderMode builderMode
+        const ResultBuilderMode builderMode
     );
 
     /**
@@ -82,7 +82,7 @@ public:
      * @return                 ResultsFactory for chaining
      */
     ResultFactory& setIndentationMode(
-        ResultIndentationMode indentationMode
+        const ResultIndentationMode indentationMode
     );
 
 private:
@@ -102,7 +102,7 @@ private:
     ResultIndentationMode indentationMode;
 
     /**
-     * @biref Private constructor.
+     * @brief Private constructor.
      */
     ResultFactory();
 

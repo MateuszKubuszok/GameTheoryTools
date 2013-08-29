@@ -14,126 +14,136 @@ public:
     virtual ~Driver();
 
     virtual void storeDefinedObject(
-        Definition& definition
+        const Definition& definition
     );
 
     virtual void executeQuery(
-        Query& query
+        const Query& query
     );
 
     virtual Definition createDefinition(
-        Object&     object,
-        Identifier& identifier
+        const Object&     object,
+        const Identifier& identifier
     );
 
     virtual Query createQuery(
-        Identifiers& identifiers,
-        Objects&     objects,
-        Conditions&  conditions
+        const Identifiers& identifiers,
+        const Objects&     objects,
+        const Conditions&  conditions
     );
 
     virtual Objects createObjectsCollection(
-        Object& object
+        const Object& object
     );
 
     virtual Objects addObjectToCollection(
-        Object&  object,
-        Objects& objects
+        const Object&  object,
+        const Objects& objects
     );
 
     virtual Object getValueForIdentifier(
-        Identifier& identifier
+        const Identifier& identifier
     );
 
     virtual Game createPureGameForDetails(
-        Details& details
+        const Details& details
     );
 
     virtual Game createMixedGameForDetails(
-        Details& details
+        const Details& details
     );
 
     virtual Game createTreeGameForDetails(
-        Details& details
+        const Details& details
     );
 
     virtual Details createDetailsForGame(
-        Objects& objects,
-        Data&    data
+        const Objects& objects,
+        const Data&    data
     );
 
     virtual Player createPlayerWithStrategies(
-        Identifier& identifier,
-        Objects&    objects
+        const Identifier& identifier,
+        const Objects&    objects
     );
 
     virtual Param getValueForIdentifier(
-        Identifier& identifier
+        const Identifier& identifier
     );
 
     virtual Param& getValueForNumber(
-        Number& number
+        const Number& number
     );
 
     virtual Params createParamsCollection(
-        Param& param
+        const Param& param
     );
 
     virtual Params addParamToCollection(
-        Param&  param,
-        Params& params
+        const Param&  param,
+        const Params& params
     );
 
     virtual Identifiers createIdentifiersCollection(
-        Identifier& identifier
+        const Identifier& identifier
     );
 
     virtual Identifiers addIdentifierToCollection(
-        Identifier&  identifier,
-        Identifiers& identifiers
+        const Identifier&  identifier,
+        const Identifiers& identifiers
     );
 
     virtual Condition createPlayerChoiceCondition(
-        Object& player,
-        Object& strategy
+        const Object& player,
+        const Object& strategy
     );
 
     virtual Conditions createConditionsCollection(
-        Condition& condition
+        const Condition& condition
     );
 
     virtual Conditions emptyConditionsCollection();
 
     virtual Conditions addConditionToCollection(
-        Condition&  condition,
-        Conditions& conditions
+        const Condition&  condition,
+        const Conditions& conditions
     );
 
     virtual Data createData(
-        DataPieces& dataPieces
+        const Coordinates& coordinates
     );
 
-    virtual DataPieces createDataPieceCollection(
-        DataPiece& dataPiece
+    virtual Coordinates addCoordinatesToCollection(
+        const Coordinates& coordinates,
+        const Coordinate&  coordinate
     );
 
-    virtual DataPieces addDataPieceToCollection(
-        DataPiece&  dataPiece,
-        DataPieces& dataPieces
+    virtual Coordinates createCoordinatesCollection(
+        const Coordinate& coordinate
     );
 
-    virtual DataPiece createOneDimensionDataPieces(
-        Identifiers& identifiers,
-        Params&      params
+    virtual Coordinate fillCoordinateWithData(
+        const Coordinate&  coordinate,
+        const Coordinates& data
     );
 
-    virtual DataPiece createMultiDimensionalDataPiece(
-        Identifiers& identifiers,
-        DataPieces&  dataPieces
+    virtual Coordinate fillCoordinateWithData(
+        const Coordinate&  coordinate,
+        const Params& data
+    );
+
+    virtual Coordinate mergeCoordinates(
+        const Coordinate& coordinate1
+        const Coordinate& coordinate2
+    );
+
+    virtual Coordinate createCoordinate(
+        const Identifier& player,
+        const Identifier& strategy
     );
 
 private:
-    Context context;
+    const Context context;
 } /* END class Driver */
 
 } /* END namespace GTL */

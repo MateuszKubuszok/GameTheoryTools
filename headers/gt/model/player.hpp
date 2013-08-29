@@ -13,15 +13,15 @@ namespace Model {
  */
 class Player {
 public:
-	/**
-	 * @brief Constructor of the Player.
-	 *
-	 * @param playerName     name of the player
-	 * @param playerStrategy declared strategies
-	 */
+    /**
+     * @brief Constructor of the Player.
+     *
+     * @param playerName     name of the player
+     * @param playerStrategy declared strategies
+     */
     Player(
-        Identifier&  playerName,
-        Identifiers& playerStrategies
+        const Identifier&  playerName,
+        const Identifiers& playerStrategies
     ) :
         name(playerName),
         strategies(playerStrategies),
@@ -29,43 +29,52 @@ public:
 
     ~Player();
 
-	/**
-	 * @brief Returns name ot the Player.
-	 *
-	 * @return Player's name
-	 */
-	Identifier getName();
+    /**
+     * @brief Returns name ot the Player.
+     *
+     * @return Player's name
+     */
+    Identifier getName();
 
-	/**
-	 * @brief Returns Player's strategies.
-	 *
-	 * @return Player's strategies
-	 */
-	Identifiers getStrategies();
+    /**
+     * @brief Returns Player's strategies.
+     *
+     * @return Player's strategies
+     */
+    Identifiers getStrategies();
 
-	/**
-	 * @brief 
-	 *
-	 * @return 
-	 */	
-	int getStrategiesNumber();
+    /**
+     * @brief Returns number of strategies.
+     *
+     * @return number of strategies
+     */    
+    int getStrategiesNumber();
 
-	 /**
-	 * @brief 
-	 *
-	 * @return 
-	 */
-	int getStrategyOrdinal(
-		Identifier& strategy
-	);
+     /**
+     * @brief Returns ordinal of a strategy with giben identifier.
+     *
+     * @return ordinal of strategy with given identifier
+     */
+    int getStrategyOrdinal(
+        const Identifier& strategy
+    );
 
 private:
+    /**
+     * @breif Player's name.
+     */
     const Identifier name;
 
+    /**
+     * @breif Player's strategies.
+     */
     const Identifiers strategies;
 
+    /**
+     * @breif Mapps strategies to its ordnial.
+     */
     const boost::container::map<std::string, int> strategyMapping;
-}
+} /* END class Player */
 
 } /* END namespace Model */
 } /* END namespace GT */

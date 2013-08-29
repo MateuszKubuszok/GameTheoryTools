@@ -30,9 +30,9 @@
      * @return        next found token number
      */
     static int yylex(
-        Parser::semantic_type *yylval,
-        Scanner               &scanner,
-        Driver                &driver
+        Parser::semantic_type* yylval,
+        Scanner&               scanner,
+        Driver&                driver
     );
 }
 
@@ -45,11 +45,11 @@
     }
 }
 
-%lex-param   { Scanner &scanner }
-%parse-param { Scanner &scanner }
+%lex-param   { Scanner& scanner }
+%parse-param { Scanner& scanner }
 
-%lex-param   { Driver &driver }
-%parse-param { Driver &driver }
+%lex-param   { Driver& driver }
+%parse-param { Driver& driver }
 
 /* Union containing values as either double or string */
 %union {
@@ -208,7 +208,7 @@ data
  ;
 
 data_coordinates
- : data_coordinates COMA data_coordinate { $$ = driver.addCoordinatesToCollection($3, $1); }
+ : data_coordinates COMA data_coordinate { $$ = driver.addCoordinatesToCollection($1, $3); }
  | data_coordinate                       { $$ = driver.createCoordinatesCollection($1); }
  ;
 
@@ -235,8 +235,8 @@ coordinate
  * @param message  error message
  */
 void Parser::error(
-    const Parser::location_type &location,
-    const std::string &message
+    const Parser::location_type& location,
+    const std::string&           message
 ) {
     driver.errorInformation(loc, message);
 }
@@ -249,9 +249,9 @@ void Parser::error(
  * @param driver  driver instance
  */
 static int yylex(
-    Parser::semantic_type *yylval,
-    Scanner &scanner,
-    Driver  &driver
+    Parser::semantic_type* yylval,
+    Scanner&               scanner,
+    Driver&                driver
 ) {
     return scanner.yylex(yylval);
 }

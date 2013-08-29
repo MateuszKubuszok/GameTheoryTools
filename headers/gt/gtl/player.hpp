@@ -13,18 +13,18 @@ namespace GTL {
  */
 class Player : public virtual Object, public virtual GT::Model::Player {
 public:
-	/**
-	 * @brief Constructor of the Player.
-	 *
-	 * @param playerName     name of the player
-	 * @param playerStrategy declared strategies
-	 */
-	Player(
-		Identifier&  playerName,
-		Identifiers& playerStrategies
-	) :
-		Object(),
-		GT::Model::Player(playerName, playerStrategies);
+    /**
+     * @brief Constructor of the Player.
+     *
+     * @param playerName     name of the player
+     * @param playerStrategy declared strategies
+     */
+    Player(
+        const Identifier&  playerName,
+        const Identifiers& playerStrategies
+    ) :
+        Object(),
+        GT::Model::Player(playerName, playerStrategies);
 }
 
 } /* END namespace GTL */

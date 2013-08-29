@@ -27,7 +27,7 @@ public:
      * @return           Param instance
      */
     Param createParam(
-        Identifier& identifier
+        const Identifier& identifier
     );
 
     /**
@@ -37,7 +37,7 @@ public:
      * @return       Param instance
      */
     Param createParam(
-        Number& number
+        const Number& number
     );
 private:
     /**
@@ -61,7 +61,7 @@ private:
      * @brief Private destructor.
      */
     ~ParamFactory();
-}
+} /* END class ParamFactory */
 
 } /* END namespace GTL */
 } /* END namespace GT */

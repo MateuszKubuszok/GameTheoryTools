@@ -36,7 +36,9 @@ public:
      * @param lval initiates next scanning with value
      * @return     returns number of next token
      */    
-    int yylex(Parser::semantic_type* lval) {
+    int yylex(
+        const Parser::semantic_type* lval
+    ) {
         yylval = lval;
         return yylex();
     }

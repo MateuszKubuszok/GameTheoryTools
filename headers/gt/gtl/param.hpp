@@ -13,24 +13,24 @@ namespace GTL {
  */   
 class Param : public virtual Object {
 public:
-	/**
-	 * @brief Returns value for context.
-	 *
-	 * @param context context with values
-	 */
-	virtual Object getObject(
-		Context& context
-	) = 0;
+    /**
+     * @brief Returns value for context.
+     *
+     * @param context context with values
+     */
+    virtual Object getObject(
+        const Context& context
+    ) = 0;
 
-	/**
-	 * @brief Returns value for context.
-	 *
-	 * @param context context with values
-	 */
-	virtual Number getValue(
-		Context& context
-	) = 0;
-}
+    /**
+     * @brief Returns value for context.
+     *
+     * @param context context with values
+     */
+    virtual Number getValue(
+        const Context& context
+    ) = 0;
+} /* END class Param */
 
 } /* END namespace GTL */
 } /* END namespace GT */

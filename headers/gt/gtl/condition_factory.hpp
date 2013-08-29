@@ -28,8 +28,8 @@ public:
      * @result         Condition for a player
      */
     Condition createPlayerChoiceCondition(
-        Object& player,
-        Object& strategy
+        const Object& player,
+        const Object& strategy
     );
 
 private:
@@ -56,7 +56,7 @@ private:
      * @brief Default destructor hidden from programmers.
      */
     ~ConditionFactory();
-}
+} /* END class ConditionFactory */
 
 } /* END namepsace GTL */
 } /* END namspace GT */

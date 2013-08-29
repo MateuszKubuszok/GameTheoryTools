@@ -50,7 +50,7 @@ public:
      * @return          true if Object responds to such property 
      */
     bool respondsTo(
-        Identifier &propertyName
+        const Identifier& propertyName
     );
 
     /**
@@ -62,8 +62,8 @@ public:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result findProperty(
-        Context&    context,
-        Identifier& propertyName
+        const Context&    context,
+        const Identifier& propertyName
     );
 
     /**
@@ -75,9 +75,9 @@ public:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     Result findPropertyWithConditions(
-        Context&    context,
-        Identifier& propertyName,
-        Conditions& conditions
+        const Context&    context,
+        const Identifier& propertyName,
+        const Conditions& conditions
     );
 
 protected:
@@ -93,7 +93,7 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        Identifier& propertyName
+        const Identifier& propertyName
     );
 
     /**
@@ -104,7 +104,7 @@ protected:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     ObjectProperty getProperty(
-        Identifier& propertyName
+        const Identifier& propertyName
     );
 
     /**
@@ -114,15 +114,15 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        Identifier&     propertyName,
-        ObjectProperty& property
+        const Identifier&     propertyName,
+        const ObjectProperty& property
     );
 
 private:
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
-    boost::container::map<Identifier, ObjectProperty> registeredProperties;
+    const boost::container::map<Identifier, ObjectProperty> registeredProperties;
 } /* END class Object */
 
 /**
@@ -143,8 +143,8 @@ public:
      * @result            search result
      */
     virtual Result findForConditions(
-        Context&    context,
-        Conditions& conditions
+        const Context&    context,
+        const Conditions& conditions
     ) = 0;
 
 protected:
@@ -166,7 +166,9 @@ class ObjectKnownProperties : ObjectProperty {
 private:
     const Object object;
 
-    ObjectKnownProperties(Object& listedObject) :
+    ObjectKnownProperties(
+        const Object& listedObject
+    ) :
         object(listedObject);
 } /* END class ObjectKnownProperties */
 
