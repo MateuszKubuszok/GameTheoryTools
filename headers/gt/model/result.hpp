@@ -26,7 +26,7 @@ public:
      *
      * @return string with result
      */ 
-    virtual std::string& getResult() = 0;
+    virtual std::string getResult() = 0;
 } /* END class Result */
 
 } /* END namespace Model */

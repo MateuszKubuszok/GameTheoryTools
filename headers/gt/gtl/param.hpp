@@ -11,8 +11,17 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */   
-class Param : Object {
+class Param : public virtual Object {
 public:
+	/**
+	 * @brief Returns value for context.
+	 *
+	 * @param context context with values
+	 */
+	virtual Object getObject(
+		Context& context
+	) = 0;
+
 	/**
 	 * @brief Returns value for context.
 	 *

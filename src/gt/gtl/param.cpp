@@ -3,13 +3,28 @@
 namespace GT {
 namespace GTL {
 
+class ParamTypeProperty;
 class ParamValueProperty;
 
 Param::Param() {
     registerProperty("value", ParamValueProperty(this));
+    registerProperty("type", ParamTypeProperty());
 }
 
-class ParamValueProperty : ObjectProperty {
+class ParamTypeProperty : public ObjectProperty {
+public: 
+    Result findPropertyWithConditions(
+        Context&    context,
+        Conditions& conditions
+    ) {
+        return ResultFactory::getInstance()->constResult("Param");
+    }
+    
+private:
+    Param& param;
+}
+
+class ParamValueProperty : public ObjectProperty {
 public: 
     Result findPropertyWithConditions(
         Context&    context,
@@ -17,7 +32,6 @@ public:
     ) {
         // TODO: create ResultBuilder that fills it up
         // make use oh param.getValue(context)
-        )
         return ResultFactory::getInstance()->constResult("TODO");
     }
     

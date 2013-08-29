@@ -5,6 +5,7 @@
 
 namespace GT {
 namespace GTL {
+
 class Driver {
 public:
     Driver() :

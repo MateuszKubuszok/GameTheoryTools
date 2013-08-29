@@ -83,7 +83,7 @@ Result ObjectKnownProperties::findPropertyWithConditions(
 }
 // }
 
-class ObjectType : ObjectProperty {
+class ObjectType : public ObjectProperty {
 public:
     Result findForConditions(
         Context&    context,

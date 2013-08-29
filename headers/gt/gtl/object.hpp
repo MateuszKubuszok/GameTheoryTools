@@ -1,8 +1,6 @@
 #ifndef __GT_GTL_OBJECT_HPP__
 #define __GT_GTL_OBJECT_HPP__ 1
 
-#include <boost/container/map.hpp>
-
 #include "gt/gtl/common.hpp"
 
 namespace GT {

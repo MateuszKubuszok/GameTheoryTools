@@ -6,29 +6,25 @@
 namespace GT {
 namespace GTL {
 
-class Player : Object {
+/**
+ * @brief Defines Player.
+ *
+ * @author Mateusz Kubuszok
+ */
+class Player : public virtual Object, public virtual GT::Model::Player {
 public:
+	/**
+	 * @brief Constructor of the Player.
+	 *
+	 * @param playerName     name of the player
+	 * @param playerStrategy declared strategies
+	 */
 	Player(
-		Identifier& playerName,
+		Identifier&  playerName,
 		Identifiers& playerStrategies
 	) :
-		name(playerName),
-		strategies(playerStrategies);
-
-	Identifier& getName();
-
-	Identifiers& getStrategies();
-
-	int getStrategiesNumber();
-
-	int getStrategyOrdinal(
-		Identifier& strategy
-	);
-
-private:
-	Identifier name;
-
-	Identifiers strategies;
+		Object(),
+		GT::Model::Player(playerName, playerStrategies);
 }
 
 } /* END namespace GTL */

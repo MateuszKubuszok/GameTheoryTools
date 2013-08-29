@@ -60,8 +60,6 @@
     Conditions    conditions;
     Coordinate    coordinate;
     Data          data;
-    DataPieceMap  dataPiece;
-    DataPieces    dataPieces;
     Definition    definition;
     Details       details;
     Game          game;
@@ -105,7 +103,7 @@
 %type <coordinate>   coordinate
 %type <coordinate>   coordinates
 %type <data>         data
-%type <dataPiece>    data_piece
+%type <coordinate>   data_coordinate
 %type <definition>   definition
 %type <details>      details
 %type <game>         game
@@ -116,7 +114,7 @@
 
 %type <conditions>   condition_collection
 %type <conditions>   conditions
-%type <dataPieces>   data_pieces
+%type <coordinate>   data_coordinates
 %type <identifiers>  identifiers
 %type <objects>      objects
 %type <params>       params
@@ -206,22 +204,22 @@ condition
 /* Data */
 
 data
- : data_pieces { $$ = driver.createData($1); }
+ : data_coordinates { $$ = driver.createData($1); }
  ;
 
-data_pieces
- : data_pieces COMA data_piece { $$ = driver.addDataPieceToCollection($3, $1); }
- | data_piece                  { $$ = driver.createDataPieceCollection($1); }
+data_coordinates
+ : data_coordinates COMA data_coordinate { $$ = driver.addCoordinatesToCollection($3, $1); }
+ | data_coordinate                       { $$ = driver.createCoordinatesCollection($1); }
  ;
 
-data_piece
- : LCBR coordinates COLON data_pieces RCBR { $$ = driver.extendCoordintesWithData($2, $4); }
- | LCBR coordinates COLON params RCBR { $$ = driver.fillCoordinatesWithData($2, $4); }
+data_coordinate
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.fillCoordinatesWithData($2, $4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.fillCoordinatesWithData($2, $4); }
  ;
 
 coordinates
  : coordinates COMA coordinate { $$ = driver.mergeCoordinates($1, $3); }
- | coordinate { $$ = $1; }
+ | coordinate                  { $$ = $1; }
  ;
 
 coordinate

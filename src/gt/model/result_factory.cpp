@@ -66,14 +66,14 @@ ResultFactory::ResultFactory() {
 }
 // }
 
-class EmptyResult : Result {
+class EmptyResult : public Result {
 public:
     std::string getResult() {
         return "";
     }
 } /* END class EmptyString */
 
-class ConstResult : Result {
+class ConstResult : public Result {
 public:
     ConstResult(const std::string &content) :
         result(content)
