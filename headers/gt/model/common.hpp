@@ -6,7 +6,7 @@
 #include <string>
 
 /* Includes boost libraries */
-#include <boost/container/slist.hpp>
+#include <boost/container/vector.hpp>
 
 /* GNU MultiPrecision library */
 #include <gmpxx.h>
@@ -16,8 +16,8 @@
 #include "gt/model/result_factory.hpp"
 
 /* Shortens comonly used names */
-typedef std::string                          Identifier;
-typedef boost::containers::slist<Identifier> Identifiers;
-typedef mpz_class                            Number;
+typedef std::string                           Identifier;
+typedef boost::containers::vector<Identifier> Identifiers;
+typedef mpz_class                             Number;
 
 #endif /* END #ifndef __GT_MODEL_COMMON_HPP__ */

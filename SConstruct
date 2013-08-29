@@ -13,7 +13,7 @@ if not conf.CheckCXX():
 for header in [
     'iostream', 'fstream', 'cstdlib',
     'boost/container/map.hpp',
-    'boost/container/slist.hpp',
+    'boost/container/vector.hpp',
     'boost/thread/mutex.hpp',
     'FlexLexer.h',
     'gmpxx.h',

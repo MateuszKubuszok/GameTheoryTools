@@ -58,6 +58,7 @@
     Number        number;
     Condition     condition;
     Conditions    conditions;
+    Coordinate    coordinate;
     Data          data;
     DataPieceMap  dataPiece;
     DataPieces    dataPieces;
@@ -68,8 +69,7 @@
     Object        object;
     Objects       objects;
     Param         param;
-    PathPair      pathPair;
-    PathPairs     pathPairs;
+    Params        params;
     Player        player;
 }
 
@@ -102,6 +102,8 @@
  /* Declared types */
  
 %type <condition>    condition
+%type <coordinate>   coordinate
+%type <coordinate>   coordinates
 %type <data>         data
 %type <dataPiece>    data_piece
 %type <definition>   definition
@@ -110,7 +112,6 @@
 %type <query>        query
 %type <object>       object
 %type <param>        param
-%type <pathPair>     path_pair
 %type <player>       player
 
 %type <conditions>   condition_collection
@@ -118,7 +119,7 @@
 %type <dataPieces>   data_pieces
 %type <identifiers>  identifiers
 %type <objects>      objects
-%type <pathPairs>    path_pairs
+%type <params>       params
 
 %%
 
@@ -174,6 +175,11 @@ param
  | number     { $$ = driver.getValueForNumber($1); }
  ;
 
+params
+ : params COMA param { $$ = driver.addParamToCollection($3, $1); }
+ | param { $$ = driver.createParams($1); }
+ ;
+
 /* Identifiers */
 
 identifiers
@@ -209,17 +215,17 @@ data_pieces
  ;
 
 data_piece
- : LCBR path_pairs COLON data_pieces RCBR { $$ = driver.createMultiDimensionalDataPieces($2, $4); }
- | LCBR path_pairs COLON param RCBR { $$ = driver.createOneDimensionDataPieces($2, $4); }
+ : LCBR coordinates COLON data_pieces RCBR { $$ = driver.extendCoordintesWithData($2, $4); }
+ | LCBR coordinates COLON params RCBR { $$ = driver.fillCoordinatesWithData($2, $4); }
  ;
 
-path_pairs
- : path_pairs COMA path_pair {}
- | path_pair {}
+coordinates
+ : coordinates COMA coordinate { $$ = driver.mergeCoordinates($1, $3); }
+ | coordinate { $$ = $1; }
  ;
 
-path_pair
- : identifier EQUAL identifier {}
+coordinate
+ : identifier EQUAL identifier { $$ = driver.createCoordinate($1, $3); }
  ;
 
 %%

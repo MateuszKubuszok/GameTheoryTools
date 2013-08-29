@@ -101,6 +101,7 @@ namespace GT { namespace GTL {
     Number        number;
     Condition     condition;
     Conditions    conditions;
+    Coordinate    coordinate;
     Data          data;
     DataPieceMap  dataPiece;
     DataPieces    dataPieces;
@@ -111,8 +112,7 @@ namespace GT { namespace GTL {
     Object        object;
     Objects       objects;
     Param         param;
-    PathPair      pathPair;
-    PathPairs     pathPairs;
+    Params        params;
     Player        player;
 
 
