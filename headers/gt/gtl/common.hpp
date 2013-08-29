@@ -40,11 +40,11 @@ namespace GT {
 
 /* Shortens commonly used names */
 typedef boost::containers::map<Identifier, Identifier> Positions;
-typedef boost::containers::vector<GT::GTL::Condition>  Conditions;
-typedef boost::containers::vector<GT::GTL::Coordinate> Coordinates;
-typedef boost::containers::vector<GT::GTL::Objects>    Objects;
-typedef boost::containers::vector<GT::GTL::Param>      Params;
-typedef GT::Model::Result                              Result;
+typedef boost::containers::vector<GTL::Condition>      Conditions;
+typedef boost::containers::vector<GTL::Coordinate>     Coordinates;
+typedef boost::containers::vector<GTL::Objects>        Objects;
+typedef boost::containers::vector<GTL::Param>          Params;
+typedef Model::Result                                  Result;
 
 } /* END namespace GT */
 

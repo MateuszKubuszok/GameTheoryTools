@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Player : public virtual Object, public virtual GT::Model::Player {
+class Player : public virtual Object, public virtual Model::Player {
 public:
     /**
      * @brief Constructor of the Player.
@@ -24,7 +24,7 @@ public:
         const Identifiers& playerStrategies
     ) :
         Object(),
-        GT::Model::Player(playerName, playerStrategies);
+        Model::Player(playerName, playerStrategies);
 }
 
 } /* END namespace GTL */
