@@ -1,5 +1,5 @@
 #ifndef __GT_GTL_CONDITION_HPP__
-#define __GT_GTL_CONDITION_HPP__ 1
+#define __GT_GTL_CONDITION_HPP__
 
 #include "gt/gtl/common.hpp"
 
@@ -7,7 +7,7 @@ namespace GT {
 namespace GTL {
 
 /**
- * @brief Condition used for 
+ * @brief Condition used for querying objects with some requirements.
  *
  * @author Mateusz Kubuszok
  */

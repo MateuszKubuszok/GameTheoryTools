@@ -1,5 +1,5 @@
 #ifndef __GT_GTL_PLAYER_HPP__
-#define __GT_GTL_PLAYER_HPP__ 1
+#define __GT_GTL_PLAYER_HPP__
 
 #include "gt/gtl/common.hpp"
 

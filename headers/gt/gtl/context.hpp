@@ -1,5 +1,5 @@
 #ifndef __GT_GTL_CONTEXT_HPP__
-#define __GT_GTL_CONTEXT_HPP__ 1
+#define __GT_GTL_CONTEXT_HPP__
 
 #include "gt/gtl/common.hpp"
 
@@ -44,6 +44,16 @@ public:
     Context& registerObject(
         const Identifier& identifier,
         const Object&     object
+    );
+
+    /**
+     * @brief Adds/overrides identifier with value.
+     *
+     * @param definition definition of an Object with name
+     * @return           reference to context for chaining
+     */
+    Context& registerObject(
+        const Definition& definition
     );
 
     /**

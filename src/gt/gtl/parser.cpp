@@ -57,9 +57,9 @@
      * @return        next found token number
      */
     static int yylex(
-        Parser::semantic_type *yylval,
-        Scanner               &scanner,
-        Driver                &driver
+        Parser::semantic_type* yylval,
+        Scanner&               scanner,
+        Driver&                driver
     );
 
 
@@ -172,7 +172,7 @@ namespace GT { namespace GTL {
 #line 173 "src/gt/gtl/parser.cpp"
 
   /// Build a parser object.
-  Parser::Parser (Scanner &scanner_yyarg, Driver &driver_yyarg)
+  Parser::Parser (Scanner& scanner_yyarg, Driver& driver_yyarg)
     :
 #if YYDEBUG
       yydebug_ (false),
@@ -616,7 +616,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 211 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.addCoordinatesToCollection((yysemantic_stack_[(3) - (3)].coordinate), (yysemantic_stack_[(3) - (1)].coordinate)); }
+    { (yyval.coordinate) = driver.addCoordinatesToCollection((yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); }
     break;
 
   case 29:
@@ -1132,8 +1132,8 @@ namespace GT { namespace GTL {
  * @param message  error message
  */
 void Parser::error(
-    const Parser::location_type &location,
-    const std::string &message
+    const Parser::location_type& location,
+    const std::string&           message
 ) {
     driver.errorInformation(loc, message);
 }
@@ -1146,9 +1146,9 @@ void Parser::error(
  * @param driver  driver instance
  */
 static int yylex(
-    Parser::semantic_type *yylval,
-    Scanner &scanner,
-    Driver  &driver
+    Parser::semantic_type* yylval,
+    Scanner&               scanner,
+    Driver&                driver
 ) {
     return scanner.yylex(yylval);
 }

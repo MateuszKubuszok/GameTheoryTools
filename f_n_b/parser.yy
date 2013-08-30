@@ -53,46 +53,46 @@
 
 /* Union containing values as either double or string */
 %union {
-    Identifier    identifier;
-    Identifiers   identifiers;
-    Number        number;
-    Condition     condition;
-    Conditions    conditions;
-    Coordinate    coordinate;
-    Data          data;
-    Definition    definition;
-    Details       details;
-    Game          game;
-    Query         query;
-    Object        object;
-    Objects       objects;
-    Param         param;
-    Params        params;
-    Player        player;
+    Identifier  identifier;
+    Identifiers identifiers;
+    Number      number;
+    Condition   condition;
+    Conditions  conditions;
+    Coordinate  coordinate;
+    Data        data;
+    Definition  definition;
+    Details     details;
+    Game        game;
+    Query       query;
+    Object      object;
+    Objects     objects;
+    Param       param;
+    Params      params;
+    Player      player;
 }
 
 /* Declared tokens */
 
-%token LET               /* LET keyword */
-%token BE                /* BE keyword */
-%token PLAYER            /* PLAYER keyword */
-%token GAME              /* GAME keyword */
-%token PURE              /* PURE keyword */
-%token MIXED             /* MIXED keyword */
-%token TREE              /* TREE keyword */
-%token WITH              /* WITH keyword */
-%token SUCH              /* SUCH keyword */
-%token AS                /* AS keyword */
-%token FIND              /* FIND keyword */
-%token FOR               /* FOR keyword */
-%token CHOOSE            /* CHOOSE keyword */
-%token LCBR              /* { charakter */
-%token RCBR              /* } charakter */
-%token EQUAL             /* = charakter */
-%token COLON             /* : charakter */
-%token COMA              /* , charakter */
-%token EOC               /* ; charakter */
-%token error             /* Error marker */
+%token LET    /* LET keyword */
+%token BE     /* BE keyword */
+%token PLAYER /* PLAYER keyword */
+%token GAME   /* GAME keyword */
+%token PURE   /* PURE keyword */
+%token MIXED  /* MIXED keyword */
+%token TREE   /* TREE keyword */
+%token WITH   /* WITH keyword */
+%token SUCH   /* SUCH keyword */
+%token AS     /* AS keyword */
+%token FIND   /* FIND keyword */
+%token FOR    /* FOR keyword */
+%token CHOOSE /* CHOOSE keyword */
+%token LCBR   /* { charakter */
+%token RCBR   /* } charakter */
+%token EQUAL  /* = charakter */
+%token COLON  /* : charakter */
+%token COMA   /* , charakter */
+%token EOC    /* ; charakter */
+%token error  /* Error marker */
 
 %token <identifier> identifier /* Identifier */
 %token <number>     number     /* Double number */

@@ -1,5 +1,5 @@
 #ifndef __GT_MODEL_PLAYER_HPP__
-#define __GT_MODEL_PLAYER_HPP__ 1
+#define __GT_MODEL_PLAYER_HPP__
 
 #include "gt/model/common.hpp"
 

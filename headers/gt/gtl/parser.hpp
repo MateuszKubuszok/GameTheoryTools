@@ -96,22 +96,22 @@ namespace GT { namespace GTL {
 /* Line 35 of lalr1.cc  */
 #line 55 "f_n_b/parser.yy"
 
-    Identifier    identifier;
-    Identifiers   identifiers;
-    Number        number;
-    Condition     condition;
-    Conditions    conditions;
-    Coordinate    coordinate;
-    Data          data;
-    Definition    definition;
-    Details       details;
-    Game          game;
-    Query         query;
-    Object        object;
-    Objects       objects;
-    Param         param;
-    Params        params;
-    Player        player;
+    Identifier  identifier;
+    Identifiers identifiers;
+    Number      number;
+    Condition   condition;
+    Conditions  conditions;
+    Coordinate  coordinate;
+    Data        data;
+    Definition  definition;
+    Details     details;
+    Game        game;
+    Query       query;
+    Object      object;
+    Objects     objects;
+    Param       param;
+    Params      params;
+    Player      player;
 
 
 
@@ -156,7 +156,7 @@ namespace GT { namespace GTL {
     typedef token::yytokentype token_type;
 
     /// Build a parser object.
-    Parser (Scanner &scanner_yyarg, Driver &driver_yyarg);
+    Parser (Scanner& scanner_yyarg, Driver& driver_yyarg);
     virtual ~Parser ();
 
     /// Parse.
@@ -319,8 +319,8 @@ namespace GT { namespace GTL {
     static const token_number_type yyundef_token_;
 
     /* User arguments.  */
-    Scanner &scanner;
-    Driver &driver;
+    Scanner& scanner;
+    Driver& driver;
   };
 
 /* Line 35 of lalr1.cc  */

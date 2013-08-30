@@ -1,5 +1,5 @@
 #ifndef __GT_GTL_SCANNER_HPP__
-#define __GT_GTL_SCANNER_HPP__ 1
+#define __GT_GTL_SCANNER_HPP__
 
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>

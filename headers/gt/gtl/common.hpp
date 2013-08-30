@@ -1,5 +1,5 @@
 #ifndef __GT_GTL_COMMON_HPP__
-#define __GT_GTL_COMMON_HPP__ 1
+#define __GT_GTL_COMMON_HPP__
 
 /* Includes GT model headers  */
 #include "gt/model/common.hpp"
@@ -24,7 +24,7 @@ class Player;
 #include "gt/gtl/condition_factory.hpp"
 #include "gt/gtl/coordinate.hpp"
 #include "gt/gtl/data.hpp" // TODO
-#include "gt/gtl/definition.hpp" // TODO
+#include "gt/gtl/definition.hpp"
 #include "gt/gtl/details.hpp" // TODO
 #include "gt/gtl/game.hpp" // TODO
 #include "gt/gtl/query.hpp" // TODO
@@ -37,15 +37,17 @@ class Player;
 #include "gt/gtl/parser.hpp"
 
 namespace GT {
+namespace GTL {
 
 /* Shortens commonly used names */
 typedef boost::containers::map<Identifier, Identifier> Positions;
-typedef boost::containers::vector<GTL::Condition>      Conditions;
-typedef boost::containers::vector<GTL::Coordinate>     Coordinates;
-typedef boost::containers::vector<GTL::Objects>        Objects;
-typedef boost::containers::vector<GTL::Param>          Params;
+typedef boost::containers::vector<Condition>           Conditions;
+typedef boost::containers::vector<Coordinate>          Coordinates;
+typedef boost::containers::vector<Objects>             Objects;
+typedef boost::containers::vector<Param>               Params;
 typedef Model::Result                                  Result;
 
+} /* END namespace GTL */
 } /* END namespace GT */
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */

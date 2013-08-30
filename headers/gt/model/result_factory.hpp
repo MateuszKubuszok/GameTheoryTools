@@ -1,5 +1,5 @@
 #ifndef __GT_MODEL_RESULT_FACTORY_HPP__
-#define __GT_MODEL_RESULT_FACTORY_HPP__ 1
+#define __GT_MODEL_RESULT_FACTORY_HPP__
 
 #include "gt/model/common.hpp"
 

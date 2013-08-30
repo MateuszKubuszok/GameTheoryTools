@@ -1,5 +1,5 @@
 #ifndef __GT_MODEL_COMMON_HPP__
-#define __GT_MODEL_COMMON_HPP__ 1
+#define __GT_MODEL_COMMON_HPP__
 
 /* Include standard libraries */
 #include <stdexcept>
