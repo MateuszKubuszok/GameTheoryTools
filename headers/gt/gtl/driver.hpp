@@ -8,11 +8,6 @@ namespace GTL {
 
 class Driver {
 public:
-    Driver() :
-        context();
-
-    virtual ~Driver();
-
     virtual void storeDefinedObject(
         const Definition& definition
     );
@@ -58,8 +53,8 @@ public:
     );
 
     virtual Details createDetailsForGame(
-        const Objects& objects,
-        const Data&    data
+        const Objects&     players,
+        const Coordinates& data
     );
 
     virtual Player createPlayerWithStrategies(
@@ -109,10 +104,6 @@ public:
         const Conditions& conditions
     );
 
-    virtual Data createData(
-        const Coordinates& coordinates
-    );
-
     virtual Coordinates addCoordinatesToCollection(
         const Coordinates& coordinates,
         const Coordinate&  coordinate
@@ -128,8 +119,8 @@ public:
     );
 
     virtual Coordinate fillCoordinateWithData(
-        const Coordinate&  coordinate,
-        const Params& data
+        const Coordinate& coordinate,
+        const Params&     data
     );
 
     virtual Coordinate mergeCoordinates(
@@ -141,9 +132,6 @@ public:
         const Identifier& player,
         const Identifier& strategy
     );
-
-private:
-    const Context context;
 } /* END class Driver */
 
 } /* END namespace GTL */

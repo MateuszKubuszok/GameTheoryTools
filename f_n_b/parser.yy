@@ -59,7 +59,6 @@
     Condition   condition;
     Conditions  conditions;
     Coordinate  coordinate;
-    Data        data;
     Definition  definition;
     Details     details;
     Game        game;
@@ -102,7 +101,7 @@
 %type <condition>    condition
 %type <coordinate>   coordinate
 %type <coordinate>   coordinates
-%type <data>         data
+%type <coordinates>  data
 %type <coordinate>   data_coordinate
 %type <definition>   definition
 %type <details>      details
@@ -114,7 +113,7 @@
 
 %type <conditions>   condition_collection
 %type <conditions>   conditions
-%type <coordinate>   data_coordinates
+%type <coordinates>  data_coordinates
 %type <identifiers>  identifiers
 %type <objects>      objects
 %type <params>       params
@@ -204,7 +203,7 @@ condition
 /* Data */
 
 data
- : data_coordinates { $$ = driver.createData($1); }
+ : data_coordinates { $$ = $1; }
  ;
 
 data_coordinates

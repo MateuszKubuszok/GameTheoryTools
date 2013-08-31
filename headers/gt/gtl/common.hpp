@@ -9,8 +9,6 @@ class Object;
 class Condition;
 class ConditionFactory;
 class Coordinate;
-class Data;
-class DataPiece;
 class Definition;
 class Details;
 class Game;
@@ -23,11 +21,10 @@ class Player;
 #include "gt/gtl/condition.hpp"
 #include "gt/gtl/condition_factory.hpp"
 #include "gt/gtl/coordinate.hpp"
-#include "gt/gtl/data.hpp" // TODO
 #include "gt/gtl/definition.hpp"
-#include "gt/gtl/details.hpp" // TODO
-#include "gt/gtl/game.hpp" // TODO
-#include "gt/gtl/query.hpp" // TODO
+#include "gt/gtl/details.hpp"
+#include "gt/gtl/game.hpp"
+#include "gt/gtl/query.hpp"
 #include "gt/gtl/param.hpp"
 #include "gt/gtl/player.hpp"
 

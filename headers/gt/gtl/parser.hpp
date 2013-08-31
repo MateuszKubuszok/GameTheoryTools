@@ -102,7 +102,6 @@ namespace GT { namespace GTL {
     Condition   condition;
     Conditions  conditions;
     Coordinate  coordinate;
-    Data        data;
     Definition  definition;
     Details     details;
     Game        game;
@@ -116,7 +115,7 @@ namespace GT { namespace GTL {
 
 
 /* Line 35 of lalr1.cc  */
-#line 120 "headers/gt/gtl/parser.hpp"
+#line 119 "headers/gt/gtl/parser.hpp"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -328,7 +327,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 332 "headers/gt/gtl/parser.hpp"
+#line 331 "headers/gt/gtl/parser.hpp"
 
 
 
