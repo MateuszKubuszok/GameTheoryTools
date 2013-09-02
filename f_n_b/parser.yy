@@ -94,10 +94,10 @@
 %token COLON  /* : charakter */
 %token COMA   /* , charakter */
 %token EOC    /* ; charakter */
-%token error  /* Error marker */
 
-%token <identifier> identifier /* Identifier */
-%token <number>     number     /* Double number */
+%token <identifier> parser_error /* Error */
+%token <identifier> identifier   /* Identifier */
+%token <number>     number       /* Double number */
 
  /* Declared types */
  
@@ -121,9 +121,24 @@
 %type <objects>      objects
 %type <params>       params
 
-/* Destructor rules - TODO when erro handling defined*/
+/* Destructor rules */
 
-// %destructor { if ($$)  { delete ($$); ($$) = nullptr; } } <object>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <identifier>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <identifiers>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <number>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <condition>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <conditions>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <coordinate>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <coordinates>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <definition>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <details>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <game>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <query>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <object>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <objects>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <param>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <params>
+%destructor { if ($$) { delete($$); ($$) = 0; } } <player>
 
 %%
 
@@ -132,6 +147,7 @@
 statement
  : definition EOC { driver.storeDefinedObject($1); }
  | query EOC      { driver.executeQuery($1); }
+ | parser_error
  ;
 
 definition

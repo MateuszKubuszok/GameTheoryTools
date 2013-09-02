@@ -147,8 +147,9 @@ namespace GT { namespace GTL {
      COLON = 274,
      COMA = 275,
      EOC = 276,
-     identifier = 277,
-     number = 278
+     parser_error = 277,
+     identifier = 278,
+     number = 279
    };
 
     };
@@ -328,7 +329,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 332 "headers/gt/gtl/parser.hpp"
+#line 333 "headers/gt/gtl/parser.hpp"
 
 
 

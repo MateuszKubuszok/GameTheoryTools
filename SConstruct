@@ -64,7 +64,7 @@ scannerCppBuilder                  = env.CXXFile(source=scannerLL, target=scanne
 # Builds parser and scanner objects
 
 parserO  = objects+gtl+'parser.o'
-#scannerO = objects+gtl+'scanner.o'
+scannerO = objects+gtl+'scanner.o'
 
 parserObject  = env.Object(source=parserCppBuilder,  target=parserO)
-#scannerObject = env.Object(source=scannerCppBuilder, target=scannerO)
+scannerObject = env.Object(source=scannerCppBuilder, target=scannerO)

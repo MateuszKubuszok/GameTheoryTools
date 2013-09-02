@@ -13,12 +13,16 @@
 /* GTL prototypes */
 #include "gt/gtl/common.hpp"
 
-typedef                    /* Shorten token's type name */
-    Parser::token
-    token;
+/* Shorten token's type name */
+typedef GT::GTL::Parser::token token;
 
 /* Define yyterminate as this instead of NULL */
-#define yyterminate() return(token::EOF)
+#define yyterminate() return( token::EOF )
+
+/* This disables inclusion of unistd.h, which is not available under Visual C++
+ * on Win32. The C++ scanner uses STL streams instead. */
+#define YY_NO_UNISTD_H
+
 %}
 
  /**************************** Options and states ****************************/
@@ -34,8 +38,6 @@ typedef                    /* Shorten token's type name */
 %option yylineno
     /* Code should be generated for C++ instead of C */
 %option c++
-    /* Names the C++ class */
-%option yyclass="Scanner"
     /* Sets output filename */
 %option outfile="src/gt/gtl/scanner.cpp"
 
@@ -75,13 +77,13 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
  /* Numbers definitions */
 -?({scientific}|{float}|{integer}) {
-        yyval->number = new Number(yytext);
+        yylval->number = new NumberPtr(new Number(yytext));
         return (token::number);
     }
 
  /* Identifiers */
 {identifier} {
-        yyval->identifier = new Identifier(yytext);
+        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
         return (token::identifier);
     }
 
@@ -98,7 +100,10 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
  /* White spaces and errors */
 [ \t\r\f\v\n]+        { /* Removes white chars */ }
-.                     { return (token::error); }
+.                     {
+        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
+        return (token::parser_error);
+    }
 
 %%
 

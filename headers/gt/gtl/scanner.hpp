@@ -1,17 +1,17 @@
 #ifndef __GT_GTL_SCANNER_HPP__
 #define __GT_GTL_SCANNER_HPP__
 
+#include <iostream>
+#include <fstream>
+
+#include "gt/gtl/common.hpp"
+
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif /* END ! defined(yyFlexLexerOnce) */
 
 #undef  YY_DECL
-#define YY_DECL int GTL::Scanner::yylex()
-
-#include <iostream>
-#include <fstream>
-
-#include "gt/gtl/common.hpp"
+#define YY_DECL int GT::GTL::Scanner::yylex()
 
 namespace GT {
 namespace GTL {
@@ -21,7 +21,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Scanner : public yyFlexLexer {
+class Scanner : public ::yyFlexLexer {
     /**
      * Field used during token scanning - contains actual value of parsed chain.
      */
