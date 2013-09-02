@@ -19,7 +19,7 @@ Object::Object() :
 
 Object::~Object() {
     BOOST_FOREACH(ObjectProperty& property, registeredProperties) {
-    	delete property;
+        delete property;
     }
     delete registeredProperties;
 }

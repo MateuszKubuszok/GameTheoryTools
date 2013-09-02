@@ -13,14 +13,14 @@ namespace GTL {
  */
 class Query {
 public:
-	/**
-	 * @brief Execute query in a defined context.
-	 *
-	 * @param context Context with definitions
-	 */
-	virtual Result* execute(
-		Context& context
-	);
+    /**
+     * @brief Execute query in a defined context.
+     *
+     * @param context Context with definitions
+     */
+    virtual Result* execute(
+        Context& context
+    );
 }; /* END class Game */
 
 } /* END namespace GTL */

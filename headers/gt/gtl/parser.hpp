@@ -147,9 +147,10 @@ namespace GT { namespace GTL {
      COLON = 274,
      COMA = 275,
      EOC = 276,
-     parser_error = 277,
+     lexer_error = 277,
      identifier = 278,
-     number = 279
+     number = 279,
+     TERMINATE = 280
    };
 
     };
@@ -254,7 +255,7 @@ namespace GT { namespace GTL {
     static const unsigned char yytable_[];
     static const signed char yytable_ninf_;
 
-    static const signed char yycheck_[];
+    static const unsigned char yycheck_[];
 
     /// For a state, its accessing symbol.
     static const unsigned char yystos_[];
@@ -277,7 +278,7 @@ namespace GT { namespace GTL {
     /// For each rule, the index of the first RHS symbol in \a yyrhs_.
     static const unsigned char yyprhs_[];
     /// For each rule, its source line number.
-    static const unsigned char yyrline_[];
+    static const unsigned short int yyrline_[];
     /// For each scanner token number, its symbol number.
     static const unsigned short int yytoken_number_[];
     /// Report on the debug stream that the rule \a r is going to be reduced.
@@ -329,7 +330,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 333 "headers/gt/gtl/parser.hpp"
+#line 334 "headers/gt/gtl/parser.hpp"
 
 
 

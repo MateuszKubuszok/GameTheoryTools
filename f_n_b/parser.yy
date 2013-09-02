@@ -95,9 +95,11 @@
 %token COMA   /* , charakter */
 %token EOC    /* ; charakter */
 
-%token <identifier> parser_error /* Error */
+%token <identifier> lexer_error  /* Error */
 %token <identifier> identifier   /* Identifier */
 %token <number>     number       /* Double number */
+
+%token TERMINATE    /* End of File */
 
  /* Declared types */
  
@@ -141,6 +143,17 @@
 %destructor { if ($$) { delete($$); ($$) = 0; } } <player>
 
 %%
+
+/* Program */
+
+program
+ : statements TERMINATE
+ ;
+
+statements
+ : statements statement
+ |
+ ;
 
 /* Statements */
 
@@ -246,6 +259,13 @@ coordinates
 
 coordinate
  : identifier EQUAL identifier { $$ = driver.createCoordinate($1, $3); }
+ ;
+
+/* Errors */
+
+parser_error
+ : error       {}
+ | lexer_error {}
  ;
 
 %%
