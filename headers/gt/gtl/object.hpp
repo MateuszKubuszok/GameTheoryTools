@@ -11,6 +11,9 @@ class Object;
 class ObjectProperty;
 class ObjectKnownProperties;
 
+/* Definitions */
+typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
+
 /**
  * @brief Root of all objects used as a data in parsed by GTL.
  *
@@ -20,15 +23,17 @@ class Object {
     /* Friends declarations */
     friend ObjectKnownProperties;
 
-public:
     /**
-     * @brief Object's constructor.
-     * 
-     * Initiates the properties' register.
+     * @brief Used for queries without conditions.
      */
-    Object() :
-        registeredProperties();
-        
+    static const Conditions noConditions;
+
+    /**
+     * @brief Map containing ObjectProperties bound to their name.
+     */
+    const boost::container::map<Identifier, ObjectProperty*> registeredProperties;
+
+public:
     /**
      * @brief Object's destructor.
      *
@@ -50,7 +55,7 @@ public:
      * @return          true if Object responds to such property 
      */
     bool respondsTo(
-        const Identifier& propertyName
+        const IdentifierPtr propertyName
     );
 
     /**
@@ -61,9 +66,9 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result findProperty(
-        const Context&    context,
-        const Identifier& propertyName
+    Result* findProperty(
+        const Context&      context,
+        const IdentifierPtr propertyName
     );
 
     /**
@@ -74,18 +79,13 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result findPropertyWithConditions(
-        const Context&    context,
-        const Identifier& propertyName,
-        const Conditions& conditions
+    Result* findPropertyWithConditions(
+        const Context&      context,
+        const IdentifierPtr propertyName,
+        const ConditionsPtr conditions
     );
 
 protected:
-    /**
-     * @brief Used for queries without conditions.
-     */
-    static const Conditions noConditions = Conditions();
-
     /**
      * @brief Whether property is registered or not.
      *
@@ -93,7 +93,7 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        const Identifier& propertyName
+        const IdentifierPtr propertyName
     );
 
     /**
@@ -103,8 +103,8 @@ protected:
      * @return                       required ObjectProperty
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    ObjectProperty getProperty(
-        const Identifier& propertyName
+    ObjectProperty* getProperty(
+        const IdentifierPtr propertyName
     );
 
     /**
@@ -114,16 +114,10 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        const Identifier&     propertyName,
-        const ObjectProperty& property
+        const IdentifierPtr     propertyName,
+        const ObjectPropertyPtr property
     );
-
-private:
-    /**
-     * @brief Map containing ObjectProperties bound to their name.
-     */
-    const boost::container::map<Identifier, ObjectProperty> registeredProperties;
-} /* END class Object */
+}; /* END class Object */
 
 /**
  * @brief Root of all Object's properties that can be registered.
@@ -142,9 +136,9 @@ public:
      * @param  conditions conditions to check
      * @result            search result
      */
-    virtual Result findForConditions(
-        const Context&    context,
-        const Conditions& conditions
+    virtual ResultPtr findForConditions(
+        const Context&      context,
+        const ConditionsPtr conditions
     ) = 0;
 
 protected:
@@ -152,7 +146,7 @@ protected:
      * @brief Constructor locked for all classes except Object (which can create it in its own constructor). 
      */
     ObjectProperty() {}
-} /* END class ObjectProperty */
+}; /* END class ObjectProperty */
 
 /**
  * @brief Lists all known properties of an Object.
@@ -163,14 +157,21 @@ class ObjectKnownProperties : ObjectProperty {
     /* Friends declarations */
     friend Object;
 
-private:
-    const Object object;
+    /**
+     * @brief Described Object.
+     */
+    const ObjectPtr object;
 
+private:
+    /**
+     * @brief Hidden constructor.
+     * 
+     * @param describedObject described Object
+     */
     ObjectKnownProperties(
-        const Object& listedObject
-    ) :
-        object(listedObject);
-} /* END class ObjectKnownProperties */
+        const ObjectPtr describedObject
+    );
+}; /* END class ObjectKnownProperties */
 
 } /* END namespace GTL */
 } /* END namespace GT */

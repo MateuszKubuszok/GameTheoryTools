@@ -26,13 +26,28 @@ enum ResultIndentationMode { TABS, SPACES, NONE };
  * @author Mateusz Kubuszok
  */
 class ResultFactory {
+    /**
+     * @brief Contains pointer to a ResultFactory instance.
+     */
+    static ResultFactory volatile *instance;
+
+    /**
+     * @brief Contains current Builder Mode setting.
+     */
+    ResultBuilderMode builderMode;
+
+     /**
+     * @brief Contains current Indentation Mode setting.
+     */
+    ResultIndentationMode indentationMode;
+
 public:
     /**
      * @brief Returns the instance of a ResultFactory.
      *
      * @return ResultFactory instance
      */
-    static ResultFactory& volatile getInstance();
+    static ResultFactory& getInstance();
 
     /**
      * @brief Returns results with predefined const content.
@@ -40,7 +55,7 @@ public:
      * @param content content to be contained by the Result
      * @return        Result with constant content
      */
-    Result constResult(
+    ResultPtr constResult(
         const std::string& content
     );
 
@@ -49,7 +64,7 @@ public:
      *
      * @return an empty result
      */
-    Result emptyResult();
+    ResultPtr emptyResult();
 
     /**
      * @brief Returns current builder mode.
@@ -87,21 +102,6 @@ public:
 
 private:
     /**
-     * @brief Contains pointer to a ResultFactory instance.
-     */
-    static ResultFactory volatile *instance = 0;
-
-    /**
-     * @brief Contains current Builder Mode setting.
-     */
-    ResultBuilderMode builderMode;
-
-     /**
-     * @brief Contains current Indentation Mode setting.
-     */
-    ResultIndentationMode indentationMode;
-
-    /**
      * @brief Private constructor.
      */
     ResultFactory();
@@ -110,14 +110,14 @@ private:
      * @brief Private copy constructor.
      */
     ResultFactory(
-        const ResultFactory &resultFactory
+        const ResultFactory& resultFactory
     );
 
     /**
      * @brief Private destructor.
      */
     ~ResultFactory();
-}
+}; /* END class ResultFactory */
 
 } /* END namespace Model */
 } /* END namespace GT */

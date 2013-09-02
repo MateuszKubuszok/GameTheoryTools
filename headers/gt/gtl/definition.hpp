@@ -12,6 +12,16 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Definition {
+    /**
+     * @brief Name of the property
+     */
+    const IdentifierPtr name;
+
+    /**
+     * @brief Value of the property.
+     */
+    const ObjectPtr value;
+
 public:
     /**
      * @brief Constructor for name and value.
@@ -20,11 +30,9 @@ public:
      * @param definedValue value of the defined property
      */
     Definition(
-        Identifier& definedName,
-        Object&     definedValue
-    ) :
-        name(definedName),
-        value(definedValue);
+        IdentifierPtr definedName,
+        ObjectPtr     definedValue
+    );
 
     /**
      * @brief Default constructor.
@@ -36,27 +44,17 @@ public:
      *
      * @return value of the property
      */
-    Identifier getName();
+    IdentifierPtr getName();
 
     /**
      * @brief Returns value of the property.
      *
      * @return value of the property
      */
-    Object getValue();
-private:
-    /**
-     * @brief Name of the property
-     */
-    const Identifier name;
-
-    /**
-     * @brief Value of the property.
-     */
-    const Object value;
-} /* END class Definition */
+    ObjectPtr getValue();
+}; /* END class Definition */
 
 } /* END namepsace GTL */
 } /* END namspace GT */
 
-#endif /* #ifndef __GT_GTL_DEFINITION_HPP__ */
+#endif /* END #ifndef __GT_GTL_DEFINITION_HPP__ */

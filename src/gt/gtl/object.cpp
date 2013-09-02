@@ -10,7 +10,9 @@ class ObjectType;
 
 // class Object {
 // public:
-Object::Object() {
+Object::Object() :
+    registeredProperties()
+{
     registerProperty("properties", ObjectKnownProperties(this));
     registerProperty("type", ObjectType());
 }

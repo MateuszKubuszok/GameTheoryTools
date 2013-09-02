@@ -4,22 +4,60 @@
 /* Includes GT model headers  */
 #include "gt/model/common.hpp"
 
+namespace GT {
+namespace GTL {
+
 /* Class declarations */
 class Object;
 class Condition;
 class ConditionFactory;
+class Context;
 class Coordinate;
 class Definition;
 class Details;
 class Game;
 class Query;
 class Param;
-class Player; 
+class Player;
+
+class Parser;
+class Scanner;
+class Driver;
+
+/* Shortens commonly used names */
+typedef boost::shared_ptr<Object>     ObjectPtr;
+typedef boost::shared_ptr<Condition>  ConditionPtr;
+typedef boost::shared_ptr<Context>    ContextPtr;
+typedef boost::shared_ptr<Coordinate> CoordinatePtr;
+typedef boost::shared_ptr<Definition> DefinitionPtr;
+typedef boost::shared_ptr<Details>    DetailsPtr;
+typedef boost::shared_ptr<Game>       GamePtr;
+typedef boost::shared_ptr<Query>      QueryPtr;
+typedef boost::shared_ptr<Param>      ParamPtr;
+typedef boost::shared_ptr<Player>     PlayerPtr;
+
+typedef boost::container::map<Identifier, Identifier> Positions;
+typedef boost::shared_ptr<Positions>                  PositionsPtr;
+typedef boost::container::vector<ConditionPtr>        Conditions;
+typedef boost::shared_ptr<Conditions>                 ConditionsPtr;
+typedef boost::container::vector<CoordinatePtr>       Coordinates;
+typedef boost::shared_ptr<Coordinates>                CoordinatesPtr;
+typedef boost::container::vector<ObjectPtr>           Objects;
+typedef boost::shared_ptr<Objects>                    ObjectsPtr;
+typedef boost::container::vector<ParamPtr>            Params;
+typedef boost::shared_ptr<Params>                     ParamsPtr;
+
+typedef Model::Result                                 Result;
+typedef Model::ResultPtr                              ResultPtr;
+
+} /* END namespace GTL */
+} /* END namespace GT */
 
 /* Includes GTL elements headers */
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"
 #include "gt/gtl/condition_factory.hpp"
+#include "gt/gtl/context.hpp"
 #include "gt/gtl/coordinate.hpp"
 #include "gt/gtl/definition.hpp"
 #include "gt/gtl/details.hpp"
@@ -30,21 +68,7 @@ class Player;
 
 /* Includes GTL parsers elements */
 #include "gt/gtl/driver.hpp"
-#include "gt/gtl/scanner.hpp"
 #include "gt/gtl/parser.hpp"
-
-namespace GT {
-namespace GTL {
-
-/* Shortens commonly used names */
-typedef boost::containers::map<Identifier, Identifier> Positions;
-typedef boost::containers::vector<Condition>           Conditions;
-typedef boost::containers::vector<Coordinate>          Coordinates;
-typedef boost::containers::vector<Objects>             Objects;
-typedef boost::containers::vector<Param>               Params;
-typedef Model::Result                                  Result;
-
-} /* END namespace GTL */
-} /* END namespace GT */
+#include "gt/gtl/scanner.hpp"
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */

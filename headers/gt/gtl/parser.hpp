@@ -38,12 +38,12 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 39 "f_n_b/parser.yy"
+#line 41 "f_n_b/parser.yy"
 
     namespace GT {
         namespace GTL {
-            class Driver;
             class Scanner;
+            class Driver;
         }
     }
 
@@ -94,28 +94,29 @@ namespace GT { namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 55 "f_n_b/parser.yy"
+#line 57 "f_n_b/parser.yy"
 
-    Identifier  identifier;
-    Identifiers identifiers;
-    Number      number;
-    Condition   condition;
-    Conditions  conditions;
-    Coordinate  coordinate;
-    Definition  definition;
-    Details     details;
-    Game        game;
-    Query       query;
-    Object      object;
-    Objects     objects;
-    Param       param;
-    Params      params;
-    Player      player;
+    IdentifierPtr*  identifier;
+    IdentifiersPtr* identifiers;
+    NumberPtr*      number;
+    ConditionPtr*   condition;
+    ConditionsPtr*  conditions;
+    CoordinatePtr*  coordinate;
+    CoordinatesPtr* coordinates;
+    DefinitionPtr*  definition;
+    DetailsPtr*     details;
+    GamePtr*        game;
+    QueryPtr*       query;
+    ObjectPtr*      object;
+    ObjectsPtr*     objects;
+    ParamPtr*       param;
+    ParamsPtr*      params;
+    PlayerPtr*      player;
 
 
 
 /* Line 35 of lalr1.cc  */
-#line 119 "headers/gt/gtl/parser.hpp"
+#line 120 "headers/gt/gtl/parser.hpp"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -327,7 +328,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 331 "headers/gt/gtl/parser.hpp"
+#line 332 "headers/gt/gtl/parser.hpp"
 
 
 

@@ -18,7 +18,7 @@ public:
      *
      * @param context context with values
      */
-    virtual Object getObject(
+    virtual ObjectPtr getObject(
         const Context& context
     ) = 0;
 
@@ -27,10 +27,10 @@ public:
      *
      * @param context context with values
      */
-    virtual Number getValue(
+    virtual NumberPtr getValue(
         const Context& context
     ) = 0;
-} /* END class Param */
+}; /* END class Param */
 
 } /* END namespace GTL */
 } /* END namespace GT */

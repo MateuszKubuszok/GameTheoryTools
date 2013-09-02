@@ -14,20 +14,28 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Context {
+    /**
+     * @brief Possible parent Context.
+     */
+    Context* parentContext;
+
+    /**
+     * @brief Registerd Objects.
+     */
+    boost::container::map<Identifier, Object> knownObjects;
+
 public:
     /**
      * @brief Default constructor.
      */
-    Context() :
-        knownObjects();
+    Context();
 
     /**
      * @brief Constructor with parental context inheritance. 
      */
     Context(
         const Context& parentContext
-    ) :
-        knownObjects();
+    );
 
     /**
      * @brief Default destructor.
@@ -42,8 +50,8 @@ public:
      * @return           reference to context for chaining
      */
     Context& registerObject(
-        const Identifier& identifier,
-        const Object&     object
+        const IdentifierPtr identifier,
+        const ObjectPtr     object
     );
 
     /**
@@ -53,7 +61,7 @@ public:
      * @return           reference to context for chaining
      */
     Context& registerObject(
-        const Definition& definition
+        const DefinitionPtr definition
     );
 
     /**
@@ -62,8 +70,8 @@ public:
      * @param identifier identifier to obtain
      * @return           value to retur
      */
-    Object getObject(
-        const Identifier& identifier
+    ObjectPtr getObject(
+        const IdentifierPtr identifier
     );
 
     /**
@@ -74,23 +82,12 @@ public:
      * @param param param to obtain
      * @return      value to retur
      */
-    Param getParam(
-        const Param& param
+    ParamPtr getParam(
+        const ParamPtr param
     );
-    
-private:
-    /**
-     * @brief Possible parent Context.
-     */
-    Context* parentContext = 0;
-
-    /**
-     * @brief Registerd Objects.
-     */
-    boost::container::map<Identifier, Object> knownObjects;
-} /* END class Context */
+}; /* END class Context */
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* __GT_GTL_CONTEXT_HPP__ */
+#endif /* END #ifndef __GT_GTL_CONTEXT_HPP__ */

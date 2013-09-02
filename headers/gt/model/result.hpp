@@ -12,11 +12,6 @@ namespace Model {
 class Result {
 public:
     /**
-     * @brief Default contructor.
-     */
-    Result() {}
-
-    /**
      * @brief Default destructor.
      */
     virtual ~Result() {}
@@ -27,8 +22,9 @@ public:
      * @return string with result
      */ 
     virtual std::string getResult() = 0;
-} /* END class Result */
+}; /* END class Result */
 
 } /* END namespace Model */
 } /* END namespace GT */
+
 #endif /* END #ifndef __GT_MODEL_RESULT_HPP__ */

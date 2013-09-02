@@ -75,13 +75,13 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
  /* Numbers definitions */
 -?({scientific}|{float}|{integer}) {
-        yyval->number = Number(yytext);
+        yyval->number = new Number(yytext);
         return (token::number);
     }
 
  /* Identifiers */
 {identifier} {
-        yyval->identifier = Identifier(yytext);
+        yyval->identifier = new Identifier(yytext);
         return (token::identifier);
     }
 

@@ -12,14 +12,38 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Coordinate {
+    /**
+     * @brief Merges two Coordinates into one.
+     *
+     * @param coordinate1 first coordinate
+     * @param coordinate2 second coordinate
+     * @return            merged coordinates
+     */
+    friend Coordinate operator+(
+        const Coordinate& coordinate1,
+        const Coordinate& coordinate2
+    );
+
+    /**
+     * @brief Defined positions.
+     */
+    const Positions positions;
+
+    /**
+     * @brief Defined Params.
+     */
+    const ParamsPtr params;
+
+    /**
+     * @brief Defined subcoordinetes. 
+     */
+    const CoordinatesPtr subCoordinates;
+
 public:
     /**
      * @brief Default constructor.
      */
-    Coordinate() :
-        positions(),
-        params(),
-        subCoordinates();
+    Coordinate();
 
     /**
      * @brief Constructor for initial strategies.
@@ -30,10 +54,7 @@ public:
     Coordinate(
         const Identifier& player,
         const Identifier& strategy
-    ) :
-        positions(),
-        params(),
-        subCoordinates();
+    );
 
     /**
      * @brief Adds param to the list.
@@ -42,7 +63,7 @@ public:
      * @return      reference to itself
      */
     Coordinate& addParams(
-        const Param& param
+        const ParamPtr param
     );
 
      /**
@@ -52,7 +73,7 @@ public:
      * @return       reference to itself
      */
     Coordinate& addParams(
-        const Params& params
+        const ParamsPtr params
     );
 
     Coordinate& addPosition(
@@ -100,37 +121,9 @@ public:
      * @return
      */
     Coordinates getSubCoordinates();
-
-private:
-    /**
-     * @brief Defined positions.
-     */
-    const Positions positions;
-
-    /**
-     * @brief Defined Params.
-     */
-    const Params params;
-
-    /**
-     * @brief Defined subcoordinetes. 
-     */
-    const Coordinates subCoordinates;
-} /* END class Coordinate */
-
-/**
- * @brief Merges two Coordinates into one.
- *
- * @param coordinate1 first coordinate
- * @param coordinate2 second coordinate
- * @return            merged coordinates
- */
-friend Coordinate operator+(
-    const Coordinate& coordinate1,
-    const Coordinate& coordinate2
-);
+}; /* END class Coordinate */
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* __GT_GTL_COORDINATE_HPP__ */
+#endif /* END #ifndef __GT_GTL_COORDINATE_HPP__ */

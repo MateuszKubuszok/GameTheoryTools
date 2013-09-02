@@ -12,6 +12,11 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ParamFactory {
+    /**
+     * @brief Contains pointer to a ParamFactory instance.
+     */
+    static ParamFactory volatile *instance = 0;
+
 public:
     /**
      * @brief Returns the instance of a ParamFactory.
@@ -26,8 +31,8 @@ public:
      * @param identifier identifier of a Param
      * @return           Param instance
      */
-    Param createParam(
-        const Identifier& identifier
+    ParamPtr createParam(
+        const IdentifierPtr identifier
     );
 
     /**
@@ -36,15 +41,10 @@ public:
      * @param number value of a Param
      * @return       Param instance
      */
-    Param createParam(
-        const Number& number
+    ParamPtr createParam(
+        const NumberPtr number
     );
 private:
-    /**
-     * @brief Contains pointer to a ParamFactory instance.
-     */
-    static ParamFactory volatile *instance = 0;
-
     /**
      * @biref Private constructor.
      */
@@ -54,16 +54,16 @@ private:
      * @brief Private copy constructor.
      */
     ParamFactory(
-        const ParamFactory &paramFactory
+        const ParamFactory& paramFactory
     );
 
     /**
      * @brief Private destructor.
      */
     ~ParamFactory();
-} /* END class ParamFactory */
+}; /* END class ParamFactory */
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* __GT_GTL_PARAM_FACTORY_HPP__ */
+#endif /* END #ifndef __GT_GTL_PARAM_FACTORY_HPP__ */

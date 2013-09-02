@@ -1,3 +1,17 @@
+# Directories configuration
+
+# Main directories
+fnb     = 'f_n_b/'
+headers = 'headers/'
+source  = 'src/'
+objects = 'objects/'
+
+# Packages directories
+gtl   = 'gt/gtl/'
+model = 'gt/model/'
+
+################################################################################
+
 # Begining of Environment configuration
 env  = Environment()
 conf = Configure(env)
@@ -12,6 +26,7 @@ if not conf.CheckCXX():
 # Header check
 for header in [
     'iostream', 'fstream', 'cstdlib',
+    'boost/shared_ptr.hpp',
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
     'boost/thread/mutex.hpp',
@@ -25,19 +40,10 @@ for header in [
 if not validInstallation:
     Exit(1)
 
+conf.env.Append(CPPPATH=[headers, headers+gtl, source+gtl])
+
 conf.Finish()
 # End of Environment configuration
-
-################################################################################
-
-# Main directories
-fnb     = 'f_n_b/'
-headers = 'headers/'
-source  = 'src/'
-
-# Packages directories
-gtl   = 'gt/gtl/'
-model = 'gt/model/'
 
 ################################################################################
 
@@ -54,3 +60,11 @@ parserCppBuilder, parserHppBuilder = env.CXXFile(source=parserYY,  target=parser
 scannerCppBuilder                  = env.CXXFile(source=scannerLL, target=scannerCpp)
 
 ################################################################################
+
+# Builds parser and scanner objects
+
+parserO  = objects+gtl+'parser.o'
+#scannerO = objects+gtl+'scanner.o'
+
+parserObject  = env.Object(source=parserCppBuilder,  target=parserO)
+#scannerObject = env.Object(source=scannerCppBuilder, target=scannerO)

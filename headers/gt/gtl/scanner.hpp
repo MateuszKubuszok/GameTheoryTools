@@ -8,6 +8,9 @@
 #undef  YY_DECL
 #define YY_DECL int GTL::Scanner::yylex()
 
+#include <iostream>
+#include <fstream>
+
 #include "gt/gtl/common.hpp"
 
 namespace GT {
@@ -19,16 +22,23 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Scanner : public yyFlexLexer {
+    /**
+     * Field used during token scanning - contains actual value of parsed chain.
+     */
+    Parser::semantic_type* yylval;
+
 public:
     /**
      * @brief Initiates scanner with insput stream that serves as data source.
      *
      * @param in input stream initiating scanner
      */
-    Scanner(std::instream in) :
+    Scanner(
+        std::istream* in
+    ) :
         yyFlexLexer(in),
-        yylval(nullptr)
-        {};
+        yylval(0)
+        {}
 
     /**
      * @brief Scans for next token.
@@ -37,7 +47,7 @@ public:
      * @return     returns number of next token
      */    
     int yylex(
-        const Parser::semantic_type* lval
+        Parser::semantic_type* lval
     ) {
         yylval = lval;
         return yylex();
@@ -54,13 +64,9 @@ private:
      * @return value used for communicating with Parser
      */
     int yylex();
-    
-    /**
-     * Field used during token scanning - contains actual value of parsed chain.
-     */
-    Parser::semantic_type* yylval;
-} /* END class Scanner */
+}; /* END class Scanner */
 
 } /* END namespace GTL */
 } /* END namespace GT */
-#endif /* END #ifndef __GTL_SCANNER_HPP__ */
+
+#endif /* END #ifndef __GT_GTL_SCANNER_HPP__ */

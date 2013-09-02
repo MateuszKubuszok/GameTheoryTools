@@ -1015,7 +1015,7 @@ case 18:
 YY_RULE_SETUP
 #line 77 "f_n_b/scanner.ll"
 {
-        yyval->number = Number(yytext);
+        yyval->number = new Number(yytext);
         return (token::number);
     }
 	YY_BREAK
@@ -1024,7 +1024,7 @@ case 19:
 YY_RULE_SETUP
 #line 83 "f_n_b/scanner.ll"
 {
-        yyval->identifier = Identifier(yytext);
+        yyval->identifier = new Identifier(yytext);
         return (token::identifier);
     }
 	YY_BREAK

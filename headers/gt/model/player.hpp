@@ -12,6 +12,21 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class Player {
+    /**
+     * @breif Player's name.
+     */
+    const IdentifierPtr name;
+
+    /**
+     * @breif Player's strategies.
+     */
+    const IdentifiersPtr strategies;
+
+    /**
+     * @breif Mapps strategies to its ordnial.
+     */
+    const boost::container::map<std::string, int> strategyMapping;
+
 public:
     /**
      * @brief Constructor of the Player.
@@ -20,14 +35,9 @@ public:
      * @param playerStrategy declared strategies
      */
     Player(
-        const Identifier&  playerName,
-        const Identifiers& playerStrategies
-    ) :
-        name(playerName),
-        strategies(playerStrategies),
-        strategyMapping();
-
-    ~Player();
+        const IdentifierPtr  playerName,
+        const IdentifiersPtr playerStrategies
+    );
 
     /**
      * @brief Returns name ot the Player.
@@ -58,24 +68,9 @@ public:
     int getStrategyOrdinal(
         const Identifier& strategy
     );
-
-private:
-    /**
-     * @breif Player's name.
-     */
-    const Identifier name;
-
-    /**
-     * @breif Player's strategies.
-     */
-    const Identifiers strategies;
-
-    /**
-     * @breif Mapps strategies to its ordnial.
-     */
-    const boost::container::map<std::string, int> strategyMapping;
-} /* END class Player */
+}; /* END class Player */
 
 } /* END namespace Model */
 } /* END namespace GT */
+
 #endif /* END #ifndef __GT_MODEL_PLAYER_HPP__ */

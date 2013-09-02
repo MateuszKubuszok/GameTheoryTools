@@ -21,12 +21,14 @@
     /* GTL prototypes */
     #include "gt/gtl/common.hpp"
 
+    using namespace GT::GTL;
+
     /**
      * @brief Override default yylex function.
      * 
      * @param yylval  matched content
-     * @param scanner scanner instance
      * @param driver  driver instance
+     * @param scanner scanner instance
      * @return        next found token number
      */
     static int yylex(
@@ -39,8 +41,8 @@
 %code requires {
     namespace GT {
         namespace GTL {
-            class Driver;
             class Scanner;
+            class Driver;
         }
     }
 }
@@ -53,21 +55,22 @@
 
 /* Union containing values as either double or string */
 %union {
-    Identifier  identifier;
-    Identifiers identifiers;
-    Number      number;
-    Condition   condition;
-    Conditions  conditions;
-    Coordinate  coordinate;
-    Definition  definition;
-    Details     details;
-    Game        game;
-    Query       query;
-    Object      object;
-    Objects     objects;
-    Param       param;
-    Params      params;
-    Player      player;
+    IdentifierPtr*  identifier;
+    IdentifiersPtr* identifiers;
+    NumberPtr*      number;
+    ConditionPtr*   condition;
+    ConditionsPtr*  conditions;
+    CoordinatePtr*  coordinate;
+    CoordinatesPtr* coordinates;
+    DefinitionPtr*  definition;
+    DetailsPtr*     details;
+    GamePtr*        game;
+    QueryPtr*       query;
+    ObjectPtr*      object;
+    ObjectsPtr*     objects;
+    ParamPtr*       param;
+    ParamsPtr*      params;
+    PlayerPtr*      player;
 }
 
 /* Declared tokens */
@@ -118,6 +121,10 @@
 %type <objects>      objects
 %type <params>       params
 
+/* Destructor rules - TODO when erro handling defined*/
+
+// %destructor { if ($$)  { delete ($$); ($$) = nullptr; } } <object>
+
 %%
 
 /* Statements */
@@ -128,7 +135,7 @@ statement
  ;
 
 definition
- : LET identifier BE object { $$ = driver.createDefinition($4, $2); }
+ : LET identifier BE object { $$ = driver.createDefinition($2, $4); }
  ;
  
 query
@@ -142,9 +149,9 @@ objects
  | object              { $$ = driver.createObjectsCollection($1); }
 
 object
- : game   { $$ = $1; }
- | player { $$ = $1; }
- | param  { $$ = $1; }
+ : game   { $$ = driver.convert($1); }
+ | player { $$ = driver.convert($1); }
+ | param  { $$ = driver.convert($1); }
  ;
  
 /* Games */
@@ -162,19 +169,19 @@ details
 /* Players */
 
 player
- : PLAYER identifier LCBR objects RCBR { $$ = driver.createPlayerWithStrategies($2, $4); }
+ : PLAYER identifier LCBR identifiers RCBR { $$ = driver.createPlayerWithStrategies($2, $4); }
  ;
 
 /* Params */
 
 param
- : identifier { $$ = driver.getValueForIdentifier($1); }
- | number     { $$ = driver.getValueForNumber($1); }
+ : identifier { $$ = driver.getValue($1); }
+ | number     { $$ = driver.getValue($1); }
  ;
 
 params
  : params COMA param { $$ = driver.addParamToCollection($3, $1); }
- | param { $$ = driver.createParams($1); }
+ | param             { $$ = driver.createParamsCollection($1); }
  ;
 
 /* Identifiers */
@@ -188,7 +195,7 @@ identifiers
 
 conditions
  : condition_collection { $$ = $1; }
- |                      { $$ = driver.emptyConditionCollection(); }
+ |                      { $$ = driver.emptyConditionsCollection(); }
  ;
 
 condition_collection
@@ -212,8 +219,8 @@ data_coordinates
  ;
 
 data_coordinate
- : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.fillCoordinatesWithData($2, $4); }
- | LCBR coordinates COLON params RCBR           { $$ = driver.fillCoordinatesWithData($2, $4); }
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.fillCoordinateWithData($2, $4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.fillCoordinateWithData($2, $4); }
  ;
 
 coordinates
@@ -237,7 +244,7 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    driver.errorInformation(loc, message);
+    driver.errorInformation(message);
 }
 
 /**

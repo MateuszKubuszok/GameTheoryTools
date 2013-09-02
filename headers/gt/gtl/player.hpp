@@ -22,10 +22,8 @@ public:
     Player(
         const Identifier&  playerName,
         const Identifiers& playerStrategies
-    ) :
-        Object(),
-        Model::Player(playerName, playerStrategies);
-}
+    );
+}; /* END class Player */
 
 } /* END namespace GTL */
 } /* END namespace GT */

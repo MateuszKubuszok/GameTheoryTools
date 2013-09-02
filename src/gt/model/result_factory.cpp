@@ -10,6 +10,8 @@ boost::mutex resultFactoryMutex;
 class EmptyResult;
 class ConstResult;
 
+ResultFactory ResultFactory::instance = 0;
+
 // class ResultFactory {
 // public:
 static ResultFactory& ResultFactory::getInstance() {

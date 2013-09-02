@@ -12,57 +12,54 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Details {
+    /**
+     * @brief Players' collection.
+     */
+    const ObjectsPtr players;
+
+    /**
+     * @brief Coordinates' collection.
+     */
+    const CoordinatesPtr coordinates; 
+
 public:
-	/**
-	 * @brief Constructor for players with data.
-	 *
-	 * @param playersDetails     declared players
-	 * @param coordinatesDetails declared data
-	 */
-	 Details(
-		const Objects&     playersDetails,
-		const Coordinates& coordinatesDetails
-	) :
-		players(playersDetails),
-		coordinates(coordinatesDetails);
+    /**
+     * @brief Constructor for players with data.
+     *
+     * @param playersDetails     declared players
+     * @param coordinatesDetails declared data
+     */
+     Details(
+        const ObjectsPtr     playersDetails,
+        const CoordinatesPtr coordinatesDetails
+    );
 
-	/**
-	 * @brief Returns context with both general declarations and local ones.
-	 *
-	 * @param  parentContext parental context
-	 * @return               subcontext filled with players
-	 */
-	Context createSubContext(
-		const Context& parentContext
-	);
+    /**
+     * @brief Returns context with both general declarations and local ones.
+     *
+     * @param  parentContext parental context
+     * @return               subcontext filled with players
+     */
+    Context createSubContext(
+        const Context& parentContext
+    );
 
-	/**
-	 * @brief Returns Coordinates with data.
-	 *
-	 * @return Coordinates wit data
-	 */
-	Coordinates getCoordinates();
+    /**
+     * @brief Returns Coordinates with data.
+     *
+     * @return Coordinates wit data
+     */
+    CoordinatesPtr getCoordinates();
 
-	/**
-	 * @brief Returns Players definitions.
-	 *
-	 * @return Players definitions
-	 */
-	Objects getPlayers();
-
-private:
-	/**
-	 * @brief Players' collection.
-	 */
-	const Objects players;
-
-	/**
-	 * @brief Coordinates' collection.
-	 */
-	const Coordinates coordinates; 
-} /* END class Details */
+    /**
+     * @brief Returns Players definitions.
+     *
+     * @return Players definitions
+     */
+    ObjectsPtr getPlayers();
+}; /* END class Details */
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* __GT_GTL_DETAILS_HPP__ */
+#endif /* END #ifndef __GT_GTL_DETAILS_HPP__ */

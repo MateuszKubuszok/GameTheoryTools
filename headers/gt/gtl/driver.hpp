@@ -9,131 +9,148 @@ namespace GTL {
 class Driver {
 public:
     virtual void storeDefinedObject(
-        const Definition& definition
+        const DefinitionPtr* definition
     );
 
     virtual void executeQuery(
-        const Query& query
+        const QueryPtr* query
     );
 
-    virtual Definition createDefinition(
-        const Object&     object,
-        const Identifier& identifier
+    virtual DefinitionPtr* createDefinition(
+        const IdentifierPtr* identifier,
+        const ObjectPtr*     object
     );
 
-    virtual Query createQuery(
-        const Identifiers& identifiers,
-        const Objects&     objects,
-        const Conditions&  conditions
+    virtual QueryPtr* createQuery(
+        const IdentifiersPtr* identifiers,
+        const ObjectsPtr*     objects,
+        const ConditionsPtr*  conditions
     );
 
-    virtual Objects createObjectsCollection(
-        const Object& object
+    virtual ObjectsPtr* createObjectsCollection(
+        const ObjectPtr* object
     );
 
-    virtual Objects addObjectToCollection(
-        const Object&  object,
-        const Objects& objects
+    virtual ObjectsPtr* addObjectToCollection(
+        const ObjectPtr*  object,
+        const ObjectsPtr* objects
     );
 
-    virtual Object getValueForIdentifier(
-        const Identifier& identifier
+    virtual ObjectPtr* convert(
+        GamePtr* game
+    );
+    
+    virtual ObjectPtr* convert(
+        PlayerPtr* player
     );
 
-    virtual Game createPureGameForDetails(
-        const Details& details
+    virtual ObjectPtr* convert(
+        ParamPtr* param
     );
 
-    virtual Game createMixedGameForDetails(
-        const Details& details
+    virtual ObjectPtr* getValueForIdentifier(
+        const IdentifierPtr* identifier
     );
 
-    virtual Game createTreeGameForDetails(
-        const Details& details
+    virtual GamePtr* createPureGameForDetails(
+        const DetailsPtr* details
     );
 
-    virtual Details createDetailsForGame(
-        const Objects&     players,
-        const Coordinates& data
+    virtual GamePtr* createMixedGameForDetails(
+        const DetailsPtr* details
     );
 
-    virtual Player createPlayerWithStrategies(
-        const Identifier& identifier,
-        const Objects&    objects
+    virtual GamePtr* createTreeGameForDetails(
+        const DetailsPtr* details
     );
 
-    virtual Param getValueForIdentifier(
-        const Identifier& identifier
+    virtual DetailsPtr* createDetailsForGame(
+        const ObjectsPtr*     players,
+        const CoordinatesPtr* data
     );
 
-    virtual Param& getValueForNumber(
-        const Number& number
+    virtual PlayerPtr* createPlayerWithStrategies(
+        const IdentifierPtr*  player,
+        const IdentifiersPtr* strategies
     );
 
-    virtual Params createParamsCollection(
-        const Param& param
+    virtual ParamPtr* getValue(
+        const IdentifierPtr* identifier
     );
 
-    virtual Params addParamToCollection(
-        const Param&  param,
-        const Params& params
+    virtual ParamPtr* getValue(
+        const NumberPtr* number
     );
 
-    virtual Identifiers createIdentifiersCollection(
-        const Identifier& identifier
+    virtual ParamsPtr* createParamsCollection(
+        const ParamPtr* param
     );
 
-    virtual Identifiers addIdentifierToCollection(
-        const Identifier&  identifier,
-        const Identifiers& identifiers
+    virtual ParamsPtr* addParamToCollection(
+        const ParamPtr*  param,
+        const ParamsPtr* params
     );
 
-    virtual Condition createPlayerChoiceCondition(
-        const Object& player,
-        const Object& strategy
+    virtual IdentifiersPtr* createIdentifiersCollection(
+        const IdentifierPtr* identifier
     );
 
-    virtual Conditions createConditionsCollection(
-        const Condition& condition
+    virtual IdentifiersPtr* addIdentifierToCollection(
+        const IdentifierPtr*  identifier,
+        const IdentifiersPtr* identifiers
     );
 
-    virtual Conditions emptyConditionsCollection();
-
-    virtual Conditions addConditionToCollection(
-        const Condition&  condition,
-        const Conditions& conditions
+    virtual ConditionPtr* createPlayerChoiceCondition(
+        const ObjectPtr* player,
+        const ObjectPtr* strategy
     );
 
-    virtual Coordinates addCoordinatesToCollection(
-        const Coordinates& coordinates,
-        const Coordinate&  coordinate
+    virtual ConditionsPtr* createConditionsCollection(
+        const ConditionPtr* condition
     );
 
-    virtual Coordinates createCoordinatesCollection(
-        const Coordinate& coordinate
+    virtual ConditionsPtr* emptyConditionsCollection();
+
+    virtual ConditionsPtr* addConditionToCollection(
+        const ConditionPtr*  condition,
+        const ConditionsPtr* conditions
     );
 
-    virtual Coordinate fillCoordinateWithData(
-        const Coordinate&  coordinate,
-        const Coordinates& data
+    virtual CoordinatesPtr* addCoordinatesToCollection(
+        const CoordinatesPtr* coordinates,
+        const CoordinatePtr*  coordinate
     );
 
-    virtual Coordinate fillCoordinateWithData(
-        const Coordinate& coordinate,
-        const Params&     data
+    virtual CoordinatesPtr* createCoordinatesCollection(
+        const CoordinatePtr* coordinate
     );
 
-    virtual Coordinate mergeCoordinates(
-        const Coordinate& coordinate1
-        const Coordinate& coordinate2
+    virtual CoordinatePtr* fillCoordinateWithData(
+        const CoordinatePtr*  coordinate,
+        const CoordinatesPtr* data
     );
 
-    virtual Coordinate createCoordinate(
-        const Identifier& player,
-        const Identifier& strategy
+    virtual CoordinatePtr* fillCoordinateWithData(
+        const CoordinatePtr* coordinate,
+        const ParamsPtr*     data
     );
-} /* END class Driver */
+
+    virtual CoordinatePtr* mergeCoordinates(
+        const CoordinatePtr* coordinate1,
+        const CoordinatePtr* coordinate2
+    );
+
+    virtual CoordinatePtr* createCoordinate(
+        const IdentifierPtr* player,
+        const IdentifierPtr* strategy
+    );
+
+    virtual void errorInformation(
+        const std::string& message
+    );
+}; /* END class Driver */
 
 } /* END namespace GTL */
 } /* END namespace GT */
+
 #endif /* END __GT_GTL_DRIVER_HPP__ */

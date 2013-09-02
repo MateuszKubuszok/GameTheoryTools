@@ -12,13 +12,18 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ConditionFactory {
+    /**
+     * @brief Contains pointer to a ParamFactory instance.
+     */
+    static ConditionFactory volatile *instance;
+
 public:
     /**
      * @brief Returns the instance of a ResultFactory.
      *
      * @return ConditionFactory instance
      */
-    static ConditionFactory& volatile getInstance();
+    static ConditionFactory& getInstance();
 
     /**
      * @brief Creates condition for a player choosing strategy beforehand.
@@ -27,17 +32,12 @@ public:
      * @parma strategy strategy Object
      * @result         Condition for a player
      */
-    Condition createPlayerChoiceCondition(
-        const Object& player,
-        const Object& strategy
+    ConditionPtr createPlayerChoiceCondition(
+        const ObjectPtr player,
+        const ObjectPtr strategy
     );
 
 private:
-    /**
-     * @brief Contains pointer to a ParamFactory instance.
-     */
-    static ConditionFactory volatile *instance = 0;
-
     /**
      * @brief Default constructor hidden from programmers.
      */
@@ -56,9 +56,9 @@ private:
      * @brief Default destructor hidden from programmers.
      */
     ~ConditionFactory();
-} /* END class ConditionFactory */
+}; /* END class ConditionFactory */
 
 } /* END namepsace GTL */
 } /* END namspace GT */
 
-#endif /* #ifndef __GT_GTL_CONDITION_FACTORY_HPP__ */
+#endif /* END #ifndef __GT_GTL_CONDITION_FACTORY_HPP__ */
