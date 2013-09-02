@@ -147,7 +147,7 @@
 statement
  : definition EOC { driver.storeDefinedObject($1); }
  | query EOC      { driver.executeQuery($1); }
- | parser_error
+ | parser_error   {}
  ;
 
 definition

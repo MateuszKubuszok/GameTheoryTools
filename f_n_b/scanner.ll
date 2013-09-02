@@ -16,9 +16,6 @@
 /* Shorten token's type name */
 typedef GT::GTL::Parser::token token;
 
-/* Define yyterminate as this instead of NULL */
-#define yyterminate() return( token::EOF )
-
 /* This disables inclusion of unistd.h, which is not available under Visual C++
  * on Win32. The C++ scanner uses STL streams instead. */
 #define YY_NO_UNISTD_H

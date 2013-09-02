@@ -579,9 +579,9 @@ static yyconst flex_int32_t yy_rule_can_match_eol[30] =
 
 static yyconst flex_int16_t yy_rule_linenum[29] =
     {   0,
-       58,   59,   60,   61,   62,   63,   64,   65,   66,   67,
-       68,   69,   70,   71,   74,   75,   76,   79,   85,   91,
-       92,   93,   96,   97,   98,   99,  102,  103
+       55,   56,   57,   58,   59,   60,   61,   62,   63,   64,
+       65,   66,   67,   68,   71,   72,   73,   76,   82,   88,
+       89,   90,   93,   94,   95,   96,   99,  100
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -609,9 +609,6 @@ static yyconst flex_int16_t yy_rule_linenum[29] =
 /* Shorten token's type name */
 typedef GT::GTL::Parser::token token;
 
-/* Define yyterminate as this instead of NULL */
-#define yyterminate() return( token::EOF )
-
 /* This disables inclusion of unistd.h, which is not available under Visual C++
  * on Win32. The C++ scanner uses STL streams instead. */
 #define YY_NO_UNISTD_H
@@ -628,7 +625,7 @@ typedef GT::GTL::Parser::token token;
 
 
 /* RegEx definitions */
-#line 632 "src/gt/gtl/scanner.cpp"
+#line 629 "src/gt/gtl/scanner.cpp"
 
 #define INITIAL 0
 #define block_comment 1
@@ -792,11 +789,11 @@ YY_DECL
 	register int yy_act;
     
 /* %% [7.0] user's declarations go here */
-#line 55 "f_n_b/scanner.ll"
+#line 52 "f_n_b/scanner.ll"
 
 
  /* Keywords and symbols definitions */
-#line 800 "src/gt/gtl/scanner.cpp"
+#line 797 "src/gt/gtl/scanner.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -921,95 +918,95 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 58 "f_n_b/scanner.ll"
+#line 55 "f_n_b/scanner.ll"
 { return (token::LET); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 59 "f_n_b/scanner.ll"
+#line 56 "f_n_b/scanner.ll"
 { return (token::BE); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 60 "f_n_b/scanner.ll"
+#line 57 "f_n_b/scanner.ll"
 { return (token::PLAYER); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 61 "f_n_b/scanner.ll"
+#line 58 "f_n_b/scanner.ll"
 { return (token::GAME); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 62 "f_n_b/scanner.ll"
+#line 59 "f_n_b/scanner.ll"
 { return (token::PURE); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 63 "f_n_b/scanner.ll"
+#line 60 "f_n_b/scanner.ll"
 { return (token::MIXED); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 64 "f_n_b/scanner.ll"
+#line 61 "f_n_b/scanner.ll"
 { return (token::TREE); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 65 "f_n_b/scanner.ll"
+#line 62 "f_n_b/scanner.ll"
 { return (token::WITH); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 66 "f_n_b/scanner.ll"
+#line 63 "f_n_b/scanner.ll"
 { return (token::SUCH); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 67 "f_n_b/scanner.ll"
+#line 64 "f_n_b/scanner.ll"
 { return (token::AS); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 68 "f_n_b/scanner.ll"
+#line 65 "f_n_b/scanner.ll"
 { return (token::FIND); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 69 "f_n_b/scanner.ll"
+#line 66 "f_n_b/scanner.ll"
 { return (token::FOR); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 70 "f_n_b/scanner.ll"
+#line 67 "f_n_b/scanner.ll"
 { return (token::CHOOSE); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 71 "f_n_b/scanner.ll"
+#line 68 "f_n_b/scanner.ll"
 { return (token::EQUAL); }
 	YY_BREAK
 { return (token::LCBR); }
 { return (token::RCBR); }
 case 15:
 YY_RULE_SETUP
-#line 74 "f_n_b/scanner.ll"
+#line 71 "f_n_b/scanner.ll"
 { return (token::COLON); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 75 "f_n_b/scanner.ll"
+#line 72 "f_n_b/scanner.ll"
 { return (token::COMA); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 76 "f_n_b/scanner.ll"
+#line 73 "f_n_b/scanner.ll"
 { return (token::EOC); }
 	YY_BREAK
 /* Numbers definitions */
 case 18:
 YY_RULE_SETUP
-#line 79 "f_n_b/scanner.ll"
+#line 76 "f_n_b/scanner.ll"
 {
         yylval->number = new NumberPtr(new Number(yytext));
         return (token::number);
@@ -1018,7 +1015,7 @@ YY_RULE_SETUP
 /* Identifiers */
 case 19:
 YY_RULE_SETUP
-#line 85 "f_n_b/scanner.ll"
+#line 82 "f_n_b/scanner.ll"
 {
         yylval->identifier = new IdentifierPtr(new Identifier(yytext));
         return (token::identifier);
@@ -1027,53 +1024,53 @@ YY_RULE_SETUP
 /* Block comments */
 case 20:
 YY_RULE_SETUP
-#line 91 "f_n_b/scanner.ll"
+#line 88 "f_n_b/scanner.ll"
 { BEGIN(block_comment); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 92 "f_n_b/scanner.ll"
+#line 89 "f_n_b/scanner.ll"
 { BEGIN(0); }
 	YY_BREAK
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 93 "f_n_b/scanner.ll"
+#line 90 "f_n_b/scanner.ll"
 { /* Remove block comment content */ }
 	YY_BREAK
 /* Inline comments */
 case 23:
 YY_RULE_SETUP
-#line 96 "f_n_b/scanner.ll"
+#line 93 "f_n_b/scanner.ll"
 { BEGIN(inline_comment); }
 	YY_BREAK
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 97 "f_n_b/scanner.ll"
+#line 94 "f_n_b/scanner.ll"
 { /* Don't end comment with \ symbol at the end of line */ }
 	YY_BREAK
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 98 "f_n_b/scanner.ll"
+#line 95 "f_n_b/scanner.ll"
 { BEGIN(0); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 99 "f_n_b/scanner.ll"
+#line 96 "f_n_b/scanner.ll"
 { /* Remove inline comment content */ }
 	YY_BREAK
 /* White spaces and errors */
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 102 "f_n_b/scanner.ll"
+#line 99 "f_n_b/scanner.ll"
 { /* Removes white chars */ }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 103 "f_n_b/scanner.ll"
+#line 100 "f_n_b/scanner.ll"
 {
         yylval->identifier = new IdentifierPtr(new Identifier(yytext));
         return (token::parser_error);
@@ -1081,10 +1078,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 108 "f_n_b/scanner.ll"
+#line 105 "f_n_b/scanner.ll"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1088 "src/gt/gtl/scanner.cpp"
+#line 1085 "src/gt/gtl/scanner.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(block_comment):
 case YY_STATE_EOF(inline_comment):
@@ -2142,7 +2139,7 @@ void yyfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 108 "f_n_b/scanner.ll"
+#line 105 "f_n_b/scanner.ll"
 
 
 

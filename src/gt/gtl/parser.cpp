@@ -635,6 +635,13 @@ namespace GT { namespace GTL {
     { driver.executeQuery((yysemantic_stack_[(2) - (1)].query)); }
     break;
 
+  case 4:
+
+/* Line 690 of lalr1.cc  */
+#line 150 "f_n_b/parser.yy"
+    {}
+    break;
+
   case 5:
 
 /* Line 690 of lalr1.cc  */
@@ -855,7 +862,7 @@ namespace GT { namespace GTL {
 
 
 /* Line 690 of lalr1.cc  */
-#line 859 "src/gt/gtl/parser.cpp"
+#line 866 "src/gt/gtl/parser.cpp"
 	default:
           break;
       }
@@ -1309,7 +1316,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 1136 of lalr1.cc  */
-#line 1313 "src/gt/gtl/parser.cpp"
+#line 1320 "src/gt/gtl/parser.cpp"
 
 
 /* Line 1138 of lalr1.cc  */
