@@ -24,7 +24,7 @@ public:
      * @param context context with values
      */
     virtual ObjectPtr getObject(
-        const Context& context
+        Context& context
     ) = 0;
 
     /**
@@ -33,7 +33,7 @@ public:
      * @param context context with values
      */
     virtual NumberPtr getValue(
-        const Context& context
+        Context& context
     ) = 0;
 }; /* END class Param */
 

@@ -73,13 +73,16 @@ scannerCpp           = env.CXXFile(source=scannerLLPath, target=scannerCppPath)
 
 # Builds GTL objects
 
-objectCppPath = source +gtl+'object.cpp'
-objectOPath   = objects+gtl+'object.o'
-paramCppPath  = source +gtl+'param.cpp'
-paramOPath    = objects+gtl+'param.o'
+objectCppPath       = source +gtl+'object.cpp'
+objectOPath         = objects+gtl+'object.o'
+paramCppPath        = source +gtl+'param.cpp'
+paramOPath          = objects+gtl+'param.o'
+paramFactoryCppPath = source +gtl+'param_factory.cpp'
+paramFactoryOPath   = objects+gtl+'param_factory.o'
 
-objectO = env.Object(source=objectCppPath, target=objectOPath)
-paramO  = env.Object(source=paramCppPath,  target=paramOPath)
+objectO        = env.Object(source=objectCppPath,       target=objectOPath)
+paramO         = env.Object(source=paramCppPath,        target=paramOPath)
+paramFactoryO  = env.Object(source=paramFactoryCppPath, target=paramFactoryOPath)
 
 parserOPath  = objects+gtl+'parser.o'
 scannerOPath = objects+gtl+'scanner.o'

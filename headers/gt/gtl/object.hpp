@@ -52,7 +52,7 @@ public:
      * @return          true if Object responds to such property 
      */
     bool respondsTo(
-        const Identifier propertyName
+        const Identifier& propertyName
     );
 
     /**
@@ -64,8 +64,8 @@ public:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     ResultPtr findProperty(
-        const Context&   context,
-        const Identifier propertyName
+        const Context&    context,
+        const Identifier& propertyName
     );
 
     /**
@@ -78,7 +78,7 @@ public:
      */
     ResultPtr findPropertyWithConditions(
         const Context&    context,
-        const Identifier  propertyName,
+        const Identifier& propertyName,
         const Conditions& conditions
     );
 

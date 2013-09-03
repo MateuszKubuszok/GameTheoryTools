@@ -50,8 +50,8 @@ public:
      * @return           reference to context for chaining
      */
     Context& registerObject(
-        const IdentifierPtr identifier,
-        const ObjectPtr     object
+        IdentifierPtr identifier,
+        ObjectPtr     object
     );
 
     /**
@@ -61,7 +61,7 @@ public:
      * @return           reference to context for chaining
      */
     Context& registerObject(
-        const DefinitionPtr definition
+        Definition& definition
     );
 
     /**
@@ -71,7 +71,7 @@ public:
      * @return           value to retur
      */
     ObjectPtr getObject(
-        const IdentifierPtr identifier
+        Identifier& identifier
     );
 
     /**
@@ -79,11 +79,11 @@ public:
      *
      * If Object is not a Param then exception will be thrown.
      *
-     * @param param param to obtain
-     * @return      value to retur
+     * @param identifier param to obtain
+     * @return           value to retur
      */
     ParamPtr getParam(
-        const ParamPtr param
+        Identifier& identifier
     );
 }; /* END class Context */
 

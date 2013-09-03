@@ -65,6 +65,7 @@ typedef Model::ResultFactory                          ResultFactory;
 #include "gt/gtl/game.hpp"
 #include "gt/gtl/query.hpp"
 #include "gt/gtl/param.hpp"
+#include "gt/gtl/param_factory.hpp"
 #include "gt/gtl/player.hpp"
 
 /* Includes GTL parsers elements */

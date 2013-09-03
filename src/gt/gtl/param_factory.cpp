@@ -9,20 +9,69 @@ namespace GTL {
 
 boost::mutex paramFactoryMutex;
 
-class ValueParam;
-class IdentifierParam;
+////////////////////////////////////////////////////////////////////////////////
+
+class IdentifierParam : public Param {
+    Identifier identifier;
+
+public:
+    IdentifierParam(
+        Identifier& id
+    ) :
+        identifier(id)
+        {}
+
+    virtual ObjectPtr getObject(
+        Context& context
+    ) {
+        return (*context.getParam(identifier)).getObject(context);
+    }
+
+    virtual NumberPtr getValue(
+        Context& context
+    ) {
+        return (*context.getParam(identifier)).getValue(context);
+    }
+}; /* END class IdentifierParam */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class ValueParam : public Param {
+    NumberPtr value;
+
+public:
+    ValueParam(
+        NumberPtr number
+    ) :
+        value(number)
+        {}
+
+    virtual ObjectPtr getObject(
+        Context& context
+    ) {
+        throw std::invalid_argument("Cannot obatin object for value param");
+    }
+
+    virtual NumberPtr getValue(
+        Context& context
+    ) {
+        return value;
+    }
+}; /* END class ValueParam */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // class ParamFactory {
+ParamFactory* volatile ParamFactory::instance = 0;
+
 // public:
-static ParamFactory& ParamFactory::getInstance() {
+ParamFactory& ParamFactory::getInstance() {
     // Singleton implemented according to:
     // "C++ and the Perils of Double-Checked Locking"
     // but without executing constructor inside getInstance() method
     // since it's an eyesore. 
     if (!instance) {
-        boost::mutex::scoped_lock lock;
+        boost::mutex::scoped_lock lock(paramFactoryMutex);
         if (!instance) {
             ParamFactory* volatile tmp = new ParamFactory();
             instance = tmp;
@@ -31,56 +80,21 @@ static ParamFactory& ParamFactory::getInstance() {
     return *instance;
 }
 
-Param ParamFactory::createParam(
+ParamFactory::ParamFactory() {}
+
+ParamPtr ParamFactory::createParam(
     Identifier& identifier
 ) {
-    return IdentifierParam(identifier);
+    return ParamPtr(new IdentifierParam(identifier));
 }
 
-Param ParamFactory::createParam(
+ParamPtr ParamFactory::createParam(
     Number& number
 ) {
-    return ValueParam(identifier);
+    NumberPtr value(new Number(number));
+    return ParamPtr(new ValueParam(value));
 }
 // }
-
-////////////////////////////////////////////////////////////////////////////////
-
-class IdentifierParam : Param {
-public:
-    IdentifierParam(
-        Identifier& id
-    ) :
-        identifier(id)
-        {}
-
-    Number getValue(
-        Context& context
-    ) {
-        return context.getParam(identifier).getValue(context);
-    }
-private:
-    Identifier identifier;
-} /* END class IdentifierParam */
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ValueParam : Param {
-public:
-    ValueParam(
-        Number& number
-    ) :
-        value(number)
-        {}
-
-    Number getValue(
-        Context& context
-    ) {
-        return value;
-    }
-private:
-    Number value;
-} /* END class ValueParam */
 
 ////////////////////////////////////////////////////////////////////////////////
 

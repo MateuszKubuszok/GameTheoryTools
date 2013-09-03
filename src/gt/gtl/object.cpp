@@ -63,21 +63,21 @@ bool Object::isValid() {
 }
 
 bool Object::respondsTo(
-    const Identifier propertyName
+    const Identifier& propertyName
 ) {
     return isPropertyRegistered(propertyName);
 }
 
 ResultPtr Object::findProperty(
-    const Context&   context,
-    const Identifier propertyName
+    const Context&    context,
+    const Identifier& propertyName
 ) {
     return findPropertyWithConditions(context, propertyName, noConditions);
 }
 
 ResultPtr Object::findPropertyWithConditions(
     const Context&    context,
-    const Identifier  propertyName,
+    const Identifier& propertyName,
     const Conditions& conditions
 ) {
     return getProperty(propertyName)->findForConditions(context, conditions);

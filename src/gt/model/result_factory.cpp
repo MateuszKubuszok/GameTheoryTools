@@ -9,22 +9,49 @@ namespace Model {
 
 boost::mutex resultFactoryMutex;
 
-class EmptyResult;
-class ConstResult;
+////////////////////////////////////////////////////////////////////////////////
+
+class EmptyResult : public Result {
+public:
+    EmptyResult() {}
+
+    Message getResult() {
+        return "";
+    }
+} /* END class EmptyString */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class ConstResult : public Result {
+    Message result;
+
+public:
+    ConstResult(const std::string &content) :
+        result(content)
+        {}
+
+    ~ConstResult() {
+        delete result;
+    }
+
+    Message getResult() {
+        return result;
+    }
+} /* END class ConstResult */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // class ResultFactory {
-ResultFactory ResultFactory::instance = 0;
+ResultFactory* volatile ResultFactory::instance = 0;
 
 // public:
-static ResultFactory& ResultFactory::getInstance() {
+ResultFactory& ResultFactory::getInstance() {
     // Singleton implemented according to:
     // "C++ and the Perils of Double-Checked Locking"
     // but without executing constructor inside getInstance() method
     // since it's an eyesore. 
     if (!instance) {
-        boost::mutex::scoped_lock lock;
+        boost::mutex::scoped_lock lock(resultFactoryMutex);
         if (!instance) {
             ResultFactory* volatile tmp = new ResultFactory();
             instance = tmp;
@@ -67,39 +94,10 @@ ResultFactory& ResultFactory::setIndentationMode(
 
 // private:
 ResultFactory::ResultFactory() {
-    builderMode = PLAIN;
+    builderMode     = PLAIN;
     indentationMode = INDENTED;
 }
 // }
-
-////////////////////////////////////////////////////////////////////////////////
-
-class EmptyResult : public Result {
-public:
-    std::string getResult() {
-        return "";
-    }
-} /* END class EmptyString */
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ConstResult : public Result {
-public:
-    ConstResult(const std::string &content) :
-        result(content)
-        {}
-
-    ~ConstResult() {
-        delete result;
-    }
-
-    std::string getResult() {
-        return result;
-    }
-
-private:
-    const std::string result; 
-} /* END class ConstResult */
 
 ////////////////////////////////////////////////////////////////////////////////
 

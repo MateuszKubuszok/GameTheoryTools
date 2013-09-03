@@ -1,7 +1,7 @@
 #ifndef __GT_GTL_PARAM_FACTORY_HPP__
 #define __GT_GTL_PARAM_FACTORY_HPP__
 
-#include "gt/gtl/param_factory.hpp"
+#include "gt/gtl/common.hpp"
 
 namespace GT {
 namespace GTL {
@@ -15,7 +15,7 @@ class ParamFactory {
     /**
      * @brief Contains pointer to a ParamFactory instance.
      */
-    static ParamFactory volatile *instance = 0;
+    static ParamFactory* volatile instance;
 
 public:
     /**
@@ -32,7 +32,7 @@ public:
      * @return           Param instance
      */
     ParamPtr createParam(
-        const IdentifierPtr identifier
+        Identifier& identifier
     );
 
     /**
@@ -42,7 +42,7 @@ public:
      * @return       Param instance
      */
     ParamPtr createParam(
-        const NumberPtr number
+        Number& number
     );
 private:
     /**
