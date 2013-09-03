@@ -56,7 +56,7 @@ public:
      * @return        Result with constant content
      */
     ResultPtr constResult(
-        const std::string& content
+        const Message& content
     );
 
     /**

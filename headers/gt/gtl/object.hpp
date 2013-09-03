@@ -7,12 +7,7 @@ namespace GT {
 namespace GTL {
 
 /* Class declarations */
-class Object;
 class ObjectProperty;
-class ObjectKnownProperties;
-
-/* Definitions */
-typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
 
 /**
  * @brief Root of all objects used as a data in parsed by GTL.
@@ -20,9 +15,6 @@ typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
  * @author Mateusz Kubuszok
  */
 class Object {
-    /* Friends declarations */
-    friend ObjectKnownProperties;
-
     /**
      * @brief Used for queries without conditions.
      */
@@ -31,9 +23,14 @@ class Object {
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
-    const boost::container::map<Identifier, ObjectProperty*> registeredProperties;
+    boost::container::map<Identifier, ObjectProperty*> registeredProperties;
 
 public:
+    /**
+     * @brief Default constructor.
+     */
+    Object();
+
     /**
      * @brief Object's destructor.
      *
@@ -55,7 +52,7 @@ public:
      * @return          true if Object responds to such property 
      */
     bool respondsTo(
-        const IdentifierPtr propertyName
+        const Identifier propertyName
     );
 
     /**
@@ -66,9 +63,9 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result* findProperty(
-        const Context&      context,
-        const IdentifierPtr propertyName
+    ResultPtr findProperty(
+        const Context&   context,
+        const Identifier propertyName
     );
 
     /**
@@ -79,10 +76,10 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    Result* findPropertyWithConditions(
-        const Context&      context,
-        const IdentifierPtr propertyName,
-        const ConditionsPtr conditions
+    ResultPtr findPropertyWithConditions(
+        const Context&    context,
+        const Identifier  propertyName,
+        const Conditions& conditions
     );
 
 protected:
@@ -93,7 +90,7 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        const IdentifierPtr propertyName
+        Identifier propertyName
     );
 
     /**
@@ -104,7 +101,7 @@ protected:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     ObjectProperty* getProperty(
-        const IdentifierPtr propertyName
+        Identifier propertyName
     );
 
     /**
@@ -114,8 +111,8 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        const IdentifierPtr     propertyName,
-        const ObjectPropertyPtr property
+        Identifier      propertyName,
+        ObjectProperty* property
     );
 }; /* END class Object */
 
@@ -125,9 +122,6 @@ protected:
  * @author Mateusz Kubuszok
  */
 class ObjectProperty {
-    /* Friends declarations */
-    friend Object;
-
 public:
     /**
      * @brief Finds results for given conditions.
@@ -137,41 +131,10 @@ public:
      * @result            search result
      */
     virtual ResultPtr findForConditions(
-        const Context&      context,
-        const ConditionsPtr conditions
+        const Context&    context,
+        const Conditions& conditions
     ) = 0;
-
-protected:
-    /**
-     * @brief Constructor locked for all classes except Object (which can create it in its own constructor). 
-     */
-    ObjectProperty() {}
 }; /* END class ObjectProperty */
-
-/**
- * @brief Lists all known properties of an Object.
- *
- * @author Mateusz Kubuszok
- */
-class ObjectKnownProperties : ObjectProperty {
-    /* Friends declarations */
-    friend Object;
-
-    /**
-     * @brief Described Object.
-     */
-    const ObjectPtr object;
-
-private:
-    /**
-     * @brief Hidden constructor.
-     * 
-     * @param describedObject described Object
-     */
-    ObjectKnownProperties(
-        const ObjectPtr describedObject
-    );
-}; /* END class ObjectKnownProperties */
 
 } /* END namespace GTL */
 } /* END namespace GT */

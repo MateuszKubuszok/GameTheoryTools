@@ -49,6 +49,7 @@ typedef boost::shared_ptr<Params>                     ParamsPtr;
 
 typedef Model::Result                                 Result;
 typedef Model::ResultPtr                              ResultPtr;
+typedef Model::ResultFactory                          ResultFactory;
 
 } /* END namespace GTL */
 } /* END namespace GT */

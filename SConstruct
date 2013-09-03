@@ -71,7 +71,12 @@ scannerCpp           = env.CXXFile(source=scannerLLPath, target=scannerCppPath)
 
 ################################################################################
 
-# Builds parser and scanner objects
+# Builds GTL objects
+
+objectCppPath = source+gtl+'object.cpp'
+objectOPath   = objects+gtl+'object.o'
+
+objectO = env.Object(source=objectCppPath, target=objectOPath)
 
 parserOPath  = objects+gtl+'parser.o'
 scannerOPath = objects+gtl+'scanner.o'

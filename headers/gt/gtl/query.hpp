@@ -18,7 +18,7 @@ public:
      *
      * @param context Context with definitions
      */
-    virtual Result* execute(
+    virtual ResultPtr execute(
         Context& context
     );
 }; /* END class Game */

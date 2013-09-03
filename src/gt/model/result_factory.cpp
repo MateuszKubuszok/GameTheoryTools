@@ -4,15 +4,19 @@
 
 namespace GT {
 namespace Model {
+    
+////////////////////////////////////////////////////////////////////////////////
 
 boost::mutex resultFactoryMutex;
 
 class EmptyResult;
 class ConstResult;
 
-ResultFactory ResultFactory::instance = 0;
+////////////////////////////////////////////////////////////////////////////////
 
 // class ResultFactory {
+ResultFactory ResultFactory::instance = 0;
+
 // public:
 static ResultFactory& ResultFactory::getInstance() {
     // Singleton implemented according to:
@@ -29,14 +33,14 @@ static ResultFactory& ResultFactory::getInstance() {
     return *instance;
 }
 
-Result ResultFactory::constResult(
-    const std::string &content
+ResultPtr ResultFactory::constResult(
+    const Message& content
 ) {
-    return ConstResult(content);
+    return ResultPtr(new ConstResult(content));
 }
 
-Result ResultFactory::emptyResult() {
-    return EmptyResult();
+ResultPtr ResultFactory::emptyResult() {
+    return ResultPtr(new EmptyResult());
 }
 
 ResultBuilderMode ResultFactory::getBuilderMode() {
@@ -68,12 +72,16 @@ ResultFactory::ResultFactory() {
 }
 // }
 
+////////////////////////////////////////////////////////////////////////////////
+
 class EmptyResult : public Result {
 public:
     std::string getResult() {
         return "";
     }
 } /* END class EmptyString */
+
+////////////////////////////////////////////////////////////////////////////////
 
 class ConstResult : public Result {
 public:
@@ -92,6 +100,8 @@ public:
 private:
     const std::string result; 
 } /* END class ConstResult */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

@@ -4,6 +4,7 @@
 /* Include standard libraries */
 #include <stdexcept>
 #include <string>
+#include <utility>
 
 /* Includes boost libraries */
 #include <boost/shared_ptr.hpp>
@@ -16,6 +17,8 @@
 namespace GT {
 
 /* Shortens comonly used names */
+typedef std::string                          Message;
+typedef boost::shared_ptr<Message>           MessagePtr;
 typedef std::string                          Identifier;
 typedef boost::shared_ptr<Identifier>        IdentifierPtr;
 typedef boost::container::vector<Identifier> Identifiers;
