@@ -29,7 +29,7 @@ class ResultFactory {
     /**
      * @brief Contains pointer to a ResultFactory instance.
      */
-    static ResultFactory volatile *instance;
+    static ResultFactory* volatile instance;
 
     /**
      * @brief Contains current Builder Mode setting.

@@ -57,6 +57,15 @@ conf.Finish()
 
 ################################################################################
 
+# Build models
+
+resultFactoryCppPath = source +model+'result_factory.cpp'
+resultFactoryOPath   = objects+model+'result_factory.o'
+
+resultFactoryO = env.Object(source=resultFactoryCppPath, target=resultFactoryOPath)
+
+################################################################################
+
 # Builds parser and scanner classes
 
 parserYYPath   = fnb        +'parser.yy'

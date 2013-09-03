@@ -11,33 +11,29 @@ boost::mutex resultFactoryMutex;
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class ConstResult : public Result {
+    Message result;
+
+public:
+    ConstResult(const Message &content) :
+        result(content)
+        {}
+
+    Message getResult() {
+        return result;
+    }
+}; /* END class ConstResult */
+
+////////////////////////////////////////////////////////////////////////////////
+
 class EmptyResult : public Result {
 public:
     EmptyResult() {}
 
     Message getResult() {
-        return "";
+        return Message("");
     }
-} /* END class EmptyString */
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ConstResult : public Result {
-    Message result;
-
-public:
-    ConstResult(const std::string &content) :
-        result(content)
-        {}
-
-    ~ConstResult() {
-        delete result;
-    }
-
-    Message getResult() {
-        return result;
-    }
-} /* END class ConstResult */
+}; /* END class EmptyString */
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -95,7 +91,7 @@ ResultFactory& ResultFactory::setIndentationMode(
 // private:
 ResultFactory::ResultFactory() {
     builderMode     = PLAIN;
-    indentationMode = INDENTED;
+    indentationMode = TABS;
 }
 // }
 

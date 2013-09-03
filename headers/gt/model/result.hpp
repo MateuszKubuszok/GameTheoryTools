@@ -21,7 +21,7 @@ public:
      *
      * @return string with result
      */ 
-    virtual MessagePtr getResult() = 0;
+    virtual Message getResult() = 0;
 }; /* END class Result */
 
 } /* END namespace Model */
