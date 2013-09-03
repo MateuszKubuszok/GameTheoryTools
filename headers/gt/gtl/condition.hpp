@@ -23,7 +23,9 @@ public:
      *
      * @param query query to parametrize
      */
-    // virtual void conditionQuery(Query &query) = 0;
+    virtual void conditionQuery(
+        Query& query
+    ) = 0;
 }; /* END class Condition */
 
 } /* END namepsace GTL */

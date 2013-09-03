@@ -76,49 +76,56 @@ public:
         const ParamsPtr params
     );
 
+    /**
+     * @brief Add position to known coordinates.
+     *
+     * @param player   player (dimension)
+     * @param strategy strategy (position on dimension)
+     * @return         reference to itself
+     */
     Coordinate& addPosition(
         const Identifier& player,
         const Identifier& strategy
     );
 
     /**
-     * @brief
+     * @brief Adds SubCoordinate.
      *
-     * @param
-     * @return
+     * @param subCoordinate SubCoordinate
+     * @return              reference to itself
      */
     Coordinate& addSubCoordinates(
         const Coordinate& subCoordinate
     );
 
     /**
-     * @brief
+     * @brief Adds SubCoordinates.
      *
-     * @param
-     * @return
+     * @param subCoordinates SubCoordinate
+     * @return               reference to itself
      */
     Coordinate& addSubCoordinates(
-        const Coordinates& subCoordinate
+        const Coordinates& subCoordinates
     );
 
     /**
-     * @brief
+     * @brief Obtains params.
      *
-     * @return
+     * @return Params
      */
     Params getParams();
 
      /**
-     * @brief
+     * @brief Obtains Positions.
      *
-     * @return
+     * @return Positions
      */
     Positions getPositions();
 
     /**
-     * @brief
+     * @brief Obtain SubCoordinates.
      *
-     * @return
+     * @return SubCoordinates
      */
     Coordinates getSubCoordinates();
 }; /* END class Coordinate */
