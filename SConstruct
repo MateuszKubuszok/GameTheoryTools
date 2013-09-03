@@ -20,26 +20,36 @@ validInstallation = True
 
 # C++ check
 if not conf.CheckCXX():
-    print('Your Environment/C++ compiler is not configured installed correctly!!')
+    print('Your Environment/C++ compiler is not configured/installed correctly!!')
     validInstallation = False
 
 # Header check
 for header in [
+    # standard libraries
     'iostream', 'fstream', 'cstdlib',
+    # boost libraries
     'boost/shared_ptr.hpp',
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
     'boost/thread/mutex.hpp',
+    # Flex library
     'FlexLexer.h',
+    # GNU MultiPrecision library
     'gmpxx.h',
 ]:
     if not conf.CheckCXXHeader(header):
-        print('Your environment does not seem to have header '+header+'!!')
+        print('Your environment does not seem to have header <'+header+'>!!')
         validInstallation = False
 
 if not validInstallation:
     Exit(1)
 
+# Adds headers dirs:
+# - headers/ - public headers directory,
+# - headers/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
+#   (poor custom path definitions),
+# - src/gt/gtl - added for using location.hh, position.hh and stack.hh
+#   in GT::GTL::Parser (as above).
 conf.env.Append(CPPPATH=[headers, headers+gtl, source+gtl])
 
 conf.Finish()
@@ -49,22 +59,22 @@ conf.Finish()
 
 # Builds parser and scanner classes
 
-parserYY   = fnb+'parser.yy'
-parserCpp  = source+gtl+'parser.cpp'
-parserHpp  = headers+gtl+'parser.hpp'
-scannerLL  = fnb+'scanner.ll'
-scannerCpp = source+gtl+'scanner.cpp'
+parserYYPath   = fnb+'parser.yy'
+parserCppPath  = source+gtl+'parser.cpp'
+parserHppPath  = headers+gtl+'parser.hpp'
+scannerLLPath  = fnb+'scanner.ll'
+scannerCppPath = source+gtl+'scanner.cpp'
 
-env.Append(YACCFLAGS='--defines='+parserHpp)
-parserCppBuilder, parserHppBuilder = env.CXXFile(source=parserYY,  target=parserCpp)
-scannerCppBuilder                  = env.CXXFile(source=scannerLL, target=scannerCpp)
+env.Append(YACCFLAGS='--defines='+parserHppPath)
+parserCpp, parserHpp = env.CXXFile(source=parserYYPath,  target=parserCppPath)
+scannerCpp           = env.CXXFile(source=scannerLLPath, target=scannerCppPath)
 
 ################################################################################
 
 # Builds parser and scanner objects
 
-parserO  = objects+gtl+'parser.o'
-scannerO = objects+gtl+'scanner.o'
+parserOPath  = objects+gtl+'parser.o'
+scannerOPath = objects+gtl+'scanner.o'
 
-parserObject  = env.Object(source=parserCppBuilder,  target=parserO)
-scannerObject = env.Object(source=scannerCppBuilder, target=scannerO)
+parserO  = env.Object(source=parserCpp,  target=parserOPath)
+scannerO = env.Object(source=scannerCpp, target=scannerOPath)
