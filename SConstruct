@@ -59,11 +59,11 @@ conf.Finish()
 
 # Builds parser and scanner classes
 
-parserYYPath   = fnb+'parser.yy'
-parserCppPath  = source+gtl+'parser.cpp'
+parserYYPath   = fnb        +'parser.yy'
+parserCppPath  = source +gtl+'parser.cpp'
 parserHppPath  = headers+gtl+'parser.hpp'
-scannerLLPath  = fnb+'scanner.ll'
-scannerCppPath = source+gtl+'scanner.cpp'
+scannerLLPath  = fnb        +'scanner.ll'
+scannerCppPath = source +gtl+'scanner.cpp'
 
 env.Append(YACCFLAGS='--defines='+parserHppPath)
 parserCpp, parserHpp = env.CXXFile(source=parserYYPath,  target=parserCppPath)
@@ -73,10 +73,13 @@ scannerCpp           = env.CXXFile(source=scannerLLPath, target=scannerCppPath)
 
 # Builds GTL objects
 
-objectCppPath = source+gtl+'object.cpp'
+objectCppPath = source +gtl+'object.cpp'
 objectOPath   = objects+gtl+'object.o'
+paramCppPath  = source +gtl+'param.cpp'
+paramOPath    = objects+gtl+'param.o'
 
 objectO = env.Object(source=objectCppPath, target=objectOPath)
+paramO  = env.Object(source=paramCppPath,  target=paramOPath)
 
 parserOPath  = objects+gtl+'parser.o'
 scannerOPath = objects+gtl+'scanner.o'

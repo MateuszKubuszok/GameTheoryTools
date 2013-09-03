@@ -14,6 +14,11 @@ namespace GTL {
 class Param : public virtual Object {
 public:
     /**
+     * @brief Default constructor.
+     */
+    Param();
+
+    /**
      * @brief Returns value for context.
      *
      * @param context context with values

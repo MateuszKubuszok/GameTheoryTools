@@ -15,7 +15,7 @@ public:
         const Context&    context,
         const Conditions& conditions
     ) {
-        return ResultFactory::getInstance().constResult("Object");
+        return ResultFactory::getInstance().constResult(Message("Object"));
     }
 }; /* END class ObjectType */
 
@@ -36,7 +36,7 @@ public:
         const Conditions& conditions
     ) {
         // TODO: create ResultBuilder that fills it up
-        return ResultFactory::getInstance().constResult(Message("TODO"));;
+        return ResultFactory::getInstance().constResult(Message("TODO"));
     }
 }; /* END class ObjectKnownProperties */
 
@@ -52,6 +52,7 @@ Object::Object() :
 }
 
 Object::~Object() {
+    // TODO
     // BOOST_FOREACH(std::pair<Identifier, ObjectProperty*> propertyPair, registeredProperties) {
     //     delete propertyPair->second_type;
     // };

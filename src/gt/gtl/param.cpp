@@ -3,50 +3,51 @@
 namespace GT {
 namespace GTL {
 
-class ParamTypeProperty;
-class ParamValueProperty;
+////////////////////////////////////////////////////////////////////////////////
+
+class ParamTypeProperty : public ObjectProperty {
+public:
+    ParamTypeProperty() {}
+
+    virtual ResultPtr findForConditions(
+        const Context&    context,
+        const Conditions& conditions
+    ) {
+        return ResultFactory::getInstance().constResult(Message("Param"));
+    }
+}; /* END class ParamTypeProperty */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class ParamValueProperty : public ObjectProperty {
+    Param* param;
+    
+public: 
+    ParamValueProperty(
+        Param* owner
+    ) :
+        param(owner)
+        {}
+ 
+    virtual ResultPtr findForConditions(
+        const Context&    context,
+        const Conditions& conditions
+    ) {
+        // TODO: create ResultBuilder that fills it up
+        // make use oh param.getValue(context)
+        return ResultFactory::getInstance().constResult(Message("TODO"));
+    }
+}; /* END class ParamTypeProperty */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // class Param
 // public:
 Param::Param() {
-    registerProperty("value", ParamValueProperty(this));
-    registerProperty("type", ParamTypeProperty());
+    registerProperty(Identifier("value"), dynamic_cast<ObjectProperty*>(new ParamValueProperty(this)));
+    registerProperty(Identifier("type"),  dynamic_cast<ObjectProperty*>(new ParamTypeProperty()));
 }
 // }
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ParamTypeProperty : public ObjectProperty {
-public: 
-    Result findPropertyWithConditions(
-        Context&    context,
-        Conditions& conditions
-    ) {
-        return ResultFactory::getInstance().constResult("Param");
-    }
-    
-private:
-    Param& param;
-} /* END class ParamTypeProperty */
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ParamValueProperty : public ObjectProperty {
-public: 
-    Result findPropertyWithConditions(
-        Context&    context,
-        Conditions& conditions
-    ) {
-        // TODO: create ResultBuilder that fills it up
-        // make use oh param.getValue(context)
-        return ResultFactory::getInstance().constResult("TODO");
-    }
-    
-private:
-    Param& param;
-}; /* END class ParamTypeProperty */
 
 ////////////////////////////////////////////////////////////////////////////////
 
