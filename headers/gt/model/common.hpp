@@ -17,6 +17,8 @@
 namespace GT {
 
 /* Shortens comonly used names */
+typedef std::istream                         InputStream;
+typedef std::ostream                         OutputStream;
 typedef std::string                          Message;
 typedef boost::shared_ptr<Message>           MessagePtr;
 typedef std::string                          Identifier;
@@ -42,6 +44,7 @@ typedef boost::shared_ptr<Result> ResultPtr;
 } /* END namespace GT */
 
 /* Includes GT model headers */
+#include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
 #include "gt/model/result.hpp"
 #include "gt/model/result_factory.hpp"
