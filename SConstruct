@@ -2,7 +2,7 @@
 
 # Main directories
 fnb     = 'f_n_b/'
-headers = 'headers/'
+include = 'include/'
 source  = 'src/'
 objects = 'objects/'
 
@@ -46,12 +46,12 @@ if not validInstallation:
     Exit(1)
 
 # Adds headers dirs:
-# - headers/ - public headers directory,
-# - headers/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
+# - include/ - public include directory,
+# - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
 #   (poor custom path definitions),
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
-conf.env.Append(CPPPATH=[headers, headers+gtl, source+gtl])
+conf.env.Append(CPPPATH=[include, include+gtl, source+gtl])
 
 conf.Finish()
 # End of Environment configuration
@@ -75,7 +75,7 @@ resultFactoryO = env.Object(source=resultFactoryCppPath, target=resultFactoryOPa
 
 parserYYPath   = fnb        +'parser.yy'
 parserCppPath  = source +gtl+'parser.cpp'
-parserHppPath  = headers+gtl+'parser.hpp'
+parserHppPath  = include+gtl+'parser.hpp'
 scannerLLPath  = fnb        +'scanner.ll'
 scannerCppPath = source +gtl+'scanner.cpp'
 
