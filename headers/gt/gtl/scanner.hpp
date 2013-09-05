@@ -4,8 +4,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "gt/gtl/common.hpp"
-
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif /* END ! defined(yyFlexLexerOnce) */

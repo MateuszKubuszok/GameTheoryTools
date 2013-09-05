@@ -59,9 +59,13 @@ conf.Finish()
 
 # Build models
 
+rootCppPath = source +model+'root.cpp'
+rootOPath   = objects+model+'root.o'
+
 resultFactoryCppPath = source +model+'result_factory.cpp'
 resultFactoryOPath   = objects+model+'result_factory.o'
 
+rootO          = env.Object(source=rootCppPath,          target=rootOPath)
 resultFactoryO = env.Object(source=resultFactoryCppPath, target=resultFactoryOPath)
 
 ################################################################################

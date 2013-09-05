@@ -1,8 +1,6 @@
 #ifndef __GT_GTL_CONDITION_FACTORY_HPP__
 #define __GT_GTL_CONDITION_FACTORY_HPP__
 
-#include "gt/gtl/condition.hpp"
-
 namespace GT {
 namespace GTL {
 

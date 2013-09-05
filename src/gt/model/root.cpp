@@ -7,40 +7,40 @@ namespace Model {
 
 // class Root {
 
-static bool Root::debugMode = false;
+bool Root::debugMode = false;
 
-static unsigned int Root::allocations = 0;
+unsigned int Root::allocations = 0;
 
-static OutputStream& outputStream = std::cout;
+OutputStream* outputStream = &std::cout;
 
 // public:
 
-static bool getDebugMode() {
+bool Root::getDebugMode() {
     return debugMode;
 }
 
-static void setDebugMode(
+void Root::setDebugMode(
     bool newDebugMode
 ) {
     debugMode = newDebugMode;
 }
 
-static void setOutputStream(
+void Root::setOutputStream(
     OutputStream& newOutputStream
 ) {
-    outputStream = newOutputStream;
+    outputStream = &newOutputStream;
 }
 
 Root::Root() :
     rootID(++allocations)
 {
     if (debugMode)
-        outputStream << "Allocated id:" << rootID << std::endl;
+        *outputStream << "Allocated id:" << rootID << std::endl;
 }
 
 Root::~Root() {
     if (debugMode)
-        outputStream << "Freed id:" << rootID << std::endl;
+        *outputStream << "Freed id:" << rootID << std::endl;
 }
 
 bool Root::isNull() {
@@ -69,7 +69,7 @@ OutputStream& operator<<(
     OutputStream& stream,
     Root&         root
 ) {
-    return stream << root.toStream();
+    return stream << root.toString();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

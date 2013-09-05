@@ -1,8 +1,6 @@
 #ifndef __GT_GTL_QUERY_HPP__
 #define __GT_GTL_QUERY_HPP__
 
-#include "gt/gtl/common.hpp"
-
 namespace GT {
 namespace GTL {
 

@@ -16,7 +16,7 @@
 
 namespace GT {
 
-/* Shortens comonly used names */
+/* Shortens commonly used names */
 typedef std::istream                         InputStream;
 typedef std::ostream                         OutputStream;
 typedef std::string                          Message;

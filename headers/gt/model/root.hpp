@@ -1,8 +1,6 @@
 #ifndef __GT_MODEL_ROOT_HPP__
 #define __GT_MODEL_ROOT_HPP__
 
-#include "gt/model/common.hpp"
-
 namespace GT {
 namespace Model {
 
@@ -63,7 +61,7 @@ class Root {
     /**
      * @brief OutputStream to print debug results. 
      */
-    static OutputStream& outputStream;
+    static OutputStream* outputStream;
     
     /**
      * @brief Current Root's ID for debug mode.

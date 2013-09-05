@@ -1,8 +1,6 @@
 #ifndef __GT_MODEL_PLAYER_HPP__
 #define __GT_MODEL_PLAYER_HPP__
 
-#include "gt/model/common.hpp"
-
 namespace GT {
 namespace Model {
 
