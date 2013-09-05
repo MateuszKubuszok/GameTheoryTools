@@ -60,46 +60,46 @@ conf.Finish()
 
 # Build models
 
-rootCppPath = source +model+'root.cpp'
-rootOPath   = objects+model+'root.o'
+Model_Root_cpp_URI = source +model+'root.cpp'
+Model_Root_o_URI   = objects+model+'root.o'
 
-resultFactoryCppPath = source +model+'result_factory.cpp'
-resultFactoryOPath   = objects+model+'result_factory.o'
+Model_ResultFactory_cpp_URI = source +model+'result_factory.cpp'
+Model_ResultFactory_o_URI   = objects+model+'result_factory.o'
 
-rootO          = env.Object(source=rootCppPath,          target=rootOPath)
-resultFactoryO = env.Object(source=resultFactoryCppPath, target=resultFactoryOPath)
+Model_Root_o          = env.Object(source=Model_Root_cpp_URI,          target=Model_Root_o_URI)
+Model_ResultFactory_o = env.Object(source=Model_ResultFactory_cpp_URI, target=Model_ResultFactory_o_URI)
 
 ################################################################################
 
 # Builds parser and scanner classes
 
-parserYYPath   = fnb        +'parser.yy'
-parserCppPath  = source +gtl+'parser.cpp'
-parserHppPath  = include+gtl+'parser.hpp'
-scannerLLPath  = fnb        +'scanner.ll'
-scannerCppPath = source +gtl+'scanner.cpp'
+FnB_Parser_yy_URI   = fnb        +'parser.yy'
+GTL_Parser_cpp_URI  = source +gtl+'parser.cpp'
+GTL_Parser_hpp_URI  = include+gtl+'parser.hpp'
+FnB_Scanner_ll_URI  = fnb        +'scanner.ll'
+GTL_Scanner_cpp_URI = source +gtl+'scanner.cpp'
 
-env.Append(YACCFLAGS='--defines='+parserHppPath)
-parserCpp, parserHpp = env.CXXFile(source=parserYYPath,  target=parserCppPath)
-scannerCpp           = env.CXXFile(source=scannerLLPath, target=scannerCppPath)
+env.Append(YACCFLAGS='--defines='+GTL_Parser_hpp_URI)
+GTL_Parser_cpp, GTL_Parser_hpp = env.CXXFile(source=FnB_Parser_yy_URI,  target=GTL_Parser_cpp_URI)
+GTL_Scanner_cpp                = env.CXXFile(source=FnB_Scanner_ll_URI, target=GTL_Scanner_cpp_URI)
 
 ################################################################################
 
 # Builds GTL objects
 
-objectCppPath       = source +gtl+'object.cpp'
-objectOPath         = objects+gtl+'object.o'
-paramCppPath        = source +gtl+'param.cpp'
-paramOPath          = objects+gtl+'param.o'
-paramFactoryCppPath = source +gtl+'param_factory.cpp'
-paramFactoryOPath   = objects+gtl+'param_factory.o'
+GTL_Object_cpp_URI       = source +gtl+'object.cpp'
+GTL_Object_o_URI         = objects+gtl+'object.o'
+GTL_Param_cpp_URI        = source +gtl+'param.cpp'
+GTL_Param_o_URI          = objects+gtl+'param.o'
+GTL_ParamFactory_cpp_URI = source +gtl+'param_factory.cpp'
+GTL_ParamFactory_o_URI   = objects+gtl+'param_factory.o'
 
-objectO        = env.Object(source=objectCppPath,       target=objectOPath)
-paramO         = env.Object(source=paramCppPath,        target=paramOPath)
-paramFactoryO  = env.Object(source=paramFactoryCppPath, target=paramFactoryOPath)
+GTL_Object_o        = env.Object(source=GTL_Object_cpp_URI,       target=GTL_Object_o_URI)
+GTL_Param_o         = env.Object(source=GTL_Param_cpp_URI,        target=GTL_Param_o_URI)
+GTL_ParamFactory_o  = env.Object(source=GTL_ParamFactory_cpp_URI, target=GTL_ParamFactory_o_URI)
 
-parserOPath  = objects+gtl+'parser.o'
-scannerOPath = objects+gtl+'scanner.o'
+GTL_Parser_o_URI  = objects+gtl+'parser.o'
+GTL_Scanner_o_URI = objects+gtl+'scanner.o'
 
-parserO  = env.Object(source=parserCpp,  target=parserOPath)
-scannerO = env.Object(source=scannerCpp, target=scannerOPath)
+GTL_Parser_o  = env.Object(source=GTL_Parser_cpp,  target=GTL_Parser_o_URI)
+GTL_Scanner_o = env.Object(source=GTL_Scanner_cpp, target=GTL_Scanner_o_URI)
