@@ -56,7 +56,7 @@ private:
     ~ConditionFactory();
 }; /* END class ConditionFactory */
 
-} /* END namepsace GTL */
-} /* END namspace GT */
+} /* END namespace GTL */
+} /* END namespace GT */
 
 #endif /* END #ifndef __GT_GTL_CONDITION_FACTORY_HPP__ */

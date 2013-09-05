@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Defines Game.
  *
@@ -26,7 +28,33 @@ public:
      * @result Query results
      */
     virtual Message getResult();
-}; /* END class Game */
+}; /* END class Query */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Query for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullQuery : public virtual Query {
+public:
+    virtual ResultPtr execute(
+        Context& context
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message getResult() {
+        return Message("NullQuery");
+    }
+}; /* END class NullQuery */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

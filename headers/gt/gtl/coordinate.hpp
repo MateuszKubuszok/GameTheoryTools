@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Contains some coordinate as well as data boind to it.
  *
@@ -60,7 +62,7 @@ public:
      * @param param single Param
      * @return      reference to itself
      */
-    Coordinate& addParams(
+    virtual Coordinate& addParams(
         const ParamPtr param
     );
 
@@ -70,7 +72,7 @@ public:
      * @param params Params' vector
      * @return       reference to itself
      */
-    Coordinate& addParams(
+    virtual Coordinate& addParams(
         const ParamsPtr params
     );
 
@@ -81,7 +83,7 @@ public:
      * @param strategy strategy (position on dimension)
      * @return         reference to itself
      */
-    Coordinate& addPosition(
+    virtual Coordinate& addPosition(
         const Identifier& player,
         const Identifier& strategy
     );
@@ -92,7 +94,7 @@ public:
      * @param subCoordinate SubCoordinate
      * @return              reference to itself
      */
-    Coordinate& addSubCoordinates(
+    virtual Coordinate& addSubCoordinates(
         const Coordinate& subCoordinate
     );
 
@@ -102,7 +104,7 @@ public:
      * @param subCoordinates SubCoordinate
      * @return               reference to itself
      */
-    Coordinate& addSubCoordinates(
+    virtual Coordinate& addSubCoordinates(
         const Coordinates& subCoordinates
     );
 
@@ -111,22 +113,85 @@ public:
      *
      * @return Params
      */
-    Params getParams();
+    virtual Params getParams();
 
      /**
      * @brief Obtains Positions.
      *
      * @return Positions
      */
-    Positions getPositions();
+    virtual Positions getPositions();
 
     /**
      * @brief Obtain SubCoordinates.
      *
      * @return SubCoordinates
      */
-    Coordinates getSubCoordinates();
+    virtual Coordinates getSubCoordinates();
 }; /* END class Coordinate */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Coordinate for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullCoordinate : public virtual Coordinate {
+public:
+    virtual Coordinate& addParams(
+        const ParamPtr param
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addParams(
+        const ParamsPtr params
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addPosition(
+        const Identifier& player,
+        const Identifier& strategy
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addSubCoordinates(
+        const Coordinate& subCoordinate
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addSubCoordinates(
+        const Coordinates& subCoordinates
+    ) {
+        return *this;
+    }
+
+    virtual Params getParams() {
+        return Params();
+    }
+
+    virtual Positions getPositions() {
+        return Positions();
+    }
+
+    virtual Coordinates getSubCoordinates() {
+        return Coordinates();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullCoordinate");
+    }
+}; /* END class NullCoordinate */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

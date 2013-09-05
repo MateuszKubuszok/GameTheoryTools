@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Condition used for querying Objects with some requirements.
  *
@@ -33,7 +35,31 @@ public:
     virtual Message toString();
 }; /* END class Condition */
 
-} /* END namepsace GTL */
-} /* END namspace GT */
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Condition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullCondition : public virtual Condition {
+public:
+    virtual void conditionQuery(
+        Query& query
+    ) {}
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullCondition");
+    }
+}; /* END class NullCondition */
+
+////////////////////////////////////////////////////////////////////////////////
+
+} /* END namespace GTL */
+} /* END namespace GT */
 
 #endif /* END #ifndef __GT_GTL_CONDITION_HPP__ */

@@ -4,6 +4,8 @@
 namespace GT {
 namespace Model {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Used for configuring what kind of builders should be returned by ResultFactory.
  *
@@ -17,6 +19,8 @@ enum ResultBuilderMode { PLAIN, JSON, XML };
  * @author Mateusz Kubuszok
  */
 enum ResultIndentationMode { TABS, SPACES, NONE };
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Creates some simple Results as well as supplies builders for more complex of them.  
@@ -116,6 +120,8 @@ private:
      */
     ~ResultFactory();
 }; /* END class ResultFactory */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

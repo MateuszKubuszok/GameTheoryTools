@@ -4,8 +4,12 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /* Class declarations */
 class ObjectProperty;
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Root of all Objects used as a data in parsed by GTL.
@@ -49,7 +53,7 @@ public:
      * @param  property property's name
      * @return          true if Object responds to such property 
      */
-    bool respondsTo(
+    virtual bool respondsTo(
         const Identifier& propertyName
     );
 
@@ -61,7 +65,7 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    ResultPtr findProperty(
+    virtual ResultPtr findProperty(
         const Context&    context,
         const Identifier& propertyName
     );
@@ -74,7 +78,7 @@ public:
      * @return                       Result for sought property
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    ResultPtr findPropertyWithConditions(
+    virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
         const Identifier& propertyName,
         const Conditions& conditions
@@ -121,6 +125,8 @@ protected:
     );
 }; /* END class Object */
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Root of all Object's properties that can be registered.
  *
@@ -141,6 +147,52 @@ public:
     ) = 0;
 }; /* END class ObjectProperty */
 
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Object for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullObject : public virtual Object {
+public:
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual bool respondsTo(
+        const Identifier& propertyName
+    ) {
+        return true;
+    }
+
+    virtual ResultPtr findProperty(
+        const Context&    context,
+        const Identifier& propertyName
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr findPropertyWithConditions(
+        const Context&    context,
+        const Identifier& propertyName,
+        const Conditions& conditions
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullObject");
+    }
+}; /* END class NullObject */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
+
 #endif /* END #ifndef __GTL_OBJECT_HPP__ */

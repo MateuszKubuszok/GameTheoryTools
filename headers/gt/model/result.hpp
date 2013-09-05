@@ -4,6 +4,8 @@
 namespace GT {
 namespace Model {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Root of all Resuts created by GTL parser.
  *
@@ -32,6 +34,25 @@ public:
         return getResult();
     }
 }; /* END class Result */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class NullResult : public virtual Result {
+public:
+    virtual Message getResult() {
+        return Message("NullResult");
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullResult");
+    }
+}; /* END class Result */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

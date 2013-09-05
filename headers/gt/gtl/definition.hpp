@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Definition used to define Context. 
  *
@@ -42,14 +44,14 @@ public:
      *
      * @return value of the property
      */
-    IdentifierPtr getName();
+    virtual IdentifierPtr getName();
 
     /**
      * @brief Returns value of the property.
      *
      * @return value of the property
      */
-    ObjectPtr getValue();
+    virtual ObjectPtr getValue();
 
     /**
      * @brief Returns Message about Definition.
@@ -59,7 +61,35 @@ public:
     virtual Message toString();
 }; /* END class Definition */
 
-} /* END namepsace GTL */
-} /* END namspace GT */
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Definition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullDefinition : public virtual Definition {
+public:
+    virtual IdentifierPtr getName() {
+        return Model::NullFactory::getInstance().createIdentifier();
+    }
+
+    virtual ObjectPtr getValue() {
+        return NullFactory::getInstance().createObject();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullDefinition");
+    }
+}; /* END class NullDefinition */
+
+////////////////////////////////////////////////////////////////////////////////
+
+} /* END namespace GTL */
+} /* END namespace GT */
 
 #endif /* END #ifndef __GT_GTL_DEFINITION_HPP__ */

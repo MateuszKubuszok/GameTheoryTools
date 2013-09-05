@@ -4,6 +4,8 @@
 namespace GT {
 namespace Model {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Basic interface of many classes used in the project.
  *
@@ -136,7 +138,9 @@ public:
     virtual Message toString() = 0;
 };
 
-} /* END namepsace GTL */
+////////////////////////////////////////////////////////////////////////////////
+
+} /* END namepsace Model */
 } /* END namspace GT */
 
 #endif /* END #ifndef __GT_MODEL_ROOT_HPP__ */

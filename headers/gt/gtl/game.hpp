@@ -4,12 +4,14 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Defines Game.
  *
  * @author Mateusz Kubuszok
  */
-class Game : public Object {
+class Game : public virtual Object {
 public:
     /**
      * @brief Search Nash equilibrium for given conditions.
@@ -29,6 +31,28 @@ public:
      */
     virtual Message toString();
 }; /* END class Game */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class NullGame : public virtual Game {
+public:
+    virtual CoordinatePtr findEquilibrium(
+        const Context&      context,
+        const ConditionsPtr conditions
+    ) {
+        return NullFactory::getInstance().createCoordinate();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullGame");
+    }
+}; /* END class NullGame */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

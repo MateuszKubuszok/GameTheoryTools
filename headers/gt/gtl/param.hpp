@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
  
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Abstract class that defines interface for Params. 
  *
@@ -34,6 +36,38 @@ public:
         Context& context
     ) = 0;
 }; /* END class Param */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Param for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullParam : public virtual Object {
+public:
+    virtual ObjectPtr getObject(
+        Context& context
+    ) {
+        return NullFactory::getInstance().createObject();
+    }
+
+    virtual NumberPtr getValue(
+        Context& context
+    ) {
+        return Model::NullFactory::getInstance().createNumber();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullParam");
+    }
+}; /* END class NullParam */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

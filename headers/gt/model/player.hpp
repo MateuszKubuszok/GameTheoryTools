@@ -4,6 +4,8 @@
 namespace GT {
 namespace Model {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Defines Player.
  *
@@ -42,28 +44,28 @@ public:
      *
      * @return Player's name
      */
-    Identifier getName();
+    virtual Identifier getName();
 
     /**
      * @brief Returns Player's strategies.
      *
      * @return Player's strategies
      */
-    Identifiers getStrategies();
+    virtual Identifiers getStrategies();
 
     /**
      * @brief Returns number of strategies.
      *
      * @return number of strategies
      */    
-    int getStrategiesNumber();
+    virtual int getStrategiesNumber();
 
      /**
      * @brief Returns ordinal of a strategy with given identifier.
      *
      * @return ordinal of strategy with given identifier
      */
-    int getStrategyOrdinal(
+    virtual int getStrategyOrdinal(
         const Identifier& strategy
     );
 
@@ -74,6 +76,35 @@ public:
      */
     virtual Message toString();
 }; /* END class Player */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class NullPlayer : public virtual Player {
+public:
+    virtual Identifier getName() {
+        return Identifier("NullPlayer");
+    }
+
+    virtual Identifiers getStrategies() {
+        return Identifiers();
+    }
+    
+    virtual int getStrategiesNumber() {
+        return 0;
+    }
+
+    virtual int getStrategyOrdinal(
+        const Identifier& strategy
+    ) {
+        return -1;
+    }
+
+    virtual Message toString() {
+        return Message("NullPlayer");
+    }
+}; /* END class NullPlayer */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

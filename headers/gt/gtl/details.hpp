@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Contains Coordinates as well as defined Players.
  *
@@ -38,7 +40,7 @@ public:
      * @param  parentContext parental Context
      * @return               subcontext filled with Players
      */
-    Context createSubContext(
+    virtual ContextPtr createSubContext(
         const Context& parentContext
     );
 
@@ -47,14 +49,14 @@ public:
      *
      * @return Coordinates wit data
      */
-    CoordinatesPtr getCoordinates();
+    virtual Coordinates getCoordinates();
 
     /**
      * @brief Returns Players definitions.
      *
      * @return Players definitions
      */
-    ObjectsPtr getPlayers();
+    virtual Objects getPlayers();
 
     /**
      * @brief Returns Message about Game details.
@@ -63,6 +65,40 @@ public:
      */
     virtual Message toString();
 }; /* END class Details */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Definition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullDetails : public virtual Details {
+public:
+    ContextPtr createSubContext(
+        const Context& parentContext
+    ) {
+        return NullFactory::getInstance().createContext();
+    }
+
+    Coordinates getCoordinates() {
+        return Coordinates();
+    }
+
+    Objects getPlayers() {
+        return Objects();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullDetails");
+    }
+}; /* END class NullDetails */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

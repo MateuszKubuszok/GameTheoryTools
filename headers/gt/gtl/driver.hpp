@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 class Driver : public virtual Root {
 public:
     virtual void storeDefinedObject(
@@ -149,6 +151,8 @@ public:
 
     virtual Message toString();
 }; /* END class Driver */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

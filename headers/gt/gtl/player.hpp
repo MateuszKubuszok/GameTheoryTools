@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Defines Player.
  *
@@ -29,6 +31,26 @@ public:
      */
     virtual Message toString();
 }; /* END class Player */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Player for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullPlayer : public virtual Player {
+public:
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullPlayer");
+    }
+}; /* END class Player */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

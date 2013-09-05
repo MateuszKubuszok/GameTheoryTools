@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Context containing identifiers and values befind then.
  *
@@ -47,7 +49,7 @@ public:
      * @param object     new value to register
      * @return           reference to context for chaining
      */
-    Context& registerObject(
+    virtual Context& registerObject(
         IdentifierPtr identifier,
         ObjectPtr     object
     );
@@ -58,7 +60,7 @@ public:
      * @param definition definition of an Object with name
      * @return           reference to context for chaining
      */
-    Context& registerObject(
+    virtual Context& registerObject(
         Definition& definition
     );
 
@@ -68,7 +70,7 @@ public:
      * @param identifier identifier to obtain
      * @return           value to retur
      */
-    ObjectPtr getObject(
+    virtual ObjectPtr getObject(
         Identifier& identifier
     );
 
@@ -80,7 +82,7 @@ public:
      * @param identifier param to obtain
      * @return           value to retur
      */
-    ParamPtr getParam(
+    virtual ParamPtr getParam(
         Identifier& identifier
     );
 
@@ -91,6 +93,50 @@ public:
      */
     virtual Message toString();
 }; /* END class Context */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null Context for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullContext : public virtual Context {
+    virtual Context& registerObject(
+        IdentifierPtr identifier,
+        ObjectPtr     object
+    ) {
+        return *this;
+    }
+
+    virtual Context& registerObject(
+        Definition& definition
+    ) {
+        return *this;
+    }
+
+    virtual ObjectPtr getObject(
+        Identifier& identifier
+    ) {
+        return NullFactory::getInstance().createObject();
+    }
+
+    virtual ParamPtr getParam(
+        Identifier& identifier
+    ) {
+        return NullFactory::getInstance().createParam();
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullContext");
+    }
+}; /* END class NullContext */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

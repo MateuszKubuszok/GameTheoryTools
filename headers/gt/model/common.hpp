@@ -16,7 +16,10 @@
 
 namespace GT {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /* Shortens commonly used names */
+
 typedef std::istream                         InputStream;
 typedef std::ostream                         OutputStream;
 typedef std::string                          Message;
@@ -30,23 +33,38 @@ typedef boost::shared_ptr<Number>            NumberPtr;
 
 namespace Model {
 
+////////////////////////////////////////////////////////////////////////////////
+
 /* Class declarations */
-class Player;
-class Result;
+
+class NullFactory;
+
+class Player;        class NullPlayer;
+class Result;        class NullResult;
 class ResultFactory;
 
 /* Shortens comonly used names */
+
 typedef boost::shared_ptr<Player> PlayerPtr;
 typedef boost::shared_ptr<Result> ResultPtr;
 
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namepsace GTL */
+
+////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GT */
 
 /* Includes GT model headers */
+
+#include "gt/model/null_factory.hpp"
+
 #include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
 #include "gt/model/result.hpp"
 #include "gt/model/result_factory.hpp"
+
+////////////////////////////////////////////////////////////////////////////////
 
 #endif /* END #ifndef __GT_MODEL_COMMON_HPP__ */
