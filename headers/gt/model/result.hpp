@@ -9,7 +9,7 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-class Result {
+class Result : public virtual Root {
 public:
     /**
      * @brief Default destructor.
@@ -17,11 +17,20 @@ public:
     virtual ~Result() {}
 
     /**
-     * @brief Returns result in a form available to send on output stream.
+     * @brief Returns Result in a form available to send on output stream.
      *
      * @return string with result
      */ 
     virtual Message getResult() = 0;
+
+    /**
+     * @brief Return message with results.
+     *
+     * @return Result as a Message
+     */
+    virtual Message toString() {
+        return getResult();
+    }
 }; /* END class Result */
 
 } /* END namespace Model */

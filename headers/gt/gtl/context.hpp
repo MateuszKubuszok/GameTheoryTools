@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Context {
+class Context : public virtual Root {
     /**
      * @brief Possible parent Context.
      */
@@ -83,6 +83,13 @@ public:
     ParamPtr getParam(
         Identifier& identifier
     );
+
+    /**
+     * @brief Returns Message about Context.
+     *
+     * @return Context's Message
+     */
+    virtual Message toString();
 }; /* END class Context */
 
 } /* END namespace GTL */

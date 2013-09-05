@@ -5,7 +5,7 @@ namespace GT {
 namespace Model {
 
 /**
- * @brief Basic interface of all classes used in the project.
+ * @brief Basic interface of many classes used in the project.
  *
  * Should be inherited with <pre>public virtual</pre> modifiers.
  *
@@ -112,14 +112,14 @@ public:
      */
     virtual bool isEqual(
         Root& root
-    ) = 0;
+    );
 
     /**
      * @brief Wheter Root is not a null object (null guardian). 
      *
      * @return true if object is not a null object
      */
-    virtual bool isNotNull() = 0;
+    virtual bool isNotNull();
 
     /**
      * @brief Wheter Root is a null object (null guardian). 
@@ -128,6 +128,11 @@ public:
      */
     bool isNull();
 
+    /**
+     * @brief Returns Message about an object allowing its debuging.
+     *
+     * @return Root's Message
+     */
     virtual Message toString() = 0;
 };
 

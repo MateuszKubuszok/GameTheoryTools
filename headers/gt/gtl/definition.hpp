@@ -9,7 +9,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Definition {
+class Definition : public virtual Root {
     /**
      * @brief Name of the property
      */
@@ -50,6 +50,13 @@ public:
      * @return value of the property
      */
     ObjectPtr getValue();
+
+    /**
+     * @brief Returns Message about Definition.
+     *
+     * @return Definition's Message
+     */
+    virtual Message toString();
 }; /* END class Definition */
 
 } /* END namepsace GTL */

@@ -9,16 +9,23 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Query {
+class Query : public virtual Root {
 public:
     /**
-     * @brief Execute query in a defined context.
+     * @brief Execute Query in a defined Context.
      *
      * @param context Context with definitions
      */
     virtual ResultPtr execute(
         Context& context
     );
+
+    /**
+     * @brief Returns Query results.
+     *
+     * @result Query results
+     */
+    virtual Message getResult();
 }; /* END class Game */
 
 } /* END namespace GTL */

@@ -47,6 +47,7 @@ typedef boost::shared_ptr<Objects>                    ObjectsPtr;
 typedef boost::container::vector<ParamPtr>            Params;
 typedef boost::shared_ptr<Params>                     ParamsPtr;
 
+typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;
 typedef Model::ResultPtr                              ResultPtr;
 typedef Model::ResultFactory                          ResultFactory;

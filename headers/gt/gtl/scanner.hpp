@@ -27,7 +27,7 @@ class Scanner : public ::yyFlexLexer {
 
 public:
     /**
-     * @brief Initiates scanner with insput stream that serves as data source.
+     * @brief Initiates scanner with input stream that serves as data source.
      *
      * @param in input stream initiating scanner
      */

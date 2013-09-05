@@ -5,11 +5,11 @@ namespace GT {
 namespace GTL {
 
 /**
- * @brief Contains coordinates as well as defined players.
+ * @brief Contains Coordinates as well as defined Players.
  *
  * @author Mateusz Kubuszok
  */
-class Details {
+class Details : public virtual Root {
     /**
      * @brief Players' collection.
      */
@@ -22,7 +22,7 @@ class Details {
 
 public:
     /**
-     * @brief Constructor for players with data.
+     * @brief Constructor for Players with data.
      *
      * @param playersDetails     declared players
      * @param coordinatesDetails declared data
@@ -33,10 +33,10 @@ public:
     );
 
     /**
-     * @brief Returns context with both general declarations and local ones.
+     * @brief Returns Context with both general declarations and local ones.
      *
-     * @param  parentContext parental context
-     * @return               subcontext filled with players
+     * @param  parentContext parental Context
+     * @return               subcontext filled with Players
      */
     Context createSubContext(
         const Context& parentContext
@@ -55,6 +55,13 @@ public:
      * @return Players definitions
      */
     ObjectsPtr getPlayers();
+
+    /**
+     * @brief Returns Message about Game details.
+     *
+     * @return Game Details Message
+     */
+    virtual Message toString();
 }; /* END class Details */
 
 } /* END namespace GTL */

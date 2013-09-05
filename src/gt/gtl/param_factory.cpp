@@ -11,7 +11,7 @@ boost::mutex paramFactoryMutex;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class IdentifierParam : public Param {
+class IdentifierParam : public virtual Param {
     Identifier identifier;
 
 public:
@@ -32,11 +32,15 @@ public:
     ) {
         return (*context.getParam(identifier)).getValue(context);
     }
+
+    virtual Message toString() {
+        return Message("Param:Identifier=") + identifier;
+    }
 }; /* END class IdentifierParam */
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class ValueParam : public Param {
+class ValueParam : public virtual Param {
     NumberPtr value;
 
 public:
@@ -56,6 +60,10 @@ public:
         Context& context
     ) {
         return value;
+    }
+
+    virtual Message toString() {
+        return Message("Param:Value=") + (*value).get_str(10);
     }
 }; /* END class ValueParam */
 

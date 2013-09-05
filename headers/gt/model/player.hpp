@@ -9,7 +9,7 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-class Player {
+class Player : public virtual Root {
     /**
      * @breif Player's name.
      */
@@ -59,13 +59,20 @@ public:
     int getStrategiesNumber();
 
      /**
-     * @brief Returns ordinal of a strategy with giben identifier.
+     * @brief Returns ordinal of a strategy with given identifier.
      *
      * @return ordinal of strategy with given identifier
      */
     int getStrategyOrdinal(
         const Identifier& strategy
     );
+
+    /**
+     * @brief Returns Message with Player's name and strategies.
+     *
+     * @return Player's name and strategies
+     */
+    virtual Message toString();
 }; /* END class Player */
 
 } /* END namespace Model */

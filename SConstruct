@@ -20,13 +20,13 @@ validInstallation = True
 
 # C++ check
 if not conf.CheckCXX():
-    print('Your Environment/C++ compiler is not configured/installed correctly!!')
+    print('Your environment/C++ compiler is not configured/installed correctly!!')
     validInstallation = False
 
 # Header check
 for header in [
     # standard libraries
-    'iostream', 'fstream', 'cstdlib',
+    'cstdlib', 'iostream', 'fstream', 'string',
     # boost libraries
     'boost/shared_ptr.hpp',
     'boost/container/map.hpp',
@@ -34,7 +34,7 @@ for header in [
     'boost/thread/mutex.hpp',
     # Flex library
     'FlexLexer.h',
-    # GNU MultiPrecision library
+    # GNU Multiple Precision library
     'gmpxx.h',
 ]:
     if not conf.CheckCXXHeader(header):
@@ -42,6 +42,7 @@ for header in [
         validInstallation = False
 
 if not validInstallation:
+    print('Invalid compiler/libraries installation - build terminated!!')
     Exit(1)
 
 # Adds headers dirs:

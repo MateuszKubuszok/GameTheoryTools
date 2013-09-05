@@ -43,6 +43,14 @@ Root::~Root() {
         *outputStream << "Freed id:" << rootID << std::endl;
 }
 
+bool Root::isEqual(Root& root) {
+    return this == &root;
+}
+
+bool Root::isNotNull() {
+    return true;
+}
+
 bool Root::isNull() {
     return !isNotNull();
 }

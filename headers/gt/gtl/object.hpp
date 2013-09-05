@@ -8,13 +8,13 @@ namespace GTL {
 class ObjectProperty;
 
 /**
- * @brief Root of all objects used as a data in parsed by GTL.
+ * @brief Root of all Objects used as a data in parsed by GTL.
  *
  * @author Mateusz Kubuszok
  */
-class Object {
+class Object : public virtual Root {
     /**
-     * @brief Used for queries without conditions.
+     * @brief Used for queries without Conditions.
      */
     static const Conditions noConditions;
 
@@ -80,6 +80,13 @@ public:
         const Conditions& conditions
     );
 
+    /**
+     * @brief Returns message about object.
+     *
+     * @return generic Message
+     */
+    virtual Message toString();
+
 protected:
     /**
      * @brief Whether property is registered or not.
@@ -122,11 +129,11 @@ protected:
 class ObjectProperty {
 public:
     /**
-     * @brief Finds results for given conditions.
+     * @brief Finds results for given Conditions.
      *
-     * @param  context    contxt with values
-     * @param  conditions conditions to check
-     * @result            search result
+     * @param  context    Context with values
+     * @param  conditions Conditions to check
+     * @result            search Result
      */
     virtual ResultPtr findForConditions(
         const Context&    context,

@@ -21,6 +21,13 @@ public:
         const Identifier&  playerName,
         const Identifiers& playerStrategies
     );
+
+    /**
+     * @brief Returns Message about Player.
+     *
+     * @return Player's Message
+     */
+    virtual Message toString();
 }; /* END class Player */
 
 } /* END namespace GTL */

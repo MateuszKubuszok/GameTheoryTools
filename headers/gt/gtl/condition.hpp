@@ -5,25 +5,32 @@ namespace GT {
 namespace GTL {
 
 /**
- * @brief Condition used for querying objects with some requirements.
+ * @brief Condition used for querying Objects with some requirements.
  *
  * @author Mateusz Kubuszok
  */
-class Condition {
+class Condition : public virtual Root {
 public:
     /**
-     * @brief Default Destructor.
+     * @brief Default destructor.
      */
     virtual ~Condition();
 
     /**
-     * @brief Parametrizes query using the Injection of Control.
+     * @brief Parametrizes query using the inversion of control.
      *
      * @param query query to parametrize
      */
     virtual void conditionQuery(
         Query& query
     ) = 0;
+
+    /**
+     * @brief Returns Message about Condition.
+     *
+     * @return Condition's Message
+     */
+    virtual Message toString();
 }; /* END class Condition */
 
 } /* END namepsace GTL */

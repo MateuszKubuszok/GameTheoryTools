@@ -5,7 +5,7 @@ namespace GT {
 namespace GTL {
 
 /**
- * @brief Used for creation of params that may differs in behaviour.
+ * @brief Used for creation of Params that may differs in behaviour.
  *
  * @author Mateusz Kubuszok
  */

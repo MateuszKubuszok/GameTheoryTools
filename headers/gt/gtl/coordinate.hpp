@@ -9,7 +9,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Coordinate {
+class Coordinate : public virtual Root {
     /**
      * @brief Merges two Coordinates into one.
      *
@@ -23,7 +23,7 @@ class Coordinate {
     );
 
     /**
-     * @brief Defined positions.
+     * @brief Defined Positions.
      */
     const Positions positions;
 
@@ -55,7 +55,7 @@ public:
     );
 
     /**
-     * @brief Adds param to the list.
+     * @brief Adds Param to the list.
      *
      * @param param single Param
      * @return      reference to itself
@@ -65,7 +65,7 @@ public:
     );
 
      /**
-     * @brief Adds params to the list.
+     * @brief Adds Params to the list.
      *
      * @param params Params' vector
      * @return       reference to itself
@@ -75,7 +75,7 @@ public:
     );
 
     /**
-     * @brief Add position to known coordinates.
+     * @brief Add Position to known Coordinates.
      *
      * @param player   player (dimension)
      * @param strategy strategy (position on dimension)

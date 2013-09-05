@@ -83,6 +83,10 @@ ResultPtr Object::findPropertyWithConditions(
     return getProperty(propertyName)->findForConditions(context, conditions);
 }
 
+Message Object::toString() {
+    return "Object";
+}
+
 // protected:
 bool Object::isPropertyRegistered(
     Identifier propertyName

@@ -21,6 +21,13 @@ public:
         const Context&      context,
         const ConditionsPtr conditions
     ) = 0;
+
+    /**
+     * @brief Returns Message about Game.
+     *
+     * @return Game's state
+     */
+    virtual Message toString();
 }; /* END class Game */
 
 } /* END namespace GTL */

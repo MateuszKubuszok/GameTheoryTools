@@ -17,9 +17,9 @@ public:
     Param();
 
     /**
-     * @brief Returns value for context.
+     * @brief Returns value for Context.
      *
-     * @param context context with values
+     * @param context Context with values
      */
     virtual ObjectPtr getObject(
         Context& context
@@ -28,7 +28,7 @@ public:
     /**
      * @brief Returns value for context.
      *
-     * @param context context with values
+     * @param context Context with values
      */
     virtual NumberPtr getValue(
         Context& context

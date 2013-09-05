@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-class Driver {
+class Driver : public virtual Root {
 public:
     virtual void storeDefinedObject(
         const DefinitionPtr* definition
@@ -146,6 +146,8 @@ public:
     virtual void errorInformation(
         const std::string& message
     );
+
+    virtual Message toString();
 }; /* END class Driver */
 
 } /* END namespace GTL */
