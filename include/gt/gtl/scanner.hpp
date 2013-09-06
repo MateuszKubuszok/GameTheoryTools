@@ -44,7 +44,7 @@ public:
      * @param lval initiates next scanning with value
      * @return     returns number of next token
      */    
-    int yylex(
+    virtual int yylex(
         Parser::semantic_type* lval
     ) {
         yylval = lval;
@@ -61,7 +61,7 @@ private:
      *
      * @return value used for communicating with Parser
      */
-    int yylex();
+    virtual int yylex();
 }; /* END class Scanner */
 
 } /* END namespace GTL */
