@@ -44,8 +44,8 @@ public:
 // class Param
 // public:
 Param::Param() {
-    registerProperty(Identifier("value"), dynamic_cast<ObjectProperty*>(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  dynamic_cast<ObjectProperty*>(new ParamTypeProperty()));
+    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
+    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
 }
 // }
 

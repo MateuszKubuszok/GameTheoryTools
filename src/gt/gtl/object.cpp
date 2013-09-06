@@ -47,37 +47,32 @@ public:
 Object::Object() :
     registeredProperties()
 {
-    registerProperty(Identifier("properties"), dynamic_cast<ObjectProperty*>(new ObjectKnownProperties(this)));
-    registerProperty(Identifier("type"),       dynamic_cast<ObjectProperty*>(new ObjectType()));
+    registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
+    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectType()));
 }
 
-Object::~Object() {
-    // TODO
-    // BOOST_FOREACH(std::pair<Identifier, ObjectProperty*> propertyPair, registeredProperties) {
-    //     delete propertyPair->second_type;
-    // };
-}
+Object::~Object() {}
 
 bool Object::isValid() {
     return true;
 }
 
 bool Object::respondsTo(
-    const Identifier& propertyName
+    Identifier& propertyName
 ) {
     return isPropertyRegistered(propertyName);
 }
 
 ResultPtr Object::findProperty(
-    const Context&    context,
-    const Identifier& propertyName
+    const Context& context,
+    Identifier&    propertyName
 ) {
-    return findPropertyWithConditions(context, propertyName, noConditions);
+    return findPropertyWithConditions(context, propertyName, *noConditions);
 }
 
 ResultPtr Object::findPropertyWithConditions(
     const Context&    context,
-    const Identifier& propertyName,
+    Identifier&       propertyName,
     const Conditions& conditions
 ) {
     return getProperty(propertyName)->findForConditions(context, conditions);
@@ -89,13 +84,13 @@ Message Object::toString() {
 
 // protected:
 bool Object::isPropertyRegistered(
-    Identifier propertyName
+    Identifier& propertyName
 ) {
     return registeredProperties.count(propertyName);
 }
 
-ObjectProperty* Object::getProperty(
-    Identifier propertyName
+ObjectPropertyPtr Object::getProperty(
+    Identifier& propertyName
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
@@ -103,12 +98,10 @@ ObjectProperty* Object::getProperty(
 }
 
 void Object::registerProperty(
-    Identifier      propertyName,
-    ObjectProperty* property
+    Identifier        propertyName,
+    ObjectPropertyPtr property
 ) {
-    std::pair<Identifier, ObjectProperty*> pair = std::make_pair(propertyName, property);
-    if (registeredProperties.count(propertyName))
-        delete registeredProperties[propertyName];
+    std::pair<Identifier, ObjectPropertyPtr> pair = std::make_pair(propertyName, property);
     registeredProperties.insert(pair);
 }
 // }

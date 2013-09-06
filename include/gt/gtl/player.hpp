@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Player : public virtual Object, public virtual Model::Player {
+class Player : public virtual Object, public Model::Player {
 public:
     /**
      * @brief Constructor of the Player.
@@ -20,9 +20,12 @@ public:
      * @param playerStrategy declared strategies
      */
     Player(
-        const IdentifierPtr playerName,
-        const Identifiers   playerStrategies
-    );
+        const IdentifierPtr  playerName,
+        const IdentifiersPtr playerStrategies
+    ) :
+        Object(),
+        Model::Player(playerName, playerStrategies)
+        {}
 
     /**
      * @brief Returns Message about Player.
@@ -39,17 +42,12 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullPlayer : public virtual Player {
+class NullPlayer : public Player {
 public:
     NullPlayer() :
-        Object(),
-        Model::Player(
-            Model::NullFactory::getInstance().createIdentifier(),
-            Identifiers()
-        ),
         Player(
             Model::NullFactory::getInstance().createIdentifier(),
-            Identifiers()
+            Model::NullFactory::getInstance().createIdentifiers()
         )
         {}
 

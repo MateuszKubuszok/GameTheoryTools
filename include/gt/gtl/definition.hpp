@@ -68,7 +68,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDefinition : public virtual Definition {
+class NullDefinition : public Definition {
 public:
     NullDefinition() :
         Definition(

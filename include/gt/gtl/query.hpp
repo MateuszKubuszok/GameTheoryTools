@@ -37,7 +37,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullQuery : public virtual Query {
+class NullQuery : public Query {
 public:
     virtual ResultPtr execute(
         Context& context

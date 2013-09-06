@@ -20,8 +20,8 @@ public:
      * @param conditions conditions for query
      */
     virtual CoordinatePtr findEquilibrium(
-        const Context&      context,
-        const ConditionsPtr conditions
+        const Context&    context,
+        const Conditions& conditions
     ) = 0;
 
     /**
@@ -34,11 +34,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class NullGame : public virtual Game {
+class NullGame : public Game {
 public:
     virtual CoordinatePtr findEquilibrium(
         const Context&      context,
-        const ConditionsPtr conditions
+        const Conditions& conditions
     ) {
         return NullFactory::getInstance().createCoordinate();
     }

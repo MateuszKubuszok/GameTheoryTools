@@ -15,7 +15,9 @@ class ConstResult : public Result {
     Message result;
 
 public:
-    ConstResult(const Message &content) :
+    ConstResult(
+        const Message& content
+    ) :
         result(content)
         {}
 

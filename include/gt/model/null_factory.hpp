@@ -33,6 +33,13 @@ public:
     IdentifierPtr createIdentifier();
 
     /**
+     * @brief Creates null Identifiers.
+     *
+     * @result null Identifiers
+     */
+    IdentifiersPtr createIdentifiers();
+
+    /**
      * @brief Creates null Message.
      *
      * @result null Message

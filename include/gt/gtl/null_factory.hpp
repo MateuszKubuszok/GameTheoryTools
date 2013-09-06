@@ -45,6 +45,13 @@ public:
      * @result NullCoordinate
      */
     CoordinatePtr createCoordinate();
+
+    /**
+     * @brief Creates NullCoordinates.
+     *
+     * @result NullCoordinates
+     */
+    CoordinatesPtr createCoordinates();
     
     /**
      * @brief Creates NullDefinition.
@@ -75,6 +82,13 @@ public:
     ObjectPtr createObject();
 
     /**
+     * @brief Creates NullObjects.
+     *
+     * @result NullObjects
+     */
+    ObjectsPtr createObjects();
+
+    /**
      * @brief Creates NullParam.
      *
      * @result NullParam
@@ -82,11 +96,25 @@ public:
     ParamPtr createParam();
 
     /**
+     * @brief Creates NullParams.
+     *
+     * @result NullParams
+     */
+    ParamsPtr createParams();
+
+    /**
      * @brief Creates NullPlayer.
      *
      * @result NullPlayer
      */
     PlayerPtr createPlayer();
+
+    /**
+     * @brief Creates NullPositions.
+     *
+     * @result NullPositions
+     */
+    PositionsPtr createPositions();
 
     /**
      * @brief Creates NullResult.

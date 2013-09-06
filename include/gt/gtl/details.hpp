@@ -30,8 +30,8 @@ public:
      * @param coordinatesDetails declared data
      */
      Details(
-        const Objects     playersDetails,
-        const Coordinates coordinatesDetails
+        const ObjectsPtr     playersDetails,
+        const CoordinatesPtr coordinatesDetails
     );
 
     /**
@@ -49,14 +49,14 @@ public:
      *
      * @return Coordinates wit data
      */
-    virtual Coordinates getCoordinates();
+    virtual CoordinatesPtr getCoordinates();
 
     /**
      * @brief Returns Players definitions.
      *
      * @return Players definitions
      */
-    virtual Objects getPlayers();
+    virtual ObjectsPtr getPlayers();
 
     /**
      * @brief Returns Message about Game details.
@@ -73,12 +73,12 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDetails : public virtual Details {
+class NullDetails : public Details {
 public:
     NullDetails() :
         Details(
-            Objects(),
-            Coordinates()
+            NullFactory::getInstance().createObjects(),
+            NullFactory::getInstance().createCoordinates()
         )
         {}
 
@@ -88,12 +88,12 @@ public:
         return NullFactory::getInstance().createContext();
     }
 
-    Coordinates getCoordinates() {
-        return Coordinates();
+    CoordinatesPtr getCoordinates() {
+        return NullFactory::getInstance().createCoordinates();
     }
 
-    Objects getPlayers() {
-        return Objects();
+    ObjectsPtr getPlayers() {
+        return NullFactory::getInstance().createObjects();
     }
 
     virtual bool isNotNull() {

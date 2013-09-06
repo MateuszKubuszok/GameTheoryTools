@@ -42,7 +42,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullCondition : public virtual Condition {
+class NullCondition : public Condition {
 public:
     virtual void conditionQuery(
         Query& query

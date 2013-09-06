@@ -42,6 +42,11 @@ CoordinatePtr NullFactory::createCoordinate() {
     return CoordinatePtr(new NullCoordinate());
 }
 
+CoordinatesPtr NullFactory::createCoordinates() {
+    // TODO: NullCoodinates
+    return CoordinatesPtr(new Coordinates());
+}
+
 DefinitionPtr NullFactory::createDefinition() {
     return DefinitionPtr(new NullDefinition());
 }
@@ -58,8 +63,18 @@ ObjectPtr NullFactory::createObject() {
     return ObjectPtr(new NullObject());
 }
 
+ObjectsPtr NullFactory::createObjects() {
+    // TODO: NullObjects
+    return ObjectsPtr(new Objects());
+}
+
 ParamPtr NullFactory::createParam() {
     return ParamPtr(new NullParam());
+}
+
+ParamsPtr NullFactory::createParams() {
+    // TODO: NullParams
+    return ParamsPtr(new Params());
 }
 
 PlayerPtr NullFactory::createPlayer() {

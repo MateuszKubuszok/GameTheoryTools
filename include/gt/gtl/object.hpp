@@ -9,6 +9,9 @@ namespace GTL {
 /* Class declarations */
 class ObjectProperty;
 
+/* Class declarations */
+typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -20,12 +23,12 @@ class Object : public virtual Root {
     /**
      * @brief Used for queries without Conditions.
      */
-    static const Conditions noConditions;
+    static const ConditionsPtr noConditions;
 
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
-    boost::container::map<Identifier, ObjectProperty*> registeredProperties;
+    boost::container::map<Identifier, ObjectPropertyPtr> registeredProperties;
 
 public:
     /**
@@ -54,7 +57,7 @@ public:
      * @return          true if Object responds to such property 
      */
     virtual bool respondsTo(
-        const Identifier& propertyName
+        Identifier& propertyName
     );
 
     /**
@@ -66,8 +69,8 @@ public:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     virtual ResultPtr findProperty(
-        const Context&    context,
-        const Identifier& propertyName
+        const Context& context,
+        Identifier&    propertyName
     );
 
     /**
@@ -80,7 +83,7 @@ public:
      */
     virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
-        const Identifier& propertyName,
+        Identifier&       propertyName,
         const Conditions& conditions
     );
 
@@ -99,7 +102,7 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        Identifier propertyName
+        Identifier& propertyName
     );
 
     /**
@@ -109,8 +112,8 @@ protected:
      * @return                       required ObjectProperty
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    ObjectProperty* getProperty(
-        Identifier propertyName
+    ObjectPropertyPtr getProperty(
+        Identifier& propertyName
     );
 
     /**
@@ -120,8 +123,8 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        Identifier      propertyName,
-        ObjectProperty* property
+        Identifier        propertyName,
+        ObjectPropertyPtr property
     );
 }; /* END class Object */
 
@@ -154,28 +157,28 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullObject : public virtual Object {
+class NullObject : public Object {
 public:
     virtual bool isValid() {
         return false;
     }
 
     virtual bool respondsTo(
-        const Identifier& propertyName
+        Identifier& propertyName
     ) {
         return true;
     }
 
     virtual ResultPtr findProperty(
         const Context&    context,
-        const Identifier& propertyName
+        Identifier&       propertyName
     ) {
         return NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
-        const Identifier& propertyName,
+        Identifier&       propertyName,
         const Conditions& conditions
     ) {
         return NullFactory::getInstance().createResult();

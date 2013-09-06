@@ -27,7 +27,7 @@ class Coordinate : public virtual Root {
     /**
      * @brief Defined Positions.
      */
-    const Positions positions;
+    const PositionsPtr positions;
 
     /**
      * @brief Defined Params.
@@ -52,8 +52,8 @@ public:
      * @param strategy strategy identifier
      */
     Coordinate(
-        const Identifier& player,
-        const Identifier& strategy
+        const IdentifierPtr player,
+        const IdentifierPtr strategy
     );
 
     /**
@@ -84,8 +84,8 @@ public:
      * @return         reference to itself
      */
     virtual Coordinate& addPosition(
-        const Identifier& player,
-        const Identifier& strategy
+        const IdentifierPtr player,
+        const IdentifierPtr strategy
     );
 
     /**
@@ -95,7 +95,7 @@ public:
      * @return              reference to itself
      */
     virtual Coordinate& addSubCoordinates(
-        const Coordinate& subCoordinate
+        const CoordinatePtr subCoordinate
     );
 
     /**
@@ -105,7 +105,7 @@ public:
      * @return               reference to itself
      */
     virtual Coordinate& addSubCoordinates(
-        const Coordinates& subCoordinates
+        const CoordinatesPtr subCoordinates
     );
 
     /**
@@ -113,21 +113,21 @@ public:
      *
      * @return Params
      */
-    virtual Params getParams();
+    virtual ParamsPtr getParams();
 
      /**
      * @brief Obtains Positions.
      *
      * @return Positions
      */
-    virtual Positions getPositions();
+    virtual PositionsPtr getPositions();
 
     /**
      * @brief Obtain SubCoordinates.
      *
      * @return SubCoordinates
      */
-    virtual Coordinates getSubCoordinates();
+    virtual CoordinatesPtr getSubCoordinates();
 }; /* END class Coordinate */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullCoordinate : public virtual Coordinate {
+class NullCoordinate : public Coordinate {
 public:
     virtual Coordinate& addParams(
         const ParamPtr param
@@ -152,34 +152,34 @@ public:
     }
 
     virtual Coordinate& addPosition(
-        const Identifier& player,
-        const Identifier& strategy
+        const IdentifierPtr player,
+        const IdentifierPtr strategy
     ) {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
-        const Coordinate& subCoordinate
+        const CoordinatePtr subCoordinate
     ) {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
-        const Coordinates& subCoordinates
+        const CoordinatesPtr subCoordinates
     ) {
         return *this;
     }
 
-    virtual Params getParams() {
-        return Params();
+    virtual ParamsPtr getParams() {
+        return NullFactory::getInstance().createParams();
     }
 
-    virtual Positions getPositions() {
-        return Positions();
+    virtual PositionsPtr getPositions() {
+        return NullFactory::getInstance().createPositions();
     }
 
-    virtual Coordinates getSubCoordinates() {
-        return Coordinates();
+    virtual CoordinatesPtr getSubCoordinates() {
+        return NullFactory::getInstance().createCoordinates();
     }
 
     virtual bool isNotNull() {

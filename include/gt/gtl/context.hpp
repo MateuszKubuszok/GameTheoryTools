@@ -17,12 +17,12 @@ class Context : public virtual Root {
     /**
      * @brief Possible parent Context.
      */
-    Context* parentContext;
+    ContextPtr parentContext;
 
     /**
      * @brief Registerd Objects.
      */
-    boost::container::map<Identifier, Object> knownObjects;
+    boost::container::map<Identifier, ObjectPtr> knownObjects;
 
 public:
     /**
@@ -34,7 +34,7 @@ public:
      * @brief Constructor with parental context inheritance. 
      */
     Context(
-        const Context& parentContext
+        const ContextPtr parentContext
     );
 
     /**
@@ -61,7 +61,7 @@ public:
      * @return           reference to context for chaining
      */
     virtual Context& registerObject(
-        Definition& definition
+        DefinitionPtr definition
     );
 
     /**
@@ -101,7 +101,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullContext : public virtual Context {
+class NullContext : public Context {
     virtual Context& registerObject(
         IdentifierPtr identifier,
         ObjectPtr     object

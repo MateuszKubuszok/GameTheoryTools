@@ -25,7 +25,7 @@ class Player : public virtual Root {
     /**
      * @breif Mapps strategies to its ordnial.
      */
-    const boost::container::map<std::string, int> strategyMapping;
+    const boost::container::map<Identifier, int> strategyMapping;
 
 public:
     /**
@@ -35,8 +35,8 @@ public:
      * @param playerStrategy declared strategies
      */
     Player(
-        const IdentifierPtr playerName,
-        const Identifiers   playerStrategies
+        const IdentifierPtr  playerName,
+        const IdentifiersPtr playerStrategies
     );
 
     /**
@@ -44,14 +44,14 @@ public:
      *
      * @return Player's name
      */
-    virtual Identifier getName();
+    virtual IdentifierPtr getName();
 
     /**
      * @brief Returns Player's strategies.
      *
      * @return Player's strategies
      */
-    virtual Identifiers getStrategies();
+    virtual IdentifiersPtr getStrategies();
 
     /**
      * @brief Returns number of strategies.
@@ -79,21 +79,21 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class NullPlayer : public virtual Player {
+class NullPlayer : public Player {
 public:
     NullPlayer() :
         Player(
             NullFactory::getInstance().createIdentifier(),
-            Identifiers()
+            NullFactory::getInstance().createIdentifiers()
         )
         {}
 
-    virtual Identifier getName() {
-        return Identifier("NullPlayer");
+    virtual IdentifierPtr getName() {
+        return NullFactory::getInstance().createIdentifier();
     }
 
-    virtual Identifiers getStrategies() {
-        return Identifiers();
+    virtual IdentifiersPtr getStrategies() {
+        return NullFactory::getInstance().createIdentifiers();
     }
     
     virtual int getStrategiesNumber() {
