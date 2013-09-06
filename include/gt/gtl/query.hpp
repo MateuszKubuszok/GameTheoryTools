@@ -45,11 +45,15 @@ public:
         return NullFactory::getInstance().createResult();
     }
 
+    virtual Message getResult() {
+        return Message("NullQuery");
+    }
+
     virtual bool isNotNull() {
         return false;
     }
 
-    virtual Message getResult() {
+    virtual Message toString() {
         return Message("NullQuery");
     }
 }; /* END class NullQuery */

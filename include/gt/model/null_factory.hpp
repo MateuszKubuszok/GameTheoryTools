@@ -1,8 +1,8 @@
-#ifndef __GT_GTL_NULL_FACTORY_HPP__
-#define __GT_GTL_NULL_FACTORY_HPP__
+#ifndef __GT_MODEL_NULL_FACTORY_HPP__
+#define __GT_MODEL_NULL_FACTORY_HPP__
 
 namespace GT {
-namespace GTL {
+namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -26,61 +26,26 @@ public:
     static NullFactory& getInstance();
 
     /**
-     * @brief Creates NullCondition.
+     * @brief Creates null Identifier.
      *
-     * @result NullCondition
+     * @result null Identifier
      */
-    ConditionPtr createCondition();
+    IdentifierPtr createIdentifier();
 
     /**
-     * @brief Creates NullContext.
+     * @brief Creates null Message.
      *
-     * @result NullContext
+     * @result null Message
      */
-    ContextPtr createContext();
+    MessagePtr createMessage();
 
     /**
-     * @brief Creates NullCoordinate.
+     * @brief Creates NullNumber.
      *
-     * @result NullCoordinate
+     * @result NullNumber
      */
-    CoordinatePtr createCoordinate();
+    NumberPtr createNumber();
     
-    /**
-     * @brief Creates NullDefinition.
-     *
-     * @result NullDefinition
-     */
-    DefinitionPtr createDefinition();
-
-    /**
-     * @brief Creates NullDetails.
-     *
-     * @result NullDetails
-     */
-    DetailsPtr createDetails();
-
-    /**
-     * @brief Creates NullGame.
-     *
-     * @result NullGame
-     */
-    GamePtr createGame();
-
-    /**
-     * @brief Creates NullObject.
-     *
-     * @result NullObject
-     */
-    ObjectPtr createObject();
-
-    /**
-     * @brief Creates NullParam.
-     *
-     * @result NullParam
-     */
-    ParamPtr createParam();
-
     /**
      * @brief Creates NullPlayer.
      *
@@ -91,16 +56,9 @@ public:
     /**
      * @brief Creates NullResult.
      *
-     * @result NullResult
+     * @result NullNumber
      */
     ResultPtr createResult();
-
-    /**
-     * @brief Creates NullQuery.
-     *
-     * @result NullQuery
-     */
-    QueryPtr createQuery();
 
 private:
     /**
@@ -125,7 +83,7 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-} /* END namespace GTL */
+} /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_NULL_FACTORY_HPP__ */
+#endif /* END #ifndef __GT_MODEL_NULL_FACTORY_HPP__ */

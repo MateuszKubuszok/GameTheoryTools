@@ -30,8 +30,8 @@ public:
      * @param coordinatesDetails declared data
      */
      Details(
-        const ObjectsPtr     playersDetails,
-        const CoordinatesPtr coordinatesDetails
+        const Objects     playersDetails,
+        const Coordinates coordinatesDetails
     );
 
     /**
@@ -75,6 +75,13 @@ public:
  */
 class NullDetails : public virtual Details {
 public:
+    NullDetails() :
+        Details(
+            Objects(),
+            Coordinates()
+        )
+        {}
+
     ContextPtr createSubContext(
         const Context& parentContext
     ) {

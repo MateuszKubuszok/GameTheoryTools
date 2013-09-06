@@ -60,14 +60,16 @@ conf.Finish()
 
 # Build models
 
-Model_Root_cpp_URI = source +model+'root.cpp'
-Model_Root_o_URI   = objects+model+'root.o'
-
+Model_Root_cpp_URI          = source +model+'root.cpp'
+Model_Root_o_URI            = objects+model+'root.o'
 Model_ResultFactory_cpp_URI = source +model+'result_factory.cpp'
 Model_ResultFactory_o_URI   = objects+model+'result_factory.o'
+Model_NullFactory_cpp_URI   = source +model+'null_factory.cpp'
+Model_NullFactory_o_URI     = objects+model+'null_factory.o'
 
 Model_Root_o          = env.Object(source=Model_Root_cpp_URI,          target=Model_Root_o_URI)
 Model_ResultFactory_o = env.Object(source=Model_ResultFactory_cpp_URI, target=Model_ResultFactory_o_URI)
+Model_NullFactory_o   = env.Object(source=Model_NullFactory_cpp_URI,   target=Model_NullFactory_o_URI)
 
 ################################################################################
 
@@ -93,10 +95,13 @@ GTL_Param_cpp_URI        = source +gtl+'param.cpp'
 GTL_Param_o_URI          = objects+gtl+'param.o'
 GTL_ParamFactory_cpp_URI = source +gtl+'param_factory.cpp'
 GTL_ParamFactory_o_URI   = objects+gtl+'param_factory.o'
+GTL_NullFactory_cpp_URI  = source +gtl+'null_factory.cpp'
+GTL_NullFactory_o_URI    = objects+gtl+'null_factory.o'
 
 GTL_Object_o        = env.Object(source=GTL_Object_cpp_URI,       target=GTL_Object_o_URI)
 GTL_Param_o         = env.Object(source=GTL_Param_cpp_URI,        target=GTL_Param_o_URI)
 GTL_ParamFactory_o  = env.Object(source=GTL_ParamFactory_cpp_URI, target=GTL_ParamFactory_o_URI)
+GTL_NullFactory_o   = env.Object(source=GTL_NullFactory_cpp_URI,  target=GTL_NullFactory_o_URI)
 
 GTL_Parser_o_URI  = objects+gtl+'parser.o'
 GTL_Scanner_o_URI = objects+gtl+'scanner.o'

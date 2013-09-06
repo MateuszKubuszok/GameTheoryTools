@@ -20,8 +20,8 @@ public:
      * @param playerStrategy declared strategies
      */
     Player(
-        const Identifier&  playerName,
-        const Identifiers& playerStrategies
+        const IdentifierPtr playerName,
+        const Identifiers   playerStrategies
     );
 
     /**
@@ -41,6 +41,18 @@ public:
  */
 class NullPlayer : public virtual Player {
 public:
+    NullPlayer() :
+        Object(),
+        Model::Player(
+            Model::NullFactory::getInstance().createIdentifier(),
+            Identifiers()
+        ),
+        Player(
+            Model::NullFactory::getInstance().createIdentifier(),
+            Identifiers()
+        )
+        {}
+
     virtual bool isNotNull() {
         return false;
     }
@@ -48,7 +60,7 @@ public:
     virtual Message toString() {
         return Message("NullPlayer");
     }
-}; /* END class Player */
+}; /* END class NullPlayer */
 
 ////////////////////////////////////////////////////////////////////////////////
 

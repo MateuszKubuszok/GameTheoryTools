@@ -44,7 +44,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullParam : public virtual Object {
+class NullParam : public virtual Param {
 public:
     virtual ObjectPtr getObject(
         Context& context

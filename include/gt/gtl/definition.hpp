@@ -70,6 +70,13 @@ public:
  */
 class NullDefinition : public virtual Definition {
 public:
+    NullDefinition() :
+        Definition(
+            Model::NullFactory::getInstance().createIdentifier(),
+            NullFactory::getInstance().createObject()
+        )
+        {}
+
     virtual IdentifierPtr getName() {
         return Model::NullFactory::getInstance().createIdentifier();
     }
