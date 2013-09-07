@@ -34,6 +34,11 @@ ConditionPtr NullFactory::createCondition() {
     return ConditionPtr(new NullCondition());
 }
 
+ConditionsPtr NullFactory::createConditions() {
+    // TODO: NullParams
+    return ConditionsPtr(new Conditions());
+}
+
 ContextPtr NullFactory::createContext() {
     return ContextPtr(new NullContext());
 }

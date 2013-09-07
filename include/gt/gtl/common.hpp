@@ -26,7 +26,7 @@ class Player;     class NullPlayer;
 
 class Parser;
 class Scanner;
-class Driver;
+class Driver;     class NullDriver;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -53,6 +53,10 @@ typedef boost::container::vector<ObjectPtr>           Objects;
 typedef boost::shared_ptr<Objects>                    ObjectsPtr;
 typedef boost::container::vector<ParamPtr>            Params;
 typedef boost::shared_ptr<Params>                     ParamsPtr;
+
+typedef boost::shared_ptr<Parser>                     ParserPtr;
+typedef boost::shared_ptr<Scanner>                    ScannerPtr;
+typedef boost::shared_ptr<Driver>                     DriverPtr;
 
 typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;

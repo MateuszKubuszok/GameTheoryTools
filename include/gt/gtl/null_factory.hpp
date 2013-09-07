@@ -33,6 +33,13 @@ public:
     ConditionPtr createCondition();
 
     /**
+     * @brief Creates NullCondition.
+     *
+     * @result NullCondition
+     */
+    ConditionsPtr createConditions();
+
+    /**
      * @brief Creates NullContext.
      *
      * @result NullContext
