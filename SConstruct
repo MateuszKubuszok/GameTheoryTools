@@ -86,7 +86,7 @@ if not validInstallation:
 # - test/gt/model
 # - test/gt/gtl
 testConf.env.Append(CPPPATH=[test, test+model, test+gtl])
-testConf.env.Append(LIBS=[boost_unit_test_framework])
+testConf.env.Append(LIBS=['boost_unit_test_framework'])
 
 testConf.Finish()
 
