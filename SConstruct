@@ -4,6 +4,7 @@
 fnb     = 'f_n_b/'
 include = 'include/'
 source  = 'src/'
+tests   = 'test/'
 objects = 'objects/'
 
 # Packages directories
@@ -12,7 +13,8 @@ model = 'gt/model/'
 
 ################################################################################
 
-# Begining of Environment configuration
+# Production environment configuration
+
 env  = Environment()
 conf = Configure(env)
 
@@ -41,6 +43,7 @@ for header in [
         print('Your environment does not seem to have header <'+header+'>!!')
         validInstallation = False
 
+# Terminate build if installation is not valid
 if not validInstallation:
     print('Invalid compiler/libraries installation - build terminated!!')
     Exit(1)
@@ -54,11 +57,42 @@ if not validInstallation:
 conf.env.Append(CPPPATH=[include, include+gtl, source+gtl])
 
 conf.Finish()
-# End of Environment configuration
 
 ################################################################################
 
-# Build models
+# Test environment configuration
+
+testEnv = env.Clone()
+testConf = Configure(testConf)
+
+validInstallation = True
+
+# Header check
+for header in [
+    # boost libraries
+    'boost/test/unit_test.hpp',
+]:
+    if not testConf.CheckCXXHeader(header):
+        print('Your environment does not seem to have header <'+header+'>!!')
+        validInstallation = False
+
+# Terminate build if installation is not valid
+if not validInstallation:
+    print('Invalid compiler/libraries installation - build terminated!!')
+    Exit(1)
+
+# Adds tests directories to the path:
+# - test
+# - test/gt/model
+# - test/gt/gtl
+testConf.env.Append(CPPPATH=[test, test+model, test+gtl])
+testConf.env.Append(LIBS=[boost_unit_test_framework])
+
+testConf.Finish()
+
+################################################################################
+
+# Build Model objects
 
 Model_Root_cpp_URI          = source +model+'root.cpp'
 Model_Root_o_URI            = objects+model+'root.o'
@@ -70,6 +104,12 @@ Model_NullFactory_o_URI     = objects+model+'null_factory.o'
 Model_Root_o          = env.Object(source=Model_Root_cpp_URI,          target=Model_Root_o_URI)
 Model_ResultFactory_o = env.Object(source=Model_ResultFactory_cpp_URI, target=Model_ResultFactory_o_URI)
 Model_NullFactory_o   = env.Object(source=Model_NullFactory_cpp_URI,   target=Model_NullFactory_o_URI)
+
+################################################################################
+
+# Test Model objects
+
+# TODO
 
 ################################################################################
 
@@ -87,7 +127,7 @@ GTL_Scanner_cpp                = env.CXXFile(source=FnB_Scanner_ll_URI, target=G
 
 ################################################################################
 
-# Builds GTL objects
+# Build GTL objects
 
 GTL_Object_cpp_URI       = source +gtl+'object.cpp'
 GTL_Object_o_URI         = objects+gtl+'object.o'
@@ -108,3 +148,10 @@ GTL_Scanner_o_URI = objects+gtl+'scanner.o'
 
 GTL_Parser_o  = env.Object(source=GTL_Parser_cpp,  target=GTL_Parser_o_URI)
 GTL_Scanner_o = env.Object(source=GTL_Scanner_cpp, target=GTL_Scanner_o_URI)
+
+
+################################################################################
+
+# Test GTL objects
+
+# TODO
