@@ -58,7 +58,12 @@ class Root {
     /**
      * @brief Number of allocations till now.
      */
-    static unsigned int allocations;
+    static unsigned long allocations;
+
+    /**
+     * @brief Number of deallocations till now.
+     */
+    static unsigned long deallocations;
 
     /**
      * @brief OutputStream to print debug results. 
@@ -68,7 +73,7 @@ class Root {
     /**
      * @brief Current Root's ID for debug mode.
      */
-    unsigned int rootID;
+    unsigned long rootID;
 
 public:
     /**
@@ -95,6 +100,8 @@ public:
     static void setOutputStream(
         OutputStream& newOutputStream
     );
+
+    static unsigned long notFreed();
 
     /**
      * @brief Default constructor.

@@ -9,7 +9,9 @@ namespace Model {
 
 bool Root::debugMode = false;
 
-unsigned int Root::allocations = 0;
+unsigned long Root::allocations = 0;
+
+unsigned long Root::deallocations = 0;
 
 OutputStream* Root::outputStream = &std::cout;
 
@@ -31,6 +33,10 @@ void Root::setOutputStream(
     outputStream = &newOutputStream;
 }
 
+unsigned long Root::notFreed() {
+    return (allocations - deallocations);
+}
+
 Root::Root() :
     rootID(++allocations)
 {
@@ -39,6 +45,7 @@ Root::Root() :
 }
 
 Root::~Root() {
+    --deallocations;
     if (debugMode)
         *outputStream << "Freed id:" << rootID << std::endl;
 }
