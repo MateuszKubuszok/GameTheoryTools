@@ -14,6 +14,16 @@ model = 'gt/model/'
 
 ################################################################################
 
+# Helpers for building objects and programs
+
+def targetForSource(file):
+    return str(file).replace('.cpp', '.o').replace(source, objects)
+
+def targetForTest(file):
+    return str(file).replace('.cpp', '_test.o').replace(test, objects)
+
+################################################################################
+
 # Production environment configuration
 
 env  = Environment()
@@ -57,6 +67,7 @@ if not validInstallation:
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
 conf.env.Append(CPPPATH=[include, include+gtl, source+gtl])
+conf.env.Append(LIBS=['gmp'])
 
 conf.Finish()
 
@@ -64,8 +75,8 @@ conf.Finish()
 
 # Test environment configuration
 
-testEnv = env.Clone()
-testConf = Configure(env)
+testEnv  = env.Clone()
+testConf = Configure(testEnv)
 
 validInstallation = True
 
@@ -99,30 +110,38 @@ testConf.Finish()
 Models = [
     env.Object(
         source=Model_cpp,
-        target=str(Model_cpp).replace('.cpp', '.o').replace(source, objects)
+        target=targetForSource(Model_cpp)
     )
     for Model_cpp in Glob(source+model+'*.cpp')
 ]
 
 ################################################################################
 
-# Test Model objects
+# Build Models' Tests objects
 
 ModelsTests = [
     testEnv.Object(
         source=ModelTest_cpp,
-        target=ModelTest_cpp.name.replace('.cpp', '_test.o').replace(test, objects)
+        target=targetForTest(ModelTest_cpp)
     )
     for ModelTest_cpp in Glob(test+model+'*.cpp')
 ]
 
 ################################################################################
 
-# Runs Model tests
+# Build and run Model tests
 
-#ModelsTestsProgram_URI = programs+'ModelsTests'
-
-#ModelsTestsProgram_bin = testEnv.Program(ModelsTestsProgram_URI, Models + ModelsTests)
+ModelsTestsProgram_URI = programs+'ModelsTests'
+ModelsTestsProgram_bin = testEnv.Program(
+    source=Models + ModelsTests,
+    target=ModelsTestsProgram_URI
+)
+ModelsTestsProgram_run = Alias(
+    'Models\' Tests runner',
+    ModelsTestsProgram_bin,
+    ModelsTestsProgram_bin[0].path
+)
+AlwaysBuild(ModelsTestsProgram_run)
 
 ################################################################################
 
@@ -151,19 +170,20 @@ env.CXXFile(
 GTL = [
     env.Object(
         source=GTL_cpp,
-        target=str(GTL_cpp).replace('.cpp', '.o').replace(source, objects)
+        target=targetForSource(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
 ]
 
 ################################################################################
 
-# Test GTL objects
+# Build GTL's Tests objects
 
 GTLTests = [
     testEnv.Object(
         source=GTLTest_cpp,
-        target=GTLTest_cpp.name.replace('.cpp', '_test.o').replace(test, objects)
+        target=targetForTest(GTL_cpp)
     )
     for GTLTest_cpp in Glob(test+gtl+'*.cpp')
 ]
+
