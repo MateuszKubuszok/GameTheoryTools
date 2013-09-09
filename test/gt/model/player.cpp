@@ -3,6 +3,8 @@
 
 #include "gt/model/common.hpp"
 
+BOOST_AUTO_TEST_SUITE( Player )
+
 BOOST_AUTO_TEST_CASE( Player_getName ) {
     // given
     GT::IdentifierPtr  name(new GT::Identifier("test name"));
@@ -54,6 +56,7 @@ BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
     GT::IdentifierPtr  name(new GT::Identifier("test_name"));
     GT::IdentifierPtr  strategy1(new GT::Identifier("some_strategy"));
     GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
+    GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
     GT::IdentifiersPtr strategies(new GT::Identifiers());
     (*strategies).push_back(strategy1);
     (*strategies).push_back(strategy2);
@@ -69,6 +72,10 @@ BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
     BOOST_CHECK_EQUAL(
         player.getStrategyOrdinal(*strategy2),
         1
+    );
+    BOOST_CHECK_THROW(
+        player.getStrategyOrdinal(*invalidStrategy),
+        std::invalid_argument
     );
 }
 
@@ -106,3 +113,5 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
         GT::Message("Player:test_name{ some_strategy other_strategy }")
     );
 }
+
+BOOST_AUTO_TEST_SUITE_END()

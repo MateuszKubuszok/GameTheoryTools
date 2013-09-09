@@ -3,6 +3,8 @@
 
 #include "gt/model/common.hpp"
 
+BOOST_AUTO_TEST_SUITE( Root )
+
 class RootTestImpl : public virtual GT::Model::Root {
 public:
     RootTestImpl() :
@@ -55,3 +57,5 @@ BOOST_AUTO_TEST_CASE( Root_toString ) {
     // then
     BOOST_CHECK_EQUAL(root.toString(), GT::Message("RootTestImpl"));
 }
+
+BOOST_AUTO_TEST_SUITE_END()

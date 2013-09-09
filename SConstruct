@@ -104,6 +104,8 @@ testConf.env.Append(LIBS=['boost_unit_test_framework'])
 
 testConf.Finish()
 
+logLevel = 'test_suite'
+
 ################################################################################
 
 # Build Model objects
@@ -138,9 +140,9 @@ ModelsTestsProgram_bin = testEnv.Program(
     target=ModelsTestsProgram_URI
 )
 ModelsTestsProgram_run = Command(
-    source=ModelsTestsProgram_URI,
+    source=ModelsTestsProgram_bin,
     target='mock-content',
-    action=ModelsTestsProgram_URI
+    action=ModelsTestsProgram_URI+' --log_level='+logLevel
 )
 Depends(
     ModelsTestsProgram_run,
