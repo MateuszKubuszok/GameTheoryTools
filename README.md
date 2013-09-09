@@ -33,7 +33,7 @@ Executables  will be placed in `programs/` directory.
 Running tests
 ----
 
-To run tests call `program/ModelsTests`.
+To run tests call `bin/ModelsTests`.
 
 TODO
 ----
