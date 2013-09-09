@@ -11,7 +11,7 @@ bool Root::debugMode = false;
 
 unsigned int Root::allocations = 0;
 
-OutputStream* outputStream = &std::cout;
+OutputStream* Root::outputStream = &std::cout;
 
 // public:
 
