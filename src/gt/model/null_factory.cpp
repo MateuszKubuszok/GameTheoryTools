@@ -34,6 +34,10 @@ IdentifierPtr NullFactory::createIdentifier() {
     return IdentifierPtr(new Identifier("NullIdentifier"));
 }
 
+IdentifiersPtr NullFactory::createIdentifiers() {
+    return IdentifiersPtr(new Identifiers());
+}
+
 MessagePtr NullFactory::createMessage() {
     return MessagePtr(new Identifier("NullMessage"));
 }
