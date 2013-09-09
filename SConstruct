@@ -1,11 +1,12 @@
 # Directories configuration
 
 # Main directories
-fnb     = 'f_n_b/'
-include = 'include/'
-source  = 'src/'
-test    = 'test/'
-objects = 'objects/'
+fnb      = 'f_n_b/'
+include  = 'include/'
+source   = 'src/'
+test     = 'test/'
+objects  = 'objects/'
+programs = 'bin/'
 
 # Packages directories
 gtl   = 'gt/gtl/'
@@ -95,25 +96,33 @@ testConf.Finish()
 
 # Build Model objects
 
-Model_Root_cpp_URI          = source +model+'root.cpp'
-Model_Root_o_URI            = objects+model+'root.o'
-Model_Player_cpp_URI        = source +model+'player.cpp'
-Model_Player_o_URI          = objects+model+'player.o'
-Model_ResultFactory_cpp_URI = source +model+'result_factory.cpp'
-Model_ResultFactory_o_URI   = objects+model+'result_factory.o'
-Model_NullFactory_cpp_URI   = source +model+'null_factory.cpp'
-Model_NullFactory_o_URI     = objects+model+'null_factory.o'
-
-Model_Root_o          = env.Object(source=Model_Root_cpp_URI,          target=Model_Root_o_URI)
-Model_Player_o        = env.Object(source=Model_Player_cpp_URI,        target=Model_Player_o_URI)
-Model_ResultFactory_o = env.Object(source=Model_ResultFactory_cpp_URI, target=Model_ResultFactory_o_URI)
-Model_NullFactory_o   = env.Object(source=Model_NullFactory_cpp_URI,   target=Model_NullFactory_o_URI)
+Models = [
+    env.Object(
+        source=Model_cpp,
+        target=str(Model_cpp).replace('.cpp', '.o').replace(source, objects)
+    )
+    for Model_cpp in Glob(source+model+'*.cpp')
+]
 
 ################################################################################
 
 # Test Model objects
 
-# TODO
+ModelsTests = [
+    testEnv.Object(
+        source=ModelTest_cpp,
+        target=ModelTest_cpp.name.replace('.cpp', '_test.o').replace(test, objects)
+    )
+    for ModelTest_cpp in Glob(test+model+'*.cpp')
+]
+
+################################################################################
+
+# Runs Model tests
+
+#ModelsTestsProgram_URI = programs+'ModelsTests'
+
+#ModelsTestsProgram_bin = testEnv.Program(ModelsTestsProgram_URI, Models + ModelsTests)
 
 ################################################################################
 
@@ -125,37 +134,36 @@ GTL_Parser_hpp_URI  = include+gtl+'parser.hpp'
 FnB_Scanner_ll_URI  = fnb        +'scanner.ll'
 GTL_Scanner_cpp_URI = source +gtl+'scanner.cpp'
 
-env.Append(YACCFLAGS='--defines='+GTL_Parser_hpp_URI)
-GTL_Parser_cpp, GTL_Parser_hpp = env.CXXFile(source=FnB_Parser_yy_URI,  target=GTL_Parser_cpp_URI)
-GTL_Scanner_cpp                = env.CXXFile(source=FnB_Scanner_ll_URI, target=GTL_Scanner_cpp_URI)
+env.CXXFile(
+    source=FnB_Parser_yy_URI,
+    target=GTL_Parser_cpp_URI,
+    YACCFLAGS='--defines='+GTL_Parser_hpp_URI
+)
+env.CXXFile(
+    source=FnB_Scanner_ll_URI,
+    target=GTL_Scanner_cpp_URI
+)
 
 ################################################################################
 
 # Build GTL objects
 
-GTL_Object_cpp_URI       = source +gtl+'object.cpp'
-GTL_Object_o_URI         = objects+gtl+'object.o'
-GTL_Param_cpp_URI        = source +gtl+'param.cpp'
-GTL_Param_o_URI          = objects+gtl+'param.o'
-GTL_ParamFactory_cpp_URI = source +gtl+'param_factory.cpp'
-GTL_ParamFactory_o_URI   = objects+gtl+'param_factory.o'
-GTL_NullFactory_cpp_URI  = source +gtl+'null_factory.cpp'
-GTL_NullFactory_o_URI    = objects+gtl+'null_factory.o'
-
-GTL_Object_o        = env.Object(source=GTL_Object_cpp_URI,       target=GTL_Object_o_URI)
-GTL_Param_o         = env.Object(source=GTL_Param_cpp_URI,        target=GTL_Param_o_URI)
-GTL_ParamFactory_o  = env.Object(source=GTL_ParamFactory_cpp_URI, target=GTL_ParamFactory_o_URI)
-GTL_NullFactory_o   = env.Object(source=GTL_NullFactory_cpp_URI,  target=GTL_NullFactory_o_URI)
-
-GTL_Parser_o_URI  = objects+gtl+'parser.o'
-GTL_Scanner_o_URI = objects+gtl+'scanner.o'
-
-GTL_Parser_o  = env.Object(source=GTL_Parser_cpp,  target=GTL_Parser_o_URI)
-GTL_Scanner_o = env.Object(source=GTL_Scanner_cpp, target=GTL_Scanner_o_URI)
-
+GTL = [
+    env.Object(
+        source=GTL_cpp,
+        target=str(GTL_cpp).replace('.cpp', '.o').replace(source, objects)
+    )
+    for GTL_cpp in Glob(source+gtl+'*.cpp')
+]
 
 ################################################################################
 
 # Test GTL objects
 
-# TODO
+GTLTests = [
+    testEnv.Object(
+        source=GTLTest_cpp,
+        target=GTLTest_cpp.name.replace('.cpp', '_test.o').replace(test, objects)
+    )
+    for GTLTest_cpp in Glob(test+gtl+'*.cpp')
+]
