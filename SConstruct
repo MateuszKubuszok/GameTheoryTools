@@ -137,10 +137,14 @@ ModelsTestsProgram_bin = testEnv.Program(
     source=Models + ModelsTests,
     target=ModelsTestsProgram_URI
 )
-ModelsTestsProgram_run = Alias(
-    'Models\' Tests runner',
-    ModelsTestsProgram_bin,
-    ModelsTestsProgram_bin[0].path
+ModelsTestsProgram_run = Command(
+    source=ModelsTestsProgram_URI,
+    target='mock-content',
+    action=ModelsTestsProgram_URI
+)
+Depends(
+    ModelsTestsProgram_run,
+    ModelsTestsProgram_bin
 )
 AlwaysBuild(ModelsTestsProgram_run)
 
