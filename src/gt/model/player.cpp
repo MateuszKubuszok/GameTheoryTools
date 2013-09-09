@@ -40,7 +40,15 @@ int Player::getStrategiesNumber() {
 int Player::getStrategyOrdinal(
     Identifier& strategy
 ) {
-    return strategyMapping[strategy];
+    if (strategyMapping.count(strategy))
+        return strategyMapping[strategy];
+    throw std::invalid_argument("Strategy not found");
+}
+
+bool Player::hasStrategy(
+    Identifier& strategy
+) {
+    return strategyMapping.count(strategy);
 }
 
 Message Player::toString() {

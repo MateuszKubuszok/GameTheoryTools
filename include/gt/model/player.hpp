@@ -63,9 +63,19 @@ public:
      /**
      * @brief Returns ordinal of a strategy with given identifier.
      *
-     * @return ordinal of strategy with given identifier
+     * @return                       ordinal of strategy with given identifier
+     * @throws std::invalid_argument thrown if Player has no such strategy
      */
     virtual int getStrategyOrdinal(
+        Identifier& strategy
+    );
+
+     /**
+     * @brief Returns whether strategy with such name exists.
+     *
+     * @return true if Player has such strategy
+     */
+    virtual bool hasStrategy(
         Identifier& strategy
     );
 

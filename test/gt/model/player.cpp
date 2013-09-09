@@ -28,8 +28,8 @@ BOOST_AUTO_TEST_CASE( Player_getStrategies ) {
 
     // then
     BOOST_CHECK_EQUAL_COLLECTIONS(
-    	(*player.getStrategies()).begin(), (*player.getStrategies()).end(),
-    	(*strategies).begin(),             (*strategies).end()
+        (*player.getStrategies()).begin(), (*player.getStrategies()).end(),
+        (*strategies).begin(),             (*strategies).end()
     );
 }
 BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
@@ -44,8 +44,8 @@ BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
 
     // then
     BOOST_CHECK_EQUAL(
-    	player.getStrategiesNumber(),
-    	2
+        player.getStrategiesNumber(),
+        2
     );
 }
 
@@ -63,13 +63,31 @@ BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
 
     // then
     BOOST_CHECK_EQUAL(
-    	player.getStrategyOrdinal(*strategy1),
-    	0
+        player.getStrategyOrdinal(*strategy1),
+        0
     );
     BOOST_CHECK_EQUAL(
-    	player.getStrategyOrdinal(*strategy2),
-    	1
+        player.getStrategyOrdinal(*strategy2),
+        1
     );
+}
+
+BOOST_AUTO_TEST_CASE( Player_hasStrategy ) {
+    // given
+    GT::IdentifierPtr  name(new GT::Identifier("test_name"));
+    GT::IdentifierPtr  strategy1(new GT::Identifier("some_strategy"));
+    GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
+    GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
+    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    (*strategies).push_back(strategy1);
+    (*strategies).push_back(strategy2);
+
+    // when
+    GT::Model::Player player(name, strategies);
+
+    // then
+    BOOST_CHECK(player.hasStrategy(*strategy1));
+    BOOST_CHECK(!player.hasStrategy(*invalidStrategy));
 }
 
 BOOST_AUTO_TEST_CASE( Player_toString ) {
@@ -83,5 +101,8 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     GT::Model::Player player(name, strategies);
 
     // then
-    BOOST_CHECK_EQUAL(player.toString(), GT::Message("Player:test_name{ some_strategy other_strategy }"));
+    BOOST_CHECK_EQUAL(
+        player.toString(),
+        GT::Message("Player:test_name{ some_strategy other_strategy }")
+    );
 }
