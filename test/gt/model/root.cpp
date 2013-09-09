@@ -1,6 +1,5 @@
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE RootTest
 #include <boost/test/unit_test.hpp>
+#include <boost/test/test_tools.hpp>
 
 #include "gt/model/common.hpp"
 
@@ -15,28 +14,44 @@ public:
     }
 };
 
-BOOST_AUTO_TEST_CASE( testIsEqual ) {
+BOOST_AUTO_TEST_CASE( Root_isEqual ) {
+    // given
+
+    // when
     RootTestImpl root;
     RootTestImpl root2;
 
+    // then
     BOOST_CHECK(root.isEqual(root));
     BOOST_CHECK(!root.isEqual(root2));
 }
 
-BOOST_AUTO_TEST_CASE( testIsNotNull ) {
+BOOST_AUTO_TEST_CASE( Root_isNotNull ) {
+    // given
+
+    // when
     RootTestImpl root;
 
+    // then
     BOOST_CHECK(root.isNotNull());
 }
 
-BOOST_AUTO_TEST_CASE( testIsNull ) {
+BOOST_AUTO_TEST_CASE( Root_isNull ) {
+    // given
+
+    // when
     RootTestImpl root;
 
+    // then
     BOOST_CHECK(!root.isNull());
 }
 
-BOOST_AUTO_TEST_CASE( testToString ) {
+BOOST_AUTO_TEST_CASE( Root_toString ) {
+    // given
+
+    // when
     RootTestImpl root;
 
+    // then
     BOOST_CHECK_EQUAL(root.toString(), GT::Message("RootTestImpl"));
 }
