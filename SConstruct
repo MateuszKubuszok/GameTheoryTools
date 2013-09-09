@@ -84,6 +84,7 @@ validInstallation = True
 for header in [
     # boost libraries
     'boost/test/unit_test.hpp',
+    'boost/test/test_tools.hpp'
 ]:
     if not testConf.CheckCXXHeader(header):
         print('Your environment does not seem to have header <'+header+'>!!')
