@@ -20,16 +20,16 @@ namespace GT {
 
 /* Shortens commonly used names */
 
-typedef std::istream                         InputStream;
-typedef std::ostream                         OutputStream;
-typedef std::string                          Message;
-typedef boost::shared_ptr<Message>           MessagePtr;
-typedef std::string                          Identifier;
-typedef boost::shared_ptr<Identifier>        IdentifierPtr;
-typedef boost::container::vector<Identifier> Identifiers;
-typedef boost::shared_ptr<Identifiers>       IdentifiersPtr;
-typedef mpz_class                            Number;
-typedef boost::shared_ptr<Number>            NumberPtr;
+typedef std::istream                            InputStream;
+typedef std::ostream                            OutputStream;
+typedef std::string                             Message;
+typedef boost::shared_ptr<Message>              MessagePtr;
+typedef std::string                             Identifier;
+typedef boost::shared_ptr<Identifier>           IdentifierPtr;
+typedef boost::container::vector<IdentifierPtr> Identifiers;
+typedef boost::shared_ptr<Identifiers>          IdentifiersPtr;
+typedef mpz_class                               Number;
+typedef boost::shared_ptr<Number>               NumberPtr;
 
 namespace Model {
 

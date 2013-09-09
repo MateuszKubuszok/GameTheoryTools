@@ -1,3 +1,5 @@
+#include <boost/foreach.hpp>
+
 #include "gt/model/common.hpp"
 
 namespace GT {
@@ -9,38 +11,43 @@ namespace Model {
 // public:
 
 Player::Player(
-	const IdentifierPtr  playerName,
+    const IdentifierPtr  playerName,
     const IdentifiersPtr playerStrategies
 ) :
-	name(playerName),
-	strategies(playerStrategies),
-	strategyMapping()
+    name(playerName),
+    strategies(playerStrategies),
+    strategyMapping()
 {
-	// foreach strategy as strategy put strategy with index
+    int index = 0;
+    BOOST_FOREACH(IdentifierPtr strategy, *strategies) {
+        std::pair<Identifier, int> pair = std::make_pair(*strategy, index++);
+        strategyMapping.insert(pair);
+    }
 }
 
 IdentifierPtr Player::getName() {
-	return name;
+    return name;
 }
 
 IdentifiersPtr Player::getStrategies() {
-	return strategies;
+    return strategies;
 }
 
 int Player::getStrategiesNumber() {
-	return (*strategies).size();
+    return (*strategies).size();
 }
 
 int Player::getStrategyOrdinal(
     Identifier& strategy
 ) {
-	return strategyMapping[strategy];
+    return strategyMapping[strategy];
 }
 
 Message Player::toString() {
-	Message result = Message("Player:") + (*name) + "{ ";
-	// foreach add "strategy "
-	return result + "}";
+    Message result = Message("Player:") + (*name) + "{ ";
+    BOOST_FOREACH(IdentifierPtr strategy, *strategies)
+        result += (*strategy) + " ";
+    return result + "}";
 }
 
 // }

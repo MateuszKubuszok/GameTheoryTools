@@ -30,6 +30,7 @@ for header in [
     # standard libraries
     'cstdlib', 'iostream', 'fstream', 'string',
     # boost libraries
+    'boost/foreach.hpp',
     'boost/shared_ptr.hpp',
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
