@@ -25,7 +25,7 @@ class Player : public virtual Root {
     /**
      * @breif Mapps strategies to its ordnial.
      */
-    const boost::container::map<Identifier, int> strategyMapping;
+    boost::container::map<Identifier, int> strategyMapping;
 
 public:
     /**
@@ -66,7 +66,7 @@ public:
      * @return ordinal of strategy with given identifier
      */
     virtual int getStrategyOrdinal(
-        const Identifier& strategy
+        Identifier& strategy
     );
 
     /**

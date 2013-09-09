@@ -4,7 +4,7 @@
 fnb     = 'f_n_b/'
 include = 'include/'
 source  = 'src/'
-tests   = 'test/'
+test    = 'test/'
 objects = 'objects/'
 
 # Packages directories
@@ -63,7 +63,7 @@ conf.Finish()
 # Test environment configuration
 
 testEnv = env.Clone()
-testConf = Configure(testConf)
+testConf = Configure(env)
 
 validInstallation = True
 
@@ -96,12 +96,15 @@ testConf.Finish()
 
 Model_Root_cpp_URI          = source +model+'root.cpp'
 Model_Root_o_URI            = objects+model+'root.o'
+Model_Player_cpp_URI        = source +model+'player.cpp'
+Model_Player_o_URI          = objects+model+'player.o'
 Model_ResultFactory_cpp_URI = source +model+'result_factory.cpp'
 Model_ResultFactory_o_URI   = objects+model+'result_factory.o'
 Model_NullFactory_cpp_URI   = source +model+'null_factory.cpp'
 Model_NullFactory_o_URI     = objects+model+'null_factory.o'
 
 Model_Root_o          = env.Object(source=Model_Root_cpp_URI,          target=Model_Root_o_URI)
+Model_Player_o        = env.Object(source=Model_Player_cpp_URI,        target=Model_Player_o_URI)
 Model_ResultFactory_o = env.Object(source=Model_ResultFactory_cpp_URI, target=Model_ResultFactory_o_URI)
 Model_NullFactory_o   = env.Object(source=Model_NullFactory_cpp_URI,   target=Model_NullFactory_o_URI)
 
