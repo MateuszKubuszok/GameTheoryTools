@@ -89,6 +89,8 @@ typedef Model::ResultFactory                          ResultFactory;
 
 /* Includes GTL parsers elements */
 
+#include "gt/gtl/coordinate_driver.hpp"
+#include "gt/gtl/collections_driver.hpp"
 #include "gt/gtl/driver.hpp"
 #include "gt/gtl/parser.hpp"
 #include "gt/gtl/scanner.hpp"

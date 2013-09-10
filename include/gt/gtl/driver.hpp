@@ -7,7 +7,30 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 class Driver : public virtual Root {
+    CoordinateDriver              coordinate;
+    CollectionsDriver<Coordinate> coordinates;
+    CollectionsDriver<Condition>  conditions;
+    CollectionsDriver<Identifier> identifiers;
+    CollectionsDriver<Object>     objects;
+    CollectionsDriver<Param>      params;
+
 public:
+    Driver();
+
+    virtual ~Driver();
+
+    virtual CoordinateDriver& forCoordinate();
+
+    virtual CollectionsDriver<Coordinate>& forCoordinates();
+    
+    virtual CollectionsDriver<Condition>& forConditions();
+    
+    virtual CollectionsDriver<Identifier>& forIdentifiers();
+    
+    virtual CollectionsDriver<Object>& forObjects();
+    
+    virtual CollectionsDriver<Param>& forParams();
+
     virtual void storeDefinedObject(
         const DefinitionPtr* definition
     );
@@ -25,15 +48,6 @@ public:
         const IdentifiersPtr* identifiers,
         const ObjectsPtr*     objects,
         const ConditionsPtr*  conditions
-    );
-
-    virtual ObjectsPtr* createObjectsCollection(
-        const ObjectPtr* object
-    );
-
-    virtual ObjectsPtr* addObjectToCollection(
-        const ObjectPtr*  object,
-        const ObjectsPtr* objects
     );
 
     virtual ObjectPtr* convert(
@@ -82,67 +96,9 @@ public:
         const NumberPtr* number
     );
 
-    virtual ParamsPtr* createParamsCollection(
-        const ParamPtr* param
-    );
-
-    virtual ParamsPtr* addParamToCollection(
-        const ParamPtr*  param,
-        const ParamsPtr* params
-    );
-
-    virtual IdentifiersPtr* createIdentifiersCollection(
-        const IdentifierPtr* identifier
-    );
-
-    virtual IdentifiersPtr* addIdentifierToCollection(
-        const IdentifierPtr*  identifier,
-        const IdentifiersPtr* identifiers
-    );
-
     virtual ConditionPtr* createPlayerChoiceCondition(
         const ObjectPtr* player,
         const ObjectPtr* strategy
-    );
-
-    virtual ConditionsPtr* createConditionsCollection(
-        const ConditionPtr* condition
-    );
-
-    virtual ConditionsPtr* emptyConditionsCollection();
-
-    virtual ConditionsPtr* addConditionToCollection(
-        const ConditionPtr*  condition,
-        const ConditionsPtr* conditions
-    );
-
-    virtual CoordinatesPtr* addCoordinatesToCollection(
-        const CoordinatesPtr* coordinates,
-        const CoordinatePtr*  coordinate
-    );
-
-    virtual CoordinatesPtr* createCoordinatesCollection(
-        const CoordinatePtr* coordinate
-    );
-
-    virtual CoordinatePtr* fillCoordinateWithData(
-        const CoordinatePtr*  coordinate,
-        const CoordinatesPtr* data
-    );
-
-    virtual CoordinatePtr* fillCoordinateWithData(
-        const CoordinatePtr* coordinate,
-        const ParamsPtr*     data
-    );
-
-    virtual CoordinatePtr* mergeCoordinates(
-        const CoordinatePtr* coordinate1,
-        const CoordinatePtr* coordinate2
-    );
-
-    virtual CoordinatePtr* createCoordinate(
-        const IdentifierPtr* player,
-        const IdentifierPtr* strategy
     );
 
     virtual void errorInformation(
@@ -155,7 +111,42 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 class NullDriver : public Driver {
+    NullCoordinateDriver              coordinate;
+    NullCollectionsDriver<Coordinate> coordinates;
+    NullCollectionsDriver<Condition>  conditions;
+    NullCollectionsDriver<Identifier> identifiers;
+    NullCollectionsDriver<Object>     objects;
+    NullCollectionsDriver<Param>      params;
+
 public:
+    NullDriver() :
+        Driver()
+        {}
+
+    virtual CoordinateDriver& forCoordinate() {
+        return coordinate;
+    }
+
+    virtual CollectionsDriver<Coordinate>& forCoordinates() {
+        return coordinates;
+    }
+    
+    virtual CollectionsDriver<Condition>& forConditions() {
+        return conditions;
+    }
+    
+    virtual CollectionsDriver<Identifier>& forIdentifiers() {
+        return identifiers;
+    }
+    
+    virtual CollectionsDriver<Object>& forObjects() {
+        return objects;
+    }
+    
+    virtual CollectionsDriver<Param>& forParams() {
+        return params;
+    }
+
     virtual void storeDefinedObject(
         const DefinitionPtr* definition
     ) {}
@@ -177,19 +168,6 @@ public:
         const ConditionsPtr*  conditions
     ) {
         return new QueryPtr(NullFactory::getInstance().createQuery());
-    }
-
-    virtual ObjectsPtr* createObjectsCollection(
-        const ObjectPtr* object
-    ) {
-        return new ObjectsPtr(NullFactory::getInstance().createObjects());
-    }
-
-    virtual ObjectsPtr* addObjectToCollection(
-        const ObjectPtr*  object,
-        const ObjectsPtr* objects
-    ) {
-        return new ObjectsPtr(NullFactory::getInstance().createObjects());
     }
 
     virtual ObjectPtr* convert(
@@ -260,95 +238,11 @@ public:
         return new ParamPtr(NullFactory::getInstance().createParam());
     }
 
-    virtual ParamsPtr* createParamsCollection(
-        const ParamPtr* param
-    ) {
-        return new ParamsPtr(NullFactory::getInstance().createParams());
-    }
-
-    virtual ParamsPtr* addParamToCollection(
-        const ParamPtr*  param,
-        const ParamsPtr* params
-    ) {
-        return new ParamsPtr(NullFactory::getInstance().createParams());
-    }
-
-    virtual IdentifiersPtr* createIdentifiersCollection(
-        const IdentifierPtr* identifier
-    ) {
-        return new IdentifiersPtr(Model::NullFactory::getInstance().createIdentifiers());
-    }
-
-    virtual IdentifiersPtr* addIdentifierToCollection(
-        const IdentifierPtr*  identifier,
-        const IdentifiersPtr* identifiers
-    ) {
-        return new IdentifiersPtr(Model::NullFactory::getInstance().createIdentifiers());
-    }
-
     virtual ConditionPtr* createPlayerChoiceCondition(
         const ObjectPtr* player,
         const ObjectPtr* strategy
     ) {
         return new ConditionPtr(NullFactory::getInstance().createCondition());
-    }
-
-    virtual ConditionsPtr* createConditionsCollection(
-        const ConditionPtr* condition
-    ) {
-        return new ConditionsPtr(NullFactory::getInstance().createConditions());
-    }
-
-    virtual ConditionsPtr* emptyConditionsCollection() {
-        return new ConditionsPtr(NullFactory::getInstance().createConditions());
-    }
-
-    virtual ConditionsPtr* addConditionToCollection(
-        const ConditionPtr*  condition,
-        const ConditionsPtr* conditions
-    ) {
-        return new ConditionsPtr(NullFactory::getInstance().createConditions());
-    }
-
-    virtual CoordinatesPtr* addCoordinatesToCollection(
-        const CoordinatesPtr* coordinates,
-        const CoordinatePtr*  coordinate
-    ) {
-        return new CoordinatesPtr(NullFactory::getInstance().createCoordinates());
-    }
-
-    virtual CoordinatesPtr* createCoordinatesCollection(
-        const CoordinatePtr* coordinate
-    ) {
-        return new CoordinatesPtr(NullFactory::getInstance().createCoordinates());
-    }
-
-    virtual CoordinatePtr* fillCoordinateWithData(
-        const CoordinatePtr*  coordinate,
-        const CoordinatesPtr* data
-    ) {
-        return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
-    }
-
-    virtual CoordinatePtr* fillCoordinateWithData(
-        const CoordinatePtr* coordinate,
-        const ParamsPtr*     data
-    ) {
-        return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
-    }
-
-    virtual CoordinatePtr* mergeCoordinates(
-        const CoordinatePtr* coordinate1,
-        const CoordinatePtr* coordinate2
-    ) {
-        return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
-    }
-
-    virtual CoordinatePtr* createCoordinate(
-        const IdentifierPtr* player,
-        const IdentifierPtr* strategy
-    ) {
-        return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
     virtual void errorInformation(

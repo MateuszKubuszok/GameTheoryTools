@@ -174,8 +174,8 @@ query
 /* Objects */
 
 objects
- : objects COMA object { $$ = driver.addObjectToCollection($3, $1); }
- | object              { $$ = driver.createObjectsCollection($1); }
+ : objects COMA object { $$ = driver.forObjects().insert($3, $1); }
+ | object              { $$ = driver.forObjects().create($1); }
 
 object
  : game   { $$ = driver.convert($1); }
@@ -209,27 +209,27 @@ param
  ;
 
 params
- : params COMA param { $$ = driver.addParamToCollection($3, $1); }
- | param             { $$ = driver.createParamsCollection($1); }
+ : params COMA param { $$ = driver.forParams().insert($3, $1); }
+ | param             { $$ = driver.forParams().create($1); }
  ;
 
 /* Identifiers */
 
 identifiers
- : identifiers COMA identifier { $$ = driver.addIdentifierToCollection($3, $1); }
- | identifier                  { $$ = driver.createIdentifiersCollection($1); }
+ : identifiers COMA identifier { $$ = driver.forIdentifiers().insert($3, $1); }
+ | identifier                  { $$ = driver.forIdentifiers().create($1); }
  ;
 
 /* Conditions */
 
 conditions
  : condition_collection { $$ = $1; }
- |                      { $$ = driver.emptyConditionsCollection(); }
+ |                      { $$ = driver.forConditions().empty(); }
  ;
 
 condition_collection
- : condition_collection COMA condition { $$ = driver.addConditionToCollection($3, $1); }
- | WITH condition                      { $$ = driver.createConditionsCollection($2); }
+ : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1); }
+ | WITH condition                      { $$ = driver.forConditions().create($2); }
  ;
 
 condition
@@ -243,22 +243,22 @@ data
  ;
 
 data_coordinates
- : data_coordinates COMA data_coordinate { $$ = driver.addCoordinatesToCollection($1, $3); }
- | data_coordinate                       { $$ = driver.createCoordinatesCollection($1); }
+ : data_coordinates COMA data_coordinate { $$ = driver.forCoordinates().insert($3, $1); }
+ | data_coordinate                       { $$ = driver.forCoordinates().create($1); }
  ;
 
 data_coordinate
- : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.fillCoordinateWithData($2, $4); }
- | LCBR coordinates COLON params RCBR           { $$ = driver.fillCoordinateWithData($2, $4); }
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData($2, $4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData($2, $4); }
  ;
 
 coordinates
- : coordinates COMA coordinate { $$ = driver.mergeCoordinates($1, $3); }
+ : coordinates COMA coordinate { $$ = driver.forCoordinate().merge($1, $3); }
  | coordinate                  { $$ = $1; }
  ;
 
 coordinate
- : identifier EQUAL identifier { $$ = driver.createCoordinate($1, $3); }
+ : identifier EQUAL identifier { $$ = driver.forCoordinate().create($1, $3); }
  ;
 
 /* Errors */

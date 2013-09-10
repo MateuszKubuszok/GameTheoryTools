@@ -660,14 +660,14 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 177 "f_n_b/parser.yy"
-    { (yyval.objects) = driver.addObjectToCollection((yysemantic_stack_[(3) - (3)].object), (yysemantic_stack_[(3) - (1)].objects)); }
+    { (yyval.objects) = driver.forObjects().insert((yysemantic_stack_[(3) - (3)].object), (yysemantic_stack_[(3) - (1)].objects)); }
     break;
 
   case 11:
 
 /* Line 690 of lalr1.cc  */
 #line 178 "f_n_b/parser.yy"
-    { (yyval.objects) = driver.createObjectsCollection((yysemantic_stack_[(1) - (1)].object)); }
+    { (yyval.objects) = driver.forObjects().create((yysemantic_stack_[(1) - (1)].object)); }
     break;
 
   case 12:
@@ -744,28 +744,28 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 212 "f_n_b/parser.yy"
-    { (yyval.params) = driver.addParamToCollection((yysemantic_stack_[(3) - (3)].param), (yysemantic_stack_[(3) - (1)].params)); }
+    { (yyval.params) = driver.forParams().insert((yysemantic_stack_[(3) - (3)].param), (yysemantic_stack_[(3) - (1)].params)); }
     break;
 
   case 23:
 
 /* Line 690 of lalr1.cc  */
 #line 213 "f_n_b/parser.yy"
-    { (yyval.params) = driver.createParamsCollection((yysemantic_stack_[(1) - (1)].param)); }
+    { (yyval.params) = driver.forParams().create((yysemantic_stack_[(1) - (1)].param)); }
     break;
 
   case 24:
 
 /* Line 690 of lalr1.cc  */
 #line 219 "f_n_b/parser.yy"
-    { (yyval.identifiers) = driver.addIdentifierToCollection((yysemantic_stack_[(3) - (3)].identifier), (yysemantic_stack_[(3) - (1)].identifiers)); }
+    { (yyval.identifiers) = driver.forIdentifiers().insert((yysemantic_stack_[(3) - (3)].identifier), (yysemantic_stack_[(3) - (1)].identifiers)); }
     break;
 
   case 25:
 
 /* Line 690 of lalr1.cc  */
 #line 220 "f_n_b/parser.yy"
-    { (yyval.identifiers) = driver.createIdentifiersCollection((yysemantic_stack_[(1) - (1)].identifier)); }
+    { (yyval.identifiers) = driver.forIdentifiers().create((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 26:
@@ -779,21 +779,21 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 227 "f_n_b/parser.yy"
-    { (yyval.conditions) = driver.emptyConditionsCollection(); }
+    { (yyval.conditions) = driver.forConditions().empty(); }
     break;
 
   case 28:
 
 /* Line 690 of lalr1.cc  */
 #line 231 "f_n_b/parser.yy"
-    { (yyval.conditions) = driver.addConditionToCollection((yysemantic_stack_[(3) - (3)].condition), (yysemantic_stack_[(3) - (1)].conditions)); }
+    { (yyval.conditions) = driver.forConditions().insert((yysemantic_stack_[(3) - (3)].condition), (yysemantic_stack_[(3) - (1)].conditions)); }
     break;
 
   case 29:
 
 /* Line 690 of lalr1.cc  */
 #line 232 "f_n_b/parser.yy"
-    { (yyval.conditions) = driver.createConditionsCollection((yysemantic_stack_[(2) - (2)].condition)); }
+    { (yyval.conditions) = driver.forConditions().create((yysemantic_stack_[(2) - (2)].condition)); }
     break;
 
   case 30:
@@ -814,35 +814,35 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 246 "f_n_b/parser.yy"
-    { (yyval.coordinates) = driver.addCoordinatesToCollection((yysemantic_stack_[(3) - (1)].coordinates), (yysemantic_stack_[(3) - (3)].coordinate)); }
+    { (yyval.coordinates) = driver.forCoordinates().insert((yysemantic_stack_[(3) - (3)].coordinate), (yysemantic_stack_[(3) - (1)].coordinates)); }
     break;
 
   case 33:
 
 /* Line 690 of lalr1.cc  */
 #line 247 "f_n_b/parser.yy"
-    { (yyval.coordinates) = driver.createCoordinatesCollection((yysemantic_stack_[(1) - (1)].coordinate)); }
+    { (yyval.coordinates) = driver.forCoordinates().create((yysemantic_stack_[(1) - (1)].coordinate)); }
     break;
 
   case 34:
 
 /* Line 690 of lalr1.cc  */
 #line 251 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.fillCoordinateWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].coordinates)); }
+    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].coordinates)); }
     break;
 
   case 35:
 
 /* Line 690 of lalr1.cc  */
 #line 252 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.fillCoordinateWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].params)); }
+    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].params)); }
     break;
 
   case 36:
 
 /* Line 690 of lalr1.cc  */
 #line 256 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.mergeCoordinates((yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); }
+    { (yyval.coordinate) = driver.forCoordinate().merge((yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); }
     break;
 
   case 37:
@@ -856,7 +856,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 261 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.createCoordinate((yysemantic_stack_[(3) - (1)].identifier), (yysemantic_stack_[(3) - (3)].identifier)); }
+    { (yyval.coordinate) = driver.forCoordinate().create((yysemantic_stack_[(3) - (1)].identifier), (yysemantic_stack_[(3) - (3)].identifier)); }
     break;
 
   case 39:
