@@ -13,6 +13,7 @@ class Driver : public virtual Root {
     CollectionsDriver<Identifier> identifiers;
     CollectionsDriver<Object>     objects;
     CollectionsDriver<Param>      params;
+    ValueDriver                   value;
 
 public:
     Driver();
@@ -31,6 +32,8 @@ public:
     
     virtual CollectionsDriver<Param>& forParams();
 
+    virtual ValueDriver& forValue();
+
     virtual void storeDefinedObject(
         const DefinitionPtr* definition
     );
@@ -48,18 +51,6 @@ public:
         const IdentifiersPtr* identifiers,
         const ObjectsPtr*     objects,
         const ConditionsPtr*  conditions
-    );
-
-    virtual ObjectPtr* convert(
-        GamePtr* game
-    );
-    
-    virtual ObjectPtr* convert(
-        PlayerPtr* player
-    );
-
-    virtual ObjectPtr* convert(
-        ParamPtr* param
     );
 
     virtual ObjectPtr* getValueForIdentifier(
@@ -88,14 +79,6 @@ public:
         const IdentifiersPtr* strategies
     );
 
-    virtual ParamPtr* getValue(
-        const IdentifierPtr* identifier
-    );
-
-    virtual ParamPtr* getValue(
-        const NumberPtr* number
-    );
-
     virtual ConditionPtr* createPlayerChoiceCondition(
         const ObjectPtr* player,
         const ObjectPtr* strategy
@@ -117,6 +100,7 @@ class NullDriver : public Driver {
     NullCollectionsDriver<Identifier> identifiers;
     NullCollectionsDriver<Object>     objects;
     NullCollectionsDriver<Param>      params;
+    NullValueDriver                   value;
 
 public:
     NullDriver() :
@@ -170,24 +154,6 @@ public:
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }
 
-    virtual ObjectPtr* convert(
-        GamePtr* game
-    ) {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
-    }
-    
-    virtual ObjectPtr* convert(
-        PlayerPtr* player
-    ) {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
-    }
-
-    virtual ObjectPtr* convert(
-        ParamPtr* param
-    ) {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
-    }
-
     virtual ObjectPtr* getValueForIdentifier(
         const IdentifierPtr* identifier
     ) {
@@ -224,18 +190,6 @@ public:
         const IdentifiersPtr* strategies
     ) {
         return new PlayerPtr(NullFactory::getInstance().createPlayer());
-    }
-
-    virtual ParamPtr* getValue(
-        const IdentifierPtr* identifier
-    ) {
-        return new ParamPtr(NullFactory::getInstance().createParam());
-    }
-
-    virtual ParamPtr* getValue(
-        const NumberPtr* number
-    ) {
-        return new ParamPtr(NullFactory::getInstance().createParam());
     }
 
     virtual ConditionPtr* createPlayerChoiceCondition(

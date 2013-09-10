@@ -674,21 +674,21 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 181 "f_n_b/parser.yy"
-    { (yyval.object) = driver.convert((yysemantic_stack_[(1) - (1)].game)); }
+    { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].game)); }
     break;
 
   case 13:
 
 /* Line 690 of lalr1.cc  */
 #line 182 "f_n_b/parser.yy"
-    { (yyval.object) = driver.convert((yysemantic_stack_[(1) - (1)].player)); }
+    { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].player)); }
     break;
 
   case 14:
 
 /* Line 690 of lalr1.cc  */
 #line 183 "f_n_b/parser.yy"
-    { (yyval.object) = driver.convert((yysemantic_stack_[(1) - (1)].param)); }
+    { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].param)); }
     break;
 
   case 15:
@@ -730,14 +730,14 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 207 "f_n_b/parser.yy"
-    { (yyval.param) = driver.getValue((yysemantic_stack_[(1) - (1)].identifier)); }
+    { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 21:
 
 /* Line 690 of lalr1.cc  */
 #line 208 "f_n_b/parser.yy"
-    { (yyval.param) = driver.getValue((yysemantic_stack_[(1) - (1)].number)); }
+    { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].number)); }
     break;
 
   case 22:

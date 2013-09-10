@@ -178,9 +178,9 @@ objects
  | object              { $$ = driver.forObjects().create($1); }
 
 object
- : game   { $$ = driver.convert($1); }
- | player { $$ = driver.convert($1); }
- | param  { $$ = driver.convert($1); }
+ : game   { $$ = driver.forValue().toObject($1); }
+ | player { $$ = driver.forValue().toObject($1); }
+ | param  { $$ = driver.forValue().toObject($1); }
  ;
  
 /* Games */
@@ -204,8 +204,8 @@ player
 /* Params */
 
 param
- : identifier { $$ = driver.getValue($1); }
- | number     { $$ = driver.getValue($1); }
+ : identifier { $$ = driver.forValue().get($1); }
+ | number     { $$ = driver.forValue().get($1); }
  ;
 
 params
