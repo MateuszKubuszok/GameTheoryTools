@@ -723,7 +723,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 201 "f_n_b/parser.yy"
-    { (yyval.player) = driver.createPlayerWithStrategies((yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].identifiers)); }
+    { (yyval.player) = driver.forGame().createPlayer((yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].identifiers)); }
     break;
 
   case 20:
@@ -800,7 +800,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 236 "f_n_b/parser.yy"
-    { (yyval.condition) = driver.createPlayerChoiceCondition((yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
+    { (yyval.condition) = driver.forCondition().playerChoosed((yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
     break;
 
   case 31:
@@ -1359,7 +1359,7 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    driver.errorInformation(message);
+    driver.showError(message);
 }
 
 /**

@@ -233,7 +233,7 @@ condition_collection
  ;
 
 condition
- : PLAYER object CHOOSE object { $$ = driver.createPlayerChoiceCondition($2, $4); }
+ : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed($2, $4); }
  ;
  
 /* Data */

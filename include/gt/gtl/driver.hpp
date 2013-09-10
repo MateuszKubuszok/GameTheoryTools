@@ -9,6 +9,7 @@ namespace GTL {
 class Driver : public virtual Root {
     CoordinateDriver              coordinate;
     CollectionsDriver<Coordinate> coordinates;
+    ConditionDriver               condition;
     CollectionsDriver<Condition>  conditions;
     GameDriver                    game;
     CollectionsDriver<Identifier> identifiers;
@@ -25,6 +26,8 @@ public:
 
     virtual CollectionsDriver<Coordinate>& forCoordinates();
     
+    virtual ConditionDriver& forCondition();
+
     virtual CollectionsDriver<Condition>& forConditions();
 
     virtual GameDriver& forGame();
@@ -56,11 +59,6 @@ public:
         const ConditionsPtr*  conditions
     );
 
-    virtual ConditionPtr* createPlayerChoiceCondition(
-        const ObjectPtr* player,
-        const ObjectPtr* strategy
-    );
-
     virtual void showError(
         const std::string& message
     );
@@ -73,6 +71,7 @@ public:
 class NullDriver : public Driver {
     NullCoordinateDriver              coordinate;
     NullCollectionsDriver<Coordinate> coordinates;
+    NullConditionDriver               condition;
     NullCollectionsDriver<Condition>  conditions;
     NullGameDriver                    game;
     NullCollectionsDriver<Identifier> identifiers;
@@ -91,6 +90,10 @@ public:
 
     virtual CollectionsDriver<Coordinate>& forCoordinates() {
         return coordinates;
+    }
+
+    virtual ConditionDriver& forCondition() {
+        return condition;
     }
     
     virtual CollectionsDriver<Condition>& forConditions() {
@@ -134,13 +137,6 @@ public:
         const ConditionsPtr*  conditions
     ) {
         return new QueryPtr(NullFactory::getInstance().createQuery());
-    }
-
-    virtual ConditionPtr* createPlayerChoiceCondition(
-        const ObjectPtr* player,
-        const ObjectPtr* strategy
-    ) {
-        return new ConditionPtr(NullFactory::getInstance().createCondition());
     }
 
     virtual void showError(
