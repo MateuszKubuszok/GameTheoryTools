@@ -126,4 +126,4 @@ private:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_RESULT_FACTORY_HPP__ */
+#endif /* END #ifndef __GT_MODEL_RESULT_FACTORY_HPP__ */
