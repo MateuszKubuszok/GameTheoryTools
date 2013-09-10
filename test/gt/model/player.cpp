@@ -34,6 +34,7 @@ BOOST_AUTO_TEST_CASE( Player_getStrategies ) {
         (*strategies).begin(),             (*strategies).end()
     );
 }
+
 BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
     // given
     GT::IdentifierPtr  name(new GT::Identifier("test_name"));

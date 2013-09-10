@@ -14,7 +14,7 @@ public:
     virtual GT::Message toString() {
         return GT::Message("RootTestImpl");
     }
-};
+}; /* END class RootTestImpl */
 
 BOOST_AUTO_TEST_CASE( Root_isEqual ) {
     // given
