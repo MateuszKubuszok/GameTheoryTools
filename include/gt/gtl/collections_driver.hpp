@@ -118,4 +118,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END __GT_GTL_COLLECTIONS_DRIVER_HPP__ */
+#endif /* END #ifndef __GT_GTL_COLLECTIONS_DRIVER_HPP__ */

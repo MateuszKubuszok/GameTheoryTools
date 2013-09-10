@@ -186,19 +186,19 @@ object
 /* Games */
 
 game
- : PURE  GAME details { $$ = driver.createPureGameForDetails($3); }
- | MIXED GAME details { $$ = driver.createMixedGameForDetails($3); }
- | TREE  GAME details { $$ = driver.createTreeGameForDetails($3); }
+ : PURE  GAME details { $$ = driver.forGame().createPure($3); }
+ | MIXED GAME details { $$ = driver.forGame().createMixed($3); }
+ | TREE  GAME details { $$ = driver.forGame().createTree($3); }
  ;
 
 details
- : WITH objects SUCH AS data { $$ = driver.createDetailsForGame($2, $5); }
+ : WITH objects SUCH AS data { $$ = driver.forGame().createDetails($2, $5); }
  ;
  
 /* Players */
 
 player
- : PLAYER identifier LCBR identifiers RCBR { $$ = driver.createPlayerWithStrategies($2, $4); }
+ : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer($2, $4); }
  ;
 
 /* Params */
@@ -280,7 +280,7 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    driver.errorInformation(message);
+    driver.showError(message);
 }
 
 /**

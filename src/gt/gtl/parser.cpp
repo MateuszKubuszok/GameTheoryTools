@@ -695,28 +695,28 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 189 "f_n_b/parser.yy"
-    { (yyval.game) = driver.createPureGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createPure((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 16:
 
 /* Line 690 of lalr1.cc  */
 #line 190 "f_n_b/parser.yy"
-    { (yyval.game) = driver.createMixedGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createMixed((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 17:
 
 /* Line 690 of lalr1.cc  */
 #line 191 "f_n_b/parser.yy"
-    { (yyval.game) = driver.createTreeGameForDetails((yysemantic_stack_[(3) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createTree((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 18:
 
 /* Line 690 of lalr1.cc  */
 #line 195 "f_n_b/parser.yy"
-    { (yyval.details) = driver.createDetailsForGame((yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].coordinates)); }
+    { (yyval.details) = driver.forGame().createDetails((yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].coordinates)); }
     break;
 
   case 19:

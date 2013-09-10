@@ -10,6 +10,7 @@ class Driver : public virtual Root {
     CoordinateDriver              coordinate;
     CollectionsDriver<Coordinate> coordinates;
     CollectionsDriver<Condition>  conditions;
+    GameDriver                    game;
     CollectionsDriver<Identifier> identifiers;
     CollectionsDriver<Object>     objects;
     CollectionsDriver<Param>      params;
@@ -25,6 +26,8 @@ public:
     virtual CollectionsDriver<Coordinate>& forCoordinates();
     
     virtual CollectionsDriver<Condition>& forConditions();
+
+    virtual GameDriver& forGame();
     
     virtual CollectionsDriver<Identifier>& forIdentifiers();
     
@@ -53,38 +56,12 @@ public:
         const ConditionsPtr*  conditions
     );
 
-    virtual ObjectPtr* getValueForIdentifier(
-        const IdentifierPtr* identifier
-    );
-
-    virtual GamePtr* createPureGameForDetails(
-        const DetailsPtr* details
-    );
-
-    virtual GamePtr* createMixedGameForDetails(
-        const DetailsPtr* details
-    );
-
-    virtual GamePtr* createTreeGameForDetails(
-        const DetailsPtr* details
-    );
-
-    virtual DetailsPtr* createDetailsForGame(
-        const ObjectsPtr*     players,
-        const CoordinatesPtr* data
-    );
-
-    virtual PlayerPtr* createPlayerWithStrategies(
-        const IdentifierPtr*  player,
-        const IdentifiersPtr* strategies
-    );
-
     virtual ConditionPtr* createPlayerChoiceCondition(
         const ObjectPtr* player,
         const ObjectPtr* strategy
     );
 
-    virtual void errorInformation(
+    virtual void showError(
         const std::string& message
     );
 
@@ -97,6 +74,7 @@ class NullDriver : public Driver {
     NullCoordinateDriver              coordinate;
     NullCollectionsDriver<Coordinate> coordinates;
     NullCollectionsDriver<Condition>  conditions;
+    NullGameDriver                    game;
     NullCollectionsDriver<Identifier> identifiers;
     NullCollectionsDriver<Object>     objects;
     NullCollectionsDriver<Param>      params;
@@ -117,6 +95,10 @@ public:
     
     virtual CollectionsDriver<Condition>& forConditions() {
         return conditions;
+    }
+
+    virtual GameDriver& forGame() {
+        return game;
     }
     
     virtual CollectionsDriver<Identifier>& forIdentifiers() {
@@ -154,44 +136,6 @@ public:
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }
 
-    virtual ObjectPtr* getValueForIdentifier(
-        const IdentifierPtr* identifier
-    ) {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
-    }
-
-    virtual GamePtr* createPureGameForDetails(
-        const DetailsPtr* details
-    ) {
-        return new GamePtr(NullFactory::getInstance().createGame());
-    }
-
-    virtual GamePtr* createMixedGameForDetails(
-        const DetailsPtr* details
-    ) {
-        return new GamePtr(NullFactory::getInstance().createGame());
-    }
-
-    virtual GamePtr* createTreeGameForDetails(
-        const DetailsPtr* details
-    ) {
-        return new GamePtr(NullFactory::getInstance().createGame());
-    }
-
-    virtual DetailsPtr* createDetailsForGame(
-        const ObjectsPtr*     players,
-        const CoordinatesPtr* data
-    ) {
-        return new DetailsPtr(NullFactory::getInstance().createDetails());
-    }
-
-    virtual PlayerPtr* createPlayerWithStrategies(
-        const IdentifierPtr*  player,
-        const IdentifiersPtr* strategies
-    ) {
-        return new PlayerPtr(NullFactory::getInstance().createPlayer());
-    }
-
     virtual ConditionPtr* createPlayerChoiceCondition(
         const ObjectPtr* player,
         const ObjectPtr* strategy
@@ -199,7 +143,7 @@ public:
         return new ConditionPtr(NullFactory::getInstance().createCondition());
     }
 
-    virtual void errorInformation(
+    virtual void showError(
         const std::string& message
     ) {}
 
