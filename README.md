@@ -28,7 +28,7 @@ and type `scons`. Program should be built automatically.
 
 Object files will be placed in `objects/` directory.
 
-Executables  will be placed in `programs/` directory.
+Executables  will be placed in `bin/` directory.
 
 Running tests
 ----
