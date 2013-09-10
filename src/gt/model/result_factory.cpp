@@ -118,6 +118,38 @@ class PlainResultBuilder : public AbstractResultBuilder {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class JSONResultBuilder : public AbstractResultBuilder {
+    JSONResultBuilder(Message indentation) :
+        AbstractResultBuilder(indentation)
+        {}
+
+    virtual ResultPtr build() {
+        checkPropertyToResultMatching();
+
+        int propertiesSize = (*properties).size();
+        std::stringstream result;
+
+        result << '{' << std::endl;
+
+        BOOST_FOREACH(PartialResult partialResult, partialResults) {
+            result << indent << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
+            for (int property = 0; property < propertiesSize; property++)
+                result  << indent << indent
+                        << '"' << (*properties)[property] << '"'
+                        << " : "
+                        << '"' << (*partialResult.second)[property] << '"'
+                        << std::endl;
+            result << indent << "]" << std::endl;
+        }
+
+        result << '}';
+
+        return ResultFactory::getInstance().constResult(Message(result.str()));
+    }
+}; /* END class PlainResultBuilder */
+
+////////////////////////////////////////////////////////////////////////////////
+
 // class ResultFactory {
 ResultFactory* volatile ResultFactory::instance = 0;
 
