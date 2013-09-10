@@ -43,12 +43,14 @@ class NullFactory;
 
 class Player;        class NullPlayer;
 class Result;        class NullResult;
+class ResultBuilder; class NullResultBuilder;
 class ResultFactory;
 
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<Player> PlayerPtr;
-typedef boost::shared_ptr<Result> ResultPtr;
+typedef boost::shared_ptr<Player>        PlayerPtr;
+typedef boost::shared_ptr<Result>        ResultPtr;
+typedef boost::shared_ptr<ResultBuilder> ResultBuilderPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -52,7 +52,14 @@ public:
     static ResultFactory& getInstance();
 
     /**
-     * @brief Returns results with predefined const content.
+     * @brief Returns ResultBuilder.
+     * 
+     * @return ResultBuilder
+     */
+    ResultBuilderPtr buildResult();
+
+    /**
+     * @brief Returns Results with predefined const content.
      * 
      * @param content content to be contained by the Result
      * @return        Result with constant content
@@ -62,7 +69,7 @@ public:
     );
 
     /**
-     * @brief Returns empty result.
+     * @brief Returns empty Result.
      *
      * @return an empty result
      */

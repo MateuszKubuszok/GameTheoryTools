@@ -91,6 +91,7 @@ protected:
 ////////////////////////////////////////////////////////////////////////////////
 
 class PlainResultBuilder : public AbstractResultBuilder {
+public:
     PlainResultBuilder(Message indentation) :
         AbstractResultBuilder(indentation)
         {}
@@ -119,6 +120,7 @@ class PlainResultBuilder : public AbstractResultBuilder {
 ////////////////////////////////////////////////////////////////////////////////
 
 class JSONResultBuilder : public AbstractResultBuilder {
+public:
     JSONResultBuilder(Message indentation) :
         AbstractResultBuilder(indentation)
         {}
@@ -151,6 +153,7 @@ class JSONResultBuilder : public AbstractResultBuilder {
 ////////////////////////////////////////////////////////////////////////////////
 
 class XMLResultBuilder : public AbstractResultBuilder {
+public:
     XMLResultBuilder(Message indentation) :
         AbstractResultBuilder(indentation)
         {}
@@ -201,6 +204,31 @@ ResultFactory& ResultFactory::getInstance() {
         }
     }
     return *instance;
+}
+
+ResultBuilderPtr ResultFactory::buildResult() {
+    Message indent;
+    switch (indentationMode) {
+    case NONE:
+        break;
+    case TABS:
+        indent = Message("\t");
+        break;
+    case SPACES:
+        indent = Message(" ");
+    default:
+        break;
+    }
+
+    switch (builderMode) {
+    case JSON:
+        return ResultBuilderPtr(new JSONResultBuilder(indent));
+    case XML:
+        return ResultBuilderPtr(new XMLResultBuilder(indent));
+    case PLAIN:
+    default:
+        return ResultBuilderPtr(new PlainResultBuilder(indent));
+    }
 }
 
 ResultPtr ResultFactory::constResult(
