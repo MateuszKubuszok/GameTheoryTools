@@ -16,6 +16,7 @@ class Driver : public virtual Root {
     CollectionsDriver<Object>     objects;
     CollectionsDriver<Param>      params;
     ValueDriver                   value;
+    StatementDriver               statement;
 
 public:
     Driver();
@@ -40,24 +41,7 @@ public:
 
     virtual ValueDriver& forValue();
 
-    virtual void storeDefinedObject(
-        const DefinitionPtr* definition
-    );
-
-    virtual void executeQuery(
-        const QueryPtr* query
-    );
-
-    virtual DefinitionPtr* createDefinition(
-        const IdentifierPtr* identifier,
-        const ObjectPtr*     object
-    );
-
-    virtual QueryPtr* createQuery(
-        const IdentifiersPtr* identifiers,
-        const ObjectsPtr*     objects,
-        const ConditionsPtr*  conditions
-    );
+    virtual StatementDriver& forStatement();
 
     virtual void showError(
         const std::string& message
@@ -78,6 +62,7 @@ class NullDriver : public Driver {
     NullCollectionsDriver<Object>     objects;
     NullCollectionsDriver<Param>      params;
     NullValueDriver                   value;
+    NullStatementDriver               statement;
 
 public:
     NullDriver() :
@@ -116,27 +101,12 @@ public:
         return params;
     }
 
-    virtual void storeDefinedObject(
-        const DefinitionPtr* definition
-    ) {}
-
-    virtual void executeQuery(
-        const QueryPtr* query
-    ) {}
-
-    virtual DefinitionPtr* createDefinition(
-        const IdentifierPtr* identifier,
-        const ObjectPtr*     object
-    ) {
-        return new DefinitionPtr(NullFactory::getInstance().createDefinition());
+    virtual ValueDriver& forValue() {
+        return value;
     }
 
-    virtual QueryPtr* createQuery(
-        const IdentifiersPtr* identifiers,
-        const ObjectsPtr*     objects,
-        const ConditionsPtr*  conditions
-    ) {
-        return new QueryPtr(NullFactory::getInstance().createQuery());
+    virtual StatementDriver& forStatement() {
+        return statement;
     }
 
     virtual void showError(

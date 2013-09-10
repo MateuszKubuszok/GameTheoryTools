@@ -94,6 +94,7 @@ typedef Model::ResultFactory                          ResultFactory;
 #include "gt/gtl/condition_driver.hpp"
 #include "gt/gtl/game_driver.hpp"
 #include "gt/gtl/value_driver.hpp"
+#include "gt/gtl/statement_driver.hpp"
 #include "gt/gtl/driver.hpp"
 #include "gt/gtl/parser.hpp"
 #include "gt/gtl/scanner.hpp"
