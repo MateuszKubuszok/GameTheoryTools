@@ -24,6 +24,8 @@ typedef std::istream                            InputStream;
 typedef std::ostream                            OutputStream;
 typedef std::string                             Message;
 typedef boost::shared_ptr<Message>              MessagePtr;
+typedef boost::container::vector<MessagePtr>    Messages;
+typedef boost::shared_ptr<Messages>             MessagesPtr;
 typedef std::string                             Identifier;
 typedef boost::shared_ptr<Identifier>           IdentifierPtr;
 typedef boost::container::vector<IdentifierPtr> Identifiers;
@@ -63,6 +65,7 @@ typedef boost::shared_ptr<Result> ResultPtr;
 #include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
 #include "gt/model/result.hpp"
+#include "gt/model/result_builder.hpp"
 #include "gt/model/result_factory.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////

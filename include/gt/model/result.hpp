@@ -7,7 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Root of all Resuts created by GTL parser.
+ * @brief Root of all Results created by GTL parser.
  *
  * @author Mateusz Kubuszok
  */
@@ -37,6 +37,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null Result for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class NullResult : public virtual Result {
 public:
     virtual Message getResult() {
@@ -50,7 +55,7 @@ public:
     virtual Message toString() {
         return Message("NullResult");
     }
-}; /* END class Result */
+}; /* END class NullResult */
 
 ////////////////////////////////////////////////////////////////////////////////
 

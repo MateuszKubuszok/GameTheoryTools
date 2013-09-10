@@ -39,6 +39,43 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class AbstractResultBuilder : public ResultBuilder {
+    typedef std::pair<Identifier, Messages>         PartialResult;
+    typedef boost::container::vector<PartialResult> PartialResults;
+
+    Identifiers    properties;
+    PartialResults partialResults;
+
+public:
+    AbstractResultBuilder() :
+        properties(),
+        partialResults()
+        {}
+
+    virtual ResultBuilder& setHeaders(
+        Identifiers& newProperties
+    ) {
+        properties = newProperties;
+        return *this;
+    }
+
+    virtual ResultBuilder& addRecord(
+        Identifier& object,
+        Messages&   results
+    ) {
+        PartialResult partialResult = std::make_pair(object, results);
+        return *this;
+    }
+
+    virtual ResultPtr build() = 0;
+
+    virtual Message toString() {
+        return (*build()).getResult();
+    }
+}; /* END class AbstractResultBuilder */
+
+////////////////////////////////////////////////////////////////////////////////
+
 // class ResultFactory {
 ResultFactory* volatile ResultFactory::instance = 0;
 
