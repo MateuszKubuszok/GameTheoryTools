@@ -107,7 +107,7 @@ public:
         result << std::endl;
 
         BOOST_FOREACH(PartialResult partialResult, partialResults) {
-            result << (*partialResult.first) << std::endl << indent;
+            result << (*partialResult.first) << ':' << std::endl << indent;
             BOOST_FOREACH(MessagePtr message, (*partialResult.second))
                 result << indent << (*message) << ',';
             result << std::endl;
@@ -137,9 +137,9 @@ public:
             result << indent << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
             for (int property = 0; property < propertiesSize; property++)
                 result  << indent << indent
-                        << '"' << (*properties)[property] << '"'
+                        << '"' << (*(*properties)[property]) << '"'
                         << " : "
-                        << '"' << (*partialResult.second)[property] << '"'
+                        << '"' << (*(*partialResult.second)[property]) << '"'
                         << ',' << std::endl;
             result << indent << "]," << std::endl;
         }
@@ -170,12 +170,12 @@ public:
             result << indent << '<' << (*partialResult.first) << '>' << std::endl;
             for (int property = 0; property < propertiesSize; property++)
                 result  << indent << indent
-                        << "result"
+                        << "<result"
                         << ' '
-                        << "property=" << (*properties)[property] << '"'
+                        << "property=\"" << (*(*properties)[property]) << '"'
                         << ' '
-                        << "results=\"" << (*partialResult.second)[property] << '"'
-                        << "/>" << std::endl;
+                        << "value=\"" << (*(*partialResult.second)[property]) << '"'
+                        << " />" << std::endl;
             result << indent << '<' << '/' << (*partialResult.first) << '>' << std::endl;
         }
 

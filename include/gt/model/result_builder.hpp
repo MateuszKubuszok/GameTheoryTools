@@ -38,7 +38,9 @@ public:
     /**
      * @brief Build Result.
      * 
-     * @return Result
+     * @return                   Result
+     * @throw std::runtime_error thrown when number of Messages for any Object
+     *                           does not match number of properties
      */
     virtual ResultPtr build() = 0;
 }; /* END class ResultBuilder */
