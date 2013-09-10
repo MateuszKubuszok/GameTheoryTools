@@ -15,9 +15,9 @@ These tools should be available in an user's environment for program to compile.
 Compilations and dependencies are manged by a SCons tool. As such Python and SCons
 installations are also required.
 
-GTL parser uses flex and bison tools to build `.cpp` files.
+GTL parser uses Flex and Bison tools to build `.cpp` files.
 
-On Debian dependencies can be instaled by calling
+On Debian dependencies can be installed by calling
 `sudo apt-get install g++ bison flex gmp libboost-all-dev scons`.
 
 Building process
@@ -33,7 +33,8 @@ Executables  will be placed in `bin/` directory.
 Running tests
 ----
 
-To run tests call `bin/ModelsTests`.
+To run tests manually call `bin/ModelsTests`. Notice that they will be run
+automatically during build as well.
 
 TODO
 ----
