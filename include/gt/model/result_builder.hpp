@@ -20,7 +20,7 @@ public:
      * @result           reference for itself for chaining
      */
     virtual ResultBuilder& setHeaders(
-        Identifiers& properties
+        IdentifiersPtr& properties
     ) = 0;
 
     /**
@@ -31,8 +31,8 @@ public:
      * @result        reference for itself for chaining
      */
     virtual ResultBuilder& addRecord(
-        Identifier& object,
-        Messages&   results
+        IdentifierPtr& object,
+        MessagesPtr&   results
     ) = 0;
 
     /**

@@ -1,3 +1,5 @@
+#include <sstream>
+#include <boost/foreach.hpp>
 #include <boost/thread/mutex.hpp>
 
 #include "gt/model/common.hpp"
@@ -39,31 +41,28 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+
 class AbstractResultBuilder : public ResultBuilder {
-    typedef std::pair<Identifier, Messages>         PartialResult;
-    typedef boost::container::vector<PartialResult> PartialResults;
-
-    Identifiers    properties;
-    PartialResults partialResults;
-
 public:
-    AbstractResultBuilder() :
+    AbstractResultBuilder(Message indentation) :
         properties(),
-        partialResults()
+        partialResults(),
+        indent(indentation)
         {}
 
     virtual ResultBuilder& setHeaders(
-        Identifiers& newProperties
+        IdentifiersPtr& newProperties
     ) {
         properties = newProperties;
         return *this;
     }
 
     virtual ResultBuilder& addRecord(
-        Identifier& object,
-        Messages&   results
+        IdentifierPtr& object,
+        MessagesPtr&   results
     ) {
         PartialResult partialResult = std::make_pair(object, results);
+        partialResults.push_back(partialResult);
         return *this;
     }
 
@@ -72,7 +71,50 @@ public:
     virtual Message toString() {
         return (*build()).getResult();
     }
+
+protected:
+    typedef std::pair<IdentifierPtr, MessagesPtr>   PartialResult;
+    typedef boost::container::vector<PartialResult> PartialResults;
+    
+    IdentifiersPtr properties;
+    PartialResults partialResults;
+    Message        indent;
+
+    void checkPropertyToResultMatching() {
+        int propertiesSize = (*properties).size();
+        BOOST_FOREACH(PartialResult partialResult, partialResults)
+            if ((*partialResult.second).size() != propertiesSize)
+                throw std::runtime_error("Properties size and Result\'s size does not match");
+    }
 }; /* END class AbstractResultBuilder */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class PlainResultBuilder : public AbstractResultBuilder {
+    PlainResultBuilder(Message indentation) :
+        AbstractResultBuilder(indentation)
+        {}
+
+    virtual ResultPtr build() {
+        checkPropertyToResultMatching();
+
+        std::stringstream result;
+        
+        result << indent;
+        BOOST_FOREACH(IdentifierPtr property, (*properties))
+            result << indent << (*property) << ',';
+        result << std::endl;
+
+        BOOST_FOREACH(PartialResult partialResult, partialResults) {
+            result << (*partialResult.first) << std::endl << indent;
+            BOOST_FOREACH(MessagePtr message, (*partialResult.second))
+                result << indent << (*message) << ',';
+            result << std::endl;
+        }
+
+        return ResultFactory::getInstance().constResult(Message(result.str()));
+    }
+}; /* END class PlainResultBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 
