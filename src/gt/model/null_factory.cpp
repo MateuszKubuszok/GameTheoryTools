@@ -50,8 +50,20 @@ PlayerPtr NullFactory::createPlayer() {
     return PlayerPtr(new NullPlayer());
 }
 
+PlayersPtr NullFactory::createPlayers() {
+    return PlayersPtr(new Players());
+}
+
+GamePtr NullFactory::createGame() {
+    return GamePtr(new NullGame());
+}
+
 ResultPtr NullFactory::createResult() {
     return ResultPtr(new NullResult());
+}
+
+ResultBuilderPtr NullFactory::createResultBuilder() {
+    return ResultBuilderPtr(new NullResultBuilder());
 }
 
 // private:

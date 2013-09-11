@@ -44,18 +44,20 @@ namespace Model {
 /* Class declarations */
 
 class NullFactory;
+class ResultFactory;
 
 class Player;        class NullPlayer;
+class Game;          class NullGame;
 class DataBuilder;   class NullDataBuilder;
 class Result;        class NullResult;
 class ResultBuilder; class NullResultBuilder;
-class ResultFactory;
 
 /* Shortens comonly used names */
 
 typedef boost::shared_ptr<Player>                    PlayerPtr;
 typedef boost::container::map<Identifier, PlayerPtr> Players;
 typedef boost::shared_ptr<Players>                   PlayersPtr;
+typedef boost::shared_ptr<Game>                      GamePtr;
 typedef boost::shared_ptr<DataBuilder>               DataBuilderPtr;
 typedef boost::shared_ptr<Result>                    ResultPtr;
 typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
@@ -74,6 +76,7 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 
 #include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
+#include "gt/model/game.hpp"
 #include "gt/model/data_builder.hpp"
 #include "gt/model/result.hpp"
 #include "gt/model/result_builder.hpp"

@@ -61,11 +61,32 @@ public:
     PlayerPtr createPlayer();
 
     /**
+     * @brief Creates NullPlayers.
+     *
+     * @result Player
+     */
+    PlayersPtr createPlayers();
+
+    /**
+     * @brief Creates NullGame.
+     *
+     * @result NullPlayer
+     */
+    GamePtr createGame();
+
+    /**
      * @brief Creates NullResult.
      *
      * @result NullNumber
      */
     ResultPtr createResult();
+
+    /**
+     * @brief Creates NullResultBuilder.
+     *
+     * @result NullNumber
+     */
+    ResultBuilderPtr createResultBuilder();
 
 private:
     /**
