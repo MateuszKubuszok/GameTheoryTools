@@ -15,14 +15,14 @@ class GameFactory {
 	 /**
      * @brief Contains pointer to a GameFactory instance.
      */
-    static ResultFactory* volatile instance;
+    static GameFactory* volatile instance;
 
      /**
      * @brief Returns the instance of a GameFactory.
      *
      * @return GameFactory instance
      */
-    static ResultFactory& getInstance();
+    static GameFactory& getInstance();
 
     /**
      * @brief Returns Pure Game builder.
