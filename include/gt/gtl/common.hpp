@@ -43,8 +43,6 @@ typedef boost::shared_ptr<Query>                      QueryPtr;
 typedef boost::shared_ptr<Param>                      ParamPtr;
 typedef boost::shared_ptr<Player>                     PlayerPtr;
 
-typedef boost::container::map<Identifier, Identifier> Positions;
-typedef boost::shared_ptr<Positions>                  PositionsPtr;
 typedef boost::container::vector<ConditionPtr>        Conditions;
 typedef boost::shared_ptr<Conditions>                 ConditionsPtr;
 typedef boost::container::vector<CoordinatePtr>       Coordinates;
