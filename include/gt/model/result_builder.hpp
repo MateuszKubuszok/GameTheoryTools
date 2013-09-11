@@ -55,14 +55,14 @@ public:
 class NullResultBuilder : public ResultBuilder {
 public:
     virtual ResultBuilder& setHeaders(
-        Identifiers& properties
+        IdentifiersPtr& properties
     ) {
         return *this;
     }
 
     virtual ResultBuilder& addRecord(
-        Identifier& object,
-        Messages&   results
+        IdentifierPtr& object,
+        MessagesPtr&   results
     ) {
         return *this;
     }
