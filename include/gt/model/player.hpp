@@ -89,6 +89,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null Player for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class NullPlayer : public Player {
 public:
     NullPlayer() :
