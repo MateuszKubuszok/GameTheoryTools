@@ -91,11 +91,11 @@ public:
     }
 
     virtual DataBuilderPtr clone() {
-        return DataBuilderPtr(new NullDataBuilder());
+        return NullFactory::getInstance().createDataBuilder();
     }
 
     virtual Message toString() {
-    	return Message("NullDataBuilder");
+        return Message("NullDataBuilder");
     }
 }; /* END class NullDataBuilder */
 

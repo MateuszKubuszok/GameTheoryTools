@@ -58,6 +58,14 @@ GamePtr NullFactory::createGame() {
     return GamePtr(new NullGame());
 }
 
+DataBuilderPtr NullFactory::createDataBuilder() {
+    return DataBuilderPtr(new NullDataBuilder());
+}
+
+GameBuilderPtr NullFactory::createGameBuilder() {
+    return GameBuilderPtr(new NullGameBuilder());
+}
+
 ResultPtr NullFactory::createResult() {
     return ResultPtr(new NullResult());
 }

@@ -70,9 +70,23 @@ public:
     /**
      * @brief Creates NullGame.
      *
-     * @result NullPlayer
+     * @result NullGame
      */
     GamePtr createGame();
+
+    /**
+     * @brief Creates NullDataBuilder.
+     *
+     * @result NullDataBuilder
+     */
+    DataBuilderPtr createDataBuilder();
+
+    /**
+     * @brief Creates NullGameBuilder.
+     *
+     * @result NullGameBuilder
+     */
+    GameBuilderPtr createGameBuilder();
 
     /**
      * @brief Creates NullResult.
