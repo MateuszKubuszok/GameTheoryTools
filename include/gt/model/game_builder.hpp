@@ -28,7 +28,7 @@ public:
 	 *                               is inconsistent 
 	 */
 	virtual GamePtr build() = 0;
-};
+}; /* END class GameBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -44,6 +44,7 @@ namespace Model {
 /* Class declarations */
 
 class NullFactory;
+class GameFactory;
 class ResultFactory;
 
 class Player;        class NullPlayer;
@@ -81,6 +82,7 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 #include "gt/model/game.hpp"
 #include "gt/model/data_builder.hpp"
 #include "gt/model/game_builder.hpp"
+#include "gt/model/game_factory.hpp"
 #include "gt/model/result.hpp"
 #include "gt/model/result_builder.hpp"
 #include "gt/model/result_factory.hpp"

@@ -26,7 +26,7 @@ public:
      * @return message
      */
     virtual Message toString() = 0;
-};
+}; /* END class Game */
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -44,7 +44,7 @@ public:
     virtual Message toString() {
         return Message("NullGame");
     }
-};
+}; /* END class NullGame */
 
 ////////////////////////////////////////////////////////////////////////////////
 
