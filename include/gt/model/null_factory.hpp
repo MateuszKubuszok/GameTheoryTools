@@ -47,11 +47,25 @@ public:
     MessagePtr createMessage();
 
     /**
+     * @brief Creates null Messages.
+     *
+     * @result null Messages
+     */
+    MessagesPtr createMessages();
+
+    /**
      * @brief Creates NullNumber.
      *
      * @result NullNumber
      */
     NumberPtr createNumber();
+
+    /**
+     * @brief Creates Null Numbers.
+     *
+     * @result Null Numbers
+     */
+    NumbersPtr createNumbers();
     
     /**
      * @brief Creates NullPlayer.

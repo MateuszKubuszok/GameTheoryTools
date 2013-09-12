@@ -39,11 +39,19 @@ IdentifiersPtr NullFactory::createIdentifiers() {
 }
 
 MessagePtr NullFactory::createMessage() {
-    return MessagePtr(new Identifier("NullMessage"));
+    return MessagePtr(new Message("NullMessage"));
+}
+
+MessagesPtr NullFactory::createMessages() {
+    return MessagesPtr(new Messages());
 }
 
 NumberPtr NullFactory::createNumber() {
     return NumberPtr(new Number(0));
+}
+
+NumbersPtr NullFactory::createNumbers() {
+    return NumbersPtr(new Numbers());
 }
 
 PlayerPtr NullFactory::createPlayer() {
