@@ -14,6 +14,8 @@ boost::mutex gameFactoryMutex;
 class PlainData : public virtual Root {
     PlayersPtr players;
 
+    boost::container::vector<Identifier> playerNames;
+
     boost::container::map<int, NumbersPtr> params;
 
 public:
@@ -26,18 +28,41 @@ public:
     }
 
     NumbersPtr getValues(
+        int positionInMap
+    ) {
+        if (!params.count(positionInMap))
+            // TODO: create ExceptionFactory and define exceptions
+            // (rename standard ones)
+            throw std::invalid_argument("No params under such condition");
+        return params[positionInMap];
+    }
+
+    NumbersPtr getValues(
         PositionsPtr positions
     ) {
-        // TODO: retrive values from map
-        return NullFactory::getInstance().createNumbers();
+        return getValues(
+            calculatePosition(positions)
+        );
+    }
+
+    PlainData& setValues(int positionInMap, NumbersPtr numbers) {
+        params.insert(
+            std::make_pair(
+                positionInMap,
+                numbers
+            )
+        );
+        return *this;
     }
 
     PlainData& setValues(
         PositionsPtr positions,
         NumbersPtr   numbers
     ) {
-        // TODO: calculate position and use it to put it into map
-        return *this;
+        return setValues(
+            calculatePosition(positions),
+            numbers
+        );
     }
 
     Message toString() {
@@ -50,7 +75,22 @@ private:
         PositionsPtr positions
     ) {
         // TODO: positions -> int
+        // throw std::runtime_exception if positions do not match players
         return 0;
+    }
+
+    bool checkPlayer(
+        IdentifierPtr playerName
+    ) {
+        // TODO:
+        return true;
+    }
+
+    bool checkPositions(
+        PositionsPtr positions
+    ) {
+        // TODO:
+        return true;
     }
 
     ResultPtr contentMessage() {
