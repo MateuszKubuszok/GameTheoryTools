@@ -16,9 +16,11 @@ namespace Model {
 class GameBuilder : public DataBuilder {
 public:
     /**
-     * @brief Default destructor.
+     * @brief Returns inner DataBuilder.
+     *
+     * @return DataBuilder
      */
-    virtual ~GameBuilder() {}
+    virtual DataBuilderPtr dataBuilder() = 0;
 
 	/**
 	 * @brief Builds Game.
@@ -55,6 +57,10 @@ public:
         NumbersPtr params
     ) {
         return *this;
+    }
+
+    virtual DataBuilderPtr dataBuilder() {
+        return NullFactory::getInstance().createDataBuilder();
     }
 
     virtual GamePtr build() {

@@ -62,12 +62,16 @@ PlayersPtr NullFactory::createPlayers() {
     return PlayersPtr(new Players());
 }
 
-GamePtr NullFactory::createGame() {
-    return GamePtr(new NullGame());
+DataPtr NullFactory::createData() {
+    return DataPtr(new NullData());
 }
 
 DataBuilderPtr NullFactory::createDataBuilder() {
     return DataBuilderPtr(new NullDataBuilder());
+}
+
+GamePtr NullFactory::createGame() {
+    return GamePtr(new NullGame());
 }
 
 GameBuilderPtr NullFactory::createGameBuilder() {

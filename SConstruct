@@ -43,6 +43,7 @@ for header in [
     # boost libraries
     'boost/foreach.hpp',
     'boost/shared_ptr.hpp',
+    'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
     'boost/thread/mutex.hpp',

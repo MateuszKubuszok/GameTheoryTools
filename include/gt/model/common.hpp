@@ -44,6 +44,7 @@ namespace Model {
 /* Exception declarations */
 
 class IllegalInnerState;
+class InvalidCoordinate;
 
 /* Builder declarations */
 
@@ -54,8 +55,9 @@ class ResultFactory;
 /* Model declarations */
 
 class Player;        class NullPlayer;
-class Game;          class NullGame;
+class Data;          class NullData;
 class DataBuilder;   class NullDataBuilder;
+class Game;          class NullGame;
 class GameBuilder;   class NullGameBuilder;
 class Result;        class NullResult;
 class ResultBuilder; class NullResultBuilder;
@@ -65,6 +67,7 @@ class ResultBuilder; class NullResultBuilder;
 typedef boost::shared_ptr<Player>                    PlayerPtr;
 typedef boost::container::map<Identifier, PlayerPtr> Players;
 typedef boost::shared_ptr<Players>                   PlayersPtr;
+typedef boost::shared_ptr<Data>                      DataPtr;
 typedef boost::shared_ptr<Game>                      GamePtr;
 typedef boost::shared_ptr<DataBuilder>               DataBuilderPtr;
 typedef boost::shared_ptr<GameBuilder>               GameBuilderPtr;
@@ -73,7 +76,7 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-} /* END namepsace Model */
+} /* END namespace Model */
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -87,8 +90,9 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 
 #include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
-#include "gt/model/game.hpp"
+#include "gt/model/data.hpp"
 #include "gt/model/data_builder.hpp"
+#include "gt/model/game.hpp"
 #include "gt/model/game_builder.hpp"
 #include "gt/model/game_factory.hpp"
 #include "gt/model/result.hpp"

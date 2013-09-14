@@ -82,11 +82,11 @@ public:
     PlayersPtr createPlayers();
 
     /**
-     * @brief Creates NullGame.
+     * @brief Creates NullData.
      *
-     * @result NullGame
+     * @result NullData
      */
-    GamePtr createGame();
+    DataPtr createData();
 
     /**
      * @brief Creates NullDataBuilder.
@@ -94,6 +94,13 @@ public:
      * @result NullDataBuilder
      */
     DataBuilderPtr createDataBuilder();
+
+    /**
+     * @brief Creates NullGame.
+     *
+     * @result NullGame
+     */
+    GamePtr createGame();
 
     /**
      * @brief Creates NullGameBuilder.

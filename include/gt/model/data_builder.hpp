@@ -13,11 +13,6 @@ namespace Model {
  */
 class DataBuilder : public virtual Root {
 public:
-	/**
-	 * @brief Default constructor.
-	 */
-	virtual ~DataBuilder() {}
-
     /**
      * @brief Sets Players defined for Game. 
      *

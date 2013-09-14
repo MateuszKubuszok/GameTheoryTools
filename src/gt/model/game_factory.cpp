@@ -1,3 +1,4 @@
+#include <boost/bimap/bimap.hpp>
 #include <boost/thread/mutex.hpp>
 
 #include "gt/model/common.hpp"
@@ -11,33 +12,36 @@ boost::mutex gameFactoryMutex;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainData : public virtual Root {
+class PlainData : public Data {
     PlayersPtr players;
 
-    boost::container::vector<Identifier> playerNames;
+    boost::bimaps::bimap<Identifier, int> playerHelper;
 
-    boost::container::map<int, NumbersPtr> params;
+    boost::bimaps::bimap<Identifier, int> positionsHelper;
 
+    boost::container::vector<NumbersPtr> paramsStorage;
+
+    boost::container::vector<bool> paramsStorageAllocation;
+    
 public:
-    NumberPtr getValue(
-        PositionsPtr  positions, 
+    virtual NumberPtr getValue(
+        PositionsPtr  positions,
         IdentifierPtr playerName
     ) {
         // TODO: retrive value from map
-        return NullFactory::getInstance().createNumber();
+        NumbersPtr params = getValues(calculatePosition(positions));
+        return (*params)[calculatePlayer(playerName)];
     }
 
-    NumbersPtr getValues(
-        int positionInMap
+    virtual NumbersPtr getValues(
+        int positionInStorage
     ) {
-        if (!params.count(positionInMap))
-            // TODO: create ExceptionFactory and define exceptions
-            // (rename standard ones)
-            throw std::invalid_argument("No params under such condition");
-        return params[positionInMap];
+        if (!paramsStorageAllocation[positionInStorage])
+            throw InvalidCoordinate("No params under such position");
+        return paramsStorage[positionInStorage];
     }
 
-    NumbersPtr getValues(
+    virtual NumbersPtr getValues(
         PositionsPtr positions
     ) {
         return getValues(
@@ -45,17 +49,16 @@ public:
         );
     }
 
-    PlainData& setValues(int positionInMap, NumbersPtr numbers) {
-        params.insert(
-            std::make_pair(
-                positionInMap,
-                numbers
-            )
-        );
+    virtual PlainData& setValues(
+        int        positionInStorage,
+        NumbersPtr numbers
+    ) {
+        paramsStorage[positionInStorage] = numbers;
+        paramsStorageAllocation[positionInStorage] = true;
         return *this;
     }
 
-    PlainData& setValues(
+    virtual PlainData& setValues(
         PositionsPtr positions,
         NumbersPtr   numbers
     ) {
@@ -65,12 +68,20 @@ public:
         );
     }
 
-    Message toString() {
+    virtual Message toString() {
         // TODO: print data as table: | positions | values |
         return *NullFactory::getInstance().createMessage();
     }
 
 private:
+    int calculatePlayer(
+        IdentifierPtr identifier
+    ) {
+        // TODO: positions -> int
+        // throw std::runtime_exception if positions do not match players
+        return 0;
+    }
+
     int calculatePosition(
         PositionsPtr positions
     ) {
@@ -97,7 +108,7 @@ private:
         // TODO: generate message with conetent using ResultBuilder
         return NullFactory::getInstance().createResult();
     }
-};
+}; /* END class PlainData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
