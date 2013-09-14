@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE( ResultFactory_constResult ) {
 
     // then
     BOOST_CHECK_EQUAL(
-        (*result).getResult(),
+        result->getResult(),
         testMessage
     );
 }
@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_CASE( ResultFactory_emptyResult ) {
 
     // then
     BOOST_CHECK_EQUAL(
-        (*result).getResult(),
+        result->getResult(),
         GT::Message("")
     );
 }
@@ -104,22 +104,22 @@ BOOST_AUTO_TEST_CASE( JSONResultBuilder_build ) {
         .setIndentationMode(GT::Model::TABS);
 
     GT::IdentifiersPtr properties(new GT::Identifiers());
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
 
     GT::IdentifierPtr object(new GT::Identifier("TestObject"));
     GT::MessagesPtr   results(new GT::Messages());
-    (*results).push_back(GT::MessagePtr(new GT::Message("result1")));
-    (*results).push_back(GT::MessagePtr(new GT::Message("result2")));
+    results->push_back(GT::MessagePtr(new GT::Message("result1")));
+    results->push_back(GT::MessagePtr(new GT::Message("result2")));
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();
-    (*builder).setHeaders(properties);
-    (*builder).addRecord(object, results);
+    builder->setHeaders(properties);
+    builder->addRecord(object, results);
 
     // then
     BOOST_CHECK_EQUAL(
-        (*(*builder).build()).getResult(),
+        builder->build()->getResult(),
         GT::Message() +
         "{\n" +
         "\t\"TestObject\" : [\n" +
@@ -141,22 +141,22 @@ BOOST_AUTO_TEST_CASE( XMLResultBuilder_build ) {
         .setIndentationMode(GT::Model::TABS);
 
     GT::IdentifiersPtr properties(new GT::Identifiers());
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
 
     GT::IdentifierPtr object(new GT::Identifier("TestObject"));
     GT::MessagesPtr   results(new GT::Messages());
-    (*results).push_back(GT::MessagePtr(new GT::Message("result1")));
-    (*results).push_back(GT::MessagePtr(new GT::Message("result2")));
+    results->push_back(GT::MessagePtr(new GT::Message("result1")));
+    results->push_back(GT::MessagePtr(new GT::Message("result2")));
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();
-    (*builder).setHeaders(properties);
-    (*builder).addRecord(object, results);
+    builder->setHeaders(properties);
+    builder->addRecord(object, results);
 
     // then
     BOOST_CHECK_EQUAL(
-        (*(*builder).build()).getResult(),
+        builder->build()->getResult(),
         GT::Message() +
         "<results>\n" +
         "\t<TestObject>\n" +
@@ -178,22 +178,22 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
         .setIndentationMode(GT::Model::TABS);
 
     GT::IdentifiersPtr properties(new GT::Identifiers());
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    (*properties).push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
 
     GT::IdentifierPtr object(new GT::Identifier("TestObject"));
     GT::MessagesPtr   results(new GT::Messages());
-    (*results).push_back(GT::MessagePtr(new GT::Message("result1")));
-    (*results).push_back(GT::MessagePtr(new GT::Message("result2")));
+    results->push_back(GT::MessagePtr(new GT::Message("result1")));
+    results->push_back(GT::MessagePtr(new GT::Message("result2")));
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();
-    (*builder).setHeaders(properties);
-    (*builder).addRecord(object, results);
+    builder->setHeaders(properties);
+    builder->addRecord(object, results);
 
     // then
     BOOST_CHECK_EQUAL(
-        (*(*builder).build()).getResult(),
+        builder->build()->getResult(),
         GT::Message() +
         "\t\tproperty1,\tproperty2,\n" +
         "TestObject:\n" +

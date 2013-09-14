@@ -30,8 +30,8 @@ BOOST_AUTO_TEST_CASE( Player_getStrategies ) {
 
     // then
     BOOST_CHECK_EQUAL_COLLECTIONS(
-        (*player.getStrategies()).begin(), (*player.getStrategies()).end(),
-        (*strategies).begin(),             (*strategies).end()
+        player.getStrategies()->begin(), player.getStrategies()->end(),
+        strategies->begin(),             strategies->end()
     );
 }
 
@@ -39,8 +39,8 @@ BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
     // given
     GT::IdentifierPtr  name(new GT::Identifier("test_name"));
     GT::IdentifiersPtr strategies(new GT::Identifiers());
-    (*strategies).push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
-    (*strategies).push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
+    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
+    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
 
     // when
     GT::Model::Player player(name, strategies);
@@ -59,8 +59,8 @@ BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
     GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
     GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
     GT::IdentifiersPtr strategies(new GT::Identifiers());
-    (*strategies).push_back(strategy1);
-    (*strategies).push_back(strategy2);
+    strategies->push_back(strategy1);
+    strategies->push_back(strategy2);
 
     // when
     GT::Model::Player player(name, strategies);
@@ -87,8 +87,8 @@ BOOST_AUTO_TEST_CASE( Player_hasStrategy ) {
     GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
     GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
     GT::IdentifiersPtr strategies(new GT::Identifiers());
-    (*strategies).push_back(strategy1);
-    (*strategies).push_back(strategy2);
+    strategies->push_back(strategy1);
+    strategies->push_back(strategy2);
 
     // when
     GT::Model::Player player(name, strategies);
@@ -102,8 +102,8 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     // given
     GT::IdentifierPtr  name(new GT::Identifier("test_name"));
     GT::IdentifiersPtr strategies(new GT::Identifiers());
-    (*strategies).push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
-    (*strategies).push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
+    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
+    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
 
     // when
     GT::Model::Player player(name, strategies);

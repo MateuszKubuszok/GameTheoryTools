@@ -55,7 +55,10 @@ BOOST_AUTO_TEST_CASE( Root_toString ) {
     RootTestImpl root;
 
     // then
-    BOOST_CHECK_EQUAL(root.toString(), GT::Message("RootTestImpl"));
+    BOOST_CHECK_EQUAL(
+        root.toString(),
+        GT::Message("RootTestImpl")
+    );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
