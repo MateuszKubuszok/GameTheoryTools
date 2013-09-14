@@ -41,11 +41,17 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Class declarations */
+/* Exception declarations */
+
+class IllegalInnerState;
+
+/* Builder declarations */
 
 class NullFactory;
 class GameFactory;
 class ResultFactory;
+
+/* Model declarations */
 
 class Player;        class NullPlayer;
 class Game;          class NullGame;
@@ -74,6 +80,8 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 } /* END namespace GT */
 
 /* Includes GT model headers */
+
+#include "gt/model/exceptions.hpp"
 
 #include "gt/model/null_factory.hpp"
 
