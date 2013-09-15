@@ -89,6 +89,10 @@ public:
         return NullFactory::getInstance().createDataBuilder();
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullDataBuilder");
     }

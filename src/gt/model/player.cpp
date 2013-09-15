@@ -19,10 +19,8 @@ Player::Player(
     strategyMapping()
 {
     int index = 0;
-    BOOST_FOREACH(IdentifierPtr strategy, *strategies) {
-        std::pair<Identifier, int> pair = std::make_pair(*strategy, index++);
-        strategyMapping.insert(pair);
-    }
+    BOOST_FOREACH(IdentifierPtr strategy, *strategies)
+        strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
 }
 
 IdentifierPtr Player::getName() {
@@ -34,10 +32,10 @@ IdentifiersPtr Player::getStrategies() {
 }
 
 int Player::getStrategiesNumber() {
-    return (*strategies).size();
+    return strategies->size();
 }
 
-int Player::getStrategyOrdinal(
+Index Player::getStrategyOrdinal(
     Identifier& strategy
 ) {
     if (strategyMapping.count(strategy))

@@ -46,9 +46,8 @@ public:
             Player& player = *playerPair.second;
 
             IdentifierMap strategiesMap;
-            Index strategyIndex = 0;
             BOOST_FOREACH(IdentifierPtr strategy, (*player.getStrategies()))
-                strategiesMap.insert( IdentifierMap::value_type(*strategy, strategyIndex++) );
+                strategiesMap.insert( IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)) );
             playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
             positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
             strategiesHelper.insert( StrategyMap::value_type(playerName, strategiesMap) );

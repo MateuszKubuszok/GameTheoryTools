@@ -41,6 +41,10 @@ public:
         return NullFactory::getInstance().createPlayers();
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullGame");
     }

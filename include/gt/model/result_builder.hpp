@@ -39,7 +39,7 @@ public:
      * @brief Build Result.
      * 
      * @return                   Result
-     * @throw std::runtime_error thrown when number of Messages for any Object
+     * @throw IllegalInnerState  thrown when number of Messages for any Object
      *                           does not match number of properties
      */
     virtual ResultPtr build() = 0;
@@ -69,6 +69,10 @@ public:
 
     virtual ResultPtr build() {
         return NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isNotNull() {
+        return false;
     }
 
     virtual Message toString() {

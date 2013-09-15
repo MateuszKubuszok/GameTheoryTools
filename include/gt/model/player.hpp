@@ -12,6 +12,8 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class Player : public virtual Root {
+    typedef boost::container::map<Identifier, int> StrategyMap;
+
     /**
      * @breif Player's name.
      */
@@ -25,7 +27,7 @@ class Player : public virtual Root {
     /**
      * @breif Mapps strategies to its ordnial.
      */
-    boost::container::map<Identifier, int> strategyMapping;
+    StrategyMap strategyMapping;
 
 public:
     /**
@@ -66,7 +68,7 @@ public:
      * @return                       ordinal of strategy with given identifier
      * @throws std::invalid_argument thrown if Player has no such strategy
      */
-    virtual int getStrategyOrdinal(
+    virtual Index getStrategyOrdinal(
         Identifier& strategy
     );
 

@@ -61,15 +61,14 @@ public:
         IdentifierPtr& object,
         MessagesPtr&   results
     ) {
-        PartialResult partialResult = std::make_pair(object, results);
-        partialResults.push_back(partialResult);
+        partialResults.push_back( PartialResults::value_type(object, results) );
         return *this;
     }
 
     virtual ResultPtr build() = 0;
 
     virtual Message toString() {
-        return (*build()).getResult();
+        return build()->getResult();
     }
 
 protected:
@@ -81,10 +80,10 @@ protected:
     Message        indent;
 
     void checkPropertyToResultMatching() {
-        int propertiesSize = (*properties).size();
+        int propertiesSize = properties->size();
         BOOST_FOREACH(PartialResult partialResult, partialResults)
-            if ((*partialResult.second).size() != propertiesSize)
-                throw std::runtime_error("Properties size and Result\'s size does not match");
+            if (partialResult.second->size() != propertiesSize)
+                throw IllegalInnerState("Properties size and Result\'s size does not match");
     }
 }; /* END class AbstractResultBuilder */
 
@@ -128,7 +127,7 @@ public:
     virtual ResultPtr build() {
         checkPropertyToResultMatching();
 
-        int propertiesSize = (*properties).size();
+        int propertiesSize = properties->size();
         std::stringstream result;
 
         result << '{' << std::endl;
@@ -161,7 +160,7 @@ public:
     virtual ResultPtr build() {
         checkPropertyToResultMatching();
 
-        int propertiesSize = (*properties).size();
+        int propertiesSize = properties->size();
         std::stringstream result;
 
         result << "<results>" << std::endl;
