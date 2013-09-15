@@ -18,6 +18,10 @@ namespace GT {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/* Rename of some primary types */
+
+typedef unsigned int Index;
+
 /* Shortens commonly used names */
 
 typedef std::istream                                  InputStream;

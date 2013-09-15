@@ -46,6 +46,7 @@ for header in [
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
+    'boost/range/adaptor/map.hpp',
     'boost/thread/mutex.hpp',
     # Flex library
     'FlexLexer.h',

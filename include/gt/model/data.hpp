@@ -35,7 +35,7 @@ public:
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */    
     virtual NumbersPtr getValues(
-        int positionInStorage
+        Index positionInStorage
     ) = 0;
 
     /**
@@ -57,7 +57,7 @@ public:
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
     virtual Data& setValues(
-        int        positionInStorage, 
+        Index      positionInStorage, 
         NumbersPtr numbers
     ) = 0;
 
@@ -93,7 +93,7 @@ public:
     }
     
     virtual NumbersPtr getValues(
-        int positionInStorage
+        Index positionInStorage
     ) {
         return NullFactory::getInstance().createNumbers();
     }
@@ -105,7 +105,7 @@ public:
     }
 
     virtual Data& setValues(
-        int        positionInStorage, 
+        Index      positionInStorage, 
         NumbersPtr numbers
     ) {
         return *this;

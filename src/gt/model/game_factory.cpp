@@ -1,4 +1,6 @@
+#include <boost/foreach.hpp>
 #include <boost/bimap/bimap.hpp>
+#include <boost/range/adaptor/map.hpp>
 #include <boost/thread/mutex.hpp>
 
 #include "gt/model/common.hpp"
@@ -13,28 +15,59 @@ boost::mutex gameFactoryMutex;
 ////////////////////////////////////////////////////////////////////////////////
 
 class PlainData : public Data {
+    typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
+    typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
+
     PlayersPtr players;
 
-    boost::bimaps::bimap<Identifier, int> playerHelper;
-
-    boost::bimaps::bimap<Identifier, int> positionsHelper;
+    IdentifierMap playersHelper;
+    StrategyMap   strategiesHelper;
+    IdentifierMap positionsHelper;
 
     boost::container::vector<NumbersPtr> paramsStorage;
-
-    boost::container::vector<bool> paramsStorageAllocation;
+    boost::container::vector<bool>       paramsStorageAllocation;
     
 public:
+    PlainData(
+        PlayersPtr playersDefinitions
+    ) :
+        players(playersDefinitions),
+        playersHelper(),
+        strategiesHelper(),
+        positionsHelper(),
+        paramsStorage(),
+        paramsStorageAllocation()
+    {
+        Index playerIndex   = 0;
+        Index positionIndex = 1;
+
+        BOOST_FOREACH(Players::value_type playerPair, (*players)) {
+            const Identifier& playerName = playerPair.first;
+            Player& player = *playerPair.second;
+
+            IdentifierMap strategiesMap;
+            Index strategyIndex = 0;
+            BOOST_FOREACH(IdentifierPtr strategy, (*player.getStrategies()))
+                strategiesMap.insert( IdentifierMap::value_type(*strategy, strategyIndex++) );
+            playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
+            positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
+            strategiesHelper.insert( StrategyMap::value_type(playerName, strategiesMap) );
+
+            playerIndex++;
+            positionIndex *= player.getStrategiesNumber();
+        }
+    }
+
     virtual NumberPtr getValue(
         PositionsPtr  positions,
         IdentifierPtr playerName
     ) {
-        // TODO: retrive value from map
         NumbersPtr params = getValues(calculatePosition(positions));
         return (*params)[calculatePlayer(playerName)];
     }
 
     virtual NumbersPtr getValues(
-        int positionInStorage
+        Index positionInStorage
     ) {
         if (!paramsStorageAllocation[positionInStorage])
             throw InvalidCoordinate("No params under such position");
@@ -44,13 +77,11 @@ public:
     virtual NumbersPtr getValues(
         PositionsPtr positions
     ) {
-        return getValues(
-            calculatePosition(positions)
-        );
+        return getValues(calculatePosition(positions));
     }
 
     virtual PlainData& setValues(
-        int        positionInStorage,
+        Index      positionInStorage,
         NumbersPtr numbers
     ) {
         paramsStorage[positionInStorage] = numbers;
@@ -62,6 +93,8 @@ public:
         PositionsPtr positions,
         NumbersPtr   numbers
     ) {
+        if (!checkPositions(positions))
+            throw InvalidCoordinate("Invalid coordinates format");
         return setValues(
             calculatePosition(positions),
             numbers
@@ -69,39 +102,72 @@ public:
     }
 
     virtual Message toString() {
-        // TODO: print data as table: | positions | values |
-        return *NullFactory::getInstance().createMessage();
+        return contentMessage()->getResult();
     }
 
 private:
-    int calculatePlayer(
-        IdentifierPtr identifier
+    Index calculatePlayer(
+        Identifier& playerName
     ) {
-        // TODO: positions -> int
-        // throw std::runtime_exception if positions do not match players
-        return 0;
+        if (!checkPlayer(playerName))
+            throw InvalidCoordinate("No such player");
+        return playersHelper.left.at(playerName);
     }
 
-    int calculatePosition(
+    Index calculatePlayer(
+        IdentifierPtr playerName
+    ) {
+        return checkPlayer(*playerName);
+    }
+
+    Index calculatePosition(
+        Positions& positions
+    ) {
+        Index storagePosition = 0;
+        BOOST_FOREACH(Positions::value_type position, positions) {
+            storagePosition +=
+                positionsHelper.left.at(position.first)
+                *
+                strategiesHelper[position.first].left.at(position.second);
+        }
+        return storagePosition;
+    }
+
+    Index calculatePosition(
         PositionsPtr positions
     ) {
-        // TODO: positions -> int
-        // throw std::runtime_exception if positions do not match players
-        return 0;
+        return calculatePosition(*positions);
+    }
+
+    bool checkPlayer(
+        Identifier& playerName
+    ) {
+        return playersHelper.left.count(playerName);
     }
 
     bool checkPlayer(
         IdentifierPtr playerName
     ) {
-        // TODO:
+        return checkPlayer(*playerName);
+    }
+
+    bool checkPositions(
+        Positions& positions
+    ) {
+        BOOST_FOREACH(Identifier playerName, positions | boost::adaptors::map_keys) {
+            if (!checkPlayer(playerName))
+                return false;
+            Identifier strategyName = positions[playerName];
+            if (!strategiesHelper[playerName].left.count(strategyName))
+                return false;
+        }
         return true;
     }
 
     bool checkPositions(
         PositionsPtr positions
     ) {
-        // TODO:
-        return true;
+        return checkPositions(*positions);
     }
 
     ResultPtr contentMessage() {
