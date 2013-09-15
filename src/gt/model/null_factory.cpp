@@ -66,6 +66,10 @@ DataPtr NullFactory::createData() {
     return DataPtr(new NullData());
 }
 
+DataPiecePtr NullFactory::createDataPiece() {
+    return DataPiecePtr(new NullDataPiece());
+}
+
 DataBuilderPtr NullFactory::createDataBuilder() {
     return DataBuilderPtr(new NullDataBuilder());
 }

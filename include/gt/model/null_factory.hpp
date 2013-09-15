@@ -89,6 +89,13 @@ public:
     DataPtr createData();
 
     /**
+     * @brief Creates NullDataPiece.
+     *
+     * @result NullDataPiece
+     */
+    DataPiecePtr createDataPiece();
+
+    /**
      * @brief Creates NullDataBuilder.
      *
      * @result NullDataBuilder

@@ -10,14 +10,45 @@ namespace Model {
     
 ////////////////////////////////////////////////////////////////////////////////
 
+typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
+typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
+
+////////////////////////////////////////////////////////////////////////////////
+
 boost::mutex gameFactoryMutex;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainData : public Data {
-    typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
-    typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
+class PlainDataPiece : public DataPiece {
+    IdentifierMap playersMap;
+    NumbersPtr    numbers;
 
+public:
+    PlainDataPiece(
+        IdentifierMap players,
+        NumbersPtr    params
+    ) :
+        playersMap(players),
+        numbers(params)
+        {}
+
+    virtual NumberPtr& getValue(
+        Identifier& playerName
+    ) {
+        if (!playersMap.left.count(playerName))
+            throw InvalidCoordinate("No such player");
+        return (*numbers)[playersMap.left.at(playerName)];
+    }
+
+    virtual Message toString() {
+        // TODO
+        return Message();
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+
+class PlainData : public Data {
     PlayersPtr players;
 
     IdentifierMap playersHelper;
@@ -57,29 +88,32 @@ public:
         }
     }
 
-    virtual NumberPtr getValue(
-        PositionsPtr  positions,
-        IdentifierPtr playerName
-    ) {
-        NumbersPtr params = getValues(calculatePosition(positions));
-        return (*params)[calculatePlayer(playerName)];
-    }
-
-    virtual NumbersPtr getValues(
+    virtual DataPiecePtr getValues(
         Index positionInStorage
     ) {
         if (!paramsStorageAllocation[positionInStorage])
             throw InvalidCoordinate("No params under such position");
-        return paramsStorage[positionInStorage];
+        return DataPiecePtr(
+            new PlainDataPiece(
+                playersHelper,
+                paramsStorage[positionInStorage]
+            )
+        );
     }
 
-    virtual NumbersPtr getValues(
-        PositionsPtr positions
+    virtual DataPiecePtr getValues(
+        Positions& positions
     ) {
         return getValues(calculatePosition(positions));
     }
 
-    virtual PlainData& setValues(
+    virtual DataPiecePtr getValues(
+        PositionsPtr positions
+    ) {
+        return getValues(*positions);
+    }
+
+    virtual Data& setValues(
         Index      positionInStorage,
         NumbersPtr numbers
     ) {
@@ -88,9 +122,9 @@ public:
         return *this;
     }
 
-    virtual PlainData& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
+    virtual Data& setValues(
+        Positions& positions,
+        NumbersPtr numbers
     ) {
         if (!checkPositions(positions))
             throw InvalidCoordinate("Invalid coordinates format");
@@ -98,6 +132,31 @@ public:
             calculatePosition(positions),
             numbers
         );
+    }
+
+    virtual Data& setValues(
+        PositionsPtr positions,
+        NumbersPtr   numbers
+    ) {
+        return setValues(*positions, numbers);
+    }
+
+    virtual DataPiecePtr operator[](
+        Index positionInStorage
+    ) {
+        return getValues(positionInStorage);
+    }
+
+    virtual DataPiecePtr operator[](
+        Positions& positions
+    ) {
+        return getValues(positions);
+    }
+
+    virtual DataPiecePtr operator[](
+        PositionsPtr positions
+    ) {
+        return getValues(positions);
     }
 
     virtual Message toString() {
@@ -108,8 +167,6 @@ private:
     Index calculatePlayer(
         Identifier& playerName
     ) {
-        if (!checkPlayer(playerName))
-            throw InvalidCoordinate("No such player");
         return playersHelper.left.at(playerName);
     }
 
