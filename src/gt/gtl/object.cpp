@@ -101,8 +101,7 @@ void Object::registerProperty(
     Identifier        propertyName,
     ObjectPropertyPtr property
 ) {
-    std::pair<Identifier, ObjectPropertyPtr> pair = std::make_pair(propertyName, property);
-    registeredProperties.insert(pair);
+    registeredProperties.insert( ObjectPropertyMap::value_type(propertyName, property) );
 }
 // }
 

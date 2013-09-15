@@ -24,13 +24,13 @@ public:
     virtual ObjectPtr getObject(
         Context& context
     ) {
-        return (*context.getParam(identifier)).getObject(context);
+        return context.getParam(identifier)->getObject(context);
     }
 
     virtual NumberPtr getValue(
         Context& context
     ) {
-        return (*context.getParam(identifier)).getValue(context);
+        return context.getParam(identifier)->getValue(context);
     }
 
     virtual Message toString() {
@@ -63,7 +63,7 @@ public:
     }
 
     virtual Message toString() {
-        return Message("Param:Value=") + (*value).get_str(10);
+        return Message("Param:Value=") + value->get_str(10);
     }
 }; /* END class ValueParam */
 

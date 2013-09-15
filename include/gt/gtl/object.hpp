@@ -12,6 +12,8 @@ class ObjectProperty;
 /* Class declarations */
 typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
 
+typedef boost::container::map<Identifier, ObjectPropertyPtr> ObjectPropertyMap;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -28,7 +30,7 @@ class Object : public virtual Root {
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
-    boost::container::map<Identifier, ObjectPropertyPtr> registeredProperties;
+    ObjectPropertyMap registeredProperties;
 
 public:
     /**
