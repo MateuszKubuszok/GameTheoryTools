@@ -66,9 +66,10 @@ if not validInstallation:
 # - include/ - public include directory,
 # - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
 #   (poor custom path definitions),
+# - src/gt/ - added for implemetnations headers,
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
-conf.env.Append(CPPPATH=[include, include+gtl, source+gtl])
+conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
 conf.env.Append(LIBS=['gmp'])
 
 conf.Finish()

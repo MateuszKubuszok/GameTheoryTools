@@ -1,8 +1,4 @@
-#include <sstream>
-#include <boost/foreach.hpp>
-#include <boost/thread/mutex.hpp>
-
-#include "gt/model/common.hpp"
+#include "gt/model/inner_common.hpp"
 
 namespace GT {
 namespace Model {

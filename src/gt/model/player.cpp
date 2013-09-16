@@ -1,6 +1,4 @@
-#include <boost/foreach.hpp>
-
-#include "gt/model/common.hpp"
+#include "gt/model/inner_common.hpp"
 
 namespace GT {
 namespace Model {
