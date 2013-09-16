@@ -16,8 +16,9 @@ public:
     /**
      * @brief Sets Players defined for Game. 
      *
-     * @param players Players
-     * @return        reference to itself
+     * @param players           Players
+     * @return                  reference to itself
+     * @throw IllegalInnerState thrown when Players are already set
      */
     virtual DataBuilder& setPlayers(
         PlayersPtr players
@@ -26,8 +27,10 @@ public:
     /**
      * @brief Adds next positions to Data. 
      *
-     * @param positions Positions
-     * @return          reference to itself
+     * @param positions         Positions
+     * @return                  reference to itself
+     * @throw IllegalInnerState thrown when some of positions are already set
+     * @throw InvalidCoordinate thrown when some of values are not valid strategies names
      */
     virtual DataBuilder& addNextPositions(
         PositionsPtr positions
@@ -36,8 +39,10 @@ public:
     /**
      * @brief Sets Params with values. 
      *
-     * @param params Params
-     * @return       reference to itself
+     * @param params            Params
+     * @return                  reference to itself
+     * @throw IllegalInnerState thrown when attempting to set params when
+     *                          not all coordinates are known
      */
     virtual DataBuilder& setParams(
         NumbersPtr params

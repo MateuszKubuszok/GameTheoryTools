@@ -234,15 +234,75 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PlainDataBuilder : public DataBuilder {
-//     PlayersPtr players;
+class PlainDataBuilder : public DataBuilder {
+    typedef boost::container::map<Identifier, bool> KnownPositions;
 
-//     boost::container::map<Identifier, bool> allocatedPositions;
+    DataPtr data;
 
-//     PositionsPtr positions;
+    PlayersPtr players;
 
+    Positions      currentPositions;
+    KnownPositions currentlyKnownPositions;
 
-// }; 
+public:
+    PlainDataBuilder() :
+        data(NullFactory::getInstance().createData()),
+        players(NullFactory::getInstance().createPlayers()),
+        currentPositions(),
+        currentlyKnownPositions()
+        {}
+
+    virtual DataBuilder& setPlayers(
+        PlayersPtr newPlayers
+    ) {
+        if (data->isNotNull())
+            throw IllegalInnerState("Cannot change already set Players");
+
+        data    = DataPtr(new PlainData(newPlayers));
+        players = newPlayers;
+        
+        return *this;
+    }
+
+    virtual DataBuilder& addNextPositions(
+        PositionsPtr positions
+    ) {
+        BOOST_FOREACH(Positions::value_type position, (*positions)) {
+            if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
+                throw InvalidCoordinate("Some of Coordinates are already set");
+            if (!(*players)[position.first]->hasStrategy(position.second))
+                throw InvalidCoordinate("Coordinate value not allowed");
+        }
+
+        BOOST_FOREACH(Positions::value_type position, (*positions)) {
+            currentPositions.insert( position );
+            currentlyKnownPositions.insert( KnownPositions::value_type(position.first, true) );
+        }
+
+        return *this;
+    }
+
+    virtual DataBuilder& setParams(
+        NumbersPtr params
+    ) {
+        BOOST_FOREACH(Identifier player, (*players) | boost::adaptors::map_keys)
+            if (!currentlyKnownPositions.count(player) || !currentlyKnownPositions[player])
+                throw IllegalInnerState("Cannot set parameters when not all coordinates are known");
+
+        data->setValues(currentPositions, params);
+
+        return *this;
+    }
+
+    virtual DataBuilderPtr clone() {
+        return DataBuilderPtr(new PlainDataBuilder(*this));
+    }
+
+    virtual Message toString() {
+        // TODO
+        return Message();
+    }
+}; /* END class PlainDataBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 
