@@ -1,6 +1,4 @@
-#include <boost/foreach.hpp>
-
-#include "gt/gtl/common.hpp"
+#include "gt/gtl/inner_common.hpp"
 
 namespace GT {
 namespace GTL {
@@ -44,6 +42,7 @@ public:
 
 // class Object {
 // public:
+
 Object::Object() :
     registeredProperties()
 {
@@ -83,6 +82,7 @@ Message Object::toString() {
 }
 
 // protected:
+
 bool Object::isPropertyRegistered(
     Identifier& propertyName
 ) {
@@ -103,6 +103,7 @@ void Object::registerProperty(
 ) {
     registeredProperties.insert( ObjectPropertyMap::value_type(propertyName, property) );
 }
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////

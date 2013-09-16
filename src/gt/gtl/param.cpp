@@ -1,4 +1,4 @@
-#include "gt/gtl/common.hpp"
+#include "gt/gtl/inner_common.hpp"
 
 namespace GT {
 namespace GTL {
@@ -43,10 +43,12 @@ public:
 
 // class Param
 // public:
+
 Param::Param() {
     registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
     registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
 }
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////

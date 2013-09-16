@@ -1,6 +1,4 @@
-#include <boost/thread/mutex.hpp>
-
-#include "gt/gtl/common.hpp"
+#include "gt/gtl/inner_common.hpp"
 
 namespace GT {
 namespace GTL {
@@ -12,9 +10,11 @@ boost::mutex nullFactoryMutex;
 ////////////////////////////////////////////////////////////////////////////////
 
 // class NullFactory {
+
 NullFactory* volatile NullFactory::instance = 0;
 
 // public:
+
 NullFactory& NullFactory::getInstance() {
     // Singleton implemented according to:
     // "C++ and the Perils of Double-Checked Locking"
@@ -95,7 +95,9 @@ QueryPtr NullFactory::createQuery() {
 }
 
 // private:
+
 NullFactory::NullFactory() {}
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////
