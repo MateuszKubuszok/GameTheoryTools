@@ -1,7 +1,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/test_tools.hpp>
 
-#include "gt/model/common.hpp"
+#include "gt/model/inner_common.hpp"
 
 BOOST_AUTO_TEST_SUITE( ResultFactory )
 
@@ -93,11 +93,7 @@ BOOST_AUTO_TEST_CASE( ResultFactory_emptyResult ) {
     );
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE( JSONResultBuilder )
-
-BOOST_AUTO_TEST_CASE( JSONResultBuilder_build ) {
+BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::JSON)
@@ -130,11 +126,7 @@ BOOST_AUTO_TEST_CASE( JSONResultBuilder_build ) {
     );
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE( XMLResultBuilder )
-
-BOOST_AUTO_TEST_CASE( XMLResultBuilder_build ) {
+BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::XML)
@@ -167,11 +159,7 @@ BOOST_AUTO_TEST_CASE( XMLResultBuilder_build ) {
     );
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE( PlainResultBuilder )
-
-BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
+BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::PLAIN)
