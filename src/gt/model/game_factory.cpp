@@ -309,6 +309,46 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class PlainGameBuilder : public GameBuilder {
+    DataBuilderPtr dataBuilder;
+
+public:
+    PlainGameBuilder() :
+        dataBuilder(new PlainDataBuilder())
+        {}
+
+    virtual DataBuilder& setPlayers(
+        PlayersPtr players
+    ) {
+        dataBuilder->setPlayers(players);
+        return *this;
+    }
+
+    virtual DataBuilder& addNextPositions(
+        PositionsPtr positions
+    ) {
+        dataBuilder->addNextPositions(positions);
+        return *this;
+    }
+
+    virtual DataBuilder& setParams(
+        NumbersPtr params
+    ) {
+        dataBuilder->setParams(params);
+        return *this;
+    }
+
+    virtual DataBuilderPtr clone() {
+        return dataBuilder->clone();
+    }
+
+    virtual GamePtr build() = 0;
+
+    virtual Message toString() = 0;
+}; /* END class PlainGameBuilder */
+
+////////////////////////////////////////////////////////////////////////////////
+
 // class ResultFactory {
 GameFactory* volatile GameFactory::instance = 0;
 
