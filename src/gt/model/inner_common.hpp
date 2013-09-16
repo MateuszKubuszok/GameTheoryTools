@@ -24,6 +24,14 @@ namespace Model {
 
 /* Implementations declarations */
 
+class ConstResult;
+class EmptyResult;
+
+class AbstractResultBuilder;
+class PlainResultBuilder;
+class JSONResultBuilder;
+class XMLResultBuilder;
+
 class PlainDataPiece;
 class PlainData;
 class PlainDataBuilder;
@@ -44,6 +52,16 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 } /* END namespace GT */
 
 ////////////////////////////////////////////////////////////////////////////////
+
+/* Implementations headers */
+
+#include "gt/model/const_result.hpp"
+#include "gt/model/empty_result.hpp"
+
+#include "gt/model/abstract_result_builder.hpp"
+#include "gt/model/plain_result_builder.hpp"
+#include "gt/model/json_result_builder.hpp"
+#include "gt/model/xml_result_builder.hpp"
 
 #include "gt/model/plain_data_piece.hpp"
 #include "gt/model/plain_data.hpp"

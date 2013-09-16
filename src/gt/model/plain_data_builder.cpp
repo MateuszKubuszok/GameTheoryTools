@@ -1,5 +1,3 @@
-#include <boost/foreach.hpp>
-
 #include "gt/model/inner_common.hpp"
 
 namespace GT {

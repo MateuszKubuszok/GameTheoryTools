@@ -10,9 +10,11 @@ boost::mutex nullFactoryMutex;
 ////////////////////////////////////////////////////////////////////////////////
 
 // class NullFactory {
+
 NullFactory* volatile NullFactory::instance = 0;
 
 // public:
+
 NullFactory& NullFactory::getInstance() {
     // Singleton implemented according to:
     // "C++ and the Perils of Double-Checked Locking"
@@ -89,7 +91,9 @@ ResultBuilderPtr NullFactory::createResultBuilder() {
 }
 
 // private:
+
 NullFactory::NullFactory() {}
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////
