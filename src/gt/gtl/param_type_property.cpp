@@ -5,12 +5,16 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class Param
+// class ParamTypeProperty {
 // public:
 
-Param::Param() {
-    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
+ParamTypeProperty::ParamTypeProperty() {}
+
+ResultPtr ParamTypeProperty::findForConditions(
+    const Context&    context,
+    const Conditions& conditions
+) {
+    return ResultFactory::getInstance().constResult(Message("Param"));
 }
 
 // }

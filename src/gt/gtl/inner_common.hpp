@@ -24,6 +24,12 @@ namespace GTL {
 
 /* Implementations declarations */
 
+class ObjectTypeProperty;
+class ObjectKnownProperties;
+
+class ParamTypeProperty;
+class ParamValueProperty;
+
 class IdentifierParam;
 class ValueParam;
 
@@ -35,6 +41,12 @@ class ValueParam;
 ////////////////////////////////////////////////////////////////////////////////
 
 /* Implementations headers */
+
+#include "gt/gtl/object_type_property.hpp"
+#include "gt/gtl/object_known_properties.hpp"
+
+#include "gt/gtl/param_type_property.hpp"
+#include "gt/gtl/param_value_property.hpp"
 
 #include "gt/gtl/identifier_param.hpp"
 #include "gt/gtl/value_param.hpp"

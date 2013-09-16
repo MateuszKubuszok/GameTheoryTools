@@ -5,41 +5,6 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class ObjectType : public ObjectProperty {
-public:
-    ObjectType() {}
-
-    virtual ResultPtr findForConditions(
-        const Context&    context,
-        const Conditions& conditions
-    ) {
-        return ResultFactory::getInstance().constResult(Message("Object"));
-    }
-}; /* END class ObjectType */
-
-////////////////////////////////////////////////////////////////////////////////
-
-class ObjectKnownProperties : public ObjectProperty {
-    const Object* object;
-
-public:
-    ObjectKnownProperties(
-        const Object* describedObject
-    ) :
-        object(describedObject)
-        {}
-
-    virtual ResultPtr findForConditions(
-        const Context&    context,
-        const Conditions& conditions
-    ) {
-        // TODO: create ResultBuilder that fills it up
-        return ResultFactory::getInstance().constResult(Message("TODO"));
-    }
-}; /* END class ObjectKnownProperties */
-
-////////////////////////////////////////////////////////////////////////////////
-
 // class Object {
 // public:
 
@@ -47,7 +12,7 @@ Object::Object() :
     registeredProperties()
 {
     registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
-    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectType()));
+    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty()));
 }
 
 Object::~Object() {}
