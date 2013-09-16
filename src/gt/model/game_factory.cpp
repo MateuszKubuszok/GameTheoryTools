@@ -10,6 +10,12 @@ namespace Model {
     
 ////////////////////////////////////////////////////////////////////////////////
 
+class PlainDataBuilder;
+
+////////////////////////////////////////////////////////////////////////////////
+
+typedef boost::shared_ptr<PlainDataBuilder> PlainDataBuilderPtr;
+
 typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
 typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 
@@ -255,6 +261,14 @@ public:
         currentlyKnownPositions()
         {}
 
+    DataPtr getData() {
+        return data;
+    }
+
+    PlayersPtr getPlayers() {
+        return players;
+    }
+
     virtual DataBuilder& setPlayers(
         PlayersPtr newPlayers
     ) {
@@ -310,42 +324,91 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 class PlainGameBuilder : public GameBuilder {
-    DataBuilderPtr dataBuilder;
-
 public:
     PlainGameBuilder() :
-        dataBuilder(new PlainDataBuilder())
+        plainDataBuilder(new PlainDataBuilder())
         {}
 
     virtual DataBuilder& setPlayers(
         PlayersPtr players
     ) {
-        dataBuilder->setPlayers(players);
+        plainDataBuilder->setPlayers(players);
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
         PositionsPtr positions
     ) {
-        dataBuilder->addNextPositions(positions);
+        plainDataBuilder->addNextPositions(positions);
         return *this;
     }
 
     virtual DataBuilder& setParams(
         NumbersPtr params
     ) {
-        dataBuilder->setParams(params);
+        plainDataBuilder->setParams(params);
         return *this;
     }
 
     virtual DataBuilderPtr clone() {
-        return dataBuilder->clone();
+        return plainDataBuilder->clone();
+    }
+
+    virtual DataBuilderPtr dataBuilder() {
+        return boost::dynamic_pointer_cast<DataBuilder>(plainDataBuilder);
     }
 
     virtual GamePtr build() = 0;
 
     virtual Message toString() = 0;
+
+protected:
+    PlainDataBuilderPtr plainDataBuilder;
 }; /* END class PlainGameBuilder */
+
+////////////////////////////////////////////////////////////////////////////////
+
+class PureGame : public Game {
+    PlayersPtr players;
+    DataPtr    data;
+
+public:
+    PureGame(
+        PlayersPtr newPlayers,
+        DataPtr    newData
+    ) :
+        players(newPlayers),
+        data(newData)
+        {}
+
+    virtual PlayersPtr getPlayers() {
+        return players;
+    }
+
+    virtual Message toString() {
+        // TODO
+        return Message();
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+
+class PureGameBuilder : public PlainGameBuilder {
+public:
+    virtual GamePtr build() {
+        return GamePtr(
+            new PureGame(
+                plainDataBuilder->getPlayers(),
+                plainDataBuilder->getData()
+            )
+        );
+    }
+
+    virtual Message toString() {
+        // TODO
+        return Message();
+    }
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -369,8 +432,7 @@ GameFactory& GameFactory::getInstance() {
 }
 
 GameBuilderPtr GameFactory::buildPureGame() {
-    // TODO
-    return NullFactory::getInstance().createGameBuilder();
+    return GameBuilderPtr(new PureGameBuilder());
 }
 
 GameBuilderPtr GameFactory::buildMixedGame() {
