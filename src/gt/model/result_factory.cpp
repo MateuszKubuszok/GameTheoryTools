@@ -81,7 +81,7 @@ protected:
 
     void checkPropertyToResultMatching() {
         int propertiesSize = properties->size();
-        BOOST_FOREACH(PartialResult partialResult, partialResults)
+        BOOST_FOREACH(PartialResult& partialResult, partialResults)
             if (partialResult.second->size() != propertiesSize)
                 throw IllegalInnerState("Properties size and Result\'s size does not match");
     }
@@ -101,13 +101,13 @@ public:
         std::stringstream result;
         
         result << indent;
-        BOOST_FOREACH(IdentifierPtr property, (*properties))
+        BOOST_FOREACH(IdentifierPtr& property, (*properties))
             result << indent << (*property) << ',';
         result << std::endl;
 
-        BOOST_FOREACH(PartialResult partialResult, partialResults) {
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
             result << (*partialResult.first) << ':' << std::endl << indent;
-            BOOST_FOREACH(MessagePtr message, (*partialResult.second))
+            BOOST_FOREACH(MessagePtr& message, (*partialResult.second))
                 result << indent << (*message) << ',';
             result << std::endl;
         }
@@ -132,7 +132,7 @@ public:
 
         result << '{' << std::endl;
 
-        BOOST_FOREACH(PartialResult partialResult, partialResults) {
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
             result << indent << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
             for (int property = 0; property < propertiesSize; property++)
                 result  << indent << indent
@@ -165,7 +165,7 @@ public:
 
         result << "<results>" << std::endl;
 
-        BOOST_FOREACH(PartialResult partialResult, partialResults) {
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
             result << indent << '<' << (*partialResult.first) << '>' << std::endl;
             for (int property = 0; property < propertiesSize; property++)
                 result  << indent << indent

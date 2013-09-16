@@ -77,7 +77,7 @@ public:
             Player& player = *playerPair.second;
 
             IdentifierMap strategiesMap;
-            BOOST_FOREACH(IdentifierPtr strategy, (*player.getStrategies()))
+            BOOST_FOREACH(IdentifierPtr& strategy, (*player.getStrategies()))
                 strategiesMap.insert( IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)) );
             playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
             positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
@@ -93,6 +93,7 @@ public:
     ) {
         if (!paramsStorageAllocation[positionInStorage])
             throw InvalidCoordinate("No params under such position");
+        
         return DataPiecePtr(
             new PlainDataPiece(
                 playersHelper,
@@ -119,6 +120,7 @@ public:
     ) {
         paramsStorage[positionInStorage] = numbers;
         paramsStorageAllocation[positionInStorage] = true;
+
         return *this;
     }
 
@@ -128,6 +130,7 @@ public:
     ) {
         if (!checkPositions(positions))
             throw InvalidCoordinate("Invalid coordinates format");
+
         return setValues(
             calculatePosition(positions),
             numbers
@@ -180,7 +183,7 @@ private:
         Positions& positions
     ) {
         Index storagePosition = 0;
-        BOOST_FOREACH(Positions::value_type position, positions) {
+        BOOST_FOREACH(Positions::value_type& position, positions) {
             storagePosition +=
                 positionsHelper.left.at(position.first)
                 *
@@ -267,14 +270,14 @@ public:
     virtual DataBuilder& addNextPositions(
         PositionsPtr positions
     ) {
-        BOOST_FOREACH(Positions::value_type position, (*positions)) {
+        BOOST_FOREACH(Positions::value_type& position, (*positions)) {
             if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
                 throw InvalidCoordinate("Some of Coordinates are already set");
             if (!(*players)[position.first]->hasStrategy(position.second))
                 throw InvalidCoordinate("Coordinate value not allowed");
         }
 
-        BOOST_FOREACH(Positions::value_type position, (*positions)) {
+        BOOST_FOREACH(Positions::value_type& position, (*positions)) {
             currentPositions.insert( position );
             currentlyKnownPositions.insert( KnownPositions::value_type(position.first, true) );
         }

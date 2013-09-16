@@ -19,7 +19,7 @@ Player::Player(
     strategyMapping()
 {
     int index = 0;
-    BOOST_FOREACH(IdentifierPtr strategy, *strategies)
+    BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
         strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
 }
 
@@ -51,7 +51,7 @@ bool Player::hasStrategy(
 
 Message Player::toString() {
     Message result = Message("Player:") + (*name) + "{ ";
-    BOOST_FOREACH(IdentifierPtr strategy, *strategies)
+    BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
         result += (*strategy) + " ";
     return result + "}";
 }
