@@ -43,6 +43,15 @@ public:
      *                           does not match number of properties
      */
     virtual ResultPtr build() = 0;
+
+    /**
+     * @brief Build raw Result - one that can be inserted into other results.
+     * 
+     * @return                   Result
+     * @throw IllegalInnerState  thrown when number of Messages for any Object
+     *                           does not match number of properties
+     */
+    virtual ResultPtr buildRaw() = 0;
 }; /* END class ResultBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,6 +77,10 @@ public:
     }
 
     virtual ResultPtr build() {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr buildRaw() {
         return NullFactory::getInstance().createResult();
     }
 

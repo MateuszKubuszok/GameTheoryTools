@@ -13,6 +13,7 @@ AbstractResultBuilder::AbstractResultBuilder(
 ) :
     properties(),
     partialResults(),
+    subResults(),
     indent(indentation)
     {}
 
@@ -31,6 +32,14 @@ ResultBuilder& AbstractResultBuilder::addRecord(
     return *this;
 }
 
+ResultBuilder& AbstractResultBuilder::addResult(
+    IdentifierPtr& name, 
+    MessagePtr&    result
+) {
+    subResults.push_back( SubResults::value_type(name, result) );
+    return *this;
+}
+
 Message AbstractResultBuilder::toString() {
     return build()->getResult();
 }
@@ -42,6 +51,22 @@ void AbstractResultBuilder::checkPropertyToResultMatching() {
     BOOST_FOREACH(PartialResult& partialResult, partialResults)
         if (partialResult.second->size() != propertiesSize)
             throw IllegalInnerState("Properties size and Result\'s size does not match");
+}
+
+Message AbstractResultBuilder::addIndent(
+    Message content
+) {
+    // do not use boost::container::vector here
+    // - it causes memory access violation with split function
+    std::vector<Message> lines;
+    boost::split(lines, content, boost::is_any_of("\n"));
+
+    std::stringstream result;
+    BOOST_FOREACH(Message& line, lines)
+        if (!line.empty() && line != "\n")
+            result << indent << line << std::endl;
+    
+    return result.str();
 }
 
 // }

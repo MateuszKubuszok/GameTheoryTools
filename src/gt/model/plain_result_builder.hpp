@@ -13,6 +13,8 @@ public:
     );
 
     virtual ResultPtr build();
+
+    virtual ResultPtr buildRaw();
 }; /* END class PlainResultBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -15,6 +15,10 @@ PlainResultBuilder::PlainResultBuilder(
     {}
 
 ResultPtr PlainResultBuilder::build() {
+    return buildRaw();
+}
+
+ResultPtr PlainResultBuilder::buildRaw() {
     checkPropertyToResultMatching();
 
     std::stringstream result;
@@ -30,6 +34,10 @@ ResultPtr PlainResultBuilder::build() {
             result << indent << (*message) << ',';
         result << std::endl;
     }
+
+    BOOST_FOREACH(SubResult& subResult, subResults)
+        result << (*subResult.first) << std::endl
+               << addIndent(*subResult.second) << std::endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
