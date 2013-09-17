@@ -92,6 +92,8 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 
 /* Includes GT model headers */
 
+#include "gt/model/helpers.hpp"
+
 #include "gt/model/exceptions.hpp"
 
 #include "gt/model/null_factory.hpp"
