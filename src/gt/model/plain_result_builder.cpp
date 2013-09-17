@@ -36,8 +36,8 @@ ResultPtr PlainResultBuilder::buildRaw() {
     }
 
     BOOST_FOREACH(SubResult& subResult, subResults)
-        result << (*subResult.first) << std::endl
-               << addIndent(*subResult.second) << std::endl;
+        result << (*subResult.first) << ':' << std::endl
+               << addIndent(*subResult.second);
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

@@ -45,7 +45,7 @@ ResultPtr XMLResultBuilder::buildRaw() {
 
     BOOST_FOREACH(SubResult& subResult, subResults)
         result << '<' << (*subResult.first) << '>' << std::endl
-               << addIndent(*subResult.second) << std::endl
+               << addIndent(*subResult.second)
                << '<' << '/' << (*subResult.first) << '>'
                << std::endl;
 

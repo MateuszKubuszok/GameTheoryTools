@@ -36,6 +36,18 @@ public:
     ) = 0;
 
     /**
+     * @brief Adds single named subresult.
+     *
+     * @param name   name subresult is build 
+     * @param result subresult
+     * @result       reference for itself for chaining
+     */
+    virtual ResultBuilder& addResult(
+        IdentifierPtr& name,
+        MessagePtr&    result
+    ) = 0;
+
+    /**
      * @brief Build Result.
      * 
      * @return                   Result
@@ -72,6 +84,13 @@ public:
     virtual ResultBuilder& addRecord(
         IdentifierPtr& object,
         MessagesPtr&   results
+    ) {
+        return *this;
+    }
+
+    virtual ResultBuilder& addResult(
+        IdentifierPtr& name,
+        MessagePtr&    result
     ) {
         return *this;
     }
