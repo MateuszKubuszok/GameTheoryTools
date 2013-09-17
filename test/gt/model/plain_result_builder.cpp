@@ -69,4 +69,26 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_buildRaw ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( PlainResultBuilder_throwExceptionOnError ) {
+    // given
+    GT::IdentifiersPtr properties(new GT::Identifiers());
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
+    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+
+    GT::IdentifierPtr object(new GT::Identifier("TestObject"));
+    GT::MessagesPtr   results(new GT::Messages());
+    results->push_back(GT::MessagePtr(new GT::Message("result1")));
+
+    // when
+    GT::Model::ResultBuilderPtr builder(new GT::Model::PlainResultBuilder(GT::Message("\t")));
+    builder->setHeaders(properties);
+    builder->addRecord(object, results);
+
+    // then
+    BOOST_CHECK_THROW(
+        builder->build(),
+        GT::Model::IllegalInnerState
+    );
+}
+
 BOOST_AUTO_TEST_SUITE_END()
