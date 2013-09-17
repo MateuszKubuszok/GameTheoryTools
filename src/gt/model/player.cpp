@@ -48,10 +48,12 @@ bool Player::hasStrategy(
 }
 
 Message Player::toString() {
-    Message result = Message("Player:") + (*name) + "{ ";
+    std::stringstream result;
+    result << "Player:" << (*name) << "{ ";
     BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
-        result += (*strategy) + " ";
-    return result + "}";
+        result << (*strategy) << " ";
+    result << '}';
+    return result.str();
 }
 
 // }
