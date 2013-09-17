@@ -7,8 +7,8 @@ BOOST_AUTO_TEST_SUITE( Player )
 
 BOOST_AUTO_TEST_CASE( Player_getName ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test name"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifierPtr  name       = GT::createIdentifierPtr("test name");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
 
     // when
     GT::Model::Player player(name, strategies);
@@ -22,8 +22,8 @@ BOOST_AUTO_TEST_CASE( Player_getName ) {
 
 BOOST_AUTO_TEST_CASE( Player_getStrategies ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test name"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifierPtr  name       = GT::createIdentifierPtr("test name");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
 
     // when
     GT::Model::Player player(name, strategies);
@@ -37,10 +37,10 @@ BOOST_AUTO_TEST_CASE( Player_getStrategies ) {
 
 BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test_name"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
-    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
-    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
+    GT::IdentifierPtr  name       = GT::createIdentifierPtr("test_name");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back( GT::createIdentifierPtr("some_strategy") );
+    strategies->push_back( GT::createIdentifierPtr("other_strategy") );
 
     // when
     GT::Model::Player player(name, strategies);
@@ -54,11 +54,11 @@ BOOST_AUTO_TEST_CASE( Player_getStrategiesNumber ) {
 
 BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test_name"));
-    GT::IdentifierPtr  strategy1(new GT::Identifier("some_strategy"));
-    GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
-    GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifierPtr  name            = GT::createIdentifierPtr("test name");
+    GT::IdentifierPtr  strategy1       = GT::createIdentifierPtr("some_strategy");
+    GT::IdentifierPtr  strategy2       = GT::createIdentifierPtr("other_strategy");
+    GT::IdentifierPtr  invalidStrategy = GT::createIdentifierPtr("invalid_strategy");
+    GT::IdentifiersPtr strategies      = GT::createIdentifiersPtr();
     strategies->push_back(strategy1);
     strategies->push_back(strategy2);
 
@@ -82,11 +82,11 @@ BOOST_AUTO_TEST_CASE( Player_getStrategyOrdinal ) {
 
 BOOST_AUTO_TEST_CASE( Player_hasStrategy ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test_name"));
-    GT::IdentifierPtr  strategy1(new GT::Identifier("some_strategy"));
-    GT::IdentifierPtr  strategy2(new GT::Identifier("other_strategy"));
-    GT::IdentifierPtr  invalidStrategy(new GT::Identifier("invalid_strategy"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifierPtr  name            = GT::createIdentifierPtr("test name");
+    GT::IdentifierPtr  strategy1       = GT::createIdentifierPtr("some_strategy");
+    GT::IdentifierPtr  strategy2       = GT::createIdentifierPtr("other_strategy");
+    GT::IdentifierPtr  invalidStrategy = GT::createIdentifierPtr("invalid_strategy");
+    GT::IdentifiersPtr strategies      = GT::createIdentifiersPtr();
     strategies->push_back(strategy1);
     strategies->push_back(strategy2);
 
@@ -100,10 +100,10 @@ BOOST_AUTO_TEST_CASE( Player_hasStrategy ) {
 
 BOOST_AUTO_TEST_CASE( Player_toString ) {
     // given
-    GT::IdentifierPtr  name(new GT::Identifier("test_name"));
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
-    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("some_strategy")));
-    strategies->push_back(GT::IdentifierPtr(new GT::Identifier("other_strategy")));
+    GT::IdentifierPtr  name       = GT::createIdentifierPtr("test_name");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back( GT::createIdentifierPtr("some_strategy") );
+    strategies->push_back( GT::createIdentifierPtr("other_strategy") );
 
     // when
     GT::Model::Player player(name, strategies);

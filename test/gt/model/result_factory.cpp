@@ -99,14 +99,14 @@ BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
         .setBuilderMode(GT::Model::JSON)
         .setIndentationMode(GT::Model::TABS);
 
-    GT::IdentifiersPtr properties(new GT::Identifiers());
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
+    properties->push_back(GT::createIdentifierPtr("property1"));
+    properties->push_back(GT::createIdentifierPtr("property2"));
 
-    GT::IdentifierPtr object(new GT::Identifier("TestObject"));
-    GT::MessagesPtr   results(new GT::Messages());
-    results->push_back(GT::MessagePtr(new GT::Message("result1")));
-    results->push_back(GT::MessagePtr(new GT::Message("result2")));
+    GT::IdentifierPtr object  = GT::createIdentifierPtr("TestObject");
+    GT::MessagesPtr   results = GT::createMessagesPtr();
+    results->push_back( GT::createMessagePtr("result1") );
+    results->push_back( GT::createMessagePtr("result2") );
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();
@@ -132,14 +132,14 @@ BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
         .setBuilderMode(GT::Model::XML)
         .setIndentationMode(GT::Model::TABS);
 
-    GT::IdentifiersPtr properties(new GT::Identifiers());
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
+    properties->push_back(GT::createIdentifierPtr("property1"));
+    properties->push_back(GT::createIdentifierPtr("property2"));
 
-    GT::IdentifierPtr object(new GT::Identifier("TestObject"));
-    GT::MessagesPtr   results(new GT::Messages());
-    results->push_back(GT::MessagePtr(new GT::Message("result1")));
-    results->push_back(GT::MessagePtr(new GT::Message("result2")));
+    GT::IdentifierPtr object  = GT::createIdentifierPtr("TestObject");
+    GT::MessagesPtr   results = GT::createMessagesPtr();
+    results->push_back( GT::createMessagePtr("result1") );
+    results->push_back( GT::createMessagePtr("result2") );
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();
@@ -165,14 +165,14 @@ BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
         .setBuilderMode(GT::Model::PLAIN)
         .setIndentationMode(GT::Model::TABS);
 
-    GT::IdentifiersPtr properties(new GT::Identifiers());
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property1")));
-    properties->push_back(GT::IdentifierPtr(new GT::Identifier("property2")));
+    GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
+    properties->push_back(GT::createIdentifierPtr("property1"));
+    properties->push_back(GT::createIdentifierPtr("property2"));
 
-    GT::IdentifierPtr object(new GT::Identifier("TestObject"));
-    GT::MessagesPtr   results(new GT::Messages());
-    results->push_back(GT::MessagePtr(new GT::Message("result1")));
-    results->push_back(GT::MessagePtr(new GT::Message("result2")));
+    GT::IdentifierPtr object  = GT::createIdentifierPtr("TestObject");
+    GT::MessagesPtr   results = GT::createMessagesPtr();
+    results->push_back( GT::createMessagePtr("result1") );
+    results->push_back( GT::createMessagePtr("result2") );
 
     // when
     GT::Model::ResultBuilderPtr builder = GT::Model::ResultFactory::getInstance().buildResult();

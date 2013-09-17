@@ -15,8 +15,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
     playersMap.insert( GT::Model::IdentifierMap::value_type(player2, 1) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
-    numbers->push_back( GT::NumberPtr(new GT::Number(10)) );
-    numbers->push_back( GT::NumberPtr(new GT::Number(100)) );
+    numbers->push_back( GT::createNumberPtr(10) );
+    numbers->push_back( GT::createNumberPtr(100) );
 
     // when
     GT::Model::PlainDataPiece piece(playersMap, numbers);
@@ -45,8 +45,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
     playersMap.insert( GT::Model::IdentifierMap::value_type(player2, 1) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
-    numbers->push_back( GT::NumberPtr(new GT::Number(10)) );
-    numbers->push_back( GT::NumberPtr(new GT::Number(100)) );
+    numbers->push_back( GT::createNumberPtr(10) );
+    numbers->push_back( GT::createNumberPtr(100) );
 
     // when
     GT::Model::PlainDataPiece piece(playersMap, numbers);
@@ -72,8 +72,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     playersMap.insert( GT::Model::IdentifierMap::value_type(player2, 1) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
-    numbers->push_back( GT::NumberPtr(new GT::Number(10)) );
-    numbers->push_back( GT::NumberPtr(new GT::Number(100)) );
+    numbers->push_back( GT::createNumberPtr(10) );
+    numbers->push_back( GT::createNumberPtr(100) );
 
     // when
     GT::Model::PlainDataPiece piece(playersMap, numbers);
