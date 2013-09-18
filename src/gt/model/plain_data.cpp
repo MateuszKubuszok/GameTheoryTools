@@ -35,6 +35,11 @@ PlainData::PlainData(
         playerIndex++;
         positionIndex *= player.getStrategiesNumber();
     }
+
+    for (int i = 0; i < positionIndex; i++) {
+        paramsStorage.push_back( NullFactory::getInstance().createNumbers() );
+        paramsStorageAllocation.push_back( false );
+    }
 }
 
 DataPiecePtr PlainData::getValues(
