@@ -70,8 +70,9 @@ DataBuilderPtr PlainDataBuilder::clone() {
 }
 
 Message PlainDataBuilder::toString() {
-    // TODO
-    return Message();
+    IdentifierPtr name = createIdentifierPtr("Current Data");
+    MessagePtr    message = createMessagePtr(data->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }
 
 // }
