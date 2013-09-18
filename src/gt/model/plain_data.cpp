@@ -226,25 +226,26 @@ ResultPtr PlainData::contentMessage() {
         playersNames->push_back( createIdentifierPtr(playersHelper.right.at(i)) );
 
     Index maxPosition = paramsStorage.size();
-    for (Index i = 0; i < maxPosition; i++) {
-        IdentifierPtr  name       = createIdentifierPtr("Value");
-        NumbersPtr     numbers    = paramsStorage[i];
-        PositionsPtr   positions  = retrievePositions(i);
-        IdentifiersPtr strategies = createIdentifiersPtr();
-        MessagesPtr    numbersStr = createMessagesPtr();
+    for (Index i = 0; i < maxPosition; i++)
+        if (paramsStorageAllocation[i]) {
+            IdentifierPtr  name       = createIdentifierPtr("Value");
+            PositionsPtr   positions  = retrievePositions(i);
+            NumbersPtr     numbers    = paramsStorage[i];
+            IdentifiersPtr strategies = createIdentifiersPtr();
+            MessagesPtr    numbersStr = createMessagesPtr();
 
-        BOOST_FOREACH(IdentifierPtr playerName, (*playersNames)) {
-            strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
-            numbersStr->push_back( createMessagePtr( (*numbers)[calculatePlayer(playerName)] ) );
+            BOOST_FOREACH(IdentifierPtr playerName, (*playersNames)) {
+                strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
+                numbersStr->push_back( createMessagePtr( (*numbers)[calculatePlayer(playerName)] ) );
+            }
+
+            ResultBuilderPtr subresultBuilder = ResultFactory::getInstance().buildResult();
+            subresultBuilder->setHeaders(playersNames)
+                             .addRecord(positionName, strategies)
+                             .addRecord(payoffName, numbersStr);
+            MessagePtr subresult = createMessagePtr(subresultBuilder->buildRaw()->getResult());
+            resultBuilder->addResult(name, subresult);
         }
-
-        ResultBuilderPtr subresultBuilder = ResultFactory::getInstance().buildResult();
-        subresultBuilder->setHeaders(playersNames)
-                         .addRecord(positionName, strategies)
-                         .addRecord(payoffName, numbersStr);
-        MessagePtr subresult = createMessagePtr(subresultBuilder->buildRaw()->getResult());
-        resultBuilder->addResult(name, subresult);
-    }
 
     return resultBuilder->build();
 }
