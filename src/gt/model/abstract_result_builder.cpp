@@ -11,7 +11,7 @@ namespace Model {
 AbstractResultBuilder::AbstractResultBuilder(
     Message indentation
 ) :
-    properties(),
+    properties(new Identifiers()),
     partialResults(),
     subResults(),
     indent(indentation)

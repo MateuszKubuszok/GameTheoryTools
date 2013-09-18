@@ -47,6 +47,7 @@ for header in [
     'boost/container/map.hpp',
     'boost/container/vector.hpp',
     'boost/range/adaptor/map.hpp',
+    'boost/range/adaptor/reversed.hpp',
     'boost/thread/mutex.hpp',
     # Flex library
     'FlexLexer.h',

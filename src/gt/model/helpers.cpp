@@ -11,13 +11,13 @@ Message createMessage(
 }
 
 Message createMessage(
-    std::string& message
+    std::string message
 ) {
     return Message(message);
 }
 
 Message createMessage(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 ) {
     return Message(*message);
 }
@@ -41,13 +41,13 @@ MessagePtr createMessagePtr(
 }
 
 MessagePtr createMessagePtr(
-    std::string& message
+    std::string message
 ) {
     return MessagePtr(new Message(message));
 }
 
 MessagePtr createMessagePtr(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 ) {
     return message;
 }
@@ -73,7 +73,7 @@ MessagesPtr createMessagesPtr() {
 }
 
 MessagesPtr createMessagesPtr(
-    Messages& messages
+    Messages messages
 ) {
     return MessagesPtr(new Messages(messages));
 }
@@ -87,13 +87,13 @@ Identifier createIdentifier(
 }
 
 Identifier createIdentifier(
-    std::string& identifier
+    std::string identifier
 ) {
     return Identifier(identifier);
 }
 
 Identifier createIdentifier(
-    boost::shared_ptr<std::string>& identifier
+    boost::shared_ptr<std::string> identifier
 ) {
     return Identifier(*identifier);
 }
@@ -105,13 +105,13 @@ IdentifierPtr createIdentifierPtr(
 }
 
 IdentifierPtr createIdentifierPtr(
-    std::string& identifier
+    std::string identifier
 ) {
     return IdentifierPtr(new Identifier(identifier));
 }
 
 IdentifierPtr createIdentifierPtr(
-    boost::shared_ptr<std::string>& identifier	
+    boost::shared_ptr<std::string> identifier	
 ) {
     return identifier;
 }
@@ -125,7 +125,7 @@ IdentifiersPtr createIdentifiersPtr() {
 }
 
 IdentifiersPtr createIdentifiersPtr(
-    Identifiers& identifiers
+    Identifiers identifiers
 ) {
     return IdentifiersPtr(new Identifiers(identifiers));
 }
@@ -151,13 +151,13 @@ Number createNumber(
 }
 
 Number createNumber(
-    std::string& number
+    std::string number
 ) {
     return Number(number);
 }
 
 Number createNumber(
-    boost::shared_ptr<std::string>& number
+    boost::shared_ptr<std::string> number
 ) {
     return Number(*number);
 }
@@ -193,13 +193,13 @@ NumberPtr createNumberPtr(
 }
 
 NumberPtr createNumberPtr(
-    std::string& number
+    std::string number
 ) {
     return NumberPtr(new Number(number));
 }
 
 NumberPtr createNumberPtr(
-    boost::shared_ptr<std::string>& number
+    boost::shared_ptr<std::string> number
 ) {
     return NumberPtr(new Number(*number));
 }
@@ -225,7 +225,7 @@ NumbersPtr createNumbersPtr() {
 }
 
 NumbersPtr createNumbersPtr(
-    Numbers& numbers
+    Numbers numbers
 ) {
     return NumbersPtr(new Numbers(numbers));
 }

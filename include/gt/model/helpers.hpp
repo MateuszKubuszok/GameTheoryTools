@@ -6,14 +6,14 @@ namespace GT {
 ////////////////////////////////////////////////////////////////////////////////
 
 Message createMessage(
-    std::string& message
+    std::string message
 );
 Message createMessage(
     const char* message
 );
 
 Message createMessage(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 );
 
 Message createMessage(
@@ -29,11 +29,11 @@ MessagePtr createMessagePtr(
 );
 
 MessagePtr createMessagePtr(
-    std::string& message
+    std::string message
 );
 
 MessagePtr createMessagePtr(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 );
 
 MessagePtr createMessagePtr(
@@ -49,7 +49,7 @@ Messages createMessages();
 MessagesPtr createMessagesPtr();
 
 MessagesPtr createMessagesPtr(
-    Messages& messages
+    Messages messages
 );
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,11 +59,11 @@ Identifier createIdentifier(
 );
 
 Identifier createIdentifier(
-    std::string& message
+    std::string message
 );
 
 Identifier createIdentifier(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 );
 
 IdentifierPtr createIdentifierPtr(
@@ -71,11 +71,11 @@ IdentifierPtr createIdentifierPtr(
 );
 
 IdentifierPtr createIdentifierPtr(
-    std::string& message
+    std::string message
 );
 
 IdentifierPtr createIdentifierPtr(
-    boost::shared_ptr<std::string>& message
+    boost::shared_ptr<std::string> message
 );
 
 Identifiers createIdentifiers();
@@ -83,7 +83,7 @@ Identifiers createIdentifiers();
 IdentifiersPtr createIdentifiersPtr();
 
 IdentifiersPtr createIdentifiersPtr(
-    Identifiers& identifiers
+    Identifiers identifiers
 );
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -101,11 +101,11 @@ Number createNumber(
 );
 
 Number createNumber(
-    std::string& number
+    std::string number
 );
 
 Number createNumber(
-    boost::shared_ptr<std::string>& number
+    boost::shared_ptr<std::string> number
 );
 
 Number createNumber(
@@ -129,11 +129,11 @@ NumberPtr createNumberPtr(
 );
 
 NumberPtr createNumberPtr(
-    std::string& number
+    std::string number
 );
 
 NumberPtr createNumberPtr(
-    boost::shared_ptr<std::string>& number
+    boost::shared_ptr<std::string> number
 );
 
 NumberPtr createNumberPtr(
@@ -149,7 +149,7 @@ Numbers createNumbers();
 NumbersPtr createNumbersPtr();
 
 NumbersPtr createNumbersPtr(
-    Numbers& numbers
+    Numbers numbers
 );
 
 ////////////////////////////////////////////////////////////////////////////////

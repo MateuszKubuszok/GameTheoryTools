@@ -79,6 +79,10 @@ private:
         PositionsPtr positions
     );
 
+    PositionsPtr retrievePositions(
+        Index positionInStorage
+    );
+
     bool checkPlayer(
         Identifier& playerName
     );

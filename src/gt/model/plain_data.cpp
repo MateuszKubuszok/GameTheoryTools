@@ -36,7 +36,7 @@ PlainData::PlainData(
         positionIndex *= player.getStrategiesNumber();
     }
 
-    for (int i = 0; i < positionIndex; i++) {
+    for (Index i = 0; i < positionIndex; i++) {
         paramsStorage.push_back( NullFactory::getInstance().createNumbers() );
         paramsStorageAllocation.push_back( false );
     }
@@ -131,7 +131,7 @@ Index PlainData::calculatePlayer(
 Index PlainData::calculatePlayer(
     IdentifierPtr playerName
 ) {
-    return checkPlayer(*playerName);
+    return calculatePlayer(*playerName);
 }
 
 Index PlainData::calculatePosition(
@@ -139,10 +139,12 @@ Index PlainData::calculatePosition(
 ) {
     Index storagePosition = 0;
     BOOST_FOREACH(Positions::value_type& position, positions) {
+        Identifier playerName   = position.first;
+        Identifier strategyName = position.second;
         storagePosition +=
-            positionsHelper.left.at(position.first)
+            positionsHelper.left.at(playerName)
             *
-            strategiesHelper[position.first].left.at(position.second);
+            strategiesHelper[playerName].left.at(strategyName);
     }
     return storagePosition;
 }
@@ -151,6 +153,36 @@ Index PlainData::calculatePosition(
     PositionsPtr positions
 ) {
     return calculatePosition(*positions);
+}
+
+PositionsPtr PlainData::retrievePositions(
+    Index positionInStorage
+) {
+    PositionsPtr positions = createPositionsPtr();
+
+    BOOST_FOREACH(Index playerValue, positionsHelper.right
+                                    | boost::adaptors::map_keys
+                                    | boost::adaptors::reversed
+    ) {
+        Identifier playerName = positionsHelper.right.at(playerValue);
+        for (Index strategyValue = strategiesHelper[playerName].size()-1;
+                   strategyValue >= 0;
+                   strategyValue--
+        ) {
+            if (playerValue*strategyValue <= positionInStorage) {
+                positions->insert(
+                    Positions::value_type(
+                        playerName,
+                        strategiesHelper[playerName].right.at(strategyValue)
+                    )
+                );
+                positionInStorage -= playerValue*strategyValue;
+                break;
+            }
+        }
+    }
+
+    return positions;
 }
 
 bool PlainData::checkPlayer(
@@ -185,8 +217,36 @@ bool PlainData::checkPositions(
 }
 
 ResultPtr PlainData::contentMessage() {
-    // TODO: generate message with conetent using ResultBuilder
-    return NullFactory::getInstance().createResult();
+    ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
+
+    IdentifierPtr positionName = createIdentifierPtr("Position");
+    IdentifierPtr payoffName   = createIdentifierPtr("Payoff");
+    IdentifiersPtr playersNames = createIdentifiersPtr();
+    for (Index i = 0; i < playersHelper.size(); i++)
+        playersNames->push_back( createIdentifierPtr(playersHelper.right.at(i)) );
+
+    Index maxPosition = paramsStorage.size();
+    for (Index i = 0; i < maxPosition; i++) {
+        IdentifierPtr  name       = createIdentifierPtr("Value");
+        NumbersPtr     numbers    = paramsStorage[i];
+        PositionsPtr   positions  = retrievePositions(i);
+        IdentifiersPtr strategies = createIdentifiersPtr();
+        MessagesPtr    numbersStr = createMessagesPtr();
+
+        BOOST_FOREACH(IdentifierPtr playerName, (*playersNames)) {
+            strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
+            numbersStr->push_back( createMessagePtr( (*numbers)[calculatePlayer(playerName)] ) );
+        }
+
+        ResultBuilderPtr subresultBuilder = ResultFactory::getInstance().buildResult();
+        subresultBuilder->setHeaders(playersNames)
+                         .addRecord(positionName, strategies)
+                         .addRecord(payoffName, numbersStr);
+        MessagePtr subresult = createMessagePtr(subresultBuilder->buildRaw()->getResult());
+        resultBuilder->addResult(name, subresult);
+    }
+
+    return resultBuilder->build();
 }
 
 // }
