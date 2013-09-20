@@ -5,7 +5,7 @@
 
 BOOST_AUTO_TEST_SUITE( PlainDataBuilder )
 
-BOOST_AUTO_TEST_CASE( PlainDataBuilder_getPlayers ) {
+BOOST_AUTO_TEST_CASE( PlainDataBuilder_setPlayers_getPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
