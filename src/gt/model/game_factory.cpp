@@ -35,8 +35,7 @@ GameBuilderPtr GameFactory::buildPureGame() {
 }
 
 GameBuilderPtr GameFactory::buildMixedGame() {
-    // TODO
-    return NullFactory::getInstance().createGameBuilder();
+    return GameBuilderPtr(new MixedGameBuilder());
 }
 
 GameBuilderPtr GameFactory::buildTreeGame() {

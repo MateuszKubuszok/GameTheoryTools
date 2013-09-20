@@ -41,6 +41,8 @@ class PlainGameBuilder;
 
 class PureGame;
 class PureGameBuilder;
+class MixedGame;
+class MixedGameBuilder;
 
 /* Shortens comonly used names */
 
@@ -72,6 +74,8 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 
 #include "gt/model/pure_game.hpp"
 #include "gt/model/pure_game_builder.hpp"
+#include "gt/model/mixed_game.hpp"
+#include "gt/model/mixed_game_builder.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 
