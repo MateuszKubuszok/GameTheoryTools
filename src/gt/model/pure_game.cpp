@@ -21,8 +21,9 @@ PlayersPtr PureGame::getPlayers() {
 }
 
 Message PureGame::toString() {
-    // TODO
-    return Message();
+	IdentifierPtr name      = createIdentifierPtr("Pure Game");
+	MessagePtr    subresult = createMessagePtr(data->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 
 // }

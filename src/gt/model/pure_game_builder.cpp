@@ -18,8 +18,9 @@ GamePtr PureGameBuilder::build() {
 }
 
 Message PureGameBuilder::toString() {
-    // TODO
-    return Message();
+    IdentifierPtr name    = createIdentifierPtr("Current Pure Game");
+    MessagePtr    message = createMessagePtr(dataBuilder()->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }
 
 // }
