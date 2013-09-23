@@ -152,7 +152,7 @@ Message PositionsHelper::toString() {
         MessagePtr playerContent   = createIdentifierPtr(player.second->toString());
         resultBuilder->addResult(name, playerContent);
     }
-    resultBuilder->build()->getResult();
+    return resultBuilder->build()->getResult();
 }
 
 // }
