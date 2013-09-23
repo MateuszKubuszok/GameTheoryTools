@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_DATA_HPP__
-#define __GT_MODEL_DATA_HPP__
+#ifndef __GT_MODEL_DATA_ACCESSOR_HPP__
+#define __GT_MODEL_DATA_ACCESSOR_HPP__
 
 namespace GT {
 namespace Model {
@@ -7,11 +7,11 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Custom interface for all Data containers for Games.
+ * @brief Custom interface for all Data accessing instances for Games.
  *
  * @author Mateusz Kubuszok
  */
-class Data : public DataAccessor {
+class DataAccessor : public virtual Root {
 public:
     /**
      * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
@@ -80,42 +80,6 @@ public:
     ) = 0;
 
     /**
-     * @brief Sets values for mapped coordiantes.
-     *
-     * @param positionInStorage calculated position in an inner Map
-     * @return                  reference to itself
-     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
-     */
-    virtual Data& setValues(
-        Index      positionInStorage, 
-        NumbersPtr numbers
-    ) = 0;
-
-    /**
-     * @brief Sets values for given coordiantes.
-     *
-     * @param positions         coordinates in a Game
-     * @return                  reference to itself
-     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
-     */
-    virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
-    ) = 0;
-
-    /**
-     * @brief Sets values for given coordiantes.
-     *
-     * @param positions         coordinates in a Game
-     * @return                  reference to itself
-     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
-     */
-    virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
-    ) = 0;
-
-    /**
      * @brief Returns Data's message.
      *
      * @return message
@@ -126,11 +90,11 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Null Data for handling invalid situations.
+ * @brief Null DataAccessor for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
-class NullData : public Data {
+class NullDataAccessor : public DataAccessor {
 public:    
     virtual DataPiecePtr getValues(
         Index positionInStorage
@@ -148,27 +112,6 @@ public:
         PositionsPtr positions
     ) {
         return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual Data& setValues(
-        Index      positionInStorage, 
-        NumbersPtr numbers
-    ) {
-        return *this;
-    }
-
-    virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
-    ) {
-        return *this;
-    }
-
-    virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
-    ) {
-        return *this;
     }
 
     virtual DataPiecePtr operator[](
@@ -196,11 +139,11 @@ public:
     virtual Message toString() {
         return Message("NullData");
     }
-}; /* END class NullData */
+}; /* END class NullDataAccessor */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_DATA_HPP__ */
+#endif /* #ifndef __GT_MODEL_DATA_ACCESSOR_HPP__ */

@@ -61,8 +61,9 @@ class ResultFactory;
 /* Model declarations */
 
 class Player;        class NullPlayer;
-class Data;          class NullData;
 class DataPiece;     class NullDataPiece;
+class DataAccessor;  class NullDataAccessor;
+class Data;          class NullData;
 class DataBuilder;   class NullDataBuilder;
 class Game;          class NullGame;
 class GameBuilder;   class NullGameBuilder;
@@ -100,6 +101,8 @@ typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
 
 #include "gt/model/root.hpp"
 #include "gt/model/player.hpp"
+#include "gt/model/data_piece.hpp"
+#include "gt/model/data_accessor.hpp"
 #include "gt/model/data.hpp"
 #include "gt/model/data_builder.hpp"
 #include "gt/model/game.hpp"
