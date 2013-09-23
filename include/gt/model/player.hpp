@@ -123,6 +123,10 @@ public:
         return -1;
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullPlayer");
     }
