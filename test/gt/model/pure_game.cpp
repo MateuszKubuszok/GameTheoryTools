@@ -20,6 +20,25 @@ BOOST_AUTO_TEST_CASE( PureGame_getPlayers ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( PureGame_equilibriumData ) {
+    // given
+    GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
+    GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
+
+    // when
+    GT::Model::PureGame game(players, data);
+    GT::Model::DataAccessorPtr dataAccessor = game.equilibriumData();
+
+    // then
+    BOOST_CHECK_EQUAL(
+        dataAccessor->toString(),
+        GT::Message() +
+        "\t\n" +
+        "Plain Data Accessor:\n" +
+        "\tNullData\n"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( PureGame_toString ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
