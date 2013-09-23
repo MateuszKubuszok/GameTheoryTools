@@ -89,6 +89,13 @@ public:
     DataPtr createData();
 
     /**
+     * @brief Creates NullDataAccessor.
+     *
+     * @result NullDataAccessor
+     */
+    DataAccessorPtr createDataAccessor();
+
+    /**
      * @brief Creates NullDataPiece.
      *
      * @result NullDataPiece

@@ -47,6 +47,13 @@ public:
     ) = 0;
 
     /**
+     * @brief Returns map of Players available in this DataAccessor.
+     *
+     * @return Players
+     */
+    virtual PlayersPtr getPlayers() = 0;
+
+    /**
      * @brief Returns values handler for mapped coordiantes.
      *
      * @param positionInStorage calculated position in an inner Map
@@ -148,6 +155,10 @@ public:
         PositionsPtr positions
     ) {
         return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual PlayersPtr getPlayers() {
+        return NullFactory::getInstance().createPlayers();
     }
 
     virtual Data& setValues(

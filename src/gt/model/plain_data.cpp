@@ -9,37 +9,21 @@ namespace Model {
 // public:
 
 PlainData::PlainData(
-    PlayersPtr playersDefinitions
+    PlayersPtr players
 ) :
-    players(playersDefinitions),
-    playersHelper(),
-    strategiesHelper(),
-    positionsHelper(),
+    positionsHelper(players),
     paramsStorage(),
     paramsStorageAllocation()
 {
-    Index playerIndex   = 0;
-    Index positionIndex = 1;
-
-    BOOST_FOREACH(Players::value_type playerPair, (*players)) {
-        const Identifier& playerName = playerPair.first;
-        Player& player = *playerPair.second;
-
-        IdentifierMap strategiesMap;
-        BOOST_FOREACH(IdentifierPtr& strategy, (*player.getStrategies()))
-            strategiesMap.insert( IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)) );
-        playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
-        positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
-        strategiesHelper.insert( StrategyMap::value_type(playerName, strategiesMap) );
-
-        playerIndex++;
-        positionIndex *= player.getStrategiesNumber();
-    }
-
-    for (Index i = 0; i < positionIndex; i++) {
+    Index maxPosition = positionsHelper.getUpperBound();
+    for (Index i = 0; i < maxPosition; i++) {
         paramsStorage.push_back( NullFactory::getInstance().createNumbers() );
         paramsStorageAllocation.push_back( false );
     }
+}
+
+PlayersPtr PlainData::getPlayers() {
+    return positionsHelper.getPlayers();
 }
 
 DataPiecePtr PlainData::getValues(
@@ -50,7 +34,7 @@ DataPiecePtr PlainData::getValues(
     
     return DataPiecePtr(
         new PlainDataPiece(
-            playersHelper,
+            positionsHelper.getPlayers(),
             paramsStorage[positionInStorage]
         )
     );
@@ -59,7 +43,7 @@ DataPiecePtr PlainData::getValues(
 DataPiecePtr PlainData::getValues(
     Positions& positions
 ) {
-    return getValues(calculatePosition(positions));
+    return getValues(positionsHelper.calculatePosition(positions));
 }
 
 DataPiecePtr PlainData::getValues(
@@ -82,11 +66,11 @@ Data& PlainData::setValues(
     Positions& positions,
     NumbersPtr numbers
 ) {
-    if (!checkPositions(positions))
+    if (!positionsHelper.checkPositions(positions))
         throw InvalidCoordinate("Invalid coordinates format");
 
     return setValues(
-        calculatePosition(positions),
+        positionsHelper.calculatePosition(positions),
         numbers
     );
 }
@@ -122,121 +106,27 @@ Message PlainData::toString() {
 
 // private:
 
-Index PlainData::calculatePlayer(
-    Identifier& playerName
-) {
-    return playersHelper.left.at(playerName);
-}
-
-Index PlainData::calculatePlayer(
-    IdentifierPtr playerName
-) {
-    return calculatePlayer(*playerName);
-}
-
-Index PlainData::calculatePosition(
-    Positions& positions
-) {
-    Index storagePosition = 0;
-    BOOST_FOREACH(Positions::value_type& position, positions) {
-        Identifier playerName   = position.first;
-        Identifier strategyName = position.second;
-        storagePosition +=
-            positionsHelper.left.at(playerName)
-            *
-            strategiesHelper[playerName].left.at(strategyName);
-    }
-    return storagePosition;
-}
-
-Index PlainData::calculatePosition(
-    PositionsPtr positions
-) {
-    return calculatePosition(*positions);
-}
-
-PositionsPtr PlainData::retrievePositions(
-    Index positionInStorage
-) {
-    PositionsPtr positions = createPositionsPtr();
-
-    BOOST_FOREACH(Index playerValue, positionsHelper.right
-                                    | boost::adaptors::map_keys
-                                    | boost::adaptors::reversed
-    ) {
-        Identifier playerName = positionsHelper.right.at(playerValue);
-        for (Index strategyValue = strategiesHelper[playerName].size()-1;
-                   strategyValue >= 0;
-                   strategyValue--
-        ) {
-            if (playerValue*strategyValue <= positionInStorage) {
-                positions->insert(
-                    Positions::value_type(
-                        playerName,
-                        strategiesHelper[playerName].right.at(strategyValue)
-                    )
-                );
-                positionInStorage -= playerValue*strategyValue;
-                break;
-            }
-        }
-    }
-
-    return positions;
-}
-
-bool PlainData::checkPlayer(
-    Identifier& playerName
-) {
-    return playersHelper.left.count(playerName);
-}
-
-bool PlainData::checkPlayer(
-    IdentifierPtr playerName
-) {
-    return checkPlayer(*playerName);
-}
-
-bool PlainData::checkPositions(
-    Positions& positions
-) {
-    BOOST_FOREACH(Identifier playerName, positions | boost::adaptors::map_keys) {
-        if (!checkPlayer(playerName))
-            return false;
-        Identifier strategyName = positions[playerName];
-        if (!strategiesHelper[playerName].left.count(strategyName))
-            return false;
-    }
-    return true;
-}
-
-bool PlainData::checkPositions(
-    PositionsPtr positions
-) {
-    return checkPositions(*positions);
-}
-
 ResultPtr PlainData::contentMessage() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     IdentifierPtr positionName = createIdentifierPtr("Position");
     IdentifierPtr payoffName   = createIdentifierPtr("Payoff");
     IdentifiersPtr playersNames = createIdentifiersPtr();
-    for (Index i = 0; i < playersHelper.size(); i++)
-        playersNames->push_back( createIdentifierPtr(playersHelper.right.at(i)) );
+    for (Index i = 0; i < positionsHelper.getPlayers()->size(); i++)
+        playersNames->push_back( createIdentifierPtr(positionsHelper.retrievePlayer(i)) );
 
     Index maxPosition = paramsStorage.size();
     for (Index i = 0; i < maxPosition; i++)
         if (paramsStorageAllocation[i]) {
             IdentifierPtr  name       = createIdentifierPtr("Value");
-            PositionsPtr   positions  = retrievePositions(i);
+            PositionsPtr   positions  = positionsHelper.retrievePositions(i);
             NumbersPtr     numbers    = paramsStorage[i];
             IdentifiersPtr strategies = createIdentifiersPtr();
             MessagesPtr    numbersStr = createMessagesPtr();
 
             BOOST_FOREACH(IdentifierPtr playerName, (*playersNames)) {
                 strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
-                numbersStr->push_back( createMessagePtr( (*numbers)[calculatePlayer(playerName)] ) );
+                numbersStr->push_back( createMessagePtr( (*numbers)[positionsHelper.calculatePlayer(playerName)] ) );
             }
 
             ResultBuilderPtr subresultBuilder = ResultFactory::getInstance().buildResult();

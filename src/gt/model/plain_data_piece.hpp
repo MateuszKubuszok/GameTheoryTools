@@ -7,13 +7,13 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 class PlainDataPiece : public DataPiece {
-    IdentifierMap playersMap;
-    NumbersPtr    numbers;
+    PositionsHelper positionsHelper;
+    NumbersPtr      numbers;
 
 public:
     PlainDataPiece(
-        IdentifierMap players,
-        NumbersPtr    params
+        PlayersPtr players,
+        NumbersPtr params
     );
 
     virtual NumberPtr& getValue(

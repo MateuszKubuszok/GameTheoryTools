@@ -7,11 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 class PlainData : public Data {
-    PlayersPtr players;
-
-    IdentifierMap playersHelper;
-    StrategyMap   strategiesHelper;
-    IdentifierMap positionsHelper;
+    PositionsHelper positionsHelper;
 
     boost::container::vector<NumbersPtr> paramsStorage;
     boost::container::vector<bool>       paramsStorageAllocation;
@@ -20,6 +16,8 @@ public:
     PlainData(
         PlayersPtr playersDefinitions
     );
+
+    virtual PlayersPtr getPlayers();
 
     virtual DataPiecePtr getValues(
         Index positionInStorage

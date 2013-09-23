@@ -34,10 +34,14 @@ class PlainResultBuilder;
 class JSONResultBuilder;
 class XMLResultBuilder;
 
+class PositionsHelper;
+
 class PlainDataPiece;
 class PlainData;
 class PlainDataBuilder;
 class PlainGameBuilder;
+
+class PlainDataAccessor;
 
 class PureGame;
 class PureGameBuilder;
@@ -67,10 +71,15 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 #include "gt/model/json_result_builder.hpp"
 #include "gt/model/xml_result_builder.hpp"
 
+#include "gt/model/positions_helper.hpp"
+
 #include "gt/model/plain_data_piece.hpp"
 #include "gt/model/plain_data.hpp"
 #include "gt/model/plain_data_builder.hpp"
 #include "gt/model/plain_game_builder.hpp"
+
+#include "gt/model/plain_data_accessor.hpp"
+#include "gt/model/mixed_data_accessor.hpp"
 
 #include "gt/model/pure_game.hpp"
 #include "gt/model/pure_game_builder.hpp"

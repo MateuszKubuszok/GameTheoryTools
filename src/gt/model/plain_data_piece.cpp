@@ -9,19 +9,19 @@ namespace Model {
 // public:
 
 PlainDataPiece::PlainDataPiece(
-    IdentifierMap players,
-    NumbersPtr    params
+    PlayersPtr players,
+    NumbersPtr params
 ) :
-    playersMap(players),
+    positionsHelper(players),
     numbers(params)
     {}
 
 NumberPtr& PlainDataPiece::getValue(
     Identifier& playerName
 ) {
-    if (!playersMap.left.count(playerName))
+    if (!positionsHelper.checkPlayer(playerName))
         throw InvalidCoordinate("No such Player");
-    return (*numbers)[playersMap.left.at(playerName)];
+    return (*numbers)[positionsHelper.calculatePlayer(playerName)];
 }
 
 Message PlainDataPiece::toString() {
@@ -29,9 +29,9 @@ Message PlainDataPiece::toString() {
     IdentifiersPtr players(new Identifiers());
     MessagesPtr    values(new Messages());
 
-    BOOST_FOREACH(Identifier playerName, playersMap.left | boost::adaptors::map_keys) {
+    BOOST_FOREACH(Identifier playerName, (*positionsHelper.getPlayers()) | boost::adaptors::map_keys) {
         players->push_back( createIdentifierPtr(playerName) );
-        values->push_back( createMessagePtr((*numbers)[playersMap.left.at(playerName)]) );
+        values->push_back( createMessagePtr((*numbers)[positionsHelper.calculatePlayer(playerName)]) );
     }
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();

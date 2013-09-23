@@ -76,6 +76,7 @@ typedef boost::shared_ptr<Player>                    PlayerPtr;
 typedef boost::container::map<Identifier, PlayerPtr> Players;
 typedef boost::shared_ptr<Players>                   PlayersPtr;
 typedef boost::shared_ptr<Data>                      DataPtr;
+typedef boost::shared_ptr<DataAccessor>              DataAccessorPtr;
 typedef boost::shared_ptr<DataPiece>                 DataPiecePtr;
 typedef boost::shared_ptr<DataBuilder>               DataBuilderPtr;
 typedef boost::shared_ptr<Game>                      GamePtr;

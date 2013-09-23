@@ -20,9 +20,13 @@ PlayersPtr PureGame::getPlayers() {
     return players;
 }
 
+DataAccessorPtr PureGame::equilibriumData() {
+    return DataAccessorPtr(new PlainDataAccessor(data));
+}
+
 Message PureGame::toString() {
-	IdentifierPtr name      = createIdentifierPtr("Pure Game");
-	MessagePtr    subresult = createMessagePtr(data->toString());
+    IdentifierPtr name      = createIdentifierPtr("Pure Game");
+    MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 
