@@ -27,7 +27,8 @@ DataBuilder& PlainDataBuilder::setPlayers(
     PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
-        throw IllegalInnerState("Cannot change already set Players");
+        throw ExceptionFactory::getInstance()
+                .playersAlreadySet();
 
     data    = DataPtr(new PlainData(newPlayers));
     players = newPlayers;
@@ -40,9 +41,9 @@ DataBuilder& PlainDataBuilder::addNextPositions(
 ) {
     BOOST_FOREACH(Positions::value_type& position, (*positions)) {
         if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
-            throw InvalidCoordinate("Some of Coordinates are already set");
+            throw ExceptionFactory::getInstance().coordinatesAlreadySet(*positions);
         if (!(*players)[position.first]->hasStrategy(position.second))
-            throw InvalidCoordinate("Coordinate value not allowed");
+            throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
     }
 
     BOOST_FOREACH(Positions::value_type& position, (*positions)) {
@@ -58,7 +59,7 @@ DataBuilder& PlainDataBuilder::setParams(
 ) {
     BOOST_FOREACH(Identifier player, (*players) | boost::adaptors::map_keys)
         if (!currentlyKnownPositions.count(player) || !currentlyKnownPositions[player])
-            throw IllegalInnerState("Cannot set parameters when not all coordinates are known");
+            throw ExceptionFactory::getInstance().incompleteCoordinates();
 
     data->setValues(currentPositions, params);
 

@@ -45,8 +45,8 @@ public:
     virtual Message toString();
 
 private:
-    NumberPtr calculateExpectedValue(
-        Index positionInStorage
+    NumbersPtr calculateExpectedValues(
+        Positions& positions
     );
 };
 

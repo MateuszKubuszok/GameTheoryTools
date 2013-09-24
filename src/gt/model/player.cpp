@@ -38,7 +38,7 @@ Index Player::getStrategyOrdinal(
 ) {
     if (strategyMapping.count(strategy))
         return strategyMapping[strategy];
-    throw std::invalid_argument("Strategy not found");
+    throw ExceptionFactory::getInstance().invalidStrategy(strategy);
 }
 
 bool Player::hasStrategy(

@@ -30,7 +30,11 @@ DataPiecePtr PlainData::getValues(
     Index positionInStorage
 ) {
     if (!paramsStorageAllocation[positionInStorage])
-        throw InvalidCoordinate("No params under such position");
+        throw ExceptionFactory::getInstance()
+                .noParamsForPositions(
+                    positionInStorage,
+                    positionsHelper.getUpperBound()
+                );
     
     return DataPiecePtr(
         new PlainDataPiece(
@@ -67,7 +71,8 @@ Data& PlainData::setValues(
     NumbersPtr numbers
 ) {
     if (!positionsHelper.checkPositions(positions))
-        throw InvalidCoordinate("Invalid coordinates format");
+        throw ExceptionFactory::getInstance()
+                .invalidCoordinateFormat(positions);
 
     return setValues(
         positionsHelper.calculatePosition(positions),

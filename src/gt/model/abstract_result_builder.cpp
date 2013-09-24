@@ -50,7 +50,11 @@ void AbstractResultBuilder::checkPropertyToResultMatching() {
     int propertiesSize = properties->size();
     BOOST_FOREACH(PartialResult& partialResult, partialResults)
         if (partialResult.second->size() != propertiesSize)
-            throw IllegalInnerState("Properties size and Result\'s size does not match");
+            throw ExceptionFactory::getInstance()
+                .propertiesAndResultsDontMatchInSize(
+                    properties->size(),
+                    partialResult.second->size()
+                );
 }
 
 Message AbstractResultBuilder::addIndent(

@@ -20,7 +20,7 @@ NumberPtr& PlainDataPiece::getValue(
     Identifier& playerName
 ) {
     if (!positionsHelper.checkPlayer(playerName))
-        throw InvalidCoordinate("No such Player");
+        throw ExceptionFactory::getInstance().invalidPlayer(playerName);
     return (*numbers)[positionsHelper.calculatePlayer(playerName)];
 }
 

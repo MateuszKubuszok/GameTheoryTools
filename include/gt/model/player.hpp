@@ -65,8 +65,8 @@ public:
      /**
      * @brief Returns ordinal of a strategy with given identifier.
      *
-     * @return                       ordinal of strategy with given identifier
-     * @throws std::invalid_argument thrown if Player has no such strategy
+     * @return                   ordinal of strategy with given identifier
+     * @throws InvalidCoordinate thrown if Player has no such strategy
      */
     virtual Index getStrategyOrdinal(
         Identifier& strategy

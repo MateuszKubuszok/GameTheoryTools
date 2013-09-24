@@ -57,7 +57,7 @@ DataPiecePtr MixedDataAccessor::getValues(
     } catch (InvalidCoordinate e) {
         expectedData->setValues(
             positions,
-            calculateExpectedValue(positions)
+            calculateExpectedValues(positions)
         );
         return expectedData->getValues(positions);
     }
@@ -71,13 +71,13 @@ Message MixedDataAccessor::toString() {
 
 // private:
 
-NumberPtr MixedDataAccessor::calculateExpectedValue(
+NumbersPtr MixedDataAccessor::calculateExpectedValues(
     Positions& positions
 ) {
     // TODO
 	// sum for all s
 	//    (product of strategies distribution [other players]) * value
-    return NullFactory::getInstance().createNumber();
+    return NullFactory::getInstance().createNumbers();
 }
 
 // }

@@ -9,7 +9,7 @@ boost::mutex gameFactoryMutex;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class ResultFactory {
+// class GameFactory {
 
 GameFactory* volatile GameFactory::instance = 0;
 
