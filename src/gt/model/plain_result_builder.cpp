@@ -23,21 +23,25 @@ ResultPtr PlainResultBuilder::buildRaw() {
 
     std::stringstream result;
     
-    result << indent;
-    BOOST_FOREACH(IdentifierPtr& property, (*properties))
-        result << indent << (*property) << ',';
-    result << std::endl;
-
-    BOOST_FOREACH(PartialResult& partialResult, partialResults) {
-        result << (*partialResult.first) << ':' << std::endl << indent;
-        BOOST_FOREACH(MessagePtr& message, (*partialResult.second))
-            result << indent << (*message) << ',';
+    if (properties->size() > 0) {
+        result << indent;
+        BOOST_FOREACH(IdentifierPtr& property, (*properties))
+            result << indent << (*property) << ',';
         result << std::endl;
+
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+            result << (*partialResult.first) << ':' << std::endl << indent;
+            BOOST_FOREACH(MessagePtr& message, (*partialResult.second))
+                result << indent << (*message) << ',';
+            result << std::endl;
+        }
     }
 
-    BOOST_FOREACH(SubResult& subResult, subResults)
-        result << (*subResult.first) << ':' << std::endl
-               << addIndent(*subResult.second);
+    if (subResults.size() > 0) {
+        BOOST_FOREACH(SubResult& subResult, subResults)
+            result << (*subResult.first) << ':' << std::endl
+                   << addIndent(*subResult.second);
+    }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

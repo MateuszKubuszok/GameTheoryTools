@@ -257,7 +257,7 @@ BOOST_AUTO_TEST_CASE( PlainData_toString ) {
     BOOST_CHECK_EQUAL(
         plainData.toString(),
         GT::Message() +
-        "\t\nValue:\n"
+        "Value:\n"
         "\t\t\tp1,\tp2,\n" +
         "\tPosition:\n" +
         "\t\t\tp1s1,\tp2s1,\n" +

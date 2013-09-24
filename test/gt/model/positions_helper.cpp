@@ -366,11 +366,16 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
     BOOST_CHECK_EQUAL(
         positionsHelper.toString(),
         GT::Message() +
-        "\t\n" +
         "Player:\n" +
-        "\tPlayer:player1{ p1s1 p1s2 }\n" +
+        "\t0:\n" +
+        "\t\tp1s1\n" +
+        "\t1:\n" +
+        "\t\tp1s2\n" +
         "Player:\n" +
-        "\tPlayer:player2{ p2s1 p2s2 }\n"
+        "\t0:\n" +
+        "\t\tp2s1\n" +
+        "\t1:\n" +
+        "\t\tp2s2\n"
     );
 }
 

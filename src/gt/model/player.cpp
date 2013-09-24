@@ -48,12 +48,13 @@ bool Player::hasStrategy(
 }
 
 Message Player::toString() {
-    std::stringstream result;
-    result << "Player:" << (*name) << "{ ";
-    BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
-        result << (*strategy) << " ";
-    result << '}';
-    return result.str();
+    ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
+    BOOST_FOREACH(IdentifierPtr& strategy, *strategies) {
+        IdentifierPtr name  = createIdentifierPtr(getStrategyOrdinal(*strategy));
+        MessagePtr    value = createMessagePtr(strategy);
+        resultBuilder->addResult(name, value);
+    }
+    return resultBuilder->build()->getResult();
 }
 
 // }

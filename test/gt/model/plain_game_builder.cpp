@@ -81,7 +81,6 @@ BOOST_AUTO_TEST_CASE( PlainGameBuilder_functional ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "\t\n" +
         "Value:\n" +
         "\t\t\tp1,\n" +
         "\tPosition:\n" +

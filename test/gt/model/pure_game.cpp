@@ -33,7 +33,6 @@ BOOST_AUTO_TEST_CASE( PureGame_equilibriumData ) {
     BOOST_CHECK_EQUAL(
         dataAccessor->toString(),
         GT::Message() +
-        "\t\n" +
         "Plain Data Accessor:\n" +
         "\tNullData\n"
     );
@@ -51,7 +50,6 @@ BOOST_AUTO_TEST_CASE( PureGame_toString ) {
     BOOST_CHECK_EQUAL(
         game.toString(),
         GT::Message() +
-        "\t\n" +
         "Pure Game:\n" +
         "\tNullData\n" 
     );

@@ -30,22 +30,24 @@ ResultPtr JSONResultBuilder::buildRaw() {
     int propertiesSize = properties->size();
     std::stringstream result;
 
-    BOOST_FOREACH(PartialResult& partialResult, partialResults) {
-        result << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
-        for (int property = 0; property < propertiesSize; property++)
-            result << indent
-                    << '"' << (*(*properties)[property]) << '"'
-                    << " : "
-                    << '"' << (*(*partialResult.second)[property]) << '"'
-                    << ',' << std::endl;
-        result << "]," << std::endl;
-    }
+    if (propertiesSize > 0)
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+            result << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
+            for (int property = 0; property < propertiesSize; property++)
+                result << indent
+                        << '"' << (*(*properties)[property]) << '"'
+                        << " : "
+                        << '"' << (*(*partialResult.second)[property]) << '"'
+                        << ',' << std::endl;
+            result << "]," << std::endl;
+        }
 
-    BOOST_FOREACH(SubResult& subResult, subResults)
-        result << '"' << (*subResult.first) << '"'
-               << " : "
-               << (*subResult.second) << ','
-               << std::endl;
+    if (subResults.size() > 0)
+        BOOST_FOREACH(SubResult& subResult, subResults)
+            result << '"' << (*subResult.first) << '"'
+                   << " : "
+                   << (*subResult.second) << ','
+                   << std::endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

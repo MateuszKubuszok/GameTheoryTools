@@ -6,10 +6,15 @@ namespace GT {
 ////////////////////////////////////////////////////////////////////////////////
 
 Message createMessage(
-    std::string message
+    Index message
 );
+
 Message createMessage(
     const char* message
+);
+
+Message createMessage(
+    std::string message
 );
 
 Message createMessage(
@@ -22,6 +27,10 @@ Message createMessage(
 
 Message createMessage(
     NumberPtr number
+);
+
+MessagePtr createMessagePtr(
+    Index message
 );
 
 MessagePtr createMessagePtr(
@@ -55,27 +64,35 @@ MessagesPtr createMessagesPtr(
 ////////////////////////////////////////////////////////////////////////////////
 
 Identifier createIdentifier(
-    const char* message
+    Index identifier
 );
 
 Identifier createIdentifier(
-    std::string message
+    const char* identifier
 );
 
 Identifier createIdentifier(
-    boost::shared_ptr<std::string> message
+    std::string identifier
+);
+
+Identifier createIdentifier(
+    boost::shared_ptr<std::string> identifier
 );
 
 IdentifierPtr createIdentifierPtr(
-    const char* message
+    Index identifier
 );
 
 IdentifierPtr createIdentifierPtr(
-    std::string message
+    const char* identifier
 );
 
 IdentifierPtr createIdentifierPtr(
-    boost::shared_ptr<std::string> message
+    std::string identifier
+);
+
+IdentifierPtr createIdentifierPtr(
+    boost::shared_ptr<std::string> identifier
 );
 
 Identifiers createIdentifiers();

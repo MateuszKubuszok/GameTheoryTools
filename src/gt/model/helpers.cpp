@@ -5,6 +5,14 @@ namespace GT {
 ////////////////////////////////////////////////////////////////////////////////
 
 Message createMessage(
+    Index message
+) {
+    std::stringstream result;
+    result << message;
+    return Message(result.str());
+}
+
+Message createMessage(
     const char* message
 ) {
     return Message(message);
@@ -32,6 +40,14 @@ Message createMessage(
     NumberPtr number
 ) {
     return number->get_str();
+}
+
+MessagePtr createMessagePtr(
+    Index message
+) {
+    std::stringstream result;
+    result << message;
+    return MessagePtr(new Message(result.str()));
 }
 
 MessagePtr createMessagePtr(
@@ -81,6 +97,14 @@ MessagesPtr createMessagesPtr(
 ////////////////////////////////////////////////////////////////////////////////
 
 Identifier createIdentifier(
+    Index identifier
+) {
+    std::stringstream result;
+    result << identifier;
+    return Identifier(result.str());
+}
+
+Identifier createIdentifier(
     const char* identifier
 ) {
     return Identifier(identifier);
@@ -96,6 +120,14 @@ Identifier createIdentifier(
     boost::shared_ptr<std::string> identifier
 ) {
     return Identifier(*identifier);
+}
+
+IdentifierPtr createIdentifierPtr(
+    Index identifier
+) {
+    std::stringstream result;
+    result << identifier;
+    return IdentifierPtr(new Identifier(result.str()));
 }
 
 IdentifierPtr createIdentifierPtr(

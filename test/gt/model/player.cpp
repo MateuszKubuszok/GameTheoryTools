@@ -111,7 +111,11 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     // then
     BOOST_CHECK_EQUAL(
         player.toString(),
-        GT::Message("Player:test_name{ some_strategy other_strategy }")
+        GT::Message() +
+        "0:\n" +
+        "\tsome_strategy\n" +
+        "1:\n" +
+        "\tother_strategy\n"
     );
 }
 

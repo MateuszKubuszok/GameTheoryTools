@@ -33,7 +33,6 @@ BOOST_AUTO_TEST_CASE( MixedGame_equilibriumData ) {
     BOOST_CHECK_EQUAL(
         dataAccessor->toString(),
         GT::Message() +
-        "\t\n" +
         "Mixed Data Accessor:\n" +
         "\tNullData\n"
     );
@@ -51,7 +50,6 @@ BOOST_AUTO_TEST_CASE( MixedGame_toString ) {
     BOOST_CHECK_EQUAL(
         game.toString(),
         GT::Message() +
-        "\t\n" +
         "Mixed Game:\n" +
         "\tNullData\n" 
     );

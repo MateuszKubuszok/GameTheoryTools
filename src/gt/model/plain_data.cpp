@@ -106,12 +106,6 @@ DataPiecePtr PlainData::operator[](
 }
 
 Message PlainData::toString() {
-    return contentMessage()->getResult();
-}
-
-// private:
-
-ResultPtr PlainData::contentMessage() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     IdentifierPtr positionName = createIdentifierPtr("Position");
@@ -142,7 +136,7 @@ ResultPtr PlainData::contentMessage() {
             resultBuilder->addResult(name, subresult);
         }
 
-    return resultBuilder->build();
+    return resultBuilder->build()->getResult();
 }
 
 // }

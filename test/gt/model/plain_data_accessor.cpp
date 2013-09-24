@@ -208,9 +208,7 @@ BOOST_AUTO_TEST_CASE( PlainDataAccessor_toString ) {
     BOOST_CHECK_EQUAL(
         plainDataAccessor.toString(),
         GT::Message() + 
-        "\t\n" +
         "Plain Data Accessor:\n" +
-        "\t\t\n" +
         "\tValue:\n" +
         "\t\t\t\tp1,\tp2,\n" +
         "\t\tPosition:\n" +

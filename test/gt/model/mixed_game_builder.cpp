@@ -40,9 +40,7 @@ BOOST_AUTO_TEST_CASE( MixedGameBuilder_functional ) {
     BOOST_CHECK_EQUAL(
         game->toString(),
         GT::Message() +
-        "\t\n" +
         "Mixed Game:\n" +
-        "\t\t\n" +
         "\tValue:\n" +
         "\t\t\t\tp1,\n" +
         "\t\tPosition:\n" +
@@ -91,11 +89,8 @@ BOOST_AUTO_TEST_CASE( MixedGameBuilder_toString ) {
     BOOST_CHECK_EQUAL(
         MixedGameBuilder.toString(),
         GT::Message() +
-        "\t\n" +
         "Current Mixed Game:\n" +
-        "\t\t\n" +
         "\tCurrent Data:\n" +
-        "\t\t\t\n" +
         "\t\tValue:\n" +
         "\t\t\t\t\tp1,\n" +
         "\t\t\tPosition:\n" +

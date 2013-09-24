@@ -30,24 +30,26 @@ ResultPtr XMLResultBuilder::buildRaw() {
     int propertiesSize = properties->size();
     std::stringstream result;
 
-    BOOST_FOREACH(PartialResult& partialResult, partialResults) {
-        result << '<' << (*partialResult.first) << '>' << std::endl;
-        for (int property = 0; property < propertiesSize; property++)
-            result << indent
-                    << "<result"
-                    << ' '
-                    << "property=\"" << (*(*properties)[property]) << '"'
-                    << ' '
-                    << "value=\"" << (*(*partialResult.second)[property]) << '"'
-                    << " />" << std::endl;
-        result << '<' << '/' << (*partialResult.first) << '>' << std::endl;
-    }
+    if (propertiesSize > 0)
+        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+            result << '<' << (*partialResult.first) << '>' << std::endl;
+            for (int property = 0; property < propertiesSize; property++)
+                result << indent
+                        << "<result"
+                        << ' '
+                        << "property=\"" << (*(*properties)[property]) << '"'
+                        << ' '
+                        << "value=\"" << (*(*partialResult.second)[property]) << '"'
+                        << " />" << std::endl;
+            result << '<' << '/' << (*partialResult.first) << '>' << std::endl;
+        }
 
-    BOOST_FOREACH(SubResult& subResult, subResults)
-        result << '<' << (*subResult.first) << '>' << std::endl
-               << addIndent(*subResult.second)
-               << '<' << '/' << (*subResult.first) << '>'
-               << std::endl;
+    if (subResults.size() > 0)
+        BOOST_FOREACH(SubResult& subResult, subResults)
+            result << '<' << (*subResult.first) << '>' << std::endl
+                   << addIndent(*subResult.second)
+                   << '<' << '/' << (*subResult.first) << '>'
+                   << std::endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

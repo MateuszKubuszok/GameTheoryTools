@@ -83,9 +83,7 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_toString ) {
     BOOST_CHECK_EQUAL(
         plainDataBuilder.toString(),
         GT::Message() +
-        "\t\n" +
         "Current Data:\n" +
-        "\t\t\n" +
         "\tValue:\n" +
         "\t\t\t\tp1,\n" +
         "\t\tPosition:\n" +
@@ -136,7 +134,6 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_functional ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "\t\n" +
         "Value:\n" +
         "\t\t\tp1,\n" +
         "\tPosition:\n" +

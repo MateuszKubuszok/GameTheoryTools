@@ -59,45 +59,6 @@ public:
     );
 
     virtual Message toString();
-
-private:
-    Index calculatePlayer(
-        Identifier& playerName
-    );
-
-    Index calculatePlayer(
-        IdentifierPtr playerName
-    );
-
-    Index calculatePosition(
-        Positions& positions
-    );
-
-    Index calculatePosition(
-        PositionsPtr positions
-    );
-
-    PositionsPtr retrievePositions(
-        Index positionInStorage
-    );
-
-    bool checkPlayer(
-        Identifier& playerName
-    );
-
-    bool checkPlayer(
-        IdentifierPtr playerName
-    );
-
-    bool checkPositions(
-        Positions& positions
-    );
-
-    bool checkPositions(
-        PositionsPtr positions
-    );
-
-    ResultPtr contentMessage();
 }; /* END class PlainData */
 
 ////////////////////////////////////////////////////////////////////////////////
