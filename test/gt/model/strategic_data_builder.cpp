@@ -3,9 +3,9 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PlainDataBuilder )
+BOOST_AUTO_TEST_SUITE( StrategicDataBuilder )
 
-BOOST_AUTO_TEST_CASE( PlainDataBuilder_setPlayers_getPlayers ) {
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_setPlayers_getPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -18,9 +18,9 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_setPlayers_getPlayers ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    GT::Model::PlainDataBuilder plainDataBuilder;
-    plainDataBuilder.setPlayers(players);
-    GT::Model::PlayersPtr gotPlayers = plainDataBuilder.getPlayers();
+    GT::Model::StrategicDataBuilder strategicDataBuilder;
+    strategicDataBuilder.setPlayers(players);
+    GT::Model::PlayersPtr gotPlayers = strategicDataBuilder.getPlayers();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_setPlayers_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PlainDataBuilder_getData ) {
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -42,14 +42,14 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_getData ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    GT::Model::PlainDataBuilder plainDataBuilder;
-    plainDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder strategicDataBuilder;
+    strategicDataBuilder.setPlayers(players);
 
     // then
-    GT::Model::DataPtr data = plainDataBuilder.getData();
+    GT::Model::DataPtr data = strategicDataBuilder.getData();
 }
 
-BOOST_AUTO_TEST_CASE( PlainDataBuilder_toString ) {
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
     
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
@@ -73,15 +73,15 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_toString ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    GT::Model::PlainDataBuilder plainDataBuilder;
-    plainDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder strategicDataBuilder;
+    strategicDataBuilder.setPlayers(players);
     
-    plainDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    plainDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    strategicDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
+    strategicDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
 
     // then
     BOOST_CHECK_EQUAL(
-        plainDataBuilder.toString(),
+        strategicDataBuilder.toString(),
         GT::Message() +
         "Current Data:\n" +
         "\tValue:\n" +
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_toString ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PlainDataBuilder_functional ) {
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -122,13 +122,13 @@ BOOST_AUTO_TEST_CASE( PlainDataBuilder_functional ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    GT::Model::PlainDataBuilder plainDataBuilder;
-    plainDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder strategicDataBuilder;
+    strategicDataBuilder.setPlayers(players);
     
-    plainDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    plainDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    strategicDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
+    strategicDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
 
-    GT::Model::DataPtr data = plainDataBuilder.getData();
+    GT::Model::DataPtr data = strategicDataBuilder.getData();
 
     // then
     BOOST_CHECK_EQUAL(

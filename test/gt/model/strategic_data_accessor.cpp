@@ -3,9 +3,9 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PlainDataAccessor )
+BOOST_AUTO_TEST_SUITE( StrategicDataAccessor )
 
-BOOST_AUTO_TEST_CASE( PlainDataAccessor_getValue ) {
+BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -53,30 +53,30 @@ BOOST_AUTO_TEST_CASE( PlainDataAccessor_getValue ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr plainData(new GT::Model::PlainData(players));
-    plainData->setValues(position11, values11);
-    plainData->setValues(position12, values12);
-    plainData->setValues(position21, values21);
-    plainData->setValues(position22, values22);
+    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    strategicData->setValues(position11, values11);
+    strategicData->setValues(position12, values12);
+    strategicData->setValues(position21, values21);
+    strategicData->setValues(position22, values22);
 
     // when
-    GT::Model::PlainDataAccessor plainDataAccessor(plainData);
+    GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);
 
     // then
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position11)->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position11)->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position11)->getValue(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position11)->getValue(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position12)->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position12)->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position12)->getValue(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position12)->getValue(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position21)->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position21)->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position21)->getValue(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position21)->getValue(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position22)->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor.getValues(position22)->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position22)->getValue(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position22)->getValue(*player2name), (*values22)[1] );
 }
 
-BOOST_AUTO_TEST_CASE( PlainDataAccessor_operatorOverload ) {
+BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -124,30 +124,30 @@ BOOST_AUTO_TEST_CASE( PlainDataAccessor_operatorOverload ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr plainData(new GT::Model::PlainData(players));
-    plainData->setValues(position11, values11);
-    plainData->setValues(position12, values12);
-    plainData->setValues(position21, values21);
-    plainData->setValues(position22, values22);
+    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    strategicData->setValues(position11, values11);
+    strategicData->setValues(position12, values12);
+    strategicData->setValues(position21, values21);
+    strategicData->setValues(position22, values22);
 
     // when
-    GT::Model::PlainDataAccessor plainDataAccessor(plainData);
+    GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);
 
     // then
-    BOOST_CHECK_EQUAL( plainDataAccessor[position11]->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor[position11]->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getValue(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getValue(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor[position12]->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor[position12]->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getValue(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getValue(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor[position21]->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor[position21]->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getValue(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getValue(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( plainDataAccessor[position22]->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( plainDataAccessor[position22]->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getValue(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getValue(*player2name), (*values22)[1] );
 }
 
-BOOST_AUTO_TEST_CASE( PlainDataAccessor_toString ) {
+BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -195,20 +195,20 @@ BOOST_AUTO_TEST_CASE( PlainDataAccessor_toString ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr plainData(new GT::Model::PlainData(players));
-    plainData->setValues(position11, values11);
-    plainData->setValues(position12, values12);
-    plainData->setValues(position21, values21);
-    plainData->setValues(position22, values22);
+    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    strategicData->setValues(position11, values11);
+    strategicData->setValues(position12, values12);
+    strategicData->setValues(position21, values21);
+    strategicData->setValues(position22, values22);
 
     // when
-    GT::Model::PlainDataAccessor plainDataAccessor(plainData);
+    GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);
 
     // then
     BOOST_CHECK_EQUAL(
-        plainDataAccessor.toString(),
+        strategicDataAccessor.toString(),
         GT::Message() + 
-        "Plain Data Accessor:\n" +
+        "Strategic Data Accessor:\n" +
         "\tValue:\n" +
         "\t\t\t\tp1,\tp2,\n" +
         "\t\tPosition:\n" +

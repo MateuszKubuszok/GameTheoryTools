@@ -1,17 +1,17 @@
-#ifndef __GT_MODEL_MIXED_GAME_HPP__
-#define __GT_MODEL_MIXED_GAME_HPP__
+#ifndef __GT_MODEL_STRATEGIC_GAME_HPP__
+#define __GT_MODEL_STRATEGIC_GAME_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class MixedGame : public Game {
+class StrategicGame : public Game {
     PlayersPtr players;
     DataPtr    data;
 
 public:
-    MixedGame(
+    StrategicGame(
         PlayersPtr newPlayers,
         DataPtr    newData
     );
@@ -21,11 +21,11 @@ public:
     virtual DataAccessorPtr equilibriumData();
 
     virtual Message toString();
-}; /* END class MixedGame */
+}; /* END class StrategicGame */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_MIXED_GAME_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_GAME_HPP__ */

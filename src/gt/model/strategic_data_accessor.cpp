@@ -5,57 +5,57 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PlainDataAccessor {
+// class StrategicDataAccessor {
 // public:
 
-PlainDataAccessor::PlainDataAccessor(
-    DataPtr plainData
+StrategicDataAccessor::StrategicDataAccessor(
+    DataPtr StrategicData
 ) :
-    data(plainData)
+    data(StrategicData)
     {}
 
-DataPiecePtr PlainDataAccessor::operator[](
+DataPiecePtr StrategicDataAccessor::operator[](
     Index positionInStorage
 ) {
     return (*data)[positionInStorage];
 }
 
-DataPiecePtr PlainDataAccessor::operator[](
+DataPiecePtr StrategicDataAccessor::operator[](
     Positions& positions
 ) {
     return (*data)[positions];
 }
 
-DataPiecePtr PlainDataAccessor::operator[](
+DataPiecePtr StrategicDataAccessor::operator[](
     PositionsPtr positions
 ) {
     return (*data)[positions];
 }
 
-PlayersPtr PlainDataAccessor::getPlayers() {
+PlayersPtr StrategicDataAccessor::getPlayers() {
     return data->getPlayers();
 }
 
-DataPiecePtr PlainDataAccessor::getValues(
+DataPiecePtr StrategicDataAccessor::getValues(
     Index positionInStorage
 ) {
     return data->getValues(positionInStorage);
 }
 
-DataPiecePtr PlainDataAccessor::getValues(
+DataPiecePtr StrategicDataAccessor::getValues(
     PositionsPtr positions
 ) {
     return data->getValues(positions);
 }
 
-DataPiecePtr PlainDataAccessor::getValues(
+DataPiecePtr StrategicDataAccessor::getValues(
     Positions& positions
 ) {
     return data->getValues(positions);
 }
 
-Message PlainDataAccessor::toString() {
-    IdentifierPtr name      = createIdentifierPtr("Plain Data Accessor");
+Message StrategicDataAccessor::toString() {
+    IdentifierPtr name      = createIdentifierPtr("Strategic Data Accessor");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }

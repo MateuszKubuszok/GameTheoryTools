@@ -1,12 +1,12 @@
-#ifndef __GT_MODEL_PLAIN_DATA_BUILDER_HPP__
-#define __GT_MODEL_PLAIN_DATA_BUILDER_HPP__
+#ifndef __GT_MODEL_STRATEGIC_DATA_BUILDER_HPP__
+#define __GT_MODEL_STRATEGIC_DATA_BUILDER_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainDataBuilder : public DataBuilder {
+class StrategicDataBuilder : public DataBuilder {
     typedef boost::container::map<Identifier, bool> KnownPositions;
 
     DataPtr data;
@@ -17,7 +17,7 @@ class PlainDataBuilder : public DataBuilder {
     KnownPositions currentlyKnownPositions;
 
 public:
-    PlainDataBuilder();
+    StrategicDataBuilder();
 
     DataPtr getData();
 
@@ -38,11 +38,11 @@ public:
     virtual DataBuilderPtr clone();
 
     virtual Message toString();
-}; /* END class PlainDataBuilder */
+}; /* END class StrategicDataBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_PLAIN_DATA_BUILDER_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_DATA_BUILDER_HPP__ */

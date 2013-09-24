@@ -1,19 +1,19 @@
-#ifndef __GT_MODEL_PLAIN_DATA_HPP__
-#define __GT_MODEL_PLAIN_DATA_HPP__
+#ifndef __GT_MODEL_STRATEGIC_DATA_HPP__
+#define __GT_MODEL_STRATEGIC_DATA_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainData : public Data {
+class StrategicData : public Data {
     PositionsHelper positionsHelper;
 
-    boost::container::vector<NumbersPtr> paramsStorage;
-    boost::container::vector<bool>       paramsStorageAllocation;
+    boost::container::vector<NumbersPtr> payoffStorage;
+    boost::container::vector<bool>       payoffStorageAllocation;
     
 public:
-    PlainData(
+    StrategicData(
         PlayersPtr playersDefinitions
     );
 
@@ -59,11 +59,11 @@ public:
     );
 
     virtual Message toString();
-}; /* END class PlainData */
+}; /* END class StrategicData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_PLAIN_DATA_HPP__ */
+#endif /* #ifndef __GT_MODEL_Strategic_DATA_HPP__ */

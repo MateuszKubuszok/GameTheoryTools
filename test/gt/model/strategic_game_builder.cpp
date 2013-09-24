@@ -3,20 +3,20 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PlainGameBuilder )
+BOOST_AUTO_TEST_SUITE( StrategicGameBuilder )
 
-class PlainGameBuilderTestImpl : public GT::Model::PlainGameBuilder {
+class StrategicGameBuilderTestImpl : public GT::Model::StrategicGameBuilder {
 public:
     virtual GT::Model::GamePtr build() {
         return GT::Model::NullFactory::getInstance().createGame();
     }
 
     virtual GT::Message toString() {
-        return GT::Message("TestPlainGameBuilder");
+        return GT::Message("TestStrategicGameBuilder");
     }
 };
 
-BOOST_AUTO_TEST_CASE( PlainGameBuilder_setPlayers ) {
+BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -29,11 +29,11 @@ BOOST_AUTO_TEST_CASE( PlainGameBuilder_setPlayers ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    PlainGameBuilderTestImpl plainGameBuilder;
-    plainGameBuilder.setPlayers(players);
+    StrategicGameBuilderTestImpl strategicGameBuilder;
+    strategicGameBuilder.setPlayers(players);
     GT::Model::PlayersPtr gotPlayers =
-        boost::dynamic_pointer_cast<GT::Model::PlainDataBuilder>(
-            plainGameBuilder.dataBuilder()
+        boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
+            strategicGameBuilder.dataBuilder()
         )->getPlayers();
 
     // then
@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE( PlainGameBuilder_setPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PlainGameBuilder_functional ) {
+BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -66,15 +66,15 @@ BOOST_AUTO_TEST_CASE( PlainGameBuilder_functional ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    PlainGameBuilderTestImpl plainGameBuilder;
-    plainGameBuilder.setPlayers(players);
+    StrategicGameBuilderTestImpl strategicGameBuilder;
+    strategicGameBuilder.setPlayers(players);
     
-    plainGameBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    plainGameBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    strategicGameBuilder.clone()->addNextPositions(positions1).setParams(params1);
+    strategicGameBuilder.clone()->addNextPositions(positions2).setParams(params2);
 
     GT::Model::DataPtr data = 
-        boost::dynamic_pointer_cast<GT::Model::PlainDataBuilder>(
-            plainGameBuilder.dataBuilder()
+        boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
+            strategicGameBuilder.dataBuilder()
         )->getData();
 
     // then

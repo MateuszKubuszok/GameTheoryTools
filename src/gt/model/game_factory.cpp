@@ -30,12 +30,8 @@ GameFactory& GameFactory::getInstance() {
     return *instance;
 }
 
-GameBuilderPtr GameFactory::buildPureGame() {
-    return GameBuilderPtr(new PureGameBuilder());
-}
-
-GameBuilderPtr GameFactory::buildMixedGame() {
-    return GameBuilderPtr(new MixedGameBuilder());
+GameBuilderPtr GameFactory::buildStrategicGame() {
+    return GameBuilderPtr(new StrategicGameBuilder());
 }
 
 GameBuilderPtr GameFactory::buildTreeGame() {

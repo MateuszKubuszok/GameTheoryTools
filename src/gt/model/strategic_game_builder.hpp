@@ -1,16 +1,18 @@
-#ifndef __GT_MODEL_PLAIN_GAME_BUILDER_HPP__
-#define __GT_MODEL_PLAIN_GAME_BUILDER_HPP__
+#ifndef __GT_MODEL_STRATEGIC_GAME_BUILDER_HPP__
+#define __GT_MODEL_STRATEGIc_GAME_BUILDER_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainGameBuilder : public GameBuilder {
-public:
-    PlainGameBuilder();
+class StrategicGameBuilder : public GameBuilder {
+    StrategicDataBuilderPtr strategicDataBuilder;
 
-    virtual DataBuilder& setPlayers(
+public:
+	StrategicGameBuilder();
+
+	virtual DataBuilder& setPlayers(
         PlayersPtr players
     );
 
@@ -26,17 +28,14 @@ public:
 
     virtual DataBuilderPtr dataBuilder();
 
-    virtual GamePtr build() = 0;
+    virtual GamePtr build();
 
-    virtual Message toString() = 0;
-
-protected:
-    PlainDataBuilderPtr plainDataBuilder;
-}; /* END class PlainGameBuilder */
+    virtual Message toString();
+}; /* END class StrategicGameBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_PLAIN_GAME_BUILDER_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_GAME_BUILDER_HPP__ */

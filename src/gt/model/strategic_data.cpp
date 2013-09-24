@@ -5,31 +5,31 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PlainData { 
+// class StrategicData { 
 // public:
 
-PlainData::PlainData(
+StrategicData::StrategicData(
     PlayersPtr players
 ) :
     positionsHelper(players),
-    paramsStorage(),
-    paramsStorageAllocation()
+    payoffStorage(),
+    payoffStorageAllocation()
 {
     Index maxPosition = positionsHelper.getUpperBound();
     for (Index i = 0; i < maxPosition; i++) {
-        paramsStorage.push_back( NullFactory::getInstance().createNumbers() );
-        paramsStorageAllocation.push_back( false );
+        payoffStorage.push_back( NullFactory::getInstance().createNumbers() );
+        payoffStorageAllocation.push_back( false );
     }
 }
 
-PlayersPtr PlainData::getPlayers() {
+PlayersPtr StrategicData::getPlayers() {
     return positionsHelper.getPlayers();
 }
 
-DataPiecePtr PlainData::getValues(
+DataPiecePtr StrategicData::getValues(
     Index positionInStorage
 ) {
-    if (!paramsStorageAllocation[positionInStorage])
+    if (!payoffStorageAllocation[positionInStorage])
         throw ExceptionFactory::getInstance()
                 .noParamsForPositions(
                     positionInStorage,
@@ -37,36 +37,36 @@ DataPiecePtr PlainData::getValues(
                 );
     
     return DataPiecePtr(
-        new PlainDataPiece(
+        new StrategicDataPiece(
             positionsHelper.getPlayers(),
-            paramsStorage[positionInStorage]
+            payoffStorage[positionInStorage]
         )
     );
 }
 
-DataPiecePtr PlainData::getValues(
+DataPiecePtr StrategicData::getValues(
     Positions& positions
 ) {
     return getValues(positionsHelper.calculatePosition(positions));
 }
 
-DataPiecePtr PlainData::getValues(
+DataPiecePtr StrategicData::getValues(
     PositionsPtr positions
 ) {
     return getValues(*positions);
 }
 
-Data& PlainData::setValues(
+Data& StrategicData::setValues(
     Index      positionInStorage,
     NumbersPtr numbers
 ) {
-    paramsStorage[positionInStorage] = numbers;
-    paramsStorageAllocation[positionInStorage] = true;
+    payoffStorage[positionInStorage] = numbers;
+    payoffStorageAllocation[positionInStorage] = true;
 
     return *this;
 }
 
-Data& PlainData::setValues(
+Data& StrategicData::setValues(
     Positions& positions,
     NumbersPtr numbers
 ) {
@@ -80,32 +80,32 @@ Data& PlainData::setValues(
     );
 }
 
-Data& PlainData::setValues(
+Data& StrategicData::setValues(
     PositionsPtr positions,
     NumbersPtr   numbers
 ) {
     return setValues(*positions, numbers);
 }
 
-DataPiecePtr PlainData::operator[](
+DataPiecePtr StrategicData::operator[](
     Index positionInStorage
 ) {
     return getValues(positionInStorage);
 }
 
-DataPiecePtr PlainData::operator[](
+DataPiecePtr StrategicData::operator[](
     Positions& positions
 ) {
     return getValues(positions);
 }
 
-DataPiecePtr PlainData::operator[](
+DataPiecePtr StrategicData::operator[](
     PositionsPtr positions
 ) {
     return getValues(positions);
 }
 
-Message PlainData::toString() {
+Message StrategicData::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     IdentifierPtr positionName = createIdentifierPtr("Position");
@@ -114,12 +114,12 @@ Message PlainData::toString() {
     for (Index i = 0; i < positionsHelper.getPlayers()->size(); i++)
         playersNames->push_back( createIdentifierPtr(positionsHelper.retrievePlayer(i)) );
 
-    Index maxPosition = paramsStorage.size();
+    Index maxPosition = payoffStorage.size();
     for (Index i = 0; i < maxPosition; i++)
-        if (paramsStorageAllocation[i]) {
+        if (payoffStorageAllocation[i]) {
             IdentifierPtr  name       = createIdentifierPtr("Value");
             PositionsPtr   positions  = positionsHelper.retrievePositions(i);
-            NumbersPtr     numbers    = paramsStorage[i];
+            NumbersPtr     numbers    = payoffStorage[i];
             IdentifiersPtr strategies = createIdentifiersPtr();
             MessagesPtr    numbersStr = createMessagesPtr();
 

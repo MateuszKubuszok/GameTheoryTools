@@ -1,17 +1,17 @@
-#ifndef __GT_MODEL_PLAIN_DATA_PIECE_HPP__
-#define __GT_MODEL_PLAIN_DATA_PIECE_HPP__
+#ifndef __GT_MODEL_STRATEGIC_DATA_PIECE_HPP__
+#define __GT_MODEL_Strategic_DATA_PIECE_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class PlainDataPiece : public DataPiece {
+class StrategicDataPiece : public DataPiece {
     PositionsHelper positionsHelper;
     NumbersPtr      numbers;
 
 public:
-    PlainDataPiece(
+    StrategicDataPiece(
         PlayersPtr players,
         NumbersPtr params
     );
@@ -21,11 +21,11 @@ public:
     );
 
     virtual Message toString();
-}; /* END class PlainDataPiece */
+}; /* END class StrategicDataPiece */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_PLAIN_DATA_PIECE_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_DATA_PIECE_HPP__ */

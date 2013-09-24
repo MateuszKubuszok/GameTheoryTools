@@ -25,18 +25,11 @@ class GameFactory {
     static GameFactory& getInstance();
 
     /**
-     * @brief Returns Pure Game builder.
+     * @brief Returns Strategic Game builder.
      *
-     * @return Pure Game builder
+     * @return Strategic Game builder
      */
-    GameBuilderPtr buildPureGame();
-
-    /**
-     * @brief Returns Mixed Game builder.
-     *
-     * @return Mixed Game builder
-     */
-    GameBuilderPtr buildMixedGame();
+    GameBuilderPtr buildStrategicGame();
 
     /**
      * @brief Returns Tree Game builder.

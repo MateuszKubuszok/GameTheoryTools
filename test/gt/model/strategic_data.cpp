@@ -3,9 +3,9 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PlainData )
+BOOST_AUTO_TEST_SUITE( StrategicData )
 
-BOOST_AUTO_TEST_CASE( PlainData_setValue_getValue ) {
+BOOST_AUTO_TEST_CASE( StrategicData_setValue_getValue ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -54,27 +54,27 @@ BOOST_AUTO_TEST_CASE( PlainData_setValue_getValue ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     // when
-    GT::Model::PlainData plainData(players);
-    plainData.setValues(position11, values11);
-    plainData.setValues(position12, values12);
-    plainData.setValues(position21, values21);
-    plainData.setValues(position22, values22);
+    GT::Model::StrategicData strategicData(players);
+    strategicData.setValues(position11, values11);
+    strategicData.setValues(position12, values12);
+    strategicData.setValues(position21, values21);
+    strategicData.setValues(position22, values22);
 
     // then
-    BOOST_CHECK_EQUAL( plainData.getValues(position11)->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( plainData.getValues(position11)->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position11)->getValue(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position11)->getValue(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( plainData.getValues(position12)->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( plainData.getValues(position12)->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position12)->getValue(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position12)->getValue(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( plainData.getValues(position21)->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( plainData.getValues(position21)->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position21)->getValue(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position21)->getValue(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( plainData.getValues(position22)->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( plainData.getValues(position22)->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position22)->getValue(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getValues(position22)->getValue(*player2name), (*values22)[1] );
 }
 
-BOOST_AUTO_TEST_CASE( PlainData_operatorOverload ) {
+BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -123,27 +123,27 @@ BOOST_AUTO_TEST_CASE( PlainData_operatorOverload ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     // when
-    GT::Model::PlainData plainData(players);
-    plainData.setValues(position11, values11);
-    plainData.setValues(position12, values12);
-    plainData.setValues(position21, values21);
-    plainData.setValues(position22, values22);
+    GT::Model::StrategicData strategicData(players);
+    strategicData.setValues(position11, values11);
+    strategicData.setValues(position12, values12);
+    strategicData.setValues(position21, values21);
+    strategicData.setValues(position22, values22);
 
     // then
-    BOOST_CHECK_EQUAL( plainData[position11]->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( plainData[position11]->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position11]->getValue(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position11]->getValue(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( plainData[position12]->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( plainData[position12]->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position12]->getValue(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position12]->getValue(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( plainData[position21]->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( plainData[position21]->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position21]->getValue(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position21]->getValue(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( plainData[position22]->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( plainData[position22]->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position22]->getValue(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position22]->getValue(*player2name), (*values22)[1] );
 }
 
-BOOST_AUTO_TEST_CASE( PlainData_throwExceptionOnInvalidCoordinate ) {
+BOOST_AUTO_TEST_CASE( StrategicData_throwExceptionOnInvalidCoordinate ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -167,7 +167,7 @@ BOOST_AUTO_TEST_CASE( PlainData_throwExceptionOnInvalidCoordinate ) {
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
     // when
-    GT::Model::PlainData plainData(players);
+    GT::Model::StrategicData strategicData(players);
 
     GT::PositionsPtr invalidPosition1 = GT::createPositionsPtr();
     invalidPosition1->insert( GT::Positions::value_type(*player1name, *player1strategy1) );
@@ -185,16 +185,16 @@ BOOST_AUTO_TEST_CASE( PlainData_throwExceptionOnInvalidCoordinate ) {
 
     // then
     BOOST_CHECK_THROW(
-        plainData.setValues(invalidPosition1, values1),
+        strategicData.setValues(invalidPosition1, values1),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        plainData.setValues(invalidPosition2, values2),
+        strategicData.setValues(invalidPosition2, values2),
         GT::Model::InvalidCoordinate
     );
 }
 
-BOOST_AUTO_TEST_CASE( PlainData_toString ) {
+BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setIndentationMode(GT::Model::TABS)
@@ -247,15 +247,15 @@ BOOST_AUTO_TEST_CASE( PlainData_toString ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     // when
-    GT::Model::PlainData plainData(players);
-    plainData.setValues(position11, values11);
-    plainData.setValues(position12, values12);
-    plainData.setValues(position21, values21);
-    plainData.setValues(position22, values22);
+    GT::Model::StrategicData strategicData(players);
+    strategicData.setValues(position11, values11);
+    strategicData.setValues(position12, values12);
+    strategicData.setValues(position21, values21);
+    strategicData.setValues(position22, values22);
 
     // then
     BOOST_CHECK_EQUAL(
-        plainData.toString(),
+        strategicData.toString(),
         GT::Message() +
         "Value:\n"
         "\t\t\tp1,\tp2,\n" +

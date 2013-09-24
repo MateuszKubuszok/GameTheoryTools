@@ -1,19 +1,17 @@
-#ifndef __GT_MODEL_MIXED_DATA_ACCESSOR_HPP__
-#define __GT_MODEL_MIXED_DATA_ACCESSOR_HPP__
+#ifndef __GT_MODEL_STRATEGIC_DATA_ACCESSOR_HPP__
+#define __GT_MODEL_STRATEGIC_DATA_ACCESSOR_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class MixedDataAccessor : public DataAccessor {
-    DataPtr         pureData;
-    DataPtr         expectedData;
-    PositionsHelper positionsHelper;
+class StrategicDataAccessor : public DataAccessor {
+    DataPtr data;
 
 public:
-    MixedDataAccessor(
-        DataPtr data
+    StrategicDataAccessor(
+        DataPtr gameData
     );
 
     virtual DataPiecePtr operator[](
@@ -43,11 +41,6 @@ public:
     );
 
     virtual Message toString();
-
-private:
-    NumbersPtr calculateExpectedValues(
-        Positions& positions
-    );
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,4 +48,4 @@ private:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_MIXED_DATA_ACCESSOR_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_DATA_ACCESSOR_HPP__ */

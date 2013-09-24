@@ -5,10 +5,10 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//class PureGame {
+//class StrategicGame {
 // public:
 
-PureGame::PureGame(
+StrategicGame::StrategicGame(
     PlayersPtr newPlayers,
     DataPtr    newData
 ) :
@@ -16,16 +16,16 @@ PureGame::PureGame(
     data(newData)
     {}
 
-PlayersPtr PureGame::getPlayers() {
+PlayersPtr StrategicGame::getPlayers() {
     return players;
 }
 
-DataAccessorPtr PureGame::equilibriumData() {
-    return DataAccessorPtr(new PlainDataAccessor(data));
+DataAccessorPtr StrategicGame::equilibriumData() {
+    return DataAccessorPtr(new StrategicDataAccessor(data));
 }
 
-Message PureGame::toString() {
-    IdentifierPtr name      = createIdentifierPtr("Pure Game");
+Message StrategicGame::toString() {
+    IdentifierPtr name      = createIdentifierPtr("Strategic Game");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }

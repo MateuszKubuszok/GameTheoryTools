@@ -5,10 +5,10 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PlainDataPiece {
+// class StrategicDataPiece {
 // public:
 
-PlainDataPiece::PlainDataPiece(
+StrategicDataPiece::StrategicDataPiece(
     PlayersPtr players,
     NumbersPtr params
 ) :
@@ -16,7 +16,7 @@ PlainDataPiece::PlainDataPiece(
     numbers(params)
     {}
 
-NumberPtr& PlainDataPiece::getValue(
+NumberPtr& StrategicDataPiece::getValue(
     Identifier& playerName
 ) {
     if (!positionsHelper.checkPlayer(playerName))
@@ -24,7 +24,7 @@ NumberPtr& PlainDataPiece::getValue(
     return (*numbers)[positionsHelper.calculatePlayer(playerName)];
 }
 
-Message PlainDataPiece::toString() {
+Message StrategicDataPiece::toString() {
     IdentifierPtr  name = createIdentifierPtr("Payoff");
     IdentifiersPtr players(new Identifiers());
     MessagesPtr    values(new Messages());

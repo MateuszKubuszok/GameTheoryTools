@@ -5,38 +5,38 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PlainDataBuilder {
+// class StrategicDataBuilder {
 // public:
 
-PlainDataBuilder::PlainDataBuilder() :
+StrategicDataBuilder::StrategicDataBuilder() :
     data(NullFactory::getInstance().createData()),
     players(NullFactory::getInstance().createPlayers()),
     currentPositions(),
     currentlyKnownPositions()
     {}
 
-DataPtr PlainDataBuilder::getData() {
+DataPtr StrategicDataBuilder::getData() {
     return data;
 }
 
-PlayersPtr PlainDataBuilder::getPlayers() {
+PlayersPtr StrategicDataBuilder::getPlayers() {
     return players;
 }
 
-DataBuilder& PlainDataBuilder::setPlayers(
+DataBuilder& StrategicDataBuilder::setPlayers(
     PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
         throw ExceptionFactory::getInstance()
                 .playersAlreadySet();
 
-    data    = DataPtr(new PlainData(newPlayers));
+    data    = DataPtr(new StrategicData(newPlayers));
     players = newPlayers;
     
     return *this;
 }
 
-DataBuilder& PlainDataBuilder::addNextPositions(
+DataBuilder& StrategicDataBuilder::addNextPositions(
     PositionsPtr positions
 ) {
     BOOST_FOREACH(Positions::value_type& position, (*positions)) {
@@ -54,7 +54,7 @@ DataBuilder& PlainDataBuilder::addNextPositions(
     return *this;
 }
 
-DataBuilder& PlainDataBuilder::setParams(
+DataBuilder& StrategicDataBuilder::setParams(
     NumbersPtr params
 ) {
     BOOST_FOREACH(Identifier player, (*players) | boost::adaptors::map_keys)
@@ -66,11 +66,11 @@ DataBuilder& PlainDataBuilder::setParams(
     return *this;
 }
 
-DataBuilderPtr PlainDataBuilder::clone() {
-    return DataBuilderPtr(new PlainDataBuilder(*this));
+DataBuilderPtr StrategicDataBuilder::clone() {
+    return DataBuilderPtr(new StrategicDataBuilder(*this));
 }
 
-Message PlainDataBuilder::toString() {
+Message StrategicDataBuilder::toString() {
     IdentifierPtr name    = createIdentifierPtr("Current Data");
     MessagePtr    message = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

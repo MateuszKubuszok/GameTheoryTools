@@ -3,15 +3,15 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PureGame )
+BOOST_AUTO_TEST_SUITE( StrategicGame )
 
-BOOST_AUTO_TEST_CASE( PureGame_getPlayers ) {
+BOOST_AUTO_TEST_CASE( StrategicGame_getPlayers ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
 
     // when
-    GT::Model::PureGame game(players, data);
+    GT::Model::StrategicGame game(players, data);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -20,37 +20,37 @@ BOOST_AUTO_TEST_CASE( PureGame_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PureGame_equilibriumData ) {
+BOOST_AUTO_TEST_CASE( StrategicGame_equilibriumData ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
 
     // when
-    GT::Model::PureGame game(players, data);
+    GT::Model::StrategicGame game(players, data);
     GT::Model::DataAccessorPtr dataAccessor = game.equilibriumData();
 
     // then
     BOOST_CHECK_EQUAL(
         dataAccessor->toString(),
         GT::Message() +
-        "Plain Data Accessor:\n" +
+        "Strategic Data Accessor:\n" +
         "\tNullData\n"
     );
 }
 
-BOOST_AUTO_TEST_CASE( PureGame_toString ) {
+BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
 
     // when
-    GT::Model::PureGame game(players, data);
+    GT::Model::StrategicGame game(players, data);
 
     // then
     BOOST_CHECK_EQUAL(
         game.toString(),
         GT::Message() +
-        "Pure Game:\n" +
+        "Strategic Game:\n" +
         "\tNullData\n" 
     );
 }

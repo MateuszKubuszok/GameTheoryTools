@@ -39,21 +39,17 @@ class XMLResultBuilder;
 
 class PositionsHelper;
 
-class PlainDataPiece;
-class PlainData;
-class PlainDataBuilder;
-class PlainGameBuilder;
-
-class PlainDataAccessor;
-
-class PureGame;
-class PureGameBuilder;
-class MixedGame;
-class MixedGameBuilder;
+class StrategicDataPiece;
+class StrategicData;
+class StrategicDataBuilder;
+class StrategicDataAccessor;
+class StrategicGame;
+class StrategicGameBuilder;
 
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<PlainDataBuilder>              PlainDataBuilderPtr;
+typedef boost::shared_ptr<StrategicDataBuilder>          StrategicDataBuilderPtr;
+
 typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
 typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 
@@ -78,18 +74,12 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 
 #include "gt/model/positions_helper.hpp"
 
-#include "gt/model/plain_data_piece.hpp"
-#include "gt/model/plain_data.hpp"
-#include "gt/model/plain_data_builder.hpp"
-#include "gt/model/plain_game_builder.hpp"
-
-#include "gt/model/plain_data_accessor.hpp"
-#include "gt/model/mixed_data_accessor.hpp"
-
-#include "gt/model/pure_game.hpp"
-#include "gt/model/pure_game_builder.hpp"
-#include "gt/model/mixed_game.hpp"
-#include "gt/model/mixed_game_builder.hpp"
+#include "gt/model/strategic_data_piece.hpp"
+#include "gt/model/strategic_data.hpp"
+#include "gt/model/strategic_data_builder.hpp"
+#include "gt/model/strategic_data_accessor.hpp"
+#include "gt/model/strategic_game.hpp"
+#include "gt/model/strategic_game_builder.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 
