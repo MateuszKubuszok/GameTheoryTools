@@ -27,7 +27,7 @@ NumberPtr ValueParam::getValue(
 }
 
 Message ValueParam::toString() {
-    return Message("Param:Value=") + value->get_str(10);
+    return Message("Param:Value=") + createMessage(value);
 }
 
 // }

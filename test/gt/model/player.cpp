@@ -5,6 +5,26 @@
 
 BOOST_AUTO_TEST_SUITE( Player )
 
+BOOST_AUTO_TEST_CASE( Player_setProbabilities ) {
+    // given
+    GT::IdentifierPtr  name       = GT::createIdentifierPtr("test name");
+    GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("test strategy");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back(strategy);
+    GT::NumberPtr      chance     = GT::createNumberPtr(1);
+    GT::NumbersPtr     chances    = GT::createNumbersPtr();
+    chances->push_back(chance);
+
+    // when
+    GT::Model::Player player = GT::Model::Player(name, strategies).setProbabilities(chances);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        player.getStrategyProbability(*strategy),
+        (*chance)
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Player_getName ) {
     // given
     GT::IdentifierPtr  name       = GT::createIdentifierPtr("test name");

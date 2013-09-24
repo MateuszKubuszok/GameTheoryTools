@@ -36,7 +36,7 @@ typedef std::string                                   Identifier;
 typedef boost::shared_ptr<Identifier>                 IdentifierPtr;
 typedef boost::container::vector<IdentifierPtr>       Identifiers;
 typedef boost::shared_ptr<Identifiers>                IdentifiersPtr;
-typedef mpz_class                                     Number;
+typedef mpf_class                                     Number;
 typedef boost::shared_ptr<Number>                     NumberPtr;
 typedef boost::container::vector<NumberPtr>           Numbers;
 typedef boost::shared_ptr<Numbers>                    NumbersPtr;

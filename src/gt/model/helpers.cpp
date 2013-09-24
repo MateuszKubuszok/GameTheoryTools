@@ -33,13 +33,18 @@ Message createMessage(
 Message createMessage(
     Number number
 ) {
-    return number.get_str();
+    std::stringstream result;
+    result << std::setprecision(5) << number;
+    return result.str();
 }
 
 Message createMessage(
     NumberPtr number
 ) {
-    return number->get_str();
+
+    std::stringstream result;
+    result << std::setprecision(5) << (*number);
+    return result.str();
 }
 
 MessagePtr createMessagePtr(
@@ -71,13 +76,17 @@ MessagePtr createMessagePtr(
 MessagePtr createMessagePtr(
     Number number
 ) {
-    return MessagePtr(new Message(number.get_str()));
+    std::stringstream result;
+    result << std::setprecision(5) << number;
+    return MessagePtr(new Message(result.str()));
 }
 
 MessagePtr createMessagePtr(
     NumberPtr number
 ) {
-    return MessagePtr(new Message(number->get_str()));
+    std::stringstream result;
+    result << std::setprecision(5) << (*number);
+    return MessagePtr(new Message(result.str()));
 }
 
 Messages createMessages() {

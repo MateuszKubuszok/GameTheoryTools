@@ -65,6 +65,24 @@ InvalidCoordinate ExceptionFactory::invalidStrategy(
     return InvalidCoordinate("No such Strategy");
 }
 
+InvalidProbability ExceptionFactory::invalidDistribution() {
+    return InvalidProbability("Invalid distribution");
+}
+
+InvalidProbability ExceptionFactory::invalidProbability(
+    Identifier& strategyName,
+    Number&     number
+) {
+    return InvalidProbability("Invalid probability");
+}
+
+InvalidProbability ExceptionFactory::probabilitiesAndStrategiesDontMatchInSize(
+    Index strategiesSize,
+    Index probabilitiesSize
+) {
+    return InvalidProbability("Strategies and Probabilities don\'t match in size");
+}
+
 IllegalInnerState ExceptionFactory::playersAlreadySet() {
     return IllegalInnerState("Cannot change already set Players");
 }

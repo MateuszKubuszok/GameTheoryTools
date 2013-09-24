@@ -20,8 +20,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
 
     // when
     GT::Model::PlainDataPiece piece(playersMap, numbers);
-    GT::Message player1msg = piece.getValue(player1)->get_str();
-    GT::Message player2msg = piece.getValue(player2)->get_str();
+    GT::Message player1msg = GT::createMessage(piece.getValue(player1));
+    GT::Message player2msg = GT::createMessage(piece.getValue(player2));
 
     // then
     BOOST_CHECK_EQUAL(

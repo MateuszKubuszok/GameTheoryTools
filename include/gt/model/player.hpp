@@ -12,7 +12,8 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class Player : public virtual Root {
-    typedef boost::container::map<Identifier, int> StrategyMap;
+    typedef boost::container::map<Identifier, Index>  StrategyMap;
+    typedef boost::container::map<Identifier, Number> ProbabilityMap;
 
     /**
      * @breif Player's name.
@@ -25,9 +26,14 @@ class Player : public virtual Root {
     const IdentifiersPtr strategies;
 
     /**
-     * @breif Mapps strategies to its ordnial.
+     * @breif Mapps strategies to its ordinal.
      */
     StrategyMap strategyMapping;
+
+    /**
+     * @breif Mapps strategies to its probabilities.
+     */
+    ProbabilityMap probabilities;
 
 public:
     /**
@@ -39,6 +45,18 @@ public:
     Player(
         const IdentifierPtr  playerName,
         const IdentifiersPtr playerStrategies
+    );
+
+    /**
+     * @brief Sets probabilities for each strategy bo mixed games.
+     *
+     * @param probabilities      probabilities of a strategies
+     * @return                   self for chaining
+     * @throw InvalidProbability thrown when some chance is not in [0, 1] range,
+     *                           or when probabilities don't sum up to 1
+     */
+    virtual Player& setProbabilities(
+        NumbersPtr probabilities
     );
 
     /**
@@ -60,7 +78,7 @@ public:
      *
      * @return number of strategies
      */    
-    virtual int getStrategiesNumber();
+    virtual Index getStrategiesNumber();
 
      /**
      * @brief Returns ordinal of a strategy with given identifier.
@@ -69,6 +87,16 @@ public:
      * @throws InvalidCoordinate thrown if Player has no such strategy
      */
     virtual Index getStrategyOrdinal(
+        Identifier& strategy
+    );
+
+     /**
+     * @brief Returns probability of a strategy with given probablity.
+     *
+     * @return                   probability of strategy with given identifier
+     * @throws InvalidCoordinate thrown if Player has no such strategy
+     */
+    virtual Number getStrategyProbability(
         Identifier& strategy
     );
 
@@ -105,6 +133,12 @@ public:
         )
         {}
 
+    virtual Player& setProbabilities(
+        NumbersPtr probabilities
+    ) {
+        return *this;
+    }
+
     virtual IdentifierPtr getName() {
         return NullFactory::getInstance().createIdentifier();
     }
@@ -113,14 +147,20 @@ public:
         return NullFactory::getInstance().createIdentifiers();
     }
     
-    virtual int getStrategiesNumber() {
+    virtual Index getStrategiesNumber() {
         return 0;
     }
 
-    virtual int getStrategyOrdinal(
+    virtual Index getStrategyOrdinal(
         const Identifier& strategy
     ) {
-        return -1;
+        return 0;
+    }
+
+    virtual Number getStrategyProbability(
+        const Identifier& strategy
+    ) {
+        return 0;
     }
 
     virtual bool isNotNull() {

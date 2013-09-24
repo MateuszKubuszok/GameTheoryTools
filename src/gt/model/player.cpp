@@ -14,11 +14,51 @@ Player::Player(
 ) :
     name(playerName),
     strategies(playerStrategies),
-    strategyMapping()
+    strategyMapping(),
+    probabilities()
 {
-    int index = 0;
-    BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
-        strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
+    if (!strategies->empty()) {
+        Number probability = Number(1)/Number(strategies->size());
+    
+        Index index = 0;
+        BOOST_FOREACH(IdentifierPtr& strategy, *strategies) {
+            probabilities.insert( ProbabilityMap::value_type(*strategy, probability) );
+            strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
+        }
+    }
+}
+
+Player& Player::setProbabilities(
+    NumbersPtr chances
+) {
+    if (chances->size() != strategies->size())
+        throw ExceptionFactory::getInstance()
+                .probabilitiesAndStrategiesDontMatchInSize(
+                    strategies->size(),
+                    chances->size()
+                );
+
+    Number maxChances(1);
+    for (Index i = 0; i < chances->size(); i++) {
+        Number&     chance   = (*(*chances)[i]);
+        Identifier& strategy = (*(*strategies)[i]);
+
+        if (chance < 0 || chance > 1)
+            throw ExceptionFactory::getInstance().invalidProbability(strategy, chance);
+        
+        maxChances -= chance;
+        if (maxChances < 0)
+            throw ExceptionFactory::getInstance().invalidDistribution();
+    }
+    // TODO check whether result is around 0
+
+    for (Index i = 0; i < chances->size(); i++) {
+        Number&     chance   = (*(*chances)[i]);
+        Identifier& strategy = (*(*strategies)[i]);
+        probabilities.insert( ProbabilityMap::value_type(strategy, chance) );
+    }
+
+    return *this;
 }
 
 IdentifierPtr Player::getName() {
@@ -29,7 +69,7 @@ IdentifiersPtr Player::getStrategies() {
     return strategies;
 }
 
-int Player::getStrategiesNumber() {
+Index Player::getStrategiesNumber() {
     return strategies->size();
 }
 
@@ -38,6 +78,14 @@ Index Player::getStrategyOrdinal(
 ) {
     if (strategyMapping.count(strategy))
         return strategyMapping[strategy];
+    throw ExceptionFactory::getInstance().invalidStrategy(strategy);
+}
+
+Number Player::getStrategyProbability(
+    Identifier& strategy
+) {
+    if (probabilities.count(strategy))
+        return probabilities[strategy];
     throw ExceptionFactory::getInstance().invalidStrategy(strategy);
 }
 

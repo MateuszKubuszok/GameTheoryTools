@@ -21,33 +21,45 @@ public:
     static ExceptionFactory& getInstance();
 
     InvalidCoordinate coordinatesAlreadySet(
-	    Positions& positions
-	);
+        Positions& positions
+    );
 
-	IllegalInnerState incompleteCoordinates();
+    IllegalInnerState incompleteCoordinates();
 
     InvalidCoordinate invalidCoordinateFormat(
-	    Positions& position
-	);
+        Positions& position
+    );
 
     InvalidCoordinate noParamsForPositions(
-	    Index positionInStorage,
-	    Index maxPosition
-	);
+        Index positionInStorage,
+        Index maxPosition
+    );
 
-	InvalidCoordinate invalidPlayer(
-	    Identifier& playerName
-	);
+    InvalidCoordinate invalidPlayer(
+        Identifier& playerName
+    );
 
-	InvalidCoordinate invalidStrategy(
-	    Identifier& strategyName
-	);
+    InvalidCoordinate invalidStrategy(
+        Identifier& strategyName
+    );
 
-	IllegalInnerState playersAlreadySet();
+    InvalidProbability invalidDistribution();
+
+    InvalidProbability invalidProbability(
+        Identifier& strategyName,
+        Number&     chance
+    );
+
+    InvalidProbability probabilitiesAndStrategiesDontMatchInSize(
+        Index strategiesSize,
+        Index probabilitiesSize
+    );
+
+    IllegalInnerState playersAlreadySet();
 
     IllegalInnerState propertiesAndResultsDontMatchInSize(
-    	Index propertiesSize,
-    	Index resultsSize
+        Index propertiesSize,
+        Index resultsSize
     );
 
 private:

@@ -71,7 +71,7 @@ if not validInstallation:
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
 conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
-conf.env.Append(LIBS=['gmp'])
+conf.env.Append(LIBS=['gmp', 'gmpxx'])
 
 conf.Finish()
 

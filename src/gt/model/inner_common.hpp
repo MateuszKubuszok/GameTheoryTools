@@ -5,6 +5,7 @@
 
 /* Include standard libraries */
 #include <sstream>
+#include <iomanip>
 
 /* Includes boost libraries */
 #include <boost/foreach.hpp>
