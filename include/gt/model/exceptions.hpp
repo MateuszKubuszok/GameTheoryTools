@@ -44,25 +44,6 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @brief Intened to be thrown when probability of some strategy is invalid.
- *
- * @author Mateusz Kubuszok
- */
-class InvalidProbability : public std::invalid_argument {
-public:
-    /**
-     * @brief Constructor initialized with Message.
-     *
-     * @param message initializing Message
-     */
-    explicit InvalidProbability(const Message& message) :
-        std::invalid_argument(message)
-        {}
-}; /* END class InvalidProbability */
-
-////////////////////////////////////////////////////////////////////////////////
-
 } /* END namespace Model */
 } /* END namespace GT */
 

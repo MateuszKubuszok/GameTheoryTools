@@ -43,18 +43,6 @@ public:
         Identifier& strategyName
     );
 
-    InvalidProbability invalidDistribution();
-
-    InvalidProbability invalidProbability(
-        Identifier& strategyName,
-        Number&     chance
-    );
-
-    InvalidProbability probabilitiesAndStrategiesDontMatchInSize(
-        Index strategiesSize,
-        Index probabilitiesSize
-    );
-
     IllegalInnerState playersAlreadySet();
 
     IllegalInnerState propertiesAndResultsDontMatchInSize(

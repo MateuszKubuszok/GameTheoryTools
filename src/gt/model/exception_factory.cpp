@@ -33,7 +33,14 @@ ExceptionFactory& ExceptionFactory::getInstance() {
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     Positions& positions
 ) {
-    return InvalidCoordinate("Some of Coordinates are already set");
+    std::stringstream result;
+    
+    result << "Coordinates:";
+    BOOST_FOREACH(Positions::value_type position, positions)
+        result << " '" << position.first << "'='" << position.second;
+    result << "' already has defined payoff";
+
+    return InvalidCoordinate(result.str());
 }
 
 IllegalInnerState ExceptionFactory::incompleteCoordinates() {
@@ -43,44 +50,49 @@ IllegalInnerState ExceptionFactory::incompleteCoordinates() {
 InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     Positions& positions
 ) {
-    return InvalidCoordinate("Invalid coordinates format");
+    std::stringstream result;
+    
+    result << "Coordinates:";
+    BOOST_FOREACH(Positions::value_type position, positions)
+        result << " '" << position.first << "'='" << position.second << "'";
+    result << " has invalid format - make sure chosen Players' names and strategies are valid";
+
+    return InvalidCoordinate(result.str());
 }
 
 InvalidCoordinate ExceptionFactory::noParamsForPositions(
     Index positionInStorage,
     Index maxPosition
 ) {
-    return InvalidCoordinate("No params under such position");
+    std::stringstream result;
+
+    result << "Calculated position ("
+           << positionInStorage
+           << ") has no defined payoff - make sure all Coordinates in range [0,"
+           << (maxPosition-1)
+           << "] has defined payoff";
+
+    return InvalidCoordinate(result.str());
 }
 
 InvalidCoordinate ExceptionFactory::invalidPlayer(
     Identifier& playerName
 ) {
-    return InvalidCoordinate("No such Player");
+    std::stringstream result;
+
+    result << "No Player '" << playerName << "' has been defined";
+
+    return InvalidCoordinate(result.str());
 }
 
 InvalidCoordinate ExceptionFactory::invalidStrategy(
     Identifier& strategyName
 ) {
-    return InvalidCoordinate("No such Strategy");
-}
+    std::stringstream result;
 
-InvalidProbability ExceptionFactory::invalidDistribution() {
-    return InvalidProbability("Invalid distribution");
-}
+    result << "No Strategy '" << strategyName << "' has been defined";
 
-InvalidProbability ExceptionFactory::invalidProbability(
-    Identifier& strategyName,
-    Number&     number
-) {
-    return InvalidProbability("Invalid probability");
-}
-
-InvalidProbability ExceptionFactory::probabilitiesAndStrategiesDontMatchInSize(
-    Index strategiesSize,
-    Index probabilitiesSize
-) {
-    return InvalidProbability("Strategies and Probabilities don\'t match in size");
+    return InvalidCoordinate(result.str());
 }
 
 IllegalInnerState ExceptionFactory::playersAlreadySet() {
@@ -91,7 +103,15 @@ IllegalInnerState ExceptionFactory::propertiesAndResultsDontMatchInSize(
     Index propertiesSize,
     Index resultsSize
 ) {
-    return IllegalInnerState("Properties size and Result\'s size does not match");
+    std::stringstream result;
+
+    result << "Properties size ("
+           << propertiesSize
+           << ") and Results size ("
+           << resultsSize
+           << ") does not match";
+
+    return IllegalInnerState(result.str());
 }
 
 // private:
