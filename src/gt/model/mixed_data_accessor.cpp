@@ -10,67 +10,74 @@ namespace Model {
 MixedDataAccessor::MixedDataAccessor(
     DataPtr    data
 ) :
-	pureData(data),
-	expectedData(new PlainData(data->getPlayers())),
-	positionsHelper(data->getPlayers())
-	{}
+    pureData(data),
+    expectedData(new PlainData(data->getPlayers())),
+    positionsHelper(data->getPlayers())
+    {}
 
 DataPiecePtr MixedDataAccessor::operator[](
     Index positionInStorage
 ) {
-	return getValues(positionInStorage);
+    return getValues(positionInStorage);
 }
 
 DataPiecePtr MixedDataAccessor::operator[](
     Positions& positions
 ) {
-	return getValues(positions);
+    return getValues(positions);
 }
 
 DataPiecePtr MixedDataAccessor::operator[](
     PositionsPtr positions
 ) {
-	return getValues(positions);
+    return getValues(positions);
 }
 
 PlayersPtr MixedDataAccessor::getPlayers() {
-	return positionsHelper.getPlayers();
+    return positionsHelper.getPlayers();
 }
 
 DataPiecePtr MixedDataAccessor::getValues(
     Index positionInStorage
 ) {
-	// TODO
-	return NullFactory::getInstance().createDataPiece();
+    return getValues(positionsHelper.retrievePositions(positionInStorage));
 }
 
 DataPiecePtr MixedDataAccessor::getValues(
     PositionsPtr positions
 ) {
-	// TODO
-	return NullFactory::getInstance().createDataPiece();
+    return getValues(*positions);
 }
 
 DataPiecePtr MixedDataAccessor::getValues(
     Positions& positions
 ) {
-	// TODO
-	return NullFactory::getInstance().createDataPiece();
+    try {
+        return expectedData->getValues(positions);
+    } catch (InvalidCoordinate e) {
+        expectedData->setValues(
+            positions,
+            calculateExpectedValue(positions)
+        );
+        return expectedData->getValues(positions);
+    }
 }
 
 Message MixedDataAccessor::toString() {
-	IdentifierPtr name      = createIdentifierPtr("Mixed Data Accessor");
-	MessagePtr    subresult = createMessagePtr(pureData->toString());
-	return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
+    IdentifierPtr name      = createIdentifierPtr("Mixed Data Accessor");
+    MessagePtr    subresult = createMessagePtr(pureData->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 
 // private:
 
 NumberPtr MixedDataAccessor::calculateExpectedValue(
-    Index positionInStorage
+    Positions& positions
 ) {
-	// TODO
-	return NullFactory::getInstance().createNumber();
+    // TODO
+	// sum for all s
+	//    (product of strategies distribution [other players]) * value
+    return NullFactory::getInstance().createNumber();
 }
 
 // }

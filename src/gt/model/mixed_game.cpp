@@ -20,6 +20,10 @@ PlayersPtr MixedGame::getPlayers() {
     return players;
 }
 
+DataAccessorPtr MixedGame::equilibriumData() {
+	return DataAccessorPtr(new MixedDataAccessor(data));
+}
+
 Message MixedGame::toString() {
 	IdentifierPtr name      = createIdentifierPtr("Mixed Game");
 	MessagePtr    subresult = createMessagePtr(data->toString());

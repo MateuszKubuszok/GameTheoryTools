@@ -20,6 +20,25 @@ BOOST_AUTO_TEST_CASE( MixedGame_getPlayers ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( MixedGame_equilibriumData ) {
+    // given
+    GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
+    GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
+
+    // when
+    GT::Model::MixedGame game(players, data);
+    GT::Model::DataAccessorPtr dataAccessor = game.equilibriumData();
+
+    // then
+    BOOST_CHECK_EQUAL(
+        dataAccessor->toString(),
+        GT::Message() +
+        "\t\n" +
+        "Mixed Data Accessor:\n" +
+        "\tNullData\n"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( MixedGame_toString ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();

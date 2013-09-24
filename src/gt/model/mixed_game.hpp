@@ -18,6 +18,8 @@ public:
 
     virtual PlayersPtr getPlayers();
 
+    virtual DataAccessorPtr equilibriumData();
+
     virtual Message toString();
 }; /* END class MixedGame */
 
