@@ -3,9 +3,9 @@
 
 #include "gt/model/inner_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( StrategicDataPiece )
+BOOST_AUTO_TEST_SUITE( PlainDataPiece )
 
-BOOST_AUTO_TEST_CASE( StrategicDataPiece_getValue ) {
+BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
     // given
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataPiece_getValue ) {
     numbers->push_back( GT::createNumberPtr(100) );
 
     // when
-    GT::Model::StrategicDataPiece piece(playersMap, numbers);
+    GT::Model::PlainDataPiece piece(playersMap, numbers);
     GT::Message player1msg = GT::createMessage(piece.getValue(player1));
     GT::Message player2msg = GT::createMessage(piece.getValue(player2));
 
@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataPiece_getValue ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( StrategicDataPiece_throwExceptionOnInvalidPlayer ) {
+BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
     // given
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataPiece_throwExceptionOnInvalidPlayer ) {
     numbers->push_back( GT::createNumberPtr(100) );
 
     // when
-    GT::Model::StrategicDataPiece piece(playersMap, numbers);
+    GT::Model::PlainDataPiece piece(playersMap, numbers);
 
     // then
     BOOST_CHECK_THROW(
@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataPiece_throwExceptionOnInvalidPlayer ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( StrategicDataPiece_toString ) {
+BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::PLAIN)
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataPiece_toString ) {
     numbers->push_back( GT::createNumberPtr(100) );
 
     // when
-    GT::Model::StrategicDataPiece piece(playersMap, numbers);
+    GT::Model::PlainDataPiece piece(playersMap, numbers);
 
     // then
     BOOST_CHECK_EQUAL(

@@ -37,7 +37,7 @@ DataPiecePtr StrategicData::getValues(
                 );
     
     return DataPiecePtr(
-        new StrategicDataPiece(
+        new PlainDataPiece(
             positionsHelper.getPlayers(),
             payoffStorage[positionInStorage]
         )

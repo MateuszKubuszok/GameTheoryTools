@@ -39,7 +39,8 @@ class XMLResultBuilder;
 
 class PositionsHelper;
 
-class StrategicDataPiece;
+class PlainDataPiece;
+
 class StrategicData;
 class StrategicDataBuilder;
 class StrategicDataAccessor;
@@ -74,7 +75,8 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 
 #include "gt/model/positions_helper.hpp"
 
-#include "gt/model/strategic_data_piece.hpp"
+#include "gt/model/plain_data_piece.hpp"
+
 #include "gt/model/strategic_data.hpp"
 #include "gt/model/strategic_data_builder.hpp"
 #include "gt/model/strategic_data_accessor.hpp"
