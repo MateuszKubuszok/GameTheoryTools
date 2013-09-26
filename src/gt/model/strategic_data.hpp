@@ -66,4 +66,4 @@ public:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_Strategic_DATA_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_DATA_HPP__ */
