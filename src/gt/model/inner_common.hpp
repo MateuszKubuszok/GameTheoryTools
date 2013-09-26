@@ -47,12 +47,18 @@ class StrategicDataAccessor;
 class StrategicGame;
 class StrategicGameBuilder;
 
+class TreeDataNode;
+
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<StrategicDataBuilder>          StrategicDataBuilderPtr;
+typedef boost::shared_ptr<StrategicDataBuilder>            StrategicDataBuilderPtr;
 
-typedef boost::bimaps::bimap<Identifier, Index>          IdentifierMap;
-typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
+typedef boost::shared_ptr<TreeDataNode>                    TreeDataNodePtr;
+typedef boost::container::map<Identifier, TreeDataNodePtr> TreeDataNodes;
+typedef boost::shared_ptr<TreeDataNodes>                   TreeDataNodesPtr;
+
+typedef boost::bimaps::bimap<Identifier, Index>            IdentifierMap;
+typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -82,6 +88,8 @@ typedef boost::container::map<Identifier, IdentifierMap> StrategyMap;
 #include "gt/model/strategic_data_accessor.hpp"
 #include "gt/model/strategic_game.hpp"
 #include "gt/model/strategic_game_builder.hpp"
+
+#include "gt/model/tree_data_node.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 
