@@ -28,6 +28,7 @@ namespace Model {
 /* Implementations declarations */
 
 class ExceptionFactory;
+class InnerNullFactory;
 
 class ConstResult;
 class EmptyResult;
@@ -75,6 +76,8 @@ typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
 /* Implementations headers */
 
 #include "gt/model/exception_factory.hpp"
+
+#include "gt/model/inner_null_factory.hpp"
 
 #include "gt/model/const_result.hpp"
 #include "gt/model/empty_result.hpp"

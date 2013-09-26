@@ -9,7 +9,7 @@ namespace Model {
 // public:
 
 StrategicDataBuilder::StrategicDataBuilder() :
-    data(new NullStrategicData()),
+    data(InnerNullFactory::getInstance().createStrategicData()),
     players(NullFactory::getInstance().createPlayers()),
     currentPositions(),
     currentlyKnownPositions()

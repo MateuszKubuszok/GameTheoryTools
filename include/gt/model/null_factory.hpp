@@ -7,7 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Used for creation of Null instances for GTL classes.
+ * @brief Used for creation of Null instances for Model classes.
  *
  * @author Mateusz Kubuszok
  */
