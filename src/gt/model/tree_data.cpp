@@ -80,7 +80,9 @@ DataPiecePtr TreeData::operator[](
 }
 
 Message TreeData::toString() {
-    return Message("TODO");
+    IdentifierPtr name   = createIdentifierPtr("TreeData");
+    MessagePtr    result = createMessagePtr(root->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
 }
 
 // }
