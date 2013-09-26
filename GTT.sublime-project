@@ -1,0 +1,50 @@
+{
+    "folders":
+    [
+        {
+            "path":                    ".",
+            "name":                    "Configuration",
+            "folder_exclude_patterns": [ "bin", "f_n_b", "include", "objects", "src", "test" ]
+        },
+        {
+            "path": "include",
+            "name": "Public Headers"
+        },
+        {
+            "path": "src",
+            "name": "Source and Private Headers"
+        },
+        {
+            "path": "test",
+            "name": "Unit and Functional Tests"
+        },
+        {
+            "path": "f_n_b",
+            "name": "Flex and Bison"
+        },
+        {
+            "path": "bin",
+            "name": "Binary Executables"
+        },
+        {
+            "path": "objects",
+            "name": "Binary Objects"
+        }
+    ],
+
+    "settings":
+    {
+        "tab_size":                 4,
+        "translate_tabs_to_spaces": true
+    },
+
+    "build_systems":
+    [
+        {
+            "name":        "SCons",
+            "selector":    "scons",
+            "shell_cmd":   "scons 2> errors.log",
+            "working_dir": "${project_path}"
+        }
+    ]
+}
