@@ -7,13 +7,13 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 class StrategicGame : public Game {
-    PlayersPtr players;
-    DataPtr    data;
+    PlayersPtr       players;
+    StrategicDataPtr data;
 
 public:
     StrategicGame(
-        PlayersPtr newPlayers,
-        DataPtr    newData
+        PlayersPtr       newPlayers,
+        StrategicDataPtr newData
     );
 
     virtual PlayersPtr getPlayers();

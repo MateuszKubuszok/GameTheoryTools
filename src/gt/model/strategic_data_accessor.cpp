@@ -9,9 +9,9 @@ namespace Model {
 // public:
 
 StrategicDataAccessor::StrategicDataAccessor(
-    DataPtr StrategicData
+    StrategicDataPtr strategicData
 ) :
-    data(StrategicData)
+    data(strategicData)
     {}
 
 DataPiecePtr StrategicDataAccessor::operator[](

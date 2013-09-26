@@ -9,8 +9,8 @@ namespace Model {
 // public:
 
 StrategicGame::StrategicGame(
-    PlayersPtr newPlayers,
-    DataPtr    newData
+    PlayersPtr       newPlayers,
+    StrategicDataPtr newData
 ) :
     players(newPlayers),
     data(newData)

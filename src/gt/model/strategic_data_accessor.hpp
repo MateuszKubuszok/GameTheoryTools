@@ -7,11 +7,11 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 class StrategicDataAccessor : public DataAccessor {
-    DataPtr data;
+    StrategicDataPtr data;
 
 public:
     StrategicDataAccessor(
-        DataPtr gameData
+        StrategicDataPtr gameData
     );
 
     virtual DataPiecePtr operator[](

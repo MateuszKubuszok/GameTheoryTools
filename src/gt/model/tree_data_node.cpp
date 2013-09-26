@@ -34,41 +34,41 @@ TreeDataNode::TreeDataNode(
     {}
 
 NumbersPtr TreeDataNode::getValues(
-    PositionsPtr positions
+    Positions& positions
 ) {
     if (depthValue == 0)
         return payoff;
 
-    if (!checkPositions(*positions)){
-        throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
+    if (!checkPositions(positions)){
+        throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
     }
 
-    Identifier& strategy = (*positions)[depthName];
+    Identifier& strategy = positions[depthName];
     return (*nodes)[strategy]->getValues(positions);
 }
 
 TreeDataNode& TreeDataNode::setValues(
-    PositionsPtr positions,
-    NumbersPtr   values
+    Positions& positions,
+    NumbersPtr values
 ) {
-    if (!positions->count(depthName))
-        throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
+    if (!positions.count(depthName))
+        throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
-    Identifier& strategy = (*positions)[depthName];
+    Identifier& strategy = positions[depthName];
 
     if (!nodes->count(strategy)) {
         TreeDataNodePtr node;
-        if (depthValue == positions->size())
+        if (depthValue == positions.size())
             node = TreeDataNodePtr(new TreeDataNode(values));
         else {
             node = TreeDataNodePtr(new TreeDataNode(depthValue+1));
             node->setValues(positions, values);
         }
         nodes->insert( TreeDataNodes::value_type(strategy, node) );
-    } else if (depthValue != positions->size())
+    } else if (depthValue != positions.size())
         (*nodes)[strategy]->setValues(positions, values);
     else
-        throw ExceptionFactory::getInstance().coordinatesAlreadySet(*positions);
+        throw ExceptionFactory::getInstance().coordinatesAlreadySet(positions);
 
     return *this;
 }

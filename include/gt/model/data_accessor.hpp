@@ -16,17 +16,6 @@ public:
     /**
      * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
      *
-     * @param positionInStorage  coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when storage position is invalid
-     */
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
      * @param positions          coordinates
      * @return                   DataPiece object allowing access to concrete value
      * @throw InvalidCoordinates thrown when positions coordinates are invalid
@@ -52,17 +41,6 @@ public:
      * @return Players
      */
     virtual PlayersPtr getPlayers() = 0;
-
-    /**
-     * @brief Returns values handler for mapped coordiantes.
-     *
-     * @param positionInStorage calculated position in an inner Map
-     * @return                  values of payoff
-     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
-     */    
-    virtual DataPiecePtr getValues(
-        Index positionInStorage
-    ) = 0;
 
     /**
      * @brief Returns values handler for given coordiantes.
@@ -104,12 +82,6 @@ public:
 class NullDataAccessor : public DataAccessor {
 public:    
     virtual DataPiecePtr getValues(
-        Index positionInStorage
-    ) {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr getValues(
         Positions& positions
     ) {
         return NullFactory::getInstance().createDataPiece();
@@ -123,12 +95,6 @@ public:
 
     virtual PlayersPtr getPlayers() {
         return NullFactory::getInstance().createPlayers();   
-    }
-
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
-    ) {
-        return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr operator[](

@@ -9,13 +9,13 @@ namespace Model {
 // public:
 
 StrategicDataBuilder::StrategicDataBuilder() :
-    data(NullFactory::getInstance().createData()),
+    data(new NullStrategicData()),
     players(NullFactory::getInstance().createPlayers()),
     currentPositions(),
     currentlyKnownPositions()
     {}
 
-DataPtr StrategicDataBuilder::getData() {
+StrategicDataPtr StrategicDataBuilder::getData() {
     return data;
 }
 
@@ -30,7 +30,7 @@ DataBuilder& StrategicDataBuilder::setPlayers(
         throw ExceptionFactory::getInstance()
                 .playersAlreadySet();
 
-    data    = DataPtr(new StrategicData(newPlayers));
+    data    = StrategicDataPtr(new StrategicData(newPlayers));
     players = newPlayers;
     
     return *this;

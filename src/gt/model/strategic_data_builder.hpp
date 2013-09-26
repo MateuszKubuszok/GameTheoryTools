@@ -9,7 +9,7 @@ namespace Model {
 class StrategicDataBuilder : public DataBuilder {
     typedef boost::container::map<Identifier, bool> KnownPositions;
 
-    DataPtr data;
+    StrategicDataPtr data;
 
     PlayersPtr players;
 
@@ -19,7 +19,7 @@ class StrategicDataBuilder : public DataBuilder {
 public:
     StrategicDataBuilder();
 
-    DataPtr getData();
+    StrategicDataPtr getData();
 
     PlayersPtr getPlayers();
 

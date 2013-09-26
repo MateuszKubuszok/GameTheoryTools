@@ -7,8 +7,8 @@ BOOST_AUTO_TEST_SUITE( StrategicGame )
 
 BOOST_AUTO_TEST_CASE( StrategicGame_getPlayers ) {
     // given
-    GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
-    GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
+    GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
+    GT::Model::StrategicDataPtr data    = GT::Model::StrategicDataPtr(new GT::Model::NullStrategicData());
 
     // when
     GT::Model::StrategicGame game(players, data);
@@ -22,8 +22,8 @@ BOOST_AUTO_TEST_CASE( StrategicGame_getPlayers ) {
 
 BOOST_AUTO_TEST_CASE( StrategicGame_equilibriumData ) {
     // given
-    GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
-    GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
+    GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
+    GT::Model::StrategicDataPtr data    = GT::Model::StrategicDataPtr(new GT::Model::NullStrategicData());
 
     // when
     GT::Model::StrategicGame game(players, data);
@@ -34,14 +34,14 @@ BOOST_AUTO_TEST_CASE( StrategicGame_equilibriumData ) {
         dataAccessor->toString(),
         GT::Message() +
         "Strategic Data Accessor:\n" +
-        "\tNullData\n"
+        "\tNullStrategicData\n"
     );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
     // given
-    GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
-    GT::Model::DataPtr    data    = GT::Model::NullFactory::getInstance().createData();
+    GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
+    GT::Model::StrategicDataPtr data    = GT::Model::StrategicDataPtr(new GT::Model::NullStrategicData());
 
     // when
     GT::Model::StrategicGame game(players, data);
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
         game.toString(),
         GT::Message() +
         "Strategic Game:\n" +
-        "\tNullData\n" 
+        "\tNullStrategicData\n" 
     );
 }
 

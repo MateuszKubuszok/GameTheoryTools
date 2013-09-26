@@ -12,18 +12,18 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_functional ) {
     GT::Identifier s1 = GT::createIdentifier("s1");
     GT::Identifier s2 = GT::createIdentifier("s2");
 
-    GT::PositionsPtr p11 = GT::createPositionsPtr();
-    p11->insert( GT::Positions::value_type(l1, s1) );
-    p11->insert( GT::Positions::value_type(l2, s1) );
-    GT::PositionsPtr p12 = GT::createPositionsPtr();
-    p12->insert( GT::Positions::value_type(l1, s1) );
-    p12->insert( GT::Positions::value_type(l2, s2) );
-    GT::PositionsPtr p21 = GT::createPositionsPtr();
-    p21->insert( GT::Positions::value_type(l1, s2) );
-    p21->insert( GT::Positions::value_type(l2, s1) );
-    GT::PositionsPtr p22 = GT::createPositionsPtr();
-    p22->insert( GT::Positions::value_type(l1, s2) );
-    p22->insert( GT::Positions::value_type(l2, s2) );
+    GT::Positions p11 = GT::createPositions();
+    p11.insert( GT::Positions::value_type(l1, s1) );
+    p11.insert( GT::Positions::value_type(l2, s1) );
+    GT::Positions p12 = GT::createPositions();
+    p12.insert( GT::Positions::value_type(l1, s1) );
+    p12.insert( GT::Positions::value_type(l2, s2) );
+    GT::Positions p21 = GT::createPositions();
+    p21.insert( GT::Positions::value_type(l1, s2) );
+    p21.insert( GT::Positions::value_type(l2, s1) );
+    GT::Positions p22 = GT::createPositions();
+    p22.insert( GT::Positions::value_type(l1, s2) );
+    p22.insert( GT::Positions::value_type(l2, s2) );
 
     GT::NumbersPtr payoff11 = GT::createNumbersPtr();
     payoff11->push_back(GT::createNumberPtr(10));
@@ -77,18 +77,18 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_toString ) {
     GT::Identifier s1 = GT::createIdentifier("s1");
     GT::Identifier s2 = GT::createIdentifier("s2");
 
-    GT::PositionsPtr p11 = GT::createPositionsPtr();
-    p11->insert( GT::Positions::value_type(l1, s1) );
-    p11->insert( GT::Positions::value_type(l2, s1) );
-    GT::PositionsPtr p12 = GT::createPositionsPtr();
-    p12->insert( GT::Positions::value_type(l1, s1) );
-    p12->insert( GT::Positions::value_type(l2, s2) );
-    GT::PositionsPtr p21 = GT::createPositionsPtr();
-    p21->insert( GT::Positions::value_type(l1, s2) );
-    p21->insert( GT::Positions::value_type(l2, s1) );
-    GT::PositionsPtr p22 = GT::createPositionsPtr();
-    p22->insert( GT::Positions::value_type(l1, s2) );
-    p22->insert( GT::Positions::value_type(l2, s2) );
+    GT::Positions p11 = GT::createPositions();
+    p11.insert( GT::Positions::value_type(l1, s1) );
+    p11.insert( GT::Positions::value_type(l2, s1) );
+    GT::Positions p12 = GT::createPositions();
+    p12.insert( GT::Positions::value_type(l1, s1) );
+    p12.insert( GT::Positions::value_type(l2, s2) );
+    GT::Positions p21 = GT::createPositions();
+    p21.insert( GT::Positions::value_type(l1, s2) );
+    p21.insert( GT::Positions::value_type(l2, s1) );
+    GT::Positions p22 = GT::createPositions();
+    p22.insert( GT::Positions::value_type(l1, s2) );
+    p22.insert( GT::Positions::value_type(l2, s2) );
 
     GT::NumbersPtr payoff11 = GT::createNumbersPtr();
     payoff11->push_back(GT::createNumberPtr(10));

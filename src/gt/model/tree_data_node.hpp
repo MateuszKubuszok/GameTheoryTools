@@ -24,12 +24,12 @@ public:
     );
 
     NumbersPtr getValues(
-        PositionsPtr positions
+        Positions& positions
     );
 
     TreeDataNode& setValues(
-    	PositionsPtr positions,
-    	NumbersPtr   values
+    	Positions& positions,
+    	NumbersPtr values
     );
 
     Message toString();

@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
     strategicData->setValues(position11, values11);
     strategicData->setValues(position12, values12);
     strategicData->setValues(position21, values21);
@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
     strategicData->setValues(position11, values11);
     strategicData->setValues(position12, values12);
     strategicData->setValues(position21, values21);
@@ -195,7 +195,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     values22->push_back( GT::createNumberPtr(70) );
     values22->push_back( GT::createNumberPtr(80) );
 
-    GT::Model::DataPtr strategicData(new GT::Model::StrategicData(players));
+    GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
     strategicData->setValues(position11, values11);
     strategicData->setValues(position12, values12);
     strategicData->setValues(position21, values21);

@@ -1,27 +1,24 @@
-#ifndef __GT_MODEL_STRATEGIC_DATA_HPP__
-#define __GT_MODEL_STRATEGIC_DATA_HPP__
+#ifndef __GT_MODEL_TREE_DATA_HPP__
+#define __GT_MODEL_TREE_DATA_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class StrategicData : public Data {
-    PositionsHelper positionsHelper;
-
-    boost::container::vector<NumbersPtr> payoffStorage;
-    boost::container::vector<bool>       payoffStorageAllocation;
+class TreeData : public Data {
+    PlayersPtr        players;
+    TreeDataNodePtr   root;
+    PlayersInTurnsPtr playersInTurns;
     
 public:
-    StrategicData(
+    TreeData(
         PlayersPtr playersDefinitions
     );
 
     virtual PlayersPtr getPlayers();
 
-    virtual DataPiecePtr getValues(
-        Index positionInStorage
-    );
+    virtual PlayersInTurnsPtr getPlayersInTurns();
 
     virtual DataPiecePtr getValues(
         Positions& positions
@@ -32,11 +29,6 @@ public:
     );
 
     virtual Data& setValues(
-        Index      positionInStorage,
-        NumbersPtr numbers
-    );
-
-    virtual Data& setValues(
         Positions& positions,
         NumbersPtr numbers
     );
@@ -44,10 +36,6 @@ public:
     virtual Data& setValues(
         PositionsPtr positions,
         NumbersPtr   numbers
-    );
-
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
     );
 
     virtual DataPiecePtr operator[](
@@ -59,24 +47,22 @@ public:
     );
 
     virtual Message toString();
-}; /* END class StrategicData */
+}; /* END class TreeData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class NullStrategicData : public StrategicData {
+class NullTreeData : public TreeData {
 public:
-    NullStrategicData() :
-        StrategicData(NullFactory::getInstance().createPlayers())
+    NullTreeData() :
+        TreeData(NullFactory::getInstance().createPlayers())
         {}
 
     virtual PlayersPtr getPlayers() {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataPiecePtr getValues(
-        Index positionInStorage
-    ) {
-        return NullFactory::getInstance().createDataPiece();
+    virtual PlayersInTurnsPtr getPlayersInTurns() {
+        return PlayersInTurnsPtr(new PlayersInTurns());
     }
 
     virtual DataPiecePtr getValues(
@@ -92,13 +78,6 @@ public:
     }
 
     virtual Data& setValues(
-        Index      positionInStorage,
-        NumbersPtr numbers
-    ) {
-        return *this;
-    }
-
-    virtual Data& setValues(
         Positions& positions,
         NumbersPtr numbers
     ) {
@@ -110,12 +89,6 @@ public:
         NumbersPtr   numbers
     ) {
         return *this;
-    }
-
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
-    ) {
-        return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr operator[](
@@ -135,13 +108,13 @@ public:
     }
 
     virtual Message toString() {
-        return Message("NullStrategicData");
+        return Message("NullTreeData");
     }
-}; /* END class NullStrategicData */
+}; /* END class NullTreeData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_STRATEGIC_DATA_HPP__ */
+#endif /* #ifndef __GT_MODEL_TREE_DATA_HPP__ */

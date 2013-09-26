@@ -37,28 +37,33 @@ class PlainResultBuilder;
 class JSONResultBuilder;
 class XMLResultBuilder;
 
-class PositionsHelper;
 
 class PlainDataPiece;
 
-class StrategicData;
+class StrategicPositionsHelper;
+class StrategicData;            class NullStrategicData;
 class StrategicDataBuilder;
 class StrategicDataAccessor;
 class StrategicGame;
 class StrategicGameBuilder;
 
 class TreeDataNode;
+class TreeData;
 
 /* Shortens comonly used names */
 
+typedef boost::shared_ptr<StrategicData>                   StrategicDataPtr;
 typedef boost::shared_ptr<StrategicDataBuilder>            StrategicDataBuilderPtr;
+
+typedef boost::bimaps::bimap<Identifier, Index>            IdentifierMap;
+typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
 
 typedef boost::shared_ptr<TreeDataNode>                    TreeDataNodePtr;
 typedef boost::container::map<Identifier, TreeDataNodePtr> TreeDataNodes;
 typedef boost::shared_ptr<TreeDataNodes>                   TreeDataNodesPtr;
 
-typedef boost::bimaps::bimap<Identifier, Index>            IdentifierMap;
-typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
+typedef boost::container::map<Identifier, PlayerPtr>       PlayersInTurns;
+typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -90,6 +95,7 @@ typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
 #include "gt/model/strategic_game_builder.hpp"
 
 #include "gt/model/tree_data_node.hpp"
+#include "gt/model/tree_data.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 
