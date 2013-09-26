@@ -34,6 +34,10 @@ StrategicDataPtr InnerNullFactory::createStrategicData() {
     return StrategicDataPtr(new NullStrategicData());
 }
 
+TreeDataPtr InnerNullFactory::createTreeData() {
+    return TreeDataPtr(new NullTreeData());
+}
+
 // private:
 
 InnerNullFactory::InnerNullFactory() {}

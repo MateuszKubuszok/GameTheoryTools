@@ -27,6 +27,8 @@ public:
 
     StrategicDataPtr createStrategicData();
 
+    TreeDataPtr createTreeData();
+
 private:
     /**
      * @brief Default constructor hidden from programmers.
