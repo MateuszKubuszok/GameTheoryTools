@@ -6,10 +6,29 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Contains empty Message.
+ *
+ * Implements Result interface.
+ *
+ * @author Mateusz Kubuszok
+ *
+ * @see Result
+ * @see ConstResult
+ * @see ResultFactory
+ */
 class EmptyResult : public Result {
 public:
+    /**
+     * @brief Creates Result with empty Message.
+     */
     EmptyResult();
 
+    /**
+     * Returns Result's Message.
+     *
+     * @return Results's Message
+     */
     Message getResult();
 }; /* END class EmptyString */
 

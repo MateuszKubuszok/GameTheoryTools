@@ -27,7 +27,7 @@ ResultPtr JSONResultBuilder::build() {
 ResultPtr JSONResultBuilder::buildRaw() {
     checkPropertyToResultMatching();
 
-    int propertiesSize = properties->size();
+    int propertiesSize = propertiesNames->size();
     std::stringstream result;
 
     if (propertiesSize > 0)
@@ -35,7 +35,7 @@ ResultPtr JSONResultBuilder::buildRaw() {
             result << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
             for (int property = 0; property < propertiesSize; property++)
                 result << indent
-                        << '"' << (*(*properties)[property]) << '"'
+                        << '"' << (*(*propertiesNames)[property]) << '"'
                         << " : "
                         << '"' << (*(*partialResult.second)[property]) << '"'
                         << ',' << std::endl;

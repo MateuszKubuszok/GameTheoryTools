@@ -23,9 +23,9 @@ ResultPtr PlainResultBuilder::buildRaw() {
 
     std::stringstream result;
     
-    if (properties->size() > 0) {
+    if (propertiesNames->size() > 0) {
         result << indent;
-        BOOST_FOREACH(IdentifierPtr& property, (*properties))
+        BOOST_FOREACH(IdentifierPtr& property, (*propertiesNames))
             result << indent << (*property) << ',';
         result << std::endl;
 

@@ -27,7 +27,7 @@ ResultPtr XMLResultBuilder::build() {
 ResultPtr XMLResultBuilder::buildRaw() {
     checkPropertyToResultMatching();
 
-    int propertiesSize = properties->size();
+    int propertiesSize = propertiesNames->size();
     std::stringstream result;
 
     if (propertiesSize > 0)
@@ -37,7 +37,7 @@ ResultPtr XMLResultBuilder::buildRaw() {
                 result << indent
                         << "<result"
                         << ' '
-                        << "property=\"" << (*(*properties)[property]) << '"'
+                        << "property=\"" << (*(*propertiesNames)[property]) << '"'
                         << ' '
                         << "value=\"" << (*(*partialResult.second)[property]) << '"'
                         << " />" << std::endl;

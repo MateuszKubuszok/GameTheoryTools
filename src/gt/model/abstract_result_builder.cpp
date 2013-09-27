@@ -11,24 +11,24 @@ namespace Model {
 AbstractResultBuilder::AbstractResultBuilder(
     Message indentation
 ) :
-    properties(new Identifiers()),
+    propertiesNames(new Identifiers()),
     partialResults(),
     subResults(),
     indent(indentation)
     {}
 
 ResultBuilder& AbstractResultBuilder::setHeaders(
-    IdentifiersPtr& newProperties
+    IdentifiersPtr& newPropertiesNames
 ) {
-    properties = newProperties;
+    propertiesNames = newPropertiesNames;
     return *this;
 }
 
 ResultBuilder& AbstractResultBuilder::addRecord(
-    IdentifierPtr& object,
-    MessagesPtr&   results
+    IdentifierPtr& name,
+    MessagesPtr&   propertiesValues
 ) {
-    partialResults.push_back( PartialResults::value_type(object, results) );
+    partialResults.push_back( PartialResults::value_type(name, propertiesValues) );
     return *this;
 }
 
@@ -41,20 +41,26 @@ ResultBuilder& AbstractResultBuilder::addResult(
 }
 
 Message AbstractResultBuilder::toString() {
-    return build()->getResult();
+    try {
+        return build()->getResult();
+    } catch (IllegalInnerState e) {
+        return Message(e.what());
+    }
 }
 
 // protected:
 
 void AbstractResultBuilder::checkPropertyToResultMatching() {
-    int propertiesSize = properties->size();
-    BOOST_FOREACH(PartialResult& partialResult, partialResults)
-        if (partialResult.second->size() != propertiesSize)
+    int propertiesSize = propertiesNames->size();
+    BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+        MessagesPtr checkedProperties = partialResult.second;
+        if (checkedProperties->size() != propertiesSize)
             throw ExceptionFactory::getInstance()
                 .propertiesAndResultsDontMatchInSize(
-                    properties->size(),
-                    partialResult.second->size()
+                    propertiesSize,
+                    checkedProperties->size()
                 );
+    }
 }
 
 Message AbstractResultBuilder::addIndent(

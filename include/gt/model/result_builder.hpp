@@ -14,21 +14,29 @@ namespace Model {
 class ResultBuilder : public virtual Root {
 public:
     /**
-     * @brief Sets names of used properties.
+     * @brief Sets headers used for displaying records.
      *
-     * @param properties names of properties
-     * @result           reference for itself for chaining
+     * Size of headers must match size of each record. 
+     *
+     * @param   newProperties headers' names that will be used in a Result
+     * @return                refernce to self for chaining
+     *
+     * @see #addRecord(IdentifierPtr&,MessagesPtr&)
      */
     virtual ResultBuilder& setHeaders(
         IdentifiersPtr& properties
     ) = 0;
 
     /**
-     * @brief Adds Object with its results.
+     * @brief Adds record to displayed Result. 
      *
-     * @param object  name of Object for which Result is build 
-     * @param results results for each of queries properties
-     * @result        reference for itself for chaining
+     * Results size must match headers size.
+     *
+     * @param object  name of added record
+     * @param results properties that should be displayed
+     * @return        refernce to self for chaining
+     *
+     * @see #setHeaders(IdentifiersPtr&)
      */
     virtual ResultBuilder& addRecord(
         IdentifierPtr& object,
