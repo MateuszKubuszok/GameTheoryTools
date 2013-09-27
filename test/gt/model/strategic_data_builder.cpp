@@ -46,7 +46,9 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
     strategicDataBuilder.setPlayers(players);
 
     // then
-    GT::Model::DataPtr data = strategicDataBuilder.getData();
+    BOOST_CHECK_NO_THROW(
+        strategicDataBuilder.getData();
+    );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {

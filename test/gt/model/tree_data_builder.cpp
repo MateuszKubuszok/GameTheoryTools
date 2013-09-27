@@ -46,7 +46,9 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_getData ) {
     treeDataBuilder.setPlayers(players);
 
     // then
-    GT::Model::DataPtr data = treeDataBuilder.getData();
+    BOOST_CHECK_NO_THROW(
+        treeDataBuilder.getData()
+    );
 }
 
 BOOST_AUTO_TEST_CASE( TreeDataBuilder_toString ) {
