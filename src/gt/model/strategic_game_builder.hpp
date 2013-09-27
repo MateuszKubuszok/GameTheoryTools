@@ -1,5 +1,5 @@
 #ifndef __GT_MODEL_STRATEGIC_GAME_BUILDER_HPP__
-#define __GT_MODEL_STRATEGIc_GAME_BUILDER_HPP__
+#define __GT_MODEL_STRATEGIC_GAME_BUILDER_HPP__
 
 namespace GT {
 namespace Model {
