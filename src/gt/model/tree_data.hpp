@@ -12,7 +12,7 @@ class TreeData : public Data {
     PlayersInTurnsPtr playersInTurns;
     
 public:
-    TreeData(
+    explicit TreeData(
         PlayersPtr playersDefinitions
     );
 

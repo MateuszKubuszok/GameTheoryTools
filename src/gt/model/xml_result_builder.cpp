@@ -18,7 +18,7 @@ ResultPtr XMLResultBuilder::build() {
     std::stringstream result;
 
     result << "<results>" << std::endl;
-    result << addIndent(buildRaw()->getResult());
+    result << addIndent( buildRaw()->getResult() );
     result << "</results>" << std::endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
@@ -32,24 +32,35 @@ ResultPtr XMLResultBuilder::buildRaw() {
 
     if (propertiesSize > 0)
         BOOST_FOREACH(PartialResult& partialResult, partialResults) {
-            result << '<' << (*partialResult.first) << '>' << std::endl;
-            for (int property = 0; property < propertiesSize; property++)
+            Identifier recordName = *partialResult.first;
+            Messages   properties = *partialResult.second;
+
+            result << '<' << recordName << '>' << std::endl;
+            for (int property = 0; property < propertiesSize; property++) {
+                Identifier propertyName  = *(*propertiesNames)[property];
+                Message    propertyValue = *(*partialResult.second)[property];
+
                 result << indent
                         << "<result"
                         << ' '
-                        << "property=\"" << (*(*propertiesNames)[property]) << '"'
+                        << "property=\"" << propertyName << '"'
                         << ' '
-                        << "value=\"" << (*(*partialResult.second)[property]) << '"'
+                        << "value=\"" << propertyValue << '"'
                         << " />" << std::endl;
-            result << '<' << '/' << (*partialResult.first) << '>' << std::endl;
+            }
+            result << '<' << '/' << recordName << '>' << std::endl;
         }
 
     if (subResults.size() > 0)
-        BOOST_FOREACH(SubResult& subResult, subResults)
-            result << '<' << (*subResult.first) << '>' << std::endl
-                   << addIndent(*subResult.second)
-                   << '<' << '/' << (*subResult.first) << '>'
+        BOOST_FOREACH(SubResult& subResult, subResults) {
+            Identifier resultName  = *subResult.first;
+            Message    resultValue = *subResult.second;
+
+            result << '<' << resultName << '>' << std::endl
+                   << addIndent( resultValue )
+                   << '<' << '/' << resultName << '>'
                    << std::endl;
+        }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

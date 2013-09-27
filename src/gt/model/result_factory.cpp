@@ -33,13 +33,12 @@ ResultFactory& ResultFactory::getInstance() {
 ResultBuilderPtr ResultFactory::buildResult() {
     Message indent;
     switch (indentationMode) {
-    case NONE:
-        break;
     case TABS:
         indent = Message("\t");
         break;
     case SPACES:
         indent = Message(" ");
+    case NONE:
     default:
         break;
     }

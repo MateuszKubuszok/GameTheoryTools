@@ -9,7 +9,7 @@ namespace Model {
 /**
  * @brief Common base class of all actual implemetations used in Model.
  *
- * Implements ResultBuilder interface.
+ * <p>Implements ResultBuilder interface.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -29,7 +29,7 @@ public:
     /**
      * @brief Sets headers used for displaying records.
      *
-     * Size of headers must match size of each record. 
+     * <p>Size of headers must match size of each record.</p> 
      *
      * @param   propertiesNames headers' names that will be used in a Result
      * @return                  refernce to self for chaining
@@ -43,7 +43,7 @@ public:
     /**
      * @brief Adds record to displayed Result. 
      *
-     * Results size must match headers size.
+     * <p>Results size must match headers size.</p>
      *
      * @param name             name of added record
      * @param propertiesValues properties that should be displayed

@@ -9,7 +9,7 @@ namespace Model {
 /**
  * @brief Basic interface of many classes used in the project.
  *
- * Should be inherited with <pre>public virtual</pre> modifiers.
+ * <p>Should be inherited with <pre>public virtual</pre> modifiers.</p>
  *
  * @author Mateusz Kubuszok
  */

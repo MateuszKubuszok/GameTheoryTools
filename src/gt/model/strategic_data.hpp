@@ -13,7 +13,7 @@ class StrategicData : public Data {
     boost::container::vector<bool>       payoffStorageAllocation;
     
 public:
-    StrategicData(
+    explicit StrategicData(
         PlayersPtr playersDefinitions
     );
 

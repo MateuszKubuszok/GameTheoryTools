@@ -147,9 +147,9 @@ bool PositionsHelper::checkPositions(
 
 Message PositionsHelper::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
-    IdentifierPtr name = createIdentifierPtr("Player");
+    IdentifierPtr    name          = createIdentifierPtr("Player");
     BOOST_FOREACH(Players::value_type& player, (*players)) {
-        MessagePtr playerContent   = createIdentifierPtr(player.second->toString());
+        MessagePtr playerContent = createIdentifierPtr(player.second->toString());
         resultBuilder->addResult(name, playerContent);
     }
     return resultBuilder->build()->getResult();

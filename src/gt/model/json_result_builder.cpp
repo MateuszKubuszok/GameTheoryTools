@@ -18,7 +18,7 @@ ResultPtr JSONResultBuilder::build() {
     std::stringstream result;
 
     result << '{' << std::endl;
-    result << addIndent(buildRaw()->getResult());
+    result << addIndent( buildRaw()->getResult() );
     result << '}' << std::endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
@@ -32,22 +32,30 @@ ResultPtr JSONResultBuilder::buildRaw() {
 
     if (propertiesSize > 0)
         BOOST_FOREACH(PartialResult& partialResult, partialResults) {
-            result << '"' << (*partialResult.first) << '"' << " : [" << std::endl;
-            for (int property = 0; property < propertiesSize; property++)
+            Identifier recordName = *partialResult.first;
+            Messages   properties = *partialResult.second;
+
+            result << '"' << recordName << '"' << " : [" << std::endl;
+            for (int property = 0; property < propertiesSize; property++) {
+                Identifier propertyName  = *(*propertiesNames)[property];
+                Message    propertyValue = *(*partialResult.second)[property];
+                
                 result << indent
-                        << '"' << (*(*propertiesNames)[property]) << '"'
-                        << " : "
-                        << '"' << (*(*partialResult.second)[property]) << '"'
-                        << ',' << std::endl;
+                       << '"' << propertyName << '"'
+                       << " : "
+                       << '"' << propertyValue << '"'
+                       << ',' << std::endl;
+            }
             result << "]," << std::endl;
         }
 
     if (subResults.size() > 0)
-        BOOST_FOREACH(SubResult& subResult, subResults)
-            result << '"' << (*subResult.first) << '"'
-                   << " : "
-                   << (*subResult.second) << ','
-                   << std::endl;
+        BOOST_FOREACH(SubResult& subResult, subResults) {
+            Identifier resultName  = *subResult.first;
+            Message    resultValue = *subResult.second;
+            
+            result << '"' << resultName << '"' << " : " << resultValue << ',' << std::endl;
+        }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

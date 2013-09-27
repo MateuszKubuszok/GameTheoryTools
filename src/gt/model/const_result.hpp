@@ -9,7 +9,7 @@ namespace Model {
 /**
  * @brief Contains const Result Message.
  *
- * Implements Result interface.
+ * <p>Implements Result interface.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -26,7 +26,7 @@ public:
      *
      * @param content message that should be stored as a Result
      */
-    ConstResult(
+    explicit ConstResult(
         const Message& content
     );
 

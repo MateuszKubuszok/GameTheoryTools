@@ -6,7 +6,7 @@ namespace GT {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param message source to turn into Message
  * @return        Message
@@ -16,7 +16,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param message source to turn into Message
  * @return        Message
@@ -26,7 +26,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param message source to turn into Message
  * @return        Message
@@ -36,7 +36,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -46,7 +46,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -56,7 +56,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -66,7 +66,7 @@ Message createMessage(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -76,7 +76,7 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -86,7 +86,7 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -96,7 +96,7 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param mesaage source to turn into Message
  * @return        Message
@@ -106,7 +106,7 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param number source to turn into Message
  * @return       Message
@@ -116,7 +116,7 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Messages.
+ * @brief Creates Messages.
  *
  * @param number source to turn into Message
  * @return       Message
@@ -126,21 +126,21 @@ MessagePtr createMessagePtr(
 );
 
 /**
- * Creates Messages.
+ * @brief Creates Messages.
  *
  * @return Message
  */
 Messages createMessages();
 
 /**
- * Creates Messages.
+ * @brief Creates Messages.
  *
  * @return Message
  */
 MessagesPtr createMessagesPtr();
 
 /**
- * Creates Message.
+ * @brief Creates Message.
  *
  * @param messages source to turn into Message
  * @return         Messages
@@ -152,7 +152,7 @@ MessagesPtr createMessagesPtr(
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -162,7 +162,7 @@ Identifier createIdentifier(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -172,7 +172,7 @@ Identifier createIdentifier(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -182,7 +182,7 @@ Identifier createIdentifier(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -192,7 +192,7 @@ Identifier createIdentifier(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -202,7 +202,7 @@ IdentifierPtr createIdentifierPtr(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -212,7 +212,7 @@ IdentifierPtr createIdentifierPtr(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -222,7 +222,7 @@ IdentifierPtr createIdentifierPtr(
 );
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @param identifier source to turn into Identfier
  * @return           Identifier
@@ -232,21 +232,21 @@ IdentifierPtr createIdentifierPtr(
 );
 
 /**
- * Creates Identifiers.
+ * @brief Creates Identifiers.
  *
  * @return Identifiers
  */
 Identifiers createIdentifiers();
 
 /**
- * Creates Identifier.
+ * @brief Creates Identifier.
  *
  * @return Identifier
  */
 IdentifiersPtr createIdentifiersPtr();
 
 /**
- * Creates Identifiers.
+ * @brief Creates Identifiers.
  *
  * @param identifiers source to turn into Identfiers
  * @return            Identifiers
@@ -258,7 +258,7 @@ IdentifiersPtr createIdentifiersPtr(
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -268,7 +268,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -278,7 +278,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -288,7 +288,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -298,7 +298,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -308,7 +308,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -318,7 +318,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -328,7 +328,7 @@ Number createNumber(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -338,7 +338,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -348,7 +348,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -358,7 +358,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -368,7 +368,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -378,7 +378,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -388,7 +388,7 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Number.
+ * @brief Creates Number.
  *
  * @param number source to turn into Number
  * @return       Number
@@ -398,21 +398,21 @@ NumberPtr createNumberPtr(
 );
 
 /**
- * Creates Numbers.
+ * @brief Creates Numbers.
  *
  * @return Numbers
  */
 Numbers createNumbers();
 
 /**
- * Creates Numbers.
+ * @brief Creates Numbers.
  *
  * @return Numbers
  */
 NumbersPtr createNumbersPtr();
 
 /**
- * Creates Numbers.
+ * @brief Creates Numbers.
  *
  * @param numbers source to turn into Numbers
  * @return        Numbers
@@ -424,14 +424,14 @@ NumbersPtr createNumbersPtr(
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Creates Positions.
+ * @brief Creates Positions.
  *
  * @return Positions
  */
 Positions createPositions();
 
 /**
- * Creates Positions.
+ * @brief Creates Positions.
  *
  * @return Positions
  */
@@ -444,14 +444,14 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Creates Players.
+ * @brief Creates Players.
  *
  * @return Players
  */
 Players createPlayers();
 
 /**
- * Creates Players.
+ * @brief Creates Players.
  *
  * @return Players
  */

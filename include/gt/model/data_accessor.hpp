@@ -9,7 +9,11 @@ namespace Model {
 /**
  * @brief Custom interface for all Data accessing instances for Games.
  *
+ * <p>Is extended by Data interface.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Data
  */
 class DataAccessor : public virtual Root {
 public:

@@ -9,7 +9,7 @@ namespace Model {
 /**
  * @brief Contains empty Message.
  *
- * Implements Result interface.
+ * <p>Implements Result interface.</p>
  *
  * @author Mateusz Kubuszok
  *

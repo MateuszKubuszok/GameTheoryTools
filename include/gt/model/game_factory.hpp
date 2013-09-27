@@ -12,7 +12,7 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class GameFactory {
-	 /**
+     /**
      * @brief Contains pointer to a GameFactory instance.
      */
     static GameFactory* volatile instance;
@@ -28,9 +28,9 @@ public:
     /**
      * @brief Returns Strategic Game builder.
      *
-     * StrategyGame builder requires that Players should be set at the very beginning.
+     * <p>StrategyGame builder requires that Players should be set at the very beginning.
      * It also require that Each coordinate is set and its set exactly once. Otherwise
-     * InvalidCoordinate or IllegalInnerState exception is thrown.
+     * InvalidCoordinate or IllegalInnerState exception is thrown.</p>
      *
      * @return Strategic Game builder
      */
@@ -39,10 +39,10 @@ public:
     /**
      * @brief Returns Tree Game builder.
      *
-     * StrategyGame builder requires that Players should be set at the very beginning.
+     * <p>StrategyGame builder requires that Players should be set at the very beginning.
      * It required that at each level/turn only one Player is used. Different turns
      * can have different Players. Otherwise InvalidCoordinate or IllegalInnerState
-     * exception is thrown.
+     * exception is thrown.</p>
      *
      * @return Tree Game builder
      */

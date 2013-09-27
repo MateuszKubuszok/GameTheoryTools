@@ -10,7 +10,7 @@ class TreeDataAccessor : public DataAccessor {
     TreeDataPtr data;
 
 public:
-    TreeDataAccessor(
+    explicit TreeDataAccessor(
         TreeDataPtr gameData
     );
 

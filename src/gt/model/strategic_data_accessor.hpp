@@ -10,7 +10,7 @@ class StrategicDataAccessor : public DataAccessor {
     StrategicDataPtr data;
 
 public:
-    StrategicDataAccessor(
+    explicit StrategicDataAccessor(
         StrategicDataPtr gameData
     );
 

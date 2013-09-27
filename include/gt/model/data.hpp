@@ -9,7 +9,12 @@ namespace Model {
 /**
  * @brief Custom interface for all Data containers for Games.
  *
+ * <p>Extends DataAccessor interface.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see DataAccessor
+ * @see DataBuilder
  */
 class Data : public DataAccessor {
 public:
