@@ -36,9 +36,12 @@ InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions)
-        result << " '" << position.first << "'='" << position.second;
-    result << "' already has defined payoff";
+    BOOST_FOREACH(Positions::value_type position, positions) {
+        Identifier  playerName   = position.first;
+        Identifier& strategyName = position.second;
+        result << " '" << playerName << "'='" << strategyName << "'";
+    }
+    result << " already has defined payoff";
 
     return InvalidCoordinate(result.str());
 }
@@ -53,8 +56,11 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions)
-        result << " '" << position.first << "'='" << position.second << "'";
+    BOOST_FOREACH(Positions::value_type position, positions) {
+        Identifier  playerName   = position.first;
+        Identifier& strategyName = position.second;
+        result << " '" << playerName << "'='" << strategyName << "'";
+    }
     result << " has invalid format - make sure chosen Players' names and strategies are valid";
 
     return InvalidCoordinate(result.str());
@@ -66,8 +72,11 @@ InvalidCoordinate ExceptionFactory::invalidTreeCoordinateFormat(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions)
-        result << " '" << position.first << "'='" << position.second << "'";
+    BOOST_FOREACH(Positions::value_type position, positions) {
+        Identifier  playerName   = position.first;
+        Identifier& strategyName = position.second;
+        result << " '" << playerName << "'='" << strategyName << "'";
+    }
     result << " has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree";
 
     return InvalidCoordinate(result.str());

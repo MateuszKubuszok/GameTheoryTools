@@ -6,6 +6,11 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Used for creation of exceptions with predefined message format.
+ *
+ * @author Mateusz Kubuszok
+ */
 class ExceptionFactory {
     /**
      * @brief Contains pointer to a ExceptionFactory instance.
@@ -20,35 +25,89 @@ public:
      */
     static ExceptionFactory& getInstance();
 
+    /**
+     * @brief Thrown when values for given positions are already set.
+     *
+     * @param position invalid Positions
+     * @return         InvalidCoordinate exception to throw
+     */
     InvalidCoordinate coordinatesAlreadySet(
         Positions& positions
     );
 
+    /**
+     * @brief Thrown when some coordinates are uknown yet attept to store values is made.
+     *
+     * @return IllegalInnerState exception to throw
+     */
     IllegalInnerState incompleteCoordinates();
 
+    /**
+     * @brief Thrown when some of the Players' names or strategies are invalid.
+     *
+     * @param position invalid Positions
+     * @return         InvalidCoordinate exception to throw
+     */
     InvalidCoordinate invalidCoordinateFormat(
         Positions& position
     );
 
+    /**
+     * @brief Thrown when there are colliding definitions of Player's playing in some turn.
+     *
+     * @param position invalid Positions
+     * @return         InvalidCoordinate exception to throw
+     */
     InvalidCoordinate invalidTreeCoordinateFormat(
         Positions& position
     );
 
+    /**
+     * @brief Thrown when ettepting to read from position that has not values defined.
+     *
+     * @param positionInStorage invalid position in storage
+     * @param maxPosition       maximal position
+     * @return                  InvalidCoordinate exception to throw
+     */
     InvalidCoordinate noParamsForPositions(
         Index positionInStorage,
         Index maxPosition
     );
 
+    /**
+     * @brief Thrown when no Player with given name has been defined. 
+     *
+     * @param playerName invalid Player's name
+     * @return           InvalidCoordinate exception to throw
+     */
     InvalidCoordinate invalidPlayer(
         Identifier& playerName
     );
 
+    /**
+     * @brief @brief Thrown when no strategy with given name has been defined. 
+     *
+     * @param strategyName invalid strategy's name
+     * @return             InvalidCoordinate exception to throw
+     */
     InvalidCoordinate invalidStrategy(
         Identifier& strategyName
     );
 
+    /**
+     * @brief Thrown when attempt to redefine Players is made.
+     *
+     * @return IllegalInnerState exception to throw
+     */
     IllegalInnerState playersAlreadySet();
 
+    /**
+     * @brief Thrown when attempt to build Result with properties' names and results not matching in size is made.
+     *
+     * @param propertiesSize properties' size
+     * @param resultsSize    results' size
+     * @return               IllegalInnerState exception to throw
+     */
     IllegalInnerState propertiesAndResultsDontMatchInSize(
         Index propertiesSize,
         Index resultsSize
