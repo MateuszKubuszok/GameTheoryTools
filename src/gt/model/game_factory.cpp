@@ -35,8 +35,7 @@ GameBuilderPtr GameFactory::buildStrategicGame() {
 }
 
 GameBuilderPtr GameFactory::buildTreeGame() {
-    // TODO
-    return NullFactory::getInstance().createGameBuilder();
+    return GameBuilderPtr(new TreeGameBuilder());
 }
 
 // private:

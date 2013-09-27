@@ -17,6 +17,7 @@ class GameFactory {
      */
     static GameFactory* volatile instance;
 
+public:
      /**
      * @brief Returns the instance of a GameFactory.
      *
