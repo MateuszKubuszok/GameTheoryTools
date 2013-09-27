@@ -20,14 +20,14 @@ BOOST_AUTO_TEST_CASE( StrategicGame_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( StrategicGame_equilibriumData ) {
+BOOST_AUTO_TEST_CASE( StrategicGame_getData ) {
     // given
     GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::StrategicDataPtr data    = GT::Model::InnerNullFactory::getInstance().createStrategicData();
 
     // when
     GT::Model::StrategicGame game(players, data);
-    GT::Model::DataAccessorPtr dataAccessor = game.equilibriumData();
+    GT::Model::DataAccessorPtr dataAccessor = game.getData();
 
     // then
     BOOST_CHECK_EQUAL(

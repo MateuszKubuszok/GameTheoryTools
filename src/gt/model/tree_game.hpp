@@ -1,19 +1,19 @@
-#ifndef __GT_MODEL_STRATEGIC_GAME_HPP__
-#define __GT_MODEL_STRATEGIC_GAME_HPP__
+#ifndef __GT_MODEL_TREE_GAME_HPP__
+#define __GT_MODEL_TREE_GAME_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class StrategicGame : public Game {
-    PlayersPtr       players;
-    StrategicDataPtr data;
+class TreeGame : public Game {
+    PlayersPtr  players;
+    TreeDataPtr data;
 
 public:
-    StrategicGame(
-        PlayersPtr       newPlayers,
-        StrategicDataPtr newData
+    TreeGame(
+        PlayersPtr  newPlayers,
+        TreeDataPtr newData
     );
 
     virtual PlayersPtr getPlayers();
@@ -21,11 +21,11 @@ public:
     virtual DataAccessorPtr getData();
 
     virtual Message toString();
-}; /* END class StrategicGame */
+}; /* END class TreeGame */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_STRATEGIC_GAME_HPP__ */
+#endif /* #ifndef __GT_MODEL_TREE_GAME_HPP__ */

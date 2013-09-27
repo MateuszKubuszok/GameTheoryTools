@@ -52,6 +52,7 @@ class TreeDataNode;
 class TreeData;                 class NullTreeData;
 class TreeDataBuilder;
 class TreeDataAccessor;
+class TreeGame;
 
 /* Shortens comonly used names */
 
@@ -104,6 +105,7 @@ typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
 #include "gt/model/tree_data.hpp"
 #include "gt/model/tree_data_builder.hpp"
 #include "gt/model/tree_data_accessor.hpp"
+#include "gt/model/tree_game.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 

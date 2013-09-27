@@ -5,27 +5,27 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//class StrategicGame {
+//class TreeGame {
 // public:
 
-StrategicGame::StrategicGame(
-    PlayersPtr       newPlayers,
-    StrategicDataPtr newData
+TreeGame::TreeGame(
+    PlayersPtr  newPlayers,
+    TreeDataPtr newData
 ) :
     players(newPlayers),
     data(newData)
     {}
 
-PlayersPtr StrategicGame::getPlayers() {
+PlayersPtr TreeGame::getPlayers() {
     return players;
 }
 
-DataAccessorPtr StrategicGame::getData() {
-    return DataAccessorPtr(new StrategicDataAccessor(data));
+DataAccessorPtr TreeGame::getData() {
+    return DataAccessorPtr(new TreeDataAccessor(data));
 }
 
-Message StrategicGame::toString() {
-    IdentifierPtr name      = createIdentifierPtr("Strategic Game");
+Message TreeGame::toString() {
+    IdentifierPtr name      = createIdentifierPtr("Tree Game");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }

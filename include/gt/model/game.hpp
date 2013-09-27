@@ -21,11 +21,11 @@ public:
     virtual PlayersPtr getPlayers() = 0;
 
     /**
-     * @brief Grants access to Data in form in which it can be used to find equilibrium. 
+     * @brief Grants access to Data specific to a Game. 
      *
-     * @return DataAccessor equilibrium finding oriented
+     * @return DataAccessor returns DataAccessor specific for a Game
      */
-    virtual DataAccessorPtr equilibriumData() = 0;
+    virtual DataAccessorPtr getData() = 0;
 
     /**
      * @brief Game's Message.
@@ -48,7 +48,7 @@ public:
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataAccessorPtr equilibriumData() {
+    virtual DataAccessorPtr getData() {
         return NullFactory::getInstance().createDataAccessor();
     }
 
