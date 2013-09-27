@@ -30,6 +30,10 @@ public:
         Positions& position
     );
 
+    InvalidCoordinate invalidTreeCoordinateFormat(
+        Positions& position
+    );
+
     InvalidCoordinate noParamsForPositions(
         Index positionInStorage,
         Index maxPosition

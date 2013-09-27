@@ -60,6 +60,19 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     return InvalidCoordinate(result.str());
 }
 
+InvalidCoordinate ExceptionFactory::invalidTreeCoordinateFormat(
+    Positions& positions
+) {
+    std::stringstream result;
+    
+    result << "Coordinates:";
+    BOOST_FOREACH(Positions::value_type position, positions)
+        result << " '" << position.first << "'='" << position.second << "'";
+    result << " has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree";
+
+    return InvalidCoordinate(result.str());
+}
+
 InvalidCoordinate ExceptionFactory::noParamsForPositions(
     Index positionInStorage,
     Index maxPosition

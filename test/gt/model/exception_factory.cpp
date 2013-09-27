@@ -46,8 +46,25 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCoordinateFormat ) {
 
     // then
     BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message("Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names and strategies are valid")
+    );
+}
+
+BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidTreeCoordinateFormat ) {
+    // given
+    GT::Identifier playerName   = GT::createIdentifier("player");
+    GT::Identifier strategyName = GT::createIdentifier("strategy");
+    GT::Positions  positions    = GT::createPositions();
+    positions.insert( GT::Positions::value_type(playerName, strategyName) );
+
+    // when
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidTreeCoordinateFormat(positions);
+
+    // then
+    BOOST_CHECK_EQUAL(
     	exception.what(),
-    	GT::Message("Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names and strategies are valid")
+    	GT::Message("Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree")
     );
 }
 
