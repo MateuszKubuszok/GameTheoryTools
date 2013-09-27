@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_setPlayers_getPlayers ) {
     strategies->push_back( strategy2 );
     GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
     GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type( *playerName, player) );
+    players->insert( GT::Model::Players::value_type(*playerName, player) );
 
     // when
     GT::Model::StrategicDataBuilder strategicDataBuilder;
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
     strategies->push_back( strategy2 );
     GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
     GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type( *playerName, player) );
+    players->insert( GT::Model::Players::value_type(*playerName, player) );
 
     // when
     GT::Model::StrategicDataBuilder strategicDataBuilder;
@@ -50,8 +50,11 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
 }
 
 BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
-    
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setIndentationMode(GT::Model::TABS)
+        .setBuilderMode(GT::Model::PLAIN);
+
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
     GT::IdentifierPtr  strategy2  = GT::createIdentifierPtr("p1s2");
@@ -60,7 +63,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
     strategies->push_back( strategy2 );
     GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
     GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type( *playerName, player) );
+    players->insert( GT::Model::Players::value_type(*playerName, player) );
     
     GT::NumbersPtr params1 = GT::createNumbersPtr();
     params1->push_back( GT::createNumberPtr(10) );
@@ -68,9 +71,9 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
     params2->push_back( GT::createNumberPtr(20) );
     
     GT::PositionsPtr positions1 = GT::createPositionsPtr();
-    positions1->insert( GT::Positions::value_type( *playerName, *strategy1 ) );
+    positions1->insert( GT::Positions::value_type(*playerName, *strategy1) );
     GT::PositionsPtr positions2 = GT::createPositionsPtr();
-    positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
+    positions2->insert( GT::Positions::value_type(*playerName, *strategy2) );
 
     // when
     GT::Model::StrategicDataBuilder strategicDataBuilder;
@@ -101,6 +104,10 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
 
 BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setIndentationMode(GT::Model::TABS)
+        .setBuilderMode(GT::Model::PLAIN);
+
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
     GT::IdentifierPtr  strategy2  = GT::createIdentifierPtr("p1s2");
@@ -109,7 +116,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     strategies->push_back( strategy2 );
     GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
     GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type( *playerName, player) );
+    players->insert( GT::Model::Players::value_type(*playerName, player) );
     
     GT::NumbersPtr params1 = GT::createNumbersPtr();
     params1->push_back( GT::createNumberPtr(10) );
@@ -117,9 +124,9 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     params2->push_back( GT::createNumberPtr(20) );
     
     GT::PositionsPtr positions1 = GT::createPositionsPtr();
-    positions1->insert( GT::Positions::value_type( *playerName, *strategy1 ) );
+    positions1->insert( GT::Positions::value_type(*playerName, *strategy1 ) );
     GT::PositionsPtr positions2 = GT::createPositionsPtr();
-    positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
+    positions2->insert( GT::Positions::value_type(*playerName, *strategy2 ) );
 
     // when
     GT::Model::StrategicDataBuilder strategicDataBuilder;
