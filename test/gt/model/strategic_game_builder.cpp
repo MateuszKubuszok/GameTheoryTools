@@ -5,17 +5,6 @@
 
 BOOST_AUTO_TEST_SUITE( StrategicGameBuilder )
 
-class StrategicGameBuilderTestImpl : public GT::Model::StrategicGameBuilder {
-public:
-    virtual GT::Model::GamePtr build() {
-        return GT::Model::NullFactory::getInstance().createGame();
-    }
-
-    virtual GT::Message toString() {
-        return GT::Message("TestStrategicGameBuilder");
-    }
-};
-
 BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
@@ -29,7 +18,7 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    StrategicGameBuilderTestImpl strategicGameBuilder;
+    GT::Model::StrategicGameBuilder strategicGameBuilder;
     strategicGameBuilder.setPlayers(players);
     GT::Model::PlayersPtr gotPlayers =
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
@@ -66,7 +55,7 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    StrategicGameBuilderTestImpl strategicGameBuilder;
+    GT::Model::StrategicGameBuilder strategicGameBuilder;
     strategicGameBuilder.setPlayers(players);
     
     strategicGameBuilder.clone()->addNextPositions(positions1).setParams(params1);
