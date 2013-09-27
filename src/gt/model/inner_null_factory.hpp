@@ -10,10 +10,12 @@ namespace Model {
  * @brief Used for creation of Null instances for Model inner classes.
  *
  * @author Mateusz Kubuszok
+ *
+ * @see NullFactory
  */
 class InnerNullFactory {
     /**
-     * @brief Contains pointer to a NullFactory instance.
+     * @brief Contains pointer to a InnerNullFactory instance.
      */
     static InnerNullFactory* volatile instance;
 
@@ -25,8 +27,18 @@ public:
      */
     static InnerNullFactory& getInstance();
 
+    /**
+     * @brief Creates null StrategicData.
+     *
+     * @result null StrategicData
+     */
     StrategicDataPtr createStrategicData();
 
+    /**
+     * @brief Creates null TreeData.
+     *
+     * @result null TreeData
+     */
     TreeDataPtr createTreeData();
 
 private:
