@@ -60,6 +60,13 @@ Data& StrategicData::setValues(
     Index      positionInStorage,
     NumbersPtr numbers
 ) {
+    if (positionInStorage < 0 || positionsHelper.getUpperBound() <= positionInStorage)
+        throw ExceptionFactory::getInstance()
+                .noParamsForPositions(
+                    positionInStorage,
+                    positionsHelper.getUpperBound()
+                );
+
     payoffStorage[positionInStorage] = numbers;
     payoffStorageAllocation[positionInStorage] = true;
 
