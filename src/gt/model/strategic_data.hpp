@@ -161,6 +161,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null StrategicData for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class NullStrategicData : public StrategicData {
 public:
     NullStrategicData() :

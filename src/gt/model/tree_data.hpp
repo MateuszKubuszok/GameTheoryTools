@@ -136,6 +136,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null TreeData for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class NullTreeData : public TreeData {
 public:
     NullTreeData() :

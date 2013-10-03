@@ -16,20 +16,27 @@ namespace Model {
 class GameBuilder : public DataBuilder {
 public:
     /**
+     * @brief Builds Game.
+     *
+     * @return Game
+     * @throw std::runtime_exception thrown when data used for building
+     *                               is inconsistent 
+     */
+    virtual GamePtr build() = 0;
+
+    /**
+     * @brief Returns Players' definitions.
+     *
+     * @return Players' definitions
+     */
+    virtual PlayersPtr getPlayers() = 0;
+
+    /**
      * @brief Returns inner DataBuilder.
      *
      * @return DataBuilder
      */
     virtual DataBuilderPtr dataBuilder() = 0;
-
-	/**
-	 * @brief Builds Game.
-	 *
-	 * @return Game
-	 * @throw std::runtime_exception thrown when data used for building
-	 *                               is inconsistent 
-	 */
-	virtual GamePtr build() = 0;
 }; /* END class GameBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,6 +48,10 @@ public:
  */
 class NullGameBuilder : public GameBuilder {
 public:
+    virtual PlayersPtr getPlayers() {
+        return NullFactory::getInstance().createPlayers();
+    }
+
     virtual DataBuilder& setPlayers(
         PlayersPtr players
     ) {
@@ -64,7 +75,7 @@ public:
     }
 
     virtual GamePtr build() {
-    	return NullFactory::getInstance().createGame();
+        return NullFactory::getInstance().createGame();
     }
 
     virtual DataBuilderPtr clone() {

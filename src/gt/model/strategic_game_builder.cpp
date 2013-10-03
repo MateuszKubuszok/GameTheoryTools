@@ -12,6 +12,10 @@ StrategicGameBuilder::StrategicGameBuilder() :
     strategicDataBuilder(new StrategicDataBuilder())
     {}
 
+PlayersPtr StrategicGameBuilder::getPlayers() {
+    return strategicDataBuilder->getPlayers();
+}
+
 DataBuilder& StrategicGameBuilder::setPlayers(
     PlayersPtr players
 ) {
@@ -46,7 +50,7 @@ GamePtr StrategicGameBuilder::build() {
     return GamePtr(
         new StrategicGame(
             strategicDataBuilder->getPlayers(),
-            strategicDataBuilder->getData()
+            strategicDataBuilder->build()
         )
     );
 }

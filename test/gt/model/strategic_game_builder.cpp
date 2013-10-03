@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
     GT::Model::DataPtr data = 
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
             strategicGameBuilder.dataBuilder()
-        )->getData();
+        )->build();
 
     // then
     BOOST_CHECK_EQUAL(

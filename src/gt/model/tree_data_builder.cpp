@@ -16,7 +16,7 @@ TreeDataBuilder::TreeDataBuilder() :
     depthName(createIdentifier(1))
     {}
 
-TreeDataPtr TreeDataBuilder::getData() {
+TreeDataPtr TreeDataBuilder::build() {
     return data;
 }
 

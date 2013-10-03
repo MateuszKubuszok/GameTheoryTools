@@ -9,44 +9,48 @@ namespace Model {
 // public:
 
 TreeGameBuilder::TreeGameBuilder() :
-    strategicDataBuilder(new TreeDataBuilder())
+    treeDataBuilder(new TreeDataBuilder())
     {}
+
+PlayersPtr TreeGameBuilder::getPlayers() {
+    return treeDataBuilder->getPlayers();
+}
 
 DataBuilder& TreeGameBuilder::setPlayers(
     PlayersPtr players
 ) {
-    strategicDataBuilder->setPlayers(players);
+    treeDataBuilder->setPlayers(players);
     return *this;
 }
 
 DataBuilder& TreeGameBuilder::addNextPositions(
     PositionsPtr positions
 ) {
-    strategicDataBuilder->addNextPositions(positions);
+    treeDataBuilder->addNextPositions(positions);
     return *this;
 }
 
 DataBuilder& TreeGameBuilder::setParams(
     NumbersPtr params
 ) {
-    strategicDataBuilder->setParams(params);
+    treeDataBuilder->setParams(params);
     return *this;
 }
 
 DataBuilderPtr TreeGameBuilder::clone() {
-    return strategicDataBuilder->clone();
+    return treeDataBuilder->clone();
 }
 
 DataBuilderPtr TreeGameBuilder::dataBuilder() {
-    return boost::dynamic_pointer_cast<DataBuilder>(strategicDataBuilder);
+    return boost::dynamic_pointer_cast<DataBuilder>(treeDataBuilder);
 }
 
 
 GamePtr TreeGameBuilder::build() {
     return GamePtr(
         new TreeGame(
-            strategicDataBuilder->getPlayers(),
-            strategicDataBuilder->getData()
+            treeDataBuilder->getPlayers(),
+            treeDataBuilder->build()
         )
     );
 }

@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_setPlayers_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataBuilder_getData ) {
+BOOST_AUTO_TEST_CASE( TreeDataBuilder_build ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_getData ) {
 
     // then
     BOOST_CHECK_NO_THROW(
-        treeDataBuilder.getData()
+        treeDataBuilder.build()
     );
 }
 
@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_functional ) {
     treeDataBuilder.clone()->addNextPositions(positions1).addNextPositions(positions2).setParams(params1);
     treeDataBuilder.clone()->addNextPositions(positions2).addNextPositions(positions1).setParams(params2);
 
-    GT::Model::DataPtr data = treeDataBuilder.getData();
+    GT::Model::DataPtr data = treeDataBuilder.build();
 
     // then
     BOOST_CHECK_EQUAL(

@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_setPlayers_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_build ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_getData ) {
 
     // then
     BOOST_CHECK_NO_THROW(
-        strategicDataBuilder.getData();
+        strategicDataBuilder.build();
     );
 }
 
@@ -137,7 +137,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     strategicDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
     strategicDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
 
-    GT::Model::DataPtr data = strategicDataBuilder.getData();
+    GT::Model::DataPtr data = strategicDataBuilder.build();
 
     // then
     BOOST_CHECK_EQUAL(

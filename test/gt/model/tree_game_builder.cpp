@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE( TreeGameBuilder_functional ) {
     GT::Model::DataPtr data = 
         boost::dynamic_pointer_cast<GT::Model::TreeDataBuilder>(
             treeGameBuilder.dataBuilder()
-        )->getData();
+        )->build();
 
     // then
     BOOST_CHECK_EQUAL(

@@ -15,7 +15,7 @@ StrategicDataBuilder::StrategicDataBuilder() :
     currentlyKnownPositions()
     {}
 
-StrategicDataPtr StrategicDataBuilder::getData() {
+StrategicDataPtr StrategicDataBuilder::build() {
     return data;
 }
 

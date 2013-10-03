@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame) {
     GT::Model::DataPtr data = 
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
             gameBuilder->dataBuilder()
-        )->getData();
+        )->build();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE( TreeGameBuilder_buildTreeGame ) {
     GT::Model::DataPtr data = 
         boost::dynamic_pointer_cast<GT::Model::TreeDataBuilder>(
             gameBuilder->dataBuilder()
-        )->getData();
+        )->build();
 
     // then
     BOOST_CHECK_EQUAL(
