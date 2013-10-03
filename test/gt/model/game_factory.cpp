@@ -5,7 +5,7 @@
 
 BOOST_AUTO_TEST_SUITE( GameFactory )
 
-BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame) {
+BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
