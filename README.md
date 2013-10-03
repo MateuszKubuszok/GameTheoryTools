@@ -18,7 +18,7 @@ installations are also required.
 GTL parser uses Flex and Bison tools to build `.cpp` files.
 
 On Debian dependencies can be installed by calling
-`sudo apt-get install g++ bison flex gmp libboost-all-dev scons`.
+`sudo apt-get install g++ bison flex libgmp-dev libboost-all-dev scons`.
 
 Building process
 ----
