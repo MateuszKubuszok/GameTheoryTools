@@ -126,14 +126,14 @@ public:
     /**
      * @brief Creates NullResult.
      *
-     * @result NullNumber
+     * @result NullResult
      */
     ResultPtr createResult();
 
     /**
      * @brief Creates NullResultBuilder.
      *
-     * @result NullNumber
+     * @result NullResultBuilder
      */
     ResultBuilderPtr createResultBuilder();
 
