@@ -14,15 +14,26 @@ namespace GTL {
 class Game : public virtual Object {
 public:
     /**
-     * @brief Search Nash equilibrium for given conditions.
+     * @brief Search pure Nash equilibrium for given conditions.
      *
      * @param context    context with definitions
      * @param conditions conditions for query
      */
-    virtual CoordinatePtr findEquilibrium(
+    virtual ResultPtr pureEquilibrium(
         const Context&    context,
         const Conditions& conditions
-    ) = 0;
+    );
+
+    /**
+     * @brief Search mixed Nash equilibrium for given conditions.
+     *
+     * @param context    context with definitions
+     * @param conditions conditions for query
+     */
+    virtual ResultPtr mixedEquilibrium(
+        const Context&    context,
+        const Conditions& conditions
+    );
 
     /**
      * @brief Returns Message about Game.
@@ -36,11 +47,18 @@ public:
 
 class NullGame : public Game {
 public:
-    virtual CoordinatePtr findEquilibrium(
-        const Context&      context,
+    virtual ResultPtr pureEquilibrium(
+        const Context&    context,
         const Conditions& conditions
     ) {
-        return NullFactory::getInstance().createCoordinate();
+        return Model::NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr mixedEquilibrium(
+        const Context&    context,
+        const Conditions& conditions
+    ) {
+        return Model::NullFactory::getInstance().createResult();
     }
 
     virtual bool isNotNull() {

@@ -86,6 +86,10 @@ PlayerPtr NullFactory::createPlayer() {
     return PlayerPtr(new NullPlayer());
 }
 
+PositionsPtr NullFactory::createPositions() {
+    return PositionsPtr(new Positions());
+}
+
 ResultPtr NullFactory::createResult() {
     return ResultPtr(new NullResult());
 }

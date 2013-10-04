@@ -145,7 +145,7 @@ ModelsTestsProgram_bin = testEnv.Program(
 )
 ModelsTestsProgram_run = Command(
     source=ModelsTestsProgram_bin,
-    target='mock-content',
+    target='model-mock-content',
     action=ModelsTestsProgram_URI+' --log_level='+logLevel
 )
 Depends(
@@ -185,6 +185,10 @@ GTL = [
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
 ]
+Depends(
+    GTL,
+    ModelsTestsProgram_run
+)
 
 ################################################################################
 
@@ -193,8 +197,27 @@ GTL = [
 GTLTests = [
     testEnv.Object(
         source=GTLTest_cpp,
-        target=targetForTest(GTL_cpp)
+        target=targetForTest(GTLTest_cpp)
     )
     for GTLTest_cpp in Glob(test+gtl+'*.cpp')
 ]
 
+################################################################################
+
+# Build and run GTL tests
+
+GTLTestsProgram_URI = programs+'GTLTests'
+GTLTestsProgram_bin = testEnv.Program(
+    source=Models + GTL + GTLTests,
+    target=GTLTestsProgram_URI
+)
+GTLTestsProgram_run = Command(
+    source=GTLTestsProgram_bin,
+    target='gtl-mock-content',
+    action=GTLTestsProgram_URI+' --log_level='+logLevel
+)
+Depends(
+    GTLTestsProgram_run,
+    GTLTestsProgram_bin
+)
+AlwaysBuild(GTLTestsProgram_run)

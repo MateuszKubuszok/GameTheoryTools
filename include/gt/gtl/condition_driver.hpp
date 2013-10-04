@@ -14,11 +14,6 @@ namespace GTL {
 class ConditionDriver : public virtual Root {
 public:
 	/**
-     * @brief Default constructor.
-	 */
-	ConditionDriver();
-
-	/**
 	 * @brief Create condition for Player choosing strategy.
 	 *
 	 * @param player   Player's name
@@ -48,6 +43,7 @@ public:
 class NullConditionDriver : public ConditionDriver {
 public:
 	NullConditionDriver() :
+        Root(),
 		ConditionDriver()
 		{}
 

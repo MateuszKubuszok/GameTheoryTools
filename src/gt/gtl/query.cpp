@@ -5,14 +5,21 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class Param
+// class Query {
 // public:
 
-Param::Param() :
-    Object()
-{
-    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
+ResultPtr Query::execute(
+    Context& context
+) {
+    return Model::NullFactory::getInstance().createResult();
+}
+
+Message Query::getResult() {
+    return Message("NullResult");
+}
+
+Message Query::toString() {
+    return Message("NullResult");
 }
 
 // }

@@ -31,7 +31,9 @@ public:
     Context();
 
     /**
-     * @brief Constructor with parental context inheritance. 
+     * @brief Constructor with parental context inheritance.
+     *
+     * @param parentContext parental Context 
      */
     Context(
         const ContextPtr parentContext
@@ -110,7 +112,7 @@ class NullContext : public Context {
     }
 
     virtual Context& registerObject(
-        Definition& definition
+        DefinitionPtr definition
     ) {
         return *this;
     }

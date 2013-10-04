@@ -128,6 +128,13 @@ public:
      * @return SubCoordinates
      */
     virtual CoordinatesPtr getSubCoordinates();
+
+    /**
+     * @brief Returns Coordinate Message
+     *
+     * @return Message
+     */
+    virtual GT::Message toString();
 }; /* END class Coordinate */
 
 ////////////////////////////////////////////////////////////////////////////////

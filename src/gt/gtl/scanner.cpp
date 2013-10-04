@@ -604,7 +604,7 @@ static yyconst flex_int16_t yy_rule_linenum[29] =
 #include <cstdlib>         /* Standard library */
 
 /* GTL prototypes */
-#include "gt/gtl/common.hpp"
+#include "gt/gtl/inner_common.hpp"
 
 /* Shorten token's type name */
 typedef GT::GTL::Parser::token token;
@@ -1011,7 +1011,7 @@ case 18:
 YY_RULE_SETUP
 #line 79 "f_n_b/scanner.ll"
 {
-        yylval->number = new NumberPtr(new Number(yytext));
+        lval->number = new GT::NumberPtr(new GT::Number(yytext));
         return (token::number);
     }
 	YY_BREAK
@@ -1020,7 +1020,7 @@ case 19:
 YY_RULE_SETUP
 #line 85 "f_n_b/scanner.ll"
 {
-        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
+        lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::identifier);
     }
 	YY_BREAK
@@ -1075,7 +1075,7 @@ case 28:
 YY_RULE_SETUP
 #line 103 "f_n_b/scanner.ll"
 {
-        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
+        lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::lexer_error);
     }
 	YY_BREAK
@@ -2148,3 +2148,9 @@ void yyfree (void * ptr )
 
  /*********************** Code after scanner definition **********************/
 
+/**
+ * @brief Mock implementation for yyFlexLexer::yylex() - without it compiler throws error.
+ */
+int yyFlexLexer::yylex() {
+    return 0;
+}

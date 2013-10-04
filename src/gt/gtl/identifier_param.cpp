@@ -11,6 +11,7 @@ namespace GTL {
 IdentifierParam::IdentifierParam(
     Identifier& id
 ) :
+    Param(),
     identifier(id)
     {}
 

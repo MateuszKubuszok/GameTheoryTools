@@ -1365,15 +1365,15 @@ void Parser::error(
 /**
  * @brief Include for scanner.yylex.
  *
- * @param yylval  matched content
+ * @param lval    matched content
  * @param scanner scanner instance
  * @param driver  driver instance
  */
 static int yylex(
-    Parser::semantic_type* yylval,
+    Parser::semantic_type* lval,
     Scanner&               scanner,
     Driver&                driver
 ) {
-    return scanner.yylex(yylval);
+    return scanner.lex(lval);
 }
 

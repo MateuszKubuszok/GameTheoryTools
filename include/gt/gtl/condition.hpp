@@ -32,7 +32,7 @@ public:
      *
      * @return Condition's Message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class Condition */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +44,10 @@ public:
  */
 class NullCondition : public Condition {
 public:
+    NullCondition() :
+        Root()
+        {}
+    
     virtual void conditionQuery(
         Query& query
     ) {}

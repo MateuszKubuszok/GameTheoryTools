@@ -9,11 +9,15 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/* Exceptions declarations */
+
+class InvalidProperty;
+
 /* Class declarations */
 
 class NullFactory;
 
-class Object;     class NullObject;
+class Object;     class NullObject;     class ObjectProperty;
 class Condition;  class NullCondition;
 class Context;    class NullContext;
 class Coordinate; class NullCoordinate;
@@ -33,6 +37,7 @@ class Driver;     class NullDriver;
 /* Shortens commonly used names */
 
 typedef boost::shared_ptr<Object>                     ObjectPtr;
+typedef boost::shared_ptr<ObjectProperty>             ObjectPropertyPtr;
 typedef boost::shared_ptr<Condition>                  ConditionPtr;
 typedef boost::shared_ptr<Context>                    ContextPtr;
 typedef boost::shared_ptr<Coordinate>                 CoordinatePtr;
@@ -43,14 +48,15 @@ typedef boost::shared_ptr<Query>                      QueryPtr;
 typedef boost::shared_ptr<Param>                      ParamPtr;
 typedef boost::shared_ptr<Player>                     PlayerPtr;
 
-typedef boost::container::vector<ConditionPtr>        Conditions;
-typedef boost::shared_ptr<Conditions>                 ConditionsPtr;
-typedef boost::container::vector<CoordinatePtr>       Coordinates;
-typedef boost::shared_ptr<Coordinates>                CoordinatesPtr;
-typedef boost::container::vector<ObjectPtr>           Objects;
-typedef boost::shared_ptr<Objects>                    ObjectsPtr;
-typedef boost::container::vector<ParamPtr>            Params;
-typedef boost::shared_ptr<Params>                     ParamsPtr;
+typedef boost::container::vector<ConditionPtr>               Conditions;
+typedef boost::shared_ptr<Conditions>                        ConditionsPtr;
+typedef boost::container::vector<CoordinatePtr>              Coordinates;
+typedef boost::shared_ptr<Coordinates>                       CoordinatesPtr;
+typedef boost::container::vector<ObjectPtr>                  Objects;
+typedef boost::shared_ptr<Objects>                           ObjectsPtr;
+typedef boost::container::map<Identifier, ObjectPropertyPtr> ObjectPropertyMap;
+typedef boost::container::vector<ParamPtr>                   Params;
+typedef boost::shared_ptr<Params>                            ParamsPtr;
 
 typedef boost::shared_ptr<Parser>                     ParserPtr;
 typedef boost::shared_ptr<Scanner>                    ScannerPtr;
@@ -71,7 +77,10 @@ typedef Model::ResultFactory                          ResultFactory;
 
 /* Includes GTL elements headers */
 
+#include "gt/gtl/exceptions.hpp"
+
 #include "gt/gtl/null_factory.hpp"
+
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"
 #include "gt/gtl/condition_factory.hpp"

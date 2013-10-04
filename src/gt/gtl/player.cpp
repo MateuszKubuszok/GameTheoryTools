@@ -5,14 +5,19 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class Param
+// class Player {
 // public:
 
-Param::Param() :
-    Object()
-{
-    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
+Player::Player(
+    const IdentifierPtr  playerName,
+    const IdentifiersPtr playerStrategies
+) :
+    Object(),
+    Model::Player(playerName, playerStrategies)
+    {}
+
+GT::Message Player::toString() {
+    return Model::Player::toString();
 }
 
 // }

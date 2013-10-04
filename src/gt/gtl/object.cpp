@@ -9,6 +9,7 @@ namespace GTL {
 // public:
 
 Object::Object() :
+    Root(),
     registeredProperties()
 {
     registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
@@ -31,6 +32,7 @@ ResultPtr Object::findProperty(
     const Context& context,
     Identifier&    propertyName
 ) {
+    ConditionsPtr noConditions = NullFactory::getInstance().createConditions();
     return findPropertyWithConditions(context, propertyName, *noConditions);
 }
 
@@ -40,6 +42,15 @@ ResultPtr Object::findPropertyWithConditions(
     const Conditions& conditions
 ) {
     return getProperty(propertyName)->findForConditions(context, conditions);
+}
+
+IdentifiersPtr Object::listProperties() {
+    IdentifiersPtr properties = createIdentifiersPtr();
+
+    BOOST_FOREACH(Identifier property, registeredProperties | boost::adaptors::map_keys)
+        properties->push_back(createIdentifierPtr(property));
+
+    return properties;
 }
 
 Message Object::toString() {

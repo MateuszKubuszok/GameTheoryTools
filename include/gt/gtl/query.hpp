@@ -28,6 +28,13 @@ public:
      * @result Query results
      */
     virtual Message getResult();
+
+    /**
+     * @brief Returns Query's Message.
+     *
+     * @return Message
+     */
+    virtual Message toString();
 }; /* END class Query */
 
 ////////////////////////////////////////////////////////////////////////////////

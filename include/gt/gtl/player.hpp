@@ -22,10 +22,7 @@ public:
     Player(
         const IdentifierPtr  playerName,
         const IdentifiersPtr playerStrategies
-    ) :
-        Object(),
-        Model::Player(playerName, playerStrategies)
-        {}
+    );
 
     /**
      * @brief Returns Message about Player.

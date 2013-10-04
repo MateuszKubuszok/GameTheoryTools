@@ -5,15 +5,10 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class Param
+// class Condition {
 // public:
 
-Param::Param() :
-    Object()
-{
-    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
-}
+Condition::~Condition() {}
 
 // }
 

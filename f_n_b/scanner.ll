@@ -11,7 +11,7 @@
 #include <cstdlib>         /* Standard library */
 
 /* GTL prototypes */
-#include "gt/gtl/common.hpp"
+#include "gt/gtl/inner_common.hpp"
 
 /* Shorten token's type name */
 typedef GT::GTL::Parser::token token;
@@ -77,13 +77,13 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
  /* Numbers definitions */
 -?({scientific}|{float}|{integer}) {
-        yylval->number = new NumberPtr(new Number(yytext));
+        lval->number = new GT::NumberPtr(new GT::Number(yytext));
         return (token::number);
     }
 
  /* Identifiers */
 {identifier} {
-        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
+        lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::identifier);
     }
 
@@ -101,10 +101,17 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
  /* White spaces and errors */
 [ \t\r\f\v\n]+        { /* Removes white chars */ }
 .                     {
-        yylval->identifier = new IdentifierPtr(new Identifier(yytext));
+        lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::lexer_error);
     }
 
 %%
 
  /*********************** Code after scanner definition **********************/
+
+/**
+ * @brief Mock implementation for yyFlexLexer::yylex() - without it compiler throws error.
+ */
+int yyFlexLexer::yylex() {
+    return 0;
+}

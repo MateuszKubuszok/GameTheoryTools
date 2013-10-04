@@ -6,27 +6,12 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Class declarations */
-class ObjectProperty;
-
-/* Class declarations */
-typedef boost::shared_ptr<ObjectProperty> ObjectPropertyPtr;
-
-typedef boost::container::map<Identifier, ObjectPropertyPtr> ObjectPropertyMap;
-
-////////////////////////////////////////////////////////////////////////////////
-
 /**
  * @brief Root of all Objects used as a data in parsed by GTL.
  *
  * @author Mateusz Kubuszok
  */
 class Object : public virtual Root {
-    /**
-     * @brief Used for queries without Conditions.
-     */
-    static const ConditionsPtr noConditions;
-
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
@@ -88,6 +73,13 @@ public:
         Identifier&       propertyName,
         const Conditions& conditions
     );
+
+    /**
+     * @brief Returns list of available properties.
+     *
+     * @return properties list
+     */
+    IdentifiersPtr listProperties();
 
     /**
      * @brief Returns message about object.

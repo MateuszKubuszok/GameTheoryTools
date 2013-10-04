@@ -29,7 +29,7 @@ public:
      * @param playersDetails     declared players
      * @param coordinatesDetails declared data
      */
-     Details(
+    Details(
         const ObjectsPtr     playersDetails,
         const CoordinatesPtr coordinatesDetails
     );
@@ -82,17 +82,17 @@ public:
         )
         {}
 
-    ContextPtr createSubContext(
+    virtual ContextPtr createSubContext(
         const Context& parentContext
     ) {
         return NullFactory::getInstance().createContext();
     }
 
-    CoordinatesPtr getCoordinates() {
+    virtual CoordinatesPtr getCoordinates() {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    ObjectsPtr getPlayers() {
+    virtual ObjectsPtr getPlayers() {
         return NullFactory::getInstance().createObjects();
     }
 
