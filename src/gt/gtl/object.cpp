@@ -10,10 +10,22 @@ namespace GTL {
 
 Object::Object() :
     Root(),
-    registeredProperties()
+    registeredProperties(),
+    typeName(createIdentifierPtr("Object"))
 {
     registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
-    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty()));
+    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty(this)));
+}
+
+Object::Object(
+    Identifier type
+) :
+    Root(),
+    registeredProperties(),
+    typeName(createIdentifierPtr(type))
+{
+    registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
+    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty(this)));
 }
 
 Object::~Object() {}
@@ -48,13 +60,17 @@ IdentifiersPtr Object::listProperties() {
     IdentifiersPtr properties = createIdentifiersPtr();
 
     BOOST_FOREACH(Identifier property, registeredProperties | boost::adaptors::map_keys)
-        properties->push_back(createIdentifierPtr(property));
+        properties->push_back( createIdentifierPtr(property) );
 
     return properties;
 }
 
+IdentifierPtr Object::type() {
+    return typeName;
+}
+
 Message Object::toString() {
-    return "Object";
+    return createMessage(typeName);
 }
 
 // protected:
@@ -70,7 +86,7 @@ ObjectPropertyPtr Object::getProperty(
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
-    throw std::invalid_argument("Property not found for this Object");
+    throw InvalidProperty("Property not found for this Object");
 }
 
 void Object::registerProperty(

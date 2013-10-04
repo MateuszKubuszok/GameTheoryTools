@@ -8,13 +8,19 @@ namespace GTL {
 // class ObjectTypeProperty {
 // public:
 
-ObjectTypeProperty::ObjectTypeProperty() {}
+ObjectTypeProperty::ObjectTypeProperty(
+    Object* describedObject
+) :
+    object(describedObject)
+    {}
 
 ResultPtr ObjectTypeProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions
 ) {
-    return ResultFactory::getInstance().constResult(Message("Object"));
+    IdentifierPtr name  = createIdentifierPtr("Type");
+    MessagePtr    value = createMessagePtr(object->type());
+    return ResultFactory::getInstance().buildResult()->addResult(name, value).build();
 }
 
 // }

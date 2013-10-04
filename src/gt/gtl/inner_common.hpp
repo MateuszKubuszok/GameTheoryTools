@@ -33,6 +33,10 @@ class ParamValueProperty;
 class IdentifierParam;
 class ValueParam;
 
+/* Shortens comonly used names */
+typedef Model::ResultFactory    ResultFactory;
+typedef Model::ResultBuilderPtr ResultBuilderPtr;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */

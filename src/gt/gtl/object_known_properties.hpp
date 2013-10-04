@@ -7,11 +7,11 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 class ObjectKnownProperties : public ObjectProperty {
-    const Object* object;
+    Object* object;
 
 public:
     ObjectKnownProperties(
-        const Object* describedObject
+        Object* describedObject
     );
 
     virtual ResultPtr findForConditions(

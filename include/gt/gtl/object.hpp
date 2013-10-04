@@ -17,11 +17,21 @@ class Object : public virtual Root {
      */
     ObjectPropertyMap registeredProperties;
 
+    /**
+     * @brief Object's type name.
+     */
+    IdentifierPtr typeName;
+
 public:
     /**
      * @brief Default constructor.
      */
     Object();
+
+    /**
+     * @brief Default constructor.
+     */
+    explicit Object(Identifier type);
 
     /**
      * @brief Object's destructor.
@@ -80,6 +90,13 @@ public:
      * @return properties list
      */
     IdentifiersPtr listProperties();
+
+    /**
+     * @brief Returns type of an Object.
+     *
+     * @return type name
+     */
+    IdentifierPtr type();
 
     /**
      * @brief Returns message about object.

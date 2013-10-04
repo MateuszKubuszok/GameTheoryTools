@@ -7,8 +7,12 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 class ObjectTypeProperty : public ObjectProperty {
+    Object* object;
+
 public:
-    ObjectTypeProperty();
+    ObjectTypeProperty(
+        Object* object
+    );
 
     virtual ResultPtr findForConditions(
         const Context&    context,

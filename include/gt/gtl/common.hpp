@@ -66,7 +66,6 @@ typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;
 typedef Model::NullResult                             NullResult;
 typedef Model::ResultPtr                              ResultPtr;
-typedef Model::ResultFactory                          ResultFactory;
 
 ////////////////////////////////////////////////////////////////////////////////
 
