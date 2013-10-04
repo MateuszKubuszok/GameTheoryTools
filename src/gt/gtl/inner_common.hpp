@@ -27,7 +27,6 @@ namespace GTL {
 class ObjectTypeProperty;
 class ObjectKnownProperties;
 
-class ParamTypeProperty;
 class ParamValueProperty;
 
 class IdentifierParam;
@@ -49,7 +48,6 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/object_type_property.hpp"
 #include "gt/gtl/object_known_properties.hpp"
 
-#include "gt/gtl/param_type_property.hpp"
 #include "gt/gtl/param_value_property.hpp"
 
 #include "gt/gtl/identifier_param.hpp"

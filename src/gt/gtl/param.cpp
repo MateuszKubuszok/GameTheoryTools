@@ -9,10 +9,9 @@ namespace GTL {
 // public:
 
 Param::Param() :
-    Object()
+    Object(createIdentifier("Param"))
 {
     registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
-    registerProperty(Identifier("type"),  ObjectPropertyPtr(new ParamTypeProperty()));
 }
 
 // }

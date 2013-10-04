@@ -48,7 +48,6 @@ CoordinatePtr NullFactory::createCoordinate() {
 }
 
 CoordinatesPtr NullFactory::createCoordinates() {
-    // TODO: NullCoodinates
     return CoordinatesPtr(new Coordinates());
 }
 
@@ -69,7 +68,6 @@ ObjectPtr NullFactory::createObject() {
 }
 
 ObjectsPtr NullFactory::createObjects() {
-    // TODO: NullObjects
     return ObjectsPtr(new Objects());
 }
 
@@ -78,7 +76,6 @@ ParamPtr NullFactory::createParam() {
 }
 
 ParamsPtr NullFactory::createParams() {
-    // TODO: NullParams
     return ParamsPtr(new Params());
 }
 
