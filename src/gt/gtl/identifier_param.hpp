@@ -10,6 +10,10 @@ namespace GTL {
  * @brief Param containing reference to other Param. 
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Context
+ * @see Param
+ * @see ParamFactory
  */   
 class IdentifierParam : public Param {
     Identifier identifier;
@@ -31,6 +35,7 @@ public:
      * @param visitedIdentifiers already visited Identifiers
      * @return                   Object
      * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
+     * @throw NotDefinedParam    thrown when Param cannot find value inside Context
      */
     virtual ObjectPtr getObject(
         Context&            context,
@@ -44,6 +49,7 @@ public:
      * @param visitedIdentifiers already visited Identifiers
      * @return                   Number
      * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
+     * @throw NotDefinedParam    thrown when Param cannot find value inside Context
      */
     virtual NumberPtr getNumber(
         Context&            context,

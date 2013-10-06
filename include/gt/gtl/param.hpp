@@ -10,6 +10,10 @@ namespace GTL {
  * @brief Abstract class that defines interface for Params. 
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Context
+ * @see Definition
+ * @see ParamFactory
  */   
 class Param : public virtual Object {
 public:
@@ -26,9 +30,11 @@ public:
     /**
      * @brief Returns Object for Context.
      *
-     * @param context           Context with values
-     * @return                  Object
-     * @throw CyclicIdentifiers thrown when Identfiers create the cycle
+     * @param context               Context with values
+     * @return                      Object
+     * @throw CyclicIdentifiers     thrown when Identfiers create the cycle
+     * @throw InvalidContentRequest thrown when Param does not contain Object 
+     * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
     virtual ObjectPtr getObject(
         Context& context
@@ -37,10 +43,12 @@ public:
     /**
      * @brief Returns Object for Context.
      *
-     * @param context            Context with values
-     * @param visitedIdentifiers already visited Identifiers
-     * @return                   Object
-     * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
+     * @param context               Context with values
+     * @param visitedIdentifiers    already visited Identifiers
+     * @return                      Object
+     * @throw CyclicIdentifiers     thrown when Identfiers create the cycle
+     * @throw InvalidContentRequest thrown when Param does not contain Object
+     * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
     virtual ObjectPtr getObject(
         Context&            context,
@@ -50,9 +58,11 @@ public:
     /**
      * @brief Returns Number for context.
      *
-     * @param context           Context with values
-     * @return                  Number
-     * @throw CyclicIdentifiers thrown when Identfiers create the cycle
+     * @param context               Context with values
+     * @return                      Number
+     * @throw CyclicIdentifiers     thrown when Identfiers create the cycle
+     * @throw InvalidContentRequest thrown when Param does not contain Number
+     * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
     virtual NumberPtr getNumber(
         Context& context
@@ -61,10 +71,12 @@ public:
     /**
      * @brief Returns Number for context.
      *
-     * @param context            Context with values
-     * @param visitedIdentifiers already visited Identifiers
-     * @return                   Number
-     * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
+     * @param context               Context with values
+     * @param visitedIdentifiers    already visited Identifiers
+     * @return                      Number
+     * @throw CyclicIdentifiers     thrown when Identfiers create the cycle
+     * @throw InvalidContentRequest thrown when Param does not contain Number
+     * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
     virtual NumberPtr getNumber(
         Context&            context,

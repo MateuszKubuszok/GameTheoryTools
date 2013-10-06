@@ -10,6 +10,9 @@ namespace GTL {
  * @brief Definition used to define Context. 
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Context
+ * @see Param
  */
 class Definition : public virtual Root {
     /**

@@ -10,6 +10,10 @@ namespace GTL {
  * @brief Param containing Object value. 
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Context
+ * @see Param
+ * @see ParamFactory
  */   
 class ObjectParam : public Param {
     ObjectPtr value;
@@ -30,7 +34,6 @@ public:
      * @param context            Context with values
      * @param visitedIdentifiers already visited Identifiers
      * @return                   Object
-     * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
      */
     virtual ObjectPtr getObject(
         Context&            context,
@@ -40,10 +43,10 @@ public:
     /**
      * @brief Returns Number for context.
      *
-     * @param context            Context with values
-     * @param visitedIdentifiers already visited Identifiers
-     * @return                   Number
-     * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
+     * @param context                Context with values
+     * @param visitedIdentifiers     already visited Identifiers
+     * @return                       Number
+     * @thrown InvalidContentRequest thrown always for this implementation
      */
     virtual NumberPtr getNumber(
         Context&            context,

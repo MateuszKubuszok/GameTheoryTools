@@ -12,6 +12,10 @@ namespace GTL {
  * Has the ability to dynamically inherit parent context filling it with data specific to itself.   
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Definition
+ * @see Param
+ * @see ParamFactory
  */
 class Context : public virtual Root {
     /**
