@@ -81,6 +81,10 @@ BOOST_AUTO_TEST_CASE( Context_functional ) {
 
 BOOST_AUTO_TEST_CASE( Context_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setIndentationMode(GT::Model::TABS)
+        .setBuilderMode(GT::Model::PLAIN);
+    
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
     GT::GTL::ParamPtr  numberParam               = GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
