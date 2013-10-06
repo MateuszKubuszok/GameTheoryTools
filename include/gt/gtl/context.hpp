@@ -15,6 +15,11 @@ namespace GTL {
  */
 class Context : public virtual Root {
     /**
+     * @brief Known objects map.
+     */
+    typedef boost::container::map<Identifier, ParamPtr> KnownObjects;
+    
+    /**
      * @brief Possible parent Context.
      */
     ContextPtr parentContext;
@@ -22,7 +27,7 @@ class Context : public virtual Root {
     /**
      * @brief Registerd Objects.
      */
-    boost::container::map<Identifier, ObjectPtr> knownObjects;
+    KnownObjects knownObjects;
 
 public:
     /**
@@ -35,7 +40,7 @@ public:
      *
      * @param parentContext parental Context 
      */
-    Context(
+    explicit Context(
         const ContextPtr parentContext
     );
 
@@ -48,12 +53,12 @@ public:
      * @brief Adds/overrides identifier with value.
      *
      * @param identifier identifer to register
-     * @param object     new value to register
+     * @param param      new value to register
      * @return           reference to context for chaining
      */
-    virtual Context& registerObject(
+    virtual Context& registerParam(
         IdentifierPtr identifier,
-        ObjectPtr     object
+        ParamPtr      param
     );
 
     /**
@@ -62,8 +67,27 @@ public:
      * @param definition definition of an Object with name
      * @return           reference to context for chaining
      */
-    virtual Context& registerObject(
+    virtual Context& registerParam(
         DefinitionPtr definition
+    );
+
+    /**
+     * @brief Returns true if Identifier has been registed.
+     *
+     * @return true if Identifier has been registerd
+     */
+    virtual bool hasRegistered(
+        Identifier& identifier
+    );
+
+    /**
+     * @brief Obtains value from context by identifer.
+     *
+     * @param identifier identifier to obtain
+     * @return           value to retur
+     */
+    virtual NumberPtr getNumber(
+        Identifier& identifier
     );
 
     /**
@@ -115,6 +139,12 @@ class NullContext : public Context {
         DefinitionPtr definition
     ) {
         return *this;
+    }
+
+    virtual NumberPtr getNumber(
+        Identifier& identifier
+    ) {
+        return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual ObjectPtr getObject(

@@ -11,6 +11,7 @@
 /* Includes boost libraries */
 #include <boost/shared_ptr.hpp>
 #include <boost/container/map.hpp>
+#include <boost/container/set.hpp>
 #include <boost/container/vector.hpp>
 
 /* GNU MultiPrecision library */

@@ -16,19 +16,27 @@ IdentifierParam::IdentifierParam(
     {}
 
 ObjectPtr IdentifierParam::getObject(
-    Context& context
+    Context&            context,
+    VisitedIdentifiers& visitedIdentifiers
 ) {
-    return context.getParam(identifier)->getObject(context);
+    checkVisitedIdentifiers(visitedIdentifiers, identifier);
+    visitedIdentifiers.insert(identifier);
+    return context.getParam(identifier)->getObject(context, visitedIdentifiers);
 }
 
-NumberPtr IdentifierParam::getValue(
-    Context& context
+NumberPtr IdentifierParam::getNumber(
+    Context&            context,
+    VisitedIdentifiers& visitedIdentifiers
 ) {
-    return context.getParam(identifier)->getValue(context);
+    checkVisitedIdentifiers(visitedIdentifiers, identifier);
+    visitedIdentifiers.insert(identifier);
+    return context.getParam(identifier)->getNumber(context, visitedIdentifiers);
 }
 
 Message IdentifierParam::toString() {
-    return Message("Param:Identifier=") + identifier;
+    IdentifierPtr name  = createIdentifierPtr("IdentifierParam");
+    MessagePtr    value = createMessagePtr(identifier);
+    return ResultFactory::getInstance().buildResult()->addResult(name, value).build()->getResult();
 }
 
 // }

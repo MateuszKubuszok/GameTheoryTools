@@ -45,6 +45,7 @@ for header in [
     'boost/shared_ptr.hpp',
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
+    'boost/container/set.hpp',
     'boost/container/vector.hpp',
     'boost/range/adaptor/map.hpp',
     'boost/range/adaptor/reversed.hpp',

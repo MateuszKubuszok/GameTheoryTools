@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_IDENTIFIER_PARAM_HPP__
-#define __GT_GTL_IDENTIFIER_PARAM_HPP__
+#ifndef __GT_GTL_NUMBER_PARAM_HPP__
+#define __GT_GTL_NUMBER_PARAM_HPP__
 
 namespace GT {
 namespace GTL {
@@ -7,21 +7,21 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Param containing reference to other Param. 
+ * @brief Param containing Number value. 
  *
  * @author Mateusz Kubuszok
  */   
-class IdentifierParam : public Param {
-    Identifier identifier;
+class NumberParam : public Param {
+    NumberPtr value;
 
 public:
     /**
-     * @brief Initiates Param with Identifier.
+     * @brief Initiates Param with Number.
      *
-     * @param id identifier
+     * @param number Number
      */
-    explicit IdentifierParam(
-        Identifier& id
+    explicit NumberParam(
+        NumberPtr number
     );
 
     /**
@@ -34,7 +34,7 @@ public:
      */
     virtual ObjectPtr getObject(
         Context&            context,
-        VisitedIdentifiers& visitedIdentifiers
+        VisitedIdentifiers& visitiedIdentifiers
     );
 
     /**
@@ -47,7 +47,7 @@ public:
      */
     virtual NumberPtr getNumber(
         Context&            context,
-        VisitedIdentifiers& visitedIdentifiers
+        VisitedIdentifiers& visitiedIdentifiers
     );
 
     /**
@@ -56,11 +56,11 @@ public:
      * @return Message
      */
     virtual Message toString();
-}; /* END class IdentifierParam */
+}; /* END class NumberParam */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_IDENTIFIER_PARAM_HPP__ */
+#endif /* #ifndef __GT_GTL_NUMBER_PARAM_HPP__ */

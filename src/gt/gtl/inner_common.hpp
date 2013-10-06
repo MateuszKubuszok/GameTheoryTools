@@ -30,7 +30,8 @@ class ObjectKnownProperties;
 class ParamValueProperty;
 
 class IdentifierParam;
-class ValueParam;
+class NumberParam;
+class ObjectParam;
 
 /* Shortens comonly used names */
 typedef Model::ResultFactory    ResultFactory;
@@ -51,7 +52,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/param_value_property.hpp"
 
 #include "gt/gtl/identifier_param.hpp"
-#include "gt/gtl/value_param.hpp"
+#include "gt/gtl/number_param.hpp"
+#include "gt/gtl/object_param.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 

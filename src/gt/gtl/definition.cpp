@@ -10,7 +10,7 @@ namespace GTL {
 
 Definition::Definition(
     IdentifierPtr definedName,
-    ObjectPtr     definedValue
+    ParamPtr      definedValue
 ) :
     name(definedName),
     value(definedValue)
@@ -22,8 +22,8 @@ IdentifierPtr Definition::getName() {
     return Model::NullFactory::getInstance().createIdentifier();
 }
 
-ObjectPtr Definition::getValue() {
-    return NullFactory::getInstance().createObject();
+ParamPtr Definition::getValue() {
+    return NullFactory::getInstance().createParam();
 }
 
 Message Definition::toString() {

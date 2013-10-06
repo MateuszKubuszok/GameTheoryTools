@@ -34,6 +34,16 @@ public:
     );
 
     /**
+     * @brief Creates Param by identifier attatched to it.
+     *
+     * @param identifier identifier of a Param
+     * @return           Param instance
+     */
+    ParamPtr createParam(
+        IdentifierPtr identifier
+    );
+
+    /**
      * @brief Creates Param by value contained by it.
      *
      * @param number value of a Param
@@ -41,6 +51,26 @@ public:
      */
     ParamPtr createParam(
         Number& number
+    );
+
+    /**
+     * @brief Creates Param by value contained by it.
+     *
+     * @param number value of a Param
+     * @return       Param instance
+     */
+    ParamPtr createParam(
+        NumberPtr number
+    );
+
+    /**
+     * @brief Creates Param by value contained by it.
+     *
+     * @param object value of a Param
+     * @return       Param instance
+     */
+    ParamPtr createParam(
+        ObjectPtr object
     );
 private:
     /**

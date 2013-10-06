@@ -20,7 +20,7 @@ class Definition : public virtual Root {
     /**
      * @brief Value of the property.
      */
-    const ObjectPtr value;
+    const ParamPtr value;
 
 public:
     /**
@@ -31,7 +31,7 @@ public:
      */
     Definition(
         IdentifierPtr definedName,
-        ObjectPtr     definedValue
+        ParamPtr     definedValue
     );
 
     /**
@@ -51,7 +51,7 @@ public:
      *
      * @return value of the property
      */
-    virtual ObjectPtr getValue();
+    virtual ParamPtr getValue();
 
     /**
      * @brief Returns Message about Definition.
@@ -73,7 +73,7 @@ public:
     NullDefinition() :
         Definition(
             Model::NullFactory::getInstance().createIdentifier(),
-            NullFactory::getInstance().createObject()
+            NullFactory::getInstance().createParam()
         )
         {}
 
@@ -81,8 +81,8 @@ public:
         return Model::NullFactory::getInstance().createIdentifier();
     }
 
-    virtual ObjectPtr getValue() {
-        return NullFactory::getInstance().createObject();
+    virtual ParamPtr getValue() {
+        return NullFactory::getInstance().createParam();
     }
 
     virtual bool isNotNull() {
