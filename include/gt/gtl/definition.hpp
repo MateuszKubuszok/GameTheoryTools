@@ -34,13 +34,8 @@ public:
      */
     Definition(
         IdentifierPtr definedName,
-        ParamPtr     definedValue
+        ParamPtr      definedValue
     );
-
-    /**
-     * @brief Default constructor.
-     */
-    ~Definition();
 
     /**
      * @brief Returns name of the property.

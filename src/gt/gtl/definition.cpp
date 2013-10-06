@@ -16,18 +16,18 @@ Definition::Definition(
     value(definedValue)
     {}
 
-Definition::~Definition() {}
-
 IdentifierPtr Definition::getName() {
-    return Model::NullFactory::getInstance().createIdentifier();
+    return name;
 }
 
 ParamPtr Definition::getValue() {
-    return NullFactory::getInstance().createParam();
+    return value;
 }
 
 Message Definition::toString() {
-    return Message("NullDefinition");
+    IdentifierPtr nam = createIdentifierPtr(name);
+    MessagePtr    val = createMessagePtr(value->toString());
+    return ResultFactory::getInstance().buildResult()->addResult(nam, val).build()->getResult();
 }
 
 // }
