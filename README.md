@@ -39,8 +39,7 @@ automatically during build as well.
 TODO
 ----
 
-* Finish Model implementation,
-* write Models' tests,
+* Implement properly GTL' classes,
 * write GTL's tests,
 * implement actual logic of finding equilibria,
 * test it,
