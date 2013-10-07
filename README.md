@@ -33,7 +33,7 @@ Executables  will be placed in `bin/` directory.
 Running tests
 ----
 
-To run tests manually call `bin/ModelsTests && bin/GTLTest`. Notice that they will be run
+To run tests manually call `bin/ModelsTests && bin/GTLTests`. Notice that they will be run
 automatically during build as well.
 
 For more information you can run each of them with `--log_level=test_suite` parameter.
