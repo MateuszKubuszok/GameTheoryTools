@@ -11,6 +11,7 @@ namespace GTL {
 Game::Game(
     Model::GamePtr gameImplementation
 ) :
+    Object(createIdentifier("Game")),
     game(gameImplementation)
 {
     registerProperty(Identifier("pure_equilibrium"),  ObjectPropertyPtr(new GamePureEquilibriumProperty(this)));
