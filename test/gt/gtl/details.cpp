@@ -1,7 +1,4 @@
-#include <boost/test/unit_test.hpp>
-#include <boost/test/test_tools.hpp>
-
-#include "gt/gtl/inner_common.hpp"
+#include "gt/gtl/test_common.hpp"
 
 BOOST_AUTO_TEST_SUITE( Details )
 
