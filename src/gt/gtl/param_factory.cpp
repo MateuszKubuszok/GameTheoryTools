@@ -17,13 +17,12 @@ ParamFactory* volatile ParamFactory::instance = 0;
 
 ParamFactory& ParamFactory::getInstance() {
     // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking"
-    // but without executing constructor inside getInstance() method
-    // since it's an eyesore. 
+    // "C++ and the Perils of Double-Checked Locking".
     if (!instance) {
         boost::mutex::scoped_lock lock(paramFactoryMutex);
         if (!instance) {
-            ParamFactory* volatile tmp = new ParamFactory();
+            ParamFactory* volatile tmp = (ParamFactory*) malloc(sizeof(ParamFactory));
+            new (tmp) ParamFactory; // placement new
             instance = tmp;
         }
     }

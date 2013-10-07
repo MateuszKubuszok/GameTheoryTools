@@ -17,13 +17,12 @@ ExceptionFactory* volatile ExceptionFactory::instance = 0;
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking"
-    // but without executing constructor inside getInstance() method
-    // since it's an eyesore. 
+    // "C++ and the Perils of Double-Checked Locking".
     if (!instance) {
         boost::mutex::scoped_lock lock(exceptionFactoryMutex);
         if (!instance) {
-            ExceptionFactory* volatile tmp = new ExceptionFactory();
+            ExceptionFactory* volatile tmp = (ExceptionFactory*) malloc(sizeof(ExceptionFactory));
+            new (tmp) ExceptionFactory; // placement new
             instance = tmp;
         }
     }

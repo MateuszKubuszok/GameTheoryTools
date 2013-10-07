@@ -17,13 +17,12 @@ GameFactory* volatile GameFactory::instance = 0;
 
 GameFactory& GameFactory::getInstance() {
     // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking"
-    // but without executing constructor inside getInstance() method
-    // since it's an eyesore. 
+    // "C++ and the Perils of Double-Checked Locking".
     if (!instance) {
         boost::mutex::scoped_lock lock(gameFactoryMutex);
         if (!instance) {
-            GameFactory* volatile tmp = new GameFactory();
+            GameFactory* volatile tmp = (GameFactory*) malloc(sizeof(GameFactory));
+            new (tmp) GameFactory; // placement new
             instance = tmp;
         }
     }

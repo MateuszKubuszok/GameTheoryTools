@@ -17,13 +17,12 @@ InnerNullFactory* volatile InnerNullFactory::instance = 0;
 
 InnerNullFactory& InnerNullFactory::getInstance() {
     // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking"
-    // but without executing constructor inside getInstance() method
-    // since it's an eyesore. 
+    // "C++ and the Perils of Double-Checked Locking".
     if (!instance) {
         boost::mutex::scoped_lock lock(innerNullFactoryMutex);
         if (!instance) {
-            InnerNullFactory* volatile tmp = new InnerNullFactory();
+            InnerNullFactory* volatile tmp = (InnerNullFactory*) malloc(sizeof(InnerNullFactory));
+            new (tmp) InnerNullFactory; // placement new
             instance = tmp;
         }
     }
