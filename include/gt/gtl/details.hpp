@@ -35,16 +35,6 @@ public:
     );
 
     /**
-     * @brief Returns Context with both general declarations and local ones.
-     *
-     * @param  parentContext parental Context
-     * @return               subcontext filled with Players
-     */
-    virtual ContextPtr createSubContext(
-        const Context& parentContext
-    );
-
-    /**
      * @brief Returns Coordinates with data.
      *
      * @return Coordinates wit data
@@ -81,12 +71,6 @@ public:
             NullFactory::getInstance().createCoordinates()
         )
         {}
-
-    virtual ContextPtr createSubContext(
-        const Context& parentContext
-    ) {
-        return NullFactory::getInstance().createContext();
-    }
 
     virtual CoordinatesPtr getCoordinates() {
         return NullFactory::getInstance().createCoordinates();
