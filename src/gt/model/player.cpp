@@ -82,22 +82,22 @@ Message Player::toString() {
 ////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    PlayerPtr player1,
-    PlayerPtr player2
+    PlayerPtr& player1,
+    PlayerPtr& player2
 ) {
     return (*player1) == (*player2);
 }
 
 bool operator!=(
-    PlayerPtr player1,
-    PlayerPtr player2
+    PlayerPtr& player1,
+    PlayerPtr& player2
 ) {
     return (*player1) != (*player2);
 }
 
 OutputStream& operator<<(
     OutputStream& stream,
-    PlayerPtr     player
+    PlayerPtr&    player
 ) {
     return stream << player->toString();
 }

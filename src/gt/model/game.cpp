@@ -36,22 +36,22 @@ bool Game::isEqual(
 ////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    GamePtr game1,
-    GamePtr game2
+    GamePtr& game1,
+    GamePtr& game2
 ) {
     return (*game1) == (*game2);
 }
 
 bool operator!=(
-    GamePtr game1,
-    GamePtr game2
+    GamePtr& game1,
+    GamePtr& game2
 ) {
     return (*game1) != (*game2);
 }
 
 OutputStream& operator<<(
     OutputStream& stream,
-    GamePtr       game
+    GamePtr&      game
 ) {
     return stream << game->toString();
 }

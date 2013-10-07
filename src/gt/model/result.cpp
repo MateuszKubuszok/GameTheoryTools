@@ -28,22 +28,22 @@ Message Result::toString() {
 ////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    ResultPtr result1,
-    ResultPtr result2
+    ResultPtr& result1,
+    ResultPtr& result2
 ) {
     return (*result1) == (*result2);
 }
 
 bool operator!=(
-    ResultPtr result1,
-    ResultPtr result2
+    ResultPtr& result1,
+    ResultPtr& result2
 ) {
     return (*result1) != (*result2);
 }
 
 OutputStream& operator<<(
     OutputStream& stream,
-    ResultPtr     result
+    ResultPtr&    result
 ) {
     return stream << result->toString();
 }

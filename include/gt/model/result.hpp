@@ -50,8 +50,8 @@ public:
      * @return        true if Results are equal
      */
     friend bool operator==(
-        ResultPtr result1,
-        ResultPtr result2
+        ResultPtr& result1,
+        ResultPtr& result2
     );
 
     /**
@@ -62,8 +62,8 @@ public:
      * @return        true if Results are not equal
      */
     friend bool operator!=(
-        ResultPtr result1,
-        ResultPtr result2
+        ResultPtr& result1,
+        ResultPtr& result2
     );
 
     /**
@@ -75,7 +75,7 @@ public:
      */
     friend OutputStream& operator<<(
         OutputStream& stream,
-        ResultPtr     result
+        ResultPtr&    result
     );
 }; /* END class Result */
 

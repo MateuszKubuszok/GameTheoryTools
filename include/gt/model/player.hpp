@@ -106,8 +106,8 @@ public:
      * @return        true if Players are equal
      */
     friend bool operator==(
-        PlayerPtr player1,
-        PlayerPtr player2
+        PlayerPtr& player1,
+        PlayerPtr& player2
     );
 
     /**
@@ -118,8 +118,8 @@ public:
      * @return        true if Players are not equal
      */
     friend bool operator!=(
-        PlayerPtr player1,
-        PlayerPtr player2
+        PlayerPtr& player1,
+        PlayerPtr& player2
     );
 
     /**
@@ -131,7 +131,7 @@ public:
      */
     friend OutputStream& operator<<(
         OutputStream& stream,
-        PlayerPtr     player
+        PlayerPtr&    player
     );
 }; /* END class Player */
 

@@ -52,8 +52,8 @@ public:
      * @return      true if Games are equal
      */
     friend bool operator==(
-        GamePtr game1,
-        GamePtr game2
+        GamePtr& game1,
+        GamePtr& game2
     );
 
     /**
@@ -64,8 +64,8 @@ public:
      * @return      true if Games are not equal
      */
     friend bool operator!=(
-        GamePtr game1,
-        GamePtr game2
+        GamePtr& game1,
+        GamePtr& game2
     );
 
     /**
@@ -77,7 +77,7 @@ public:
      */
     friend OutputStream& operator<<(
         OutputStream& stream,
-        GamePtr       game
+        GamePtr&      game
     );
 }; /* END class Game */
 
