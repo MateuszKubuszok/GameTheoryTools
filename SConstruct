@@ -122,6 +122,7 @@ Models = [
     )
     for Model_cpp in Glob(source+model+'*.cpp')
 ]
+env.Alias('buildModels', Models)
 
 ################################################################################
 
@@ -134,6 +135,7 @@ ModelsTests = [
     )
     for ModelTest_cpp in Glob(test+model+'*.cpp')
 ]
+testEnv.Alias('buildModelsTests', ModelsTests)
 
 ################################################################################
 
@@ -154,6 +156,7 @@ Depends(
     ModelsTestsProgram_bin
 )
 AlwaysBuild(ModelsTestsProgram_run)
+testEnv.Alias('runModelsTests', ModelsTestsProgram_run)
 
 ################################################################################
 
@@ -165,15 +168,16 @@ GTL_Parser_hpp_URI  = include+gtl+'parser.hpp'
 FnB_Scanner_ll_URI  = fnb        +'scanner.ll'
 GTL_Scanner_cpp_URI = source +gtl+'scanner.cpp'
 
-env.CXXFile(
+GTL_Parser_cpp = env.CXXFile(
     source=FnB_Parser_yy_URI,
     target=GTL_Parser_cpp_URI,
     YACCFLAGS='--defines='+GTL_Parser_hpp_URI
 )
-env.CXXFile(
+GTL_Scanner_cpp = env.CXXFile(
     source=FnB_Scanner_ll_URI,
     target=GTL_Scanner_cpp_URI
 )
+env.Alias('buildParserClasses', [GTL_Parser_cpp, GTL_Scanner_cpp])
 
 ################################################################################
 
@@ -190,6 +194,7 @@ Depends(
     GTL,
     ModelsTestsProgram_run
 )
+env.Alias('buildGTL', GTL)
 
 ################################################################################
 
@@ -202,6 +207,7 @@ GTLTests = [
     )
     for GTLTest_cpp in Glob(test+gtl+'*.cpp')
 ]
+testEnv.Alias('buildGTLTests', GTLTests)
 
 ################################################################################
 
@@ -222,3 +228,4 @@ Depends(
     GTLTestsProgram_bin
 )
 AlwaysBuild(GTLTestsProgram_run)
+testEnv.Alias('runGTLTests', GTLTestsProgram_run)

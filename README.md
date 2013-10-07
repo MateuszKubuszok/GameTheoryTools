@@ -30,6 +30,16 @@ Object files will be placed in `objects/` directory.
 
 Executables  will be placed in `bin/` directory.
 
+Builder can also run specified tasks:
+
+* `scons -Q buildModels` - builds Models' classes,
+* `scons -Q buildModelsTests` - builds Models' test classes with dependancies,
+* `scons -Q runModelsTests` - runs Models' test classes building theirs dependancies,
+* `scons -Q buildPsrserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),  
+* `scons -Q buildGTL` - builds GTL classes,
+* `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
+* `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies.
+
 Running tests
 ----
 
