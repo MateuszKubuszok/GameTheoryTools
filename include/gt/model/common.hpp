@@ -44,6 +44,17 @@ typedef boost::shared_ptr<Numbers>                    NumbersPtr;
 typedef boost::container::map<Identifier, Identifier> Positions;
 typedef boost::shared_ptr<Positions>                  PositionsPtr;
 
+/* Declares functions for equality check */
+
+bool operator==(Messages&    messages1,   Messages&    messages2);
+bool operator!=(Messages&    messages1,   Messages&    messages2);
+bool operator==(Identifiers& identifier1, Identifiers& identifier2);
+bool operator!=(Identifiers& identifier1, Identifiers& identifier2);
+bool operator==(Numbers&     numbers1,    Numbers&     numbers2);
+bool operator!=(Numbers&     numbers1,    Numbers&     numbers2);
+bool operator==(Positions&   positions1,  Positions&   positions2);
+bool operator!=(Positions&   positions1,  Positions&   positions2);
+
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +95,11 @@ typedef boost::shared_ptr<Game>                      GamePtr;
 typedef boost::shared_ptr<GameBuilder>               GameBuilderPtr;
 typedef boost::shared_ptr<Result>                    ResultPtr;
 typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
+
+/* Declares functions for equality check */
+
+bool operator==(Players& players1, Players& players2);
+bool operator!=(Players& players1, Players& players2);
 
 ////////////////////////////////////////////////////////////////////////////////
 
