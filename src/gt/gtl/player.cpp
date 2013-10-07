@@ -12,9 +12,12 @@ Player::Player(
     const IdentifierPtr  playerName,
     const IdentifiersPtr playerStrategies
 ) :
-    Object(),
+    Object(createIdentifier("Player")),
     Model::Player(playerName, playerStrategies)
-    {}
+{
+    registerProperty(createIdentifier("name"),       ObjectPropertyPtr(new PlayerNameProperty(this)));
+    registerProperty(createIdentifier("strategies"), ObjectPropertyPtr(new PlayerStrategiesProperty(this)));
+}
 
 GT::Message Player::toString() {
     return Model::Player::toString();
