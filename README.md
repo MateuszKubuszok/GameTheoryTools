@@ -33,14 +33,15 @@ Executables  will be placed in `bin/` directory.
 Running tests
 ----
 
-To run tests manually call `bin/ModelsTests`. Notice that they will be run
+To run tests manually call `bin/ModelsTests && bin/GTLTest`. Notice that they will be run
 automatically during build as well.
+
+For more information you can run each of them with `--log_level=test_suite` parameter.
 
 TODO
 ----
 
-* Implement properly GTL' classes,
-* write GTL's tests,
+* Write and tests Drivers and connect them to GTL classes,
 * implement actual logic of finding equilibria,
 * test it,
 * create main function that parses arguments and initiates parser.
