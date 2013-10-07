@@ -13,9 +13,9 @@ BOOST_AUTO_TEST_CASE( Object_isValid ) {
 
 BOOST_AUTO_TEST_CASE( Object_respondsTo ) {
     // given
-    GT::Identifier properties = "properties";
-    GT::Identifier type       = "type";
-    GT::Identifier error      = "error";
+    GT::Identifier properties = GT::createIdentifier("properties");
+    GT::Identifier type       = GT::createIdentifier("type");
+    GT::Identifier error      = GT::createIdentifier("error");
 
     // when
     GT::GTL::Object object;
@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE( Object_respondsTo ) {
 
 BOOST_AUTO_TEST_CASE( Object_findProperty ) {
     // given
-    GT::Identifier      properties = "properties";
-    GT::Identifier      type       = "type";
-    GT::Identifier      error      = "error";
+    GT::Identifier      properties = GT::createIdentifier("properties");
+    GT::Identifier      type       = GT::createIdentifier("type");
+    GT::Identifier      error      = GT::createIdentifier("error");
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context    context    = *contextPtr;
 
@@ -64,9 +64,9 @@ BOOST_AUTO_TEST_CASE( Object_findProperty ) {
 
 BOOST_AUTO_TEST_CASE( Object_findPropertyWithConditions ) {
         // given
-    GT::Identifier         properties    = "properties";
-    GT::Identifier         type          = "type";
-    GT::Identifier         error         = "error";
+    GT::Identifier         properties    = GT::createIdentifier("properties");
+    GT::Identifier         type          = GT::createIdentifier("type");
+    GT::Identifier         error         = GT::createIdentifier("error");
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
     GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();

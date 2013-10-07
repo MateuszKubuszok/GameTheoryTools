@@ -21,10 +21,10 @@ public:
 
 BOOST_AUTO_TEST_CASE( Param_respondsTo ) {
     // given
-    GT::Identifier properties = "properties";
-    GT::Identifier type       = "type";
-    GT::Identifier value      = "value";
-    GT::Identifier error      = "error";
+    GT::Identifier properties = GT::createIdentifier("properties");
+    GT::Identifier type       = GT::createIdentifier("type");
+    GT::Identifier value      = GT::createIdentifier("value");
+    GT::Identifier error      = GT::createIdentifier("error");
 
     // when
     ParamTestImpl param;

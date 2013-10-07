@@ -4,11 +4,11 @@ BOOST_AUTO_TEST_SUITE( Player )
 
 BOOST_AUTO_TEST_CASE( Player_respondsTo ) {
     // given
-    GT::Identifier properties = "properties";
-    GT::Identifier type       = "type";
-    GT::Identifier name       = "name";
-    GT::Identifier strategies = "strategies";
-    GT::Identifier error      = "error";
+    GT::Identifier properties = GT::createIdentifier("properties");
+    GT::Identifier type       = GT::createIdentifier("type");
+    GT::Identifier name       = GT::createIdentifier("name");
+    GT::Identifier strategies = GT::createIdentifier("strategies");
+    GT::Identifier error      = GT::createIdentifier("error");
 
     GT::IdentifierPtr  playerName       = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::IdentifiersPtr playerStrategies = GT::Model::NullFactory::getInstance().createIdentifiers();

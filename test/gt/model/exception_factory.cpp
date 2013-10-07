@@ -15,7 +15,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Coordinates: 'player'='strategy' already has defined payoff")
+        GT::Message() +
+        "Coordinates: 'player'='strategy' already has defined payoff"
     );
 }
 
@@ -27,7 +28,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_incompleteCoordinates ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Cannot set parameters when not all coordinates are known")
+        GT::Message() +
+        "Cannot set parameters when not all coordinates are known"
     );
 }
 
@@ -44,7 +46,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCoordinateFormat ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names and strategies are valid")
+        GT::Message() +
+        "Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names and strategies are valid"
     );
 }
 
@@ -61,7 +64,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidTreeCoordinateFormat ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree")
+        GT::Message() +
+        "Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree"
     );
 }
 
@@ -76,7 +80,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_noParamsForPositions ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Calculated position (5) has no defined payoff - make sure all Coordinates in range [0,9] has defined payoff")
+        GT::Message() +
+        "Calculated position (5) has no defined payoff - make sure all Coordinates in range [0,9] has defined payoff"
     );
 }
 
@@ -90,7 +95,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidPlayer ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("No Player 'player' has been defined")
+        GT::Message() +
+        "No Player 'player' has been defined"
     );
 }
 
@@ -104,7 +110,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidStrategy ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("No Strategy 'strategy' has been defined")
+        GT::Message() +
+        "No Strategy 'strategy' has been defined"
     );
 }
 
@@ -116,7 +123,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_playersAlreadySet ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Cannot change already set Players")
+        GT::Message() +
+        "Cannot change already set Players"
     );
 }
 
@@ -131,7 +139,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_propertiesAndResultsDontMatchInSize ) {
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
-        GT::Message("Properties size (5) and Results size (6) does not match")
+        GT::Message() +
+        "Properties size (5) and Results size (6) does not match"
     );
 }
 

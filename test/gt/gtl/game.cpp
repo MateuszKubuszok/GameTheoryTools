@@ -42,11 +42,11 @@ BOOST_AUTO_TEST_CASE( Game_mixedEquilibrium ) {
 
 BOOST_AUTO_TEST_CASE( Game_respondsTo ) {
     // given
-    GT::Identifier properties = "properties";
-    GT::Identifier type       = "type";
-    GT::Identifier pureEqu    = "pure_equilibrium";
-    GT::Identifier mixedEqu   = "mixed_equilibrium";
-    GT::Identifier error      = "error";
+    GT::Identifier properties = GT::createIdentifier("properties");
+    GT::Identifier type       = GT::createIdentifier("type");
+    GT::Identifier pureEqu    = GT::createIdentifier("pure_equilibrium");
+    GT::Identifier mixedEqu   = GT::createIdentifier("mixed_equilibrium");
+    GT::Identifier error      = GT::createIdentifier("error");
 
     GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
 
