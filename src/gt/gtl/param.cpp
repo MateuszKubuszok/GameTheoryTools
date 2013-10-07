@@ -36,7 +36,7 @@ void Param::checkVisitedIdentifiers(
 ) {
     BOOST_FOREACH(Identifier& visitedIdentifier, visitedIdentifiers) 
         if (visitedIdentifier == currentIdentifier)
-            throw CyclicIdentifiers("Cyclic Identifiers");
+            throw ExceptionFactory::getInstance().cyclicIdentifiersFound(visitedIdentifiers, currentIdentifier);
 }
 
 // }

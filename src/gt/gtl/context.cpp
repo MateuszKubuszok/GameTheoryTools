@@ -50,7 +50,7 @@ NumberPtr Context::getNumber(
         return knownObjects[identifier]->getNumber(*this);
     if (parentContext && parentContext->hasRegistered(identifier))
         return parentContext->getNumber(identifier);
-    throw NotDefinedParam("Param was not defined");
+    throw ExceptionFactory::getInstance().notDefinedParam(identifier);
 }
 
 ObjectPtr Context::getObject(
@@ -60,7 +60,7 @@ ObjectPtr Context::getObject(
         return knownObjects[identifier]->getObject(*this);
     if (parentContext && parentContext->hasRegistered(identifier))
         return parentContext->getObject(identifier);
-    throw NotDefinedParam("Param was not defined");
+    throw ExceptionFactory::getInstance().notDefinedParam(identifier);
 }
 
 ParamPtr Context::getParam(
@@ -70,7 +70,7 @@ ParamPtr Context::getParam(
         return knownObjects[identifier];
     if (parentContext && parentContext->hasRegistered(identifier))
         return parentContext->getParam(identifier);
-    throw NotDefinedParam("Param was not defined");
+    throw ExceptionFactory::getInstance().notDefinedParam(identifier);
 }
 
 Message Context::toString() {

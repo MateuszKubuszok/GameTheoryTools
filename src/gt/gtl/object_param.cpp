@@ -26,7 +26,7 @@ NumberPtr ObjectParam::getNumber(
     Context&            context,
     VisitedIdentifiers& visitedIdentifiers
 ) {
-    throw InvalidContentRequest("Cannot obtain Number for Object Param");
+    throw ExceptionFactory::getInstance().requiredUnavailableNumberFromParam();
 }
 
 Message ObjectParam::toString() {

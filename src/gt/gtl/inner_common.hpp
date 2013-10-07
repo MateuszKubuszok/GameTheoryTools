@@ -24,6 +24,8 @@ namespace GTL {
 
 /* Implementations declarations */
 
+class ExceptionFactory;
+
 class ObjectTypeProperty;
 class ObjectKnownProperties;
 
@@ -45,6 +47,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 ////////////////////////////////////////////////////////////////////////////////
 
 /* Implementations headers */
+
+#include "gt/gtl/exception_factory.hpp"
 
 #include "gt/gtl/object_type_property.hpp"
 #include "gt/gtl/object_known_properties.hpp"

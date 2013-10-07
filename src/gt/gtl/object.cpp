@@ -86,7 +86,7 @@ ObjectPropertyPtr Object::getProperty(
 ) {
     if (registeredProperties.count(propertyName))
         return registeredProperties[propertyName];
-    throw InvalidProperty("Property not found for this Object");
+    throw ExceptionFactory::getInstance().invalidObjectProperty(propertyName);
 }
 
 void Object::registerProperty(

@@ -19,7 +19,7 @@ ObjectPtr NumberParam::getObject(
     Context&            context,
     VisitedIdentifiers& visitedIdentifiers 
 ) {
-    throw InvalidContentRequest("Cannot obtain Object for Number Param");
+    throw ExceptionFactory::getInstance().requiredUnavailableObjectFromParam();
 }
 
 NumberPtr NumberParam::getNumber(
