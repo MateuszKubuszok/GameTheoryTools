@@ -15,42 +15,6 @@ namespace Model {
  */
 class Root {
     /**
-     * @brief Syntax sugar for isEqual method.
-     *
-     * @param root1 first Root to compare
-     * @param root2 second Root to compare
-     * @return      true if Root are equal
-     */
-    friend bool operator==(
-        Root& root1,
-        Root& root2
-    );
-
-     /**
-     * @brief Syntax sugar for !isEqual method.
-     *
-     * @param root1 first Root to compare
-     * @param root2 second Root to compare
-     * @return      true if Root are not equal
-     */
-    friend bool operator!=(
-        Root& root1,
-        Root& root2
-    );
-
-     /**
-     * @brief Syntax sugar for toStream method.
-     *
-     * @param stream stream to concatenate
-     * @param root   Root to concatenate
-     * @return       stream for chaining
-     */
-    friend OutputStream& operator<<(
-        OutputStream& stream,
-        Root&         root
-    );
-
-    /**
      * @brief Whether class is in debug mode.
      */
     static bool debugMode;
@@ -143,6 +107,42 @@ public:
      * @return Root's Message
      */
     virtual Message toString() = 0;
+
+        /**
+     * @brief Syntax sugar for isEqual method.
+     *
+     * @param root1 first Root to compare
+     * @param root2 second Root to compare
+     * @return      true if Root are equal
+     */
+    friend bool operator==(
+        Root& root1,
+        Root& root2
+    );
+
+     /**
+     * @brief Syntax sugar for !isEqual method.
+     *
+     * @param root1 first Root to compare
+     * @param root2 second Root to compare
+     * @return      true if Root are not equal
+     */
+    friend bool operator!=(
+        Root& root1,
+        Root& root2
+    );
+
+     /**
+     * @brief Syntax sugar for toStream method.
+     *
+     * @param stream stream to concatenate
+     * @param root   Root to concatenate
+     * @return       stream for chaining
+     */
+    friend OutputStream& operator<<(
+        OutputStream& stream,
+        Root&         root
+    );
 };
 
 ////////////////////////////////////////////////////////////////////////////////

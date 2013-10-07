@@ -80,6 +80,16 @@ public:
     virtual bool hasStrategy(
         Identifier& strategy
     );
+    
+    /**
+     * @brief Defines equality relation.
+     *
+     * @param root another root to compare
+     * @return     true if roots are equal
+     */
+    virtual bool isEqual(
+        Root& root
+    );
 
     /**
      * @brief Returns Message with Player's name and strategies.
@@ -87,6 +97,42 @@ public:
      * @return Player's name and strategies
      */
     virtual Message toString();
+
+    /**
+     * @brief Syntax sugar for isEqual method.
+     *
+     * @param player1 first Player to compare
+     * @param player2 second Player to compare
+     * @return        true if Players are equal
+     */
+    friend bool operator==(
+        PlayerPtr player1,
+        PlayerPtr player2
+    );
+
+    /**
+     * @brief Syntax sugar for !isEqual method.
+     *
+     * @param player1 first Player to compare
+     * @param player2 second Player to compare
+     * @return        true if Players are not equal
+     */
+    friend bool operator!=(
+        PlayerPtr player1,
+        PlayerPtr player2
+    );
+
+    /**
+     * @brief Syntax sugar for toStream method.
+     *
+     * @param stream stream to concatenate
+     * @param player Player to concatenate
+     * @return       stream for chaining
+     */
+    friend OutputStream& operator<<(
+        OutputStream& stream,
+        PlayerPtr     player
+    );
 }; /* END class Player */
 
 ////////////////////////////////////////////////////////////////////////////////

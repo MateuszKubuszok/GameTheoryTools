@@ -26,13 +26,57 @@ public:
     virtual Message getResult() = 0;
 
     /**
+     * @brief Defines equality relation.
+     *
+     * @param root another root to compare
+     * @return     true if roots are equal
+     */
+    virtual bool isEqual(
+        Root& root
+    );
+
+    /**
      * @brief Return message with results.
      *
      * @return Result as a Message
      */
-    virtual Message toString() {
-        return getResult();
-    }
+    virtual Message toString();
+
+    /**
+     * @brief Syntax sugar for isEqual method.
+     *
+     * @param result1 first Result to compare
+     * @param result2 second Result to compare
+     * @return        true if Results are equal
+     */
+    friend bool operator==(
+        ResultPtr result1,
+        ResultPtr result2
+    );
+
+    /**
+     * @brief Syntax sugar for !isEqual method.
+     *
+     * @param result1 first Result to compare
+     * @param result2 second Result to compare
+     * @return        true if Results are not equal
+     */
+    friend bool operator!=(
+        ResultPtr result1,
+        ResultPtr result2
+    );
+
+    /**
+     * @brief Syntax sugar for toStream method.
+     *
+     * @param stream stream to concatenate
+     * @param result Result to concatenate
+     * @return       stream for chaining
+     */
+    friend OutputStream& operator<<(
+        OutputStream& stream,
+        ResultPtr     result
+    );
 }; /* END class Result */
 
 ////////////////////////////////////////////////////////////////////////////////

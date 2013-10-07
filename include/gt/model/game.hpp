@@ -28,11 +28,57 @@ public:
     virtual DataAccessorPtr getData() = 0;
 
     /**
+     * @brief Defines equality relation.
+     *
+     * @param root another root to compare
+     * @return     true if roots are equal
+     */
+    virtual bool isEqual(
+        Root& root
+    );
+
+    /**
      * @brief Game's Message.
      *
      * @return message
      */
     virtual Message toString() = 0;
+
+    /**
+     * @brief Syntax sugar for isEqual method.
+     *
+     * @param game1 first Game to compare
+     * @param game2 second Game to compare
+     * @return      true if Games are equal
+     */
+    friend bool operator==(
+        GamePtr game1,
+        GamePtr game2
+    );
+
+    /**
+     * @brief Syntax sugar for !isEqual method.
+     *
+     * @param game1 first Game to compare
+     * @param game2 second Game to compare
+     * @return      true if Games are not equal
+     */
+    friend bool operator!=(
+        GamePtr game1,
+        GamePtr game2
+    );
+
+    /**
+     * @brief Syntax sugar for toStream method.
+     *
+     * @param stream stream to concatenate
+     * @param game   Game to concatenate
+     * @return       stream for chaining
+     */
+    friend OutputStream& operator<<(
+        OutputStream& stream,
+        GamePtr       game
+    );
 }; /* END class Game */
 
 ////////////////////////////////////////////////////////////////////////////////

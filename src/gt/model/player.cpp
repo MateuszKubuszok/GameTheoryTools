@@ -47,6 +47,26 @@ bool Player::hasStrategy(
     return strategyMapping.count(strategy);
 }
 
+bool Player::isEqual(
+    Root& root
+) {
+    Player* player = dynamic_cast<Player*>(&root);
+    if (!player)
+        return false;
+    if (player == this)
+        return true;
+    if (player->name != name)
+        return false;
+    if (player->strategies->size() != strategies->size())
+        return false;
+    if (player->strategies == strategies)
+        return true;
+    for (Index i = 0; i < strategies->size(); i++)
+        if ((*player->strategies)[i] != (*strategies)[i])
+            return false;
+    return true;
+}
+
 Message Player::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     BOOST_FOREACH(IdentifierPtr& strategy, *strategies) {
@@ -58,6 +78,29 @@ Message Player::toString() {
 }
 
 // }
+
+////////////////////////////////////////////////////////////////////////////////
+
+bool operator==(
+    PlayerPtr player1,
+    PlayerPtr player2
+) {
+    return (*player1) == (*player2);
+}
+
+bool operator!=(
+    PlayerPtr player1,
+    PlayerPtr player2
+) {
+    return (*player1) != (*player2);
+}
+
+OutputStream& operator<<(
+    OutputStream& stream,
+    PlayerPtr     player
+) {
+    return stream << player->toString();
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
