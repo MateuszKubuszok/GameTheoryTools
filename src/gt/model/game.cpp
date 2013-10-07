@@ -16,17 +16,9 @@ bool Game::isEqual(
         return false;
     if (game == this)
         return true;
-    PlayersPtr foreignPlayers = game->getPlayers();
-    PlayersPtr localPlayers   = getPlayers();
-    if (foreignPlayers->size() != localPlayers->size())
+    if (*game->getPlayers() != *getPlayers())
         return false;
-    BOOST_FOREACH(Identifier playerName, (*localPlayers) | boost::adaptors::map_keys) {
-        if (!foreignPlayers->count(playerName))
-            return false;
-        if ((*foreignPlayers)[playerName] != (*localPlayers)[playerName])
-            return false;
-    }
-    if (game->getData() != getData())
+    if (*game->getData() != *getData())
         return false;
     return true;
 }

@@ -57,13 +57,8 @@ bool Player::isEqual(
         return true;
     if (player->name != name)
         return false;
-    if (player->strategies->size() != strategies->size())
+    if (*player->strategies != *strategies)
         return false;
-    if (player->strategies == strategies)
-        return true;
-    for (Index i = 0; i < strategies->size(); i++)
-        if ((*player->strategies)[i] != (*strategies)[i])
-            return false;
     return true;
 }
 
