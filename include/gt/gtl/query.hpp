@@ -7,7 +7,7 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Defines Game.
+ * @brief Defines Query.
  *
  * @author Mateusz Kubuszok
  */
@@ -20,21 +20,21 @@ public:
      */
     virtual ResultPtr execute(
         Context& context
-    );
+    ) = 0;
 
     /**
      * @brief Returns Query results.
      *
      * @result Query results
      */
-    virtual Message getResult();
+    virtual Message getResult() = 0;
 
     /**
      * @brief Returns Query's Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class Query */
 
 ////////////////////////////////////////////////////////////////////////////////
