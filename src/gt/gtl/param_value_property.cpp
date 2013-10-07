@@ -18,9 +18,7 @@ ResultPtr ParamValueProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions
 ) {
-    // TODO: create ResultBuilder that fills it up
-    // make use oh param.getValue(context)
-    return ResultFactory::getInstance().constResult(Message("TODO"));
+    return ResultFactory::getInstance().constResult(param->toString());
 }
 
 // }

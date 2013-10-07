@@ -18,7 +18,7 @@ public:
         const Context&    context,
         const Conditions& conditions
     );
-}; /* END class ParamTypeProperty */
+}; /* END class ParamValueProperty */
 
 ////////////////////////////////////////////////////////////////////////////////
 
