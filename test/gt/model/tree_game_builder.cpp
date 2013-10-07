@@ -70,14 +70,14 @@ BOOST_AUTO_TEST_CASE( TreeGameBuilder_functional ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "TreeData:\n" +
-        "\tp1s1:\n" +
-        "\t\tp1s2:\n" +
-        "\t\t\tValue:\n" +
-        "\t\t\t\t10\n" +
-        "\tp1s2:\n" +
-        "\t\tp1s1:\n" +
-        "\t\t\tValue:\n" +
+        "TreeData:\n"
+        "\tp1s1:\n"
+        "\t\tp1s2:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t10\n"
+        "\tp1s2:\n"
+        "\t\tp1s1:\n"
+        "\t\t\tValue:\n"
         "\t\t\t\t20\n"
     );
 }

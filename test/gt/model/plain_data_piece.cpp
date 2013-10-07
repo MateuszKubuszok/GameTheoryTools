@@ -82,8 +82,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     BOOST_CHECK_EQUAL(
         piece.toString(),
         GT::Message() +
-        "\t\tplayer1,\tplayer2,\n" +
-        "Payoff:\n" +
+        "\t\tplayer1,\tplayer2,\n"
+        "Payoff:\n"
         "\t\t10,\t100,\n"
     );
 }

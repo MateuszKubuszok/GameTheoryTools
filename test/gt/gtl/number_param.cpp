@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
     BOOST_CHECK_EQUAL(
         param->toString(),
         GT::Message() +
-        "NumberParam:\n" +
+        "NumberParam:\n"
         "\t0\n" 
     );
 }

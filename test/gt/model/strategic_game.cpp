@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE( StrategicGame_getData ) {
     BOOST_CHECK_EQUAL(
         dataAccessor->toString(),
         GT::Message() +
-        "Strategic Data Accessor:\n" +
+        "Strategic Data Accessor:\n"
         "\tNullStrategicData\n"
     );
 }
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
     BOOST_CHECK_EQUAL(
         game.toString(),
         GT::Message() +
-        "Strategic Game:\n" +
+        "Strategic Game:\n"
         "\tNullStrategicData\n" 
     );
 }

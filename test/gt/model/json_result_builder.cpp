@@ -29,12 +29,12 @@ BOOST_AUTO_TEST_CASE( JSONResultBuilder_build ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "{\n" +
-        "\t\"TestObject\" : [\n" +
-        "\t\t\"property1\" : \"result1\",\n" + 
-        "\t\t\"property2\" : \"result2\",\n" + 
-        "\t],\n" +
-        "\t\"name\" : result,\n" +
+        "{\n"
+        "\t\"TestObject\" : [\n"
+        "\t\t\"property1\" : \"result1\",\n"
+        "\t\t\"property2\" : \"result2\",\n"
+        "\t],\n"
+        "\t\"name\" : result,\n"
         "}\n"
     );
 }
@@ -63,10 +63,10 @@ BOOST_AUTO_TEST_CASE( JSONResultBuilder_buildRaw ) {
     BOOST_CHECK_EQUAL(
         builder->buildRaw()->getResult(),
         GT::Message() +
-        "\"TestObject\" : [\n" +
-        "\t\"property1\" : \"result1\",\n" + 
-        "\t\"property2\" : \"result2\",\n" + 
-        "],\n" +
+        "\"TestObject\" : [\n"
+        "\t\"property1\" : \"result1\",\n"
+        "\t\"property2\" : \"result2\",\n"
+        "],\n"
         "\"name\" : result,\n"
     );
 }

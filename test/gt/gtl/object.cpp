@@ -51,16 +51,16 @@ BOOST_AUTO_TEST_CASE( Object_findProperty ) {
     BOOST_CHECK_EQUAL(
         object.findProperty(context, properties)->getResult(),
         GT::Message() +
-        "\t\tKnown Properties,\n" +
-        "Property:\n" +
-        "\t\tproperties,\n" +
-        "Property:\n" +
+        "\t\tKnown Properties,\n"
+        "Property:\n"
+        "\t\tproperties,\n"
+        "Property:\n"
         "\t\ttype,\n"
     );
     BOOST_CHECK_EQUAL(
         object.findProperty(context, type)->getResult(),
         GT::Message() +
-        "Type:\n" +
+        "Type:\n"
         "\tObject\n"
     );
 }
@@ -89,16 +89,16 @@ BOOST_AUTO_TEST_CASE( Object_findPropertyWithConditions ) {
     BOOST_CHECK_EQUAL(
         object.findPropertyWithConditions(context, properties, conditions)->getResult(),
         GT::Message() +
-        "\t\tKnown Properties,\n" +
-        "Property:\n" +
-        "\t\tproperties,\n" +
-        "Property:\n" +
+        "\t\tKnown Properties,\n"
+        "Property:\n"
+        "\t\tproperties,\n"
+        "Property:\n"
         "\t\ttype,\n"
     );
     BOOST_CHECK_EQUAL(
         object.findPropertyWithConditions(context, type, conditions)->getResult(),
         GT::Message() +
-        "Type:\n" +
+        "Type:\n"
         "\tObject\n"
     );
 }

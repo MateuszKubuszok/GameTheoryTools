@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( Definition_toString ) {
     BOOST_CHECK_EQUAL(
         definition.toString(),
         GT::Message() +
-        "NullIdentifier:\n" +
+        "NullIdentifier:\n"
         "\tNullParam\n"
     );
 }

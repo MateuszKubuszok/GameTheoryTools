@@ -30,13 +30,13 @@ BOOST_AUTO_TEST_CASE( ParamFactory_createParam ) {
     BOOST_CHECK_EQUAL(
         numberParam->toString(),
         GT::Message() +
-        "NumberParam:\n" +
+        "NumberParam:\n"
         "\t0\n"
     );
     BOOST_CHECK_EQUAL(
         objectParam->toString(),
         GT::Message() +
-        "ObjectParam:\n" +
+        "ObjectParam:\n"
         "\tNullObject\n"
     );
 }

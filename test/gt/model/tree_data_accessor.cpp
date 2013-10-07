@@ -318,29 +318,29 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_toString ) {
     BOOST_CHECK_EQUAL(
         treeDataAccessor.toString(),
         GT::Message() +
-        "Tree Data Accessor:\n" +
-        "\tTreeData:\n" +
-        "\t\ts1:\n" +
-        "\t\t\ts1:\n" +
-        "\t\t\t\tValue:\n" +
-        "\t\t\t\t\t10\n" +
-        "\t\t\t\tValue:\n" +
+        "Tree Data Accessor:\n"
+        "\tTreeData:\n"
+        "\t\ts1:\n"
+        "\t\t\ts1:\n"
+        "\t\t\t\tValue:\n"
+        "\t\t\t\t\t10\n"
+        "\t\t\t\tValue:\n"
         "\t\t\t\t\t20\n"
-        "\t\t\ts2:\n" +
-        "\t\t\t\tValue:\n" +
-        "\t\t\t\t\t30\n" +
-        "\t\t\t\tValue:\n" +
-        "\t\t\t\t\t40\n" +
-        "\t\ts2:\n" +
-        "\t\t\ts1:\n" +
-        "\t\t\t\tValue:\n" +
-        "\t\t\t\t\t50\n" +
-        "\t\t\t\tValue:\n" +
+        "\t\t\ts2:\n"
+        "\t\t\t\tValue:\n"
+        "\t\t\t\t\t30\n"
+        "\t\t\t\tValue:\n"
+        "\t\t\t\t\t40\n"
+        "\t\ts2:\n"
+        "\t\t\ts1:\n"
+        "\t\t\t\tValue:\n"
+        "\t\t\t\t\t50\n"
+        "\t\t\t\tValue:\n"
         "\t\t\t\t\t60\n"
-        "\t\t\ts2:\n" +
-        "\t\t\t\tValue:\n" +
-        "\t\t\t\t\t70\n" +
-        "\t\t\t\tValue:\n" +
+        "\t\t\ts2:\n"
+        "\t\t\t\tValue:\n"
+        "\t\t\t\t\t70\n"
+        "\t\t\t\tValue:\n"
         "\t\t\t\t\t80\n"
     );
 }

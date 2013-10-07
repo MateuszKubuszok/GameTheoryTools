@@ -208,30 +208,30 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     BOOST_CHECK_EQUAL(
         strategicDataAccessor.toString(),
         GT::Message() + 
-        "Strategic Data Accessor:\n" +
-        "\tValue:\n" +
-        "\t\t\t\tp1,\tp2,\n" +
-        "\t\tPosition:\n" +
-        "\t\t\t\tp1s1,\tp2s1,\n" +
-        "\t\tPayoff:\n" +
-        "\t\t\t\t10,\t20,\n" +
-        "\tValue:\n" +
-        "\t\t\t\tp1,\tp2,\n" +
-        "\t\tPosition:\n" +
-        "\t\t\t\tp1s2,\tp2s1,\n" +
-        "\t\tPayoff:\n" +
-        "\t\t\t\t50,\t60,\n" +
-        "\tValue:\n" +
-        "\t\t\t\tp1,\tp2,\n" +
-        "\t\tPosition:\n" +
-        "\t\t\t\tp1s1,\tp2s2,\n" +
-        "\t\tPayoff:\n" +
-        "\t\t\t\t30,\t40,\n" +
-        "\tValue:\n" +
-        "\t\t\t\tp1,\tp2,\n" +
-        "\t\tPosition:\n" +
-        "\t\t\t\tp1s2,\tp2s2,\n" +
-        "\t\tPayoff:\n" +
+        "Strategic Data Accessor:\n"
+        "\tValue:\n"
+        "\t\t\t\tp1,\tp2,\n"
+        "\t\tPosition:\n"
+        "\t\t\t\tp1s1,\tp2s1,\n"
+        "\t\tPayoff:\n"
+        "\t\t\t\t10,\t20,\n"
+        "\tValue:\n"
+        "\t\t\t\tp1,\tp2,\n"
+        "\t\tPosition:\n"
+        "\t\t\t\tp1s2,\tp2s1,\n"
+        "\t\tPayoff:\n"
+        "\t\t\t\t50,\t60,\n"
+        "\tValue:\n"
+        "\t\t\t\tp1,\tp2,\n"
+        "\t\tPosition:\n"
+        "\t\t\t\tp1s1,\tp2s2,\n"
+        "\t\tPayoff:\n"
+        "\t\t\t\t30,\t40,\n"
+        "\tValue:\n"
+        "\t\t\t\tp1,\tp2,\n"
+        "\t\tPosition:\n"
+        "\t\t\t\tp1s2,\tp2s2,\n"
+        "\t\tPayoff:\n"
         "\t\t\t\t70,\t80,\n"
     );
 }

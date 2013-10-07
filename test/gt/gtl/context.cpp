@@ -108,17 +108,17 @@ BOOST_AUTO_TEST_CASE( Context_toString ) {
     BOOST_CHECK_EQUAL(
         context.toString(),
         GT::Message() +
-        "numberParam:\n" +
+        "numberParam:\n"
         "\tNumberParam:\n"
-        "\t\t0\n" +
-        "numberParamIdentifier:\n" +
+        "\t\t0\n"
+        "numberParamIdentifier:\n"
         "\tIdentifierParam:\n"
-        "\t\tnumberParam\n" +
-        "objectParam:\n" +
+        "\t\tnumberParam\n"
+        "objectParam:\n"
         "\tObjectParam:\n"
-        "\t\tNullObject\n" +
-        "objectParamIdentifier:\n" +
-        "\tIdentifierParam:\n" +
+        "\t\tNullObject\n"
+        "objectParamIdentifier:\n"
+        "\tIdentifierParam:\n"
         "\t\tobjectParam\n"
     );
 }

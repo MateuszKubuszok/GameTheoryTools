@@ -43,17 +43,17 @@ BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "Value:\n" +
-        "\t\t\tp1,\n" +
-        "\tPosition:\n" +
-        "\t\t\tp1s1,\n" +
-        "\tPayoff:\n" +
-        "\t\t\t10,\n" +
-        "Value:\n" +
-        "\t\t\tp1,\n" +
-        "\tPosition:\n" +
-        "\t\t\tp1s2,\n" +
-        "\tPayoff:\n" +
+        "Value:\n"
+        "\t\t\tp1,\n"
+        "\tPosition:\n"
+        "\t\t\tp1s1,\n"
+        "\tPayoff:\n"
+        "\t\t\t10,\n"
+        "Value:\n"
+        "\t\t\tp1,\n"
+        "\tPosition:\n"
+        "\t\t\tp1s2,\n"
+        "\tPayoff:\n"
         "\t\t\t20,\n"
     );
 }
@@ -96,14 +96,14 @@ BOOST_AUTO_TEST_CASE( TreeGameBuilder_buildTreeGame ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "TreeData:\n" +
-        "\tp1s1:\n" +
-        "\t\tp1s2:\n" +
-        "\t\t\tValue:\n" +
-        "\t\t\t\t10\n" +
-        "\tp1s2:\n" +
-        "\t\tp1s1:\n" +
-        "\t\t\tValue:\n" +
+        "TreeData:\n"
+        "\tp1s1:\n"
+        "\t\tp1s2:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t10\n"
+        "\tp1s2:\n"
+        "\t\tp1s1:\n"
+        "\t\t\tValue:\n"
         "\t\t\t\t20\n"
     );
 }

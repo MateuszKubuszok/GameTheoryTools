@@ -117,11 +117,11 @@ BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "{\n" +
-        "\t\"TestObject\" : [\n" +
-        "\t\t\"property1\" : \"result1\",\n" + 
-        "\t\t\"property2\" : \"result2\",\n" + 
-        "\t],\n" +
+        "{\n"
+        "\t\"TestObject\" : [\n"
+        "\t\t\"property1\" : \"result1\",\n"
+        "\t\t\"property2\" : \"result2\",\n"
+        "\t],\n"
         "}\n"
     );
 }
@@ -150,11 +150,11 @@ BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "<results>\n" +
-        "\t<TestObject>\n" +
-        "\t\t<result property=\"property1\" value=\"result1\" />\n" + 
-        "\t\t<result property=\"property2\" value=\"result2\" />\n" + 
-        "\t</TestObject>\n" +
+        "<results>\n"
+        "\t<TestObject>\n"
+        "\t\t<result property=\"property1\" value=\"result1\" />\n"
+        "\t\t<result property=\"property2\" value=\"result2\" />\n"
+        "\t</TestObject>\n"
         "</results>\n"
     );
 }
@@ -183,8 +183,8 @@ BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "\t\tproperty1,\tproperty2,\n" +
-        "TestObject:\n" +
+        "\t\tproperty1,\tproperty2,\n"
+        "TestObject:\n"
         "\t\tresult1,\tresult2,\n"
     );
 }

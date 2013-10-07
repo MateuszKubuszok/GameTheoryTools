@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE( TreeGame_getData ) {
     BOOST_CHECK_EQUAL(
         dataAccessor->toString(),
         GT::Message() +
-        "Tree Data Accessor:\n" +
+        "Tree Data Accessor:\n"
         "\tNullTreeData\n"
     );
 }
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( TreeGame_toString ) {
     BOOST_CHECK_EQUAL(
         game.toString(),
         GT::Message() +
-        "Tree Game:\n" +
+        "Tree Game:\n"
         "\tNullTreeData\n" 
     );
 }

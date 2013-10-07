@@ -88,13 +88,13 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_toString ) {
     BOOST_CHECK_EQUAL(
         treeDataBuilder.toString(),
         GT::Message() +
-        "Current Data:\n" +
-        "\tTreeData:\n" +
-        "\t\tp1s1:\n" +
-        "\t\t\tValue:\n" +
-        "\t\t\t\t10\n" +
-        "\t\tp1s2:\n" +
-        "\t\t\tValue:\n" +
+        "Current Data:\n"
+        "\tTreeData:\n"
+        "\t\tp1s1:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t10\n"
+        "\t\tp1s2:\n"
+        "\t\t\tValue:\n"
         "\t\t\t\t20\n"
     );
 }
@@ -138,14 +138,14 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_functional ) {
     BOOST_CHECK_EQUAL(
         data->toString(),
         GT::Message() +
-        "TreeData:\n" +
-        "\tp1s1:\n" +
-        "\t\tp1s2:\n" +
-        "\t\t\tValue:\n" +
-        "\t\t\t\t10\n" +
-        "\tp1s2:\n" +
-        "\t\tp1s1:\n" +
-        "\t\t\tValue:\n" +
+        "TreeData:\n"
+        "\tp1s1:\n"
+        "\t\tp1s2:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t10\n"
+        "\tp1s2:\n"
+        "\t\tp1s1:\n"
+        "\t\t\tValue:\n"
         "\t\t\t\t20\n"
     );
 }

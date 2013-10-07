@@ -102,22 +102,22 @@ BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
     BOOST_CHECK_EQUAL(
         coordinate.toString(),
         GT::Message() +
-        "Params:\n" +
-        "\tParam:\n" +
-        "\t\tNullParam\n" +
-        "\tParam:\n" +
-        "\t\tNullParam\n" +
-        "\tParam:\n" +
-        "\t\tNullParam\n" +
-        "Positions:\n" +
-        "\tNullIdentifier:\n" +
-        "\t\tNullIdentifier\n" +
-        "SubCoordinates:\n" +
-        "\tCoordinate:\n" +
-        "\t\tNullCoordinate\n" +
-        "\tCoordinate:\n" +
-        "\t\tNullCoordinate\n" +
-        "\tCoordinate:\n" +
+        "Params:\n"
+        "\tParam:\n"
+        "\t\tNullParam\n"
+        "\tParam:\n"
+        "\t\tNullParam\n"
+        "\tParam:\n"
+        "\t\tNullParam\n"
+        "Positions:\n"
+        "\tNullIdentifier:\n"
+        "\t\tNullIdentifier\n"
+        "SubCoordinates:\n"
+        "\tCoordinate:\n"
+        "\t\tNullCoordinate\n"
+        "\tCoordinate:\n"
+        "\t\tNullCoordinate\n"
+        "\tCoordinate:\n"
         "\t\tNullCoordinate\n"
     );
 }

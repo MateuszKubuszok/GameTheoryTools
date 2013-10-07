@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE( ObjectTypeProperty_findForConditions ) {
     BOOST_CHECK_EQUAL(
         property.findForConditions(context, conditions)->getResult(),
         GT::Message() +
-        "Type:\n" +
+        "Type:\n"
         "\tObject\n"
     );
 }

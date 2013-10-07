@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
     BOOST_CHECK_EQUAL(
         param->toString(),
         GT::Message() +
-        "ObjectParam:\n" +
+        "ObjectParam:\n"
         "\tNullObject\n" 
     );
 }

@@ -116,27 +116,27 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_toString ) {
     BOOST_CHECK_EQUAL(
         root.toString(),
         GT::Message() +
-        "s1:\n" +
-        "\ts1:\n" +
-        "\t\tValue:\n" +
-        "\t\t\t10\n" +
-        "\t\tValue:\n" +
+        "s1:\n"
+        "\ts1:\n"
+        "\t\tValue:\n"
+        "\t\t\t10\n"
+        "\t\tValue:\n"
         "\t\t\t20\n"
-        "\ts2:\n" +
-        "\t\tValue:\n" +
-        "\t\t\t30\n" +
-        "\t\tValue:\n" +
-        "\t\t\t40\n" +
-        "s2:\n" +
-        "\ts1:\n" +
-        "\t\tValue:\n" +
-        "\t\t\t50\n" +
-        "\t\tValue:\n" +
+        "\ts2:\n"
+        "\t\tValue:\n"
+        "\t\t\t30\n"
+        "\t\tValue:\n"
+        "\t\t\t40\n"
+        "s2:\n"
+        "\ts1:\n"
+        "\t\tValue:\n"
+        "\t\t\t50\n"
+        "\t\tValue:\n"
         "\t\t\t60\n"
-        "\ts2:\n" +
-        "\t\tValue:\n" +
-        "\t\t\t70\n" +
-        "\t\tValue:\n" +
+        "\ts2:\n"
+        "\t\tValue:\n"
+        "\t\t\t70\n"
+        "\t\tValue:\n"
         "\t\t\t80\n"
     );
 }
