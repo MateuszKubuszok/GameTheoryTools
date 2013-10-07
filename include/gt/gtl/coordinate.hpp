@@ -62,7 +62,7 @@ public:
      * @param param single Param
      * @return      reference to itself
      */
-    virtual Coordinate& addParams(
+    virtual Coordinate& addParam(
         const ParamPtr param
     );
 
@@ -94,7 +94,7 @@ public:
      * @param subCoordinate SubCoordinate
      * @return              reference to itself
      */
-    virtual Coordinate& addSubCoordinates(
+    virtual Coordinate& addSubCoordinate(
         const CoordinatePtr subCoordinate
     );
 

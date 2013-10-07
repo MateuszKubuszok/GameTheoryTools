@@ -9,25 +9,36 @@ namespace GTL {
 // public:
 
 Coordinate::Coordinate() :
-    Root()
+    Root(),
+    positions(new Positions()),
+    params(new Params()),
+    subCoordinates(new Coordinates())
     {}
 
 Coordinate::Coordinate(
     const IdentifierPtr player,
     const IdentifierPtr strategy
 ) :
-    Root()
-    {}
+    Root(),
+    positions(new Positions()),
+    params(new Params()),
+    subCoordinates(new Coordinates())
+{
+    positions->insert( Positions::value_type(*player, *strategy) );
+}
 
-Coordinate& Coordinate::addParams(
+Coordinate& Coordinate::addParam(
     const ParamPtr param
 ) {
+    params->push_back(param);
     return *this;
 }
 
 Coordinate& Coordinate::addParams(
-    const ParamsPtr params
+    const ParamsPtr newParams
 ) {
+    params->reserve(params->size() + newParams->size());
+    params->insert(params->end(), newParams->begin(), newParams->end());
     return *this;
 }
 
@@ -35,35 +46,83 @@ Coordinate& Coordinate::addPosition(
     const IdentifierPtr player,
     const IdentifierPtr strategy
 ) {
+    positions->insert( Positions::value_type(*player, *strategy) );
     return *this;
 }
 
-Coordinate& Coordinate::addSubCoordinates(
+Coordinate& Coordinate::addSubCoordinate(
     const CoordinatePtr subCoordinate
 ) {
+    subCoordinates->push_back(subCoordinate);
     return *this;
 }
 
 Coordinate& Coordinate::addSubCoordinates(
-    const CoordinatesPtr subCoordinates
+    const CoordinatesPtr newSubCoordinates
 ) {
+    subCoordinates->reserve(subCoordinates->size() + newSubCoordinates->size());
+    subCoordinates->insert(subCoordinates->end(), newSubCoordinates->begin(), newSubCoordinates->end());
     return *this;
 }
 
 ParamsPtr Coordinate::getParams() {
-    return NullFactory::getInstance().createParams();
+    return params;
 }
 
 PositionsPtr Coordinate::getPositions() {
-    return NullFactory::getInstance().createPositions();
+    return positions;
 }
 
 CoordinatesPtr Coordinate::getSubCoordinates() {
-    return NullFactory::getInstance().createCoordinates();
+    return subCoordinates;
 }
 
 Message Coordinate::toString() {
-    return Message("NullCoordinate");
+    ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
+
+    if (params->size()) {
+        IdentifierPtr paramsName = createIdentifierPtr("Params");
+
+        ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
+        IdentifierPtr name = createIdentifierPtr("Param");
+        BOOST_FOREACH(ParamPtr& param, *params) {
+            MessagePtr value = createMessagePtr(param->toString());
+            subResultBuilder->addResult(name, value);
+        }
+        MessagePtr paramsValue = createMessagePtr(subResultBuilder->build()->getResult());
+
+        resultBuilder->addResult(paramsName, paramsValue);
+    }
+
+    if (positions->size()) {
+        IdentifierPtr positionsName = createIdentifierPtr("Positions");
+
+        ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
+        BOOST_FOREACH(Positions::value_type& position, *positions) {
+            IdentifierPtr name  = createIdentifierPtr(position.first);
+            MessagePtr    value = createMessagePtr(position.second);
+            subResultBuilder->addResult(name, value);
+        }
+        MessagePtr positionsValue = createMessagePtr(subResultBuilder->build()->getResult());
+
+        resultBuilder->addResult(positionsName, positionsValue);
+    }
+
+    if (subCoordinates->size()) {
+        IdentifierPtr subCoordinatesName = createIdentifierPtr("SubCoordinates");
+
+        ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
+        IdentifierPtr name = createIdentifierPtr("Coordinate");
+        BOOST_FOREACH(CoordinatePtr& subCoordinate, *subCoordinates) {
+            MessagePtr value = createMessagePtr(subCoordinate->toString());
+            subResultBuilder->addResult(name, value);
+        }
+        MessagePtr subCoordinatesValue = createMessagePtr(subResultBuilder->build()->getResult());
+
+        resultBuilder->addResult(subCoordinatesName, subCoordinatesValue);
+    }
+
+    return resultBuilder->build()->getResult();
 }
 
 // }
