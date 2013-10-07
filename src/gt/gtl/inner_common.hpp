@@ -29,6 +29,9 @@ class ExceptionFactory;
 class ObjectTypeProperty;
 class ObjectKnownProperties;
 
+class GamePureEquilibriumProperty;
+class GameMixedEquilibriumProperty;
+
 class ParamValueProperty;
 
 class IdentifierParam;
@@ -52,6 +55,9 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/gtl/object_type_property.hpp"
 #include "gt/gtl/object_known_properties.hpp"
+
+#include "gt/gtl/game_pure_equilibrium_property.hpp"
+#include "gt/gtl/game_mixed_equilibrium_property.hpp"
 
 #include "gt/gtl/param_value_property.hpp"
 

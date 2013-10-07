@@ -12,7 +12,21 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Game : public virtual Object {
+    /**
+     * @brief Model Game implementation.
+     */
+    Model::GamePtr game;
+
 public:
+    /**
+     * @brief Initiates Object with Game model.
+     *
+     * @param game Model Game implementation
+     */
+    Game(
+        Model::GamePtr game
+    );
+
     /**
      * @brief Search pure Nash equilibrium for given conditions.
      *
@@ -47,6 +61,10 @@ public:
 
 class NullGame : public Game {
 public:
+    NullGame() :
+        Game(Model::NullFactory::getInstance().createGame())
+        {}
+
     virtual ResultPtr pureEquilibrium(
         const Context&    context,
         const Conditions& conditions

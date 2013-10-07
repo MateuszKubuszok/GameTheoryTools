@@ -8,22 +8,31 @@ namespace GTL {
 // class Game {
 // public:
 
+Game::Game(
+    Model::GamePtr gameImplementation
+) :
+    game(gameImplementation)
+{
+    registerProperty(Identifier("pure_equilibrium"),  ObjectPropertyPtr(new GamePureEquilibriumProperty(this)));
+    registerProperty(Identifier("mixed_equilibrium"), ObjectPropertyPtr(new GameMixedEquilibriumProperty(this)));
+}
+
 ResultPtr Game::pureEquilibrium(
     const Context&    context,
     const Conditions& conditions
 ) {
-    return Model::NullFactory::getInstance().createResult();
+    return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
 ResultPtr Game::mixedEquilibrium(
     const Context&    context,
     const Conditions& conditions
 ) {
-    return Model::NullFactory::getInstance().createResult();
+    return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
 Message Game::toString() {
-    return Message("NullGame");
+    return game->toString();
 }
 
 // }
