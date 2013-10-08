@@ -137,6 +137,83 @@ public:
      */
     QueryPtr createQuery();
 
+    /**
+     * @brief Creates NullDriver.
+     *
+     * @result NullDriver
+     */
+    DriverPtr createDriver();
+
+    /**
+     * @brief Creates NullConditionDriver.
+     *
+     * @result NullConditionDriver
+     */
+    ConditionDriverPtr createConditionDriver();
+
+    /**
+     * @brief Creates NullCoordinateDriver.
+     *
+     * @result NullCooridnateDriver
+     */
+    CoordinateDriverPtr createCoordinateDriver();
+
+    /**
+     * @brief Creates NullGameDriver.
+     *
+     * @result NullGameDriver
+     */
+    GameDriverPtr createGameDriver();
+
+    /**
+     * @brief Creates NullValueDriver.
+     *
+     * @result NullValueDriver
+     */
+    ValueDriverPtr createValueDriver();
+
+    /**
+     * @brief Creates NullStatementDriver.
+     *
+     * @result NullStatementDriver
+     */
+    StatementDriverPtr createStatementDriver();
+
+    /**
+     * @brief Creates NullCollectionsDriver<Coordinate>.
+     *
+     * @result NullCollectionsDriver<Coordinate>
+     */
+    CollectionsDriverPtr<Coordinate> createCoordinatesDriver();
+    
+    /**
+     * @brief Creates NullCollectionsDriver<Condition>.
+     *
+     * @result NullCollectionsDriver<Condition>
+     */
+    CollectionsDriverPtr<Condition> createConditionsDriver();
+    
+    /**
+     * @brief Creates NullCollectionsDriver<Identifier>.
+     *
+     * @result NullCollectionsDriver<Identifier>
+     */
+    CollectionsDriverPtr<Identifier> createIdentifiersDriver();
+
+    /**
+     * @brief Creates NullCollectionsDriver<Object>.
+     *
+     * @result NullCollectionsDriver<Object>
+     */
+    CollectionsDriverPtr<Object> createObjectsDriver();
+
+    /**
+     * @brief Creates NullCollectionsDriver<Param>.
+     *
+     * @result NullCollectionsDriver<Param>
+     */
+    CollectionsDriverPtr<Param> createParamsDriver();
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

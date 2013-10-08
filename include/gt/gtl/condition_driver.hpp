@@ -23,14 +23,14 @@ public:
 	virtual ConditionPtr* playerChoosed(
         ObjectPtr* player,
         ObjectPtr* strategy
-    );
+    ) = 0;
 
     /**
      * @brief ConditionDriver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class ConditionDriver */
 
 ////////////////////////////////////////////////////////////////////////////////

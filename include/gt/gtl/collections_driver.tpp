@@ -2,9 +2,6 @@
 // public:
 
 template<typename Content>
-CollectionsDriver<Content>::CollectionsDriver() {}
-
-template<typename Content>
 typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::empty() {
 	// TODO: realocate ptr to avoid object destruction
     return new CollectionsDriver<Content>::CollectionPtr(

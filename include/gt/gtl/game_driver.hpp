@@ -14,29 +14,14 @@ namespace GTL {
 class GameDriver : public virtual Root {
 public:
     /**
-     * @brief Default constructor.
-     */
-    GameDriver();
-
-    /**
-     * @brief Create Pure Game.
+     * @brief Create Strategic Game.
      *
      * @param details Details for game
      * @return        Game
      */
-    virtual GamePtr* createPure(
+    virtual GamePtr* createStrategic(
         DetailsPtr* details
-    );
-
-    /**
-     * @brief Create Mixed Game.
-     *
-     * @param details Details for game
-     * @return        Game
-     */
-    virtual GamePtr* createMixed(
-        DetailsPtr* details
-    );
+    ) = 0;
 
     /**
      * @brief Create Tree Game.
@@ -46,7 +31,7 @@ public:
      */
     virtual GamePtr* createTree(
         DetailsPtr* details
-    );
+    ) = 0;
 
     /**
      * @brief Create Details.
@@ -58,7 +43,7 @@ public:
     virtual DetailsPtr* createDetails(
         ObjectsPtr*     players,
         CoordinatesPtr* data
-    );
+    ) = 0;
 
     /**
      * @brief Create Player.
@@ -70,14 +55,14 @@ public:
     virtual PlayerPtr* createPlayer(
         IdentifierPtr*  player,
         IdentifiersPtr* strategies
-    );
+    ) = 0;
 
     /**
      * @brief GameDriver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class GameDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -93,13 +78,7 @@ public:
         GameDriver()
         {}
 
-    virtual GamePtr* createPure(
-        DetailsPtr* details
-    ) {
-        return new GamePtr(NullFactory::getInstance().createGame());
-    }
-
-    virtual GamePtr* createMixed(
+    virtual GamePtr* createStrategic(
         DetailsPtr* details
     ) {
         return new GamePtr(NullFactory::getInstance().createGame());

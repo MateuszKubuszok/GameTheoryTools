@@ -75,25 +75,24 @@
 
 /* Declared tokens */
 
-%token LET    /* LET keyword */
-%token BE     /* BE keyword */
-%token PLAYER /* PLAYER keyword */
-%token GAME   /* GAME keyword */
-%token PURE   /* PURE keyword */
-%token MIXED  /* MIXED keyword */
-%token TREE   /* TREE keyword */
-%token WITH   /* WITH keyword */
-%token SUCH   /* SUCH keyword */
-%token AS     /* AS keyword */
-%token FIND   /* FIND keyword */
-%token FOR    /* FOR keyword */
-%token CHOOSE /* CHOOSE keyword */
-%token LCBR   /* { charakter */
-%token RCBR   /* } charakter */
-%token EQUAL  /* = charakter */
-%token COLON  /* : charakter */
-%token COMA   /* , charakter */
-%token EOC    /* ; charakter */
+%token LET       /* LET keyword */
+%token BE        /* BE keyword */
+%token PLAYER    /* PLAYER keyword */
+%token GAME      /* GAME keyword */
+%token STRATEGIC /* STRATEGIC keyword */
+%token TREE      /* TREE keyword */
+%token WITH      /* WITH keyword */
+%token SUCH      /* SUCH keyword */
+%token AS        /* AS keyword */
+%token FIND      /* FIND keyword */
+%token FOR       /* FOR keyword */
+%token CHOOSE    /* CHOOSE keyword */
+%token LCBR      /* { charakter */
+%token RCBR      /* } charakter */
+%token EQUAL     /* = charakter */
+%token COLON     /* : charakter */
+%token COMA      /* , charakter */
+%token EOC       /* ; charakter */
 
 %token <identifier> lexer_error  /* Error */
 %token <identifier> identifier   /* Identifier */
@@ -186,9 +185,8 @@ object
 /* Games */
 
 game
- : PURE  GAME details { $$ = driver.forGame().createPure($3); }
- | MIXED GAME details { $$ = driver.forGame().createMixed($3); }
- | TREE  GAME details { $$ = driver.forGame().createTree($3); }
+ : STRATEGIC GAME details { $$ = driver.forGame().createStrategic($3); }
+ | TREE      GAME details { $$ = driver.forGame().createTree($3); }
  ;
 
 details
@@ -264,8 +262,8 @@ coordinate
 /* Errors */
 
 parser_error
- : error       {}
- | lexer_error {}
+ : error       { /* TODO: Passing errors */ }
+ | lexer_error { /* TODO: Passing errors */ }
  ;
 
 %%

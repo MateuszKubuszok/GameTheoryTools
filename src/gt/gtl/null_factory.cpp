@@ -95,6 +95,50 @@ QueryPtr NullFactory::createQuery() {
     return QueryPtr(new NullQuery());
 }
 
+DriverPtr NullFactory::createDriver() {
+    return DriverPtr(new NullDriver());
+}
+
+ConditionDriverPtr NullFactory::createConditionDriver() {
+    return ConditionDriverPtr(new NullConditionDriver());
+}
+
+CoordinateDriverPtr NullFactory::createCoordinateDriver() {
+    return CoordinateDriverPtr(new NullCoordinateDriver());
+}
+
+GameDriverPtr NullFactory::createGameDriver() {
+    return GameDriverPtr(new NullGameDriver());
+}
+
+ValueDriverPtr NullFactory::createValueDriver() {
+    return ValueDriverPtr(new NullValueDriver());
+}
+
+StatementDriverPtr NullFactory::createStatementDriver() {
+    return StatementDriverPtr(new NullStatementDriver());
+}
+
+CollectionsDriverPtr<Coordinate> NullFactory::createCoordinatesDriver() {
+    return CollectionsDriverPtr<Coordinate>(new NullCollectionsDriver<Coordinate>());
+}
+
+CollectionsDriverPtr<Condition> NullFactory::createConditionsDriver() {
+    return CollectionsDriverPtr<Condition>(new NullCollectionsDriver<Condition>());
+}
+
+CollectionsDriverPtr<Identifier> NullFactory::createIdentifiersDriver() {
+    return CollectionsDriverPtr<Identifier>(new NullCollectionsDriver<Identifier>());
+}
+
+CollectionsDriverPtr<Object> NullFactory::createObjectsDriver() {
+    return CollectionsDriverPtr<Object>(new NullCollectionsDriver<Object>());
+}
+
+CollectionsDriverPtr<Param> NullFactory::createParamsDriver() {
+    return CollectionsDriverPtr<Param>(new NullCollectionsDriver<Param>());
+}
+
 // private:
 
 NullFactory::NullFactory() {}

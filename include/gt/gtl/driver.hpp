@@ -12,97 +12,92 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Driver : public virtual Root {
-    CoordinateDriver              coordinate;
-    CollectionsDriver<Coordinate> coordinates;
-    ConditionDriver               condition;
-    CollectionsDriver<Condition>  conditions;
-    GameDriver                    game;
-    CollectionsDriver<Identifier> identifiers;
-    CollectionsDriver<Object>     objects;
-    CollectionsDriver<Param>      params;
-    ValueDriver                   value;
-    StatementDriver               statement;
+    CoordinateDriverPtr              coordinate;
+    CollectionsDriverPtr<Coordinate> coordinates;
+    ConditionDriverPtr               condition;
+    CollectionsDriverPtr<Condition>  conditions;
+    GameDriverPtr                    game;
+    CollectionsDriverPtr<Identifier> identifiers;
+    CollectionsDriverPtr<Object>     objects;
+    CollectionsDriverPtr<Param>      params;
+    ValueDriverPtr                   value;
+    StatementDriverPtr               statement;
 
 public:
     /**
-     * @brief Default constructor.
-     */
-    Driver();
-
-    /**
      * @brief Default destructor.
      */
-    virtual ~Driver();
+    virtual ~Driver() {}
 
     /**
      * @brief Driver for Coordinate.
      *
      * @return CoordinateDriver
      */
-    virtual CoordinateDriver& forCoordinate();
+    virtual CoordinateDriver& forCoordinate() = 0;
 
     /**
      * @brief Driver for Coordinates.
      *
      * @return CollectionDriver for Coordinates
      */
-    virtual CollectionsDriver<Coordinate>& forCoordinates();
+    virtual CollectionsDriver<Coordinate>& forCoordinates() = 0;
     
     /**
      * @brief Driver for Condition.
      *
      * @return ConditionDriver
      */
-    virtual ConditionDriver& forCondition();
+    virtual ConditionDriver& forCondition() = 0;
 
     /**
      * @brief Driver for Conditions.
      *
      * @return CollectionDriver for Conditions
      */
-    virtual CollectionsDriver<Condition>& forConditions();
+    virtual CollectionsDriver<Condition>& forConditions() = 0;
 
     /**
      * @brief Driver for Game.
      *
      * @return GameDriver
      */
-    virtual GameDriver& forGame();
+    virtual GameDriver& forGame() = 0;
     
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
-    virtual CollectionsDriver<Identifier>& forIdentifiers();
+    virtual CollectionsDriver<Identifier>& forIdentifiers() = 0;
     
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
-    virtual CollectionsDriver<Object>& forObjects();
+    virtual CollectionsDriver<Object>& forObjects() = 0;
     
     /**
      * @brief Driver for Params.
      *
      * @return CollectionDriver for Params
      */
-    virtual CollectionsDriver<Param>& forParams();
+    virtual CollectionsDriver<Param>& forParams() = 0;
 
     /**
      * @brief Driver for value.
      *
      * @return ValueDriver
      */
-    virtual ValueDriver& forValue();
+    virtual ValueDriver& forValue() = 0;
 
     /**
      * @brief Driver for Statement.
      *
      * @return StatementDriver
      */
-    virtual StatementDriver& forStatement();
+    virtual StatementDriver& forStatement() = 0;
 
     /**
      * @brief Displays error.
@@ -111,14 +106,14 @@ public:
      */
     virtual void showError(
         const Message& message
-    );
+    ) = 0;
 
     /**
      * @brief Driver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class Driver */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -129,60 +124,69 @@ public:
  * @author Mateusz Kubuszok
  */
 class NullDriver : public Driver {
-    NullCoordinateDriver              coordinate;
-    NullCollectionsDriver<Coordinate> coordinates;
-    NullConditionDriver               condition;
-    NullCollectionsDriver<Condition>  conditions;
-    NullGameDriver                    game;
-    NullCollectionsDriver<Identifier> identifiers;
-    NullCollectionsDriver<Object>     objects;
-    NullCollectionsDriver<Param>      params;
-    NullValueDriver                   value;
-    NullStatementDriver               statement;
+    CoordinateDriverPtr              coordinate;
+    CollectionsDriverPtr<Coordinate> coordinates;
+    ConditionDriverPtr               condition;
+    CollectionsDriverPtr<Condition>  conditions;
+    GameDriverPtr                    game;
+    CollectionsDriverPtr<Identifier> identifiers;
+    CollectionsDriverPtr<Object>     objects;
+    CollectionsDriverPtr<Param>      params;
+    ValueDriverPtr                   value;
+    StatementDriverPtr               statement;
 
 public:
     NullDriver() :
-        Driver()
+        coordinate(NullFactory::getInstance().createCoordinateDriver()),
+        coordinates(NullFactory::getInstance().createCoordinatesDriver()),
+        condition(NullFactory::getInstance().createConditionDriver()),
+        conditions(NullFactory::getInstance().createConditionsDriver()),
+        game(NullFactory::getInstance().createGameDriver()),
+        identifiers(NullFactory::getInstance().createIdentifiersDriver()),
+        objects(NullFactory::getInstance().createObjectsDriver()),
+        params(NullFactory::getInstance().createParamsDriver()),
+        value(NullFactory::getInstance().createValueDriver()),
+        statement(NullFactory::getInstance().createStatementDriver())
         {}
 
     virtual CoordinateDriver& forCoordinate() {
-        return coordinate;
+        return *coordinate;
     }
 
     virtual CollectionsDriver<Coordinate>& forCoordinates() {
-        return coordinates;
+        return *coordinates;
     }
 
     virtual ConditionDriver& forCondition() {
-        return condition;
+        return *condition;
     }
     
     virtual CollectionsDriver<Condition>& forConditions() {
-        return conditions;
+        return *conditions;
     }
 
     virtual GameDriver& forGame() {
-        return game;
+        return *game;
     }
     
     virtual CollectionsDriver<Identifier>& forIdentifiers() {
-        return identifiers;
+        return *identifiers;
     }
     
     virtual CollectionsDriver<Object>& forObjects() {
-        return objects;
+        return *objects;
     }
     
     virtual CollectionsDriver<Param>& forParams() {
-        return params;
+        return *params;
     }
 
     virtual ValueDriver& forValue() {
-        return value;
+        return *value;
     }
 
     virtual StatementDriver& forStatement() {
-        return statement;
+        return *statement;
     }
 
     virtual void showError(

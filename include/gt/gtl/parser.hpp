@@ -132,25 +132,24 @@ namespace GT { namespace GTL {
      BE = 259,
      PLAYER = 260,
      GAME = 261,
-     PURE = 262,
-     MIXED = 263,
-     TREE = 264,
-     WITH = 265,
-     SUCH = 266,
-     AS = 267,
-     FIND = 268,
-     FOR = 269,
-     CHOOSE = 270,
-     LCBR = 271,
-     RCBR = 272,
-     EQUAL = 273,
-     COLON = 274,
-     COMA = 275,
-     EOC = 276,
-     lexer_error = 277,
-     identifier = 278,
-     number = 279,
-     TERMINATE = 280
+     STRATEGIC = 262,
+     TREE = 263,
+     WITH = 264,
+     SUCH = 265,
+     AS = 266,
+     FIND = 267,
+     FOR = 268,
+     CHOOSE = 269,
+     LCBR = 270,
+     RCBR = 271,
+     EQUAL = 272,
+     COLON = 273,
+     COMA = 274,
+     EOC = 275,
+     lexer_error = 276,
+     identifier = 277,
+     number = 278,
+     TERMINATE = 279
    };
 
     };
@@ -255,7 +254,7 @@ namespace GT { namespace GTL {
     static const unsigned char yytable_[];
     static const signed char yytable_ninf_;
 
-    static const unsigned char yycheck_[];
+    static const signed char yycheck_[];
 
     /// For a state, its accessing symbol.
     static const unsigned char yystos_[];
@@ -330,7 +329,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 334 "include/gt/gtl/parser.hpp"
+#line 333 "include/gt/gtl/parser.hpp"
 
 
 

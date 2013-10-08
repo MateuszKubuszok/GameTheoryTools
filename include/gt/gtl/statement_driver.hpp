@@ -14,18 +14,13 @@ namespace GTL {
 class StatementDriver : public virtual Root {
 public:
     /**
-     * @brief Default constructor.
-     */
-    StatementDriver();
-
-    /**
      * @brief Executes Definition saving Object under defined name.
      *
      * @param definition definition to execute
      */
     virtual void executeDefinition(
         DefinitionPtr* definition
-    );
+    ) = 0;
 
     /**
      * @brief Executes Query saving Object under defined name.
@@ -34,7 +29,7 @@ public:
      */
     virtual void executeQuery(
         QueryPtr* query
-    );
+    ) = 0;
 
     /**
      * @brief Creates Definition saving Object under defined name.
@@ -46,7 +41,7 @@ public:
     virtual DefinitionPtr* createDefinition(
         IdentifierPtr* identifier,
         ObjectPtr*     object
-    );
+    ) = 0;
 
     /**
      * @brief Creates Query for given properties.
@@ -60,14 +55,14 @@ public:
         IdentifiersPtr* identifiers,
         ObjectsPtr*     objects,
         ConditionsPtr*  conditions
-    );
+    ) = 0;
 
     /**
      * @brief StatementDriver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class StatementDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +102,7 @@ public:
     }
 
     virtual Message toString() {
-    	return Message("NullStatementDriver");
+        return Message("NullStatementDriver");
     }
 }; /* END class NullStatementDriver */
 

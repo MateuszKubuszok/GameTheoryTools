@@ -30,7 +30,15 @@ class Player;     class NullPlayer;
 
 class Parser;
 class Scanner;
-class Driver;     class NullDriver;
+class Driver;            class NullDriver;
+class ConditionDriver;   class NullConditionDriver;
+class CoordinateDriver;  class NullCoordinateDriver;
+class GameDriver;        class NullGameDriver;
+class ValueDriver;       class NullValueDriver;
+class StatementDriver;   class NullStatementDriver;
+
+template <typename Content> class CollectionsDriver;
+template <typename Content> class NullCollectionsDriver;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -61,6 +69,14 @@ typedef boost::shared_ptr<Params>                            ParamsPtr;
 typedef boost::shared_ptr<Parser>                     ParserPtr;
 typedef boost::shared_ptr<Scanner>                    ScannerPtr;
 typedef boost::shared_ptr<Driver>                     DriverPtr;
+typedef boost::shared_ptr<ConditionDriver>            ConditionDriverPtr;
+typedef boost::shared_ptr<CoordinateDriver>           CoordinateDriverPtr;
+typedef boost::shared_ptr<GameDriver>                 GameDriverPtr;
+typedef boost::shared_ptr<ValueDriver>                ValueDriverPtr;
+typedef boost::shared_ptr<StatementDriver>            StatementDriverPtr;
+
+template<typename Content>
+using CollectionsDriverPtr = boost::shared_ptr<CollectionsDriver<Content>>;
 
 typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;

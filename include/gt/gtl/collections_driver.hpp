@@ -30,16 +30,11 @@ public:
     typedef typename boost::shared_ptr<Collection> CollectionPtr;
 
     /**
-     * @brief Default constructor.
-     */
-    CollectionsDriver();
-
-    /**
      * @brief Creates an empty collection.
      *
      * @return pointer to collection
      */
-    virtual CollectionPtr* empty();
+    virtual CollectionPtr* empty() = 0;
 
     /**
      * @brief Creates a collection with one element.
@@ -49,7 +44,7 @@ public:
      */
     virtual CollectionPtr* create(
         ContentPtr* element
-    );
+    ) = 0;
 
     /**
      * @brief Adds an element to the collection.
@@ -60,14 +55,14 @@ public:
     virtual CollectionPtr* insert(
         ContentPtr*    element,
         CollectionPtr* collection
-    );
+    ) = 0;
 
     /**
      * @brief CollectionsDriver message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class CollectionsDriver*/
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +82,6 @@ public:
     NullCollectionsDriver() {}
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* empty() {
-        // TODO: realocate ptr to avoid object destruction
         return new typename CollectionsDriver<Content>::CollectionPtr(
             new typename CollectionsDriver<Content>::Collection()
         );
@@ -96,7 +90,6 @@ public:
     virtual typename CollectionsDriver<Content>::CollectionPtr* create(
         typename CollectionsDriver<Content>::ContentPtr* element
     ) {
-        // TODO: realocate ptr to avoid object destruction
         return empty();
     }
 
@@ -104,7 +97,6 @@ public:
         typename CollectionsDriver<Content>::ContentPtr*    element,
         typename CollectionsDriver<Content>::CollectionPtr* collection
     ) {
-        // TODO: realocate ptr to avoid object destruction
         return collection;
     }
 

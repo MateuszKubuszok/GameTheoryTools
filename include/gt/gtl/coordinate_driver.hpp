@@ -13,11 +13,6 @@ namespace GTL {
  */
 class CoordinateDriver : public virtual Root {
 public:
-	/**
-     * @brief Default constructor.
-     */
-	CoordinateDriver();
-
     /**
      * @brief Creates coordinate.
      *
@@ -28,21 +23,21 @@ public:
     virtual CoordinatePtr* create(
         const IdentifierPtr* player,
         const IdentifierPtr* strategy
-    );
+    ) = 0;
 
-	/**
+    /**
      * @brief Fills Coordinate with subcoordinates.
      *
      * @param coordinate coordinate to fill
      * @param data       data to insert
      * @return           coordinate
      */
-	virtual CoordinatePtr* fillWithData(
+    virtual CoordinatePtr* fillWithData(
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
-    );
+    ) = 0;
 
-	/**
+    /**
      * @brief Fills Coordinate with Params.
      *
      * @param coordinate coordinate to fill
@@ -52,7 +47,7 @@ public:
     virtual CoordinatePtr* fillWithData(
         const CoordinatePtr* coordinate,
         const ParamsPtr*     data
-    );
+    ) = 0;
 
     /**
      * @brief Merge two coordinates into one.
@@ -64,14 +59,14 @@ public:
     virtual CoordinatePtr* merge(
         const CoordinatePtr* coordinate1,
         const CoordinatePtr* coordinate2
-    );
+    ) = 0;
 
     /**
      * @brief CoordinateDriver message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class CoordinateDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -83,9 +78,9 @@ public:
  */
 class NullCoordinateDriver : public CoordinateDriver {
 public:
-	NullCoordinateDriver() :
-		CoordinateDriver()
-		{}
+    NullCoordinateDriver() :
+        CoordinateDriver()
+        {}
 
     virtual CoordinatePtr* create(
         const IdentifierPtr* player,
@@ -94,7 +89,7 @@ public:
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
-	virtual CoordinatePtr* fillWithData(
+    virtual CoordinatePtr* fillWithData(
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
     ) {
@@ -116,7 +111,7 @@ public:
     }
 
     virtual Message toString() {
-    	return Message("NullCoordinateDriver");
+        return Message("NullCoordinateDriver");
     }
 }; /* END class NullCoordinateDriver */
 

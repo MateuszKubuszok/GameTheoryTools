@@ -14,11 +14,6 @@ namespace GTL {
 class ValueDriver : public virtual Root {
 public:
     /**
-     * @brief Default costructor.
-     */
-    ValueDriver();
-
-    /**
      * @brief Creates Param by its name.
      *
      * @param identifier Param's Identifier
@@ -26,7 +21,7 @@ public:
      */
     virtual ParamPtr* get(
         IdentifierPtr* identifier
-    );
+    ) = 0;
 
     /**
      * @brief Creates Param by its value.
@@ -36,7 +31,7 @@ public:
      */
     virtual ParamPtr* get(
         NumberPtr* number
-    );
+    ) = 0;
 
     /**
      * @brief Converts passed Game to Object.
@@ -46,7 +41,7 @@ public:
      */
     virtual ObjectPtr* toObject(
         GamePtr* game
-    );
+    ) = 0;
     
     /**
      * @brief Converts passed Player to Object.
@@ -56,7 +51,7 @@ public:
      */
     virtual ObjectPtr* toObject(
         PlayerPtr* player
-    );
+    ) = 0;
 
     /**
      * @brief Converts passed Param to Object.
@@ -66,14 +61,14 @@ public:
      */
     virtual ObjectPtr* toObject(
         ParamPtr* param
-    );
+    ) = 0;
 
     /**
      * @brief ValueDriver message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() = 0;
 }; /* END class ValueDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
