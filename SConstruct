@@ -65,6 +65,9 @@ if not validInstallation:
     print('Invalid compiler/libraries installation - build terminated!!')
     Exit(1)
 
+# Set C++11 standard to be used during compilation.
+conf.env.Append(CPPFLAGS=['-std=c++11'])
+
 # Adds headers dirs:
 # - include/ - public include directory,
 # - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
@@ -72,8 +75,11 @@ if not validInstallation:
 # - src/gt/ - added for implemetnations headers,
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
-conf.env.Append(CPPFLAGS=['-std=c++0x'])
 conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
+
+# Sets used libraries to:
+# - gmp - GNU Multiple Precision library,
+# - gmpxx - C++ wrappers for GMP.
 conf.env.Append(LIBS=['gmp', 'gmpxx'])
 
 conf.Finish()
