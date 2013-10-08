@@ -39,7 +39,8 @@ if not conf.CheckCXX():
 # Header check
 for header in [
     # standard libraries
-    'cstdlib', 'iostream', 'fstream', 'string',
+    'cstdlib', 'iostream', 'fstream',
+    'stdexcept', 'string', 'utility',
     # boost libraries
     'boost/foreach.hpp',
     'boost/shared_ptr.hpp',
@@ -71,6 +72,7 @@ if not validInstallation:
 # - src/gt/ - added for implemetnations headers,
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
+conf.env.Append(CPPFLAGS=['-std=c++0x'])
 conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
 conf.env.Append(LIBS=['gmp', 'gmpxx'])
 
