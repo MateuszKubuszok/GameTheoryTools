@@ -34,7 +34,7 @@ void Param::checkVisitedIdentifiers(
     VisitedIdentifiers& visitedIdentifiers,
     Identifier&         currentIdentifier
 ) {
-    BOOST_FOREACH(Identifier& visitedIdentifier, visitedIdentifiers) 
+    for (Identifier& visitedIdentifier : visitedIdentifiers) 
         if (visitedIdentifier == currentIdentifier)
             throw ExceptionFactory::getInstance().cyclicIdentifiersFound(visitedIdentifiers, currentIdentifier);
 }

@@ -59,7 +59,7 @@ ResultPtr Object::findPropertyWithConditions(
 IdentifiersPtr Object::listProperties() {
     IdentifiersPtr properties = createIdentifiersPtr();
 
-    BOOST_FOREACH(Identifier property, registeredProperties | boost::adaptors::map_keys)
+    for (Identifier property : registeredProperties | boost::adaptors::map_keys)
         properties->push_back( createIdentifierPtr(property) );
 
     return properties;

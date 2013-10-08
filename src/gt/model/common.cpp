@@ -73,7 +73,7 @@ bool operator==(
         return true;
     if (positions1.size() != positions2.size())
         return false;
-    BOOST_FOREACH(Identifier identifier, positions1 | boost::adaptors::map_keys)
+    for (Identifier identifier : positions1 | boost::adaptors::map_keys)
         if (!positions2.count(identifier) || positions1[identifier] != positions2[identifier])
             return false;
     return true;
@@ -99,7 +99,7 @@ bool operator==(
         return true;
     if (players1.size() != players2.size())
         return false;
-    BOOST_FOREACH(Identifier playerName, players1 | boost::adaptors::map_keys)
+    for (Identifier playerName : players1 | boost::adaptors::map_keys)
         if (!players2.count(playerName) || *players1[playerName] != *players2[playerName])
             return false;
     return true;

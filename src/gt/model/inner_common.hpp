@@ -8,7 +8,6 @@
 #include <iomanip>
 
 /* Includes boost libraries */
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>

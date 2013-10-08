@@ -36,7 +36,7 @@ CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
     std::stringstream result;
 
     result << "Cyclic Identifiers found in list:\n";
-    BOOST_FOREACH(Identifier& identifier, visitedIdentifiers)
+    for (Identifier& identifier : visitedIdentifiers)
         result << "\t\'" << identifier << "\'\n";
     result << "identifier \'"
            << currentIdentifier

@@ -39,14 +39,14 @@ DataBuilder& StrategicDataBuilder::setPlayers(
 DataBuilder& StrategicDataBuilder::addNextPositions(
     PositionsPtr positions
 ) {
-    BOOST_FOREACH(Positions::value_type& position, (*positions)) {
+    for (Positions::value_type& position : (*positions)) {
         if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
             throw ExceptionFactory::getInstance().coordinatesAlreadySet(*positions);
         if (!(*players)[position.first]->hasStrategy(position.second))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
     }
 
-    BOOST_FOREACH(Positions::value_type& position, (*positions)) {
+    for (Positions::value_type& position : (*positions)) {
         currentPositions.insert( position );
         currentlyKnownPositions.insert( KnownPositions::value_type(position.first, true) );
     }
@@ -57,7 +57,7 @@ DataBuilder& StrategicDataBuilder::addNextPositions(
 DataBuilder& StrategicDataBuilder::setParams(
     NumbersPtr params
 ) {
-    BOOST_FOREACH(Identifier player, (*players) | boost::adaptors::map_keys)
+    for (Identifier player : (*players) | boost::adaptors::map_keys)
         if (!currentlyKnownPositions.count(player) || !currentlyKnownPositions[player])
             throw ExceptionFactory::getInstance().incompleteCoordinates();
 

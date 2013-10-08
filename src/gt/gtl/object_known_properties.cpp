@@ -28,7 +28,7 @@ ResultPtr ObjectKnownProperties::findForConditions(
     resultBuilder->setHeaders(records);
     
     IdentifiersPtr propertiesList = object->listProperties();
-    BOOST_FOREACH(IdentifierPtr propertyName, *propertiesList) {
+    for (IdentifierPtr& propertyName : *propertiesList) {
         MessagesPtr content = createMessagesPtr();
         content->push_back( createMessagePtr(propertyName) );
         resultBuilder->addRecord(property, content);

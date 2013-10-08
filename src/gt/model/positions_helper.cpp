@@ -19,12 +19,12 @@ PositionsHelper::PositionsHelper(
     Index playerIndex   = 0;
     Index positionIndex = 1;
 
-    BOOST_FOREACH(Players::value_type playerPair, (*players)) {
+    for (Players::value_type& playerPair : (*players)) {
         const Identifier& playerName = playerPair.first;
         Player& player = *playerPair.second;
 
         IdentifierMap strategiesMap;
-        BOOST_FOREACH(IdentifierPtr& strategy, (*player.getStrategies()))
+        for (IdentifierPtr& strategy : (*player.getStrategies()))
             strategiesMap.insert( IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)) );
         playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
         positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
@@ -67,7 +67,7 @@ Index PositionsHelper::calculatePosition(
     Positions& positions
 ) {
     Index storagePosition = 0;
-    BOOST_FOREACH(Positions::value_type& position, positions) {
+    for (Positions::value_type& position : positions) {
         Identifier playerName   = position.first;
         Identifier strategyName = position.second;
         storagePosition +=
@@ -89,9 +89,9 @@ PositionsPtr PositionsHelper::retrievePositions(
 ) {
     PositionsPtr positions = createPositionsPtr();
 
-    BOOST_FOREACH(Index playerValue, positionsHelper.right
-                                    | boost::adaptors::map_keys
-                                    | boost::adaptors::reversed
+    for (Index playerValue : positionsHelper.right
+                           | boost::adaptors::map_keys
+                           | boost::adaptors::reversed
     ) {
         Identifier playerName = positionsHelper.right.at(playerValue);
         for (Index strategyValue = strategiesHelper[playerName].size()-1;
@@ -129,7 +129,7 @@ bool PositionsHelper::checkPlayer(
 bool PositionsHelper::checkPositions(
     Positions& positions
 ) {
-    BOOST_FOREACH(Identifier playerName, positions | boost::adaptors::map_keys) {
+    for (Identifier playerName : positions | boost::adaptors::map_keys) {
         if (!checkPlayer(playerName))
             return false;
         Identifier strategyName = positions[playerName];
@@ -148,7 +148,7 @@ bool PositionsHelper::checkPositions(
 Message PositionsHelper::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr    name          = createIdentifierPtr("Player");
-    BOOST_FOREACH(Players::value_type& player, (*players)) {
+    for (Players::value_type& player : (*players)) {
         MessagePtr playerContent = createIdentifierPtr(player.second->toString());
         resultBuilder->addResult(name, playerContent);
     }

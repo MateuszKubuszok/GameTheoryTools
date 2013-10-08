@@ -31,7 +31,7 @@ ResultPtr XMLResultBuilder::buildRaw() {
     std::stringstream result;
 
     if (propertiesSize > 0)
-        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+        for (PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
@@ -52,7 +52,7 @@ ResultPtr XMLResultBuilder::buildRaw() {
         }
 
     if (subResults.size() > 0)
-        BOOST_FOREACH(SubResult& subResult, subResults) {
+        for (SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 

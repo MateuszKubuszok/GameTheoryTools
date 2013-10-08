@@ -22,7 +22,7 @@ ResultPtr PlayerStrategiesProperty::findForConditions(
 
     IdentifierPtr name  = createIdentifierPtr("Strategy");
     ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-    BOOST_FOREACH(IdentifierPtr& strategy, *player->getStrategies()) {
+    for (IdentifierPtr& strategy : *player->getStrategies()) {
         MessagePtr value = createMessagePtr(strategy);
         subResultBuilder->addResult(name, value);
     }

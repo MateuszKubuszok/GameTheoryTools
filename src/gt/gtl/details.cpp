@@ -30,7 +30,7 @@ Message Details::toString() {
     IdentifierPtr playersName = createIdentifierPtr("Players");
     ResultBuilderPtr playersResultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr playerName = createIdentifierPtr("Player");
-    BOOST_FOREACH(ObjectPtr& player, *players) {
+    for (ObjectPtr& player : *players) {
         MessagePtr playerValue = createMessagePtr(player->toString());
         playersResultBuilder->addResult(playerName, playerValue);
     }
@@ -40,7 +40,7 @@ Message Details::toString() {
     IdentifierPtr coordinatesName = createIdentifierPtr("Coordinates");
     ResultBuilderPtr coordinatesResultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr coordinateName = createIdentifierPtr("Coordinate");
-    BOOST_FOREACH(CoordinatePtr& coordinate, *coordinates) {
+    for (CoordinatePtr& coordinate : *coordinates) {
         MessagePtr coordinateValue = createMessagePtr(coordinate->toString());
         coordinatesResultBuilder->addResult(coordinateName, coordinateValue);
     }

@@ -25,23 +25,23 @@ ResultPtr PlainResultBuilder::buildRaw() {
     
     if (propertiesNames->size() > 0) {
         result << indent;
-        BOOST_FOREACH(IdentifierPtr& propertyName, (*propertiesNames))
+        for (IdentifierPtr& propertyName : (*propertiesNames))
             result << indent << (*propertyName) << ',';
         result << std::endl;
 
-        BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+        for (PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
             result << recordName << ':' << std::endl << indent;
-            BOOST_FOREACH(MessagePtr& propertyValue, properties)
+            for (MessagePtr& propertyValue : properties)
                 result << indent << (*propertyValue) << ',';
             result << std::endl;
         }
     }
 
     if (subResults.size() > 0) {
-        BOOST_FOREACH(SubResult& subResult, subResults) {
+        for (SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 

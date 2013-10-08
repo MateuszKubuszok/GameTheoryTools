@@ -17,7 +17,7 @@ Player::Player(
     strategyMapping()
 {
     Index index = 0;
-    BOOST_FOREACH(IdentifierPtr& strategy, *strategies)
+    for (IdentifierPtr& strategy : *strategies)
         strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
 }
 
@@ -64,7 +64,7 @@ bool Player::isEqual(
 
 Message Player::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
-    BOOST_FOREACH(IdentifierPtr& strategy, *strategies) {
+    for (IdentifierPtr& strategy : *strategies) {
         IdentifierPtr name  = createIdentifierPtr(getStrategyOrdinal(*strategy));
         MessagePtr    value = createMessagePtr(strategy);
         resultBuilder->addResult(name, value);

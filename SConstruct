@@ -42,7 +42,6 @@ for header in [
     'cstdlib', 'iostream', 'fstream',
     'stdexcept', 'string', 'utility',
     # boost libraries
-    'boost/foreach.hpp',
     'boost/shared_ptr.hpp',
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',

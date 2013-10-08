@@ -76,7 +76,7 @@ ParamPtr Context::getParam(
 Message Context::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    BOOST_FOREACH(KnownObjects::value_type objectPair, knownObjects) {
+    for (KnownObjects::value_type& objectPair : knownObjects) {
         IdentifierPtr name  = createIdentifierPtr(objectPair.first);
         MessagePtr    value = createMessagePtr(objectPair.second->toString());
         resultBuilder->addResult(name, value);

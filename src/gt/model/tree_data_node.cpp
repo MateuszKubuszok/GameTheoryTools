@@ -39,9 +39,8 @@ NumbersPtr TreeDataNode::getValues(
     if (depthValue == 0)
         return payoff;
 
-    if (!checkPositions(positions)){
+    if (!checkPositions(positions))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
-    }
 
     Identifier& strategy = positions[depthName];
     return (*nodes)[strategy]->getValues(positions);
@@ -78,12 +77,12 @@ Message TreeDataNode::toString() {
     IdentifierPtr    valueName     = createIdentifierPtr("Value");
 
     if (depthValue == 0)
-        BOOST_FOREACH(NumberPtr& number, (*payoff)) {
+        for (NumberPtr& number : (*payoff)) {
             MessagePtr result = createMessagePtr(number);
             resultBuilder->addResult(valueName, result);
         }
     else
-        BOOST_FOREACH(TreeDataNodes::value_type& node, (*nodes)) {
+        for (TreeDataNodes::value_type& node : (*nodes)) {
             IdentifierPtr nodeName = createIdentifierPtr(node.first);
             MessagePtr    result   = createMessagePtr(node.second->toString());
             resultBuilder->addResult(nodeName, result);

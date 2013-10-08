@@ -35,7 +35,7 @@ InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions) {
+    for (Positions::value_type& position : positions) {
         Identifier  playerName   = position.first;
         Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
@@ -55,7 +55,7 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions) {
+    for (Positions::value_type& position : positions) {
         Identifier  playerName   = position.first;
         Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
@@ -71,7 +71,7 @@ InvalidCoordinate ExceptionFactory::invalidTreeCoordinateFormat(
     std::stringstream result;
     
     result << "Coordinates:";
-    BOOST_FOREACH(Positions::value_type position, positions) {
+    for (Positions::value_type position : positions) {
         Identifier  playerName   = position.first;
         Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";

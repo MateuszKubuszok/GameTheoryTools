@@ -85,7 +85,7 @@ Message Coordinate::toString() {
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
         IdentifierPtr name = createIdentifierPtr("Param");
-        BOOST_FOREACH(ParamPtr& param, *params) {
+        for (ParamPtr& param : *params) {
             MessagePtr value = createMessagePtr(param->toString());
             subResultBuilder->addResult(name, value);
         }
@@ -98,7 +98,7 @@ Message Coordinate::toString() {
         IdentifierPtr positionsName = createIdentifierPtr("Positions");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-        BOOST_FOREACH(Positions::value_type& position, *positions) {
+        for (Positions::value_type& position : *positions) {
             IdentifierPtr name  = createIdentifierPtr(position.first);
             MessagePtr    value = createMessagePtr(position.second);
             subResultBuilder->addResult(name, value);
@@ -113,7 +113,7 @@ Message Coordinate::toString() {
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
         IdentifierPtr name = createIdentifierPtr("Coordinate");
-        BOOST_FOREACH(CoordinatePtr& subCoordinate, *subCoordinates) {
+        for (CoordinatePtr& subCoordinate : *subCoordinates) {
             MessagePtr value = createMessagePtr(subCoordinate->toString());
             subResultBuilder->addResult(name, value);
         }

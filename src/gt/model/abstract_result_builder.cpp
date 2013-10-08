@@ -52,7 +52,7 @@ Message AbstractResultBuilder::toString() {
 
 void AbstractResultBuilder::checkPropertyToResultMatching() {
     int propertiesSize = propertiesNames->size();
-    BOOST_FOREACH(PartialResult& partialResult, partialResults) {
+    for (PartialResult& partialResult : partialResults) {
         MessagesPtr checkedProperties = partialResult.second;
         if (checkedProperties->size() != propertiesSize)
             throw ExceptionFactory::getInstance()
@@ -72,7 +72,7 @@ Message AbstractResultBuilder::addIndent(
     boost::split(lines, content, boost::is_any_of("\n"));
 
     std::stringstream result;
-    BOOST_FOREACH(Message& line, lines)
+    for (Message& line : lines)
         if (!line.empty() && line != "\n")
             result << indent << line << std::endl;
     

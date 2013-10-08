@@ -29,7 +29,7 @@ Message PlainDataPiece::toString() {
     IdentifiersPtr players(new Identifiers());
     MessagesPtr    values(new Messages());
 
-    BOOST_FOREACH(Identifier playerName, (*positionsHelper.getPlayers()) | boost::adaptors::map_keys) {
+    for (Identifier playerName : (*positionsHelper.getPlayers()) | boost::adaptors::map_keys) {
         players->push_back( createIdentifierPtr(playerName) );
         values->push_back( createMessagePtr((*numbers)[positionsHelper.calculatePlayer(playerName)]) );
     }

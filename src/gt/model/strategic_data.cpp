@@ -130,7 +130,7 @@ Message StrategicData::toString() {
             IdentifiersPtr strategies = createIdentifiersPtr();
             MessagesPtr    numbersStr = createMessagesPtr();
 
-            BOOST_FOREACH(IdentifierPtr playerName, (*playersNames)) {
+            for (IdentifierPtr& playerName : (*playersNames)) {
                 strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
                 numbersStr->push_back( createMessagePtr( (*numbers)[positionsHelper.calculatePlayer(playerName)] ) );
             }

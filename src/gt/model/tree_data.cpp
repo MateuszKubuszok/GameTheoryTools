@@ -27,7 +27,7 @@ PlayersInTurnsPtr TreeData::getPlayersInTurns() {
 DataPiecePtr TreeData::getValues(
     Positions& positions
 ) {
-    BOOST_FOREACH(Positions::value_type& position, positions) {
+    for (Positions::value_type& position : positions) {
         Identifier turn     = position.first;
         Identifier strategy = position.second;
         if (!playersInTurns->count(turn) || !(*playersInTurns)[turn]->hasStrategy(strategy))
@@ -48,7 +48,7 @@ Data& TreeData::setValues(
     Positions& positions,
     NumbersPtr numbers
 ) {
-    BOOST_FOREACH(Positions::value_type& position, positions) {
+    for (Positions::value_type& position : positions) {
         Identifier turn     = position.first;
         Identifier strategy = position.second;
         if (!playersInTurns->count(turn) || !(*playersInTurns)[turn]->hasStrategy(strategy))
