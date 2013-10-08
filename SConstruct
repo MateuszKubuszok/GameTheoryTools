@@ -116,7 +116,9 @@ testConf.env.Append(LIBS=['boost_unit_test_framework'])
 
 testConf.Finish()
 
-logLevel = 'test_suite'
+logLevel     = 'test_suite'
+randomOrder  = '0'
+showProgress = 'no'
 
 ################################################################################
 
@@ -156,7 +158,10 @@ ModelsTestsProgram_bin = testEnv.Program(
 ModelsTestsProgram_run = Command(
     source=ModelsTestsProgram_bin,
     target='model-mock-content',
-    action=ModelsTestsProgram_URI+' --log_level='+logLevel
+    action=ModelsTestsProgram_URI+
+        ' --log_level='+logLevel+
+        ' --random='+randomOrder+
+        ' --show_progress='+showProgress
 )
 Depends(
     ModelsTestsProgram_run,
@@ -228,7 +233,10 @@ GTLTestsProgram_bin = testEnv.Program(
 GTLTestsProgram_run = Command(
     source=GTLTestsProgram_bin,
     target='gtl-mock-content',
-    action=GTLTestsProgram_URI+' --log_level='+logLevel
+    action=GTLTestsProgram_URI+
+        ' --log_level='+logLevel+
+        ' --random='+randomOrder+
+        ' --show_progress='+showProgress
 )
 Depends(
     GTLTestsProgram_run,
