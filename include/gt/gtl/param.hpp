@@ -107,27 +107,27 @@ protected:
 class NullParam : public Param {
 public:
     virtual ObjectPtr getObject(
-        Context& context
+        Context&
     ) {
         return NullFactory::getInstance().createObject();
     }
 
     virtual ObjectPtr getObject(
-        Context&            context,
-        VisitedIdentifiers& visitedIdentifiers
+        Context&,
+        VisitedIdentifiers&
     ) {
         return NullFactory::getInstance().createObject();
     }
 
     virtual NumberPtr getNumber(
-        Context& context
+        Context&
     ) {
         return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual NumberPtr getNumber(
-        Context&            context,
-        VisitedIdentifiers& visitedIdentifiers
+        Context&,
+        VisitedIdentifiers&
     ) {
         return Model::NullFactory::getInstance().createNumber();
     }

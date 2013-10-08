@@ -51,7 +51,7 @@ Message AbstractResultBuilder::toString() {
 // protected:
 
 void AbstractResultBuilder::checkPropertyToResultMatching() {
-    int propertiesSize = propertiesNames->size();
+    Index propertiesSize = propertiesNames->size();
     for (PartialResult& partialResult : partialResults) {
         MessagesPtr checkedProperties = partialResult.second;
         if (checkedProperties->size() != propertiesSize)

@@ -19,15 +19,15 @@ Game::Game(
 }
 
 ResultPtr Game::pureEquilibrium(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
 ResultPtr Game::mixedEquilibrium(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }

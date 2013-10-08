@@ -47,7 +47,7 @@ public:
 class NullQuery : public Query {
 public:
     virtual ResultPtr execute(
-        Context& context
+        Context&
     ) {
         return NullFactory::getInstance().createResult();
     }

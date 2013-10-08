@@ -79,24 +79,24 @@ public:
         {}
 
     virtual void executeDefinition(
-        DefinitionPtr* definition
+        DefinitionPtr*
     ) {}
 
     virtual void executeQuery(
-        QueryPtr* query
+        QueryPtr*
     ) {}
 
     virtual DefinitionPtr* createDefinition(
-        IdentifierPtr* identifier,
-        ObjectPtr*     object
+        IdentifierPtr*,
+        ObjectPtr*
     ) {
         return new DefinitionPtr(NullFactory::getInstance().createDefinition());
     }
 
     virtual QueryPtr* createQuery(
-        IdentifiersPtr* identifiers,
-        ObjectsPtr*     objects,
-        ConditionsPtr*  conditions
+        IdentifiersPtr*,
+        ObjectsPtr*,
+        ConditionsPtr*
     ) {
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }

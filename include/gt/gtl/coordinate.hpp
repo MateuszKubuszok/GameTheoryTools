@@ -147,32 +147,32 @@ public:
 class NullCoordinate : public Coordinate {
 public:
     virtual Coordinate& addParams(
-        const ParamPtr param
+        const ParamPtr
     ) {
         return *this;
     }
 
     virtual Coordinate& addParams(
-        const ParamsPtr params
+        const ParamsPtr
     ) {
         return *this;
     }
 
     virtual Coordinate& addPosition(
-        const IdentifierPtr player,
-        const IdentifierPtr strategy
+        const IdentifierPtr,
+        const IdentifierPtr
     ) {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
-        const CoordinatePtr subCoordinate
+        const CoordinatePtr
     ) {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
-        const CoordinatesPtr subCoordinates
+        const CoordinatesPtr
     ) {
         return *this;
     }

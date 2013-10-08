@@ -197,13 +197,13 @@ public:
         {}
 
     virtual void executeDefinition(
-        GT::GTL::DefinitionPtr* definition
+        GT::GTL::DefinitionPtr*
     ) {
         executedDefinitions++;
     }
 
     virtual void executeQuery(
-        GT::GTL::QueryPtr* query
+        GT::GTL::QueryPtr*
     ) {
         executedQueries++;
     }
@@ -303,7 +303,7 @@ public:
     }
 
     virtual void showError(
-        const GT::Message& message
+        const GT::Message&
     ) {
         shownErrors++;
     }

@@ -15,8 +15,8 @@ ParamValueProperty::ParamValueProperty(
     {}
 
 ResultPtr ParamValueProperty::findForConditions(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     return ResultFactory::getInstance().constResult(param->toString());
 }

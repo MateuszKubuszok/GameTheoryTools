@@ -88,16 +88,16 @@ public:
     }
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* create(
-        typename CollectionsDriver<Content>::ContentPtr* element
+        typename CollectionsDriver<Content>::ContentPtr*
     ) {
         return empty();
     }
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* insert(
-        typename CollectionsDriver<Content>::ContentPtr*    element,
+        typename CollectionsDriver<Content>::ContentPtr*,
         typename CollectionsDriver<Content>::CollectionPtr* collection
     ) {
-        return collection;
+        return new typename CollectionsDriver<Content>::CollectionPtr(*collection);
     }
 
     virtual bool isNotNull() {

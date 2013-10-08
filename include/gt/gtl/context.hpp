@@ -133,32 +133,32 @@ public:
  */
 class NullContext : public Context {
     virtual Context& registerObject(
-        IdentifierPtr identifier,
-        ObjectPtr     object
+        IdentifierPtr,
+        ObjectPtr
     ) {
         return *this;
     }
 
     virtual Context& registerObject(
-        DefinitionPtr definition
+        DefinitionPtr
     ) {
         return *this;
     }
 
     virtual NumberPtr getNumber(
-        Identifier& identifier
+        Identifier&
     ) {
         return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual ObjectPtr getObject(
-        Identifier& identifier
+        Identifier&
     ) {
         return NullFactory::getInstance().createObject();
     }
 
     virtual ParamPtr getParam(
-        Identifier& identifier
+        Identifier&
     ) {
         return NullFactory::getInstance().createParam();
     }

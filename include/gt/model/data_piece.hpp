@@ -80,7 +80,7 @@ public:
         {}
 
     virtual NumberPtr& getValue(
-        Identifier& playerName
+        Identifier&
     ) {
         return nullNumber;
     }

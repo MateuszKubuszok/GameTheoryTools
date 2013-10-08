@@ -84,21 +84,21 @@ public:
 class NullResultBuilder : public ResultBuilder {
 public:
     virtual ResultBuilder& setHeaders(
-        IdentifiersPtr& properties
+        IdentifiersPtr&
     ) {
         return *this;
     }
 
     virtual ResultBuilder& addRecord(
-        IdentifierPtr& object,
-        MessagesPtr&   results
+        IdentifierPtr&,
+        MessagesPtr&
     ) {
         return *this;
     }
 
     virtual ResultBuilder& addResult(
-        IdentifierPtr& name,
-        MessagePtr&    result
+        IdentifierPtr&,
+        MessagePtr&
     ) {
         return *this;
     }

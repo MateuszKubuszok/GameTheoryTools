@@ -64,14 +64,14 @@ if not validInstallation:
     print('Invalid compiler/libraries installation - build terminated!!')
     Exit(1)
 
-# Set C++11 standard to be used during compilation.
+# Sets C++11 standard to be used during compilation.
 conf.env.Append(CPPFLAGS=['-std=c++11'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
 # - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
 #   (poor custom path definitions),
-# - src/gt/ - added for implemetnations headers,
+# - src/ - added for implemetnations headers,
 # - src/gt/gtl - added for using location.hh, position.hh and stack.hh
 #   in GT::GTL::Parser (as above).
 conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
@@ -82,6 +82,12 @@ conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
 conf.env.Append(LIBS=['gmp', 'gmpxx'])
 
 conf.Finish()
+
+# Creates separate environment for parser and scanner
+parserEnv = env.Clone()
+
+# Sets warning informations in main conf.
+env.Append(CPPFLAGS=['-Wall', '-Wextra', '-pedantic'])
 
 ################################################################################
 
@@ -201,6 +207,16 @@ GTL = [
         target=targetForSource(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
+    if  not GTL_cpp.name.endswith('scanner.cpp')
+    and not GTL_cpp.name.endswith('parser.cpp')
+] + [
+    parserEnv.Object(
+        source=GTL_cpp,
+        target=targetForSource(GTL_cpp)
+    )
+    for GTL_cpp in Glob(source+gtl+'*.cpp')
+    if GTL_cpp.name.endswith('scanner.cpp')
+    or GTL_cpp.name.endswith('parser.cpp')
 ]
 Depends(
     GTL,

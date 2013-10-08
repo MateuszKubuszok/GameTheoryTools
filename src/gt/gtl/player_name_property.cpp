@@ -15,8 +15,8 @@ PlayerNameProperty::PlayerNameProperty(
     {}
 
 ResultPtr PlayerNameProperty::findForConditions(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     IdentifierPtr name  = createIdentifierPtr("Name");
     MessagePtr    value = createMessagePtr(player->getName());

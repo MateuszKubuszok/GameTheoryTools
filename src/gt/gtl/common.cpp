@@ -13,7 +13,7 @@ bool operator==(
         return true;
     if (conditions1.size() != conditions2.size())
         return false;
-    for (Index i = conditions1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < conditions1.size(); i++)
         if (conditions1[i] !=conditions2[i])
             return false;
     return true;
@@ -33,7 +33,7 @@ bool operator==(
         return true;
     if (coordinates1.size() != coordinates2.size())
         return false;
-    for (Index i = coordinates1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < coordinates1.size(); i++)
         if (coordinates1[i] !=coordinates2[i])
             return false;
     return true;
@@ -53,7 +53,7 @@ bool operator==(
         return true;
     if (objects1.size() != objects2.size())
         return false;
-    for (Index i = objects1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < objects1.size(); i--)
         if (objects1[i] !=objects2[i])
             return false;
     return true;
@@ -73,7 +73,7 @@ bool operator==(
         return true;
     if (params1.size() != params2.size())
         return false;
-    for (Index i = params1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < params1.size(); i--)
         if (params1[i] !=params2[i])
             return false;
     return true;

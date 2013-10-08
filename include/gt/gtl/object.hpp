@@ -175,22 +175,22 @@ public:
     }
 
     virtual bool respondsTo(
-        Identifier& propertyName
+        Identifier&
     ) {
         return true;
     }
 
     virtual ResultPtr findProperty(
-        const Context&    context,
-        Identifier&       propertyName
+        const Context&,
+        Identifier&
     ) {
         return NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr findPropertyWithConditions(
-        const Context&    context,
-        Identifier&       propertyName,
-        const Conditions& conditions
+        const Context&,
+        Identifier&,
+        const Conditions&
     ) {
         return NullFactory::getInstance().createResult();
     }

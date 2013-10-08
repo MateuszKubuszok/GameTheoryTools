@@ -12,7 +12,7 @@ bool operator==(
         return true;
     if (messages1.size() != messages2.size())
         return false;
-    for (Index i = messages1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < messages1.size(); i++)
         if (*messages1[i] != *messages2[i])
             return false;
     return true;
@@ -53,7 +53,7 @@ bool operator==(
         return true;
     if (numbers1.size() != numbers2.size())
         return false;
-    for (Index i = numbers1.size()-1; i >= 0; i--)
+    for (Index i = 0; i < numbers1.size(); i++)
         if (*numbers1[i] != *numbers2[i])
             return false;
     return true;

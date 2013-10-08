@@ -156,39 +156,39 @@ public:
     }
 
     virtual DataPiecePtr getValues(
-        Positions& positions
+        Positions&
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
-        PositionsPtr positions
+        PositionsPtr
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
+        Positions&,
+        NumbersPtr
     ) {
         return *this;
     }
 
     virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
+        PositionsPtr,
+        NumbersPtr
     ) {
         return *this;
     }
 
     virtual DataPiecePtr operator[](
-        Positions& positions
+        Positions&
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr operator[](
-        PositionsPtr positions
+        PositionsPtr
     ) {
         return NullFactory::getInstance().createDataPiece();
     }

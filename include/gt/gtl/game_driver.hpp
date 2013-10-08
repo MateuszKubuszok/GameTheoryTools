@@ -79,27 +79,27 @@ public:
         {}
 
     virtual GamePtr* createStrategic(
-        DetailsPtr* details
+        DetailsPtr*
     ) {
         return new GamePtr(NullFactory::getInstance().createGame());
     }
 
     virtual GamePtr* createTree(
-        DetailsPtr* details
+        DetailsPtr*
     ) {
         return new GamePtr(NullFactory::getInstance().createGame());
     }
 
     virtual DetailsPtr* createDetails(
-        ObjectsPtr*     players,
-        CoordinatesPtr* data
+        ObjectsPtr*,
+        CoordinatesPtr*
     ) {
         return new DetailsPtr(NullFactory::getInstance().createDetails());
     }
 
     virtual PlayerPtr* createPlayer(
-        IdentifierPtr*  player,
-        IdentifiersPtr* strategies
+        IdentifierPtr*,
+        IdentifiersPtr*
     ) {
         return new PlayerPtr(NullFactory::getInstance().createPlayer());
     }

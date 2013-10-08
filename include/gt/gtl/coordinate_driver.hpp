@@ -83,29 +83,29 @@ public:
         {}
 
     virtual CoordinatePtr* create(
-        const IdentifierPtr* player,
-        const IdentifierPtr* strategy
+        const IdentifierPtr*,
+        const IdentifierPtr*
     ) {
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
     virtual CoordinatePtr* fillWithData(
-        const CoordinatePtr*  coordinate,
-        const CoordinatesPtr* data
+        const CoordinatePtr*,
+        const CoordinatesPtr*
     ) {
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
     virtual CoordinatePtr* fillWithData(
-        const CoordinatePtr* coordinate,
-        const ParamsPtr*     data
+        const CoordinatePtr*,
+        const ParamsPtr*
     ) {
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
     virtual CoordinatePtr* merge(
-        const CoordinatePtr* coordinate1,
-        const CoordinatePtr* coordinate2
+        const CoordinatePtr*,
+        const CoordinatePtr*
     ) {
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }

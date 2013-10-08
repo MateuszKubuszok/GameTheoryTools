@@ -95,7 +95,7 @@ PositionsPtr PositionsHelper::retrievePositions(
     ) {
         Identifier playerName = positionsHelper.right.at(playerValue);
         for (Index strategyValue = strategiesHelper[playerName].size()-1;
-                   strategyValue >= 0;
+                   true;
                    strategyValue--
         ) {
             if (playerValue*strategyValue <= positionInStorage) {
@@ -108,6 +108,8 @@ PositionsPtr PositionsHelper::retrievePositions(
                 positionInStorage -= playerValue*strategyValue;
                 break;
             }
+            if (!strategyValue)
+                break;
         }
     }
 

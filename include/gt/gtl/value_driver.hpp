@@ -85,31 +85,31 @@ public:
         {}
 
     virtual ParamPtr* get(
-        IdentifierPtr* identifier
+        IdentifierPtr*
     ) {
         return new ParamPtr(NullFactory::getInstance().createParam());
     }
 
     virtual ParamPtr* get(
-        NumberPtr* number
+        NumberPtr*
     ) {
         return new ParamPtr(NullFactory::getInstance().createParam());
     }
 
     virtual ObjectPtr* toObject(
-        GamePtr* game
+        GamePtr*
     ) {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
     
     virtual ObjectPtr* toObject(
-        PlayerPtr* player
+        PlayerPtr*
     ) {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
     virtual ObjectPtr* toObject(
-        ParamPtr* param
+        ParamPtr*
     ) {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }

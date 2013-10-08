@@ -86,13 +86,13 @@ public:
 class NullDataAccessor : public DataAccessor {
 public:    
     virtual DataPiecePtr getValues(
-        Positions& positions
+        Positions&
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
-        PositionsPtr positions
+        PositionsPtr
     ) {
         return NullFactory::getInstance().createDataPiece();
     }

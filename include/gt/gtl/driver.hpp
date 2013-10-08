@@ -179,7 +179,7 @@ public:
     }
 
     virtual void showError(
-        const Message& message
+        const Message&
     ) {}
 
     virtual bool isNotNull() {

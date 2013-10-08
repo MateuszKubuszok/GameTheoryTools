@@ -15,8 +15,8 @@ PlayerStrategiesProperty::PlayerStrategiesProperty(
     {}
 
 ResultPtr PlayerStrategiesProperty::findForConditions(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     IdentifierPtr strategiesName  = createIdentifierPtr("Strategies");
 

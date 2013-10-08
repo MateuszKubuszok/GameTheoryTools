@@ -15,8 +15,8 @@ ObjectTypeProperty::ObjectTypeProperty(
     {}
 
 ResultPtr ObjectTypeProperty::findForConditions(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     IdentifierPtr name  = createIdentifierPtr("Type");
     MessagePtr    value = createMessagePtr(object->type());

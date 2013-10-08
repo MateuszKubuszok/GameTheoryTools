@@ -16,15 +16,15 @@ ObjectParam::ObjectParam(
     {}
 
 ObjectPtr ObjectParam::getObject(
-    Context&            context,
-    VisitedIdentifiers& visitedIdentifiers 
+    Context&,
+    VisitedIdentifiers& 
 ) {
     return value;
 }
 
 NumberPtr ObjectParam::getNumber(
-    Context&            context,
-    VisitedIdentifiers& visitedIdentifiers
+    Context&,
+    VisitedIdentifiers&
 ) {
     throw ExceptionFactory::getInstance().requiredUnavailableNumberFromParam();
 }

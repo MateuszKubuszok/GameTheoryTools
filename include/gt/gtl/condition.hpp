@@ -49,7 +49,7 @@ public:
         {}
     
     virtual void conditionQuery(
-        Query& query
+        Query&
     ) {}
 
     virtual bool isNotNull() {

@@ -15,8 +15,8 @@ ObjectKnownProperties::ObjectKnownProperties(
     {}
 
 ResultPtr ObjectKnownProperties::findForConditions(
-    const Context&    context,
-    const Conditions& conditions
+    const Context&,
+    const Conditions&
 ) {
     IdentifierPtr knownProperties  = createIdentifierPtr("Known Properties");
     IdentifierPtr property         = createIdentifierPtr("Property");

@@ -60,7 +60,7 @@ Data& StrategicData::setValues(
     Index      positionInStorage,
     NumbersPtr numbers
 ) {
-    if (positionInStorage < 0 || positionsHelper.getUpperBound() <= positionInStorage)
+    if (positionsHelper.getUpperBound() <= positionInStorage)
         throw ExceptionFactory::getInstance()
                 .noParamsForPositions(
                     positionInStorage,

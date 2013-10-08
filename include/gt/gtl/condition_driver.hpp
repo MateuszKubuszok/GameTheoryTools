@@ -48,8 +48,8 @@ public:
 		{}
 
 	virtual ConditionPtr* playerChoosed(
-        ObjectPtr* player,
-        ObjectPtr* strategy
+        ObjectPtr*,
+        ObjectPtr*
     ) {
         return new ConditionPtr(NullFactory::getInstance().createCondition());
     }

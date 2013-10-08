@@ -53,19 +53,19 @@ public:
     }
 
     virtual DataBuilder& setPlayers(
-        PlayersPtr players
+        PlayersPtr
     ) {
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
-        PositionsPtr positions
+        PositionsPtr
     ) {
         return *this;
     }
 
     virtual DataBuilder& setParams(
-        NumbersPtr params
+        NumbersPtr
     ) {
         return *this;
     }

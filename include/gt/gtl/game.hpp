@@ -66,15 +66,15 @@ public:
         {}
 
     virtual ResultPtr pureEquilibrium(
-        const Context&    context,
-        const Conditions& conditions
+        const Context&,
+        const Conditions&
     ) {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr mixedEquilibrium(
-        const Context&    context,
-        const Conditions& conditions
+        const Context&,
+        const Conditions&
     ) {
         return Model::NullFactory::getInstance().createResult();
     }

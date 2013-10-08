@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE( Object_listProperties ) {
         expectedProperties->size()
     );
 
-    for (int i = 0; i < properties->size(); i++)
+    for (GT::Index i = 0; i < properties->size(); i++)
         BOOST_CHECK_EQUAL(
             *(*properties)[i],
             *(*expectedProperties)[i]

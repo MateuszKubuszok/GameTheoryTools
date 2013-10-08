@@ -111,13 +111,13 @@ public:
 class NullData : public Data {
 public:    
     virtual DataPiecePtr getValues(
-        Positions& positions
+        Positions&
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
-        PositionsPtr positions
+        PositionsPtr
     ) {
         return NullFactory::getInstance().createDataPiece();
     }
@@ -127,15 +127,15 @@ public:
     }
 
     virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
+        Positions&,
+        NumbersPtr
     ) {
         return *this;
     }
 
     virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
+        PositionsPtr,
+        NumbersPtr
     ) {
         return *this;
     }

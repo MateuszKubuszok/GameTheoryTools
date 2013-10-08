@@ -164,7 +164,7 @@ public:
     }
 
     virtual Index getStrategyOrdinal(
-        const Identifier& strategy
+        const Identifier&
     ) {
         return 0;
     }

@@ -9,28 +9,28 @@ namespace Model {
 // public:
 
 TreeDataNode::TreeDataNode() :
-    depthValue(1),
-    depthName(createIdentifier(1)),
     payoff(new Numbers()),
-    nodes(new TreeDataNodes())
+    nodes(new TreeDataNodes()),
+    depthValue(1),
+    depthName(createIdentifier(1))
     {}
 
 TreeDataNode::TreeDataNode(
     unsigned int currentDepth
 ) :
-    depthValue(currentDepth),
-    depthName(createIdentifier(currentDepth)),
     payoff(new Numbers()),
-    nodes(new TreeDataNodes())
+    nodes(new TreeDataNodes()),
+    depthValue(currentDepth),
+    depthName(createIdentifier(currentDepth))
     {}
 
 TreeDataNode::TreeDataNode(
     NumbersPtr values
 ) :
-    depthValue(0),
-    depthName(""),
     payoff(values),
-    nodes(new TreeDataNodes())
+    nodes(new TreeDataNodes()),
+    depthValue(0),
+    depthName("")
     {}
 
 NumbersPtr TreeDataNode::getValues(
