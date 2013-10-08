@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Coordinate )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Coordinate_addParam_addParams_getParams ) {
     // given
     GT::GTL::ParamPtr  param1 = GT::GTL::NullFactory::getInstance().createParam();
@@ -118,5 +120,7 @@ BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
         "\t\tNullCoordinate\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

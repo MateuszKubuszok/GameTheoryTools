@@ -100,6 +100,10 @@ public:
         return collection;
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullCollectionsDriver");
     }

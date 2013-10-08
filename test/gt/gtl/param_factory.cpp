@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ParamFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ParamFactory_createParam ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -37,5 +39,7 @@ BOOST_AUTO_TEST_CASE( ParamFactory_createParam ) {
         "\tNullObject\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

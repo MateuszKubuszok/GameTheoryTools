@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( JSONResultBuilder )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( JSONResultBuilder_build ) {
     // given
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
@@ -89,5 +91,7 @@ BOOST_AUTO_TEST_CASE( JSONResultBuilder_throwExceptionOnError ) {
         GT::Model::IllegalInnerState
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

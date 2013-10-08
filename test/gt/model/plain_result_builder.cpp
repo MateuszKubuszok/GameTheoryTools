@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( PlainResultBuilder )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
     // given
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
@@ -87,5 +89,7 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_throwExceptionOnError ) {
         GT::Model::IllegalInnerState
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

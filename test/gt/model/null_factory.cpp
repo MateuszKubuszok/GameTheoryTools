@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( NullFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( NullFactory_createIdentifier ) {
     // given
     // when
@@ -168,5 +170,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createResultBuilder ) {
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

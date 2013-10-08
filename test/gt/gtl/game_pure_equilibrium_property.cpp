@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( GamePureEquilibriumProperty )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( GamePureEquilibriumProperty_findForConditions ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
@@ -20,5 +22,7 @@ BOOST_AUTO_TEST_CASE( GamePureEquilibriumProperty_findForConditions ) {
         property.findForConditions(context, conditions)->getResult()
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

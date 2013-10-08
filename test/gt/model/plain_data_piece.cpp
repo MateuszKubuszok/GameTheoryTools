@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( PlainDataPiece )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
     // given
     GT::Identifier player1("player1");
@@ -84,5 +86,7 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
         "\t\t10,\t100,\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

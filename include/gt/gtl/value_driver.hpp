@@ -114,6 +114,10 @@ public:
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullValueDriver");
     }

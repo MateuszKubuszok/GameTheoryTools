@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Param )
 
+////////////////////////////////////////////////////////////////////////////////
+
 class ParamTestImpl : public GT::GTL::Param {
 public:
     virtual GT::GTL::ObjectPtr getObject(
@@ -17,7 +19,9 @@ public:
     ) {
         return GT::Model::NullFactory::getInstance().createNumber();
     }
-};
+}; /* END class ParaTestImpl */
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Param_respondsTo ) {
     // given
@@ -35,5 +39,7 @@ BOOST_AUTO_TEST_CASE( Param_respondsTo ) {
     BOOST_CHECK(  param.respondsTo(value) );
     BOOST_CHECK( !param.respondsTo(error) );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

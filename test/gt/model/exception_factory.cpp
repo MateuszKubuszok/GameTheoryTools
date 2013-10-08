@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExceptionFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
     // given
     GT::Identifier playerName   = GT::createIdentifier("player");
@@ -143,5 +145,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_propertiesAndResultsDontMatchInSize ) {
         "Properties size (5) and Results size (6) does not match"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Game )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Game_pureEquilibrium ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
@@ -74,5 +76,7 @@ BOOST_AUTO_TEST_CASE( Game_toString ) {
         gameImplementation->toString()
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

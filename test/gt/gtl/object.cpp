@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Object )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Object_isValid ) {
     // given
     // when
@@ -148,5 +150,7 @@ BOOST_AUTO_TEST_CASE( Object_toString ) {
         "Object"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

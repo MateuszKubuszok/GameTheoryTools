@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( PlayerNameProperty )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlayerNameProperty_findForConditions ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
@@ -22,5 +24,7 @@ BOOST_AUTO_TEST_CASE( PlayerNameProperty_findForConditions ) {
         "\tNullIdentifier\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

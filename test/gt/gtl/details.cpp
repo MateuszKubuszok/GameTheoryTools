@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Details )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Details_getCoordinates ) {
     // given
     GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
@@ -86,5 +88,7 @@ BOOST_AUTO_TEST_CASE( Details_toString ) {
         "\t\tNullCoordinate\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

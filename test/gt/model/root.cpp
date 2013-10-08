@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Root )
 
+////////////////////////////////////////////////////////////////////////////////
+
 class RootTestImpl : public virtual GT::Model::Root {
 public:
     RootTestImpl() :
@@ -12,6 +14,8 @@ public:
         return GT::Message("RootTestImpl");
     }
 }; /* END class RootTestImpl */
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Root_isEqual ) {
     // given
@@ -57,5 +61,7 @@ BOOST_AUTO_TEST_CASE( Root_toString ) {
         GT::Message("RootTestImpl")
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

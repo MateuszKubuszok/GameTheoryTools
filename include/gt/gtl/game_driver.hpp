@@ -103,6 +103,10 @@ public:
     ) {
         return new PlayerPtr(NullFactory::getInstance().createPlayer());
     }
+    
+    virtual bool isNotNull() {
+        return false;
+    }
 
     virtual Message toString() {
         return Message("NullGameDriver");

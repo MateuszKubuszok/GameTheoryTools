@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Player )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Player_respondsTo ) {
     // given
     GT::Identifier properties = GT::createIdentifier("properties");
@@ -23,5 +25,7 @@ BOOST_AUTO_TEST_CASE( Player_respondsTo ) {
     BOOST_CHECK(  player.respondsTo(strategies) );
     BOOST_CHECK( !player.respondsTo(error) );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

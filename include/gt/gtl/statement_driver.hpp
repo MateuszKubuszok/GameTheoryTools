@@ -101,6 +101,10 @@ public:
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+    
     virtual Message toString() {
         return Message("NullStatementDriver");
     }

@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Player )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Player_getName ) {
     // given
     GT::IdentifierPtr  name       = GT::createIdentifierPtr("test name");
@@ -115,5 +117,7 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
         "\tother_strategy\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

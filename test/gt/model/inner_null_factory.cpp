@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( InnerNullFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( InnerNullFactory_createStrategicData ) {
     // given
     // when
@@ -23,5 +25,7 @@ BOOST_AUTO_TEST_CASE( InnerNullFactory_createTreeData ) {
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ObjectParam )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
@@ -42,5 +44,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
         "\tNullObject\n" 
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

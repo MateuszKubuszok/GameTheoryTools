@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ResultFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ResultFactory_getInstance ) {
     // given
 
@@ -185,5 +187,7 @@ BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
         "\t\tresult1,\tresult2,\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

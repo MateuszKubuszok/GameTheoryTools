@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ParamValueProperty )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ParamValueProperty_findForConditions ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
@@ -28,5 +30,7 @@ BOOST_AUTO_TEST_CASE( ParamValueProperty_findForConditions ) {
         objectParam.toString()
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

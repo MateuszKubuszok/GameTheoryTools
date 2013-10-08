@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( PositionsHelper )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PositionsHelper_getUpperBound ) {
     // given
        GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
@@ -375,5 +377,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
         "\t\tp2s2\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

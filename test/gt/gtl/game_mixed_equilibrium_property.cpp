@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( GameMixedEquilibriumProperty )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( GameMixedEquilibriumProperty_findForConditions ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
@@ -20,5 +22,7 @@ BOOST_AUTO_TEST_CASE( GameMixedEquilibriumProperty_findForConditions ) {
         property.findForConditions(context, conditions)->getResult()
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

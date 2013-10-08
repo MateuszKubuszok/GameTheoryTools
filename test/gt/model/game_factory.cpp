@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( GameFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
@@ -104,5 +106,7 @@ BOOST_AUTO_TEST_CASE( TreeGameBuilder_buildTreeGame ) {
         "\t\t\t\t20\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

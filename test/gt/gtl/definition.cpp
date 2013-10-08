@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Definition )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Definition_getName ) {
     // given
     GT::IdentifierPtr name  = GT::Model::NullFactory::getInstance().createIdentifier();
@@ -48,5 +50,7 @@ BOOST_AUTO_TEST_CASE( Definition_toString ) {
         "\tNullParam\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

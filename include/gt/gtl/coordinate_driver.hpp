@@ -110,6 +110,10 @@ public:
         return new CoordinatePtr(NullFactory::getInstance().createCoordinate());
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
     virtual Message toString() {
         return Message("NullCoordinateDriver");
     }

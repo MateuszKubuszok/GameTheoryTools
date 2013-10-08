@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ObjectTypeProperty )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ObjectTypeProperty_findForConditions ) {
     // given
     GT::GTL::Object        object;
@@ -21,5 +23,7 @@ BOOST_AUTO_TEST_CASE( ObjectTypeProperty_findForConditions ) {
         "\tObject\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

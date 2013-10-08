@@ -12,17 +12,6 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Driver : public virtual Root {
-    CoordinateDriverPtr              coordinate;
-    CollectionsDriverPtr<Coordinate> coordinates;
-    ConditionDriverPtr               condition;
-    CollectionsDriverPtr<Condition>  conditions;
-    GameDriverPtr                    game;
-    CollectionsDriverPtr<Identifier> identifiers;
-    CollectionsDriverPtr<Object>     objects;
-    CollectionsDriverPtr<Param>      params;
-    ValueDriverPtr                   value;
-    StatementDriverPtr               statement;
-
 public:
     /**
      * @brief Default destructor.
@@ -192,6 +181,10 @@ public:
     virtual void showError(
         const Message& message
     ) {}
+
+    virtual bool isNotNull() {
+        return false;
+    }
 
     virtual Message toString() {
         return Message("NullDriver");

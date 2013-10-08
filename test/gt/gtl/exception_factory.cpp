@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExceptionFactory )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_cyclicIdentifiersFound ) {
     // given
     GT::Identifier identifier1 = GT::createIdentifier("identifier1");
@@ -84,5 +86,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_requiredUnavailableObjectFromParam ) {
         "Cannot obtain Object from this Param"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -2,12 +2,16 @@
 
 BOOST_AUTO_TEST_SUITE( Result )
 
+////////////////////////////////////////////////////////////////////////////////
+
 class ResultTestImpl : public GT::Model::Result {
 public:
     virtual GT::Message getResult() {
         return GT::Message("TestResult");
     }
 }; /* END class ResultTestImpl */
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Result_getResult ) {
     // given
@@ -38,5 +42,7 @@ BOOST_AUTO_TEST_CASE( Result_toString ) {
         GT::Message("TestResult")
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

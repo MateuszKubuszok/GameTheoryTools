@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( Context )
 
+////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Context_functional ) {
     // given
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
@@ -119,5 +121,7 @@ BOOST_AUTO_TEST_CASE( Context_toString ) {
         "\t\tobjectParam\n"
     );
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

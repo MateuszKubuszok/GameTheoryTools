@@ -54,6 +54,10 @@ public:
         return new ConditionPtr(NullFactory::getInstance().createCondition());
     }
 
+    virtual bool isNotNull() {
+        return false;
+    }
+
 	virtual Message toString() {
 		return Message("NullConditionDriver");
 	}
