@@ -17,13 +17,12 @@ NullFactory* volatile NullFactory::instance = 0;
 
 NullFactory& NullFactory::getInstance() {
     // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking"
-    // but without executing constructor inside getInstance() method
-    // since it's an eyesore. 
+    // "C++ and the Perils of Double-Checked Locking".
     if (!instance) {
         boost::mutex::scoped_lock lock(nullFactoryMutex);
         if (!instance) {
-            NullFactory* volatile tmp = new NullFactory();
+            NullFactory* volatile tmp = (NullFactory*) malloc(sizeof(NullFactory));
+            new (tmp) NullFactory; // placement new
             instance = tmp;
         }
     }
