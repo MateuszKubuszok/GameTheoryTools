@@ -28,8 +28,8 @@ BOOST_AUTO_TEST_CASE( NumberParam_functional ) {
 BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::NumberPtr numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
     

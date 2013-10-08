@@ -335,8 +335,8 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_checkPositions ) {
 BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");

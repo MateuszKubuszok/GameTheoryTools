@@ -30,6 +30,10 @@ BOOST_AUTO_TEST_CASE( Object_respondsTo ) {
 
 BOOST_AUTO_TEST_CASE( Object_findProperty ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     GT::Identifier      properties = GT::createIdentifier("properties");
     GT::Identifier      type       = GT::createIdentifier("type");
     GT::Identifier      error      = GT::createIdentifier("error");
@@ -66,6 +70,10 @@ BOOST_AUTO_TEST_CASE( Object_findProperty ) {
 
 BOOST_AUTO_TEST_CASE( Object_findPropertyWithConditions ) {
         // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::Identifier         properties    = GT::createIdentifier("properties");
     GT::Identifier         type          = GT::createIdentifier("type");
     GT::Identifier         error         = GT::createIdentifier("error");

@@ -57,6 +57,10 @@ BOOST_AUTO_TEST_CASE( Details_getPlayers ) {
 }
 
 BOOST_AUTO_TEST_CASE( Details_toString ) {
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
     GT::GTL::PlayerPtr player2 = GT::GTL::NullFactory::getInstance().createPlayer();
     GT::GTL::ObjectsPtr players(new GT::GTL::Objects());

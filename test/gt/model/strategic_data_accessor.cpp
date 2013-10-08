@@ -146,6 +146,10 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
 
 BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
     GT::IdentifierPtr player1strategy2 = GT::createIdentifierPtr("p1s2");

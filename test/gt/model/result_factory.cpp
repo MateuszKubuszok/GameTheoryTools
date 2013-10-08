@@ -22,21 +22,12 @@ BOOST_AUTO_TEST_CASE( ResultFactory_builderMode ) {
     GT::Model::ResultFactory& factory = GT::Model::ResultFactory::getInstance();
 
     // then
-    factory.setBuilderMode(GT::Model::XML);
-    BOOST_CHECK_EQUAL(
-        factory.getBuilderMode(),
-        GT::Model::XML
-    );
-    factory.setBuilderMode(GT::Model::JSON);
-    BOOST_CHECK_EQUAL(
-        factory.getBuilderMode(),
-        GT::Model::JSON
-    );
-    factory.setBuilderMode(GT::Model::PLAIN);
-    BOOST_CHECK_EQUAL(
-        factory.getBuilderMode(),
-        GT::Model::PLAIN
-    );
+    factory.setBuilderMode(GT::Model::ResultBuilderMode::XML);
+    BOOST_CHECK( factory.getBuilderMode() == GT::Model::ResultBuilderMode::XML );
+    factory.setBuilderMode(GT::Model::ResultBuilderMode::JSON);
+    BOOST_CHECK( factory.getBuilderMode() == GT::Model::ResultBuilderMode::JSON );
+    factory.setBuilderMode(GT::Model::ResultBuilderMode::PLAIN);
+    BOOST_CHECK( factory.getBuilderMode() == GT::Model::ResultBuilderMode::PLAIN );
 }
 
 BOOST_AUTO_TEST_CASE( ResultFactory_indentationMode ) {
@@ -46,21 +37,12 @@ BOOST_AUTO_TEST_CASE( ResultFactory_indentationMode ) {
     GT::Model::ResultFactory& factory = GT::Model::ResultFactory::getInstance();
 
     // then
-    factory.setIndentationMode(GT::Model::NONE);
-    BOOST_CHECK_EQUAL(
-        factory.getIndentationMode(),
-        GT::Model::NONE
-    );
-    factory.setIndentationMode(GT::Model::SPACES);
-    BOOST_CHECK_EQUAL(
-        factory.getIndentationMode(),
-        GT::Model::SPACES
-    );
-    factory.setIndentationMode(GT::Model::TABS);
-    BOOST_CHECK_EQUAL(
-        factory.getIndentationMode(),
-        GT::Model::TABS
-    );
+    factory.setIndentationMode(GT::Model::ResultIndentationMode::NONE);
+    BOOST_CHECK( factory.getIndentationMode() == GT::Model::ResultIndentationMode::NONE );
+    factory.setIndentationMode(GT::Model::ResultIndentationMode::SPACES);
+    BOOST_CHECK( factory.getIndentationMode() == GT::Model::ResultIndentationMode::SPACES );
+    factory.setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    BOOST_CHECK( factory.getIndentationMode() == GT::Model::ResultIndentationMode::TABS );
 }
 
 BOOST_AUTO_TEST_CASE( ResultFactory_constResult ) {
@@ -95,8 +77,8 @@ BOOST_AUTO_TEST_CASE( ResultFactory_emptyResult ) {
 BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::JSON)
-        .setIndentationMode(GT::Model::TABS);
+        .setBuilderMode(GT::Model::ResultBuilderMode::JSON)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
     properties->push_back(GT::createIdentifierPtr("property1"));
@@ -128,8 +110,8 @@ BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
 BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::XML)
-        .setIndentationMode(GT::Model::TABS);
+        .setBuilderMode(GT::Model::ResultBuilderMode::XML)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
     properties->push_back(GT::createIdentifierPtr("property1"));
@@ -161,8 +143,8 @@ BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
 BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::PLAIN)
-        .setIndentationMode(GT::Model::TABS);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
     properties->push_back(GT::createIdentifierPtr("property1"));

@@ -28,8 +28,8 @@ BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
 BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::GTL::ObjectPtr objectPtr  = GT::GTL::NullFactory::getInstance().createObject();
     

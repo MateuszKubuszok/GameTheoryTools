@@ -51,8 +51,8 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_build ) {
 BOOST_AUTO_TEST_CASE( TreeDataBuilder_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
@@ -99,8 +99,8 @@ BOOST_AUTO_TEST_CASE( TreeDataBuilder_toString ) {
 BOOST_AUTO_TEST_CASE( TreeDataBuilder_functional ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 

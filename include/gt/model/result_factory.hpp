@@ -11,14 +11,14 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-enum ResultBuilderMode { PLAIN, JSON, XML };
+enum class ResultBuilderMode { PLAIN, JSON, XML };
 
 /**
  * @brief Used for configuring whether builders returned by ResultFacotry should use indentation and how.
  *
  * @author Mateusz Kubuszok
  */
-enum ResultIndentationMode { TABS, SPACES, NONE };
+enum class ResultIndentationMode { TABS, SPACES, NONE };
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -66,8 +66,8 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_functional ) {
 BOOST_AUTO_TEST_CASE( TreeDataNode_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");

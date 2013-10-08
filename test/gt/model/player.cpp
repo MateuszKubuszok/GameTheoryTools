@@ -99,6 +99,10 @@ BOOST_AUTO_TEST_CASE( Player_hasStrategy ) {
 
 BOOST_AUTO_TEST_CASE( Player_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::IdentifierPtr  name       = GT::createIdentifierPtr("test_name");
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( GT::createIdentifierPtr("some_strategy") );

@@ -36,6 +36,10 @@ BOOST_AUTO_TEST_CASE( Definition_getValue ) {
 
 BOOST_AUTO_TEST_CASE( Definition_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::IdentifierPtr name  = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::GTL::ParamPtr value = GT::GTL::NullFactory::getInstance().createParam();
 

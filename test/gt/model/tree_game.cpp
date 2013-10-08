@@ -19,6 +19,10 @@ BOOST_AUTO_TEST_CASE( TreeGame_getPlayers ) {
 
 BOOST_AUTO_TEST_CASE( TreeGame_getData ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::Model::PlayersPtr  players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::TreeDataPtr data    = GT::Model::InnerNullFactory::getInstance().createTreeData();
 
@@ -37,6 +41,10 @@ BOOST_AUTO_TEST_CASE( TreeGame_getData ) {
 
 BOOST_AUTO_TEST_CASE( TreeGame_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     GT::Model::PlayersPtr  players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::TreeDataPtr data    = GT::Model::InnerNullFactory::getInstance().createTreeData();
 

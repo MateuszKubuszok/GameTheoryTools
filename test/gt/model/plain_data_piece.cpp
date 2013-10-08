@@ -60,8 +60,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
 BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::PLAIN)
-        .setIndentationMode(GT::Model::TABS);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");

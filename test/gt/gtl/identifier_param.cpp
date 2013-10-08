@@ -21,8 +21,8 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_functional ) {
 BOOST_AUTO_TEST_CASE( IdentifierParam_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
-        .setIndentationMode(GT::Model::TABS)
-        .setBuilderMode(GT::Model::PLAIN);
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context&   context    = *contextPtr;

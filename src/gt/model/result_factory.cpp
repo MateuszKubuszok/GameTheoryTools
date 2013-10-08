@@ -32,22 +32,22 @@ ResultFactory& ResultFactory::getInstance() {
 ResultBuilderPtr ResultFactory::buildResult() {
     Message indent;
     switch (indentationMode) {
-    case TABS:
+    case ResultIndentationMode::TABS:
         indent = Message("\t");
         break;
-    case SPACES:
+    case ResultIndentationMode::SPACES:
         indent = Message(" ");
-    case NONE:
+    case ResultIndentationMode::NONE:
     default:
         break;
     }
 
     switch (builderMode) {
-    case JSON:
+    case ResultBuilderMode::JSON:
         return ResultBuilderPtr(new JSONResultBuilder(indent));
-    case XML:
+    case ResultBuilderMode::XML:
         return ResultBuilderPtr(new XMLResultBuilder(indent));
-    case PLAIN:
+    case ResultBuilderMode::PLAIN:
     default:
         return ResultBuilderPtr(new PlainResultBuilder(indent));
     }
@@ -88,8 +88,8 @@ ResultFactory& ResultFactory::setIndentationMode(
 // private:
 
 ResultFactory::ResultFactory() {
-    builderMode     = PLAIN;
-    indentationMode = TABS;
+    builderMode     = ResultBuilderMode::PLAIN;
+    indentationMode = ResultIndentationMode::TABS;
 }
 
 // }

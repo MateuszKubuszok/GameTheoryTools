@@ -72,6 +72,10 @@ BOOST_AUTO_TEST_CASE( Coordinate_addSubCoordinate_addSubCoordinates_getSubCoordi
 
 BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::GTL::ParamPtr  param1 = GT::GTL::NullFactory::getInstance().createParam();
     GT::GTL::ParamPtr  param2 = GT::GTL::NullFactory::getInstance().createParam();
     GT::GTL::ParamPtr  param3 = GT::GTL::NullFactory::getInstance().createParam();

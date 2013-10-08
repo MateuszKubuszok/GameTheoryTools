@@ -6,6 +6,10 @@ BOOST_AUTO_TEST_SUITE( GameFactory )
 
 BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
     GT::IdentifierPtr  strategy2  = GT::createIdentifierPtr("p1s2");
@@ -59,6 +63,10 @@ BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
 
 BOOST_AUTO_TEST_CASE( TreeGameBuilder_buildTreeGame ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1"); 
     GT::IdentifierPtr  strategy1  = GT::createIdentifierPtr("p1s1"); 
     GT::IdentifierPtr  strategy2  = GT::createIdentifierPtr("p1s2");

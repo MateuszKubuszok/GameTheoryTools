@@ -6,6 +6,10 @@ BOOST_AUTO_TEST_SUITE( Game )
 
 BOOST_AUTO_TEST_CASE( Game_pureEquilibrium ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
     GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();
@@ -25,6 +29,10 @@ BOOST_AUTO_TEST_CASE( Game_pureEquilibrium ) {
 
 BOOST_AUTO_TEST_CASE( Game_mixedEquilibrium ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
     GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();
