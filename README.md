@@ -20,6 +20,17 @@ GTL parser uses Flex and Bison tools to build `.cpp` files.
 On Debian dependencies can be installed by calling
 `sudo apt-get install g++ bison flex libgmp-dev libboost-all-dev scons`.
 
+During development program has been successfully building with:
+
+* *g++* version *4.7.2*,
+* *bison* version *2.5*,
+* *flex* version *2.5.35*,
+* *gmp* version *2.5.0.5+dfsg-2*,
+* *boost* version *1.49*,
+* *scons* version *2.1.0.r5357[MODIFIED]*,
+
+on Debian 7.1 Stable (Wheezy).
+
 Building process
 ----
 
@@ -39,6 +50,9 @@ Builder can also run specified tasks:
 * `scons -Q buildGTL` - builds GTL classes,
 * `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
 * `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies.
+
+To build project using Clang you can run builder like this: `CXX="scan-build clang++" scons`,
+but it hasn't been actually tested yet. Obviously, it would require Clang installed.
 
 Running tests
 ----
