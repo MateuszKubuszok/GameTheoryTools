@@ -5,29 +5,11 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex exceptionFactoryMutex;
-
-////////////////////////////////////////////////////////////////////////////////
-
 // class ExceptionFactory {
 
-ExceptionFactory* volatile ExceptionFactory::instance = 0;
+SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
 
 // public:
-
-ExceptionFactory& ExceptionFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(exceptionFactoryMutex);
-        if (!instance) {
-            ExceptionFactory* volatile tmp = (ExceptionFactory*) malloc(sizeof(ExceptionFactory));
-            new (tmp) ExceptionFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
 
 CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
     Param::VisitedIdentifiers& visitedIdentifiers,
@@ -76,6 +58,8 @@ InvalidContentRequest ExceptionFactory::requiredUnavailableObjectFromParam() {
 // private:
 
 ExceptionFactory::ExceptionFactory() {}
+
+ExceptionFactory::~ExceptionFactory() {}
 
 // }
 

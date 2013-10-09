@@ -12,10 +12,7 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class GameFactory {
-     /**
-     * @brief Contains pointer to a GameFactory instance.
-     */
-    static GameFactory* volatile instance;
+    SINGLETON_DECLARATION(GameFactory)
 
 public:
      /**

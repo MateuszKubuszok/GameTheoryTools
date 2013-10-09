@@ -12,10 +12,7 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class ExceptionFactory {
-    /**
-     * @brief Contains pointer to a ExceptionFactory instance.
-     */
-    static ExceptionFactory* volatile instance;
+    SINGLETON_DECLARATION(ExceptionFactory)
 
 public:
     /**

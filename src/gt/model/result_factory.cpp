@@ -5,29 +5,11 @@ namespace Model {
     
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex resultFactoryMutex;
-
-////////////////////////////////////////////////////////////////////////////////
-
 // class ResultFactory {
 
-ResultFactory* volatile ResultFactory::instance = 0;
+SINGLETON_DEFINITION(ResultFactory, getInstance, resultFactoryMutex)
 
 // public:
-
-ResultFactory& ResultFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(resultFactoryMutex);
-        if (!instance) {
-            ResultFactory* volatile tmp = (ResultFactory*) malloc(sizeof(ResultFactory));
-            new (tmp) ResultFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
 
 ResultBuilderPtr ResultFactory::buildResult() {
     Message indent;
@@ -91,6 +73,8 @@ ResultFactory::ResultFactory() {
     builderMode     = ResultBuilderMode::PLAIN;
     indentationMode = ResultIndentationMode::TABS;
 }
+
+ResultFactory::~ResultFactory() {}
 
 // }
 

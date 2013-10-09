@@ -5,29 +5,11 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex nullFactoryMutex;
-
-////////////////////////////////////////////////////////////////////////////////
-
 // class NullFactory {
 
-NullFactory* volatile NullFactory::instance = 0;
+SINGLETON_DEFINITION(NullFactory, getInstance, nullFactoryMutex)
 
 // public:
-
-NullFactory& NullFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(nullFactoryMutex);
-        if (!instance) {
-            NullFactory* volatile tmp = (NullFactory*) malloc(sizeof(NullFactory));
-            new (tmp) NullFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
 
 IdentifierPtr NullFactory::createIdentifier() {
     return IdentifierPtr(new Identifier("NullIdentifier"));
@@ -96,6 +78,8 @@ ResultBuilderPtr NullFactory::createResultBuilder() {
 // private:
 
 NullFactory::NullFactory() {}
+
+NullFactory::~NullFactory() {}
 
 // }
 

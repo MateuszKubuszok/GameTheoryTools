@@ -5,31 +5,11 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex paramFactoryMutex;
-
-////////////////////////////////////////////////////////////////////////////////
-
 // class ParamFactory {
 
-ParamFactory* volatile ParamFactory::instance = 0;
+SINGLETON_DEFINITION(ParamFactory, getInstance, paramFactoryMutex)
 
 // public:
-
-ParamFactory& ParamFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(paramFactoryMutex);
-        if (!instance) {
-            ParamFactory* volatile tmp = (ParamFactory*) malloc(sizeof(ParamFactory));
-            new (tmp) ParamFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
-
-ParamFactory::ParamFactory() {}
 
 ParamPtr ParamFactory::createParam(
     Identifier& identifier
@@ -61,6 +41,12 @@ ParamPtr ParamFactory::createParam(
 ) {
     return ParamPtr(new ObjectParam(object));
 }
+
+// private:
+
+ParamFactory::ParamFactory() {}
+
+ParamFactory::~ParamFactory() {}
 
 // }
 

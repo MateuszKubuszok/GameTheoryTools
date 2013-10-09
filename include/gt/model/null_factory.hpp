@@ -12,10 +12,7 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class NullFactory {
-    /**
-     * @brief Contains pointer to a NullFactory instance.
-     */
-    static NullFactory* volatile instance;
+    SINGLETON_DECLARATION(NullFactory)
 
 public:
     /**

@@ -5,29 +5,11 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex innerNullFactoryMutex;
+// class InnerNullFactory {
 
-////////////////////////////////////////////////////////////////////////////////
-
-// class NullFactory {
-
-InnerNullFactory* volatile InnerNullFactory::instance = 0;
+SINGLETON_DEFINITION(InnerNullFactory, getInstance, innerNullFactoryMutex)
 
 // public:
-
-InnerNullFactory& InnerNullFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(innerNullFactoryMutex);
-        if (!instance) {
-            InnerNullFactory* volatile tmp = (InnerNullFactory*) malloc(sizeof(InnerNullFactory));
-            new (tmp) InnerNullFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
 
 StrategicDataPtr InnerNullFactory::createStrategicData() {
     return StrategicDataPtr(new NullStrategicData());
@@ -40,6 +22,8 @@ TreeDataPtr InnerNullFactory::createTreeData() {
 // private:
 
 InnerNullFactory::InnerNullFactory() {}
+
+InnerNullFactory::~InnerNullFactory() {}
 
 // }
 

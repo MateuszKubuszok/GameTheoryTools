@@ -28,10 +28,7 @@ enum class ResultIndentationMode { TABS, SPACES, NONE };
  * @author Mateusz Kubuszok
  */
 class ResultFactory {
-    /**
-     * @brief Contains pointer to a ResultFactory instance.
-     */
-    static ResultFactory* volatile instance;
+    SINGLETON_DECLARATION(ResultFactory)
 
     /**
      * @brief Contains current Builder Mode setting.

@@ -12,10 +12,7 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class NullFactory {
-    /**
-     * @brief Contains pointer to a NullFactory instance.
-     */
-    static NullFactory* volatile instance;
+    SINGLETON_DECLARATION(NullFactory)
 
 public:
     /**
@@ -33,9 +30,9 @@ public:
     ConditionPtr createCondition();
 
     /**
-     * @brief Creates NullCondition.
+     * @brief Creates NullConditions.
      *
-     * @result NullCondition
+     * @result NullConditions
      */
     ConditionsPtr createConditions();
 

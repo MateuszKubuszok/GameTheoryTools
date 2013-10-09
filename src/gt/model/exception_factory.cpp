@@ -5,29 +5,11 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-boost::mutex exceptionFactoryMutex;
+// class ExceptionFactory {
 
-////////////////////////////////////////////////////////////////////////////////
-
-// class ResultFactory {
-
-ExceptionFactory* volatile ExceptionFactory::instance = 0;
+SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
 
 // public:
-
-ExceptionFactory& ExceptionFactory::getInstance() {
-    // Singleton implemented according to:
-    // "C++ and the Perils of Double-Checked Locking".
-    if (!instance) {
-        boost::mutex::scoped_lock lock(exceptionFactoryMutex);
-        if (!instance) {
-            ExceptionFactory* volatile tmp = (ExceptionFactory*) malloc(sizeof(ExceptionFactory));
-            new (tmp) ExceptionFactory; // placement new
-            instance = tmp;
-        }
-    }
-    return *instance;
-}
 
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     Positions& positions
@@ -138,6 +120,8 @@ IllegalInnerState ExceptionFactory::propertiesAndResultsDontMatchInSize(
 // private:
 
 ExceptionFactory::ExceptionFactory() {}
+
+ExceptionFactory::~ExceptionFactory() {}
 
 // }
 

@@ -14,10 +14,7 @@ namespace Model {
  * @see NullFactory
  */
 class InnerNullFactory {
-    /**
-     * @brief Contains pointer to a InnerNullFactory instance.
-     */
-    static InnerNullFactory* volatile instance;
+    SINGLETON_DECLARATION(InnerNullFactory)
 
 public:
     /**

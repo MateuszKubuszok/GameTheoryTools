@@ -10,10 +10,7 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ParamFactory {
-    /**
-     * @brief Contains pointer to a ParamFactory instance.
-     */
-    static ParamFactory* volatile instance;
+    SINGLETON_DECLARATION(ParamFactory)
 
 public:
     /**
