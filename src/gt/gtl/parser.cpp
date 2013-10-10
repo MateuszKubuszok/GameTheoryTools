@@ -32,7 +32,7 @@
 /* "%code top" blocks.  */
 
 /* Line 286 of lalr1.cc  */
-#line 9 "f_n_b/parser.yy"
+#line 10 "f_n_b/parser.yy"
 
     /**
      * @brief Parser used for processing input for GTL.
@@ -54,13 +54,15 @@
     /**
      * @brief Override default yylex function.
      * 
-     * @param yylval  matched content
-     * @param driver  driver instance
-     * @param scanner scanner instance
-     * @return        next found token number
+     * @param lvalue   matched content
+     * @param location current location
+     * @param driver   driver instance
+     * @param scanner  scanner instance
+     * @return         next found token number
      */
     static int yylex(
-        Parser::semantic_type* yylval,
+        Parser::semantic_type* lvalue,
+        Parser::location_type* location,
         Scanner&               scanner,
         Driver&                driver
     );
@@ -68,14 +70,14 @@
 
 
 /* Line 286 of lalr1.cc  */
-#line 72 "src/gt/gtl/parser.cpp"
+#line 74 "src/gt/gtl/parser.cpp"
 
 
 /* First part of user declarations.  */
 
 
 /* Line 293 of lalr1.cc  */
-#line 79 "src/gt/gtl/parser.cpp"
+#line 81 "src/gt/gtl/parser.cpp"
 
 
 #include "parser.hpp"
@@ -84,7 +86,7 @@
 
 
 /* Line 299 of lalr1.cc  */
-#line 88 "src/gt/gtl/parser.cpp"
+#line 90 "src/gt/gtl/parser.cpp"
 
 #ifndef YY_
 # if defined YYENABLE_NLS && YYENABLE_NLS
@@ -168,11 +170,11 @@ do {					\
 
 
 /* Line 382 of lalr1.cc  */
-#line 6 "f_n_b/parser.yy"
+#line 7 "f_n_b/parser.yy"
 namespace GT { namespace GTL {
 
 /* Line 382 of lalr1.cc  */
-#line 176 "src/gt/gtl/parser.cpp"
+#line 178 "src/gt/gtl/parser.cpp"
 
   /// Build a parser object.
   Parser::Parser (Scanner& scanner_yyarg, Driver& driver_yyarg)
@@ -236,191 +238,191 @@ namespace GT { namespace GTL {
         case 21: /* "lexer_error" */
 
 /* Line 480 of lalr1.cc  */
-#line 132 "f_n_b/parser.yy"
+#line 135 "f_n_b/parser.yy"
 	{ if ((yyvaluep->identifier)) { delete((yyvaluep->identifier)); ((yyvaluep->identifier)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 244 "src/gt/gtl/parser.cpp"
+#line 246 "src/gt/gtl/parser.cpp"
 	break;
       case 22: /* "identifier" */
 
 /* Line 480 of lalr1.cc  */
-#line 132 "f_n_b/parser.yy"
+#line 135 "f_n_b/parser.yy"
 	{ if ((yyvaluep->identifier)) { delete((yyvaluep->identifier)); ((yyvaluep->identifier)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 253 "src/gt/gtl/parser.cpp"
+#line 255 "src/gt/gtl/parser.cpp"
 	break;
       case 23: /* "number" */
 
 /* Line 480 of lalr1.cc  */
-#line 134 "f_n_b/parser.yy"
+#line 137 "f_n_b/parser.yy"
 	{ if ((yyvaluep->number)) { delete((yyvaluep->number)); ((yyvaluep->number)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 262 "src/gt/gtl/parser.cpp"
+#line 264 "src/gt/gtl/parser.cpp"
 	break;
       case 28: /* "definition" */
 
 /* Line 480 of lalr1.cc  */
-#line 139 "f_n_b/parser.yy"
+#line 142 "f_n_b/parser.yy"
 	{ if ((yyvaluep->definition)) { delete((yyvaluep->definition)); ((yyvaluep->definition)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 271 "src/gt/gtl/parser.cpp"
+#line 273 "src/gt/gtl/parser.cpp"
 	break;
       case 29: /* "query" */
 
 /* Line 480 of lalr1.cc  */
-#line 142 "f_n_b/parser.yy"
+#line 145 "f_n_b/parser.yy"
 	{ if ((yyvaluep->query)) { delete((yyvaluep->query)); ((yyvaluep->query)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 280 "src/gt/gtl/parser.cpp"
+#line 282 "src/gt/gtl/parser.cpp"
 	break;
       case 30: /* "objects" */
 
 /* Line 480 of lalr1.cc  */
-#line 144 "f_n_b/parser.yy"
+#line 147 "f_n_b/parser.yy"
 	{ if ((yyvaluep->objects)) { delete((yyvaluep->objects)); ((yyvaluep->objects)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 289 "src/gt/gtl/parser.cpp"
+#line 291 "src/gt/gtl/parser.cpp"
 	break;
       case 31: /* "object" */
 
 /* Line 480 of lalr1.cc  */
-#line 143 "f_n_b/parser.yy"
+#line 146 "f_n_b/parser.yy"
 	{ if ((yyvaluep->object)) { delete((yyvaluep->object)); ((yyvaluep->object)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 298 "src/gt/gtl/parser.cpp"
+#line 300 "src/gt/gtl/parser.cpp"
 	break;
       case 32: /* "game" */
 
 /* Line 480 of lalr1.cc  */
-#line 141 "f_n_b/parser.yy"
+#line 144 "f_n_b/parser.yy"
 	{ if ((yyvaluep->game)) { delete((yyvaluep->game)); ((yyvaluep->game)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 307 "src/gt/gtl/parser.cpp"
+#line 309 "src/gt/gtl/parser.cpp"
 	break;
       case 33: /* "details" */
 
 /* Line 480 of lalr1.cc  */
-#line 140 "f_n_b/parser.yy"
+#line 143 "f_n_b/parser.yy"
 	{ if ((yyvaluep->details)) { delete((yyvaluep->details)); ((yyvaluep->details)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 316 "src/gt/gtl/parser.cpp"
+#line 318 "src/gt/gtl/parser.cpp"
 	break;
       case 34: /* "player" */
 
 /* Line 480 of lalr1.cc  */
-#line 147 "f_n_b/parser.yy"
+#line 150 "f_n_b/parser.yy"
 	{ if ((yyvaluep->player)) { delete((yyvaluep->player)); ((yyvaluep->player)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 325 "src/gt/gtl/parser.cpp"
+#line 327 "src/gt/gtl/parser.cpp"
 	break;
       case 35: /* "param" */
 
 /* Line 480 of lalr1.cc  */
-#line 145 "f_n_b/parser.yy"
+#line 148 "f_n_b/parser.yy"
 	{ if ((yyvaluep->param)) { delete((yyvaluep->param)); ((yyvaluep->param)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 334 "src/gt/gtl/parser.cpp"
+#line 336 "src/gt/gtl/parser.cpp"
 	break;
       case 36: /* "params" */
 
 /* Line 480 of lalr1.cc  */
-#line 146 "f_n_b/parser.yy"
+#line 149 "f_n_b/parser.yy"
 	{ if ((yyvaluep->params)) { delete((yyvaluep->params)); ((yyvaluep->params)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 343 "src/gt/gtl/parser.cpp"
+#line 345 "src/gt/gtl/parser.cpp"
 	break;
       case 37: /* "identifiers" */
 
 /* Line 480 of lalr1.cc  */
-#line 133 "f_n_b/parser.yy"
+#line 136 "f_n_b/parser.yy"
 	{ if ((yyvaluep->identifiers)) { delete((yyvaluep->identifiers)); ((yyvaluep->identifiers)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 352 "src/gt/gtl/parser.cpp"
+#line 354 "src/gt/gtl/parser.cpp"
 	break;
       case 38: /* "conditions" */
 
 /* Line 480 of lalr1.cc  */
-#line 136 "f_n_b/parser.yy"
+#line 139 "f_n_b/parser.yy"
 	{ if ((yyvaluep->conditions)) { delete((yyvaluep->conditions)); ((yyvaluep->conditions)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 361 "src/gt/gtl/parser.cpp"
+#line 363 "src/gt/gtl/parser.cpp"
 	break;
       case 39: /* "condition_collection" */
 
 /* Line 480 of lalr1.cc  */
-#line 136 "f_n_b/parser.yy"
+#line 139 "f_n_b/parser.yy"
 	{ if ((yyvaluep->conditions)) { delete((yyvaluep->conditions)); ((yyvaluep->conditions)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 370 "src/gt/gtl/parser.cpp"
+#line 372 "src/gt/gtl/parser.cpp"
 	break;
       case 40: /* "condition" */
 
 /* Line 480 of lalr1.cc  */
-#line 135 "f_n_b/parser.yy"
+#line 138 "f_n_b/parser.yy"
 	{ if ((yyvaluep->condition)) { delete((yyvaluep->condition)); ((yyvaluep->condition)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 379 "src/gt/gtl/parser.cpp"
+#line 381 "src/gt/gtl/parser.cpp"
 	break;
       case 41: /* "data" */
 
 /* Line 480 of lalr1.cc  */
-#line 138 "f_n_b/parser.yy"
+#line 141 "f_n_b/parser.yy"
 	{ if ((yyvaluep->coordinates)) { delete((yyvaluep->coordinates)); ((yyvaluep->coordinates)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 388 "src/gt/gtl/parser.cpp"
+#line 390 "src/gt/gtl/parser.cpp"
 	break;
       case 42: /* "data_coordinates" */
 
 /* Line 480 of lalr1.cc  */
-#line 138 "f_n_b/parser.yy"
+#line 141 "f_n_b/parser.yy"
 	{ if ((yyvaluep->coordinates)) { delete((yyvaluep->coordinates)); ((yyvaluep->coordinates)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 397 "src/gt/gtl/parser.cpp"
+#line 399 "src/gt/gtl/parser.cpp"
 	break;
       case 43: /* "data_coordinate" */
 
 /* Line 480 of lalr1.cc  */
-#line 137 "f_n_b/parser.yy"
+#line 140 "f_n_b/parser.yy"
 	{ if ((yyvaluep->coordinate)) { delete((yyvaluep->coordinate)); ((yyvaluep->coordinate)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 406 "src/gt/gtl/parser.cpp"
+#line 408 "src/gt/gtl/parser.cpp"
 	break;
       case 44: /* "coordinates" */
 
 /* Line 480 of lalr1.cc  */
-#line 137 "f_n_b/parser.yy"
+#line 140 "f_n_b/parser.yy"
 	{ if ((yyvaluep->coordinate)) { delete((yyvaluep->coordinate)); ((yyvaluep->coordinate)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 415 "src/gt/gtl/parser.cpp"
+#line 417 "src/gt/gtl/parser.cpp"
 	break;
       case 45: /* "coordinate" */
 
 /* Line 480 of lalr1.cc  */
-#line 137 "f_n_b/parser.yy"
+#line 140 "f_n_b/parser.yy"
 	{ if ((yyvaluep->coordinate)) { delete((yyvaluep->coordinate)); ((yyvaluep->coordinate)) = nullptr; } };
 
 /* Line 480 of lalr1.cc  */
-#line 424 "src/gt/gtl/parser.cpp"
+#line 426 "src/gt/gtl/parser.cpp"
 	break;
 
 	default:
@@ -541,7 +543,7 @@ namespace GT { namespace GTL {
     if (yychar == yyempty_)
       {
 	YYCDEBUG << "Reading a token: ";
-	yychar = yylex (&yylval, scanner, driver);
+	yychar = yylex (&yylval, &yylloc, scanner, driver);
       }
 
 
@@ -625,245 +627,241 @@ namespace GT { namespace GTL {
 	  case 6:
 
 /* Line 690 of lalr1.cc  */
-#line 166 "f_n_b/parser.yy"
+#line 172 "f_n_b/parser.yy"
     { driver.forStatement().executeDefinition((yysemantic_stack_[(2) - (1)].definition)); }
     break;
 
   case 7:
 
 /* Line 690 of lalr1.cc  */
-#line 167 "f_n_b/parser.yy"
+#line 173 "f_n_b/parser.yy"
     { driver.forStatement().executeQuery((yysemantic_stack_[(2) - (1)].query)); }
     break;
 
   case 9:
 
 /* Line 690 of lalr1.cc  */
-#line 172 "f_n_b/parser.yy"
+#line 178 "f_n_b/parser.yy"
     { (yyval.definition) = driver.forStatement().createDefinition((yysemantic_stack_[(4) - (2)].identifier), (yysemantic_stack_[(4) - (4)].object)); }
     break;
 
   case 10:
 
 /* Line 690 of lalr1.cc  */
-#line 176 "f_n_b/parser.yy"
+#line 182 "f_n_b/parser.yy"
     { (yyval.query) = driver.forStatement().createQuery((yysemantic_stack_[(5) - (2)].identifiers), (yysemantic_stack_[(5) - (4)].objects), (yysemantic_stack_[(5) - (5)].conditions)); }
     break;
 
   case 11:
 
 /* Line 690 of lalr1.cc  */
-#line 182 "f_n_b/parser.yy"
+#line 188 "f_n_b/parser.yy"
     { (yyval.objects) = driver.forObjects().insert((yysemantic_stack_[(3) - (3)].object), (yysemantic_stack_[(3) - (1)].objects)); }
     break;
 
   case 12:
 
 /* Line 690 of lalr1.cc  */
-#line 183 "f_n_b/parser.yy"
+#line 189 "f_n_b/parser.yy"
     { (yyval.objects) = driver.forObjects().create((yysemantic_stack_[(1) - (1)].object)); }
     break;
 
   case 13:
 
 /* Line 690 of lalr1.cc  */
-#line 187 "f_n_b/parser.yy"
+#line 193 "f_n_b/parser.yy"
     { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].game)); }
     break;
 
   case 14:
 
 /* Line 690 of lalr1.cc  */
-#line 188 "f_n_b/parser.yy"
+#line 194 "f_n_b/parser.yy"
     { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].player)); }
     break;
 
   case 15:
 
 /* Line 690 of lalr1.cc  */
-#line 189 "f_n_b/parser.yy"
+#line 195 "f_n_b/parser.yy"
     { (yyval.object) = driver.forValue().toObject((yysemantic_stack_[(1) - (1)].param)); }
     break;
 
   case 16:
 
 /* Line 690 of lalr1.cc  */
-#line 195 "f_n_b/parser.yy"
+#line 201 "f_n_b/parser.yy"
     { (yyval.game) = driver.forGame().createStrategic((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 17:
 
 /* Line 690 of lalr1.cc  */
-#line 196 "f_n_b/parser.yy"
+#line 202 "f_n_b/parser.yy"
     { (yyval.game) = driver.forGame().createTree((yysemantic_stack_[(3) - (3)].details)); }
     break;
 
   case 18:
 
 /* Line 690 of lalr1.cc  */
-#line 200 "f_n_b/parser.yy"
+#line 206 "f_n_b/parser.yy"
     { (yyval.details) = driver.forGame().createDetails((yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].coordinates)); }
     break;
 
   case 19:
 
 /* Line 690 of lalr1.cc  */
-#line 206 "f_n_b/parser.yy"
+#line 212 "f_n_b/parser.yy"
     { (yyval.player) = driver.forGame().createPlayer((yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].identifiers)); }
     break;
 
   case 20:
 
 /* Line 690 of lalr1.cc  */
-#line 212 "f_n_b/parser.yy"
+#line 218 "f_n_b/parser.yy"
     { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 21:
 
 /* Line 690 of lalr1.cc  */
-#line 213 "f_n_b/parser.yy"
+#line 219 "f_n_b/parser.yy"
     { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].number)); }
     break;
 
   case 22:
 
 /* Line 690 of lalr1.cc  */
-#line 217 "f_n_b/parser.yy"
+#line 223 "f_n_b/parser.yy"
     { (yyval.params) = driver.forParams().insert((yysemantic_stack_[(3) - (3)].param), (yysemantic_stack_[(3) - (1)].params)); }
     break;
 
   case 23:
 
 /* Line 690 of lalr1.cc  */
-#line 218 "f_n_b/parser.yy"
+#line 224 "f_n_b/parser.yy"
     { (yyval.params) = driver.forParams().create((yysemantic_stack_[(1) - (1)].param)); }
     break;
 
   case 24:
 
 /* Line 690 of lalr1.cc  */
-#line 224 "f_n_b/parser.yy"
+#line 230 "f_n_b/parser.yy"
     { (yyval.identifiers) = driver.forIdentifiers().insert((yysemantic_stack_[(3) - (3)].identifier), (yysemantic_stack_[(3) - (1)].identifiers)); }
     break;
 
   case 25:
 
 /* Line 690 of lalr1.cc  */
-#line 225 "f_n_b/parser.yy"
+#line 231 "f_n_b/parser.yy"
     { (yyval.identifiers) = driver.forIdentifiers().create((yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 26:
 
 /* Line 690 of lalr1.cc  */
-#line 231 "f_n_b/parser.yy"
+#line 237 "f_n_b/parser.yy"
     { (yyval.conditions) = (yysemantic_stack_[(1) - (1)].conditions); }
     break;
 
   case 27:
 
 /* Line 690 of lalr1.cc  */
-#line 232 "f_n_b/parser.yy"
+#line 238 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.forConditions().empty(); }
     break;
 
   case 28:
 
 /* Line 690 of lalr1.cc  */
-#line 236 "f_n_b/parser.yy"
+#line 242 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.forConditions().insert((yysemantic_stack_[(3) - (3)].condition), (yysemantic_stack_[(3) - (1)].conditions)); }
     break;
 
   case 29:
 
 /* Line 690 of lalr1.cc  */
-#line 237 "f_n_b/parser.yy"
+#line 243 "f_n_b/parser.yy"
     { (yyval.conditions) = driver.forConditions().create((yysemantic_stack_[(2) - (2)].condition)); }
     break;
 
   case 30:
 
 /* Line 690 of lalr1.cc  */
-#line 241 "f_n_b/parser.yy"
+#line 247 "f_n_b/parser.yy"
     { (yyval.condition) = driver.forCondition().playerChoosed((yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
     break;
 
   case 31:
 
 /* Line 690 of lalr1.cc  */
-#line 247 "f_n_b/parser.yy"
+#line 253 "f_n_b/parser.yy"
     { (yyval.coordinates) = (yysemantic_stack_[(1) - (1)].coordinates); }
     break;
 
   case 32:
 
 /* Line 690 of lalr1.cc  */
-#line 251 "f_n_b/parser.yy"
+#line 257 "f_n_b/parser.yy"
     { (yyval.coordinates) = driver.forCoordinates().insert((yysemantic_stack_[(3) - (3)].coordinate), (yysemantic_stack_[(3) - (1)].coordinates)); }
     break;
 
   case 33:
 
 /* Line 690 of lalr1.cc  */
-#line 252 "f_n_b/parser.yy"
+#line 258 "f_n_b/parser.yy"
     { (yyval.coordinates) = driver.forCoordinates().create((yysemantic_stack_[(1) - (1)].coordinate)); }
     break;
 
   case 34:
 
 /* Line 690 of lalr1.cc  */
-#line 256 "f_n_b/parser.yy"
+#line 262 "f_n_b/parser.yy"
     { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].coordinates)); }
     break;
 
   case 35:
 
 /* Line 690 of lalr1.cc  */
-#line 257 "f_n_b/parser.yy"
+#line 263 "f_n_b/parser.yy"
     { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].params)); }
     break;
 
   case 36:
 
 /* Line 690 of lalr1.cc  */
-#line 261 "f_n_b/parser.yy"
+#line 267 "f_n_b/parser.yy"
     { (yyval.coordinate) = driver.forCoordinate().merge((yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); }
     break;
 
   case 37:
 
 /* Line 690 of lalr1.cc  */
-#line 262 "f_n_b/parser.yy"
+#line 268 "f_n_b/parser.yy"
     { (yyval.coordinate) = (yysemantic_stack_[(1) - (1)].coordinate); }
     break;
 
   case 38:
 
 /* Line 690 of lalr1.cc  */
-#line 266 "f_n_b/parser.yy"
+#line 272 "f_n_b/parser.yy"
     { (yyval.coordinate) = driver.forCoordinate().create((yysemantic_stack_[(3) - (1)].identifier), (yysemantic_stack_[(3) - (3)].identifier)); }
     break;
 
   case 40:
 
 /* Line 690 of lalr1.cc  */
-#line 273 "f_n_b/parser.yy"
+#line 279 "f_n_b/parser.yy"
     {
-        std::stringstream builder;
-        builder << "Not valid identifier: "
-                << (**(yysemantic_stack_[(1) - (1)].identifier))
-                << std::endl;
-        Message message = createMessage(builder.str()); 
-        driver.showError(message);
+        std::string message = std::string() + "not recognized symbols: \"" + (**(yysemantic_stack_[(1) - (1)].identifier)) + "\"";
+        error((yylocation_stack_[(1) - (1)]), message);
     }
     break;
 
 
 
 /* Line 690 of lalr1.cc  */
-#line 867 "src/gt/gtl/parser.cpp"
+#line 865 "src/gt/gtl/parser.cpp"
 	default:
           break;
       }
@@ -1230,11 +1228,11 @@ namespace GT { namespace GTL {
   const unsigned short int
   Parser::yyrline_[] =
   {
-         0,   154,   154,   155,   161,   162,   166,   167,   168,   172,
-     176,   182,   183,   187,   188,   189,   195,   196,   200,   206,
-     212,   213,   217,   218,   224,   225,   231,   232,   236,   237,
-     241,   247,   251,   252,   256,   257,   261,   262,   266,   272,
-     273
+         0,   160,   160,   161,   167,   168,   172,   173,   174,   178,
+     182,   188,   189,   193,   194,   195,   201,   202,   206,   212,
+     218,   219,   223,   224,   230,   231,   237,   238,   242,   243,
+     247,   253,   257,   258,   262,   263,   267,   268,   272,   278,
+     279
   };
 
   // Print the state stack on the debug stream.
@@ -1323,15 +1321,15 @@ namespace GT { namespace GTL {
 
 
 /* Line 1136 of lalr1.cc  */
-#line 6 "f_n_b/parser.yy"
+#line 7 "f_n_b/parser.yy"
 } } // GT::GTL
 
 /* Line 1136 of lalr1.cc  */
-#line 1331 "src/gt/gtl/parser.cpp"
+#line 1329 "src/gt/gtl/parser.cpp"
 
 
 /* Line 1138 of lalr1.cc  */
-#line 283 "f_n_b/parser.yy"
+#line 285 "f_n_b/parser.yy"
 
 
 /**
@@ -1344,25 +1342,29 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    std::stringstream errorBuilder;
-    errorBuilder << "Error: " << message << std::endl
-                 << "on: " << location << std::endl;
-    std::string errorMessage(errorBuilder.str());
+    std::stringstream builder;
+    builder << "Error:" << std::endl
+            << '\t' << message << std::endl
+            << "\tat line \""
+            << location
+            << "\"" << std::endl;
+    std::string errorMessage(builder.str());
     driver.showError(errorMessage);
 }
 
 /**
  * @brief Include for scanner.yylex.
  *
- * @param lval    matched content
+ * @param lvalue  matched content
  * @param scanner scanner instance
  * @param driver  driver instance
  */
 static int yylex(
-    Parser::semantic_type* lval,
+    Parser::semantic_type* lvalue,
+    Parser::location_type* location,
     Scanner&               scanner,
     Driver&                driver
 ) {
-    return scanner.lex(lval);
+    return scanner.lex(lvalue);
 }
 

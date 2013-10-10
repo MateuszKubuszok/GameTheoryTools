@@ -1,6 +1,7 @@
 %require  "2.5"
 %skeleton "lalr1.cc"
 %debug
+%locations
 
 %defines
 %define namespace         "GT::GTL"
@@ -27,13 +28,15 @@
     /**
      * @brief Override default yylex function.
      * 
-     * @param yylval  matched content
-     * @param driver  driver instance
-     * @param scanner scanner instance
-     * @return        next found token number
+     * @param lvalue   matched content
+     * @param location current location
+     * @param driver   driver instance
+     * @param scanner  scanner instance
+     * @return         next found token number
      */
     static int yylex(
-        Parser::semantic_type* yylval,
+        Parser::semantic_type* lvalue,
+        Parser::location_type* location,
         Scanner&               scanner,
         Driver&                driver
     );
@@ -145,6 +148,9 @@
 %destructor { if ($$) { delete($$); ($$) = nullptr; } } <param>
 %destructor { if ($$) { delete($$); ($$) = nullptr; } } <params>
 %destructor { if ($$) { delete($$); ($$) = nullptr; } } <player>
+
+/* Make parser start from program */
+%start program
 
 %%
 
@@ -271,12 +277,8 @@ coordinate
 parser_error
  : error
  | lexer_error {
-        std::stringstream builder;
-        builder << "Not valid identifier: "
-                << (**$1)
-                << std::endl;
-        Message message = createMessage(builder.str()); 
-        driver.showError(message);
+        std::string message = std::string() + "not recognized symbols: \"" + (**$1) + "\"";
+        error(@1, message);
     }
  ;
 
@@ -292,24 +294,28 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    std::stringstream errorBuilder;
-    errorBuilder << "Error: " << message << std::endl
-                 << "on: " << location << std::endl;
-    std::string errorMessage(errorBuilder.str());
+    std::stringstream builder;
+    builder << "Error:" << std::endl
+            << '\t' << message << std::endl
+            << "\tat line \""
+            << location
+            << "\"" << std::endl;
+    std::string errorMessage(builder.str());
     driver.showError(errorMessage);
 }
 
 /**
  * @brief Include for scanner.yylex.
  *
- * @param lval    matched content
+ * @param lvalue  matched content
  * @param scanner scanner instance
  * @param driver  driver instance
  */
 static int yylex(
-    Parser::semantic_type* lval,
+    Parser::semantic_type* lvalue,
+    Parser::location_type* location,
     Scanner&               scanner,
     Driver&                driver
 ) {
-    return scanner.lex(lval);
+    return scanner.lex(lvalue);
 }

@@ -38,7 +38,7 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 42 "f_n_b/parser.yy"
+#line 45 "f_n_b/parser.yy"
 
     /* Declares classes used in Parser */
     namespace GT {
@@ -79,7 +79,7 @@
 
 
 /* Line 35 of lalr1.cc  */
-#line 6 "f_n_b/parser.yy"
+#line 7 "f_n_b/parser.yy"
 namespace GT { namespace GTL {
 
 /* Line 35 of lalr1.cc  */
@@ -95,7 +95,7 @@ namespace GT { namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 59 "f_n_b/parser.yy"
+#line 62 "f_n_b/parser.yy"
 
     IdentifierPtr*  identifier;
     IdentifiersPtr* identifiers;
@@ -326,7 +326,7 @@ namespace GT { namespace GTL {
   };
 
 /* Line 35 of lalr1.cc  */
-#line 6 "f_n_b/parser.yy"
+#line 7 "f_n_b/parser.yy"
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */

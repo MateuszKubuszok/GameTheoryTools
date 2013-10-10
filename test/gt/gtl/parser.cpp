@@ -338,7 +338,7 @@ BOOST_AUTO_TEST_CASE( Parser_emptyProgramIsValid  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
 }
 
@@ -360,7 +360,7 @@ BOOST_AUTO_TEST_CASE( Parser_valueParamDefinition  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 4 ); // parsed 4 definitions
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers
@@ -382,7 +382,7 @@ BOOST_AUTO_TEST_CASE( Parser_identifierParamDefinition  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 2 ); // created 2 parameters from identifiers
@@ -407,7 +407,7 @@ BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition 
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 1 ); // created 1 player
@@ -430,11 +430,11 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
         "    s2\n"
         "  }\n"
         "SUCH AS\n"
-        "  { p1=s1, p2=s1 : 10, -10 },\n"
-        "  { p1=s1, p2=s2 : 20, -20 },\n"
+        "  { p1=s1, p2=s1 : 10, param1 },\n"
+        "  { p1=s1, p2=s2 : param2, 20.0 },\n"
         "  { p1=s2 :\n"
-        "     { p2=s1 : 30, -30 },\n"
-        "     { p2=s2 : 40, -40 }\n"
+        "     { p2=s1 : 3e1, param3 },\n"
+        "     { p2=s2 : param4, 4.0e1 }\n"
         "  };\n"
     ;
     std::istringstream   stream(content);
@@ -445,7 +445,7 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
@@ -469,12 +469,12 @@ BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
         "  }\n"
         "SUCH AS\n"
         "  { p1=s1 :\n"
-        "     { p2=s1 : 10, -10 },\n"
-        "     { p2=s2 : 20, -20 }\n"
+        "     { p2=s1 : 10, param1 },\n"
+        "     { p2=s2 : param2, 20.0 }\n"
         "  },\n"
         "  { p1=s2 :\n"
-        "     { p2=s1 : 30, -30 },\n"
-        "     { p2=s2 : 40, -40 }\n"
+        "     { p2=s1 : 3e1, param3 },\n"
+        "     { p2=s2 : param4, 4.0e1 }\n"
         "  };\n"
     ;
     std::istringstream   stream(content);
@@ -485,7 +485,7 @@ BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
     GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
