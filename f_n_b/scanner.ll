@@ -49,7 +49,7 @@ typedef GT::GTL::Parser::token token;
 number[0-9]+
 integer(-?){number}
 float(-?){number}\.{number}
-scientific(-?){number}\.{number}[eE]{integer}
+scientific(-?){number}(\.{number})?[eE]{integer}
 identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
@@ -67,15 +67,15 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 (?i:FIND)      { return (token::FIND); }
 (?i:FOR)       { return (token::FOR); }
 (?i:CHOOSE)    { return (token::CHOOSE); }
-=              { return (token::EQUAL); }
-{              { return (token::LCBR); }
-}              { return (token::RCBR); }
-:              { return (token::COLON); }
-,              { return (token::COMA); }
-;              { return (token::EOC); }
+"="            { return (token::EQUAL); }
+"{"            { return (token::LCBR); }
+"}"            { return (token::RCBR); }
+":"            { return (token::COLON); }
+","            { return (token::COMA); }
+";"            { return (token::EOC); }
 
  /* Numbers definitions */
--?({scientific}|{float}|{integer}) {
+{scientific}|{float}|{integer} {
         lval->number = new GT::NumberPtr(new GT::Number(yytext));
         return (token::number);
     }

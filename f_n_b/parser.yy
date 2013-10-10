@@ -16,6 +16,7 @@
     /* System libraries */
     #include <iostream> /* Default I/O streams library */
     #include <fstream>  /* File Streams library */
+    #include <sstream>  /* StringStream */
     #include <cstdlib>  /* C Standard library */
 
     /* GTL prototypes */
@@ -39,6 +40,7 @@
 }
 
 %code requires {
+    /* Declares classes used in Parser */
     namespace GT {
         namespace GTL {
             class Scanner;
@@ -75,6 +77,10 @@
 
 /* Declared tokens */
 
+/* Driving tokens */
+%token TERMINATE 0 /* End of File */
+
+/* Keywords and symbols */
 %token LET       /* LET keyword */
 %token BE        /* BE keyword */
 %token PLAYER    /* PLAYER keyword */
@@ -94,11 +100,10 @@
 %token COMA      /* , charakter */
 %token EOC       /* ; charakter */
 
+/* Input */
 %token <identifier> lexer_error  /* Error */
 %token <identifier> identifier   /* Identifier */
 %token <number>     number       /* Double number */
-
-%token TERMINATE    /* End of File */
 
  /* Declared types */
  
@@ -124,22 +129,22 @@
 
 /* Destructor rules */
 
-%destructor { if ($$) { delete($$); ($$) = 0; } } <identifier>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <identifiers>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <number>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <condition>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <conditions>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <coordinate>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <coordinates>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <definition>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <details>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <game>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <query>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <object>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <objects>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <param>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <params>
-%destructor { if ($$) { delete($$); ($$) = 0; } } <player>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <identifier>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <identifiers>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <number>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <condition>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <conditions>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <coordinate>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <coordinates>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <definition>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <details>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <game>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <query>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <object>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <objects>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <param>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <params>
+%destructor { if ($$) { delete($$); ($$) = nullptr; } } <player>
 
 %%
 
@@ -147,19 +152,20 @@
 
 program
  : statements TERMINATE
- ;
-
-statements
- : statements statement
- |
+ | TERMINATE
  ;
 
 /* Statements */
 
+statements
+ : statements statement
+ | statement
+ ;
+
 statement
  : definition EOC { driver.forStatement().executeDefinition($1); }
  | query EOC      { driver.forStatement().executeQuery($1); }
- | parser_error   {}
+ | parser_error
  ;
 
 definition
@@ -175,6 +181,7 @@ query
 objects
  : objects COMA object { $$ = driver.forObjects().insert($3, $1); }
  | object              { $$ = driver.forObjects().create($1); }
+ ;
 
 object
  : game   { $$ = driver.forValue().toObject($1); }
@@ -262,8 +269,15 @@ coordinate
 /* Errors */
 
 parser_error
- : error       { /* TODO: Passing errors */ }
- | lexer_error { /* TODO: Passing errors */ }
+ : error
+ | lexer_error {
+        std::stringstream builder;
+        builder << "Not valid identifier: "
+                << (**$1)
+                << std::endl;
+        Message message = createMessage(builder.str()); 
+        driver.showError(message);
+    }
  ;
 
 %%
@@ -278,7 +292,11 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    driver.showError(message);
+    std::stringstream errorBuilder;
+    errorBuilder << "Error: " << message << std::endl
+                 << "on: " << location << std::endl;
+    std::string errorMessage(errorBuilder.str());
+    driver.showError(errorMessage);
 }
 
 /**

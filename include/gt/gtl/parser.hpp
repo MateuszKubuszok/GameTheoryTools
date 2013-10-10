@@ -38,8 +38,9 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 41 "f_n_b/parser.yy"
+#line 42 "f_n_b/parser.yy"
 
+    /* Declares classes used in Parser */
     namespace GT {
         namespace GTL {
             class Scanner;
@@ -50,7 +51,7 @@
 
 
 /* Line 35 of lalr1.cc  */
-#line 54 "include/gt/gtl/parser.hpp"
+#line 55 "include/gt/gtl/parser.hpp"
 
 
 #include <string>
@@ -82,7 +83,7 @@
 namespace GT { namespace GTL {
 
 /* Line 35 of lalr1.cc  */
-#line 86 "include/gt/gtl/parser.hpp"
+#line 87 "include/gt/gtl/parser.hpp"
 
   /// A Bison parser.
   class Parser
@@ -94,7 +95,7 @@ namespace GT { namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 57 "f_n_b/parser.yy"
+#line 59 "f_n_b/parser.yy"
 
     IdentifierPtr*  identifier;
     IdentifiersPtr* identifiers;
@@ -116,7 +117,7 @@ namespace GT { namespace GTL {
 
 
 /* Line 35 of lalr1.cc  */
-#line 120 "include/gt/gtl/parser.hpp"
+#line 121 "include/gt/gtl/parser.hpp"
     };
 #else
     typedef YYSTYPE semantic_type;
@@ -128,6 +129,7 @@ namespace GT { namespace GTL {
     {
       /* Tokens.  */
    enum yytokentype {
+     TERMINATE = 0,
      LET = 258,
      BE = 259,
      PLAYER = 260,
@@ -148,8 +150,7 @@ namespace GT { namespace GTL {
      EOC = 275,
      lexer_error = 276,
      identifier = 277,
-     number = 278,
-     TERMINATE = 279
+     number = 278
    };
 
     };
@@ -329,7 +330,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 333 "include/gt/gtl/parser.hpp"
+#line 334 "include/gt/gtl/parser.hpp"
 
 
 

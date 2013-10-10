@@ -193,7 +193,9 @@ class ParserTestStatementDriverImpl : public GT::GTL::NullStatementDriver {
 
 public:
     ParserTestStatementDriverImpl() :
-        GT::GTL::NullStatementDriver()
+        GT::GTL::NullStatementDriver(),
+        executedDefinitions(0),
+        executedQueries(0)
         {}
 
     virtual void executeDefinition(
@@ -221,6 +223,7 @@ public:
 
 class ParserTestValueDriverImpl : public GT::GTL::NullValueDriver {
     unsigned int usedParameters;
+
 public:
     ParserTestValueDriverImpl() :
         GT::GTL::NullValueDriver(),
@@ -239,6 +242,10 @@ public:
     ) {
         usedParameters++;
         return GT::GTL::NullValueDriver::get(number);
+    }
+
+    unsigned int getUsedParameters() {
+        return usedParameters;
     }
 }; /* END class ParserTestValueDriverImpl */
 
@@ -303,34 +310,186 @@ public:
     }
 
     virtual void showError(
-        const GT::Message&
+        const GT::Message& message
     ) {
+        std::cerr << message << std::endl;
         shownErrors++;
     }
 
     unsigned int getShownErrors() {
         return shownErrors;
     }
+
+    virtual GT::Message toString() {
+        return GT::Message("ParserTestDriverImpl");
+    }
 }; /* END class ParserTestDriverImpl */
 
 ////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( Parser_valueParam  ) {
+BOOST_AUTO_TEST_CASE( Parser_emptyProgramIsValid  ) {
+    // given
+    std::string content;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_valueParamDefinition  ) {
     // given
     std::string content =
         "LET value1 BE 10;\n"
-        "LET value2 BE 20;\n"
-        "LET value3 BE 30;\n"
+        "LET value2 BE 20.0;\n"
+        "LET value3 BE 3e1;\n"
+        "LET value4 BE 4.0e1;\n"
     ;
-    std::istringstream  stream(content);
-    GT::GTL::ScannerPtr scanner = GT::GTL::ScannerPtr(new GT::GTL::Scanner(&stream));
-    GT::GTL::DriverPtr  driver  = GT::GTL::NullFactory::getInstance().createDriver(); 
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
 
     // when
-    GT::GTL::Parser parser(*scanner, *driver);
+    GT::GTL::Parser parser(scanner, driver);
 
     // then
-    BOOST_CHECK(parser.parse());
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 4 ); // parsed 4 definitions
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_identifierParamDefinition  ) {
+    // given
+    std::string content =
+        "LET value1 BE id;\n"
+        "LET value2 BE _id;\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 2 ); // created 2 parameters from identifiers
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
+    // given
+    std::string content =
+        "LET _player BE\n"
+        "PLAYER p1 {\n"
+        "  s1,\n"
+        "  s2\n"
+        "};\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition 
+    BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 1 ); // created 1 player
+    BOOST_CHECK_EQUAL( driver.identifiers.getAddedElements(), 2 ); // created collection of 2 strategies
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
+    // given
+    std::string content =
+        "LET _game BE\n"
+        "STRATEGIC GAME WITH\n"
+        "  PLAYER p1 {\n"
+        "    s1,\n"
+        "    s2\n"
+        "  },\n"
+        "  PLAYER p2 {\n"
+        "    s1,\n"
+        "    s2\n"
+        "  }\n"
+        "SUCH AS\n"
+        "  { p1=s1, p2=s1 : 10, -10 },\n"
+        "  { p1=s1, p2=s2 : 20, -20 },\n"
+        "  { p1=s2 :\n"
+        "     { p2=s1 : 30, -30 },\n"
+        "     { p2=s2 : 40, -40 }\n"
+        "  };\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition
+    BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 8 ); // created 8 parameters from numbers
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
+    // given
+    std::string content =
+        "LET _game BE\n"
+        "TREE GAME WITH\n"
+        "  PLAYER p1 {\n"
+        "    s1,\n"
+        "    s2\n"
+        "  },\n"
+        "  PLAYER p2 {\n"
+        "    s1,\n"
+        "    s2\n"
+        "  }\n"
+        "SUCH AS\n"
+        "  { p1=s1 :\n"
+        "     { p2=s1 : 10, -10 },\n"
+        "     { p2=s2 : 20, -20 }\n"
+        "  },\n"
+        "  { p1=s2 :\n"
+        "     { p2=s1 : 30, -30 },\n"
+        "     { p2=s2 : 40, -40 }\n"
+        "  };\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition
+    BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 8 ); // created 8 parameters from numbers
 }
 
 ////////////////////////////////////////////////////////////////////////////////

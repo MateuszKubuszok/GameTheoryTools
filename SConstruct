@@ -199,7 +199,7 @@ GTL_Scanner_cpp_URI = source +gtl+'scanner.cpp'
 GTL_Parser_cpp = env.CXXFile(
     source=FnB_Parser_yy_URI,
     target=GTL_Parser_cpp_URI,
-    YACCFLAGS='--defines='+GTL_Parser_hpp_URI
+    YACCFLAGS=['--defines='+GTL_Parser_hpp_URI, '--verbose']
 )
 GTL_Scanner_cpp = env.CXXFile(
     source=FnB_Scanner_ll_URI,
