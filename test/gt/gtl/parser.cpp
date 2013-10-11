@@ -571,7 +571,49 @@ BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
     BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parser 1 query
-    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 5 ); // created 9 parameters from numbers (8) nad identifiers (1)
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 5 ); // created 5 parameters from numbers (4) nad identifiers (1)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
+    // given
+    std::string content =
+        "FIND pure_equilibrium, mixed_equilibrium\n"
+        "FOR\n"
+        "  STRATEGIC GAME\n"
+        "  WITH\n"
+        "    PLAYER p1 { s },\n"
+        "    PLAYER p2 { s }\n"
+        "  SUCH AS\n"
+        "    { p1=s, p2=s : 10, 20 }\n"
+        "  END,\n"
+        "  TREE GAME\n"
+        "  WITH\n"
+        "    PLAYER p1 { s },\n"
+        "    PLAYER p2 { s }\n"
+        "  SUCH AS\n"
+        "    { p1=s :\n"
+        "      { p2=s : 10, 20 }\n"
+        "    }\n"
+        "  END;\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parser 1 query
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers)
+    BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 4 ); // crated 4 players
+    BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
+    BOOST_CHECK_EQUAL( driver.game.getCreatedTreeGames(), 1 ); // created 1 tree game
 }
 
 ////////////////////////////////////////////////////////////////////////////////
