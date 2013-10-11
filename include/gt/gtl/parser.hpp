@@ -139,18 +139,19 @@ namespace GT { namespace GTL {
      WITH = 264,
      SUCH = 265,
      AS = 266,
-     FIND = 267,
-     FOR = 268,
-     CHOOSE = 269,
-     LCBR = 270,
-     RCBR = 271,
-     EQUAL = 272,
-     COLON = 273,
-     COMA = 274,
-     EOC = 275,
-     lexer_error = 276,
-     identifier = 277,
-     number = 278
+     END = 267,
+     FIND = 268,
+     FOR = 269,
+     CHOOSE = 270,
+     LCBR = 271,
+     RCBR = 272,
+     EQUAL = 273,
+     COLON = 274,
+     COMA = 275,
+     EOC = 276,
+     lexer_error = 277,
+     identifier = 278,
+     number = 279
    };
 
     };
@@ -330,7 +331,7 @@ namespace GT { namespace GTL {
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 334 "include/gt/gtl/parser.hpp"
+#line 335 "include/gt/gtl/parser.hpp"
 
 
 

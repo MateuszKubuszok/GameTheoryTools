@@ -93,6 +93,7 @@
 %token WITH      /* WITH keyword */
 %token SUCH      /* SUCH keyword */
 %token AS        /* AS keyword */
+%token END       /* END keyword */
 %token FIND      /* FIND keyword */
 %token FOR       /* FOR keyword */
 %token CHOOSE    /* CHOOSE keyword */
@@ -198,8 +199,13 @@ object
 /* Games */
 
 game
- : STRATEGIC GAME details { $$ = driver.forGame().createStrategic($3); }
- | TREE      GAME details { $$ = driver.forGame().createTree($3); }
+ : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic($3); }
+ | TREE      GAME details game_end { $$ = driver.forGame().createTree($3); }
+ ;
+
+game_end
+ : 
+ | END
  ;
 
 details

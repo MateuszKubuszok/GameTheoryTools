@@ -64,6 +64,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 (?i:WITH)      { return (token::WITH); }
 (?i:SUCH)      { return (token::SUCH); }
 (?i:AS)        { return (token::AS); }
+(?i:END)       { return (token::END); }
 (?i:FIND)      { return (token::FIND); }
 (?i:FOR)       { return (token::FOR); }
 (?i:CHOOSE)    { return (token::CHOOSE); }
