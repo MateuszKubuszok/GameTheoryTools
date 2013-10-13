@@ -654,4 +654,28 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
+    // given
+    std::string content =
+        "error;\n"
+        "LET player1 BE\n"
+        "  PLAYER p1 { s };\n"
+        "LET player2 BE\n"
+        "  PLAYER p2 { s };\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    ParserTestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // recovered from parsing error
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 1 ); // 1 error occured
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
+    BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
+}
+
 BOOST_AUTO_TEST_SUITE_END()
