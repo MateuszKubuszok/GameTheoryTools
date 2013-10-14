@@ -44,10 +44,6 @@ public:
  */
 class NullCondition : public Condition {
 public:
-    NullCondition() :
-        Root()
-        {}
-    
     virtual void conditionQuery(
         Query&
     ) {}
@@ -60,6 +56,36 @@ public:
         return Message("NullCondition");
     }
 }; /* END class NullCondition */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Error Condition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorCondition : public Condition {
+    Message message;
+    
+public:
+    ErrorCondition(
+        Message errorMessage
+    ) :
+        message(errorMessage)
+        {}
+    
+    virtual void conditionQuery(
+        Query&
+    ) {}
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorCondition */
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -143,6 +143,58 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Error Param for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorParam : public Param {
+    Message message;
+    
+public:
+    ErrorParam(
+        Message errorMessage
+    ) :
+        message(errorMessage)
+        {}
+
+    virtual ObjectPtr getObject(
+        Context&
+    ) {
+        return NullFactory::getInstance().createObject();
+    }
+
+    virtual ObjectPtr getObject(
+        Context&,
+        VisitedIdentifiers&
+    ) {
+        return NullFactory::getInstance().createObject();
+    }
+
+    virtual NumberPtr getNumber(
+        Context&
+    ) {
+        return Model::NullFactory::getInstance().createNumber();
+    }
+
+    virtual NumberPtr getNumber(
+        Context&,
+        VisitedIdentifiers&
+    ) {
+        return Model::NullFactory::getInstance().createNumber();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorParam */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
 

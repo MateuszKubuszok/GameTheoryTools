@@ -200,6 +200,75 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null Coordinate for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorCoordinate : public Coordinate {
+    Message message;
+    
+public:
+    ErrorCoordinate(
+        Message errorMessage
+    ) :
+        message(errorMessage)
+        {}
+
+    virtual Coordinate& addParams(
+        const ParamPtr
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addParams(
+        const ParamsPtr
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addPosition(
+        const IdentifierPtr,
+        const IdentifierPtr
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addSubCoordinates(
+        const CoordinatePtr
+    ) {
+        return *this;
+    }
+
+    virtual Coordinate& addSubCoordinates(
+        const CoordinatesPtr
+    ) {
+        return *this;
+    }
+
+    virtual ParamsPtr getParams() {
+        return NullFactory::getInstance().createParams();
+    }
+
+    virtual PositionsPtr getPositions() {
+        return NullFactory::getInstance().createPositions();
+    }
+
+    virtual CoordinatesPtr getSubCoordinates() {
+        return NullFactory::getInstance().createCoordinates();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorCoordinate */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
 

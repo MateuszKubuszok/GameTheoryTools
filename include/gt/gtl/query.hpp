@@ -23,13 +23,6 @@ public:
     ) = 0;
 
     /**
-     * @brief Returns Query results.
-     *
-     * @result Query results
-     */
-    virtual Message getResult() = 0;
-
-    /**
      * @brief Returns Query's Message.
      *
      * @return Message
@@ -52,10 +45,6 @@ public:
         return NullFactory::getInstance().createResult();
     }
 
-    virtual Message getResult() {
-        return Message("NullQuery");
-    }
-
     virtual bool isNotNull() {
         return false;
     }
@@ -64,6 +53,38 @@ public:
         return Message("NullQuery");
     }
 }; /* END class NullQuery */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Error Query for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorQuery : public Query {
+    Message message;
+
+public:
+    ErrorQuery(
+        Message errorMessage
+    ) :
+        message(errorMessage)
+        {}
+
+    virtual ResultPtr execute(
+        Context&
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorQuery */
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -59,7 +59,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Null Definition for handling invalid situations.
+ * @brief Null Details for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
@@ -88,6 +88,44 @@ public:
         return Message("NullDetails");
     }
 }; /* END class NullDetails */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Error Details for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorDetails : public Details {
+    Message message;
+    
+public:
+    ErrorDetails(
+        Message errorMessage
+    ) :
+        Details(
+            NullFactory::getInstance().createObjects(),
+            NullFactory::getInstance().createCoordinates()
+        ),
+        message(errorMessage)
+        {}
+
+    virtual CoordinatesPtr getCoordinates() {
+        return NullFactory::getInstance().createCoordinates();
+    }
+
+    virtual ObjectsPtr getPlayers() {
+        return NullFactory::getInstance().createObjects();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorDetails */
 
 ////////////////////////////////////////////////////////////////////////////////
 

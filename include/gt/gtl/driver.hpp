@@ -7,7 +7,7 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Used for executing actions called Parser.
+ * @brief Used for executing actions called by Parser.
  *
  * @author Mateusz Kubuszok
  */

@@ -41,7 +41,15 @@ class IdentifierParam;
 class NumberParam;
 class ObjectParam;
 
-/* Shortens comonly used names */
+class CheckingConditionDriver;
+class CheckingCoordinateDriver;
+class CheckingGameDriver;
+class CheckingValueDriver;
+class CheckingStatementDriver;
+class CheckingDriver;
+
+/* Shortens commonly used names */
+
 typedef Model::ResultFactory    ResultFactory;
 typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
@@ -70,6 +78,13 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/identifier_param.hpp"
 #include "gt/gtl/number_param.hpp"
 #include "gt/gtl/object_param.hpp"
+
+#include "gt/gtl/checking_condition_driver.hpp"
+#include "gt/gtl/checking_coordinate_driver.hpp"
+#include "gt/gtl/checking_game_driver.hpp"
+#include "gt/gtl/checking_value_driver.hpp"
+#include "gt/gtl/checking_statement_driver.hpp"
+#include "gt/gtl/checking_driver.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -310,9 +310,8 @@ public:
     }
 
     virtual void showError(
-        const GT::Message& message
+        const GT::Message&
     ) {
-        std::cerr << message << std::endl;
         shownErrors++;
     }
 

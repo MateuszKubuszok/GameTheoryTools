@@ -59,6 +59,36 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Error Player for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorPlayer : public Player {
+    Message message;
+    
+public:
+    ErrorPlayer(
+        Message errorMessage
+    ) :
+        Player(
+            Model::NullFactory::getInstance().createIdentifier(),
+            Model::NullFactory::getInstance().createIdentifiers()
+        ),
+        message(errorMessage)
+        {}
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorPlayer */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
 

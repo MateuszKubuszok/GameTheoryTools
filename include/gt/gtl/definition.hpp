@@ -94,6 +94,44 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Error Definition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorDefinition : public Definition {
+    Message message;
+
+public:
+    ErrorDefinition(
+        Message errorMessage
+    ) :
+        Definition(
+            Model::NullFactory::getInstance().createIdentifier(),
+            NullFactory::getInstance().createParam()
+        ),
+        message(errorMessage)
+        {}
+
+    virtual IdentifierPtr getName() {
+        return Model::NullFactory::getInstance().createIdentifier();
+    }
+
+    virtual ParamPtr getValue() {
+        return NullFactory::getInstance().createParam();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorDefinition */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
 

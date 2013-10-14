@@ -18,7 +18,7 @@ public:
     /**
      * @brief Returns the instance of a NullFactory.
      *
-     * @return ExceptionFactory instance
+     * @return NullFactory instance
      */
     static NullFactory& getInstance();
 

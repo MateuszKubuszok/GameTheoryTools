@@ -15,18 +15,19 @@ class InvalidProperty;
 
 /* Class declarations */
 
-class NullFactory;
+                         class NullFactory;          class ErrorFactory;
 
-class Object;     class NullObject;     class ObjectProperty;
-class Condition;  class NullCondition;
-class Context;    class NullContext;
-class Coordinate; class NullCoordinate;
-class Definition; class NullDefinition;
-class Details;    class NullDetails;
-class Game;       class NullGame;
-class Query;      class NullQuery;
-class Param;      class NullParam;
-class Player;     class NullPlayer;
+class Object;            class NullObject;           class ErrorObject;
+class ObjectProperty;
+class Condition;         class NullCondition;        class ErrorCondition;
+class Context;           class NullContext;          class ErrorContext;
+class Coordinate;        class NullCoordinate;       class ErrorCoordinate;
+class Definition;        class NullDefinition;       class ErrorDefinition;
+class Details;           class NullDetails;          class ErrorDetails;
+class Game;              class NullGame;             class ErrorGame;
+class Param;             class NullParam;            class ErrorParam;
+class Player;            class NullPlayer;           class ErrorPlayer;
+class Query;             class NullQuery;            class ErrorQuery;
 
 class Parser;
 class Scanner;
@@ -106,6 +107,7 @@ bool operator!=(Params&      params1,      Params&      params2);
 #include "gt/gtl/exceptions.hpp"
 
 #include "gt/gtl/null_factory.hpp"
+#include "gt/gtl/error_factory.hpp"
 
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"
@@ -115,10 +117,10 @@ bool operator!=(Params&      params1,      Params&      params2);
 #include "gt/gtl/definition.hpp"
 #include "gt/gtl/details.hpp"
 #include "gt/gtl/game.hpp"
-#include "gt/gtl/query.hpp"
 #include "gt/gtl/param.hpp"
 #include "gt/gtl/param_factory.hpp"
 #include "gt/gtl/player.hpp"
+#include "gt/gtl/query.hpp"
 
 /* Includes GTL parsers elements */
 

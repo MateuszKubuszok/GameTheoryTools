@@ -170,14 +170,10 @@ public:
  */
 class NullObject : public Object {
 public:
-    virtual bool isValid() {
-        return false;
-    }
-
     virtual bool respondsTo(
         Identifier&
     ) {
-        return true;
+        return false;
     }
 
     virtual ResultPtr findProperty(
@@ -203,6 +199,53 @@ public:
         return Message("NullObject");
     }
 }; /* END class NullObject */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Error Object for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
+class ErrorObject : public Object {
+    Message message;
+    
+public:
+    ErrorObject(
+        Message errorMessage
+    ) :
+        message(errorMessage)
+        {}
+
+    virtual bool respondsTo(
+        Identifier&
+    ) {
+        return false;
+    }
+
+    virtual ResultPtr findProperty(
+        const Context&,
+        Identifier&
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr findPropertyWithConditions(
+        const Context&,
+        Identifier&,
+        const Conditions&
+    ) {
+        return NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorObject */
 
 ////////////////////////////////////////////////////////////////////////////////
 

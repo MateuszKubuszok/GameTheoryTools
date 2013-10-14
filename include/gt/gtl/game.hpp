@@ -90,6 +90,42 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class ErrorGame : public Game {
+    Message message;
+    
+public:
+    ErrorGame(
+        Message errorMessage
+    ) :
+        Game(Model::NullFactory::getInstance().createGame()),
+        message(errorMessage)
+        {}
+
+    virtual ResultPtr pureEquilibrium(
+        const Context&,
+        const Conditions&
+    ) {
+        return Model::NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr mixedEquilibrium(
+        const Context&,
+        const Conditions&
+    ) {
+        return Model::NullFactory::getInstance().createResult();
+    }
+
+    virtual bool isValid() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return message;
+    }
+}; /* END class ErrorGame */
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */
 

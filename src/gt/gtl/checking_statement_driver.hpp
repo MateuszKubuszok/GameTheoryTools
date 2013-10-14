@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_STATEMENT_DRIVER_HPP__
-#define __GT_GTL_STATEMENT_DRIVER_HPP__
+#ifndef __GT_GTL_CHECKING_STATEMENT_DRIVER_HPP__
+#define __GT_GTL_CHECKING_STATEMENT_DRIVER_HPP__
 
 namespace GT {
 namespace GTL {
@@ -7,11 +7,14 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Used for handling statements via Driver.
+ * @brief Implementation used for handling statements via CheckingDriver.
  *
  * @author Mateusz Kubuszok
+ *
+ * @see CheckingDriver
+ * @see StatementDriver
  */
-class StatementDriver : public virtual Root {
+class CheckingStatementDriver : public StatementDriver {
 public:
     /**
      * @brief Executes Definition saving Object under defined name.
@@ -20,7 +23,7 @@ public:
      */
     virtual void executeDefinition(
         DefinitionPtr* definition
-    ) = 0;
+    );
 
     /**
      * @brief Executes Query saving Object under defined name.
@@ -29,7 +32,7 @@ public:
      */
     virtual void executeQuery(
         QueryPtr* query
-    ) = 0;
+    );
 
     /**
      * @brief Creates Definition saving Object under defined name.
@@ -41,7 +44,7 @@ public:
     virtual DefinitionPtr* createDefinition(
         IdentifierPtr* identifier,
         ObjectPtr*     object
-    ) = 0;
+    );
 
     /**
      * @brief Creates Query for given properties.
@@ -55,64 +58,19 @@ public:
         IdentifiersPtr* identifiers,
         ObjectsPtr*     objects,
         ConditionsPtr*  conditions
-    ) = 0;
+    );
 
     /**
-     * @brief StatementDriver's Message.
+     * @brief CheckingStatementDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
-}; /* END class StatementDriver */
-
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * @brief Null StatementDriver for handling invalid situations.
- *
- * @author Mateusz Kubuszok
- */
-class NullStatementDriver : public StatementDriver {
-public:
-    NullStatementDriver() :
-        StatementDriver()
-        {}
-
-    virtual void executeDefinition(
-        DefinitionPtr*
-    ) {}
-
-    virtual void executeQuery(
-        QueryPtr*
-    ) {}
-
-    virtual DefinitionPtr* createDefinition(
-        IdentifierPtr*,
-        ObjectPtr*
-    ) {
-        return new DefinitionPtr(NullFactory::getInstance().createDefinition());
-    }
-
-    virtual QueryPtr* createQuery(
-        IdentifiersPtr*,
-        ObjectsPtr*,
-        ConditionsPtr*
-    ) {
-        return new QueryPtr(NullFactory::getInstance().createQuery());
-    }
-
-    virtual bool isNotNull() {
-        return false;
-    }
-    
-    virtual Message toString() {
-        return Message("NullStatementDriver");
-    }
-}; /* END class NullStatementDriver */
+    virtual Message toString();
+}; /* END class CheckingStatementDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_STATEMENT_DRIVER_HPP__ */
+#endif /* END #ifndef __GT_GTL_CHECKING_STATEMENT_DRIVER_HPP__ */

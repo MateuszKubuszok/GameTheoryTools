@@ -40,6 +40,8 @@ typedef GT::GTL::Parser::token token;
 %option c++
     /* Sets output filename */
 %option outfile="src/gt/gtl/scanner.cpp"
+    /* Do not use Unix-specific unistd.h */
+%option nounistd
 
  /* Defines states used for ommitnig comments */
 %x block_comment
