@@ -17,12 +17,6 @@ ConditionPtr ErrorFactory::createCondition(
     return ConditionPtr(new ErrorCondition(errorMessage));
 }
 
-ContextPtr ErrorFactory::createContext(
-    Message errorMessage
-) {
-    return ContextPtr(new ErrorContext(errorMessage));
-}
-
 CoordinatePtr ErrorFactory::createCoordinate(
     Message errorMessage
 ) {

@@ -14,7 +14,7 @@ namespace GTL {
  * @see Context
  * @see Param
  */
-class Definition : public virtual Root {
+class Definition : public virtual Root, public virtual ValidableSymbol {
     /**
      * @brief Name of the property
      */

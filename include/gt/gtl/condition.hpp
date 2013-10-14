@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Condition : public virtual Root {
+class Condition : public virtual Root, public virtual ValidableSymbol {
 public:
     /**
      * @brief Default destructor.

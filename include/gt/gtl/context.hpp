@@ -175,63 +175,6 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @brief Error Context for handling invalid situations.
- *
- * @author Mateusz Kubuszok
- */
-class ErrorContext : public Context {
-    Message message;
-
-public:
-    ErrorContext(
-        Message errorMessage
-    ) :
-        message(errorMessage)
-        {}
-
-    virtual Context& registerObject(
-        IdentifierPtr,
-        ObjectPtr
-    ) {
-        return *this;
-    }
-
-    virtual Context& registerObject(
-        DefinitionPtr
-    ) {
-        return *this;
-    }
-
-    virtual NumberPtr getNumber(
-        Identifier&
-    ) {
-        return Model::NullFactory::getInstance().createNumber();
-    }
-
-    virtual ObjectPtr getObject(
-        Identifier&
-    ) {
-        return NullFactory::getInstance().createObject();
-    }
-
-    virtual ParamPtr getParam(
-        Identifier&
-    ) {
-        return NullFactory::getInstance().createParam();
-    }
-
-    virtual bool isValid() {
-        return false;
-    }
-
-    virtual Message toString() {
-        return message;
-    }
-}; /* END class ErrorContext */
-
-////////////////////////////////////////////////////////////////////////////////
-
 } /* END namespace GTL */
 } /* END namespace GT */
 

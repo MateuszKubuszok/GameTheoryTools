@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Details : public virtual Root {
+class Details : public virtual Root, public virtual ValidableSymbol {
     /**
      * @brief Players' collection.
      */

@@ -33,16 +33,6 @@ public:
     );
 
     /**
-     * @brief Creates ErrorContext.
-     *
-     * @param errorMessage message describing error
-     * @result             ErrorContext
-     */
-    ContextPtr createContext(
-        Message errorMessage
-    );
-
-    /**
      * @brief Creates ErrorCoordinate.
      *
      * @param errorMessage message describing error

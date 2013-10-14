@@ -30,10 +30,6 @@ Object::Object(
 
 Object::~Object() {}
 
-bool Object::isValid() {
-    return true;
-}
-
 bool Object::respondsTo(
     Identifier& propertyName
 ) {

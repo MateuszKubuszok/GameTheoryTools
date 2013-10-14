@@ -15,12 +15,11 @@ class InvalidProperty;
 
 /* Class declarations */
 
-                         class NullFactory;          class ErrorFactory;
+class ValidableSymbol;   class NullFactory;          class ErrorFactory;
 
 class Object;            class NullObject;           class ErrorObject;
 class ObjectProperty;
 class Condition;         class NullCondition;        class ErrorCondition;
-class Context;           class NullContext;          class ErrorContext;
 class Coordinate;        class NullCoordinate;       class ErrorCoordinate;
 class Definition;        class NullDefinition;       class ErrorDefinition;
 class Details;           class NullDetails;          class ErrorDetails;
@@ -28,6 +27,8 @@ class Game;              class NullGame;             class ErrorGame;
 class Param;             class NullParam;            class ErrorParam;
 class Player;            class NullPlayer;           class ErrorPlayer;
 class Query;             class NullQuery;            class ErrorQuery;
+
+class Context;           class NullContext;
 
 class Parser;
 class Scanner;
@@ -108,6 +109,8 @@ bool operator!=(Params&      params1,      Params&      params2);
 
 #include "gt/gtl/null_factory.hpp"
 #include "gt/gtl/error_factory.hpp"
+
+#include "gt/gtl/validable_symbol.hpp"
 
 #include "gt/gtl/object.hpp"
 #include "gt/gtl/condition.hpp"

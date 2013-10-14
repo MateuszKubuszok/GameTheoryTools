@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Object : public virtual Root {
+class Object : public virtual Root, public virtual ValidableSymbol {
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
@@ -39,13 +39,6 @@ public:
      * Removes the properties' register.
      */
     virtual ~Object();
-
-    /**
-     * @brief Defines whether this Object's instance is a valid result.
-     *
-     * @return true if Object is a valid result 
-     */
-    virtual bool isValid();
 
     /**
      * @brief Whether Object responds to some property.
