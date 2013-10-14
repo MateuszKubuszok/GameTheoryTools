@@ -184,7 +184,7 @@ public:
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

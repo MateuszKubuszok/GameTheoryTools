@@ -6,12 +6,19 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 // class ValidableSymbol {
+
+void ValidableSymbol::comparisonsAreNotAllowed() const {}
+
 // public:
 
 ValidableSymbol::~ValidableSymbol() {}
 
-bool ValidableSymbol::isValid() {
+bool ValidableSymbol::isValid() const {
     return true;
+}
+
+ValidableSymbol::operator SafeBoolIdiom() const {
+    return isValid() ? &ValidableSymbol::comparisonsAreNotAllowed : 0;
 }
 
 // }

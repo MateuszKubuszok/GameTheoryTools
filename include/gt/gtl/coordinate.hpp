@@ -258,7 +258,7 @@ public:
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

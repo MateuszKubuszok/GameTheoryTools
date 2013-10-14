@@ -115,7 +115,7 @@ public:
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

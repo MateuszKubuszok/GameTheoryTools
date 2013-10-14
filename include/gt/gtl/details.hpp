@@ -118,7 +118,7 @@ public:
         return NullFactory::getInstance().createObjects();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

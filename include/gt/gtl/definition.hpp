@@ -121,7 +121,7 @@ public:
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

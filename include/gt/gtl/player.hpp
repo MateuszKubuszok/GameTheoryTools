@@ -78,7 +78,7 @@ public:
         message(errorMessage)
         {}
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 

@@ -77,7 +77,7 @@ public:
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isValid() {
+    virtual bool isValid() const {
         return false;
     }
 
