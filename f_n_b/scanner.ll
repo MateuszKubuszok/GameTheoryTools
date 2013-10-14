@@ -19,10 +19,6 @@ typedef GT::GTL::Parser::token token;
 /* Defines termination token */
 #define yyterminate() return (token::TERMINATE)
 
-/* This disables inclusion of unistd.h, which is not available under Visual C++
- * on Win32. The C++ scanner uses STL streams instead. */
-#define YY_NO_UNISTD_H
-
 %}
 
  /**************************** Options and states ****************************/
