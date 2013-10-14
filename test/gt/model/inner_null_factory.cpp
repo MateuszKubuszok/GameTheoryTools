@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_CASE( InnerNullFactory_createStrategicData ) {
     GT::Model::StrategicDataPtr result = GT::Model::InnerNullFactory::getInstance().createStrategicData();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE( InnerNullFactory_createTreeData ) {
     GT::Model::TreeDataPtr result = GT::Model::InnerNullFactory::getInstance().createTreeData();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }

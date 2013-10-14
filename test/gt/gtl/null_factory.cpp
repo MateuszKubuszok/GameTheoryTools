@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCondition ) {
     GT::GTL::ConditionPtr result = GT::GTL::NullFactory::getInstance().createCondition();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createConditions ) {
     GT::GTL::ConditionsPtr result = GT::GTL::NullFactory::getInstance().createConditions();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->empty());
 }
 
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createContext ) {
     GT::GTL::ContextPtr result = GT::GTL::NullFactory::getInstance().createContext();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCoordinate ) {
     GT::GTL::CoordinatePtr result = GT::GTL::NullFactory::getInstance().createCoordinate();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCoordinates ) {
     GT::GTL::CoordinatesPtr result = GT::GTL::NullFactory::getInstance().createCoordinates();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->empty());
 }
 
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createDefinition ) {
     GT::GTL::DefinitionPtr result = GT::GTL::NullFactory::getInstance().createDefinition();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createDetails ) {
     GT::GTL::DetailsPtr result = GT::GTL::NullFactory::getInstance().createDetails();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createGame ) {
     GT::GTL::GamePtr result = GT::GTL::NullFactory::getInstance().createGame();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createObject ) {
     GT::GTL::ObjectPtr result = GT::GTL::NullFactory::getInstance().createObject();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createObjects ) {
     GT::GTL::ObjectsPtr result = GT::GTL::NullFactory::getInstance().createObjects();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->empty());
 }
 
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createParam ) {
     GT::GTL::ParamPtr result = GT::GTL::NullFactory::getInstance().createParam();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createParams ) {
     GT::GTL::ParamsPtr result = GT::GTL::NullFactory::getInstance().createParams();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->empty());
 }
 
@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createPlayer ) {
     GT::GTL::PlayerPtr result = GT::GTL::NullFactory::getInstance().createPlayer();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -148,7 +148,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createPositions ) {
     GT::PositionsPtr result = GT::GTL::NullFactory::getInstance().createPositions();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->empty());
 }
 
@@ -158,7 +158,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createResult ) {
     GT::GTL::ResultPtr result = GT::GTL::NullFactory::getInstance().createResult();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -169,7 +169,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createQuery ) {
     GT::GTL::QueryPtr result = GT::GTL::NullFactory::getInstance().createQuery();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createDriver ) {
     GT::GTL::DriverPtr result = GT::GTL::NullFactory::getInstance().createDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -191,7 +191,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createConditionDriver ) {
     GT::GTL::ConditionDriverPtr result = GT::GTL::NullFactory::getInstance().createConditionDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -202,7 +202,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCoordinateDriver ) {
     GT::GTL::CoordinateDriverPtr result = GT::GTL::NullFactory::getInstance().createCoordinateDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -213,7 +213,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createGameDriver ) {
     GT::GTL::GameDriverPtr result = GT::GTL::NullFactory::getInstance().createGameDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -224,7 +224,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createValueDriver ) {
     GT::GTL::ValueDriverPtr result = GT::GTL::NullFactory::getInstance().createValueDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -235,7 +235,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createStatementDriver ) {
     GT::GTL::StatementDriverPtr result = GT::GTL::NullFactory::getInstance().createStatementDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -246,7 +246,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCoordinatesDriver ) {
     GT::GTL::CollectionsDriverPtr<GT::GTL::Coordinate> result = GT::GTL::NullFactory::getInstance().createCoordinatesDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -257,7 +257,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createConditionsDriver ) {
     GT::GTL::CollectionsDriverPtr<GT::GTL::Condition> result = GT::GTL::NullFactory::getInstance().createConditionsDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createIdentifiersDriver ) {
     GT::GTL::CollectionsDriverPtr<GT::Identifier> result = GT::GTL::NullFactory::getInstance().createIdentifiersDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -279,7 +279,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createObjectsDriver ) {
     GT::GTL::CollectionsDriverPtr<GT::GTL::Object> result = GT::GTL::NullFactory::getInstance().createObjectsDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
@@ -290,7 +290,7 @@ BOOST_AUTO_TEST_CASE( NullFactory_createParamsDriver ) {
     GT::GTL::CollectionsDriverPtr<GT::GTL::Param> result = GT::GTL::NullFactory::getInstance().createParamsDriver();
 
     // then
-    BOOST_CHECK(result);
+    BOOST_REQUIRE(result);
     BOOST_CHECK(result->isNull());
     BOOST_CHECK(!result->isNotNull());
 }
