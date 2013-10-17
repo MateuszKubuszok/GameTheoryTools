@@ -19,6 +19,18 @@ boost::shared_ptr<Symbol> setupLocation(
     InputLocation&            inputLocation
 );
 
+/**
+ * @brief Creates error Message for given parent message and error origin. 
+ *
+ * @param parentMessage parent message that will be explained by suberror message
+ * @param invalidSymbol invalid symbol to display
+ * @return              message to show
+ */
+Message suberrorMessage(
+    Message&         parentMessage,
+    ValidableSymbol& invalidSymbol
+);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "gt/gtl/helpers.tpp"

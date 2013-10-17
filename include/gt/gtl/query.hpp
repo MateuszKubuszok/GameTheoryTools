@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Query : public virtual Root, public virtual ValidableSymbol {
+class Query : public virtual ValidableSymbol {
 public:
     /**
      * @brief Execute Query in a defined Context.

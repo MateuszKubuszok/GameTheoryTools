@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Object : public virtual Root, public virtual ValidableSymbol {
+class Object : public virtual ValidableSymbol {
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */

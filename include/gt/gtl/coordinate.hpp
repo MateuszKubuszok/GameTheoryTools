@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class Coordinate : public virtual Root, public virtual ValidableSymbol {
+class Coordinate : public virtual ValidableSymbol {
     /**
      * @brief Merges two Coordinates into one.
      *

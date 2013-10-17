@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class ValidableSymbol {
+class ValidableSymbol : public virtual Root {
     /**
      * @brief Defines SafeBoolIdiom as pointer to the method with no argument and return.
      */
