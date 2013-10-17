@@ -198,16 +198,18 @@ public:
         executedQueries(0)
         {}
 
-    virtual void executeDefinition(
+    virtual bool executeDefinition(
         GT::GTL::DefinitionPtr*
     ) {
         executedDefinitions++;
+        return true;
     }
 
-    virtual void executeQuery(
+    virtual bool executeQuery(
         GT::GTL::QueryPtr*
     ) {
         executedQueries++;
+        return true;
     }
 
     unsigned int getExecutedDefinitions() {
@@ -311,6 +313,12 @@ public:
 
     virtual void showError(
         const GT::Message&
+    ) {
+        shownErrors++;
+    }
+
+    virtual void showError(
+        GT::GTL::ValidableSymbol&
     ) {
         shownErrors++;
     }

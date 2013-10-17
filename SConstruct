@@ -53,6 +53,7 @@ for header in [
     'stdexcept', 'string', 'utility',
     # boost libraries
     'boost/shared_ptr.hpp',
+    'boost/weak_ptr.hpp',
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
     'boost/container/set.hpp',

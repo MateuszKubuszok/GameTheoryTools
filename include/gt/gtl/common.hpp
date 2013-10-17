@@ -30,6 +30,7 @@ class Query;             class NullQuery;            class ErrorQuery;
 
 class Context;           class NullContext;
 
+class location; 
 class Parser;
 class Scanner;
 class Driver;            class NullDriver;
@@ -80,6 +81,9 @@ typedef boost::shared_ptr<StatementDriver>            StatementDriverPtr;
 template<typename Content>
 using CollectionsDriverPtr = boost::shared_ptr<CollectionsDriver<Content>>;
 
+typedef location                                      InputLocation;
+typedef boost::shared_ptr<InputLocation>              InputLocationPtr; 
+
 typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;
 typedef Model::NullResult                             NullResult;
@@ -104,6 +108,9 @@ bool operator!=(Params&      params1,      Params&      params2);
 ////////////////////////////////////////////////////////////////////////////////
 
 /* Includes GTL elements headers */
+
+#include "gt/gtl/location.hh"
+#include "gt/gtl/helpers.hpp"
 
 #include "gt/gtl/exceptions.hpp"
 

@@ -15,7 +15,18 @@ namespace GTL {
  * @see ValueDriver
  */
 class CheckingValueDriver : public ValueDriver {
+    Driver* driver;
+
 public:
+    /**
+     * @brief Initiates CheckingValueDriver with its parent.
+     *
+     * @param parentDriver parent Driver
+     */
+    CheckingValueDriver(
+        Driver* parentDriver
+    );
+
     /**
      * @brief Creates Param by its name.
      *

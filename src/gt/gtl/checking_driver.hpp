@@ -100,6 +100,15 @@ public:
     );
 
     /**
+     * @brief Displays error.
+     *
+     * @param symbol invalid symbol to display
+     */
+    virtual void showError(
+        ValidableSymbol& symbol
+    );
+
+    /**
      * @brief Driver's Message.
      *
      * @return message

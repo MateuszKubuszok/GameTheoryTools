@@ -176,11 +176,11 @@ statement
  ;
 
 definition
- : LET identifier BE object { $$ = driver.forStatement().createDefinition($2, $4); }
+ : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4); }
  ;
  
 query
- : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery($2, $4, $5); }
+ : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5); }
  ;
 
 /* Objects */

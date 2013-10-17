@@ -12,9 +12,21 @@ namespace GTL {
  * @author Mateusz Kubuszok
  *
  * @see CheckingDriver
+ * @see CoordinateDriver
  */
-class CheckingCoordinateDriver : public virtual Root {
+class CheckingCoordinateDriver : public CoordinateDriver {
+    Driver* driver;
+
 public:
+    /**
+     * @brief Initiates CheckingCoordinateDriver with its parent.
+     *
+     * @param parentDriver parent Driver
+     */
+    CheckingCoordinateDriver(
+        Driver* parentDriver
+    );
+
     /**
      * @brief Creates coordinate.
      *

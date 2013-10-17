@@ -15,7 +15,18 @@ namespace GTL {
  * @see GameDriver
  */
 class CheckingGameDriver : public GameDriver {
+    Driver* driver;
+
 public:
+    /**
+     * @brief Initiates CheckingGameDriver with its parent.
+     *
+     * @param parentDriver parent Driver
+     */
+    CheckingGameDriver(
+        Driver* parentDriver
+    );
+
     /**
      * @brief Create Strategic Game.
      *

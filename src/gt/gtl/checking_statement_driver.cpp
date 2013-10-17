@@ -8,44 +8,102 @@ namespace GTL {
 // class CheckingStatementDriver {
 // public:
 
-void CheckingStatementDriver::executeDefinition(
-    DefinitionPtr*
+CheckingStatementDriver::CheckingStatementDriver(
+    Driver* parentDriver
+) :
+    driver(parentDriver)
+    {}
+
+bool CheckingStatementDriver::executeDefinition(
+    DefinitionPtr* definitionPtr
 ) {
-    // TODO check whether definition can be executed
-    // show error if occured
+    Definition& definition = **definitionPtr;
+    driver->showError(definition);
+    return definition.isValid();
 }
 
-void CheckingStatementDriver::executeQuery(
-    QueryPtr*
+bool CheckingStatementDriver::executeQuery(
+    QueryPtr* queryPtr
 ) {
-    // TODO check whether query can be executed
+    Query& query = **queryPtr;
+    driver->showError(query);
+    return query.isValid();
 }
 
 DefinitionPtr* CheckingStatementDriver::createDefinition(
-    IdentifierPtr*,
-    ObjectPtr*     object
+    InputLocation& inputLocation,
+    IdentifierPtr* identifierPtr,
+    ObjectPtr*     objectPtr
 ) {
-    if (!(*object)->isValid())
-        return new DefinitionPtr(ErrorFactory::getInstance().createDefinition((*object)->toString()));
+    Identifier& identifier = **identifierPtr;
+    Object&     object     = **objectPtr;
+
+    if (!object) {
+        Message errorMessage = Message() +
+            "Count not define parameter '" + identifier + "': " + object.toString();
+        return new DefinitionPtr(
+            setupLocation<Definition>(
+                ErrorFactory::getInstance().createDefinition(errorMessage),
+                inputLocation
+            )
+        );
+    }
     return new DefinitionPtr(NullFactory::getInstance().createDefinition());
 }
 
 QueryPtr* CheckingStatementDriver::createQuery(
-    IdentifiersPtr* identifiers,
-    ObjectsPtr*     objects,
-    ConditionsPtr*
+    InputLocation&  inputLocation,
+    IdentifiersPtr* identifiersPtr,
+    ObjectsPtr*     objectsPtr,
+    ConditionsPtr*  conditionsPtr
 ) {
-    for (ObjectPtr& object : **objects) {
-        if (!object->isValid())
-            return new QueryPtr(ErrorFactory::getInstance().createQuery(object->toString()));
-        for (IdentifierPtr& property : **identifiers)
-            if (!object->respondsTo(*property)) {
+    Identifiers& identifiers = **identifiersPtr;
+    Objects&     objects     = **objectsPtr;
+    Conditions&  conditions  = **conditionsPtr;
+    
+    for (ObjectPtr& objectPtr : objects) {
+        Object& object = *objectPtr;
+
+        if (!object)
+            return new QueryPtr(
+                setupLocation<Query>(
+                    ErrorFactory::getInstance().createQuery(object.toString()),
+                    inputLocation
+                )
+            );
+        
+        for (IdentifierPtr& propertyPtr : identifiers) {
+            Identifier& property = *propertyPtr;
+
+            if (!object.respondsTo(property)) {
                 Message errorMessage = Message() +
-                    "Object: " + object->toString() + '\n' +
-                    "has no property: " + *property;
-                return new QueryPtr(ErrorFactory::getInstance().createQuery(errorMessage));
+                    "Object: " + object.toString() + '\n' +
+                    "has no property: " + property;
+                return new QueryPtr(
+                    setupLocation<Query>(
+                        ErrorFactory::getInstance().createQuery(errorMessage),
+                        inputLocation
+                    )
+                );
             }
+        }
     }
+
+    for (ConditionPtr& conditionPtr : conditions) {
+        Condition& condition = *conditionPtr;
+
+        if (!condition) {
+            Message errorMessage = Message() +
+                "Condition is not valid: " + condition.toString();
+            return new QueryPtr(
+                setupLocation<Query>(
+                    ErrorFactory::getInstance().createQuery(errorMessage),
+                    inputLocation
+                )
+            );
+        }
+    }
+
     return new QueryPtr(NullFactory::getInstance().createQuery());
 }
 

@@ -18,7 +18,7 @@ public:
      *
      * @param definition definition to execute
      */
-    virtual void executeDefinition(
+    virtual bool executeDefinition(
         DefinitionPtr* definition
     ) = 0;
 
@@ -27,18 +27,20 @@ public:
      *
      * @param query query to execute
      */
-    virtual void executeQuery(
+    virtual bool executeQuery(
         QueryPtr* query
     ) = 0;
 
     /**
      * @brief Creates Definition saving Object under defined name.
      *
-     * @param identifier name of defined Object
-     * @param object     defined Object
-     * @return           Definition
+     * @param inputLocation input location of created Definition
+     * @param identifier    name of defined Object
+     * @param object        defined Object
+     * @return              Definition
      */
     virtual DefinitionPtr* createDefinition(
+        InputLocation& inputLocation,
         IdentifierPtr* identifier,
         ObjectPtr*     object
     ) = 0;
@@ -46,12 +48,14 @@ public:
     /**
      * @brief Creates Query for given properties.
      *
-     * @param identifiers queried properties
-     * @param objects     queried Object
-     * @param conditions  Conditions
-     * @return            Query
+     * @param inputLocation input location of created Definition
+     * @param identifiers   queried properties
+     * @param objects       queried Object
+     * @param conditions    Conditions
+     * @return              Query
      */
     virtual QueryPtr* createQuery(
+        InputLocation&  inputLocation,
         IdentifiersPtr* identifiers,
         ObjectsPtr*     objects,
         ConditionsPtr*  conditions
@@ -78,15 +82,20 @@ public:
         StatementDriver()
         {}
 
-    virtual void executeDefinition(
+    virtual bool executeDefinition(
         DefinitionPtr*
-    ) {}
+    ) {
+        return true;
+    }
 
-    virtual void executeQuery(
+    virtual bool executeQuery(
         QueryPtr*
-    ) {}
+    ) {
+        return true;
+    }
 
     virtual DefinitionPtr* createDefinition(
+        InputLocation&,
         IdentifierPtr*,
         ObjectPtr*
     ) {
@@ -94,6 +103,7 @@ public:
     }
 
     virtual QueryPtr* createQuery(
+        InputLocation&,
         IdentifiersPtr*,
         ObjectsPtr*,
         ConditionsPtr*

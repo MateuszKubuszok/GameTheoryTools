@@ -98,6 +98,15 @@ public:
     ) = 0;
 
     /**
+     * @brief Displays error.
+     *
+     * @param symbol invalid symbol to display
+     */
+    virtual void showError(
+        ValidableSymbol& symbol
+    ) = 0;
+
+    /**
      * @brief Driver's Message.
      *
      * @return message
@@ -180,6 +189,10 @@ public:
 
     virtual void showError(
         const Message&
+    ) {}
+
+    virtual void showError(
+        ValidableSymbol&
     ) {}
 
     virtual bool isNotNull() {
