@@ -72,10 +72,12 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
 
     // when
     GT::GTL::CheckingStatementDriver statementDriver(&driver);
+    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition1Ptr(statementDriver.createDefinition(*inputLocation, identifierPtr.get(), invalidObjectPtr.get()));
+    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition2Ptr(statementDriver.createDefinition(*inputLocation, identifierPtr.get(), validObjectPtr.get()));
 
     // then
-    BOOST_CHECK( !( *statementDriver.createDefinition(*inputLocation, identifierPtr.get(), invalidObjectPtr.get()) )->isValid() );
-    BOOST_CHECK(  ( *statementDriver.createDefinition(*inputLocation, identifierPtr.get(), validObjectPtr.get()) )->isValid() );
+    BOOST_CHECK( !( *definition1Ptr )->isValid() );
+    BOOST_CHECK(  ( *definition2Ptr )->isValid() );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -111,13 +113,14 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
 
     // when
     GT::GTL::CheckingStatementDriver statementDriver(&driver);
-
-    std::cout << ( *statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()) )->toString() << std::endl;
+    boost::scoped_ptr<GT::GTL::QueryPtr> query1Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), invalidObjectsPtr.get(), validConditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> query2Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   invalidConditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> query3Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()));
 
     // then
-    BOOST_CHECK( !( *statementDriver.createQuery(*inputLocation, identifiersPtr.get(), invalidObjectsPtr.get(), validConditionsPtr.get()) )->isValid() );
-    BOOST_CHECK( !( *statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   invalidConditionsPtr.get()) )->isValid() );
-    BOOST_CHECK(  ( *statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()) )->isValid() );
+    BOOST_CHECK( !( *query1Ptr )->isValid() );
+    BOOST_CHECK( !( *query2Ptr )->isValid() );
+    BOOST_CHECK(  ( *query3Ptr )->isValid() );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
