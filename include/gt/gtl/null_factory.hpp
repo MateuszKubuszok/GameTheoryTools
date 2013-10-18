@@ -211,6 +211,13 @@ public:
      */
     CollectionsDriverPtr<Param> createParamsDriver();
 
+    /**
+     * @brief Creates null InputLocation.
+     *
+     * @return InputLocation
+     */
+    InputLocationPtr createInputLocation();
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

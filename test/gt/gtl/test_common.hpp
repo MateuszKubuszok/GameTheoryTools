@@ -7,6 +7,9 @@
 /* Includes GTL headers */
 #include "gt/gtl/inner_common.hpp"
 
+/* Includes boost libraries */
+#include "boost/scoped_ptr.hpp"
+
 /* Includes test helpers */
 #include "gt/gtl/test_parser_helpers.hpp"
 

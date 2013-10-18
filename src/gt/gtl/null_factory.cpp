@@ -119,6 +119,10 @@ CollectionsDriverPtr<Param> NullFactory::createParamsDriver() {
     return CollectionsDriverPtr<Param>(new NullCollectionsDriver<Param>());
 }
 
+InputLocationPtr NullFactory::createInputLocation() {
+    return InputLocationPtr(new InputLocation());
+}
+
 // private:
 
 NullFactory::NullFactory() {}

@@ -52,6 +52,7 @@ for header in [
     'cstdlib', 'iostream', 'fstream',
     'stdexcept', 'string', 'utility',
     # boost libraries
+    'boost/scoped_ptr.hpp',
     'boost/shared_ptr.hpp',
     'boost/weak_ptr.hpp',
     'boost/bimap/bimap.hpp',

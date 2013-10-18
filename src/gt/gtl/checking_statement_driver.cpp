@@ -18,7 +18,8 @@ bool CheckingStatementDriver::executeDefinition(
     DefinitionPtr* definitionPtr
 ) {
     Definition& definition = **definitionPtr;
-    driver->showError(definition);
+    if (!definition)
+        driver->showError(definition);
     return definition.isValid();
 }
 
@@ -26,7 +27,8 @@ bool CheckingStatementDriver::executeQuery(
     QueryPtr* queryPtr
 ) {
     Query& query = **queryPtr;
-    driver->showError(query);
+    if (!query)
+        driver->showError(query);
     return query.isValid();
 }
 
