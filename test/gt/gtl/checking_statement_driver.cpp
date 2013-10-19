@@ -29,8 +29,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_executeDefinition ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_executeQuery ) {
     // given
     TestDriverImpl    driver;
@@ -56,8 +54,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_executeQuery ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
     // given
     TestDriverImpl driver;
@@ -79,8 +75,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
     BOOST_CHECK( !( *definition1Ptr )->isValid() );
     BOOST_CHECK(  ( *definition2Ptr )->isValid() );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
     // given
@@ -122,8 +116,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
     BOOST_CHECK( !( *query2Ptr )->isValid() );
     BOOST_CHECK(  ( *query3Ptr )->isValid() );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_toString ) {
     // given
