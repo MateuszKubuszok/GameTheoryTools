@@ -15,13 +15,13 @@ CheckingValueDriver::CheckingValueDriver(
     {}
 
 ParamPtr* CheckingValueDriver::get(
-    IdentifierPtr* identifier
+    IdentifierPtr*
 ) {
     return new ParamPtr(NullFactory::getInstance().createParam());
 }
 
 ParamPtr* CheckingValueDriver::get(
-    NumberPtr* number
+    NumberPtr*
 ) {
     return new ParamPtr(NullFactory::getInstance().createParam());
 }
