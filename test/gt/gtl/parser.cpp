@@ -20,8 +20,6 @@ BOOST_AUTO_TEST_CASE( Parser_emptyProgramIsValid  ) {
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( Parser_valueParamDefinition  ) {
     // given
     std::string content =
@@ -45,8 +43,6 @@ BOOST_AUTO_TEST_CASE( Parser_valueParamDefinition  ) {
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( Parser_identifierParamDefinition  ) {
     // given
     std::string content =
@@ -67,8 +63,6 @@ BOOST_AUTO_TEST_CASE( Parser_identifierParamDefinition  ) {
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 2 ); // created 2 parameters from identifiers
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
     // given
@@ -94,8 +88,6 @@ BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 1 ); // created 1 player
     BOOST_CHECK_EQUAL( driver.identifiers.getAddedElements(), 2 ); // created collection of 2 strategies
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
     // given
@@ -133,8 +125,6 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 8 ); // created 8 parameters from numbers
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
     // given
@@ -174,8 +164,6 @@ BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 8 ); // created 8 parameters from numbers
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
     // given
@@ -223,8 +211,6 @@ BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedTreeGames(), 1 ); // created 1 tree game
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
     // given
     std::string content =
@@ -250,8 +236,6 @@ BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
     BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parser 1 query
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 5 ); // created 5 parameters from numbers (4) nad identifiers (1)
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
     // given
@@ -293,8 +277,6 @@ BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedTreeGames(), 1 ); // created 1 tree game
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
     // given
     std::string content =
@@ -329,8 +311,6 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
     // given
     std::string content =
@@ -354,5 +334,7 @@ BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()
