@@ -15,17 +15,30 @@ namespace GTL {
  * @see ConditionDriver
  */
 class CheckingConditionDriver : public ConditionDriver {
+    Driver* driver;
+
 public:
+    /**
+     * @brief Initiates CheckingConditionDriver with its parent.
+     *
+     * @param parentDriver parent Driver
+     */
+    CheckingConditionDriver(
+        Driver* parentDriver
+    );
+
     /**
      * @brief Create condition for Player choosing strategy.
      *
-     * @param player   Player's name
-     * @param strategy chosen strategy
-     * @return         Condition
+     * @param inputLocation input location of created Definition
+     * @param player        Player's name
+     * @param strategy      chosen strategy
+     * @return              Condition
      */
     virtual ConditionPtr* playerChoosed(
-        ObjectPtr* player,
-        ObjectPtr* strategy
+        InputLocation& inputLocation,
+        ObjectPtr*     playerPtr,
+        ObjectPtr*     strategyPtr
     );
 
     /**

@@ -789,7 +789,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 253 "f_n_b/parser.yy"
-    { (yyval.condition) = driver.forCondition().playerChoosed((yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
+    { (yyval.condition) = driver.forCondition().playerChoosed((yylocation_stack_[(4) - (1)]), (yysemantic_stack_[(4) - (2)].object), (yysemantic_stack_[(4) - (4)].object)); }
     break;
 
   case 33:

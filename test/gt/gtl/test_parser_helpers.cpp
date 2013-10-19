@@ -11,11 +11,12 @@ TestConditionDriverImpl::TestConditionDriverImpl() :
     {}
 
 GT::GTL::ConditionPtr* TestConditionDriverImpl::playerChoosed(
-    GT::GTL::ObjectPtr* player,
-    GT::GTL::ObjectPtr* strategy
+    GT::GTL::InputLocation& inputLocation,
+    GT::GTL::ObjectPtr*     player,
+    GT::GTL::ObjectPtr*     strategy
 ) {
     createdConditions++;
-    return GT::GTL::NullConditionDriver::playerChoosed(player, strategy);
+    return GT::GTL::NullConditionDriver::playerChoosed(inputLocation, player, strategy);
 }
 
 // }

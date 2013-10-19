@@ -13,16 +13,18 @@ namespace GTL {
  */
 class ConditionDriver : public virtual Root {
 public:
-	/**
-	 * @brief Create condition for Player choosing strategy.
-	 *
-	 * @param player   Player's name
-	 * @param strategy chosen strategy
-	 * @return         Condition
-	 */
-	virtual ConditionPtr* playerChoosed(
-        ObjectPtr* player,
-        ObjectPtr* strategy
+    /**
+     * @brief Create condition for Player choosing strategy.
+     *
+     * @param inputLocation input location of created Definition
+     * @param player        Player's name
+     * @param strategy      chosen strategy
+     * @return              Condition
+     */
+    virtual ConditionPtr* playerChoosed(
+        InputLocation& inputLocation,
+        ObjectPtr*     playerPtr,
+        ObjectPtr*     strategyPtr
     ) = 0;
 
     /**
@@ -48,6 +50,7 @@ public:
 		{}
 
 	virtual ConditionPtr* playerChoosed(
+        InputLocation&,
         ObjectPtr*,
         ObjectPtr*
     ) {

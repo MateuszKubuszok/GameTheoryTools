@@ -36,8 +36,9 @@ public:
     TestConditionDriverImpl();
 
     virtual GT::GTL::ConditionPtr* playerChoosed(
-        GT::GTL::ObjectPtr* player,
-        GT::GTL::ObjectPtr* strategy
+        GT::GTL::InputLocation& inputLocation,
+        GT::GTL::ObjectPtr*     player,
+        GT::GTL::ObjectPtr*     strategy
     );
 
     inline unsigned int getCreatedConditions();
@@ -123,11 +124,11 @@ public:
     TestStatementDriverImpl();
 
     virtual bool executeDefinition(
-        GT::GTL::DefinitionPtr*
+        GT::GTL::DefinitionPtr* definition
     );
 
     virtual bool executeQuery(
-        GT::GTL::QueryPtr*
+        GT::GTL::QueryPtr* query
     );
 
     inline unsigned int getExecutedDefinitions();
