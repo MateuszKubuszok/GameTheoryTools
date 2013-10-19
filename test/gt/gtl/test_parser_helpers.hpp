@@ -145,11 +145,13 @@ public:
     TestValueDriverImpl();
 
     virtual GT::GTL::ParamPtr* get(
-        GT::IdentifierPtr* identifier
+        GT::GTL::InputLocation& inputLocation,
+        GT::IdentifierPtr*      identifier
     );
 
     virtual GT::GTL::ParamPtr* get(
-        GT::NumberPtr* number
+        GT::GTL::InputLocation& inputLocation,
+        GT::NumberPtr*          number
     );
 
     inline unsigned int getUsedParameters();

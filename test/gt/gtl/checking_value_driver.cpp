@@ -6,17 +6,18 @@ BOOST_AUTO_TEST_SUITE( CheckingStatementDriver )
 
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_get ) {
     // given
-    TestDriverImpl    driver;
-    GT::IdentifierPtr identifier = GT::Model::NullFactory::getInstance().createIdentifier();
-    GT::NumberPtr     number     = GT::Model::NullFactory::getInstance().createNumber();
+    TestDriverImpl            driver;
+    GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
+    GT::IdentifierPtr         identifier    = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::NumberPtr             number        = GT::Model::NullFactory::getInstance().createNumber();
 
     boost::scoped_ptr<GT::IdentifierPtr> identifierPtr(new GT::IdentifierPtr(identifier));
     boost::scoped_ptr<GT::NumberPtr>     numberPtr(new GT::NumberPtr(number));
 
     // when
     GT::GTL::CheckingValueDriver valueDriver(&driver);
-    boost::scoped_ptr<GT::GTL::ParamPtr> param1Ptr(valueDriver.get(identifierPtr.get()));
-    boost::scoped_ptr<GT::GTL::ParamPtr> param2Ptr(valueDriver.get(numberPtr.get()));
+    boost::scoped_ptr<GT::GTL::ParamPtr> param1Ptr(valueDriver.get(*inputLocation, identifierPtr.get()));
+    boost::scoped_ptr<GT::GTL::ParamPtr> param2Ptr(valueDriver.get(*inputLocation, numberPtr.get()));
 
     // then
     BOOST_CHECK( ( *param1Ptr ) );

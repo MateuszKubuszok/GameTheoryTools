@@ -719,14 +719,14 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 224 "f_n_b/parser.yy"
-    { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].identifier)); }
+    { (yyval.param) = driver.forValue().get((yylocation_stack_[(1) - (1)]), (yysemantic_stack_[(1) - (1)].identifier)); }
     break;
 
   case 23:
 
 /* Line 690 of lalr1.cc  */
 #line 225 "f_n_b/parser.yy"
-    { (yyval.param) = driver.forValue().get((yysemantic_stack_[(1) - (1)].number)); }
+    { (yyval.param) = driver.forValue().get((yylocation_stack_[(1) - (1)]), (yysemantic_stack_[(1) - (1)].number)); }
     break;
 
   case 24:

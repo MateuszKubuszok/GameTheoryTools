@@ -16,21 +16,25 @@ public:
     /**
      * @brief Creates Param by its name.
      *
-     * @param identifier Param's Identifier
-     * @return           Param
+     * @param inputLocation input location of created Param
+     * @param identifier    Param's Identifier
+     * @return              Param
      */
     virtual ParamPtr* get(
+        InputLocation& inputLocation,
         IdentifierPtr* identifier
     ) = 0;
 
     /**
      * @brief Creates Param by its value.
      *
-     * @param identifier Param's value
-     * @return           Param
+     * @param inputLocation input location of created Param
+     * @param identifier    Param's value
+     * @return              Param
      */
     virtual ParamPtr* get(
-        NumberPtr* number
+        InputLocation& inputLocation,
+        NumberPtr*     number
     ) = 0;
 
     /**
@@ -85,15 +89,27 @@ public:
         {}
 
     virtual ParamPtr* get(
+        InputLocation& inputLocation,
         IdentifierPtr*
     ) {
-        return new ParamPtr(NullFactory::getInstance().createParam());
+        return new ParamPtr(
+            setupLocation<Param>(
+                NullFactory::getInstance().createParam(),
+                inputLocation
+            )
+        );
     }
 
     virtual ParamPtr* get(
+        GT::GTL::InputLocation& inputLocation,
         NumberPtr*
     ) {
-        return new ParamPtr(NullFactory::getInstance().createParam());
+        return new ParamPtr(
+            setupLocation<Param>(
+                NullFactory::getInstance().createParam(),
+                inputLocation
+            )
+        );
     }
 
     virtual ObjectPtr* toObject(

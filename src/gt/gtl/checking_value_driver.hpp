@@ -30,21 +30,25 @@ public:
     /**
      * @brief Creates Param by its name.
      *
-     * @param identifier Param's Identifier
-     * @return           Param
+     * @param inputLocation input location of created Param
+     * @param identifier    Param's Identifier
+     * @return              Param
      */
     virtual ParamPtr* get(
+        InputLocation& inputLocation,
         IdentifierPtr* identifier
     );
 
     /**
      * @brief Creates Param by its value.
      *
-     * @param identifier Param's value
-     * @return           Param
+     * @param inputLocation input location of created Param
+     * @param identifier    Param's value
+     * @return              Param
      */
     virtual ParamPtr* get(
-        NumberPtr* number
+        InputLocation& inputLocation,
+        NumberPtr*     number
     );
 
     /**

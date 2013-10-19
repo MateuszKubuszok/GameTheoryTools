@@ -15,15 +15,27 @@ CheckingValueDriver::CheckingValueDriver(
     {}
 
 ParamPtr* CheckingValueDriver::get(
+    InputLocation& inputLocation,
     IdentifierPtr*
 ) {
-    return new ParamPtr(NullFactory::getInstance().createParam());
+    return new ParamPtr(
+        setupLocation<Param>(
+            NullFactory::getInstance().createParam(),
+            inputLocation
+        )
+    );
 }
 
 ParamPtr* CheckingValueDriver::get(
+    InputLocation& inputLocation,
     NumberPtr*
 ) {
-    return new ParamPtr(NullFactory::getInstance().createParam());
+    return new ParamPtr(
+        setupLocation<Param>(
+            NullFactory::getInstance().createParam(),
+            inputLocation
+        )
+    );
 }
 
 ObjectPtr* CheckingValueDriver::toObject(

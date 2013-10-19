@@ -221,8 +221,8 @@ player
 /* Params */
 
 param
- : identifier { $$ = driver.forValue().get($1); }
- | number     { $$ = driver.forValue().get($1); }
+ : identifier { $$ = driver.forValue().get(@1, $1); }
+ | number     { $$ = driver.forValue().get(@1, $1); }
  ;
 
 params

@@ -142,17 +142,19 @@ TestValueDriverImpl::TestValueDriverImpl() :
     {}
 
 GT::GTL::ParamPtr* TestValueDriverImpl::get(
-    GT::IdentifierPtr* identifier
+    GT::GTL::InputLocation& inputLocation,
+    GT::IdentifierPtr*      identifier
 ) {
     usedParameters++;
-    return GT::GTL::NullValueDriver::get(identifier);
+    return GT::GTL::NullValueDriver::get(inputLocation, identifier);
 }
 
 GT::GTL::ParamPtr* TestValueDriverImpl::get(
-    GT::NumberPtr* number
+    GT::GTL::InputLocation& inputLocation,
+    GT::NumberPtr*          number
 ) {
     usedParameters++;
-    return GT::GTL::NullValueDriver::get(number);
+    return GT::GTL::NullValueDriver::get(inputLocation, number);
 }
 
 // }
