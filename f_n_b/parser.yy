@@ -23,6 +23,11 @@
     /* GTL prototypes */
     #include "gt/gtl/common.hpp"
 
+    /**
+     * @brief Macro used to cleanup symbols.
+     */
+    #define CLEANUP(symbol) (delete(symbol), (symbol)=nullptr)
+
     using namespace GT::GTL;
 
     /**
@@ -133,22 +138,22 @@
 
 /* Destructor rules */
 
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <identifier>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <identifiers>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <number>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <condition>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <conditions>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <coordinate>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <coordinates>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <definition>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <details>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <game>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <query>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <object>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <objects>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <param>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <params>
-%destructor { if ($$) { delete($$); ($$) = nullptr; } } <player>
+%destructor { if ($$) { CLEANUP($$); } } <identifier>
+%destructor { if ($$) { CLEANUP($$); } } <identifiers>
+%destructor { if ($$) { CLEANUP($$); } } <number>
+%destructor { if ($$) { CLEANUP($$); } } <condition>
+%destructor { if ($$) { CLEANUP($$); } } <conditions>
+%destructor { if ($$) { CLEANUP($$); } } <coordinate>
+%destructor { if ($$) { CLEANUP($$); } } <coordinates>
+%destructor { if ($$) { CLEANUP($$); } } <definition>
+%destructor { if ($$) { CLEANUP($$); } } <details>
+%destructor { if ($$) { CLEANUP($$); } } <game>
+%destructor { if ($$) { CLEANUP($$); } } <query>
+%destructor { if ($$) { CLEANUP($$); } } <object>
+%destructor { if ($$) { CLEANUP($$); } } <objects>
+%destructor { if ($$) { CLEANUP($$); } } <param>
+%destructor { if ($$) { CLEANUP($$); } } <params>
+%destructor { if ($$) { CLEANUP($$); } } <player>
 
 /* Make parser start from program */
 %start program
@@ -170,37 +175,37 @@ statements
  ;
 
 statement
- : definition EOC { driver.forStatement().executeDefinition($1); }
- | query EOC      { driver.forStatement().executeQuery($1); }
+ : definition EOC { driver.forStatement().executeDefinition($1); CLEANUP($1); }
+ | query EOC      { driver.forStatement().executeQuery($1); CLEANUP($1); }
  | parser_error
  ;
 
 definition
- : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4); }
+ : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
  
 query
- : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5); }
+ : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5); CLEANUP($2); CLEANUP($4); CLEANUP($5); }
  ;
 
 /* Objects */
 
 objects
- : objects COMA object { $$ = driver.forObjects().insert($3, $1); }
- | object              { $$ = driver.forObjects().create($1); }
+ : objects COMA object { $$ = driver.forObjects().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ | object              { $$ = driver.forObjects().create($1); CLEANUP($1); }
  ;
 
 object
- : game   { $$ = driver.forValue().toObject($1); }
- | player { $$ = driver.forValue().toObject($1); }
- | param  { $$ = driver.forValue().toObject($1); }
+ : game   { $$ = driver.forValue().toObject($1); CLEANUP($1); }
+ | player { $$ = driver.forValue().toObject($1); CLEANUP($1); }
+ | param  { $$ = driver.forValue().toObject($1); CLEANUP($1); }
  ;
  
 /* Games */
 
 game
- : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic($3); }
- | TREE      GAME details game_end { $$ = driver.forGame().createTree($3); }
+ : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic($3); CLEANUP($3); }
+ | TREE      GAME details game_end { $$ = driver.forGame().createTree($3); CLEANUP($3); }
  ;
 
 game_end
@@ -209,32 +214,32 @@ game_end
  ;
 
 details
- : WITH objects SUCH AS data { $$ = driver.forGame().createDetails($2, $5); }
+ : WITH objects SUCH AS data { $$ = driver.forGame().createDetails($2, $5); CLEANUP($2); CLEANUP($5); }
  ;
  
 /* Players */
 
 player
- : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer($2, $4); }
+ : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer($2, $4); CLEANUP($2); CLEANUP($4); }
  ;
 
 /* Params */
 
 param
- : identifier { $$ = driver.forValue().get(@1, $1); }
- | number     { $$ = driver.forValue().get(@1, $1); }
+ : identifier { $$ = driver.forValue().get(@1, $1); CLEANUP($1); }
+ | number     { $$ = driver.forValue().get(@1, $1); CLEANUP($1); }
  ;
 
 params
- : params COMA param { $$ = driver.forParams().insert($3, $1); }
- | param             { $$ = driver.forParams().create($1); }
+ : params COMA param { $$ = driver.forParams().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ | param             { $$ = driver.forParams().create($1); CLEANUP($1); }
  ;
 
 /* Identifiers */
 
 identifiers
- : identifiers COMA identifier { $$ = driver.forIdentifiers().insert($3, $1); }
- | identifier                  { $$ = driver.forIdentifiers().create($1); }
+ : identifiers COMA identifier { $$ = driver.forIdentifiers().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ | identifier                  { $$ = driver.forIdentifiers().create($1); CLEANUP($1); }
  ;
 
 /* Conditions */
@@ -245,12 +250,12 @@ conditions
  ;
 
 condition_collection
- : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1); }
- | WITH condition                      { $$ = driver.forConditions().create($2); }
+ : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ | WITH condition                      { $$ = driver.forConditions().create($2); CLEANUP($2); }
  ;
 
 condition
- : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4); }
+ : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
  
 /* Data */
@@ -260,22 +265,22 @@ data
  ;
 
 data_coordinates
- : data_coordinates COMA data_coordinate { $$ = driver.forCoordinates().insert($3, $1); }
- | data_coordinate                       { $$ = driver.forCoordinates().create($1); }
+ : data_coordinates COMA data_coordinate { $$ = driver.forCoordinates().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ | data_coordinate                       { $$ = driver.forCoordinates().create($1); CLEANUP($1); }
  ;
 
 data_coordinate
- : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData($2, $4); }
- | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData($2, $4); }
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData($2, $4); CLEANUP($2); CLEANUP($4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData($2, $4); CLEANUP($2); CLEANUP($4); }
  ;
 
 coordinates
- : coordinates COMA coordinate { $$ = driver.forCoordinate().merge($1, $3); }
+ : coordinates COMA coordinate { $$ = driver.forCoordinate().merge($1, $3); CLEANUP($1); CLEANUP($3); }
  | coordinate                  { $$ = $1; }
  ;
 
 coordinate
- : identifier EQUAL identifier { $$ = driver.forCoordinate().create($1, $3); }
+ : identifier EQUAL identifier { $$ = driver.forCoordinate().create($1, $3); CLEANUP($1); CLEANUP($3); }
  ;
 
 /* Errors */
@@ -285,6 +290,7 @@ parser_error
  | lexer_error {
         std::string message = std::string() + "not recognized symbols: \"" + (**$1) + "\"";
         error(@1, message);
+        CLEANUP($1);
     }
  ;
 
