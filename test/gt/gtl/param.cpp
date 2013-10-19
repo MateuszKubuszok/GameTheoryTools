@@ -40,6 +40,19 @@ BOOST_AUTO_TEST_CASE( Param_respondsTo ) {
     BOOST_CHECK( !param.respondsTo(error) );
 }
 
+BOOST_AUTO_TEST_CASE( Param_Param ) {
+    // given
+    // when
+    ParamTestImpl param;
+    GT::GTL::Param& paramRef = param;
+
+    // then
+    BOOST_CHECK_EQUAL(
+        param,
+        paramRef
+    );
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

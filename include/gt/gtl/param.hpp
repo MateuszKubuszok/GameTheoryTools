@@ -83,6 +83,13 @@ public:
         VisitedIdentifiers& visitedIdentifiers
     ) = 0;
 
+    /**
+     * @brief Explicit cast to Param type.
+     *
+     * @return Param
+     */
+    virtual operator Param&();
+    
 protected:
     /**
      * @brief Checks whether visited Identifiers contain current one.

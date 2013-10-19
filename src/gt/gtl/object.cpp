@@ -6,6 +6,13 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 // class Object {
+    
+GamePtr Object::noGame = ErrorFactory::getInstance().createGame("This Object is not a Game");
+
+ParamPtr Object::noParam = ErrorFactory::getInstance().createParam("This Object is not a Param");
+
+PlayerPtr Object::noPlayer = ErrorFactory::getInstance().createPlayer("This Object is not a Player");
+
 // public:
 
 Object::Object() :
@@ -67,6 +74,18 @@ IdentifierPtr Object::type() {
 
 Message Object::toString() {
     return createMessage(typeName);
+}
+
+Object::operator Game&() {
+    return *noGame;
+}
+
+Object::operator Param&() {
+    return *noParam;
+}
+
+Object::operator Player&() {
+    return *noPlayer;
 }
 
 // protected:

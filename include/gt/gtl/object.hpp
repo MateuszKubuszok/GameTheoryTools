@@ -13,6 +13,21 @@ namespace GTL {
  */
 class Object : public virtual ValidableSymbol {
     /**
+     * @brief Returned when Object cannot be casted to Game. 
+     */
+    static GamePtr noGame;
+    
+    /**
+     * @brief Returned when Object cannot be casted to Param. 
+     */
+    static ParamPtr noParam;
+    
+    /**
+     * @brief Returned when Object cannot be casted to Player. 
+     */
+    static PlayerPtr noPlayer;
+    
+    /**
      * @brief Map containing ObjectProperties bound to their name.
      */
     ObjectPropertyMap registeredProperties;
@@ -97,6 +112,27 @@ public:
      * @return generic Message
      */
     virtual Message toString();
+
+    /**
+     * @brief Explicit cast to Game type.
+     *
+     * @return Game
+     */
+    virtual operator Game&();
+
+    /**
+     * @brief Explicit cast to Param type.
+     *
+     * @return Param
+     */
+    virtual operator Param&();
+
+    /**
+     * @brief Explicit cast to Player type.
+     *
+     * @return Player
+     */
+    virtual operator Player&();
 
 protected:
     /**

@@ -30,6 +30,13 @@ public:
      * @return Player's Message
      */
     virtual Message toString();
+
+    /**
+     * @brief Explicit cast to Player type.
+     *
+     * @return Player
+     */
+    virtual operator Player&();
 }; /* END class Player */
 
 ////////////////////////////////////////////////////////////////////////////////

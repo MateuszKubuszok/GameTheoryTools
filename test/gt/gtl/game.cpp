@@ -85,6 +85,21 @@ BOOST_AUTO_TEST_CASE( Game_toString ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( Game_Game ) {
+    // given
+    GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
+
+    // when
+    GT::GTL::Game  game(gameImplementation);
+    GT::GTL::Game& gameRef = game;
+
+    // then
+    BOOST_CHECK_EQUAL(
+        game,
+        gameRef
+    );
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

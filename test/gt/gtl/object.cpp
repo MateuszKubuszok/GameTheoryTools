@@ -159,6 +159,36 @@ BOOST_AUTO_TEST_CASE( Object_toString ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( Object_Game ) {
+    // given
+    // when
+    GT::GTL::Object object;
+    GT::GTL::Game&  game = object;
+
+    // when
+    BOOST_CHECK( !game );
+}
+
+BOOST_AUTO_TEST_CASE( Object_Param ) {
+    // given
+    // when
+    GT::GTL::Object object;
+    GT::GTL::Param& param = object;
+
+    // when
+    BOOST_CHECK( !param );
+}
+
+BOOST_AUTO_TEST_CASE( Object_Player ) {
+    // given
+    // when
+    GT::GTL::Object object;
+    GT::GTL::Player& player = object;
+
+    // when
+    BOOST_CHECK( !player );
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

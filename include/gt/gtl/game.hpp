@@ -55,6 +55,13 @@ public:
      * @return Game's state
      */
     virtual Message toString();
+
+    /**
+     * @brief Explicit cast to Game type.
+     *
+     * @return Game
+     */
+    virtual operator Game&();
 }; /* END class Game */
 
 ////////////////////////////////////////////////////////////////////////////////

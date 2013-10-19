@@ -17,7 +17,11 @@ class ValidableSymbol : public virtual Root {
      */
     typedef void (ValidableSymbol::*SafeBoolIdiom)() const;
 
+    /**
+     * @brief Contains input location.
+     */
     InputLocationPtr inputLocation;
+
 public:
     /**
      * @brief Default destructor.
@@ -58,32 +62,6 @@ private:
      */
     void comparisonsAreNotAllowed() const;
 }; /* END class ValidableSymbol */
-
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * @brief Not callable on ValidableSymbol to prevent comparison.
- */
-template <typename SomeOtherType>
-bool operator==(
-    const ValidableSymbol& validableSymbol,
-    const SomeOtherType&   someOtherType
-) {
-    validableSymbol.comparisonsAreNotAllowed();
-    return false;
-}
-
-/**
- * @brief Not callable on ValidableSymbol to prevent comparison.
- */
-template <typename SomeOtherType> 
-bool operator!=(
-    const ValidableSymbol& validableSymbol,
-    const SomeOtherType&   someOtherType
-) {
-    validableSymbol.comparisonsAreNotAllowed();
-    return false;
-} 
 
 ////////////////////////////////////////////////////////////////////////////////
 

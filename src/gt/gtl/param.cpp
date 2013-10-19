@@ -28,6 +28,10 @@ NumberPtr Param::getNumber(
     return getNumber(context, visitedIdentifiers);
 }
 
+Param::operator Param&() {
+    return *this;
+}
+
 // protected:
 
 void Param::checkVisitedIdentifiers(

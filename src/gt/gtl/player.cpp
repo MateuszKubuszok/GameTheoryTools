@@ -23,6 +23,10 @@ GT::Message Player::toString() {
     return Model::Player::toString();
 }
 
+Player::operator Player&() {
+    return *this;
+}
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////

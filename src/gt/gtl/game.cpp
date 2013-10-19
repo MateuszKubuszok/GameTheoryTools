@@ -36,6 +36,10 @@ Message Game::toString() {
     return game->toString();
 }
 
+Game::operator Game&() {
+    return *this;
+}
+
 // }
 
 ////////////////////////////////////////////////////////////////////////////////
