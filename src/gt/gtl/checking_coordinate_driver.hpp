@@ -30,11 +30,13 @@ public:
     /**
      * @brief Creates coordinate.
      *
-     * @param player   dimension (Player)
-     * @param strategy position (strategy)
-     * @return         coordinate
+     * @param inputLocation input location of created Coordinate
+     * @param player        dimension (Player)
+     * @param strategy      position (strategy)
+     * @return              Coordinate
      */
     virtual CoordinatePtr* create(
+        InputLocation&       inputLocation,
         const IdentifierPtr* player,
         const IdentifierPtr* strategy
     );
@@ -42,11 +44,13 @@ public:
     /**
      * @brief Fills Coordinate with subcoordinates.
      *
-     * @param coordinate coordinate to fill
-     * @param data       data to insert
-     * @return           coordinate
+     * @param inputLocation input location of created Condition
+     * @param coordinate    Coordinate to fill
+     * @param data          data to insert
+     * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
+        InputLocation&        inputLocation,
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
     );
@@ -54,11 +58,13 @@ public:
     /**
      * @brief Fills Coordinate with Params.
      *
-     * @param coordinate coordinate to fill
-     * @param data       data to insert
-     * @return           coordinate
+     * @param inputLocation input location of created Condition
+     * @param coordinate    Coordinate to fill
+     * @param data          data to insert
+     * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
+        InputLocation&       inputLocation,
         const CoordinatePtr* coordinate,
         const ParamsPtr*     data
     );
@@ -66,11 +72,13 @@ public:
     /**
      * @brief Merge two coordinates into one.
      *
-     * @param coordinate1 first coorinate
-     * @param coordinate2 second coorinate
-     * @return            merged coordinates
+     * @param inputLocation input location of created Condition
+     * @param coordinate1   first Coorinate
+     * @param coordinate2   second Coorinate
+     * @return              merged Coordinates
      */
     virtual CoordinatePtr* merge(
+        InputLocation&       inputLocation,
         const CoordinatePtr* coordinate1,
         const CoordinatePtr* coordinate2
     );

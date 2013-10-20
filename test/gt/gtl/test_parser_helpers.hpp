@@ -55,16 +55,19 @@ public:
     TestCoordinateDriverImpl();
 
     virtual GT::GTL::CoordinatePtr* create(
+        GT::GTL::InputLocation&  inputLocation,
         const GT::IdentifierPtr* player,
         const GT::IdentifierPtr* strategy
     );
 
     virtual GT::GTL::CoordinatePtr* fillWithData(
+        GT::GTL::InputLocation&       inputLocation,
         const GT::GTL::CoordinatePtr* coordinate,
         const GT::GTL::ParamsPtr*     data
     );
 
     virtual GT::GTL::CoordinatePtr* merge(
+        GT::GTL::InputLocation&       inputLocation,
         const GT::GTL::CoordinatePtr* coordinate1,
         const GT::GTL::CoordinatePtr* coordinate2
     );
@@ -161,7 +164,7 @@ public:
 
 class TestDriverImpl : public GT::GTL::Driver {
     unsigned int shownErrors;
-    
+
 public:
     TestCoordinateDriverImpl                       coordinate;
     TestCollectionsDriverImpl<GT::GTL::Coordinate> coordinates;
@@ -181,15 +184,15 @@ public:
     virtual GT::GTL::CollectionsDriver<GT::GTL::Coordinate>& forCoordinates();
 
     virtual GT::GTL::ConditionDriver& forCondition();
-    
+
     virtual GT::GTL::CollectionsDriver<GT::GTL::Condition>& forConditions();
 
     virtual GT::GTL::GameDriver& forGame();
-    
+
     virtual GT::GTL::CollectionsDriver<GT::Identifier>& forIdentifiers();
-    
+
     virtual GT::GTL::CollectionsDriver<GT::GTL::Object>& forObjects();
-    
+
     virtual GT::GTL::CollectionsDriver<GT::GTL::Param>& forParams();
 
     virtual GT::GTL::ValueDriver& forValue();

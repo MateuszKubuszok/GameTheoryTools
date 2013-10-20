@@ -34,27 +34,30 @@ TestCoordinateDriverImpl::TestCoordinateDriverImpl() :
     {}
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::create(
+    GT::GTL::InputLocation&  inputLocation,
     const GT::IdentifierPtr* player,
     const GT::IdentifierPtr* strategy
 ) {
     createdCoordinates++;
-    return GT::GTL::NullCoordinateDriver::create(player, strategy);
+    return GT::GTL::NullCoordinateDriver::create(inputLocation, player, strategy);
 }
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::fillWithData(
+    GT::GTL::InputLocation&       inputLocation,
     const GT::GTL::CoordinatePtr* coordinate,
     const GT::GTL::ParamsPtr*     data
 ) {
     filledCoordinates++;
-    return GT::GTL::NullCoordinateDriver::fillWithData(coordinate, data);
+    return GT::GTL::NullCoordinateDriver::fillWithData(inputLocation, coordinate, data);
 }
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::merge(
+    GT::GTL::InputLocation&       inputLocation,
     const GT::GTL::CoordinatePtr* coordinate1,
     const GT::GTL::CoordinatePtr* coordinate2
 ) {
     mergedCoordinates++;
-    return GT::GTL::NullCoordinateDriver::merge(coordinate1, coordinate2);
+    return GT::GTL::NullCoordinateDriver::merge(inputLocation, coordinate1, coordinate2);
 }
 
 // }

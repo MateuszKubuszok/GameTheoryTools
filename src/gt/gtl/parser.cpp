@@ -822,21 +822,21 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 273 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].coordinates)); CLEANUP((yysemantic_stack_[(5) - (2)].coordinate)); CLEANUP((yysemantic_stack_[(5) - (4)].coordinates)); }
+    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yylocation_stack_[(5) - (1)]), (yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].coordinates)); CLEANUP((yysemantic_stack_[(5) - (2)].coordinate)); CLEANUP((yysemantic_stack_[(5) - (4)].coordinates)); }
     break;
 
   case 37:
 
 /* Line 690 of lalr1.cc  */
 #line 274 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].params)); CLEANUP((yysemantic_stack_[(5) - (2)].coordinate)); CLEANUP((yysemantic_stack_[(5) - (4)].params)); }
+    { (yyval.coordinate) = driver.forCoordinate().fillWithData((yylocation_stack_[(5) - (1)]), (yysemantic_stack_[(5) - (2)].coordinate), (yysemantic_stack_[(5) - (4)].params)); CLEANUP((yysemantic_stack_[(5) - (2)].coordinate)); CLEANUP((yysemantic_stack_[(5) - (4)].params)); }
     break;
 
   case 38:
 
 /* Line 690 of lalr1.cc  */
 #line 278 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.forCoordinate().merge((yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); CLEANUP((yysemantic_stack_[(3) - (1)].coordinate)); CLEANUP((yysemantic_stack_[(3) - (3)].coordinate)); }
+    { (yyval.coordinate) = driver.forCoordinate().merge((yylocation_stack_[(3) - (1)]), (yysemantic_stack_[(3) - (1)].coordinate), (yysemantic_stack_[(3) - (3)].coordinate)); CLEANUP((yysemantic_stack_[(3) - (1)].coordinate)); CLEANUP((yysemantic_stack_[(3) - (3)].coordinate)); }
     break;
 
   case 39:
@@ -850,7 +850,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 283 "f_n_b/parser.yy"
-    { (yyval.coordinate) = driver.forCoordinate().create((yysemantic_stack_[(3) - (1)].identifier), (yysemantic_stack_[(3) - (3)].identifier)); CLEANUP((yysemantic_stack_[(3) - (1)].identifier)); CLEANUP((yysemantic_stack_[(3) - (3)].identifier)); }
+    { (yyval.coordinate) = driver.forCoordinate().create((yylocation_stack_[(3) - (1)]), (yysemantic_stack_[(3) - (1)].identifier), (yysemantic_stack_[(3) - (3)].identifier)); CLEANUP((yysemantic_stack_[(3) - (1)].identifier)); CLEANUP((yysemantic_stack_[(3) - (3)].identifier)); }
     break;
 
   case 42:

@@ -270,17 +270,17 @@ data_coordinates
  ;
 
 data_coordinate
- : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData($2, $4); CLEANUP($2); CLEANUP($4); }
- | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData($2, $4); CLEANUP($2); CLEANUP($4); }
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
 
 coordinates
- : coordinates COMA coordinate { $$ = driver.forCoordinate().merge($1, $3); CLEANUP($1); CLEANUP($3); }
+ : coordinates COMA coordinate { $$ = driver.forCoordinate().merge(@1, $1, $3); CLEANUP($1); CLEANUP($3); }
  | coordinate                  { $$ = $1; }
  ;
 
 coordinate
- : identifier EQUAL identifier { $$ = driver.forCoordinate().create($1, $3); CLEANUP($1); CLEANUP($3); }
+ : identifier EQUAL identifier { $$ = driver.forCoordinate().create(@1, $1, $3); CLEANUP($1); CLEANUP($3); }
  ;
 
 /* Errors */
