@@ -16,7 +16,7 @@ public:
     /**
      * @brief Create condition for Player choosing strategy.
      *
-     * @param inputLocation input location of created Definition
+     * @param inputLocation input location of created Condition
      * @param player        Player's name
      * @param strategy      chosen strategy
      * @return              Condition
