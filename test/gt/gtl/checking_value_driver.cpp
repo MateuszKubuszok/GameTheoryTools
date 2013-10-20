@@ -20,7 +20,9 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_get ) {
     boost::scoped_ptr<GT::GTL::ParamPtr> param2Ptr(valueDriver.get(*inputLocation, numberPtr.get()));
 
     // then
+    BOOST_REQUIRE(  param1Ptr );
     BOOST_CHECK( ( *param1Ptr ) );
+    BOOST_REQUIRE(  param2Ptr );
     BOOST_CHECK( ( *param2Ptr ) );
 }
 
@@ -53,11 +55,17 @@ BOOST_AUTO_TEST_CASE( CheckingValueDriver_toObject ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> object6Ptr(valueDriver.toObject(validParamPtr.get()));
 
     // then
+    BOOST_REQUIRE(   object1Ptr );
     BOOST_CHECK( !( *object1Ptr )->isValid() );
+    BOOST_REQUIRE(   object2Ptr );
     BOOST_CHECK(  ( *object2Ptr )->isValid() );
+    BOOST_REQUIRE(   object3Ptr );
     BOOST_CHECK( !( *object3Ptr )->isValid() );
+    BOOST_REQUIRE(   object4Ptr );
     BOOST_CHECK(  ( *object4Ptr )->isValid() );
+    BOOST_REQUIRE(   object5Ptr );
     BOOST_CHECK( !( *object5Ptr )->isValid() );
+    BOOST_REQUIRE(   object6Ptr );
     BOOST_CHECK(  ( *object6Ptr )->isValid() );
 }
 

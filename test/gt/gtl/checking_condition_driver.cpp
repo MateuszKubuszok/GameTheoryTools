@@ -33,23 +33,32 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition9Ptr(conditionDriver.playerChoosed(*inputLocation, invalidObjectPtr.get(), validParamPtr.get()));
 
     // then
+    BOOST_REQUIRE(   condition1Ptr );
     BOOST_CHECK( !( *condition1Ptr )->isValid() );
+    BOOST_REQUIRE(   condition2Ptr );
     BOOST_CHECK( !( *condition2Ptr )->isValid() );
+    BOOST_REQUIRE(   condition3Ptr );
     BOOST_CHECK( !( *condition3Ptr )->isValid() );
+    BOOST_REQUIRE(   condition4Ptr );
     BOOST_CHECK(  ( *condition4Ptr )->isValid() );
+    BOOST_REQUIRE(   condition5Ptr );
     BOOST_CHECK( !( *condition5Ptr )->isValid() );
+    BOOST_REQUIRE(   condition6Ptr );
     BOOST_CHECK( !( *condition6Ptr )->isValid() );
+    BOOST_REQUIRE(   condition7Ptr );
     BOOST_CHECK( !( *condition7Ptr )->isValid() );
+    BOOST_REQUIRE(   condition8Ptr );
     BOOST_CHECK(  ( *condition8Ptr )->isValid() );
+    BOOST_REQUIRE(   condition9Ptr );
     BOOST_CHECK( !( *condition9Ptr )->isValid() );
-} 
+}
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_toString ) {
     // given
     TestDriverImpl driver;
 
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);    
+    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
 
     // then
     BOOST_CHECK_EQUAL(

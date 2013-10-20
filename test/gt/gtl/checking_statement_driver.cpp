@@ -72,7 +72,9 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
     boost::scoped_ptr<GT::GTL::DefinitionPtr> definition2Ptr(statementDriver.createDefinition(*inputLocation, identifierPtr.get(), validObjectPtr.get()));
 
     // then
+    BOOST_REQUIRE(   definition1Ptr );
     BOOST_CHECK( !( *definition1Ptr )->isValid() );
+    BOOST_REQUIRE(   definition2Ptr );
     BOOST_CHECK(  ( *definition2Ptr )->isValid() );
 }
 
@@ -112,8 +114,11 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
     boost::scoped_ptr<GT::GTL::QueryPtr> query3Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()));
 
     // then
+    BOOST_REQUIRE(   query1Ptr );
     BOOST_CHECK( !( *query1Ptr )->isValid() );
+    BOOST_REQUIRE(   query2Ptr );
     BOOST_CHECK( !( *query2Ptr )->isValid() );
+    BOOST_REQUIRE(   query3Ptr );
     BOOST_CHECK(  ( *query3Ptr )->isValid() );
 }
 
@@ -122,7 +127,7 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_toString ) {
     TestDriverImpl driver;
 
     // when
-    GT::GTL::CheckingStatementDriver statementDriver(&driver);    
+    GT::GTL::CheckingStatementDriver statementDriver(&driver);
 
     // then
     BOOST_CHECK_EQUAL(
