@@ -34,7 +34,7 @@ public:
      *
      * @return pointer to collection
      */
-    virtual CollectionPtr* empty() = 0;
+    virtual CollectionPtr* empty();
 
     /**
      * @brief Creates a collection with one element.
@@ -44,7 +44,7 @@ public:
      */
     virtual CollectionPtr* create(
         ContentPtr* element
-    ) = 0;
+    );
 
     /**
      * @brief Adds an element to the collection.
@@ -55,15 +55,15 @@ public:
     virtual CollectionPtr* insert(
         ContentPtr*    element,
         CollectionPtr* collection
-    ) = 0;
+    );
 
     /**
      * @brief CollectionsDriver message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
-}; /* END class CollectionsDriver*/
+    virtual Message toString();
+}; /* END class CollectionsDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
 

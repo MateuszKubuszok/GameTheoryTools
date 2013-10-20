@@ -14,11 +14,28 @@ namespace GTL {
  * @see Driver
  */
 class CheckingDriver : public Driver {
+    CheckingCoordinateDriver               coordinate;
+    CollectionsDriver<GT::GTL::Coordinate> coordinates;
+    CheckingConditionDriver                condition;
+    CollectionsDriver<GT::GTL::Condition>  conditions;
+    CheckingGameDriver                     game;
+    CollectionsDriver<GT::Identifier>      identifiers;
+    CollectionsDriver<GT::GTL::Object>     objects;
+    CollectionsDriver<GT::GTL::Param>      params;
+    CheckingValueDriver                    value;
+    CheckingStatementDriver                statement;
+
+    std::ostream*                          outputStream;
+
 public:
     /**
-     * @brief Default destructor.
+     * @brief Initiates CheckingDriver with a output stream.
+     *
+     * @param output stream
      */
-    virtual ~CheckingDriver() {}
+    CheckingDriver(
+        std::ostream* outputStram
+    );
 
     /**
      * @brief Driver for Coordinate.
@@ -33,7 +50,7 @@ public:
      * @return CollectionDriver for Coordinates
      */
     virtual CollectionsDriver<Coordinate>& forCoordinates();
-    
+
     /**
      * @brief Driver for Condition.
      *
@@ -54,21 +71,21 @@ public:
      * @return GameDriver
      */
     virtual GameDriver& forGame();
-    
+
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
     virtual CollectionsDriver<Identifier>& forIdentifiers();
-    
+
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
     virtual CollectionsDriver<Object>& forObjects();
-    
+
     /**
      * @brief Driver for Params.
      *
