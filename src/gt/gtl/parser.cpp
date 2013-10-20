@@ -39,7 +39,7 @@
      *
      * @author Mateusz Kubuszok
      */
-     
+
     /* System libraries */
     #include <iostream> /* Default I/O streams library */
     #include <fstream>  /* File Streams library */
@@ -58,7 +58,7 @@
 
     /**
      * @brief Override default yylex function.
-     * 
+     *
      * @param lvalue   matched content
      * @param location current location
      * @param driver   driver instance
@@ -696,28 +696,28 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 207 "f_n_b/parser.yy"
-    { (yyval.game) = driver.forGame().createStrategic((yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createStrategic((yylocation_stack_[(4) - (1)]), (yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
     break;
 
   case 17:
 
 /* Line 690 of lalr1.cc  */
 #line 208 "f_n_b/parser.yy"
-    { (yyval.game) = driver.forGame().createTree((yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createTree((yylocation_stack_[(4) - (1)]), (yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
     break;
 
   case 20:
 
 /* Line 690 of lalr1.cc  */
 #line 217 "f_n_b/parser.yy"
-    { (yyval.details) = driver.forGame().createDetails((yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].coordinates)); CLEANUP((yysemantic_stack_[(5) - (2)].objects)); CLEANUP((yysemantic_stack_[(5) - (5)].coordinates)); }
+    { (yyval.details) = driver.forGame().createDetails((yylocation_stack_[(5) - (1)]), (yysemantic_stack_[(5) - (2)].objects), (yysemantic_stack_[(5) - (5)].coordinates)); CLEANUP((yysemantic_stack_[(5) - (2)].objects)); CLEANUP((yysemantic_stack_[(5) - (5)].coordinates)); }
     break;
 
   case 21:
 
 /* Line 690 of lalr1.cc  */
 #line 223 "f_n_b/parser.yy"
-    { (yyval.player) = driver.forGame().createPlayer((yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].identifiers)); CLEANUP((yysemantic_stack_[(5) - (2)].identifier)); CLEANUP((yysemantic_stack_[(5) - (4)].identifiers)); }
+    { (yyval.player) = driver.forGame().createPlayer((yylocation_stack_[(5) - (1)]), (yysemantic_stack_[(5) - (2)].identifier), (yysemantic_stack_[(5) - (4)].identifiers)); CLEANUP((yysemantic_stack_[(5) - (2)].identifier)); CLEANUP((yysemantic_stack_[(5) - (4)].identifiers)); }
     break;
 
   case 22:

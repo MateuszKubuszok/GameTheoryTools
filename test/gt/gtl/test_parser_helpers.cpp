@@ -76,33 +76,37 @@ TestGameDriverImpl::TestGameDriverImpl() :
     {}
 
 GT::GTL::GamePtr* TestGameDriverImpl::createStrategic(
-    GT::GTL::DetailsPtr* details
+    GT::GTL::InputLocation& inputLocation,
+    GT::GTL::DetailsPtr*    details
 ) {
     createdStrategicGames++;
-    return GT::GTL::NullGameDriver::createStrategic(details);
+    return GT::GTL::NullGameDriver::createStrategic(inputLocation, details);
 }
 
 GT::GTL::GamePtr* TestGameDriverImpl::createTree(
-    GT::GTL::DetailsPtr* details
+    GT::GTL::InputLocation& inputLocation,
+    GT::GTL::DetailsPtr*    details
 ) {
     createdTreeGames++;
-    return GT::GTL::NullGameDriver::createTree(details);
+    return GT::GTL::NullGameDriver::createTree(inputLocation, details);
 }
 
 GT::GTL::DetailsPtr* TestGameDriverImpl::createDetails(
+    GT::GTL::InputLocation&  inputLocation,
     GT::GTL::ObjectsPtr*     players,
     GT::GTL::CoordinatesPtr* data
 ) {
     createdDetails++;
-    return GT::GTL::NullGameDriver::createDetails(players, data);
+    return GT::GTL::NullGameDriver::createDetails(inputLocation, players, data);
 }
 
 GT::GTL::PlayerPtr* TestGameDriverImpl::createPlayer(
-    GT::IdentifierPtr*  player,
-    GT::IdentifiersPtr* strategies
+    GT::GTL::InputLocation& inputLocation,
+    GT::IdentifierPtr*      player,
+    GT::IdentifiersPtr*     strategies
 ) {
     createdPlayers++;
-    return GT::GTL::NullGameDriver::createPlayer(player, strategies);
+    return GT::GTL::NullGameDriver::createPlayer(inputLocation, player, strategies);
 }
 
 // }

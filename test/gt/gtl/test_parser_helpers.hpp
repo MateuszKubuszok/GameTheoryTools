@@ -91,21 +91,25 @@ public:
     TestGameDriverImpl();
 
     virtual GT::GTL::GamePtr* createStrategic(
-        GT::GTL::DetailsPtr* details
+        GT::GTL::InputLocation& inputLocation,
+        GT::GTL::DetailsPtr*    details
     );
 
     virtual GT::GTL::GamePtr* createTree(
-        GT::GTL::DetailsPtr* details
+        GT::GTL::InputLocation& inputLocation,
+        GT::GTL::DetailsPtr*    details
     );
 
     virtual GT::GTL::DetailsPtr* createDetails(
+        GT::GTL::InputLocation&  inputLocation,
         GT::GTL::ObjectsPtr*     players,
         GT::GTL::CoordinatesPtr* data
     );
 
     virtual GT::GTL::PlayerPtr* createPlayer(
-        GT::IdentifierPtr*  player,
-        GT::IdentifiersPtr* strategies
+        GT::GTL::InputLocation& inputLocation,
+        GT::IdentifierPtr*      player,
+        GT::IdentifiersPtr*     strategies
     );
 
     inline unsigned int getCreatedStrategicGames();

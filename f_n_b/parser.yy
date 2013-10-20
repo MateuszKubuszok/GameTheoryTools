@@ -13,7 +13,7 @@
      *
      * @author Mateusz Kubuszok
      */
-     
+
     /* System libraries */
     #include <iostream> /* Default I/O streams library */
     #include <fstream>  /* File Streams library */
@@ -32,7 +32,7 @@
 
     /**
      * @brief Override default yylex function.
-     * 
+     *
      * @param lvalue   matched content
      * @param location current location
      * @param driver   driver instance
@@ -115,7 +115,7 @@
 %token <number>     number       /* Double number */
 
  /* Declared types */
- 
+
 %type <condition>    condition
 %type <coordinate>   coordinate
 %type <coordinate>   coordinates
@@ -183,7 +183,7 @@ statement
 definition
  : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
- 
+
 query
  : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5); CLEANUP($2); CLEANUP($4); CLEANUP($5); }
  ;
@@ -200,27 +200,27 @@ object
  | player { $$ = driver.forValue().toObject($1); CLEANUP($1); }
  | param  { $$ = driver.forValue().toObject($1); CLEANUP($1); }
  ;
- 
+
 /* Games */
 
 game
- : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic($3); CLEANUP($3); }
- | TREE      GAME details game_end { $$ = driver.forGame().createTree($3); CLEANUP($3); }
+ : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic(@1, $3); CLEANUP($3); }
+ | TREE      GAME details game_end { $$ = driver.forGame().createTree(@1, $3); CLEANUP($3); }
  ;
 
 game_end
- : 
+ :
  | END
  ;
 
 details
- : WITH objects SUCH AS data { $$ = driver.forGame().createDetails($2, $5); CLEANUP($2); CLEANUP($5); }
+ : WITH objects SUCH AS data { $$ = driver.forGame().createDetails(@1, $2, $5); CLEANUP($2); CLEANUP($5); }
  ;
- 
+
 /* Players */
 
 player
- : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer($2, $4); CLEANUP($2); CLEANUP($4); }
+ : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
 
 /* Params */
@@ -257,7 +257,7 @@ condition_collection
 condition
  : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
  ;
- 
+
 /* Data */
 
 data

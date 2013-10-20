@@ -30,43 +30,51 @@ public:
     /**
      * @brief Create Strategic Game.
      *
-     * @param details Details for game
-     * @return        Game
+     * @param inputLocation input location of created Game
+     * @param details       Details for game
+     * @return              Game
      */
     virtual GamePtr* createStrategic(
-        DetailsPtr* details
+        InputLocation& inputLocation,
+        DetailsPtr*    details
     );
 
     /**
      * @brief Create Tree Game.
      *
-     * @param details Details for game
-     * @return        Game
+     * @param inputLocation input location of created Game
+     * @param details       Details for game
+     * @return              Game
      */
     virtual GamePtr* createTree(
-        DetailsPtr* details
+        InputLocation& inputLocation,
+        DetailsPtr*    details
     );
 
     /**
      * @brief Create Details.
      *
-     * @param player declared Players
-     * @param data   declared Coordinates
-     * @return       Details
+     * @param inputLocation input location of created Details
+     * @param player        declared Players
+     * @param data          declared Coordinates
+     * @return              Details
      */
     virtual DetailsPtr* createDetails(
+        InputLocation&  inputLocation,
         ObjectsPtr*     players,
         CoordinatesPtr* data
     );
 
     /**
      * @brief Create Player.
-     * 
-     * @param player     Player's name
-     * @param strategies strategies
-     * @return Player
+     *
+     * @param inputLocation input location of created Player
+     * @param player        Player's name
+     * @param strategies    strategies
+     * @return              Player
      */
     virtual PlayerPtr* createPlayer(
+        InputLocation&  inputLocation,
         IdentifierPtr*  player,
         IdentifiersPtr* strategies
     );
