@@ -31,6 +31,7 @@ class ObjectKnownProperties;
 
 class GamePureEquilibriumProperty;
 class GameMixedEquilibriumProperty;
+class GameBehavioralEquilibriumProperty;
 
 class ParamValueProperty;
 
@@ -76,6 +77,7 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/gtl/game_pure_equilibrium_property.hpp"
 #include "gt/gtl/game_mixed_equilibrium_property.hpp"
+#include "gt/gtl/game_behavioral_equilibrium_property.hpp"
 
 #include "gt/gtl/param_value_property.hpp"
 
