@@ -48,6 +48,13 @@ class CheckingValueDriver;
 class CheckingStatementDriver;
 class CheckingDriver;
 
+class ExecutionConditionDriver;
+class ExecutionCoordinateDriver;
+class ExecutionGameDriver;
+class ExecutionValueDriver;
+class ExecutionStatementDriver;
+class ExecutionDriver;
+
 /* Shortens commonly used names */
 
 typedef Model::ResultFactory    ResultFactory;
@@ -85,6 +92,13 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/checking_value_driver.hpp"
 #include "gt/gtl/checking_statement_driver.hpp"
 #include "gt/gtl/checking_driver.hpp"
+
+#include "gt/gtl/execution_condition_driver.hpp"
+#include "gt/gtl/execution_coordinate_driver.hpp"
+#include "gt/gtl/execution_game_driver.hpp"
+#include "gt/gtl/execution_value_driver.hpp"
+#include "gt/gtl/execution_statement_driver.hpp"
+#include "gt/gtl/execution_driver.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 
