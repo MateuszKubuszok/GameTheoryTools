@@ -60,11 +60,18 @@ StatementDriver& CheckingDriver::forStatement() {
 }
 
 void CheckingDriver::showError(
+    InputLocation& location,
     const Message& message
 ) {
     if (outputStream) {
+        std::stringstream builder;
+        builder << message << std::endl
+                << "\tat line \"" << location << "\"" << std::endl;
+        std::string errorMessage(builder.str());
+
         IdentifierPtr name   = createIdentifierPtr("Error");
-        MessagePtr    result = createMessagePtr(message);
+        MessagePtr    result = createMessagePtr(builder.str());
+
         (*outputStream) << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
     }
 }
@@ -72,7 +79,7 @@ void CheckingDriver::showError(
 void CheckingDriver::showError(
     ValidableSymbol& symbol
 ) {
-    showError(symbol.toString());
+    showError(*symbol.getInputLocation(), symbol.toString());
 }
 
 Message CheckingDriver::toString() {

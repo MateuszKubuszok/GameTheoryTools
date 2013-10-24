@@ -11,6 +11,10 @@ void ValidableSymbol::comparisonsAreNotAllowed() const {}
 
 // public:
 
+ValidableSymbol::ValidableSymbol() :
+    inputLocation(new InputLocation())
+    {}
+
 ValidableSymbol::~ValidableSymbol() {}
 
 bool ValidableSymbol::isValid() const {

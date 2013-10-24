@@ -24,6 +24,11 @@ class ValidableSymbol : public virtual Root {
 
 public:
     /**
+     * @brief Default constructor initiating input location.
+     */
+    ValidableSymbol();
+
+    /**
      * @brief Default destructor.
      */
     virtual ~ValidableSymbol();

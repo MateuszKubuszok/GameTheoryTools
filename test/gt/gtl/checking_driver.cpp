@@ -11,12 +11,13 @@ BOOST_AUTO_TEST_CASE( CheckingDriver_showError ) {
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     std::ostringstream outputStream;
-    GT::Message        message = GT::Message("Error Message");
-    GT::GTL::ObjectPtr object  = GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
+    GT::GTL::InputLocationPtr location = GT::GTL::NullFactory::getInstance().createInputLocation();
+    GT::Message               message  = GT::Message("Error Message");
+    GT::GTL::ObjectPtr        object   = GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
 
     // when
     GT::GTL::CheckingDriver driver(&outputStream);
-    driver.showError(message);
+    driver.showError(*location, message);
     driver.showError(*object);
 
     // then
@@ -25,8 +26,10 @@ BOOST_AUTO_TEST_CASE( CheckingDriver_showError ) {
         GT::Message() +
         "Error:\n"
         "\tError Message\n"
+        "\t\tat line \"1.1\"\n"
         "Error:\n"
         "\tInvalid Object\n"
+        "\t\tat line \"1.1\"\n"
     );
 }
 

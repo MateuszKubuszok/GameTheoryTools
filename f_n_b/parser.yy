@@ -289,7 +289,7 @@ parser_error
  : error
  | lexer_error {
         std::string message = std::string() + "not recognized symbols: \"" + (**$1) + "\"";
-        error(@1, message);
+        driver.showError(@1, message);
         CLEANUP($1);
     }
  ;
@@ -306,14 +306,8 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    std::stringstream builder;
-    builder << "Error:" << std::endl
-            << '\t' << message << std::endl
-            << "\tat line \""
-            << location
-            << "\"" << std::endl;
-    std::string errorMessage(builder.str());
-    driver.showError(errorMessage);
+    InputLocation errorLocation = location;
+    driver.showError(errorLocation, message);
 }
 
 /**

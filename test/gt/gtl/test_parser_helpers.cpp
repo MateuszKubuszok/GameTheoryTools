@@ -216,6 +216,7 @@ GT::GTL::StatementDriver& TestDriverImpl::forStatement() {
 }
 
 void TestDriverImpl::showError(
+    GT::GTL::InputLocation&,
     const GT::Message&
 ) {
     shownErrors++;

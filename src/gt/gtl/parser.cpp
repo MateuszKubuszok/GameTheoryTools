@@ -859,7 +859,7 @@ namespace GT { namespace GTL {
 #line 290 "f_n_b/parser.yy"
     {
         std::string message = std::string() + "not recognized symbols: \"" + (**(yysemantic_stack_[(1) - (1)].identifier)) + "\"";
-        error((yylocation_stack_[(1) - (1)]), message);
+        driver.showError((yylocation_stack_[(1) - (1)]), message);
         CLEANUP((yysemantic_stack_[(1) - (1)].identifier));
     }
     break;
@@ -1352,14 +1352,8 @@ void Parser::error(
     const Parser::location_type& location,
     const std::string&           message
 ) {
-    std::stringstream builder;
-    builder << "Error:" << std::endl
-            << '\t' << message << std::endl
-            << "\tat line \""
-            << location
-            << "\"" << std::endl;
-    std::string errorMessage(builder.str());
-    driver.showError(errorMessage);
+    InputLocation errorLocation = location;
+    driver.showError(errorLocation, message);
 }
 
 /**

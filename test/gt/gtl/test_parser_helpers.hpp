@@ -204,6 +204,7 @@ public:
     virtual GT::GTL::StatementDriver& forStatement();
 
     virtual void showError(
+        GT::GTL::InputLocation&,
         const GT::Message&
     );
 

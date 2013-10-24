@@ -110,9 +110,11 @@ public:
     /**
      * @brief Displays error.
      *
-     * @param message Message to display
+     * @param location error's location
+     * @param message  Message to display
      */
     virtual void showError(
+        InputLocation& location,
         const Message& message
     );
 

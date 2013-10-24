@@ -31,7 +31,7 @@ public:
      * @return CollectionDriver for Coordinates
      */
     virtual CollectionsDriver<Coordinate>& forCoordinates() = 0;
-    
+
     /**
      * @brief Driver for Condition.
      *
@@ -52,21 +52,21 @@ public:
      * @return GameDriver
      */
     virtual GameDriver& forGame() = 0;
-    
+
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
     virtual CollectionsDriver<Identifier>& forIdentifiers() = 0;
-    
+
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
     virtual CollectionsDriver<Object>& forObjects() = 0;
-    
+
     /**
      * @brief Driver for Params.
      *
@@ -91,9 +91,11 @@ public:
     /**
      * @brief Displays error.
      *
-     * @param message Message to display
+     * @param location error's location
+     * @param message  Message to display
      */
     virtual void showError(
+        InputLocation& location,
         const Message& message
     ) = 0;
 
@@ -158,7 +160,7 @@ public:
     virtual ConditionDriver& forCondition() {
         return *condition;
     }
-    
+
     virtual CollectionsDriver<Condition>& forConditions() {
         return *conditions;
     }
@@ -166,15 +168,15 @@ public:
     virtual GameDriver& forGame() {
         return *game;
     }
-    
+
     virtual CollectionsDriver<Identifier>& forIdentifiers() {
         return *identifiers;
     }
-    
+
     virtual CollectionsDriver<Object>& forObjects() {
         return *objects;
     }
-    
+
     virtual CollectionsDriver<Param>& forParams() {
         return *params;
     }
@@ -188,6 +190,7 @@ public:
     }
 
     virtual void showError(
+        InputLocation&,
         const Message&
     ) {}
 
