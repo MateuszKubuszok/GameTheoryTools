@@ -50,6 +50,17 @@ public:
     );
 
     /**
+     * @brief Search behavioral Nash equilibrium for given conditions.
+     *
+     * @param context    context with definitions
+     * @param conditions conditions for query
+     */
+    virtual ResultPtr behavioralEquilibrium(
+        const Context&    context,
+        const Conditions& conditions
+    );
+
+    /**
      * @brief Returns Message about Game.
      *
      * @return Game's state
@@ -99,7 +110,7 @@ public:
 
 class ErrorGame : public Game {
     Message message;
-    
+
 public:
     ErrorGame(
         Message errorMessage

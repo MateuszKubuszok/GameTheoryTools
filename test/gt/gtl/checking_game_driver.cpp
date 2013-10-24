@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
     BOOST_CHECK(  (*game2Ptr)->isValid() );
 }
 
-BOOST_AUTO_TEST_CASE( CheckingGameDriver_createTree ) {
+BOOST_AUTO_TEST_CASE( CheckingGameDriver_createExtensive ) {
     // given
     TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
@@ -40,8 +40,8 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createTree ) {
 
     // when
     GT::GTL::CheckingGameDriver gameDriver(&driver);
-    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(gameDriver.createTree(*inputLocation, invalidDetailsPtr.get()));
-    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(gameDriver.createTree(*inputLocation, validDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(gameDriver.createExtensive(*inputLocation, invalidDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(gameDriver.createExtensive(*inputLocation, validDetailsPtr.get()));
 
     // then
     BOOST_REQUIRE(  game1Ptr );

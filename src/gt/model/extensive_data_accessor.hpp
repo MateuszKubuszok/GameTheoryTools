@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_TREE_DATA_ACCESSOR_HPP__
-#define __GT_MODEL_TREE_DATA_ACCESSOR_HPP__
+#ifndef __GT_MODEL_EXTENSIVE_DATA_ACCESSOR_HPP__
+#define __GT_MODEL_EXTENSIVE_DATA_ACCESSOR_HPP__
 
 namespace GT {
 namespace Model {
@@ -19,26 +19,26 @@ namespace Model {
  * @see DataAccessor
  * @see Data
  * @see DataPiece
- * @see TreeData
- * @see TreeDataPiece
- * @see TreeDataBuilder
+ * @see ExtensiveData
+ * @see ExtensiveDataPiece
+ * @see ExtensiveDataBuilder
  */
-class TreeDataAccessor : public DataAccessor {
-    TreeDataPtr data;
+class ExtensiveDataAccessor : public DataAccessor {
+    ExtensiveDataPtr data;
 
 public:
     /**
-     * @brief Initiates accessor with a TreeData. 
-     * 
-     * @param gameData TreeData
+     * @brief Initiates accessor with a ExtensiveData.
+     *
+     * @param gameData ExtensiveData
      */
-    explicit TreeDataAccessor(
-        TreeDataPtr gameData
+    explicit ExtensiveDataAccessor(
+        ExtensiveDataPtr gameData
     );
 
     /**
      * @brief Returns Players' definitions.
-     * 
+     *
      * @return Players' definitions
      */
     virtual PlayersPtr getPlayers();
@@ -88,7 +88,7 @@ public:
     );
 
     /**
-     * @brief Returns TreeDataAccessor Message.
+     * @brief Returns ExtensiveDataAccessor Message.
      *
      * @return Message
      */
@@ -100,4 +100,4 @@ public:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_TREE_DATA_ACCESSOR_HPP__ */
+#endif /* #ifndef __GT_MODEL_EXTENSIVE_DATA_ACCESSOR_HPP__ */

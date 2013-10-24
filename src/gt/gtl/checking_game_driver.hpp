@@ -40,13 +40,13 @@ public:
     );
 
     /**
-     * @brief Create Tree Game.
+     * @brief Create Extensive Game.
      *
      * @param inputLocation input location of created Game
      * @param details       Details for game
      * @return              Game
      */
-    virtual GamePtr* createTree(
+    virtual GamePtr* createExtensive(
         InputLocation& inputLocation,
         DetailsPtr*    details
     );

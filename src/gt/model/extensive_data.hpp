@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_TREE_DATA_HPP__
-#define __GT_MODEL_TREE_DATA_HPP__
+#ifndef __GT_MODEL_EXTENSIVE_DATA_HPP__
+#define __GT_MODEL_EXTENSIVE_DATA_HPP__
 
 namespace GT {
 namespace Model {
@@ -19,28 +19,28 @@ namespace Model {
  * @see DataAccessor
  * @see Data
  * @see DataPiece
- * @see TreeDataAccessor
- * @see TreeDataPiece
- * @see TreeDataBuilder
+ * @see ExtensiveDataAccessor
+ * @see ExtensiveDataPiece
+ * @see ExtensiveDataBuilder
  */
-class TreeData : public Data {
-    PlayersPtr        players;
-    TreeDataNodePtr   root;
-    PlayersInTurnsPtr playersInTurns;
-    
+class ExtensiveData : public Data {
+    PlayersPtr           players;
+    ExtensiveDataNodePtr root;
+    PlayersInTurnsPtr    playersInTurns;
+
 public:
     /**
      * @brief Initiates Data with Players' definitions.
      *
      * @param playersDefinitions Players' definitions
      */
-    explicit TreeData(
+    explicit ExtensiveData(
         PlayersPtr playersDefinitions
     );
 
     /**
      * @brief Returns Players' definitions.
-     * 
+     *
      * @return Players' definitions
      */
     virtual PlayersPtr getPlayers();
@@ -76,7 +76,7 @@ public:
 
     /**
      * @brief Sets Positions to contains given payoffs.
-     * 
+     *
      * @param positions         Positions to set
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
@@ -91,7 +91,7 @@ public:
 
     /**
      * @brief Sets Positions to contains given payoffs.
-     * 
+     *
      * @param positions         Positions to set
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
@@ -127,24 +127,24 @@ public:
     );
 
     /**
-     * @brief Returns TreeData Message.
+     * @brief Returns ExtensiveData Message.
      *
      * @return Message
      */
     virtual Message toString();
-}; /* END class TreeData */
+}; /* END class ExtensiveData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Null TreeData for handling invalid situations.
+ * @brief Null ExtensiveData for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
-class NullTreeData : public TreeData {
+class NullExtensiveData : public ExtensiveData {
 public:
-    NullTreeData() :
-        TreeData(NullFactory::getInstance().createPlayers())
+    NullExtensiveData() :
+        ExtensiveData(NullFactory::getInstance().createPlayers())
         {}
 
     virtual PlayersPtr getPlayers() {
@@ -198,13 +198,13 @@ public:
     }
 
     virtual Message toString() {
-        return Message("NullTreeData");
+        return Message("NullExtensiveData");
     }
-}; /* END class NullTreeData */
+}; /* END class NullExtensiveData */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_TREE_DATA_HPP__ */
+#endif /* #ifndef __GT_MODEL_EXTENSIVE_DATA_HPP__ */

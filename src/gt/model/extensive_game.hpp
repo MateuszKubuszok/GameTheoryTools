@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_TREE_GAME_HPP__
-#define __GT_MODEL_TREE_GAME_HPP__
+#ifndef __GT_MODEL_EXTENSIVE_GAME_HPP__
+#define __GT_MODEL_EXTENSIVE_GAME_HPP__
 
 namespace GT {
 namespace Model {
@@ -7,7 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Defnies TreeGame.
+ * @brief Defnies ExtensiveGame.
  *
  * <p>Games in this form has all payoffs defined in nodes of a game tree.
  * Each level of that tree has assigned Player and for this level. As such
@@ -16,22 +16,22 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  *
- * @see TreeData
+ * @see ExtensiveData
  */
-class TreeGame : public Game {
-    PlayersPtr  players;
-    TreeDataPtr data;
+class ExtensiveGame : public Game {
+    PlayersPtr       players;
+    ExtensiveDataPtr data;
 
 public:
     /**
-     * @brief Initiates Game with Players and Data. 
+     * @brief Initiates Game with Players and Data.
      *
      * @param newPlayers Players' definitions
      * @param newData    Data for Game
      */
-    TreeGame(
-        PlayersPtr  newPlayers,
-        TreeDataPtr newData
+    ExtensiveGame(
+        PlayersPtr       newPlayers,
+        ExtensiveDataPtr newData
     );
 
     /**
@@ -49,16 +49,16 @@ public:
     virtual DataAccessorPtr getData();
 
     /**
-     * @brief Returns TreeGame's Message.
+     * @brief Returns ExtensiveGame's Message.
      *
      * @return Message
      */
     virtual Message toString();
-}; /* END class TreeGame */
+}; /* END class ExtensiveGame */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_TREE_GAME_HPP__ */
+#endif /* #ifndef __GT_MODEL_EXTENSIVE_GAME_HPP__ */

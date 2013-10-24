@@ -1,25 +1,25 @@
-#ifndef __GT_MODEL_TREE_DATA_NODE_HPP__
-#define __GT_MODEL_TREE_DATA_NODE_HPP__
+#ifndef __GT_MODEL_EXTENSIVE_DATA_NODE_HPP__
+#define __GT_MODEL_EXTENSIVE_DATA_NODE_HPP__
 
 namespace GT {
 namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class TreeDataNode : public virtual Root {
-    NumbersPtr       payoff;
-    TreeDataNodesPtr nodes;
-    unsigned int     depthValue;
-    Identifier       depthName;
+class ExtensiveDataNode : public virtual Root {
+    NumbersPtr            payoff;
+    ExtensiveDataNodesPtr nodes;
+    unsigned int          depthValue;
+    Identifier            depthName;
 
 public:
-	TreeDataNode();
+	ExtensiveDataNode();
 
-    explicit TreeDataNode(
+    explicit ExtensiveDataNode(
         unsigned int depth
     );
 
-    TreeDataNode(
+    ExtensiveDataNode(
         NumbersPtr values
     );
 
@@ -27,7 +27,7 @@ public:
         Positions& positions
     );
 
-    TreeDataNode& setValues(
+    ExtensiveDataNode& setValues(
     	Positions& positions,
     	NumbersPtr values
     );
@@ -45,4 +45,4 @@ private:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_TREE_DATA_NODE_HPP__ */
+#endif /* #ifndef __GT_MODEL_EXTENSIVE_DATA_NODE_HPP__ */

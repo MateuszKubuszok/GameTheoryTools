@@ -70,7 +70,7 @@ GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::merge(
 TestGameDriverImpl::TestGameDriverImpl() :
     GT::GTL::NullGameDriver(),
     createdStrategicGames(0),
-    createdTreeGames(0),
+    createdExtensiveGames(0),
     createdDetails(0),
     createdPlayers(0)
     {}
@@ -83,12 +83,12 @@ GT::GTL::GamePtr* TestGameDriverImpl::createStrategic(
     return GT::GTL::NullGameDriver::createStrategic(inputLocation, details);
 }
 
-GT::GTL::GamePtr* TestGameDriverImpl::createTree(
+GT::GTL::GamePtr* TestGameDriverImpl::createExtensive(
     GT::GTL::InputLocation& inputLocation,
     GT::GTL::DetailsPtr*    details
 ) {
-    createdTreeGames++;
-    return GT::GTL::NullGameDriver::createTree(inputLocation, details);
+    createdExtensiveGames++;
+    return GT::GTL::NullGameDriver::createExtensive(inputLocation, details);
 }
 
 GT::GTL::DetailsPtr* TestGameDriverImpl::createDetails(

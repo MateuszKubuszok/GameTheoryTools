@@ -703,7 +703,7 @@ namespace GT { namespace GTL {
 
 /* Line 690 of lalr1.cc  */
 #line 208 "f_n_b/parser.yy"
-    { (yyval.game) = driver.forGame().createTree((yylocation_stack_[(4) - (1)]), (yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
+    { (yyval.game) = driver.forGame().createExtensive((yylocation_stack_[(4) - (1)]), (yysemantic_stack_[(4) - (3)].details)); CLEANUP((yysemantic_stack_[(4) - (3)].details)); }
     break;
 
   case 20:
@@ -1191,7 +1191,7 @@ namespace GT { namespace GTL {
   const Parser::yytname_[] =
   {
     "TERMINATE", "error", "$undefined", "LET", "BE", "PLAYER", "GAME",
-  "STRATEGIC", "TREE", "WITH", "SUCH", "AS", "END", "FIND", "FOR",
+  "STRATEGIC", "EXTENSIVE", "WITH", "SUCH", "AS", "END", "FIND", "FOR",
   "CHOOSE", "LCBR", "RCBR", "EQUAL", "COLON", "COMA", "EOC", "lexer_error",
   "identifier", "number", "$accept", "program", "statements", "statement",
   "definition", "query", "objects", "object", "game", "game_end",

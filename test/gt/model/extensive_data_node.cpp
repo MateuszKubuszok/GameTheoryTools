@@ -1,8 +1,8 @@
 #include "gt/model/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( TreeDataNode )
+BOOST_AUTO_TEST_SUITE( ExtensiveDataNode )
 
-BOOST_AUTO_TEST_CASE( TreeDataNode_functional ) {
+BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
     // given
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_functional ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     // when
-    GT::Model::TreeDataNode root;
+    GT::Model::ExtensiveDataNode root;
     root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
         .setValues( p21, payoff21 ).setValues( p22, payoff22 );
     GT::NumbersPtr got11 = root.getValues(p11);
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_functional ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataNode_toString ) {
+BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE( TreeDataNode_toString ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     // when
-    GT::Model::TreeDataNode root;
+    GT::Model::ExtensiveDataNode root;
     root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
         .setValues( p21, payoff21 ).setValues( p22, payoff22 );
     GT::NumbersPtr got11 = root.getValues(p11);

@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCoordinateFormat ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidTreeCoordinateFormat ) {
+BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidExtensiveCoordinateFormat ) {
     // given
     GT::Identifier playerName   = GT::createIdentifier("player");
     GT::Identifier strategyName = GT::createIdentifier("strategy");
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidTreeCoordinateFormat ) {
     positions.insert( GT::Positions::value_type(playerName, strategyName) );
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidTreeCoordinateFormat(positions);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidExtensiveCoordinateFormat(positions);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_noParamsForPositions ) {
 BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidPlayer ) {
     // given
     GT::Identifier player = GT::createIdentifier("player");
-    
+
     // when
     GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidPlayer(player);
 
@@ -105,7 +105,7 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidPlayer ) {
 BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidStrategy ) {
     // given
     GT::Identifier strategy = GT::createIdentifier("strategy");
-    
+
     // when
     GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidStrategy(strategy);
 

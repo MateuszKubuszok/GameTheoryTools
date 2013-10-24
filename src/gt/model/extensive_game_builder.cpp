@@ -5,58 +5,58 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class TreeGameBuilder {
+// class ExtensiveGameBuilder {
 // public:
 
-TreeGameBuilder::TreeGameBuilder() :
-    treeDataBuilder(new TreeDataBuilder())
+ExtensiveGameBuilder::ExtensiveGameBuilder() :
+    treeDataBuilder(new ExtensiveDataBuilder())
     {}
 
-PlayersPtr TreeGameBuilder::getPlayers() {
+PlayersPtr ExtensiveGameBuilder::getPlayers() {
     return treeDataBuilder->getPlayers();
 }
 
-DataBuilder& TreeGameBuilder::setPlayers(
+DataBuilder& ExtensiveGameBuilder::setPlayers(
     PlayersPtr players
 ) {
     treeDataBuilder->setPlayers(players);
     return *this;
 }
 
-DataBuilder& TreeGameBuilder::addNextPositions(
+DataBuilder& ExtensiveGameBuilder::addNextPositions(
     PositionsPtr positions
 ) {
     treeDataBuilder->addNextPositions(positions);
     return *this;
 }
 
-DataBuilder& TreeGameBuilder::setParams(
+DataBuilder& ExtensiveGameBuilder::setParams(
     NumbersPtr params
 ) {
     treeDataBuilder->setParams(params);
     return *this;
 }
 
-DataBuilderPtr TreeGameBuilder::clone() {
+DataBuilderPtr ExtensiveGameBuilder::clone() {
     return treeDataBuilder->clone();
 }
 
-DataBuilderPtr TreeGameBuilder::dataBuilder() {
+DataBuilderPtr ExtensiveGameBuilder::dataBuilder() {
     return boost::dynamic_pointer_cast<DataBuilder>(treeDataBuilder);
 }
 
 
-GamePtr TreeGameBuilder::build() {
+GamePtr ExtensiveGameBuilder::build() {
     return GamePtr(
-        new TreeGame(
+        new ExtensiveGame(
             treeDataBuilder->getPlayers(),
             treeDataBuilder->build()
         )
     );
 }
 
-Message TreeGameBuilder::toString() {
-    IdentifierPtr name    = createIdentifierPtr("Current Tree Game");
+Message ExtensiveGameBuilder::toString() {
+    IdentifierPtr name    = createIdentifierPtr("Current Extensive Game");
     MessagePtr    message = createMessagePtr(dataBuilder()->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }

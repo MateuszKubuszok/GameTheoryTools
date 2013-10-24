@@ -55,7 +55,7 @@ public:
      * @param position invalid Positions
      * @return         InvalidCoordinate exception to throw
      */
-    InvalidCoordinate invalidTreeCoordinateFormat(
+    InvalidCoordinate invalidExtensiveCoordinateFormat(
         Positions& position
     );
 
@@ -72,7 +72,7 @@ public:
     );
 
     /**
-     * @brief Thrown when no Player with given name has been defined. 
+     * @brief Thrown when no Player with given name has been defined.
      *
      * @param playerName invalid Player's name
      * @return           InvalidCoordinate exception to throw
@@ -82,7 +82,7 @@ public:
     );
 
     /**
-     * @brief @brief Thrown when no strategy with given name has been defined. 
+     * @brief @brief Thrown when no strategy with given name has been defined.
      *
      * @param strategyName invalid strategy's name
      * @return             InvalidCoordinate exception to throw

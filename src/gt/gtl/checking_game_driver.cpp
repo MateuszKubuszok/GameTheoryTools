@@ -39,7 +39,7 @@ GamePtr* CheckingGameDriver::createStrategic(
     );
 }
 
-GamePtr* CheckingGameDriver::createTree(
+GamePtr* CheckingGameDriver::createExtensive(
     InputLocation& inputLocation,
     DetailsPtr*    detailsPtr
 ) {

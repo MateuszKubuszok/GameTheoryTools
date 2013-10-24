@@ -6,7 +6,7 @@
  *
  * @author Mateusz Kubuszok
  */
- 
+
 /* System libraries */
 #include <cstdlib>         /* Standard library */
 
@@ -58,7 +58,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 (?i:PLAYER)    { return (token::PLAYER); }
 (?i:GAME)      { return (token::GAME); }
 (?i:STRATEGIC) { return (token::STRATEGIC); }
-(?i:TREE)      { return (token::TREE); }
+(?i:EXTENSIVE) { return (token::EXTENSIVE); }
 (?i:WITH)      { return (token::WITH); }
 (?i:SUCH)      { return (token::SUCH); }
 (?i:AS)        { return (token::AS); }

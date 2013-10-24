@@ -7,7 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Creates some simple Results as well as supplies builders for more complex of them.  
+ * @brief Creates some simple Results as well as supplies builders for more complex of them.
  *
  * @author Mateusz Kubuszok
  */
@@ -34,16 +34,16 @@ public:
     GameBuilderPtr buildStrategicGame();
 
     /**
-     * @brief Returns Tree Game builder.
+     * @brief Returns Extensive Game builder.
      *
      * <p>StrategyGame builder requires that Players should be set at the very beginning.
      * It required that at each level/turn only one Player is used. Different turns
      * can have different Players. Otherwise InvalidCoordinate or IllegalInnerState
      * exception is thrown.</p>
      *
-     * @return Tree Game builder
+     * @return Extensive Game builder
      */
-    GameBuilderPtr buildTreeGame();
+    GameBuilderPtr buildExtensiveGame();
 
 private:
     /**

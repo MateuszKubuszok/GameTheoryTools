@@ -135,7 +135,7 @@ namespace GT { namespace GTL {
      PLAYER = 260,
      GAME = 261,
      STRATEGIC = 262,
-     TREE = 263,
+     EXTENSIVE = 263,
      WITH = 264,
      SUCH = 265,
      AS = 266,

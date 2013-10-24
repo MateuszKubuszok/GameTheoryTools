@@ -15,8 +15,8 @@ GameBuilderPtr GameFactory::buildStrategicGame() {
     return GameBuilderPtr(new StrategicGameBuilder());
 }
 
-GameBuilderPtr GameFactory::buildTreeGame() {
-    return GameBuilderPtr(new TreeGameBuilder());
+GameBuilderPtr GameFactory::buildExtensiveGame() {
+    return GameBuilderPtr(new ExtensiveGameBuilder());
 }
 
 // private:

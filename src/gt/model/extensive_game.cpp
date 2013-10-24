@@ -5,27 +5,27 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//class TreeGame {
+//class ExtensiveGame {
 // public:
 
-TreeGame::TreeGame(
+ExtensiveGame::ExtensiveGame(
     PlayersPtr  newPlayers,
-    TreeDataPtr newData
+    ExtensiveDataPtr newData
 ) :
     players(newPlayers),
     data(newData)
     {}
 
-PlayersPtr TreeGame::getPlayers() {
+PlayersPtr ExtensiveGame::getPlayers() {
     return players;
 }
 
-DataAccessorPtr TreeGame::getData() {
-    return DataAccessorPtr(new TreeDataAccessor(data));
+DataAccessorPtr ExtensiveGame::getData() {
+    return DataAccessorPtr(new ExtensiveDataAccessor(data));
 }
 
-Message TreeGame::toString() {
-    IdentifierPtr name      = createIdentifierPtr("Tree Game");
+Message ExtensiveGame::toString() {
+    IdentifierPtr name      = createIdentifierPtr("Extensive Game");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }

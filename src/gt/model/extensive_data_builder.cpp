@@ -5,39 +5,39 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class TreeDataBuilder {
+// class ExtensiveDataBuilder {
 // public:
 
-TreeDataBuilder::TreeDataBuilder() :
-    data(InnerNullFactory::getInstance().createTreeData()),
+ExtensiveDataBuilder::ExtensiveDataBuilder() :
+    data(InnerNullFactory::getInstance().createExtensiveData()),
     players(NullFactory::getInstance().createPlayers()),
     currentPositions(),
     depthValue(1),
     depthName(createIdentifier(1))
     {}
 
-TreeDataPtr TreeDataBuilder::build() {
+ExtensiveDataPtr ExtensiveDataBuilder::build() {
     return data;
 }
 
-PlayersPtr TreeDataBuilder::getPlayers() {
+PlayersPtr ExtensiveDataBuilder::getPlayers() {
     return players;
 }
 
-DataBuilder& TreeDataBuilder::setPlayers(
+DataBuilder& ExtensiveDataBuilder::setPlayers(
     PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
         throw ExceptionFactory::getInstance()
                 .playersAlreadySet();
 
-    data    = TreeDataPtr(new TreeData(newPlayers));
+    data    = ExtensiveDataPtr(new ExtensiveData(newPlayers));
     players = newPlayers;
 
     return *this;
 }
 
-DataBuilder& TreeDataBuilder::addNextPositions(
+DataBuilder& ExtensiveDataBuilder::addNextPositions(
     PositionsPtr positions
 ) {
     if (positions->size() != 1)
@@ -47,7 +47,7 @@ DataBuilder& TreeDataBuilder::addNextPositions(
     Identifier        currentPlayer   = positions->begin()->first;
     Identifier        currentStrategy = positions->begin()->second;
     if (playersInTurns->count(depthName) && (*(*playersInTurns)[depthName]->getName()) != currentPlayer)
-        throw ExceptionFactory::getInstance().invalidTreeCoordinateFormat(*positions);
+        throw ExceptionFactory::getInstance().invalidExtensiveCoordinateFormat(*positions);
 
     if (!playersInTurns->count(depthName))
         playersInTurns->insert( PlayersInTurns::value_type(depthName, (*players)[currentPlayer]) );
@@ -55,21 +55,21 @@ DataBuilder& TreeDataBuilder::addNextPositions(
     currentPositions.insert( Positions::value_type(depthName, currentStrategy) );
     depthName = createIdentifier(++depthValue);
 
-    return *this; 
+    return *this;
 }
 
-DataBuilder& TreeDataBuilder::setParams(
+DataBuilder& ExtensiveDataBuilder::setParams(
     NumbersPtr params
 ) {
     data->setValues(currentPositions, params);
     return *this;
 }
 
-DataBuilderPtr TreeDataBuilder::clone() {
-    return DataBuilderPtr(new TreeDataBuilder(*this));
+DataBuilderPtr ExtensiveDataBuilder::clone() {
+    return DataBuilderPtr(new ExtensiveDataBuilder(*this));
 }
 
-Message TreeDataBuilder::toString() {
+Message ExtensiveDataBuilder::toString() {
     IdentifierPtr name    = createIdentifierPtr("Current Data");
     MessagePtr    message = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

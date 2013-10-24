@@ -1,8 +1,8 @@
 #include "gt/model/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( TreeDataAccessor )
+BOOST_AUTO_TEST_SUITE( ExtensiveData )
 
-BOOST_AUTO_TEST_CASE( TreeDataAccesor_getPlayers ) {
+BOOST_AUTO_TEST_CASE( ExtensiveData_getPlayers ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
@@ -21,11 +21,9 @@ BOOST_AUTO_TEST_CASE( TreeDataAccesor_getPlayers ) {
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
-    GT::Model::TreeDataPtr treeData(new GT::Model::TreeData(players));
-
     // when
-    GT::Model::TreeDataAccessor treeDataAccessor(treeData);
-    GT::Model::PlayersPtr gotPlayers = treeDataAccessor.getPlayers();
+    GT::Model::ExtensiveData extensiveData(players);
+    GT::Model::PlayersPtr gotPlayers = extensiveData.getPlayers();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -34,7 +32,7 @@ BOOST_AUTO_TEST_CASE( TreeDataAccesor_getPlayers ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataAccessor_functional ) {
+BOOST_AUTO_TEST_CASE( ExtensiveData_functional ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
@@ -79,18 +77,16 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_functional ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::TreeDataPtr treeData(new GT::Model::TreeData(players));
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
-    treeData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
-
     // when
-    GT::Model::TreeDataAccessor treeDataAccessor(treeData);
-    GT::Model::DataPiecePtr got11 = treeDataAccessor.getValues(p11);
-    GT::Model::DataPiecePtr got12 = treeDataAccessor.getValues(p12);
-    GT::Model::DataPiecePtr got21 = treeDataAccessor.getValues(p21);
-    GT::Model::DataPiecePtr got22 = treeDataAccessor.getValues(p22);
+    GT::Model::ExtensiveData extensiveData(players);
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
+            .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    GT::Model::DataPiecePtr got11 = extensiveData.getValues(p11);
+    GT::Model::DataPiecePtr got12 = extensiveData.getValues(p12);
+    GT::Model::DataPiecePtr got21 = extensiveData.getValues(p21);
+    GT::Model::DataPiecePtr got22 = extensiveData.getValues(p22);
 
     // then
     BOOST_CHECK_EQUAL(*got11->getValue(p1), *(*payoff11)[0]);
@@ -106,7 +102,7 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_functional ) {
     BOOST_CHECK_EQUAL(*got22->getValue(p2), *(*payoff22)[1]);
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataAccessor_operatorOverload ) {
+BOOST_AUTO_TEST_CASE( ExtensiveData_operatorOverload ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
@@ -151,18 +147,16 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_operatorOverload ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::TreeDataPtr treeData(new GT::Model::TreeData(players));
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
-    treeData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
-    
     // when
-    GT::Model::TreeDataAccessor treeDataAccessor(treeData);
-    GT::Model::DataPiecePtr got11 = treeDataAccessor[p11];
-    GT::Model::DataPiecePtr got12 = treeDataAccessor[p12];
-    GT::Model::DataPiecePtr got21 = treeDataAccessor[p21];
-    GT::Model::DataPiecePtr got22 = treeDataAccessor[p22];
+    GT::Model::ExtensiveData extensiveData(players);
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
+            .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    GT::Model::DataPiecePtr got11 = extensiveData[p11];
+    GT::Model::DataPiecePtr got12 = extensiveData[p12];
+    GT::Model::DataPiecePtr got21 = extensiveData[p21];
+    GT::Model::DataPiecePtr got22 = extensiveData[p22];
 
     // then
     BOOST_CHECK_EQUAL(*(*got11)[p1], *(*payoff11)[0]);
@@ -178,7 +172,7 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_operatorOverload ) {
     BOOST_CHECK_EQUAL(*(*got22)[p2], *(*payoff22)[1]);
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataAccessor_throwExceptionOnInvalidCoordinate ) {
+BOOST_AUTO_TEST_CASE( ExtensiveData_throwExceptionOnInvalidCoordinate ) {
         // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
@@ -197,38 +191,6 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_throwExceptionOnInvalidCoordinate ) {
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
-    GT::Positions p11 = GT::createPositions();
-    p11.insert( GT::Positions::value_type(l1, *s1) );
-    p11.insert( GT::Positions::value_type(l2, *s1) );
-    GT::Positions p12 = GT::createPositions();
-    p12.insert( GT::Positions::value_type(l1, *s1) );
-    p12.insert( GT::Positions::value_type(l2, *s2) );
-    GT::Positions p21 = GT::createPositions();
-    p21.insert( GT::Positions::value_type(l1, *s2) );
-    p21.insert( GT::Positions::value_type(l2, *s1) );
-    GT::Positions p22 = GT::createPositions();
-    p22.insert( GT::Positions::value_type(l1, *s2) );
-    p22.insert( GT::Positions::value_type(l2, *s2) );
-
-    GT::NumbersPtr payoff11 = GT::createNumbersPtr();
-    payoff11->push_back(GT::createNumberPtr(10));
-    payoff11->push_back(GT::createNumberPtr(20));
-    GT::NumbersPtr payoff12 = GT::createNumbersPtr();
-    payoff12->push_back(GT::createNumberPtr(30));
-    payoff12->push_back(GT::createNumberPtr(40));
-    GT::NumbersPtr payoff21 = GT::createNumbersPtr();
-    payoff21->push_back(GT::createNumberPtr(50));
-    payoff21->push_back(GT::createNumberPtr(60));
-    GT::NumbersPtr payoff22 = GT::createNumbersPtr();
-    payoff22->push_back(GT::createNumberPtr(70));
-    payoff22->push_back(GT::createNumberPtr(80));
-
-    GT::Model::TreeDataPtr treeData(new GT::Model::TreeData(players));
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
-    treeData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
-
     GT::Positions pos1 = GT::createPositions();
     pos1.insert( GT::Positions::value_type(*p1, *s1) );
     pos1.insert( GT::Positions::value_type(l2, *s1) );
@@ -238,31 +200,31 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_throwExceptionOnInvalidCoordinate ) {
     GT::Positions pos3 = GT::createPositions();
     pos3.insert( GT::Positions::value_type(l1, *s2) );
     pos3.insert( GT::Positions::value_type(l2, *p2) );
-    
+
+    GT::NumbersPtr payoff = GT::createNumbersPtr();
+
     // when
-    GT::Model::TreeDataAccessor treeDataAccessor(treeData);
+    GT::Model::ExtensiveData extensiveData(players);
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
 
     // then
     BOOST_CHECK_THROW(
-        treeDataAccessor.getValues(pos1),
+        extensiveData.setValues(pos1, payoff),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        treeDataAccessor.getValues(pos2),
+        extensiveData.setValues(pos2, payoff),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        treeDataAccessor.getValues(pos3),
+        extensiveData.setValues(pos3, payoff),
         GT::Model::InvalidCoordinate
     );
 }
 
-BOOST_AUTO_TEST_CASE( TreeDataAccessor_toString ) {
+BOOST_AUTO_TEST_CASE( ExtensiveData_toString ) {
     // given
-    GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
-        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr s1 = GT::createIdentifierPtr("s1");
@@ -306,43 +268,44 @@ BOOST_AUTO_TEST_CASE( TreeDataAccessor_toString ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::TreeDataPtr treeData(new GT::Model::TreeData(players));
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    treeData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
-    treeData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
-    
     // when
-    GT::Model::TreeDataAccessor treeDataAccessor(treeData);
+    GT::Model::ExtensiveData extensiveData(players);
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
+    extensiveData.getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
+            .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    GT::Model::DataPiecePtr got11 = extensiveData.getValues(p11);
+    GT::Model::DataPiecePtr got12 = extensiveData.getValues(p12);
+    GT::Model::DataPiecePtr got21 = extensiveData.getValues(p21);
+    GT::Model::DataPiecePtr got22 = extensiveData.getValues(p22);
 
     // then
     BOOST_CHECK_EQUAL(
-        treeDataAccessor.toString(),
+        extensiveData.toString(),
         GT::Message() +
-        "Tree Data Accessor:\n"
-        "\tTreeData:\n"
+        "ExtensiveData:\n"
+        "\ts1:\n"
         "\t\ts1:\n"
-        "\t\t\ts1:\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t10\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t20\n"
-        "\t\t\ts2:\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t30\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t40\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t10\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t20\n"
         "\t\ts2:\n"
-        "\t\t\ts1:\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t50\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t60\n"
-        "\t\t\ts2:\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t70\n"
-        "\t\t\t\tValue:\n"
-        "\t\t\t\t\t80\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t30\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t40\n"
+        "\ts2:\n"
+        "\t\ts1:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t50\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t60\n"
+        "\t\ts2:\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t70\n"
+        "\t\t\tValue:\n"
+        "\t\t\t\t80\n"
     );
 }
 

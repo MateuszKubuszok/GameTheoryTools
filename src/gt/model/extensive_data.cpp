@@ -5,26 +5,26 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class TreeData { 
+// class ExtensiveData {
 // public:
 
-TreeData::TreeData(
+ExtensiveData::ExtensiveData(
     PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
-    root(new TreeDataNode()),
+    root(new ExtensiveDataNode()),
     playersInTurns(new PlayersInTurns())
     {}
 
-PlayersPtr TreeData::getPlayers() {
+PlayersPtr ExtensiveData::getPlayers() {
     return players;
 }
 
-PlayersInTurnsPtr TreeData::getPlayersInTurns() {
+PlayersInTurnsPtr ExtensiveData::getPlayersInTurns() {
     return playersInTurns;
 }
 
-DataPiecePtr TreeData::getValues(
+DataPiecePtr ExtensiveData::getValues(
     Positions& positions
 ) {
     for (Positions::value_type& position : positions) {
@@ -38,13 +38,13 @@ DataPiecePtr TreeData::getValues(
     return DataPiecePtr(new PlainDataPiece(players, payoff));
 }
 
-DataPiecePtr TreeData::getValues(
+DataPiecePtr ExtensiveData::getValues(
     PositionsPtr positions
 ) {
     return getValues(*positions);
 }
 
-Data& TreeData::setValues(
+Data& ExtensiveData::setValues(
     Positions& positions,
     NumbersPtr numbers
 ) {
@@ -60,27 +60,27 @@ Data& TreeData::setValues(
     return *this;
 }
 
-Data& TreeData::setValues(
+Data& ExtensiveData::setValues(
     PositionsPtr positions,
     NumbersPtr   numbers
 ) {
     return setValues(*positions, numbers);
 }
 
-DataPiecePtr TreeData::operator[](
+DataPiecePtr ExtensiveData::operator[](
     Positions& positions
 ) {
     return getValues(positions);
 }
 
-DataPiecePtr TreeData::operator[](
+DataPiecePtr ExtensiveData::operator[](
     PositionsPtr positions
 ) {
     return getValues(positions);
 }
 
-Message TreeData::toString() {
-    IdentifierPtr name   = createIdentifierPtr("TreeData");
+Message ExtensiveData::toString() {
+    IdentifierPtr name   = createIdentifierPtr("ExtensiveData");
     MessagePtr    result = createMessagePtr(root->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
 }

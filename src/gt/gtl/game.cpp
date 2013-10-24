@@ -32,6 +32,13 @@ ResultPtr Game::mixedEquilibrium(
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
+ResultPtr Game::behavioralEquilibrium(
+    const Context&,
+    const Conditions&
+) {
+    return ResultFactory::getInstance().constResult("Not yet implemented");
+}
+
 Message Game::toString() {
     return game->toString();
 }

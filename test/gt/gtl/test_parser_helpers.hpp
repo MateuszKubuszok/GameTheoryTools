@@ -83,7 +83,7 @@ public:
 
 class TestGameDriverImpl : public GT::GTL::NullGameDriver {
     unsigned int createdStrategicGames;
-    unsigned int createdTreeGames;
+    unsigned int createdExtensiveGames;
     unsigned int createdDetails;
     unsigned int createdPlayers;
 
@@ -95,7 +95,7 @@ public:
         GT::GTL::DetailsPtr*    details
     );
 
-    virtual GT::GTL::GamePtr* createTree(
+    virtual GT::GTL::GamePtr* createExtensive(
         GT::GTL::InputLocation& inputLocation,
         GT::GTL::DetailsPtr*    details
     );
@@ -114,7 +114,7 @@ public:
 
     inline unsigned int getCreatedStrategicGames();
 
-    inline unsigned int getCreatedTreeGames();
+    inline unsigned int getCreatedExtensiveGames();
 
     inline unsigned int getCreatedDetails();
 

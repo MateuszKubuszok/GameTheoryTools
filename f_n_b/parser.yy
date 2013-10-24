@@ -94,7 +94,7 @@
 %token PLAYER    /* PLAYER keyword */
 %token GAME      /* GAME keyword */
 %token STRATEGIC /* STRATEGIC keyword */
-%token TREE      /* TREE keyword */
+%token EXTENSIVE /* EXTENSIVE keyword */
 %token WITH      /* WITH keyword */
 %token SUCH      /* SUCH keyword */
 %token AS        /* AS keyword */
@@ -205,7 +205,7 @@ object
 
 game
  : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic(@1, $3); CLEANUP($3); }
- | TREE      GAME details game_end { $$ = driver.forGame().createTree(@1, $3); CLEANUP($3); }
+ | EXTENSIVE GAME details game_end { $$ = driver.forGame().createExtensive(@1, $3); CLEANUP($3); }
  ;
 
 game_end

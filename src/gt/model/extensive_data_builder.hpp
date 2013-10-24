@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_TREE_GAME_BUILDER_HPP__
-#define __GT_MODEL_TREE_GAME_BUILDER_HPP__
+#ifndef __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__
+#define __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__
 
 namespace GT {
 namespace Model {
@@ -7,7 +7,7 @@ namespace Model {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Builder used for creating TreeGame.
+ * @brief Builder used for creating ExtensiveGame's Data.
  *
  * <p>Games in this form has all payoffs defined in nodes of a game tree.
  * Each level of that tree has assigned Player and for this level. As such
@@ -16,31 +16,37 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  *
- * @see TreeGame
- * @see TreeDataBuilder
+ * @see ExtensiveData
  */
-class TreeGameBuilder : public GameBuilder {
-    TreeDataBuilderPtr treeDataBuilder;
+class ExtensiveDataBuilder : public DataBuilder {
+    ExtensiveDataPtr data;
+
+    PlayersPtr players;
+
+    Positions  currentPositions;
+
+    Index      depthValue;
+    Identifier depthName;
 
 public:
     /**
      * @brief Defalt constructor.
      */
-    TreeGameBuilder();
-    
+    ExtensiveDataBuilder();
+
     /**
-     * @brief Returns set up Game.
+     * @brief Returns set up Data.
      *
-     * @return built Game
+     * @return built Data
      */
-    virtual GamePtr build();
+    ExtensiveDataPtr build();
 
     /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers();
+    PlayersPtr getPlayers();
 
     /**
      * @brief Sets Players' definitions.
@@ -65,7 +71,7 @@ public:
     /**
      * @brief Sets payoffs values.
      *
-     * @param params values of payoffs 
+     * @param params values of payoffs
      * @return       reference to itself for chanining
      */
     virtual DataBuilder& setParams(
@@ -73,30 +79,23 @@ public:
     );
 
     /**
-     * @brief Returns copy of itsef with shared content and frozen values of already set Positions. 
+     * @brief Returns copy of itsef with shared content and frozen values of already set Positions.
      *
      * @return copy with frozem Positions and content common to parent
      */
     virtual DataBuilderPtr clone();
 
     /**
-     * @brief Returns Same's DataBuilder. 
-     *
-     * @return DataBuilder
-     */
-    virtual DataBuilderPtr dataBuilder();
-
-    /**
-     * @brief TreeGameBuilder Message.
+     * @brief ExtensiveDataBuilder Message.
      *
      * @return Message
      */
     virtual Message toString();
-}; /* END class TreeGameBuilder */
+}; /* END class ExtensiveDataBuilder */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_TREE_GAME_BUILDER_HPP__ */
+#endif /* #ifndef __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__ */

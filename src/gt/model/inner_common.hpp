@@ -47,12 +47,12 @@ class StrategicDataAccessor;
 class StrategicGame;
 class StrategicGameBuilder;
 
-class TreeDataNode;
-class TreeData;                 class NullTreeData;
-class TreeDataBuilder;
-class TreeDataAccessor;
-class TreeGame;
-class TreeGameBuilder;
+class ExtensiveDataNode;
+class ExtensiveData;            class NullExtensiveData;
+class ExtensiveDataBuilder;
+class ExtensiveDataAccessor;
+class ExtensiveGame;
+class ExtensiveGameBuilder;
 
 /* Shortens comonly used names */
 
@@ -62,11 +62,11 @@ typedef boost::shared_ptr<StrategicDataBuilder>            StrategicDataBuilderP
 typedef boost::bimaps::bimap<Identifier, Index>            IdentifierMap;
 typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
 
-typedef boost::shared_ptr<TreeDataNode>                    TreeDataNodePtr;
-typedef boost::container::map<Identifier, TreeDataNodePtr> TreeDataNodes;
-typedef boost::shared_ptr<TreeDataNodes>                   TreeDataNodesPtr;
-typedef boost::shared_ptr<TreeData>                        TreeDataPtr;
-typedef boost::shared_ptr<TreeDataBuilder>                 TreeDataBuilderPtr;
+typedef boost::shared_ptr<ExtensiveDataNode>                    ExtensiveDataNodePtr;
+typedef boost::container::map<Identifier, ExtensiveDataNodePtr> ExtensiveDataNodes;
+typedef boost::shared_ptr<ExtensiveDataNodes>                   ExtensiveDataNodesPtr;
+typedef boost::shared_ptr<ExtensiveData>                        ExtensiveDataPtr;
+typedef boost::shared_ptr<ExtensiveDataBuilder>                 ExtensiveDataBuilderPtr;
 
 typedef boost::container::map<Identifier, PlayerPtr>       PlayersInTurns;
 typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
@@ -102,12 +102,12 @@ typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
 #include "gt/model/strategic_game.hpp"
 #include "gt/model/strategic_game_builder.hpp"
 
-#include "gt/model/tree_data_node.hpp"
-#include "gt/model/tree_data.hpp"
-#include "gt/model/tree_data_builder.hpp"
-#include "gt/model/tree_data_accessor.hpp"
-#include "gt/model/tree_game.hpp"
-#include "gt/model/tree_game_builder.hpp"
+#include "gt/model/extensive_data_node.hpp"
+#include "gt/model/extensive_data.hpp"
+#include "gt/model/extensive_data_builder.hpp"
+#include "gt/model/extensive_data_accessor.hpp"
+#include "gt/model/extensive_game.hpp"
+#include "gt/model/extensive_game_builder.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
 

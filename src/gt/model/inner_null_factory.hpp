@@ -32,11 +32,11 @@ public:
     StrategicDataPtr createStrategicData();
 
     /**
-     * @brief Creates null TreeData.
+     * @brief Creates null ExtensiveData.
      *
-     * @result null TreeData
+     * @result null ExtensiveData
      */
-    TreeDataPtr createTreeData();
+    ExtensiveDataPtr createExtensiveData();
 
 private:
     /**

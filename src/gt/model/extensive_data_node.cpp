@@ -5,35 +5,35 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//class TreeDataNode {
+//class ExtensiveDataNode {
 // public:
 
-TreeDataNode::TreeDataNode() :
+ExtensiveDataNode::ExtensiveDataNode() :
     payoff(new Numbers()),
-    nodes(new TreeDataNodes()),
+    nodes(new ExtensiveDataNodes()),
     depthValue(1),
     depthName(createIdentifier(1))
     {}
 
-TreeDataNode::TreeDataNode(
+ExtensiveDataNode::ExtensiveDataNode(
     unsigned int currentDepth
 ) :
     payoff(new Numbers()),
-    nodes(new TreeDataNodes()),
+    nodes(new ExtensiveDataNodes()),
     depthValue(currentDepth),
     depthName(createIdentifier(currentDepth))
     {}
 
-TreeDataNode::TreeDataNode(
+ExtensiveDataNode::ExtensiveDataNode(
     NumbersPtr values
 ) :
     payoff(values),
-    nodes(new TreeDataNodes()),
+    nodes(new ExtensiveDataNodes()),
     depthValue(0),
     depthName("")
     {}
 
-NumbersPtr TreeDataNode::getValues(
+NumbersPtr ExtensiveDataNode::getValues(
     Positions& positions
 ) {
     if (depthValue == 0)
@@ -46,7 +46,7 @@ NumbersPtr TreeDataNode::getValues(
     return (*nodes)[strategy]->getValues(positions);
 }
 
-TreeDataNode& TreeDataNode::setValues(
+ExtensiveDataNode& ExtensiveDataNode::setValues(
     Positions& positions,
     NumbersPtr values
 ) {
@@ -56,14 +56,14 @@ TreeDataNode& TreeDataNode::setValues(
     Identifier& strategy = positions[depthName];
 
     if (!nodes->count(strategy)) {
-        TreeDataNodePtr node;
+        ExtensiveDataNodePtr node;
         if (depthValue == positions.size())
-            node = TreeDataNodePtr(new TreeDataNode(values));
+            node = ExtensiveDataNodePtr(new ExtensiveDataNode(values));
         else {
-            node = TreeDataNodePtr(new TreeDataNode(depthValue+1));
+            node = ExtensiveDataNodePtr(new ExtensiveDataNode(depthValue+1));
             node->setValues(positions, values);
         }
-        nodes->insert( TreeDataNodes::value_type(strategy, node) );
+        nodes->insert( ExtensiveDataNodes::value_type(strategy, node) );
     } else if (depthValue != positions.size())
         (*nodes)[strategy]->setValues(positions, values);
     else
@@ -72,7 +72,7 @@ TreeDataNode& TreeDataNode::setValues(
     return *this;
 }
 
-Message TreeDataNode::toString() {
+Message ExtensiveDataNode::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr    valueName     = createIdentifierPtr("Value");
 
@@ -82,7 +82,7 @@ Message TreeDataNode::toString() {
             resultBuilder->addResult(valueName, result);
         }
     else
-        for (TreeDataNodes::value_type& node : (*nodes)) {
+        for (ExtensiveDataNodes::value_type& node : (*nodes)) {
             IdentifierPtr nodeName = createIdentifierPtr(node.first);
             MessagePtr    result   = createMessagePtr(node.second->toString());
             resultBuilder->addResult(nodeName, result);
@@ -93,7 +93,7 @@ Message TreeDataNode::toString() {
 
 // private:
 
-bool TreeDataNode::checkPositions(
+bool ExtensiveDataNode::checkPositions(
     Positions& positions
 ) {
     return positions.count(depthName) && nodes->count(positions[depthName]);

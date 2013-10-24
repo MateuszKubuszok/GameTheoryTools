@@ -15,7 +15,7 @@ InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     Positions& positions
 ) {
     std::stringstream result;
-    
+
     result << "Coordinates:";
     for (Positions::value_type& position : positions) {
         Identifier  playerName   = position.first;
@@ -35,7 +35,7 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     Positions& positions
 ) {
     std::stringstream result;
-    
+
     result << "Coordinates:";
     for (Positions::value_type& position : positions) {
         Identifier  playerName   = position.first;
@@ -47,11 +47,11 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     return InvalidCoordinate(result.str());
 }
 
-InvalidCoordinate ExceptionFactory::invalidTreeCoordinateFormat(
+InvalidCoordinate ExceptionFactory::invalidExtensiveCoordinateFormat(
     Positions& positions
 ) {
     std::stringstream result;
-    
+
     result << "Coordinates:";
     for (Positions::value_type position : positions) {
         Identifier  playerName   = position.first;

@@ -5,45 +5,45 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class TreeDataAccessor {
+// class ExtensiveDataAccessor {
 // public:
 
-TreeDataAccessor::TreeDataAccessor(
-    TreeDataPtr strategicData
+ExtensiveDataAccessor::ExtensiveDataAccessor(
+    ExtensiveDataPtr strategicData
 ) :
     data(strategicData)
     {}
 
-DataPiecePtr TreeDataAccessor::operator[](
+DataPiecePtr ExtensiveDataAccessor::operator[](
     Positions& positions
 ) {
     return (*data)[positions];
 }
 
-DataPiecePtr TreeDataAccessor::operator[](
+DataPiecePtr ExtensiveDataAccessor::operator[](
     PositionsPtr positions
 ) {
     return (*data)[positions];
 }
 
-PlayersPtr TreeDataAccessor::getPlayers() {
+PlayersPtr ExtensiveDataAccessor::getPlayers() {
     return data->getPlayers();
 }
 
-DataPiecePtr TreeDataAccessor::getValues(
+DataPiecePtr ExtensiveDataAccessor::getValues(
     PositionsPtr positions
 ) {
     return data->getValues(positions);
 }
 
-DataPiecePtr TreeDataAccessor::getValues(
+DataPiecePtr ExtensiveDataAccessor::getValues(
     Positions& positions
 ) {
     return data->getValues(positions);
 }
 
-Message TreeDataAccessor::toString() {
-    IdentifierPtr name      = createIdentifierPtr("Tree Data Accessor");
+Message ExtensiveDataAccessor::toString() {
+    IdentifierPtr name      = createIdentifierPtr("Extensive Data Accessor");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }

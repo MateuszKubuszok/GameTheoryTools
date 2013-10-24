@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( Game_mixedEquilibrium ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
     GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();
@@ -46,6 +46,29 @@ BOOST_AUTO_TEST_CASE( Game_mixedEquilibrium ) {
     // then
     BOOST_CHECK_EQUAL(
         game.mixedEquilibrium(context, conditions)->getResult(),
+        GT::Message("Not yet implemented")
+    );
+}
+
+BOOST_AUTO_TEST_CASE( Game_behavioralEquilibrium ) {
+    // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
+    GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
+    GT::GTL::Context       context       = *contextPtr;
+    GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();
+    GT::GTL::Conditions    conditions    = *conditionsPtr;
+
+    GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
+
+    // when
+    GT::GTL::Game game(gameImplementation);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        game.behavioralEquilibrium(context, conditions)->getResult(),
         GT::Message("Not yet implemented")
     );
 }

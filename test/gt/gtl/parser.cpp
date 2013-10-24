@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
     // then
     BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
-    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition 
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 1 ); // parsed 1 definition
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 1 ); // created 1 player
     BOOST_CHECK_EQUAL( driver.identifiers.getAddedElements(), 2 ); // created collection of 2 strategies
 }
@@ -126,11 +126,11 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 8 ); // created 8 parameters from numbers
 }
 
-BOOST_AUTO_TEST_CASE( Parser_treeGameDefinition  ) {
+BOOST_AUTO_TEST_CASE( Parser_extensiveGameDefinition  ) {
     // given
     std::string content =
         "LET _game BE\n"
-        "TREE GAME WITH\n"
+        "EXTENSIVE GAME WITH\n"
         "  PLAYER p1 {\n"
         "    s1,\n"
         "    s2\n"
@@ -183,7 +183,7 @@ BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
         "  SUCH AS\n"
         "    { p1=s, p2=s : 10, 20 }\n"
         "  END,\n"
-        "  TREE GAME\n"
+        "  EXTENSIVE GAME\n"
         "  WITH\n"
         "    PLAYER p1 { s },\n"
         "    PLAYER p2 { s }\n"
@@ -208,7 +208,7 @@ BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 9 ); // created 9 parameters from numbers (8) nad identifiers (1)
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 5 ); // crated 5 players
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
-    BOOST_CHECK_EQUAL( driver.game.getCreatedTreeGames(), 1 ); // created 1 tree game
+    BOOST_CHECK_EQUAL( driver.game.getCreatedExtensiveGames(), 1 ); // created 1 extensive game
 }
 
 BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
@@ -249,7 +249,7 @@ BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
         "  SUCH AS\n"
         "    { p1=s, p2=s : 10, 20 }\n"
         "  END,\n"
-        "  TREE GAME\n"
+        "  EXTENSIVE GAME\n"
         "  WITH\n"
         "    PLAYER p1 { s },\n"
         "    PLAYER p2 { s }\n"
@@ -274,7 +274,7 @@ BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
     BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 4 ); // crated 4 players
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
-    BOOST_CHECK_EQUAL( driver.game.getCreatedTreeGames(), 1 ); // created 1 tree game
+    BOOST_CHECK_EQUAL( driver.game.getCreatedExtensiveGames(), 1 ); // created 1 extensive game
 }
 
 BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {

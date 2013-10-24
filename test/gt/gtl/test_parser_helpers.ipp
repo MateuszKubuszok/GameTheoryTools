@@ -37,8 +37,8 @@ inline unsigned int TestGameDriverImpl::getCreatedStrategicGames() {
     return createdStrategicGames;
 }
 
-inline unsigned int TestGameDriverImpl::getCreatedTreeGames() {
-    return createdTreeGames;
+inline unsigned int TestGameDriverImpl::getCreatedExtensiveGames() {
+    return createdExtensiveGames;
 }
 
 inline unsigned int TestGameDriverImpl::getCreatedDetails() {
