@@ -129,5 +129,31 @@ Message Coordinate::toString() {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+Coordinate operator+(
+    Coordinate& coordinate1,
+    Coordinate& coordinate2
+) {
+    Coordinate result;
+
+    for (Positions::value_type& position : *coordinate1.getPositions())
+        result.positions->insert(position);
+    for (Positions::value_type& position : *coordinate2.getPositions())
+        result.positions->insert(position);
+
+    for (ParamPtr& param : *coordinate1.getParams())
+        result.params->push_back(param);
+    for (ParamPtr& param : *coordinate2.getParams())
+        result.params->push_back(param);
+
+    for (CoordinatePtr& subCoordinate : *coordinate1.getSubCoordinates())
+        result.subCoordinates->push_back(subCoordinate);
+    for (CoordinatePtr& subCoordinate : *coordinate2.getSubCoordinates())
+        result.subCoordinates->push_back(subCoordinate);
+
+    return result;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GTL */
 } /* END namespace GT */

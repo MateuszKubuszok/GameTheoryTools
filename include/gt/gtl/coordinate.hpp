@@ -20,8 +20,8 @@ class Coordinate : public virtual ValidableSymbol {
      * @return            merged coordinates
      */
     friend Coordinate operator+(
-        const Coordinate& coordinate1,
-        const Coordinate& coordinate2
+        Coordinate& coordinate1,
+        Coordinate& coordinate2
     );
 
     /**
@@ -35,7 +35,7 @@ class Coordinate : public virtual ValidableSymbol {
     const ParamsPtr params;
 
     /**
-     * @brief Defined subcoordinetes. 
+     * @brief Defined subcoordinetes.
      */
     const CoordinatesPtr subCoordinates;
 
@@ -207,7 +207,7 @@ public:
  */
 class ErrorCoordinate : public Coordinate {
     Message message;
-    
+
 public:
     ErrorCoordinate(
         Message errorMessage
