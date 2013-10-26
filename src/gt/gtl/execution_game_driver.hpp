@@ -15,7 +15,8 @@ namespace GTL {
  * @see GameDriver
  */
 class ExecutionGameDriver : public GameDriver {
-    Driver* driver;
+    CheckingGameDriver checkingGameDriver;
+    Driver*            driver;
 
 public:
     /**

@@ -15,7 +15,8 @@ namespace GTL {
  * @see ValueDriver
  */
 class ExecutionValueDriver : public ValueDriver {
-    Driver* driver;
+    CheckingValueDriver checkingValueDriver;
+    Driver*             driver;
 
 public:
     /**

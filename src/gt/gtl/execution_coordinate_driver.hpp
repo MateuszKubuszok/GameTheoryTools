@@ -15,7 +15,8 @@ namespace GTL {
  * @see CoordinateDriver
  */
 class ExecutionCoordinateDriver : public CoordinateDriver {
-    Driver* driver;
+    CheckingCoordinateDriver checkingCoordinateDriver;
+    Driver*                  driver;
 
 public:
     /**

@@ -15,7 +15,8 @@ namespace GTL {
  * @see StatementDriver
  */
 class ExecutionStatementDriver : public StatementDriver {
-    Driver* driver;
+    CheckingStatementDriver checkingStatementDriver;
+    Driver*                 driver;
 
 public:
     /**

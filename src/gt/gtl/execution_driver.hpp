@@ -14,6 +14,8 @@ namespace GTL {
  * @see Driver
  */
 class ExecutionDriver : public Driver {
+    CheckingDriver checkingDriver;
+
     ExecutionCoordinateDriver              coordinate;
     CollectionsDriver<GT::GTL::Coordinate> coordinates;
     ExecutionConditionDriver               condition;
