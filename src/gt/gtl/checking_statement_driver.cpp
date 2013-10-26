@@ -50,7 +50,13 @@ DefinitionPtr* CheckingStatementDriver::createDefinition(
             )
         );
     }
-    return new DefinitionPtr(NullFactory::getInstance().createDefinition());
+
+    return new DefinitionPtr(
+        setupLocation<Definition>(
+            NullFactory::getInstance().createDefinition(),
+            inputLocation
+        )
+    );
 }
 
 QueryPtr* CheckingStatementDriver::createQuery(
@@ -62,7 +68,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
     Identifiers& identifiers = **identifiersPtr;
     Objects&     objects     = **objectsPtr;
     Conditions&  conditions  = **conditionsPtr;
-    
+
     for (ObjectPtr& objectPtr : objects) {
         Object& object = *objectPtr;
 
@@ -73,7 +79,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
                     inputLocation
                 )
             );
-        
+
         for (IdentifierPtr& propertyPtr : identifiers) {
             Identifier& property = *propertyPtr;
 
@@ -106,7 +112,12 @@ QueryPtr* CheckingStatementDriver::createQuery(
         }
     }
 
-    return new QueryPtr(NullFactory::getInstance().createQuery());
+    return new QueryPtr(
+        setupLocation<Query>(
+            NullFactory::getInstance().createQuery(),
+            inputLocation
+        )
+    );
 }
 
 Message CheckingStatementDriver::toString() {

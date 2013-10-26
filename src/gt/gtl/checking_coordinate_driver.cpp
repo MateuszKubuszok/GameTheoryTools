@@ -16,8 +16,8 @@ CheckingCoordinateDriver::CheckingCoordinateDriver(
 
 CoordinatePtr* CheckingCoordinateDriver::create(
     InputLocation&       inputLocation,
-    const IdentifierPtr* ,//player,
-    const IdentifierPtr* //strategy
+    const IdentifierPtr*,
+    const IdentifierPtr*
 ) {
     return new CoordinatePtr(
         setupLocation<Coordinate>(
