@@ -33,7 +33,7 @@ def targetForTest(file):
 env = Environment()
 
 # Allows overridding default compiler with eg. Clang.
-env["CC"]  = os.getenv("CC")  or env["CC"] 
+env["CC"]  = os.getenv("CC")  or env["CC"]
 env["CXX"] = os.getenv("CXX") or env["CXX"]
 env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
 
@@ -134,9 +134,9 @@ testConf.env.Append(LIBS=['boost_unit_test_framework'])
 
 testConf.Finish()
 
-logLevel     = 'test_suite'
-randomOrder  = '0'
-showProgress = 'no'
+logLevel     = 'message'    # log level for Boost Test Framework
+randomOrder  = '0'          # whether tests should be run in random order
+showProgress = 'yes'        # should progress bar be displayed
 
 ################################################################################
 
