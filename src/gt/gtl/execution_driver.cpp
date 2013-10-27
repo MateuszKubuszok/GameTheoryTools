@@ -12,12 +12,12 @@ ExecutionDriver::ExecutionDriver(
     std::ostream* newOutputStream
 ) :
     checkingDriver(newOutputStream),
+    context(new Context()),
     coordinate(this),
     condition(this),
     game(this),
     value(this),
-    statement(this),
-    outputStream(newOutputStream)
+    statement(this)
     {}
 
 CoordinateDriver& ExecutionDriver::forCoordinate() {

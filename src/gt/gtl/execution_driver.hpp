@@ -15,6 +15,7 @@ namespace GTL {
  */
 class ExecutionDriver : public Driver {
     CheckingDriver checkingDriver;
+    ContextPtr     context;
 
     ExecutionCoordinateDriver              coordinate;
     CollectionsDriver<GT::GTL::Coordinate> coordinates;
@@ -26,8 +27,6 @@ class ExecutionDriver : public Driver {
     CollectionsDriver<GT::GTL::Param>      params;
     ExecutionValueDriver                   value;
     ExecutionStatementDriver               statement;
-
-    std::ostream*                          outputStream;
 
 public:
     /**
