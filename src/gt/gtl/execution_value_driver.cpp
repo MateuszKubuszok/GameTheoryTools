@@ -17,12 +17,13 @@ ExecutionValueDriver::ExecutionValueDriver(
 
 ParamPtr* ExecutionValueDriver::get(
     InputLocation& inputLocation,
-    IdentifierPtr*
+    IdentifierPtr* identifierPtr
 ) {
-    // TODO create an actual implementation
+    IdentifierPtr& identifier = *identifierPtr;
+
     return new ParamPtr(
         setupLocation<Param>(
-            NullFactory::getInstance().createParam(),
+            ParamFactory::getInstance().createParam(identifier),
             inputLocation
         )
     );
@@ -30,12 +31,13 @@ ParamPtr* ExecutionValueDriver::get(
 
 ParamPtr* ExecutionValueDriver::get(
     InputLocation& inputLocation,
-    NumberPtr*
+    NumberPtr*     valuePtr
 ) {
-    // TODO create an actual implementation
+    NumberPtr& value = *valuePtr;
+
     return new ParamPtr(
         setupLocation<Param>(
-            NullFactory::getInstance().createParam(),
+            ParamFactory::getInstance().createParam(value),
             inputLocation
         )
     );
