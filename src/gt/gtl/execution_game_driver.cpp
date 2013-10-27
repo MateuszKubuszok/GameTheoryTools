@@ -9,10 +9,12 @@ namespace GTL {
 // public:
 
 ExecutionGameDriver::ExecutionGameDriver(
-    Driver* parentDriver
+    Driver*     parentDriver,
+    ContextPtr& contextPtr
 ) :
     checkingGameDriver(parentDriver),
-    driver(parentDriver)
+    driver(parentDriver),
+    context(contextPtr)
     {}
 
 GamePtr* ExecutionGameDriver::createStrategic(
@@ -23,14 +25,11 @@ GamePtr* ExecutionGameDriver::createStrategic(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Details& details = **detailsPtr;
+    Details&              details        = **detailsPtr;
+    Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
+    Model::GameBuilder&   gameBuilder    = *gameBuilderPtr;
 
-    return new GamePtr(
-        setupLocation<Game>(
-            NullFactory::getInstance().createGame(),
-            inputLocation
-        )
-    );
+    return createGameWithBuilder(inputLocation, details, gameBuilder);
 }
 
 GamePtr* ExecutionGameDriver::createExtensive(
@@ -41,14 +40,11 @@ GamePtr* ExecutionGameDriver::createExtensive(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Details& details = **detailsPtr;
+    Details&              details        = **detailsPtr;
+    Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
+    Model::GameBuilder&   gameBuilder    = *gameBuilderPtr;
 
-    return new GamePtr(
-        setupLocation<Game>(
-            NullFactory::getInstance().createGame(),
-            inputLocation
-        )
-    );
+    return createGameWithBuilder(inputLocation, details, gameBuilder);
 }
 
 DetailsPtr* ExecutionGameDriver::createDetails(
@@ -60,12 +56,12 @@ DetailsPtr* ExecutionGameDriver::createDetails(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Objects&     objectPlayers = **playersPtr;
-    // Coordinates& coordinates   = **dataPtr;
+    ObjectsPtr&     objectPlayers = *playersPtr;
+    CoordinatesPtr& coordinates   = *dataPtr;
 
     return new DetailsPtr(
         setupLocation<Details>(
-            NullFactory::getInstance().createDetails(),
+            DetailsPtr(new Details(objectPlayers, coordinates)),
             inputLocation
         )
     );
@@ -80,12 +76,12 @@ PlayerPtr* ExecutionGameDriver::createPlayer(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // IdentifierPtr&  player     = *playerPtr;
-    // IdentifiersPtr& strategies = *strategiesPtr;
+    IdentifierPtr&  player     = *playerPtr;
+    IdentifiersPtr& strategies = *strategiesPtr;
 
     return new PlayerPtr(
         setupLocation<Player>(
-            NullFactory::getInstance().createPlayer(),
+            PlayerPtr(new Player(player, strategies)),
             inputLocation
         )
     );
@@ -93,6 +89,61 @@ PlayerPtr* ExecutionGameDriver::createPlayer(
 
 Message ExecutionGameDriver::toString() {
     return Message("ExecutionGameDriver");
+}
+
+// private:
+
+GamePtr* ExecutionGameDriver::createGameWithBuilder(
+    InputLocation&      inputLocation,
+    Details&            details,
+    Model::GameBuilder& gameBuilder
+) {
+    try {
+        Model::PlayersPtr players(new Model::Players());
+        for (ObjectPtr& objectPtr : *details.getPlayers()) {
+            Player& player = *objectPtr;
+            Param&  param  = *objectPtr;
+
+            if (player) {
+                PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
+
+                if (playerPtr) {
+                    players->insert( Model::Players::value_type(*player.getName(), boost::dynamic_pointer_cast<Model::Player>(playerPtr)) );
+                    continue;
+                }
+            }
+
+            if (param) {
+                ObjectPtr referredObject = param.getObject(*context);
+                Player&   referredPlayer = *referredObject;
+
+                if (referredPlayer) {
+                    PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
+                    players->insert( Model::Players::value_type(*player.getName(), boost::dynamic_pointer_cast<Model::Player>(playerPtr)) );
+                    continue;
+                }
+            }
+
+            // TODO throw exception
+        }
+        gameBuilder.dataBuilder()->setPlayers(players);
+
+        // TODO use Coordinates to set up builder as soon as Coorinate class will allow it
+
+        return new GamePtr(
+            setupLocation<Game>(
+                GamePtr(new Game(gameBuilder.build())),
+                inputLocation
+            )
+        );
+    } catch (const std::exception& e) {
+        return new GamePtr(
+            setupLocation<Game>(
+                ErrorFactory::getInstance().createGame(e.what()),
+                inputLocation
+            )
+        );
+    }
 }
 
 // }

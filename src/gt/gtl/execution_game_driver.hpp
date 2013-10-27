@@ -17,15 +17,18 @@ namespace GTL {
 class ExecutionGameDriver : public GameDriver {
     CheckingGameDriver checkingGameDriver;
     Driver*            driver;
+    ContextPtr         context;
 
 public:
     /**
      * @brief Initiates ExecutionGameDriver with its parent.
      *
      * @param parentDriver parent Driver
+     * @param context      Context data
      */
     ExecutionGameDriver(
-        Driver* parentDriver
+        Driver*     parentDriver,
+        ContextPtr& context
     );
 
     /**
@@ -86,6 +89,21 @@ public:
      * @return message
      */
     virtual Message toString();
+
+private:
+    /**
+     * @brief Game building routine common for Strategic and Extensive form Games.
+     *
+     * @param inputLocation input location of created Game
+     * @param details     Details built game details
+     * @param gameBuilder GameBuilder specific for given game
+     * @return            Game instance (valid or not)
+     */
+    GamePtr* createGameWithBuilder(
+        InputLocation&      inputLocation,
+        Details&            details,
+        Model::GameBuilder& gameBuilder
+    );
 }; /* END class ExecutionGameDriver */
 
 ////////////////////////////////////////////////////////////////////////////////

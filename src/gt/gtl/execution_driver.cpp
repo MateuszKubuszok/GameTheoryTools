@@ -15,7 +15,7 @@ ExecutionDriver::ExecutionDriver(
     context(new Context()),
     coordinate(this),
     condition(this),
-    game(this),
+    game(this, context),
     value(this),
     statement(this)
     {}
