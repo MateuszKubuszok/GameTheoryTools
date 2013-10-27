@@ -70,12 +70,41 @@ BOOST_AUTO_TEST_CASE( Coordinate_addSubCoordinate_addSubCoordinates_getSubCoordi
     BOOST_CHECK_EQUAL( (*coordinate.getSubCoordinates())[2], subCoordinate3 );
 }
 
+BOOST_AUTO_TEST_CASE( Coordinate_operatorOVerload ) {
+    // given
+    GT::IdentifierPtr player1   = GT::createIdentifierPtr("player1");
+    GT::IdentifierPtr strategy1 = GT::createIdentifierPtr("strategy1");
+    GT::IdentifierPtr player2   = GT::createIdentifierPtr("player2");
+    GT::IdentifierPtr strategy2 = GT::createIdentifierPtr("strategy2");
+
+    // when
+    GT::GTL::Coordinate coordinate1;
+    coordinate1.addPosition(player1, strategy1);
+    GT::GTL::Coordinate coordinate2;
+    coordinate1.addPosition(player2, strategy2);
+    GT::GTL::Coordinate coordinate = coordinate1 + coordinate2;
+
+    // then
+    BOOST_REQUIRE_EQUAL(
+        coordinate.getPositions()->size(),
+        2
+    );
+    BOOST_CHECK_EQUAL(
+        (*coordinate.getPositions())[*player1],
+        *strategy1
+    );
+    BOOST_CHECK_EQUAL(
+        (*coordinate.getPositions())[*player2],
+        *strategy2
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::GTL::ParamPtr  param1 = GT::GTL::NullFactory::getInstance().createParam();
     GT::GTL::ParamPtr  param2 = GT::GTL::NullFactory::getInstance().createParam();
     GT::GTL::ParamPtr  param3 = GT::GTL::NullFactory::getInstance().createParam();
