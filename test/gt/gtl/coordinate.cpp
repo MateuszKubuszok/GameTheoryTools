@@ -70,32 +70,58 @@ BOOST_AUTO_TEST_CASE( Coordinate_addSubCoordinate_addSubCoordinates_getSubCoordi
     BOOST_CHECK_EQUAL( (*coordinate.getSubCoordinates())[2], subCoordinate3 );
 }
 
-BOOST_AUTO_TEST_CASE( Coordinate_operatorOVerload ) {
+BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
     // given
-    GT::IdentifierPtr player1   = GT::createIdentifierPtr("player1");
-    GT::IdentifierPtr strategy1 = GT::createIdentifierPtr("strategy1");
-    GT::IdentifierPtr player2   = GT::createIdentifierPtr("player2");
-    GT::IdentifierPtr strategy2 = GT::createIdentifierPtr("strategy2");
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
+    GT::IdentifierPtr  player1Name = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  strategy1 = GT::createIdentifierPtr("p1s1");
+    GT::IdentifiersPtr strategies1(new GT::Identifiers());
+    strategies1->push_back( strategy1 );
+    GT::GTL::PlayerPtr player1(new GT::GTL::Player(player1Name, strategies1));
+
+    GT::IdentifierPtr  player2Name = GT::createIdentifierPtr("p2");
+    GT::IdentifierPtr  strategy2 = GT::createIdentifierPtr("p2s1");
+    GT::IdentifiersPtr strategies2(new GT::Identifiers());
+    strategies2->push_back( strategy2 );
+    GT::GTL::PlayerPtr player2(new GT::GTL::Player(player2Name, strategies2));
+
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*player1Name, boost::dynamic_pointer_cast<GT::Model::Player>(player1)) );
+    players->insert( GT::Model::Players::value_type(*player2Name, boost::dynamic_pointer_cast<GT::Model::Player>(player2)) );
+
+    GT::GTL::ParamsPtr payoff(new GT::GTL::Params());
+    payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
+    payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(20)) );
+
+    GT::GTL::Context context;
+
+    GT::Model::DataBuilderPtr dataBuilder(new GT::Model::StrategicDataBuilder());
+    dataBuilder->setPlayers(players);
+
+    GT::PositionsPtr positions(new GT::Positions());
+    positions->insert( GT::Positions::value_type(*player1Name, *strategy1) );
+    positions->insert( GT::Positions::value_type(*player2Name, *strategy2) );
 
     // when
-    GT::GTL::Coordinate coordinate1;
-    coordinate1.addPosition(player1, strategy1);
-    GT::GTL::Coordinate coordinate2;
-    coordinate1.addPosition(player2, strategy2);
-    GT::GTL::Coordinate coordinate = coordinate1 + coordinate2;
+    GT::GTL::CoordinatePtr coordinate1(new GT::GTL::Coordinate(player1Name, strategy1) );
+    GT::GTL::CoordinatePtr coordinate2(new GT::GTL::Coordinate(player2Name, strategy2));
+    coordinate2->addParams(payoff);
+    coordinate1->addSubCoordinate(coordinate2);
+    coordinate1->fillDataBuilder(context, dataBuilder);
+
+    GT::Model::DataPtr data = boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(dataBuilder)->build();
 
     // then
-    BOOST_REQUIRE_EQUAL(
-        coordinate.getPositions()->size(),
-        2
+    BOOST_CHECK_EQUAL(
+        data->getValues(positions)->getValue(*player1Name),
+        (*payoff)[0]->getNumber(context)
     );
     BOOST_CHECK_EQUAL(
-        (*coordinate.getPositions())[*player1],
-        *strategy1
-    );
-    BOOST_CHECK_EQUAL(
-        (*coordinate.getPositions())[*player2],
-        *strategy2
+        data->getValues(positions)->getValue(*player2Name),
+        (*payoff)[1]->getNumber(context)
     );
 }
 
@@ -151,6 +177,35 @@ BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
         "\t\tNullCoordinate\n"
         "\tCoordinate:\n"
         "\t\tNullCoordinate\n"
+    );
+}
+
+BOOST_AUTO_TEST_CASE( Coordinate_operatorOverload ) {
+    // given
+    GT::IdentifierPtr player1   = GT::createIdentifierPtr("player1");
+    GT::IdentifierPtr strategy1 = GT::createIdentifierPtr("strategy1");
+    GT::IdentifierPtr player2   = GT::createIdentifierPtr("player2");
+    GT::IdentifierPtr strategy2 = GT::createIdentifierPtr("strategy2");
+
+    // when
+    GT::GTL::Coordinate coordinate1;
+    coordinate1.addPosition(player1, strategy1);
+    GT::GTL::Coordinate coordinate2;
+    coordinate1.addPosition(player2, strategy2);
+    GT::GTL::Coordinate coordinate = coordinate1 + coordinate2;
+
+    // then
+    BOOST_REQUIRE_EQUAL(
+        coordinate.getPositions()->size(),
+        2
+    );
+    BOOST_CHECK_EQUAL(
+        (*coordinate.getPositions())[*player1],
+        *strategy1
+    );
+    BOOST_CHECK_EQUAL(
+        (*coordinate.getPositions())[*player2],
+        *strategy2
     );
 }
 

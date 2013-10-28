@@ -130,6 +130,24 @@ public:
     virtual CoordinatesPtr getSubCoordinates();
 
     /**
+     * @brief Fill DataBuilder with its data.
+     *
+     * @param context               Context with params
+     * @param dataBuilder           DataBuilder to fill
+     * @throw CyclicIdentifiers     thrown when some Identfiers create the cycle
+     * @throw InvalidContentRequest thrown when some Param does not contain Number
+     * @throw NotDefinedParam       thrown when some Param cannot find value inside Context
+     * @throw IllegalInnerState     thrown when some of positions are already set
+     * @throw InvalidCoordinate     thrown when some of values are not valid strategies names
+     * @throw IllegalInnerState     thrown when attempting to set params when
+     *                              not all coordinates are known
+     */
+    virtual void fillDataBuilder(
+        Context&               context,
+        Model::DataBuilderPtr& dataBuilder
+    );
+
+    /**
      * @brief Returns Coordinate Message
      *
      * @return Message

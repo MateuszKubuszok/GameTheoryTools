@@ -5,7 +5,7 @@ namespace Model {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class PositionsHelper { 
+// class PositionsHelper {
 // public:
 
 PositionsHelper::PositionsHelper(
@@ -71,7 +71,8 @@ Index PositionsHelper::calculatePosition(
         Identifier playerName   = position.first;
         Identifier strategyName = position.second;
         storagePosition +=
-            positionsHelper.left.at(playerName)
+            // dirty hack to "handle" situation when some players have only 1 strategy
+            (positionsHelper.left.count(playerName) ? positionsHelper.left.at(playerName) : 0)
             *
             strategiesHelper[playerName].left.at(strategyName);
     }

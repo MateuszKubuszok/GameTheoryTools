@@ -77,6 +77,28 @@ CoordinatesPtr Coordinate::getSubCoordinates() {
     return subCoordinates;
 }
 
+void Coordinate::fillDataBuilder(
+    Context&               context,
+    Model::DataBuilderPtr& dataBuilder
+) {
+    if (positions->size())
+        dataBuilder->addNextPositions(positions);
+
+    if (params->size()) {
+        NumbersPtr values(new Numbers());
+        for (ParamPtr& param : *params)
+            values->push_back(param->getNumber(context));
+        dataBuilder->setParams(values);
+    }
+
+    if (subCoordinates->size()){
+        for (CoordinatePtr& coordinate : *subCoordinates) {
+            Model::DataBuilderPtr passedBuilder = dataBuilder->clone();
+            coordinate->fillDataBuilder(context, dataBuilder);
+        }
+    }
+}
+
 Message Coordinate::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
