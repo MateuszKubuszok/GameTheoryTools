@@ -22,7 +22,7 @@ CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
         result << "\t\'" << identifier << "\'\n";
     result << "identifier \'"
            << currentIdentifier
-           << "\' already defined"; 
+           << "\' already defined";
 
     return CyclicIdentifiers(result.str());
 }
@@ -35,6 +35,16 @@ InvalidProperty ExceptionFactory::invalidObjectProperty(
     result << "Property \'" << propertyName << "\' not defined";
 
     return InvalidProperty(result.str());
+}
+
+InvalidType ExceptionFactory::invalidObjectType(
+    Identifier& expectedType
+) {
+    std::stringstream result;
+
+    result << "Object is not of type " << expectedType;
+
+    return InvalidType(result.str());
 }
 
 NotDefinedParam ExceptionFactory::notDefinedParam(

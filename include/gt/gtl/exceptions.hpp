@@ -67,6 +67,25 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @brief Intened to be thrown when casting Object to invalid type.
+ *
+ * @author Mateusz Kubuszok
+ */
+class InvalidType : public std::runtime_error {
+public:
+    /**
+     * @brief Constructor initialized with Message.
+     *
+     * @param message initializing Message
+     */
+    explicit InvalidType(const Message& message) :
+        std::runtime_error(message)
+        {}
+}; /* END class InvalidType */
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
  * @brief Intened to be thrown when attempting to access not defined Param.
  *
  * <p>By invalid it should be understand e.g. accessing Object for ValueParam,

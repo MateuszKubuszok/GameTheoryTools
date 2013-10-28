@@ -45,6 +45,16 @@ public:
     );
 
     /**
+     * @brief Thrown when attepting to obtain cast Object to invalid type.
+     *
+     * @param expectedType expected type of an Object
+     * @return             InvalidType exception to throw
+     */
+    InvalidType invalidObjectType(
+        Identifier& expectedType
+    );
+
+    /**
      * @brief Thrown when attepting to obtain not defined Param.
      *
      * @param paramName invalid Param name

@@ -43,6 +43,22 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidObjectProperty ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidObjectType ) {
+    // given
+    GT::Identifier identifier = GT::createIdentifier("Type");
+
+    // when
+    GT::GTL::InvalidType exception = GT::GTL::ExceptionFactory::getInstance()
+                                            .invalidObjectType(identifier);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Object is not of type Type"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_notDefinedParam ) {
     // given
     GT::Identifier identifier = GT::createIdentifier("identifier");
