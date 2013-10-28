@@ -26,7 +26,7 @@ GamePtr* ExecutionGameDriver::createStrategic(
         return errorCheck;
 
     Details&              details        = **detailsPtr;
-    Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
+    Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildStrategicGame();
     Model::GameBuilder&   gameBuilder    = *gameBuilderPtr;
 
     return createGameWithBuilder(inputLocation, details, gameBuilder);
@@ -124,11 +124,15 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
                 }
             }
 
-            // TODO throw exception
+            Identifier typeName = createIdentifier("Player");
+            throw ExceptionFactory::getInstance().invalidObjectType(typeName);
         }
         gameBuilder.dataBuilder()->setPlayers(players);
 
-        // TODO use Coordinates to set up builder as soon as Coorinate class will allow it
+        for (CoordinatePtr& coordinate : *details.getCoordinates()) {
+            Model::DataBuilderPtr builderForCoordinate = gameBuilder.clone();
+            coordinate->fillDataBuilder(*context, builderForCoordinate);
+        }
 
         return new GamePtr(
             setupLocation<Game>(
