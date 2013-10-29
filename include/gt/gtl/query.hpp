@@ -12,7 +12,24 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class Query : public virtual ValidableSymbol {
+    IdentifiersPtr propertiesNames;
+    ObjectsPtr     objects;
+    ConditionsPtr  conditions;
+
 public:
+    /**
+     * @brief Initiates Query with properties, Objects and Conditions.
+     *
+     * @param propertiesName properties for which Cbjects will be queried,
+     * @param objects        Objects to query for properties
+     * @param conditions     Conditions for queries
+     */
+    Query(
+        IdentifiersPtr propertiesName,
+        ObjectsPtr     objects,
+        ConditionsPtr  conditions
+    );
+
     /**
      * @brief Execute Query in a defined Context.
      *
@@ -20,14 +37,14 @@ public:
      */
     virtual ResultPtr execute(
         Context& context
-    ) = 0;
+    );
 
     /**
      * @brief Returns Query's Message.
      *
      * @return Message
      */
-    virtual Message toString() = 0;
+    virtual Message toString();
 }; /* END class Query */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +56,14 @@ public:
  */
 class NullQuery : public Query {
 public:
+    NullQuery() :
+        Query(
+            Model::NullFactory::getInstance().createIdentifiers(),
+            NullFactory::getInstance().createObjects(),
+            NullFactory::getInstance().createConditions()
+        )
+        {}
+
     virtual ResultPtr execute(
         Context&
     ) {
@@ -68,6 +93,11 @@ public:
     ErrorQuery(
         Message errorMessage
     ) :
+        Query(
+            Model::NullFactory::getInstance().createIdentifiers(),
+            NullFactory::getInstance().createObjects(),
+            NullFactory::getInstance().createConditions()
+        ),
         message(errorMessage)
         {}
 
