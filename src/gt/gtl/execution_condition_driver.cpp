@@ -24,12 +24,14 @@ ConditionPtr* ExecutionConditionDriver::playerChoosed(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Object& playerObject   = **playerPtr;
-    // Object& strategyObject = **strategyPtr;
+    ObjectPtr& playerObject   = *playerPtr;
+    ObjectPtr& strategyObject = *strategyPtr;
 
-    // TODO ConditionFactory and implementations
     return new ConditionPtr(
-        NullFactory::getInstance().createCondition()
+        setupLocation<Condition>(
+            ConditionFactory::getInstance().createPlayerChoiceCondition(playerObject, strategyObject),
+            inputLocation
+        )
     );
 }
 
