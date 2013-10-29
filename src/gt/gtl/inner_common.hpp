@@ -29,6 +29,8 @@ class ExceptionFactory;
 class ObjectTypeProperty;
 class ObjectKnownProperties;
 
+class PlayerChoiceCondition;
+
 class GamePureEquilibriumProperty;
 class GameMixedEquilibriumProperty;
 class GameBehavioralEquilibriumProperty;
@@ -74,6 +76,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/gtl/object_type_property.hpp"
 #include "gt/gtl/object_known_properties.hpp"
+
+#include "gt/gtl/player_choice_condition.hpp"
 
 #include "gt/gtl/game_pure_equilibrium_property.hpp"
 #include "gt/gtl/game_mixed_equilibrium_property.hpp"
