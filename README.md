@@ -46,7 +46,7 @@ Builder can also run specified tasks:
 * `scons -Q buildModels` - builds Models' classes,
 * `scons -Q buildModelsTests` - builds Models' test classes with dependancies,
 * `scons -Q runModelsTests` - runs Models' test classes building theirs dependancies,
-* `scons -Q buildPsrserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),  
+* `scons -Q buildPsrserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),
 * `scons -Q buildGTL` - builds GTL classes,
 * `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
 * `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies.
@@ -69,3 +69,9 @@ TODO
 * implement actual logic of finding equilibria,
 * test it,
 * create main function that parses arguments and initiates parser.
+
+* Improve singletons - instances and mutexes variables can probaby be replaced with statrc ones,
+* same for strings inside toString() methods. It could help avoid continous reallocation of memory,
+* add Sublime Text settings for displaying line at 120 signs and make sure that nowhere that limit
+  is exceeded,
+* add Condition to set calculations accuracy.
