@@ -9,14 +9,14 @@ namespace GTL {
 // public:
 
 CheckingDriver::CheckingDriver(
-    std::ostream* newOutputStream
+    std::ostream* newErrorStream
 ) :
     coordinate(this),
     condition(this),
     game(this),
     value(this),
     statement(this),
-    outputStream(newOutputStream)
+    errorStream(newErrorStream)
     {}
 
 CoordinateDriver& CheckingDriver::forCoordinate() {
@@ -59,11 +59,15 @@ StatementDriver& CheckingDriver::forStatement() {
     return statement;
 }
 
+void CheckingDriver::showResult(
+    ResultPtr
+) {}
+
 void CheckingDriver::showError(
     InputLocation& location,
     const Message& message
 ) {
-    if (outputStream) {
+    if (errorStream) {
         std::stringstream builder;
         builder << message << std::endl
                 << "\tat line \"" << location << "\"" << std::endl;
@@ -72,7 +76,7 @@ void CheckingDriver::showError(
         IdentifierPtr name   = createIdentifierPtr("Error");
         MessagePtr    result = createMessagePtr(builder.str());
 
-        (*outputStream) << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
+        (*errorStream) << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
     }
 }
 

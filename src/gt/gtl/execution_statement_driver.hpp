@@ -17,15 +17,18 @@ namespace GTL {
 class ExecutionStatementDriver : public StatementDriver {
     CheckingStatementDriver checkingStatementDriver;
     Driver*                 driver;
+    ContextPtr              context;
 
 public:
     /**
      * @brief Initiates ExecutionStatementDriver with its parent.
      *
      * @param parentDriver parent Driver
+     * @param context      Context data
      */
     ExecutionStatementDriver(
-        Driver* parentDriver
+        Driver*    parentDriver,
+        ContextPtr context
     );
 
     /**

@@ -82,6 +82,10 @@ inline unsigned int TestValueDriverImpl::getUsedParameters() {
 // class TestDriverImpl {
 // public:
 
+inline unsigned int TestDriverImpl::getShownResults() {
+    return shownResults;
+}
+
 inline unsigned int TestDriverImpl::getShownErrors() {
     return shownErrors;
 }

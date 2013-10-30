@@ -25,16 +25,16 @@ class CheckingDriver : public Driver {
     CheckingValueDriver                    value;
     CheckingStatementDriver                statement;
 
-    std::ostream*                          outputStream;
+    std::ostream*                          errorStream;
 
 public:
     /**
      * @brief Initiates CheckingDriver with a output stream.
      *
-     * @param output stream
+     * @param errorStream error stream
      */
     CheckingDriver(
-        std::ostream* outputStram
+        std::ostream* errorStream
     );
 
     /**
@@ -106,6 +106,15 @@ public:
      * @return StatementDriver
      */
     virtual StatementDriver& forStatement();
+
+    /**
+     * @brief Displays results.
+     *
+     * @param result Result to show
+     */
+    virtual void showResult(
+        ResultPtr result
+    );
 
     /**
      * @brief Displays error.

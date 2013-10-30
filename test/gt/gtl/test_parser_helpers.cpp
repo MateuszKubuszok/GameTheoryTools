@@ -172,6 +172,7 @@ GT::GTL::ParamPtr* TestValueDriverImpl::get(
 // public:
 
 TestDriverImpl::TestDriverImpl() :
+    shownResults(0),
     shownErrors(0)
     {}
 
@@ -213,6 +214,12 @@ GT::GTL::ValueDriver& TestDriverImpl::forValue() {
 
 GT::GTL::StatementDriver& TestDriverImpl::forStatement() {
     return statement;
+}
+
+void TestDriverImpl::showResult(
+    GT::GTL::ResultPtr
+) {
+    shownResults++;
 }
 
 void TestDriverImpl::showError(

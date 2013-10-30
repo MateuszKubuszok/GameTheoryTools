@@ -9,10 +9,12 @@ namespace GTL {
 // public:
 
 ExecutionStatementDriver::ExecutionStatementDriver(
-    Driver* parentDriver
+    Driver*    parentDriver,
+    ContextPtr parentContext
 ) :
     checkingStatementDriver(parentDriver),
-    driver(parentDriver)
+    driver(parentDriver),
+    context(parentContext)
     {}
 
 bool ExecutionStatementDriver::executeDefinition(
@@ -20,7 +22,9 @@ bool ExecutionStatementDriver::executeDefinition(
 ) {
     if (!checkingStatementDriver.executeDefinition(definitionPtr))
         return false;
-    // EXECUTE DEFINITION
+
+    context->registerParam(*definitionPtr);
+
     return true;
 }
 
@@ -29,7 +33,11 @@ bool ExecutionStatementDriver::executeQuery(
 ) {
     if (!checkingStatementDriver.executeQuery(queryPtr))
         return false;
-    // EXECUTE QUERY
+
+    Query& query = **queryPtr;
+
+    driver->showResult(query.execute(*context));
+
     return true;
 }
 
@@ -42,12 +50,12 @@ DefinitionPtr* ExecutionStatementDriver::createDefinition(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Identifier& identifier = **identifierPtr;
-    // Object&     object     = **objectPtr;
+    IdentifierPtr& identifier = *identifierPtr;
+    ObjectPtr&     object     = *objectPtr;
 
     return new DefinitionPtr(
         setupLocation<Definition>(
-            NullFactory::getInstance().createDefinition(),
+            DefinitionPtr(new Definition(identifier, ParamFactory::getInstance().createParam(object))),
             inputLocation
         )
     );
@@ -63,13 +71,13 @@ QueryPtr* ExecutionStatementDriver::createQuery(
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
-    // Identifiers& identifiers = **identifiersPtr;
-    // Objects&     objects     = **objectsPtr;
-    // Conditions&  conditions  = **conditionsPtr;
+    IdentifiersPtr& identifiers = *identifiersPtr;
+    ObjectsPtr&     objects     = *objectsPtr;
+    ConditionsPtr&  conditions  = *conditionsPtr;
 
     return new QueryPtr(
         setupLocation<Query>(
-            NullFactory::getInstance().createQuery(),
+            QueryPtr(new Query(identifiers, objects, conditions)),
             inputLocation
         )
     );

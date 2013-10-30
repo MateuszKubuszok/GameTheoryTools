@@ -17,6 +17,8 @@ class ExecutionDriver : public Driver {
     CheckingDriver checkingDriver;
     ContextPtr     context;
 
+    std::ostream* outputStream;
+
     ExecutionCoordinateDriver              coordinate;
     CollectionsDriver<GT::GTL::Coordinate> coordinates;
     ExecutionConditionDriver               condition;
@@ -32,10 +34,12 @@ public:
     /**
      * @brief Initiates ExecutionDriver with a output stream.
      *
-     * @param output stream
+     * @param outputStream output stream
+     * @param errorStream  error stream
      */
     ExecutionDriver(
-        std::ostream* outputStram
+        std::ostream* outputStream,
+        std::ostream* errorStream
     );
 
     /**
@@ -107,6 +111,15 @@ public:
      * @return StatementDriver
      */
     virtual StatementDriver& forStatement();
+
+    /**
+     * @brief Displays results.
+     *
+     * @param result Result to show
+     */
+    virtual void showResult(
+        ResultPtr result
+    );
 
     /**
      * @brief Displays error.

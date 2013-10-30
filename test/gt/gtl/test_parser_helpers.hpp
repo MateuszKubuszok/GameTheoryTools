@@ -167,6 +167,7 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 class TestDriverImpl : public GT::GTL::Driver {
+    unsigned int shownResults;
     unsigned int shownErrors;
 
 public:
@@ -203,6 +204,10 @@ public:
 
     virtual GT::GTL::StatementDriver& forStatement();
 
+    virtual void showResult(
+        GT::GTL::ResultPtr result
+    );
+
     virtual void showError(
         GT::GTL::InputLocation&,
         const GT::Message&
@@ -211,6 +216,8 @@ public:
     virtual void showError(
         GT::GTL::ValidableSymbol&
     );
+
+    inline unsigned int getShownResults();
 
     inline unsigned int getShownErrors();
 

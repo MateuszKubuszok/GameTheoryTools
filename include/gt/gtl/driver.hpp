@@ -89,6 +89,15 @@ public:
     virtual StatementDriver& forStatement() = 0;
 
     /**
+     * @brief Displays results.
+     *
+     * @param result Result to show
+     */
+    virtual void showResult(
+        ResultPtr result
+    ) = 0;
+
+    /**
      * @brief Displays error.
      *
      * @param location error's location
@@ -188,6 +197,10 @@ public:
     virtual StatementDriver& forStatement() {
         return *statement;
     }
+
+    virtual void showResult(
+        ResultPtr
+    ) {}
 
     virtual void showError(
         InputLocation&,

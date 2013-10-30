@@ -9,15 +9,17 @@ namespace GTL {
 // public:
 
 ExecutionDriver::ExecutionDriver(
-    std::ostream* newOutputStream
+    std::ostream* newOutputStream,
+    std::ostream* newErrorStream
 ) :
-    checkingDriver(newOutputStream),
+    checkingDriver(newErrorStream),
     context(new Context()),
+    outputStream(newOutputStream),
     coordinate(this),
     condition(this),
     game(this, context),
     value(this),
-    statement(this)
+    statement(this, context)
     {}
 
 CoordinateDriver& ExecutionDriver::forCoordinate() {
@@ -58,6 +60,13 @@ ValueDriver& ExecutionDriver::forValue() {
 
 StatementDriver& ExecutionDriver::forStatement() {
     return statement;
+}
+
+void ExecutionDriver::showResult(
+    ResultPtr result
+) {
+    if (outputStream)
+        (*outputStream) << result->getResult();
 }
 
 void ExecutionDriver::showError(
