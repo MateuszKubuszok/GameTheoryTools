@@ -22,7 +22,6 @@ class ExtensiveDataBuilder : public DataBuilder {
     ExtensiveDataPtr data;
 
     PlayersPtr players;
-
     Positions  currentPositions;
 
     Index      depthValue;

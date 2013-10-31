@@ -26,7 +26,6 @@ namespace Model {
 class ExtensiveData : public Data {
     PlayersPtr           players;
     ExtensiveDataNodePtr root;
-    PlayersInTurnsPtr    playersInTurns;
 
 public:
     /**
@@ -46,11 +45,48 @@ public:
     virtual PlayersPtr getPlayers();
 
     /**
-     * @brief Returns PlayersInTurns definitions.
+     * @brief Returns Player that plays for given position.
      *
-     * @return PlayersInTurns
+     * @param positions Positions in payoff storage
+     * @return          Player that plays given position
      */
-    virtual PlayersInTurnsPtr getPlayersInTurns();
+    virtual PlayerPtr getPlayerInTurn(
+        Positions& positions
+    );
+
+    /**
+     * @brief Returns Player that plays for given position.
+     *
+     * @param positions Positions in payoff storage
+     * @return          Player that plays given position
+     */
+    virtual PlayerPtr getPlayerInTurn(
+        PositionsPtr positions
+    );
+
+    /**
+     * @brief Sets Player that plays for given position.
+     *
+     * @param positions Positions for which player Player
+     * @param player    Player that plays given position
+     * @return          reference ot itdelf for chaining
+     */
+    virtual Data& setPlayerInTurn(
+        Positions& positions,
+        PlayerPtr  player
+    );
+
+    /**
+     * @brief Sets Player that plays for given position.
+     *
+     * @param positions Positions for which player Player
+     * @param player    Player that plays given position
+     * @return          reference ot itdelf for chaining
+     */
+    virtual Data& setPlayerInTurn(
+        PositionsPtr positions,
+        PlayerPtr    player
+    );
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -128,9 +164,11 @@ public:
 
     /**
      * @brief Returns ExtensiveData Message.
+
      *
      * @return Message
      */
+
     virtual Message toString();
 }; /* END class ExtensiveData */
 
@@ -151,8 +189,16 @@ public:
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual PlayersInTurnsPtr getPlayersInTurns() {
-        return PlayersInTurnsPtr(new PlayersInTurns());
+    virtual PlayerPtr getPlayerInTurn(
+        Positions&
+    ) {
+        return NullFactory::getInstance().createPlayer();
+    }
+
+    virtual PlayerPtr getPlayerInTurn(
+        PositionsPtr
+    ) {
+        return NullFactory::getInstance().createPlayer();
     }
 
     virtual DataPiecePtr getValues(

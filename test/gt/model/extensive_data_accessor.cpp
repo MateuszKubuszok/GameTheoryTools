@@ -53,6 +53,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_functional ) {
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, *s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, *s2) );
+
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, *s1) );
     p11.insert( GT::Positions::value_type(l2, *s1) );
@@ -80,10 +86,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_functional ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+
+    extensiveData->setPlayerInTurn(plRoot, player1);
+    extensiveData->setPlayerInTurn(pl11, player2);
+    extensiveData->setPlayerInTurn(pl12, player2);
+
     extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -125,6 +134,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, *s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, *s2) );
+
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, *s1) );
     p11.insert( GT::Positions::value_type(l2, *s1) );
@@ -152,10 +167,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+
+    extensiveData->setPlayerInTurn(plRoot, player1);
+    extensiveData->setPlayerInTurn(pl11, player2);
+    extensiveData->setPlayerInTurn(pl12, player2);
+
     extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -197,6 +215,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, *s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, *s2) );
+
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, *s1) );
     p11.insert( GT::Positions::value_type(l2, *s1) );
@@ -224,10 +248,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
     payoff22->push_back(GT::createNumberPtr(80));
 
     GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+
+    extensiveData->setPlayerInTurn(plRoot, player1);
+    extensiveData->setPlayerInTurn(pl11, player2);
+    extensiveData->setPlayerInTurn(pl12, player2);
+
     extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
 
     GT::Positions pos1 = GT::createPositions();
     pos1.insert( GT::Positions::value_type(*p1, *s1) );
@@ -280,6 +307,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, *s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, *s2) );
+
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, *s1) );
     p11.insert( GT::Positions::value_type(l2, *s1) );
@@ -307,10 +340,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("1", player1) );
-    extensiveData->getPlayersInTurns()->insert( GT::Model::PlayersInTurns::value_type("2", player2) );
+
+    extensiveData->setPlayerInTurn(plRoot, player1);
+    extensiveData->setPlayerInTurn(pl11, player2);
+    extensiveData->setPlayerInTurn(pl12, player2);
+
     extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-             .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -321,7 +357,17 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
         GT::Message() +
         "Extensive Data Accessor:\n"
         "\tExtensiveData:\n"
+        "\t\tPlayer:\n"
+        "\t\t\t0:\n"
+        "\t\t\t\ts1\n"
+        "\t\t\t1:\n"
+        "\t\t\t\ts2\n"
         "\t\ts1:\n"
+        "\t\t\tPlayer:\n"
+        "\t\t\t\t0:\n"
+        "\t\t\t\t\ts1\n"
+        "\t\t\t\t1:\n"
+        "\t\t\t\t\ts2\n"
         "\t\t\ts1:\n"
         "\t\t\t\tValue:\n"
         "\t\t\t\t\t10\n"
@@ -333,6 +379,11 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
         "\t\t\t\tValue:\n"
         "\t\t\t\t\t40\n"
         "\t\ts2:\n"
+        "\t\t\tPlayer:\n"
+        "\t\t\t\t0:\n"
+        "\t\t\t\t\ts1\n"
+        "\t\t\t\t1:\n"
+        "\t\t\t\t\ts2\n"
         "\t\t\ts1:\n"
         "\t\t\t\tValue:\n"
         "\t\t\t\t\t50\n"

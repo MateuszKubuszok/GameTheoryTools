@@ -28,8 +28,7 @@ DataBuilder& ExtensiveDataBuilder::setPlayers(
     PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
-        throw ExceptionFactory::getInstance()
-                .playersAlreadySet();
+        throw ExceptionFactory::getInstance().playersAlreadySet();
 
     data    = ExtensiveDataPtr(new ExtensiveData(newPlayers));
     players = newPlayers;
@@ -43,16 +42,18 @@ DataBuilder& ExtensiveDataBuilder::addNextPositions(
     if (positions->size() != 1)
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
 
-    PlayersInTurnsPtr playersInTurns  = data->getPlayersInTurns();
-    Identifier        currentPlayer   = positions->begin()->first;
-    Identifier        currentStrategy = positions->begin()->second;
-    if (playersInTurns->count(depthName) && (*(*playersInTurns)[depthName]->getName()) != currentPlayer)
+    Identifier player   = positions->begin()->first;
+    Identifier strategy = positions->begin()->second;
+
+    PlayerPtr currentPlayer = data->getPlayerInTurn(currentPositions);
+
+    if (currentPlayer->isNull()) {
+        data->setPlayerInTurn(currentPositions, (*players)[player]);
+        currentPlayer = (*players)[player];
+    } else if ((*currentPlayer->getName()) != player)
         throw ExceptionFactory::getInstance().invalidExtensiveCoordinateFormat(*positions);
 
-    if (!playersInTurns->count(depthName))
-        playersInTurns->insert( PlayersInTurns::value_type(depthName, (*players)[currentPlayer]) );
-
-    currentPositions.insert( Positions::value_type(depthName, currentStrategy) );
+    currentPositions.insert( Positions::value_type(depthName, strategy) );
     depthName = createIdentifier(++depthValue);
 
     return *this;

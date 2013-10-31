@@ -110,7 +110,13 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createExtensive ) {
         GT::Message() +
         "Extensive Game:\n"
         "\tExtensiveData:\n"
+        "\t\tPlayer:\n"
+        "\t\t\t0:\n"
+        "\t\t\t\tp1s1\n"
         "\t\tp1s1:\n"
+        "\t\t\tPlayer:\n"
+        "\t\t\t\t0:\n"
+        "\t\t\t\t\tp2s1\n"
         "\t\t\tp2s1:\n"
         "\t\t\t\tValue:\n"
         "\t\t\t\t\t10\n"

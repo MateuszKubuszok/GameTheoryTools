@@ -2,12 +2,39 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveDataNode )
 
+BOOST_AUTO_TEST_CASE( ExtensiveDataNode_setPlayer_getPlayer ) {
+    // given
+    GT::Model::PlayerPtr player = GT::Model::NullFactory::getInstance().createPlayer();
+
+    // when
+    GT::Model::ExtensiveDataNode root;
+    root.setPlayer(player);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        root.getPlayer(),
+        player
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
     // given
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
     GT::Identifier s1 = GT::createIdentifier("s1");
     GT::Identifier s2 = GT::createIdentifier("s2");
+
+    GT::IdentifierPtr  p          = GT::createIdentifierPtr("p");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back(GT::createIdentifierPtr(s1));
+    strategies->push_back(GT::createIdentifierPtr(s2));
+    GT::Model::PlayerPtr  player(new GT::Model::Player(p, strategies));
+
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, s2) );
 
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, s1) );
@@ -37,8 +64,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
 
     // when
     GT::Model::ExtensiveDataNode root;
+
+    root.setPlayer( plRoot, player )
+        .setPlayer( pl11,   player ).setPlayer( pl12, player );
+
     root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
         .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+
     GT::NumbersPtr got11 = root.getValues(p11);
     GT::NumbersPtr got12 = root.getValues(p12);
     GT::NumbersPtr got21 = root.getValues(p21);
@@ -74,6 +106,18 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     GT::Identifier s1 = GT::createIdentifier("s1");
     GT::Identifier s2 = GT::createIdentifier("s2");
 
+    GT::IdentifierPtr  p          = GT::createIdentifierPtr("p");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back(GT::createIdentifierPtr(s1));
+    strategies->push_back(GT::createIdentifierPtr(s2));
+    GT::Model::PlayerPtr  player(new GT::Model::Player(p, strategies));
+
+    GT::Positions plRoot = GT::createPositions();
+    GT::Positions pl11 = GT::createPositions();
+    pl11.insert( GT::Positions::value_type(l1, s1) );
+    GT::Positions pl12 = GT::createPositions();
+    pl12.insert( GT::Positions::value_type(l1, s2) );
+
     GT::Positions p11 = GT::createPositions();
     p11.insert( GT::Positions::value_type(l1, s1) );
     p11.insert( GT::Positions::value_type(l2, s1) );
@@ -102,8 +146,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
 
     // when
     GT::Model::ExtensiveDataNode root;
+
+    root.setPlayer( plRoot, player )
+        .setPlayer( pl11,   player ).setPlayer( pl12, player );
+
     root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
         .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+
     GT::NumbersPtr got11 = root.getValues(p11);
     GT::NumbersPtr got12 = root.getValues(p12);
     GT::NumbersPtr got21 = root.getValues(p21);
@@ -113,7 +162,17 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     BOOST_CHECK_EQUAL(
         root.toString(),
         GT::Message() +
+        "Player:\n"
+        "\t0:\n"
+        "\t\ts1\n"
+        "\t1:\n"
+        "\t\ts2\n"
         "s1:\n"
+        "\tPlayer:\n"
+        "\t\t0:\n"
+        "\t\t\ts1\n"
+        "\t\t1:\n"
+        "\t\t\ts2\n"
         "\ts1:\n"
         "\t\tValue:\n"
         "\t\t\t10\n"
@@ -125,6 +184,11 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
         "\t\tValue:\n"
         "\t\t\t40\n"
         "s2:\n"
+        "\tPlayer:\n"
+        "\t\t0:\n"
+        "\t\t\ts1\n"
+        "\t\t1:\n"
+        "\t\t\ts2\n"
         "\ts1:\n"
         "\t\tValue:\n"
         "\t\t\t50\n"

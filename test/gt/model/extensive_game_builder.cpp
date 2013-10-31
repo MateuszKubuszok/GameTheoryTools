@@ -59,6 +59,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_functional ) {
     GT::Model::ExtensiveGameBuilder extensiveGameBuilder;
     extensiveGameBuilder.setPlayers(players);
 
+    GT::Model::DataBuilderPtr builder;
+
     extensiveGameBuilder.clone()->addNextPositions(positions1).addNextPositions(positions2).setParams(params1);
     extensiveGameBuilder.clone()->addNextPositions(positions2).addNextPositions(positions1).setParams(params2);
 
@@ -72,11 +74,26 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_functional ) {
         data->toString(),
         GT::Message() +
         "ExtensiveData:\n"
+        "\tPlayer:\n"
+        "\t\t0:\n"
+        "\t\t\tp1s1\n"
+        "\t\t1:\n"
+        "\t\t\tp1s2\n"
         "\tp1s1:\n"
+        "\t\tPlayer:\n"
+        "\t\t\t0:\n"
+        "\t\t\t\tp1s1\n"
+        "\t\t\t1:\n"
+        "\t\t\t\tp1s2\n"
         "\t\tp1s2:\n"
         "\t\t\tValue:\n"
         "\t\t\t\t10\n"
         "\tp1s2:\n"
+        "\t\tPlayer:\n"
+        "\t\t\t0:\n"
+        "\t\t\t\tp1s1\n"
+        "\t\t\t1:\n"
+        "\t\t\t\tp1s2\n"
         "\t\tp1s1:\n"
         "\t\t\tValue:\n"
         "\t\t\t\t20\n"

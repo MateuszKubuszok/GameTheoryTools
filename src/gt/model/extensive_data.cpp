@@ -12,26 +12,53 @@ ExtensiveData::ExtensiveData(
     PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
-    root(new ExtensiveDataNode()),
-    playersInTurns(new PlayersInTurns())
+    root(new ExtensiveDataNode())
     {}
 
 PlayersPtr ExtensiveData::getPlayers() {
     return players;
 }
 
-PlayersInTurnsPtr ExtensiveData::getPlayersInTurns() {
-    return playersInTurns;
+PlayerPtr ExtensiveData::getPlayerInTurn(
+    Positions& positions
+) {
+    return root->getPlayer(positions);
+}
+
+PlayerPtr ExtensiveData::getPlayerInTurn(
+    PositionsPtr positions
+) {
+    return getPlayerInTurn(*positions);
+}
+
+Data& ExtensiveData::setPlayerInTurn(
+    Positions& positions,
+    PlayerPtr  player
+) {
+    root->setPlayer(positions, player);
+    return *this;
+}
+
+Data& ExtensiveData::setPlayerInTurn(
+    PositionsPtr positions,
+    PlayerPtr   player
+) {
+    return setPlayerInTurn(*positions, player);
 }
 
 DataPiecePtr ExtensiveData::getValues(
     Positions& positions
 ) {
+    Positions checkedPositions;
+
     for (Positions::value_type& position : positions) {
-        Identifier turn     = position.first;
-        Identifier strategy = position.second;
-        if (!playersInTurns->count(turn) || !(*playersInTurns)[turn]->hasStrategy(strategy))
+        PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
+        Identifier& strategy     = position.second;
+
+        if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
+
+        checkedPositions.insert( position );
     }
 
     NumbersPtr payoff = root->getValues(positions);
@@ -48,11 +75,16 @@ Data& ExtensiveData::setValues(
     Positions& positions,
     NumbersPtr numbers
 ) {
+    Positions checkedPositions;
+
     for (Positions::value_type& position : positions) {
-        Identifier turn     = position.first;
-        Identifier strategy = position.second;
-        if (!playersInTurns->count(turn) || !(*playersInTurns)[turn]->hasStrategy(strategy))
+        PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
+        Identifier& strategy     = position.second;
+
+        if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
+
+        checkedPositions.insert( position );
     }
 
     root->setValues(positions, numbers);
