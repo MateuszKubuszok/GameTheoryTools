@@ -6,9 +6,9 @@
 /**
  * @brief Macro for declaring singletons.
  *
- * Intended to be used like:
+ * <p>Intended to be used like:</p>
  *
- * <pre>
+ * <p><pre>
  * class SingletonImplementation {
  *
  * SINGLETON_DECLARATION(SingletonImplementation)
@@ -23,7 +23,7 @@
  *
  *     ~SingletonImplementation();
  * };
- * </pre>
+ * </pre></p>
  *
  * @param SINGLETON_NAME name of declared singleton
  */
@@ -37,9 +37,9 @@
 /**
  * @brief Macro for defining singletons.
  *
- * Intended to be used like:
+ * <p>Intended to be used like:</p>
  *
- * <pre>
+ * <p><pre>
  * // class SingletonImplementation {
  *
  * SINGLETON_DEFINITION(SingletonImplementation, getInstance)
@@ -55,7 +55,7 @@
  * SingletonImplementation::~SingletonImplementation() {}
  *
  * // }
- * </pre>
+ * </pre></p>
  *
  * @param SINGLETON_NAME    name of defined singleton
  * @param GET_INSTANCE_NAME name of getInstance method
