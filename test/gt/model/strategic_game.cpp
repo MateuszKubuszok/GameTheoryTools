@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( StrategicGame )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( StrategicGame_getPlayers ) {
     // given
     GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
@@ -44,7 +46,7 @@ BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::Model::PlayersPtr       players = GT::Model::NullFactory::getInstance().createPlayers();
     GT::Model::StrategicDataPtr data    = GT::Model::InnerNullFactory::getInstance().createStrategicData();
 
@@ -56,8 +58,10 @@ BOOST_AUTO_TEST_CASE( StrategicGame_toString ) {
         game.toString(),
         GT::Message() +
         "Strategic Game:\n"
-        "\tNullStrategicData\n" 
+        "\tNullStrategicData\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -3,7 +3,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class CheckingDriver {
 // public:
@@ -76,7 +76,8 @@ void CheckingDriver::showError(
         IdentifierPtr name   = createIdentifierPtr("Error");
         MessagePtr    result = createMessagePtr(builder.str());
 
-        (*errorStream) << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
+        (*errorStream)
+            << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
     }
 }
 
@@ -92,7 +93,7 @@ Message CheckingDriver::toString() {
 
 // }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

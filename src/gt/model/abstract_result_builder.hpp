@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Common base class of all actual implemetations used in Model.
@@ -18,9 +18,9 @@ namespace Model {
 class AbstractResultBuilder : public ResultBuilder {
 public:
     /**
-     * @brief Constructor initiating class with indentation. 
+     * @brief Constructor initiating class with indentation.
      *
-     * @param indentation sequence used for indentation 
+     * @param indentation sequence used for indentation
      */
     explicit AbstractResultBuilder(
         Message indentation
@@ -29,7 +29,7 @@ public:
     /**
      * @brief Sets headers used for displaying records.
      *
-     * <p>Size of headers must match size of each record.</p> 
+     * <p>Size of headers must match size of each record.</p>
      *
      * @param   propertiesNames headers' names that will be used in a Result
      * @return                  refernce to self for chaining
@@ -41,7 +41,7 @@ public:
     );
 
     /**
-     * @brief Adds record to displayed Result. 
+     * @brief Adds record to displayed Result.
      *
      * <p>Results size must match headers size.</p>
      *
@@ -59,7 +59,7 @@ public:
     /**
      * @brief Adds single named subresult.
      *
-     * @param name   name subresult is build 
+     * @param name   name subresult is build
      * @param result subresult
      * @result       reference for itself for chaining
      */
@@ -70,10 +70,9 @@ public:
 
     /**
      * @brief Build Result.
-     * 
+     *
      * @return                   Result
-     * @throw IllegalInnerState  thrown when number of Messages for any Object
-     *                           does not match number of properties
+     * @throw IllegalInnerState  thrown when number of Messages of any Object does not match properties' one
      *
      * @see #buildRaw()
      */
@@ -81,10 +80,9 @@ public:
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
-     * 
+     *
      * @return                   Result
-     * @throw IllegalInnerState  thrown when number of Messages for any Object
-     *                           does not match number of properties
+     * @throw IllegalInnerState  thrown when number of Messages of any Object does not match properties' one
      *
      * @see #build()
      */
@@ -104,7 +102,7 @@ protected:
     typedef boost::container::vector<PartialResult> PartialResults;
     typedef std::pair<IdentifierPtr, MessagePtr>    SubResult;
     typedef boost::container::vector<SubResult>     SubResults;
-    
+
     IdentifiersPtr propertiesNames;
     PartialResults partialResults;
     SubResults     subResults;
@@ -112,7 +110,7 @@ protected:
 
     /**
      * @brief Check whether all records has the same size as headers.
-     * 
+     *
      * @throw IllegalInnerState thrown when some record does not match headers size
      */
     void checkPropertyToResultMatching();
@@ -120,7 +118,7 @@ protected:
     /**
      * @brief Adds indent to the beginning of each line of passes content.
      *
-     * @param content content that should be indented 
+     * @param content content that should be indented
      * @return        indented content
      */
     Message addIndent(
@@ -128,7 +126,7 @@ protected:
     );
 }; /* END class AbstractResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

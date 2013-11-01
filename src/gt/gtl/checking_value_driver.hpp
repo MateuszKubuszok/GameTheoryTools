@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Implementation used for handling values via CheckingDriver.
@@ -15,6 +15,9 @@ namespace GTL {
  * @see ValueDriver
  */
 class CheckingValueDriver : public ValueDriver {
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver* driver;
 
 public:
@@ -60,7 +63,7 @@ public:
     virtual ObjectPtr* toObject(
         GamePtr* game
     );
-    
+
     /**
      * @brief Converts passed Player to Object.
      *
@@ -89,7 +92,7 @@ public:
     virtual Message toString();
 }; /* END class CheckingValueDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

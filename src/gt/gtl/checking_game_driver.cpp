@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class CheckingGameDriver {
+// class CheckingGameDriver : public GameDriver {
 // public:
 
 CheckingGameDriver::CheckingGameDriver(
@@ -21,6 +21,7 @@ GamePtr* CheckingGameDriver::createStrategic(
     Details& details = **detailsPtr;
 
     if (!details) {
+        // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
             "Invalid Details: " + details.toString();
         return new GamePtr(
@@ -46,6 +47,7 @@ GamePtr* CheckingGameDriver::createExtensive(
     Details& details = **detailsPtr;
 
     if (!details) {
+        // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
             "Invalid Details: " + details.toString();
         return new GamePtr(
@@ -77,6 +79,7 @@ DetailsPtr* CheckingGameDriver::createDetails(
         Player& player       = objectPlayer;
         Param&  param        = objectPlayer;
         if (!player && !param) {
+            // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
                 "Invalid Player: " + player.toString();
             return new DetailsPtr(
@@ -91,6 +94,7 @@ DetailsPtr* CheckingGameDriver::createDetails(
     for (CoordinatePtr& coordinatePtr : coordinates) {
         Coordinate& coorinate = *coordinatePtr;
         if (!coorinate) {
+            // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
                 "Invalid Data: " + coorinate.toString();
             return new DetailsPtr(
@@ -127,9 +131,9 @@ Message CheckingGameDriver::toString() {
     return Message("CheckingGameDriver");
 }
 
-// }
+// }; /* END class CheckingGameDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

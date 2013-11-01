@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Helper used to create data for Games.
@@ -14,7 +14,7 @@ namespace Model {
 class DataBuilder : public virtual Root {
 public:
     /**
-     * @brief Sets Players defined for Game. 
+     * @brief Sets Players defined for Game.
      *
      * @param players           Players
      * @return                  reference to itself
@@ -25,7 +25,7 @@ public:
     ) = 0;
 
     /**
-     * @brief Adds next positions to Data. 
+     * @brief Adds next positions to Data.
      *
      * @param positions         Positions
      * @return                  reference to itself
@@ -37,7 +37,7 @@ public:
     ) = 0;
 
     /**
-     * @brief Sets Params with values. 
+     * @brief Sets Params with values.
      *
      * @param params            Params
      * @return                  reference to itself
@@ -63,7 +63,7 @@ public:
     virtual Message toString() = 0;
 }; /* END class DataBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null DataBuilder for handling invalid situations.
@@ -103,7 +103,7 @@ public:
     }
 }; /* END class NullDataBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

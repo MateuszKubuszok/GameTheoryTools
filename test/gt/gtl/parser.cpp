@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Parser )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Parser_emptyProgramIsValid  ) {
     // given
@@ -205,7 +205,8 @@ BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
     BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parser 1 query
-    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 9 ); // created 9 parameters from numbers (8) nad identifiers (1)
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 9 ); // created 9 parameters from numbers (8)
+                                                              // and identifiers (1)
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 5 ); // crated 5 players
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
     BOOST_CHECK_EQUAL( driver.game.getCreatedExtensiveGames(), 1 ); // created 1 extensive game
@@ -234,7 +235,8 @@ BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
     BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parser 1 query
-    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 5 ); // created 5 parameters from numbers (4) nad identifiers (1)
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 5 ); // created 5 parameters from numbers (4)
+                                                              // and identifiers (1)
 }
 
 BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
@@ -306,7 +308,8 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
     BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
     BOOST_CHECK_EQUAL( driver.statement.getExecutedDefinitions(), 2 ); // parsed 2 definitions
     BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parsed 1 query
-    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers (2) and identifiers (2)
+    BOOST_CHECK_EQUAL( driver.value.getUsedParameters(), 4 ); // created 4 parameters from numbers (2)
+                                                              // and identifiers (2)
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // crated 2 players
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
 }
@@ -335,6 +338,6 @@ BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedPlayers(), 2 ); // created 2 players
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

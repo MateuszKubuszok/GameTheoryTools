@@ -1,18 +1,17 @@
-// class TestConditionDriverImpl {
+// class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
 // public:
 
 inline unsigned int TestConditionDriverImpl::getCreatedConditions() {
     return createdConditions;
 }
 
-// }
+// }; /* END class TestConditionDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// class TestCoordinateDriverImpl {
+// class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
 // public:
-
 
 inline unsigned int TestCoordinateDriverImpl::getCreatedCoordinates() {
     return createdCoordinates;
@@ -26,11 +25,11 @@ inline  unsigned int TestCoordinateDriverImpl::getMergeCoordinates() {
     return mergedCoordinates;
 }
 
-// }
+// }; /* END class TestCoordinateDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestGameDriverImpl {
+// class TestGameDriverImpl : public GT::GTL::NullGameDriver {
 // public:
 
 inline unsigned int TestGameDriverImpl::getCreatedStrategicGames() {
@@ -49,11 +48,11 @@ inline unsigned int TestGameDriverImpl::getCreatedPlayers() {
     return createdPlayers;
 }
 
-// }
+// }; /* END class TestGameDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestStatementDriverImpl {
+// class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
 // public:
 
 inline unsigned int TestStatementDriverImpl::getExecutedDefinitions() {
@@ -64,22 +63,22 @@ inline unsigned int TestStatementDriverImpl::getExecutedQueries() {
     return executedQueries;
 }
 
-// }
+// }; /* END class TestStatementDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestValueDriverImpl {
+// class TestValueDriverImpl : public GT::GTL::NullValueDriver {
 // public:
 
 inline unsigned int TestValueDriverImpl::getUsedParameters() {
     return usedParameters;
 }
 
-// }
+// }; /* END class TestValueDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestDriverImpl {
+// class TestDriverImpl : public GT::GTL::Driver {
 // public:
 
 inline unsigned int TestDriverImpl::getShownResults() {
@@ -90,4 +89,4 @@ inline unsigned int TestDriverImpl::getShownErrors() {
     return shownErrors;
 }
 
-// }
+// }; /* END class TestDriverImpl */

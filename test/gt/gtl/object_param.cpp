@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( ObjectParam )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context&   context    = *contextPtr;
     GT::GTL::ObjectPtr  objectPtr  = GT::GTL::NullFactory::getInstance().createObject();
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
 
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::GTL::ObjectPtr objectPtr  = GT::GTL::NullFactory::getInstance().createObject();
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
 
@@ -41,10 +41,10 @@ BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
         param->toString(),
         GT::Message() +
         "ObjectParam:\n"
-        "\tNullObject\n" 
+        "\tNullObject\n"
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

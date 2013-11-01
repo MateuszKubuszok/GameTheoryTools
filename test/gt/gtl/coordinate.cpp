@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Coordinate )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Coordinate_addParam_addParams_getParams ) {
     // given
@@ -89,8 +89,12 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
     GT::GTL::PlayerPtr player2(new GT::GTL::Player(player2Name, strategies2));
 
     GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type(*player1Name, boost::dynamic_pointer_cast<GT::Model::Player>(player1)) );
-    players->insert( GT::Model::Players::value_type(*player2Name, boost::dynamic_pointer_cast<GT::Model::Player>(player2)) );
+    players->insert(
+        GT::Model::Players::value_type(*player1Name, boost::dynamic_pointer_cast<GT::Model::Player>(player1))
+    );
+    players->insert(
+        GT::Model::Players::value_type(*player2Name, boost::dynamic_pointer_cast<GT::Model::Player>(player2))
+    );
 
     GT::GTL::ParamsPtr payoff(new GT::GTL::Params());
     payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
@@ -112,7 +116,8 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
     coordinate1->addSubCoordinate(coordinate2);
     coordinate1->fillDataBuilder(context, dataBuilder);
 
-    GT::Model::DataPtr data = boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(dataBuilder)->build();
+    GT::Model::DataPtr data =
+        boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(dataBuilder)->build();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -209,6 +214,6 @@ BOOST_AUTO_TEST_CASE( Coordinate_operatorOverload ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

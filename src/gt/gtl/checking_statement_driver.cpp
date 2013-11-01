@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class CheckingStatementDriver {
+// class CheckingStatementDriver : StatementDriver {
 // public:
 
 CheckingStatementDriver::CheckingStatementDriver(
@@ -41,6 +41,7 @@ DefinitionPtr* CheckingStatementDriver::createDefinition(
     Object&     object     = **objectPtr;
 
     if (!object) {
+        // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
             "Count not define parameter '" + identifier + "': " + object.toString();
         return new DefinitionPtr(
@@ -84,6 +85,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
             Identifier& property = *propertyPtr;
 
             if (!object.respondsTo(property)) {
+                // TODO: create ErrorMessageFactory
                 Message errorMessage = Message() +
                     "Object: " + object.toString() + '\n' +
                     "has no property: " + property;
@@ -101,6 +103,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
         Condition& condition = *conditionPtr;
 
         if (!condition) {
+            // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
                 "Condition is not valid: " + condition.toString();
             return new QueryPtr(
@@ -124,9 +127,9 @@ Message CheckingStatementDriver::toString() {
     return Message("CheckingStatementDriver");
 }
 
-// }
+// }; /* END class CheckingStatementDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

@@ -3,9 +3,9 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class StrategicDataBuilder {
+// class StrategicDataBuilder : public DataBuilder {
 // public:
 
 StrategicDataBuilder::StrategicDataBuilder() :
@@ -32,7 +32,7 @@ DataBuilder& StrategicDataBuilder::setPlayers(
 
     data    = StrategicDataPtr(new StrategicData(newPlayers));
     players = newPlayers;
-    
+
     return *this;
 }
 
@@ -76,9 +76,9 @@ Message StrategicDataBuilder::toString() {
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }
 
-// }
+// }; /* END class StrategicDataBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

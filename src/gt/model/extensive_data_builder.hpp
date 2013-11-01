@@ -4,15 +4,14 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Builder used for creating ExtensiveGame's Data.
  *
- * <p>Games in this form has all payoffs defined in nodes of a game tree.
- * Each level of that tree has assigned Player and for this level. As such
- * coordinates are mapping from turn into choosen strategy instead of
- * Player to strategy mapping.</p>
+ * <p>Games in this form has all payoffs defined in nodes of a game tree. Each level of that tree has assigned
+ * Player and for this level. As such coordinates are mapping from turn into choosen strategy instead
+ * of Player to strategy mapping.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -92,7 +91,7 @@ public:
     virtual Message toString();
 }; /* END class ExtensiveDataBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

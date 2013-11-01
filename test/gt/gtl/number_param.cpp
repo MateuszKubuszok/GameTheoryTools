@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( NumberParam )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( NumberParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context&   context    = *contextPtr;
     GT::NumberPtr       numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::NumberParam(numberPtr));
 
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::NumberPtr numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::NumberParam(numberPtr));
 
@@ -41,10 +41,10 @@ BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
         param->toString(),
         GT::Message() +
         "NumberParam:\n"
-        "\t0\n" 
+        "\t0\n"
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ExecutionStatementDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_executeDefinition ) {
     // given
@@ -10,7 +10,8 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_executeDefinition ) {
     GT::GTL::ContextPtr context(new GT::GTL::Context());
 
     GT::IdentifierPtr name  = GT::createIdentifierPtr("Name");
-    GT::GTL::ParamPtr value = GT::GTL::ParamFactory::getInstance().createParam(GT::createIdentifierPtr("Value"));
+    GT::GTL::ParamPtr value =
+        GT::GTL::ParamFactory::getInstance().createParam(GT::createIdentifierPtr("Value"));
 
     GT::GTL::DefinitionPtr definition(new GT::GTL::Definition(name, value));
 
@@ -70,7 +71,8 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_createDefinition ) {
 
     // when
     GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
-    boost::scoped_ptr<GT::GTL::DefinitionPtr> definitionPtr(statementDriver.createDefinition(*inputLocation, namePtr.get(), valuePtr.get()));
+    boost::scoped_ptr<GT::GTL::DefinitionPtr> definitionPtr(
+        statementDriver.createDefinition(*inputLocation, namePtr.get(), valuePtr.get()));
 
     // then
     BOOST_REQUIRE(definitionPtr);
@@ -108,12 +110,13 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_createQuery ) {
 
     // when
     GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
-    boost::scoped_ptr<GT::GTL::QueryPtr> queryPtr(statementDriver.createQuery(*inputLocation, propertiesPtr.get(), objectsPtr.get(), conditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> queryPtr(statementDriver.createQuery(
+        *inputLocation, propertiesPtr.get(), objectsPtr.get(), conditionsPtr.get()));
 
     // then
     BOOST_REQUIRE(queryPtr);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -1,4 +1,5 @@
-// class CollectionsDriver {
+// template<typename Content>
+// class CollectionsDriver : public virtual Root {
 // public:
 
 template<typename Content>
@@ -31,4 +32,4 @@ Message CollectionsDriver<Content>::toString() {
     return Message("CollectionsDriver");
 }
 
-// }
+// }; /* END class CollectionsDriver */

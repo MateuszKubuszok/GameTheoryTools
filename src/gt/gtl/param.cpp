@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Param
+// class Param : public virtual Object {
 // public:
 
 Param::Param() :
@@ -38,14 +38,15 @@ void Param::checkVisitedIdentifiers(
     VisitedIdentifiers& visitedIdentifiers,
     Identifier&         currentIdentifier
 ) {
-    for (Identifier& visitedIdentifier : visitedIdentifiers) 
+    for (Identifier& visitedIdentifier : visitedIdentifiers)
         if (visitedIdentifier == currentIdentifier)
-            throw ExceptionFactory::getInstance().cyclicIdentifiersFound(visitedIdentifiers, currentIdentifier);
+            throw ExceptionFactory::getInstance()
+                .cyclicIdentifiersFound(visitedIdentifiers, currentIdentifier);
 }
 
-// }
+// }; /* END class Param */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

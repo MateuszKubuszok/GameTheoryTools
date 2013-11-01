@@ -1,4 +1,4 @@
-/******************************* Code for header ****************************/
+ /********************************************* Code for header *********************************************/
 
 %{
 /**
@@ -21,7 +21,7 @@ typedef GT::GTL::Parser::token token;
 
 %}
 
- /**************************** Options and states ****************************/
+ /******************************************** Options and states *******************************************/
 
  /* Lexer's options */
     /* Allow debugging */
@@ -51,6 +51,8 @@ scientific(-?){number}(\.{number})?[eE]{integer}
 identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
+
+ /******************************************** Tokens definitions *******************************************/
 
  /* Keywords and symbols definitions */
 (?i:LET)       { return (token::LET); }
@@ -105,7 +107,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
 
- /*********************** Code after scanner definition **********************/
+ /************************************** Code after scanner definition **************************************/
 
 /**
  * @brief Mock implementation for yyFlexLexer::yylex() - without it compiler throws error.

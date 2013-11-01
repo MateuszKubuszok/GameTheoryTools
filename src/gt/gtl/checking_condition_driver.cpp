@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class CheckingConditionDriver {
+// class CheckingConditionDriver : public ConditionDriver {
 // public:
 
 CheckingConditionDriver::CheckingConditionDriver(
@@ -23,6 +23,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     Object& strategyObject = **strategyPtr;
 
     if (!playerObject) {
+        // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
             "Invalid Object: " + playerObject.toString();
         return new ConditionPtr(
@@ -36,8 +37,8 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     Player& player       = playerObject;
     Param&  playerParam  = playerObject;
     if (!player && !playerParam) {
-        Message errorMessage = Message() +
-            "Object does not define a Player: " + player.toString();
+        // TODO: create ErrorMessageFactory
+        Message errorMessage = Message() + "Object does not define a Player: " + player.toString();
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
@@ -48,6 +49,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
 
     Param& strategyParam = strategyObject;
     if (!strategyParam) {
+        // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
             "Object does not define a Param with strategy: " + strategyParam.toString();
         return new ConditionPtr(
@@ -70,7 +72,7 @@ Message CheckingConditionDriver::toString() {
     return Message("CheckingConditionDriver");
 }
 
-// }
+// }; /* END class CheckingConditionDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
 

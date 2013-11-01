@@ -1,13 +1,19 @@
 #ifndef __GT_GTL_COMMON_HPP__
 #define __GT_GTL_COMMON_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Includes standard libraries */
+#include <iostream>
+#include <fstream>
+
 /* Includes GT model headers  */
 #include "gt/model/common.hpp"
 
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Exceptions declarations */
 
@@ -30,7 +36,7 @@ class Query;             class NullQuery;            class ErrorQuery;
 
 class Context;           class NullContext;
 
-class location; 
+class location;
 class Parser;
 class Scanner;
 class Driver;            class NullDriver;
@@ -43,7 +49,7 @@ class StatementDriver;   class NullStatementDriver;
 template <typename Content> class CollectionsDriver;
 template <typename Content> class NullCollectionsDriver;
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Shortens commonly used names */
 
@@ -78,11 +84,10 @@ typedef boost::shared_ptr<GameDriver>                 GameDriverPtr;
 typedef boost::shared_ptr<ValueDriver>                ValueDriverPtr;
 typedef boost::shared_ptr<StatementDriver>            StatementDriverPtr;
 
-template<typename Content>
-using CollectionsDriverPtr = boost::shared_ptr<CollectionsDriver<Content>>;
+template<typename Content> using CollectionsDriverPtr = boost::shared_ptr<CollectionsDriver<Content>>;
 
 typedef location                                      InputLocation;
-typedef boost::shared_ptr<InputLocation>              InputLocationPtr; 
+typedef boost::shared_ptr<InputLocation>              InputLocationPtr;
 
 typedef Model::Root                                   Root;
 typedef Model::Result                                 Result;
@@ -100,12 +105,12 @@ bool operator!=(Objects&     objects1,     Objects&     objects2);
 bool operator==(Params&      params1,      Params&      params2);
 bool operator!=(Params&      params1,      Params&      params2);
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Includes GTL elements headers */
 
@@ -144,6 +149,6 @@ bool operator!=(Params&      params1,      Params&      params2);
 #include "gt/gtl/parser.hpp"
 #include "gt/gtl/scanner.hpp"
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #endif /* END #ifndef __GT_GTL_COMMON_HPP__ */

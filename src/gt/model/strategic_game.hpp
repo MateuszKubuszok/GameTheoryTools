@@ -4,14 +4,13 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Defnies StrategicGame.
  *
- * <p>Games in this form should have all coordinates filled with payoffs. Since
- * all Players and their strategies are known beforehand, positions can also
- * be hashed to Indexes with PositionsHelper.</p>
+ * <p>Games in this form should have all coordinates filled with payoffs. Since all Players and their
+ * strategies are known beforehand, positions can also be hashed to Indexes with PositionsHelper.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -23,7 +22,7 @@ class StrategicGame : public Game {
 
 public:
     /**
-     * @brief Initiates Game with Players and Data. 
+     * @brief Initiates Game with Players and Data.
      *
      * @param newPlayers Players' definitions
      * @param newData    Data for Game
@@ -55,7 +54,7 @@ public:
     virtual Message toString();
 }; /* END class StrategicGame */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

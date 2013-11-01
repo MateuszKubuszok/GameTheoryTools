@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( XMLResultBuilder )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( XMLResultBuilder_build ) {
     // given
     GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
@@ -93,5 +95,7 @@ BOOST_AUTO_TEST_CASE( XMLResultBuilder_throwExceptionOnError ) {
         GT::Model::IllegalInnerState
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

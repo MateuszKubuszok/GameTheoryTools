@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//class NumberParam {
+//class NumberParam : public Param {
 // public:
 
 NumberParam::NumberParam(
@@ -17,7 +17,7 @@ NumberParam::NumberParam(
 
 ObjectPtr NumberParam::getObject(
     Context&,
-    VisitedIdentifiers& 
+    VisitedIdentifiers&
 ) {
     throw ExceptionFactory::getInstance().requiredUnavailableObjectFromParam();
 }
@@ -35,9 +35,9 @@ Message NumberParam::toString() {
     return ResultFactory::getInstance().buildResult()->addResult(name, val).build()->getResult();
 }
 
-// }
+// }; /* END class NumberParam */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

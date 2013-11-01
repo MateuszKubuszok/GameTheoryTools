@@ -3,11 +3,11 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class JSONResultBuilder {
+// class JSONResultBuilder : public AbstractResultBuilder {
 // public:
-    
+
 JSONResultBuilder::JSONResultBuilder(
     Message indentation
 ) :
@@ -39,7 +39,7 @@ ResultPtr JSONResultBuilder::buildRaw() {
             for (int property = 0; property < propertiesSize; property++) {
                 Identifier propertyName  = *(*propertiesNames)[property];
                 Message    propertyValue = *(*partialResult.second)[property];
-                
+
                 result << indent
                        << '"' << propertyName << '"'
                        << " : "
@@ -53,16 +53,16 @@ ResultPtr JSONResultBuilder::buildRaw() {
         for (SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
-            
+
             result << '"' << resultName << '"' << " : " << resultValue << ',' << std::endl;
         }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
 
-// }
+// }; /* END class JSONResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Details )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Details_getCoordinates ) {
     // given
@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE( Details_getCoordinates ) {
 
     GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
     GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates()); 
+    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE( Details_getPlayers ) {
 
     GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
     GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates()); 
+    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE( Details_toString ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
     GT::GTL::PlayerPtr player2 = GT::GTL::NullFactory::getInstance().createPlayer();
     GT::GTL::ObjectsPtr players(new GT::GTL::Objects());
@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE( Details_toString ) {
 
     GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
     GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates()); 
+    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -93,6 +93,6 @@ BOOST_AUTO_TEST_CASE( Details_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -3,13 +3,13 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Object {
-    
-GamePtr Object::noGame = ErrorFactory::getInstance().createGame("This Object is not a Game");
+// class Object : public virtual ValidableSymbol {
 
-ParamPtr Object::noParam = ErrorFactory::getInstance().createParam("This Object is not a Param");
+GamePtr   Object::noGame   = ErrorFactory::getInstance().createGame("This Object is not a Game");
+
+ParamPtr  Object::noParam  = ErrorFactory::getInstance().createParam("This Object is not a Param");
 
 PlayerPtr Object::noPlayer = ErrorFactory::getInstance().createPlayer("This Object is not a Player");
 
@@ -111,9 +111,9 @@ void Object::registerProperty(
     registeredProperties.insert( ObjectPropertyMap::value_type(propertyName, property) );
 }
 
-// }
+// }; /* END class Object */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveDataBuilder )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_setPlayers_getPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
@@ -131,8 +133,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_functional ) {
     GT::Model::ExtensiveDataBuilder extensiveDataBuilder;
     extensiveDataBuilder.setPlayers(players);
 
-    extensiveDataBuilder.clone()->addNextPositions(positions1).addNextPositions(positions2).setParams(params1);
-    extensiveDataBuilder.clone()->addNextPositions(positions2).addNextPositions(positions1).setParams(params2);
+    extensiveDataBuilder.clone()->addNextPositions(positions1)
+                                 .addNextPositions(positions2)
+                                 .setParams(params1);
+    extensiveDataBuilder.clone()->addNextPositions(positions2)
+                                 .addNextPositions(positions1)
+                                 .setParams(params2);
 
     GT::Model::DataPtr data = extensiveDataBuilder.build();
 
@@ -166,5 +172,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_functional ) {
         "\t\t\t\t20\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

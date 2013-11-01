@@ -4,12 +4,12 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Helper used to create Games.
  *
- * Has the same interface as DataBuilder to make decoration possible. 
+ * Has the same interface as DataBuilder to make decoration possible.
  *
  * @author Mateusz Kubuszok
  */
@@ -18,9 +18,8 @@ public:
     /**
      * @brief Builds Game.
      *
-     * @return Game
-     * @throw std::runtime_exception thrown when data used for building
-     *                               is inconsistent 
+     * @return                       Game
+     * @throw std::runtime_exception thrown when data used for building is inconsistent
      */
     virtual GamePtr build() = 0;
 
@@ -39,7 +38,7 @@ public:
     virtual DataBuilderPtr dataBuilder() = 0;
 }; /* END class GameBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null GameBuilder for handling invalid situations.
@@ -81,7 +80,7 @@ public:
     virtual DataBuilderPtr clone() {
         return NullFactory::getInstance().createDataBuilder();
     }
-    
+
     virtual bool isNotNull() {
         return false;
     }
@@ -91,7 +90,7 @@ public:
     }
 }; /* END class NullDataBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

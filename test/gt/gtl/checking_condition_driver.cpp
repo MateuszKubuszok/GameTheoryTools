@@ -2,17 +2,22 @@
 
 BOOST_AUTO_TEST_SUITE( CheckingConditionDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
     // given
     TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
-    GT::GTL::ObjectPtr        invalidPlayer = boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
-    GT::GTL::ObjectPtr        validPlayer   = boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer());
-    GT::GTL::ObjectPtr        invalidParam  = boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::ErrorFactory::getInstance().createParam("Invalid Player"));
-    GT::GTL::ObjectPtr        validParam    = boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createParam());
-    GT::GTL::ObjectPtr        invalidObject = GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
+    GT::GTL::ObjectPtr        invalidPlayer =boost::dynamic_pointer_cast<GT::GTL::Object>(
+        GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
+    GT::GTL::ObjectPtr        validPlayer   = boost::dynamic_pointer_cast<GT::GTL::Object>(
+        GT::GTL::NullFactory::getInstance().createPlayer());
+    GT::GTL::ObjectPtr        invalidParam  = boost::dynamic_pointer_cast<GT::GTL::Object>(
+        GT::GTL::ErrorFactory::getInstance().createParam("Invalid Player"));
+    GT::GTL::ObjectPtr        validParam    = boost::dynamic_pointer_cast<GT::GTL::Object>(
+        GT::GTL::NullFactory::getInstance().createParam());
+    GT::GTL::ObjectPtr        invalidObject =
+        GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
 
     boost::scoped_ptr<GT::GTL::ObjectPtr> invalidPlayerPtr(new GT::GTL::ObjectPtr(invalidPlayer));
     boost::scoped_ptr<GT::GTL::ObjectPtr> validPlayerPtr(new GT::GTL::ObjectPtr(validPlayer));
@@ -22,15 +27,24 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
 
     // when
     GT::GTL::CheckingConditionDriver conditionDriver(&driver);
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(conditionDriver.playerChoosed(*inputLocation, invalidPlayerPtr.get(), invalidParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition2Ptr(conditionDriver.playerChoosed(*inputLocation, invalidPlayerPtr.get(), validParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition3Ptr(conditionDriver.playerChoosed(*inputLocation, validPlayerPtr.get(),   invalidParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition4Ptr(conditionDriver.playerChoosed(*inputLocation, validPlayerPtr.get(),   validParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition5Ptr(conditionDriver.playerChoosed(*inputLocation, invalidParamPtr.get(),  invalidParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition6Ptr(conditionDriver.playerChoosed(*inputLocation, invalidParamPtr.get(),  validParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition7Ptr(conditionDriver.playerChoosed(*inputLocation, validParamPtr.get(),    invalidParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition8Ptr(conditionDriver.playerChoosed(*inputLocation, validParamPtr.get(),    validParamPtr.get()));
-    boost::scoped_ptr<GT::GTL::ConditionPtr> condition9Ptr(conditionDriver.playerChoosed(*inputLocation, invalidObjectPtr.get(), validParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(
+        conditionDriver.playerChoosed(*inputLocation, invalidPlayerPtr.get(), invalidParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition2Ptr(
+        conditionDriver.playerChoosed(*inputLocation, invalidPlayerPtr.get(), validParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition3Ptr(
+        conditionDriver.playerChoosed(*inputLocation, validPlayerPtr.get(),   invalidParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition4Ptr(
+        conditionDriver.playerChoosed(*inputLocation, validPlayerPtr.get(),   validParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition5Ptr(
+        conditionDriver.playerChoosed(*inputLocation, invalidParamPtr.get(),  invalidParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition6Ptr(
+        conditionDriver.playerChoosed(*inputLocation, invalidParamPtr.get(),  validParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition7Ptr(
+        conditionDriver.playerChoosed(*inputLocation, validParamPtr.get(),    invalidParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition8Ptr(
+        conditionDriver.playerChoosed(*inputLocation, validParamPtr.get(),    validParamPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> condition9Ptr(
+        conditionDriver.playerChoosed(*inputLocation, invalidObjectPtr.get(), validParamPtr.get()));
 
     // then
     BOOST_REQUIRE(   condition1Ptr );
@@ -68,6 +82,6 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

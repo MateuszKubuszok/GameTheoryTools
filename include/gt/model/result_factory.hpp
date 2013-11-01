@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Used for configuring what kind of builders should be returned by ResultFactory.
@@ -20,10 +20,10 @@ enum class ResultBuilderMode { PLAIN, JSON, XML };
  */
 enum class ResultIndentationMode { TABS, SPACES, NONE };
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Creates some simple Results as well as supplies builders for more complex of them.  
+ * @brief Creates some simple Results as well as supplies builders for more complex of them.
  *
  * @author Mateusz Kubuszok
  */
@@ -50,14 +50,14 @@ public:
 
     /**
      * @brief Returns ResultBuilder.
-     * 
+     *
      * @return ResultBuilder
      */
     ResultBuilderPtr buildResult();
 
     /**
      * @brief Returns Results with predefined const content.
-     * 
+     *
      * @param content content to be contained by the Result
      * @return        Result with constant content
      */
@@ -125,7 +125,7 @@ private:
     ~ResultFactory();
 }; /* END class ResultFactory */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

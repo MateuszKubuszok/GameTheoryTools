@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExecutionStatementDriver {
+// class ExecutionStatementDriver : public StatementDriver {
 // public:
 
 ExecutionStatementDriver::ExecutionStatementDriver(
@@ -46,7 +46,8 @@ DefinitionPtr* ExecutionStatementDriver::createDefinition(
     IdentifierPtr* identifierPtr,
     ObjectPtr*     objectPtr
 ) {
-    DefinitionPtr* errorCheck = checkingStatementDriver.createDefinition(inputLocation, identifierPtr, objectPtr);
+    DefinitionPtr* errorCheck =
+        checkingStatementDriver.createDefinition(inputLocation, identifierPtr, objectPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
@@ -67,7 +68,8 @@ QueryPtr* ExecutionStatementDriver::createQuery(
     ObjectsPtr*     objectsPtr,
     ConditionsPtr*  conditionsPtr
 ) {
-    QueryPtr* errorCheck = checkingStatementDriver.createQuery(inputLocation, identifiersPtr, objectsPtr, conditionsPtr);
+    QueryPtr* errorCheck =
+        checkingStatementDriver.createQuery(inputLocation, identifiersPtr, objectsPtr, conditionsPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
 
@@ -87,9 +89,9 @@ Message ExecutionStatementDriver::toString() {
     return Message("ExecutionStatementDriver");
 }
 
-// }
+// }; /* END class ExecutionStatementDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

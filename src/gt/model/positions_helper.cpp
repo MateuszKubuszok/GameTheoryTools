@@ -3,9 +3,9 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PositionsHelper {
+// class PositionsHelper : public Root {
 // public:
 
 PositionsHelper::PositionsHelper(
@@ -25,7 +25,7 @@ PositionsHelper::PositionsHelper(
 
         IdentifierMap strategiesMap;
         for (IdentifierPtr& strategy : (*player.getStrategies()))
-            strategiesMap.insert( IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)) );
+            strategiesMap.insert(IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)));
         playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
         positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
         strategiesHelper.insert( StrategyMap::value_type(playerName, strategiesMap) );
@@ -158,9 +158,9 @@ Message PositionsHelper::toString() {
     return resultBuilder->build()->getResult();
 }
 
-// }
+// }; /* END class PositionsHelper */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

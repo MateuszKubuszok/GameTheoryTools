@@ -1,4 +1,5 @@
-// class TestCollectionsDriverImpl  {
+// template<typename Content>
+// class TestCollectionsDriverImpl : public GT::GTL::NullCollectionsDriver<Content> {
 // public:
 
 template<typename Content>
@@ -42,4 +43,4 @@ inline unsigned int TestCollectionsDriverImpl<Content>::getAddedElements() {
     return addedElements;
 }
 
-// }
+// }; /* END class TestCollectionsDriver */

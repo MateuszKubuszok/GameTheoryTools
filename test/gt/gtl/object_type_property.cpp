@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( ObjectTypeProperty )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ObjectTypeProperty_findForConditions ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::GTL::Object        object;
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
@@ -28,6 +28,6 @@ BOOST_AUTO_TEST_CASE( ObjectTypeProperty_findForConditions ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

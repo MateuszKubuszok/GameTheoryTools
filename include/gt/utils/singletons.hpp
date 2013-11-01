@@ -1,26 +1,26 @@
 #ifndef __GT_UTILS_SINGLETONS_HPP__
 #define __GT_UTILS_SINGLETONS_HPP__
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Macro for declaring singletons.
  *
  * Intended to be used like:
- * 
+ *
  * <pre>
  * class SingletonImplementation {
- * 
+ *
  * SINGLETON_DECLARATION(SingletonImplementation)
  *
  * public:
  *     SingletonImplementation& getInstance();
- * 
+ *
  * private:
  *     SingletonImplementation();
- * 
+ *
  *     SingletonImplementation(const SingletonImplementation*);
- * 
+ *
  *     ~SingletonImplementation();
  * };
  * </pre>
@@ -36,7 +36,7 @@
 
 /**
  * @brief Macro for defining singletons.
- * 
+ *
  * Intended to be used like:
  *
  * <pre>
@@ -82,6 +82,6 @@
         delete singleton; \
     }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #endif /* #define __GT_UTILS_SINGLETONS_HPP__ */

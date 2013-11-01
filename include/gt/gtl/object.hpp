@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Root of all Objects used as a data in parsed by GTL.
@@ -13,20 +13,20 @@ namespace GTL {
  */
 class Object : public virtual ValidableSymbol {
     /**
-     * @brief Returned when Object cannot be casted to Game. 
+     * @brief Returned when Object cannot be casted to Game.
      */
     static GamePtr noGame;
-    
+
     /**
-     * @brief Returned when Object cannot be casted to Param. 
+     * @brief Returned when Object cannot be casted to Param.
      */
     static ParamPtr noParam;
-    
+
     /**
-     * @brief Returned when Object cannot be casted to Player. 
+     * @brief Returned when Object cannot be casted to Player.
      */
     static PlayerPtr noPlayer;
-    
+
     /**
      * @brief Map containing ObjectProperties bound to their name.
      */
@@ -59,7 +59,7 @@ public:
      * @brief Whether Object responds to some property.
      *
      * @param  property property's name
-     * @return          true if Object responds to such property 
+     * @return          true if Object responds to such property
      */
     virtual bool respondsTo(
         Identifier& propertyName
@@ -79,7 +79,7 @@ public:
     );
 
     /**
-     * @brief Finds Objects' property for giver conditions and returns it as a result. 
+     * @brief Finds Objects' property for giver conditions and returns it as a result.
      *
      * @param context                context with values
      * @param conditions             conditions to consider
@@ -168,7 +168,7 @@ protected:
     );
 }; /* END class Object */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Root of all Object's properties that can be registered.
@@ -190,7 +190,7 @@ public:
     ) = 0;
 }; /* END class ObjectProperty */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null Object for handling invalid situations.
@@ -229,7 +229,7 @@ public:
     }
 }; /* END class NullObject */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Error Object for handling invalid situations.
@@ -238,7 +238,7 @@ public:
  */
 class ErrorObject : public Object {
     Message message;
-    
+
 public:
     ErrorObject(
         Message errorMessage
@@ -276,7 +276,7 @@ public:
     }
 }; /* END class ErrorObject */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

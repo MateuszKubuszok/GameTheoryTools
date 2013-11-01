@@ -4,17 +4,17 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Helper used for calculating Positions into Index and the other way round. 
+ * @brief Helper used for calculating Positions into Index and the other way round.
  *
  * @author Mateusz Kubuszok
  */
 class PositionsHelper : public Root {
-	PlayersPtr players;
+    PlayersPtr players;
 
-	IdentifierMap playersHelper;
+    IdentifierMap playersHelper;
     StrategyMap   strategiesHelper;
     IdentifierMap positionsHelper;
 
@@ -26,9 +26,9 @@ public:
      *
      * @param players Players definitions
      */
-	explicit PositionsHelper(
-		PlayersPtr players
-	);
+    explicit PositionsHelper(
+        PlayersPtr players
+    );
 
     /**
      * @brief Returns Players definitions.
@@ -40,7 +40,7 @@ public:
     /**
      * @brief Returns upper bound of Indexes.
      *
-     * @return upper bound of Indexes 
+     * @return upper bound of Indexes
      */
     Index getUpperBound();
 
@@ -150,9 +150,9 @@ public:
      * @return Message
      */
     Message toString();
-};
+}; /* END class PositionsHelper */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

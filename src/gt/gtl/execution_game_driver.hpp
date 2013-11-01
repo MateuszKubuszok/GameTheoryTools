@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Implementation used for handling Games via ExecutionDriver.
@@ -95,9 +95,9 @@ private:
      * @brief Game building routine common for Strategic and Extensive form Games.
      *
      * @param inputLocation input location of created Game
-     * @param details     Details built game details
-     * @param gameBuilder GameBuilder specific for given game
-     * @return            Game instance (valid or not)
+     * @param details       Details built game details
+     * @param gameBuilder   GameBuilder specific for given game
+     * @return              Game instance (valid or not)
      */
     GamePtr* createGameWithBuilder(
         InputLocation&      inputLocation,
@@ -106,7 +106,7 @@ private:
     );
 }; /* END class ExecutionGameDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

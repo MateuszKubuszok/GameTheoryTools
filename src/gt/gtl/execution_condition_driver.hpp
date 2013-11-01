@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Implementation used for handling Games via ExecutionDriver.
@@ -29,7 +29,7 @@ public:
     );
 
     /**
-     * @brief Create condition for Player choosing strategy.
+     * @brief Create Condition for Player choosing strategy.
      *
      * @param inputLocation input location of created Condition
      * @param player        Player's name
@@ -50,7 +50,7 @@ public:
     virtual Message toString();
 }; /* END class ExecutionConditionDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

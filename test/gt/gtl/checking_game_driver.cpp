@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( CheckingGameDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
     // given
@@ -17,8 +17,10 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
 
     // when
     GT::GTL::CheckingGameDriver gameDriver(&driver);
-    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(gameDriver.createStrategic(*inputLocation, invalidDetailsPtr.get()));
-    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(gameDriver.createStrategic(*inputLocation, validDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(
+        gameDriver.createStrategic(*inputLocation, invalidDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(
+        gameDriver.createStrategic(*inputLocation, validDetailsPtr.get()));
 
     // then
     BOOST_REQUIRE(  game1Ptr );
@@ -40,8 +42,10 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createExtensive ) {
 
     // when
     GT::GTL::CheckingGameDriver gameDriver(&driver);
-    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(gameDriver.createExtensive(*inputLocation, invalidDetailsPtr.get()));
-    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(gameDriver.createExtensive(*inputLocation, validDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(
+        gameDriver.createExtensive(*inputLocation, invalidDetailsPtr.get()));
+    boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(
+        gameDriver.createExtensive(*inputLocation, validDetailsPtr.get()));
 
     // then
     BOOST_REQUIRE(  game1Ptr );
@@ -56,28 +60,39 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createDetails ) {
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::ObjectsPtr invalidPlayers(new GT::GTL::Objects());
-    invalidPlayers->push_back(boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player")));
+    invalidPlayers->push_back(boost::dynamic_pointer_cast<GT::GTL::Object>(
+        GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player")));
 
     GT::GTL::ObjectsPtr validPlayers(new GT::GTL::Objects());
-    validPlayers->push_back(boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()));
+    validPlayers->push_back(
+        boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()));
 
     GT::GTL::CoordinatesPtr invalidCoordinates(new GT::GTL::Coordinates());
-    invalidCoordinates->push_back(GT::GTL::ErrorFactory::getInstance().createCoordinate("Invalid Coordinate"));
+    invalidCoordinates->push_back(
+        GT::GTL::ErrorFactory::getInstance().createCoordinate("Invalid Coordinate"));
 
     GT::GTL::CoordinatesPtr validCoordinates(new GT::GTL::Coordinates());
     validCoordinates->push_back(GT::GTL::NullFactory::getInstance().createCoordinate());
 
-    boost::scoped_ptr<GT::GTL::ObjectsPtr>     invalidPlayersPtr(new GT::GTL::ObjectsPtr(invalidPlayers));
-    boost::scoped_ptr<GT::GTL::ObjectsPtr>     validPlayersPtr(new GT::GTL::ObjectsPtr(validPlayers));
-    boost::scoped_ptr<GT::GTL::CoordinatesPtr> invalidCoordinatesPtr(new GT::GTL::CoordinatesPtr(invalidCoordinates));
-    boost::scoped_ptr<GT::GTL::CoordinatesPtr> validCoordinatesPtr(new GT::GTL::CoordinatesPtr(validCoordinates));
+    boost::scoped_ptr<GT::GTL::ObjectsPtr>
+        invalidPlayersPtr(new GT::GTL::ObjectsPtr(invalidPlayers));
+    boost::scoped_ptr<GT::GTL::ObjectsPtr>
+        validPlayersPtr(new GT::GTL::ObjectsPtr(validPlayers));
+    boost::scoped_ptr<GT::GTL::CoordinatesPtr>
+        invalidCoordinatesPtr(new GT::GTL::CoordinatesPtr(invalidCoordinates));
+    boost::scoped_ptr<GT::GTL::CoordinatesPtr>
+        validCoordinatesPtr(new GT::GTL::CoordinatesPtr(validCoordinates));
 
     // when
     GT::GTL::CheckingGameDriver gameDriver(&driver);
-    boost::scoped_ptr<GT::GTL::DetailsPtr> details1Ptr(gameDriver.createDetails(*inputLocation, invalidPlayersPtr.get(), invalidCoordinatesPtr.get()));
-    boost::scoped_ptr<GT::GTL::DetailsPtr> details2Ptr(gameDriver.createDetails(*inputLocation, invalidPlayersPtr.get(), validCoordinatesPtr.get()));
-    boost::scoped_ptr<GT::GTL::DetailsPtr> details3Ptr(gameDriver.createDetails(*inputLocation, validPlayersPtr.get(),   invalidCoordinatesPtr.get()));
-    boost::scoped_ptr<GT::GTL::DetailsPtr> details4Ptr(gameDriver.createDetails(*inputLocation, validPlayersPtr.get(),   validCoordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::DetailsPtr> details1Ptr(
+        gameDriver.createDetails(*inputLocation, invalidPlayersPtr.get(), invalidCoordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::DetailsPtr> details2Ptr(
+        gameDriver.createDetails(*inputLocation, invalidPlayersPtr.get(), validCoordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::DetailsPtr> details3Ptr(
+        gameDriver.createDetails(*inputLocation, validPlayersPtr.get(),   invalidCoordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::DetailsPtr> details4Ptr(
+        gameDriver.createDetails(*inputLocation, validPlayersPtr.get(),   validCoordinatesPtr.get()));
 
     // then
     BOOST_REQUIRE(  details1Ptr );
@@ -105,13 +120,14 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createPlayer ) {
 
     // when
     GT::GTL::CheckingGameDriver gameDriver(&driver);
-    boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
+    boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(
+        gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
 
     // then
     BOOST_REQUIRE( playerPtr );
     BOOST_CHECK( (*playerPtr)->isValid() );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -181,11 +181,13 @@ statement
  ;
 
 definition
- : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
+ : LET identifier BE object { $$ = driver.forStatement().createDefinition(@1, $2, $4);
+                                   CLEANUP($2); CLEANUP($4); }
  ;
 
 query
- : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5); CLEANUP($2); CLEANUP($4); CLEANUP($5); }
+ : FIND identifiers FOR objects conditions { $$ = driver.forStatement().createQuery(@1, $2, $4, $5);
+                                                  CLEANUP($2); CLEANUP($4); CLEANUP($5); }
  ;
 
 /* Objects */
@@ -220,7 +222,8 @@ details
 /* Players */
 
 player
- : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
+ : PLAYER identifier LCBR identifiers RCBR { $$ = driver.forGame().createPlayer(@1, $2, $4);
+                                                  CLEANUP($2); CLEANUP($4); }
  ;
 
 /* Params */
@@ -250,12 +253,15 @@ conditions
  ;
 
 condition_collection
- : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1); CLEANUP($3); CLEANUP($1); }
- | WITH condition                      { $$ = driver.forConditions().create($2); CLEANUP($2); }
+ : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1);
+                                              CLEANUP($3); CLEANUP($1); }
+ | WITH condition                      { $$ = driver.forConditions().create($2);
+                                              CLEANUP($2); }
  ;
 
 condition
- : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
+ : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4);
+                                      CLEANUP($2); CLEANUP($4); }
  ;
 
 /* Data */
@@ -265,13 +271,16 @@ data
  ;
 
 data_coordinates
- : data_coordinates COMA data_coordinate { $$ = driver.forCoordinates().insert($3, $1); CLEANUP($3); CLEANUP($1); }
+ : data_coordinates COMA data_coordinate { $$ = driver.forCoordinates().insert($3, $1);
+                                                CLEANUP($3); CLEANUP($1); }
  | data_coordinate                       { $$ = driver.forCoordinates().create($1); CLEANUP($1); }
  ;
 
 data_coordinate
- : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
- | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData(@1, $2, $4); CLEANUP($2); CLEANUP($4); }
+ : LCBR coordinates COLON data_coordinates RCBR { $$ = driver.forCoordinate().fillWithData(@1, $2, $4);
+                                                       CLEANUP($2); CLEANUP($4); }
+ | LCBR coordinates COLON params RCBR           { $$ = driver.forCoordinate().fillWithData(@1, $2, $4);
+                                                       CLEANUP($2); CLEANUP($4); }
  ;
 
 coordinates
@@ -288,6 +297,7 @@ coordinate
 parser_error
  : error
  | lexer_error {
+        // TODO: create ErrorMessageFactory
         std::string message = std::string() + "not recognized symbols: \"" + (**$1) + "\"";
         driver.showError(@1, message);
         CLEANUP($1);

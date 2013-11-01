@@ -4,12 +4,12 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Context containing identifiers and values befind then.
  *
- * Has the ability to dynamically inherit parent context filling it with data specific to itself.   
+ * Has the ability to dynamically inherit parent context filling it with data specific to itself.
  *
  * @author Mateusz Kubuszok
  *
@@ -22,7 +22,7 @@ class Context : public virtual Root {
      * @brief Known objects map.
      */
     typedef boost::container::map<Identifier, ParamPtr> KnownObjects;
-    
+
     /**
      * @brief Possible parent Context.
      */
@@ -42,7 +42,7 @@ public:
     /**
      * @brief Constructor with parental context inheritance.
      *
-     * @param parentContext parental Context 
+     * @param parentContext parental Context
      */
     explicit Context(
         const ContextPtr parentContext
@@ -124,7 +124,7 @@ public:
     virtual Message toString();
 }; /* END class Context */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null Context for handling invalid situations.
@@ -173,7 +173,7 @@ public:
     }
 }; /* END class NullContext */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

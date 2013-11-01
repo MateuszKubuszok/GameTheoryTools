@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( IdentifierParam )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( IdentifierParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context&   context    = *contextPtr;
     GT::Identifier      mockID     = GT::createIdentifier("mockID");
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
 
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_toString ) {
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context&   context    = *contextPtr;
     GT::Identifier      mockID     = GT::createIdentifier("mockID");
-    
+
     // when
     GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
 
@@ -44,6 +44,6 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

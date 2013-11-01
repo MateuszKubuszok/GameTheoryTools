@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ExecutionConditionDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
     // given
@@ -25,13 +25,14 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
 
     // when
     GT::GTL::ExecutionConditionDriver conditionDriver(&driver);
-    boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(conditionDriver.playerChoosed(*inputLocation, playerPtr.get(), strategyPtr.get()));
+    boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(
+        conditionDriver.playerChoosed(*inputLocation, playerPtr.get(), strategyPtr.get()));
 
     // then
     BOOST_REQUIRE(conditionPtr);
     BOOST_CHECK(boost::dynamic_pointer_cast<GT::GTL::PlayerChoiceCondition>(*conditionPtr));
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

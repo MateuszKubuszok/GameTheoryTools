@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( StrategicData )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( StrategicData_setValue_getValue ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
@@ -11,7 +13,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_setValue_getValue ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -80,7 +82,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -149,7 +151,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_throwExceptionOnInvalidCoordinate ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -204,7 +206,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -280,5 +282,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
         "\t\t\t70,\t80,\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

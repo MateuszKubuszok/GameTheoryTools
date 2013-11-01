@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Defines Player.
@@ -59,7 +59,7 @@ public:
      * @brief Returns number of strategies.
      *
      * @return number of strategies
-     */    
+     */
     virtual Index getStrategiesNumber();
 
      /**
@@ -80,7 +80,7 @@ public:
     virtual bool hasStrategy(
         Identifier& strategy
     );
-    
+
     /**
      * @brief Defines equality relation.
      *
@@ -135,7 +135,7 @@ public:
     );
 }; /* END class Player */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null Player for handling invalid situations.
@@ -158,7 +158,7 @@ public:
     virtual IdentifiersPtr getStrategies() {
         return NullFactory::getInstance().createIdentifiers();
     }
-    
+
     virtual Index getStrategiesNumber() {
         return 0;
     }
@@ -178,7 +178,7 @@ public:
     }
 }; /* END class NullPlayer */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

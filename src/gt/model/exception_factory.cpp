@@ -3,7 +3,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ExceptionFactory {
 
@@ -58,7 +58,8 @@ InvalidCoordinate ExceptionFactory::invalidExtensiveCoordinateFormat(
         Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
     }
-    result << " has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree";
+    result << " has invalid format - make sure chosen Players' names does not collide"
+              " with other coordinates on the same level of tree";
 
     return InvalidCoordinate(result.str());
 }
@@ -123,9 +124,9 @@ ExceptionFactory::ExceptionFactory() {}
 
 ExceptionFactory::~ExceptionFactory() {}
 
-// }
+// }; /* END class ExceptionFactory */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

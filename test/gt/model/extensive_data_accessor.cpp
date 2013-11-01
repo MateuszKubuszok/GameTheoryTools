@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveDataAccessor )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataAccesor_getPlayers ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
@@ -396,5 +398,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
         "\t\t\t\t\t80\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Custom interface for all Data accessing instances for Games.
@@ -76,7 +76,7 @@ public:
     virtual Message toString() = 0;
 }; /* END class Data */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null DataAccessor for handling invalid situations.
@@ -84,7 +84,7 @@ public:
  * @author Mateusz Kubuszok
  */
 class NullDataAccessor : public DataAccessor {
-public:    
+public:
     virtual DataPiecePtr getValues(
         Positions&
     ) {
@@ -98,7 +98,7 @@ public:
     }
 
     virtual PlayersPtr getPlayers() {
-        return NullFactory::getInstance().createPlayers();   
+        return NullFactory::getInstance().createPlayers();
     }
 
     virtual DataPiecePtr operator[](
@@ -122,7 +122,7 @@ public:
     }
 }; /* END class NullDataAccessor */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

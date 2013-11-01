@@ -3,9 +3,9 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class StrategicData { 
+// class StrategicData : public Data {
 // public:
 
 StrategicData::StrategicData(
@@ -30,12 +30,11 @@ DataPiecePtr StrategicData::getValues(
     Index positionInStorage
 ) {
     if (!payoffStorageAllocation[positionInStorage])
-        throw ExceptionFactory::getInstance()
-                .noParamsForPositions(
-                    positionInStorage,
-                    positionsHelper.getUpperBound()
-                );
-    
+        throw ExceptionFactory::getInstance().noParamsForPositions(
+            positionInStorage,
+            positionsHelper.getUpperBound()
+        );
+
     return DataPiecePtr(
         new PlainDataPiece(
             positionsHelper.getPlayers(),
@@ -61,13 +60,12 @@ Data& StrategicData::setValues(
     NumbersPtr numbers
 ) {
     if (positionsHelper.getUpperBound() <= positionInStorage)
-        throw ExceptionFactory::getInstance()
-                .noParamsForPositions(
-                    positionInStorage,
-                    positionsHelper.getUpperBound()
-                );
+        throw ExceptionFactory::getInstance().noParamsForPositions(
+            positionInStorage,
+            positionsHelper.getUpperBound()
+        );
 
-    payoffStorage[positionInStorage] = numbers;
+    payoffStorage[positionInStorage]           = numbers;
     payoffStorageAllocation[positionInStorage] = true;
 
     return *this;
@@ -78,8 +76,7 @@ Data& StrategicData::setValues(
     NumbersPtr numbers
 ) {
     if (!positionsHelper.checkPositions(positions))
-        throw ExceptionFactory::getInstance()
-                .invalidCoordinateFormat(positions);
+        throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
     return setValues(
         positionsHelper.calculatePosition(positions),
@@ -132,7 +129,9 @@ Message StrategicData::toString() {
 
             for (IdentifierPtr& playerName : (*playersNames)) {
                 strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
-                numbersStr->push_back( createMessagePtr( (*numbers)[positionsHelper.calculatePlayer(playerName)] ) );
+                numbersStr->push_back( createMessagePtr(
+                    (*numbers)[positionsHelper.calculatePlayer(playerName)]
+                ) );
             }
 
             ResultBuilderPtr subresultBuilder = ResultFactory::getInstance().buildResult();
@@ -146,9 +145,9 @@ Message StrategicData::toString() {
     return resultBuilder->build()->getResult();
 }
 
-// }
+// }; /* END class StrategicData */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

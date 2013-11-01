@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( ParamFactory )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ParamFactory_createParam ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::IdentifierPtr  identifier = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::NumberPtr      number     = GT::Model::NullFactory::getInstance().createNumber();
     GT::GTL::ObjectPtr object     = GT::GTL::NullFactory::getInstance().createObject();
@@ -40,6 +40,6 @@ BOOST_AUTO_TEST_CASE( ParamFactory_createParam ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

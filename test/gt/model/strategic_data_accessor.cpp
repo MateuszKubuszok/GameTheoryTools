@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( StrategicDataAccessor )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
@@ -11,7 +13,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -82,7 +84,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -149,7 +151,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
     GT::IdentifierPtr player1strategy2 = GT::createIdentifierPtr("p1s2");
@@ -157,7 +159,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
     GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-    
+
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
@@ -208,7 +210,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     // then
     BOOST_CHECK_EQUAL(
         strategicDataAccessor.toString(),
-        GT::Message() + 
+        GT::Message() +
         "Strategic Data Accessor:\n"
         "\tValue:\n"
         "\t\t\t\tp1,\tp2,\n"
@@ -236,5 +238,7 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
         "\t\t\t\t70,\t80,\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

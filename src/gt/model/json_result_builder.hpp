@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Builder used for creating Results displayed to user in JSON format.
@@ -24,9 +24,9 @@ namespace Model {
 class JSONResultBuilder : public AbstractResultBuilder {
 public:
     /**
-     * @brief Constructor initiating class with indentation. 
+     * @brief Constructor initiating class with indentation.
      *
-     * @param indentation sequence used for indentation 
+     * @param indentation sequence used for indentation
      */
     explicit JSONResultBuilder(
         Message indentation
@@ -34,10 +34,9 @@ public:
 
     /**
      * @brief Build Result.
-     * 
-     * @return                   Result
-     * @throw IllegalInnerState  thrown when number of Messages for any Object
-     *                           does not match number of properties
+     *
+     * @return                  Result
+     * @throw IllegalInnerState thrown when number of Messages for any Object does not match properties' ones
      *
      * @see #buildRaw()
      */
@@ -45,17 +44,16 @@ public:
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
-     * 
-     * @return                   Result
-     * @throw IllegalInnerState  thrown when number of Messages for any Object
-     *                           does not match number of properties
+     *
+     * @return                  Result
+     * @throw IllegalInnerState thrown when number of Messages for any Object does not match properties' ones
      *
      * @see #build()
      */
     virtual ResultPtr buildRaw();
 }; /* END class JSONResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

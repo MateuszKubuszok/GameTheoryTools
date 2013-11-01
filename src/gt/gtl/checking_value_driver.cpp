@@ -5,7 +5,7 @@ namespace GTL {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// class CheckingValueDriver {
+// class CheckingValueDriver : ValueDriver {
 // public:
 
 CheckingValueDriver::CheckingValueDriver(
@@ -60,7 +60,7 @@ Message CheckingValueDriver::toString() {
     return Message("CheckingValueDriver");
 }
 
-// }
+// }; /* END class CheckingValueDriver */
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveGame )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveGame_getPlayers ) {
     // given
     GT::Model::PlayersPtr  players = GT::Model::NullFactory::getInstance().createPlayers();
@@ -59,5 +61,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveGame_toString ) {
         "\tNullExtensiveData\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -4,14 +4,13 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Allows to access data specific for Game in a strategic form.
  *
- * <p>Games in this form should have all coordinates filled with payoffs. Since
- * all Players and their strategies are known beforehand, positions can also
- * be hashed to Indexes with PositionsHelper.</p>
+ * <p>Games in this form should have all coordinates filled with payoffs. Since all Players and their
+ * strategies are known beforehand, positions can also be hashed to Indexes with PositionsHelper.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -28,8 +27,8 @@ class StrategicDataAccessor : public DataAccessor {
 
 public:
     /**
-     * @brief Initiates accessor with a StrategicData. 
-     * 
+     * @brief Initiates accessor with a StrategicData.
+     *
      * @param gameData StrategicData
      */
     explicit StrategicDataAccessor(
@@ -38,7 +37,7 @@ public:
 
     /**
      * @brief Returns Players' definitions.
-     * 
+     *
      * @return Players' definitions
      */
     virtual PlayersPtr getPlayers();
@@ -117,9 +116,9 @@ public:
      * @return Message
      */
     virtual Message toString();
-};
+}; /* END class StrategicDataAccessor*/
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

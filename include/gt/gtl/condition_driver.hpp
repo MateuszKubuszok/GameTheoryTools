@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Used for handling Games via Driver.
@@ -35,7 +35,7 @@ public:
     virtual Message toString() = 0;
 }; /* END class ConditionDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null ConditionDriver for handling invalid situations.
@@ -44,12 +44,12 @@ public:
  */
 class NullConditionDriver : public ConditionDriver {
 public:
-	NullConditionDriver() :
+    NullConditionDriver() :
         Root(),
-		ConditionDriver()
-		{}
+        ConditionDriver()
+        {}
 
-	virtual ConditionPtr* playerChoosed(
+    virtual ConditionPtr* playerChoosed(
         InputLocation&,
         ObjectPtr*,
         ObjectPtr*
@@ -61,12 +61,12 @@ public:
         return false;
     }
 
-	virtual Message toString() {
-		return Message("NullConditionDriver");
-	}
+    virtual Message toString() {
+        return Message("NullConditionDriver");
+    }
 }; /* END class NullConditionDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

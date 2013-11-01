@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Builder used for creating Results displayed to user.
@@ -28,7 +28,7 @@ public:
     ) = 0;
 
     /**
-     * @brief Adds record to displayed Result. 
+     * @brief Adds record to displayed Result.
      *
      * <p>Results size must match headers size.</p>
      *
@@ -46,7 +46,7 @@ public:
     /**
      * @brief Adds single named subresult.
      *
-     * @param name   name subresult is build 
+     * @param name   name subresult is build
      * @param result subresult
      * @result       reference for itself for chaining
      */
@@ -57,7 +57,7 @@ public:
 
     /**
      * @brief Build Result.
-     * 
+     *
      * @return                   Result
      * @throw IllegalInnerState  thrown when number of Messages for any Object
      *                           does not match number of properties
@@ -66,7 +66,7 @@ public:
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
-     * 
+     *
      * @return                   Result
      * @throw IllegalInnerState  thrown when number of Messages for any Object
      *                           does not match number of properties
@@ -74,7 +74,7 @@ public:
     virtual ResultPtr buildRaw() = 0;
 }; /* END class ResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null ResultBuilder for handling invalid situations.
@@ -120,7 +120,7 @@ public:
     }
 }; /* END class NullResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

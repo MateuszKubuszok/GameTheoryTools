@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Implementation used for handling Games via CheckingDriver.
@@ -15,6 +15,9 @@ namespace GTL {
  * @see ConditionDriver
  */
 class CheckingConditionDriver : public ConditionDriver {
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver* driver;
 
 public:
@@ -30,7 +33,7 @@ public:
     /**
      * @brief Create condition for Player choosing strategy.
      *
-     * @param inputLocation input location of created Condition
+     * @param inputLocation input location of a created Condition
      * @param player        Player's name
      * @param strategy      chosen strategy
      * @return              Condition
@@ -49,7 +52,7 @@ public:
     virtual Message toString();
 }; /* END class CheckingConditionDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

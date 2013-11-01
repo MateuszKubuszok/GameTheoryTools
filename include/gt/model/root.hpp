@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Basic interface of many classes used in the project.
@@ -30,10 +30,10 @@ class Root {
     static unsigned long deallocations;
 
     /**
-     * @brief OutputStream to print debug results. 
+     * @brief OutputStream to print debug results.
      */
     static OutputStream* outputStream;
-    
+
     /**
      * @brief Current Root's ID for debug mode.
      */
@@ -88,14 +88,14 @@ public:
     );
 
     /**
-     * @brief Wheter Root is not a null object (null guardian). 
+     * @brief Wheter Root is not a null object (null guardian).
      *
      * @return true if object is not a null object
      */
     virtual bool isNotNull();
 
     /**
-     * @brief Wheter Root is a null object (null guardian). 
+     * @brief Wheter Root is a null object (null guardian).
      *
      * @return true if object is a null object
      */
@@ -143,9 +143,9 @@ public:
         OutputStream& stream,
         Root&         root
     );
-};
+}; /* END class Root */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namepsace Model */
 } /* END namspace GT */

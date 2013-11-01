@@ -2,14 +2,14 @@
 
 BOOST_AUTO_TEST_SUITE( PlayerStrategiesProperty )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( PlayerStrategiesProperty_findForConditions ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
     GT::GTL::ConditionsPtr conditionsPtr = GT::GTL::NullFactory::getInstance().createConditions();
@@ -28,6 +28,6 @@ BOOST_AUTO_TEST_CASE( PlayerStrategiesProperty_findForConditions ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

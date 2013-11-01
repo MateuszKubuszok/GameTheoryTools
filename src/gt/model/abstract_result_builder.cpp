@@ -3,11 +3,11 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class AbstractResultBuilder {
+// class AbstractResultBuilder : public ResultBuilder {
 // public:
-    
+
 AbstractResultBuilder::AbstractResultBuilder(
     Message indentation
 ) :
@@ -33,7 +33,7 @@ ResultBuilder& AbstractResultBuilder::addRecord(
 }
 
 ResultBuilder& AbstractResultBuilder::addResult(
-    IdentifierPtr& name, 
+    IdentifierPtr& name,
     MessagePtr&    result
 ) {
     subResults.push_back( SubResults::value_type(name, result) );
@@ -55,11 +55,10 @@ void AbstractResultBuilder::checkPropertyToResultMatching() {
     for (PartialResult& partialResult : partialResults) {
         MessagesPtr checkedProperties = partialResult.second;
         if (checkedProperties->size() != propertiesSize)
-            throw ExceptionFactory::getInstance()
-                .propertiesAndResultsDontMatchInSize(
-                    propertiesSize,
-                    checkedProperties->size()
-                );
+            throw ExceptionFactory::getInstance().propertiesAndResultsDontMatchInSize(
+                propertiesSize,
+                checkedProperties->size()
+            );
     }
 }
 
@@ -75,13 +74,13 @@ Message AbstractResultBuilder::addIndent(
     for (Message& line : lines)
         if (!line.empty() && line != "\n")
             result << indent << line << std::endl;
-    
+
     return result.str();
 }
 
-// }
+// }; /* END class AbstractResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

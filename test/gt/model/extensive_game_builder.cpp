@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveGameBuilder )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_setPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
@@ -99,5 +101,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_functional ) {
         "\t\t\t\t20\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

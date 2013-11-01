@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Object )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Object_isValid ) {
     // given
@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE( Object_findPropertyWithConditions ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::Identifier         properties    = GT::createIdentifier("properties");
     GT::Identifier         type          = GT::createIdentifier("type");
     GT::Identifier         error         = GT::createIdentifier("error");
@@ -189,6 +189,6 @@ BOOST_AUTO_TEST_CASE( Object_Player ) {
     BOOST_CHECK( !player );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

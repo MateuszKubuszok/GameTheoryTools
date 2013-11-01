@@ -4,6 +4,8 @@
 namespace GT {
 namespace GTL {
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Used for creation of Params that may differs in behaviour.
  *
@@ -69,6 +71,7 @@ public:
     ParamPtr createParam(
         ObjectPtr object
     );
+
 private:
     /**
      * @biref Private constructor.
@@ -87,6 +90,8 @@ private:
      */
     ~ParamFactory();
 }; /* END class ParamFactory */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

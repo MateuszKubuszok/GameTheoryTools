@@ -4,14 +4,13 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Contins data specific for Game in a tree form.
  *
- * <p>Games in this form has all payoffs defined in nodes of a game tree.
- * Each level of that tree has assigned Player and for this level. As such
- * coordinates are mapping from turn into choosen strategy instead of
+ * <p>Games in this form has all payoffs defined in nodes of a game tree. Each level of that tree has assigned
+ * Player and for this level. As such coordinates are mapping from turn into choosen strategy instead of
  * Player to strategy mapping.</p>
  *
  * @author Mateusz Kubuszok
@@ -116,9 +115,8 @@ public:
      * @param positions         Positions to set
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
-     * @throw InvalidCoordinate thrown when Positions does not specify all depths
-     *                          continously ("1", "2", ...) or some strategies do not
-     *                          match assigned for each turn Players
+     * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
+     *                          or some strategies do not match assigned for each turn Players
      */
     virtual Data& setValues(
         Positions& positions,
@@ -131,9 +129,8 @@ public:
      * @param positions         Positions to set
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
-     * @throw InvalidCoordinate thrown when Positions does not specify all depths
-     *                          continously ("1", "2", ...) or some strategies do not
-     *                          match assigned for each turn Players
+     * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
+     *                          or some strategies do not match assigned for each turn Players
      */
     virtual Data& setValues(
         PositionsPtr positions,
@@ -164,15 +161,13 @@ public:
 
     /**
      * @brief Returns ExtensiveData Message.
-
      *
      * @return Message
      */
-
     virtual Message toString();
 }; /* END class ExtensiveData */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null ExtensiveData for handling invalid situations.
@@ -248,7 +243,7 @@ public:
     }
 }; /* END class NullExtensiveData */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

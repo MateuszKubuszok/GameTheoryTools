@@ -4,7 +4,7 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Used for creation of exceptions with predefined message format.
@@ -99,7 +99,7 @@ public:
     IllegalInnerState playersAlreadySet();
 
     /**
-     * @brief Thrown when attempt to build Result with properties' names and results not matching in size is made.
+     * @brief Thrown during attempt to build Result with properties' names and results not matching in size.
      *
      * @param propertiesSize properties' size
      * @param resultsSize    results' size
@@ -131,7 +131,7 @@ private:
     ~ExceptionFactory();
 }; /* END class ExceptionFactory */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

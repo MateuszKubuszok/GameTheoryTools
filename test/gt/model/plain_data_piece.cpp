@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( PlainDataPiece )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
     // given
@@ -10,8 +10,10 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
     GT::Identifier player2("player2");
 
     GT::Model::PlayersPtr playersMap(new GT::Model::Players());
-    playersMap->insert( GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
-    playersMap->insert( GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
     numbers->push_back( GT::createNumberPtr(10) );
@@ -40,8 +42,10 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
     GT::Identifier player3("player3");
 
     GT::Model::PlayersPtr playersMap(new GT::Model::Players());
-    playersMap->insert( GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
-    playersMap->insert( GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
     numbers->push_back( GT::createNumberPtr(10) );
@@ -67,8 +71,10 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     GT::Identifier player2("player2");
 
     GT::Model::PlayersPtr playersMap(new GT::Model::Players());
-    playersMap->insert( GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
-    playersMap->insert( GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
+    playersMap->insert(
+        GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
     GT::NumbersPtr numbers(new GT::Numbers());
     numbers->push_back( GT::createNumberPtr(10) );
@@ -87,6 +93,6 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ErrorFactory )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ErrorFactory_createCondition ) {
     // given
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createCondition ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createDefinition ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::DefinitionPtr result = GT::GTL::ErrorFactory::getInstance().createDefinition(errorMessage);
 
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createDefinition ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createDetails ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::DetailsPtr result = GT::GTL::ErrorFactory::getInstance().createDetails(errorMessage);
 
@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createDetails ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createGame ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::GamePtr result = GT::GTL::ErrorFactory::getInstance().createGame(errorMessage);
 
@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createGame ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createObject ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::ObjectPtr result = GT::GTL::ErrorFactory::getInstance().createObject(errorMessage);
 
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createObject ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createParam ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::ParamPtr result = GT::GTL::ErrorFactory::getInstance().createParam(errorMessage);
 
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createParam ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createPlayer ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::PlayerPtr result = GT::GTL::ErrorFactory::getInstance().createPlayer(errorMessage);
 
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createPlayer ) {
 BOOST_AUTO_TEST_CASE( ErrorFactory_createQuery ) {
     // given
     GT::Message errorMessage("errorMessage");
-    
+
     // when
     GT::GTL::QueryPtr result = GT::GTL::ErrorFactory::getInstance().createQuery(errorMessage);
 
@@ -140,6 +140,6 @@ BOOST_AUTO_TEST_CASE( ErrorFactory_createQuery ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

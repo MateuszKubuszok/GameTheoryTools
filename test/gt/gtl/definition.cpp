@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Definition )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Definition_getName ) {
     // given
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( Definition_toString ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::IdentifierPtr name  = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::GTL::ParamPtr value = GT::GTL::NullFactory::getInstance().createParam();
 
@@ -55,6 +55,6 @@ BOOST_AUTO_TEST_CASE( Definition_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

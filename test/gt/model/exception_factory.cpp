@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ExceptionFactory )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
     // given
@@ -12,7 +12,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
     positions.insert( GT::Positions::value_type(playerName, strategyName) );
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().coordinatesAlreadySet(positions);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .coordinatesAlreadySet(positions);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -25,7 +26,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
 BOOST_AUTO_TEST_CASE( ExceptionFactory_incompleteCoordinates ) {
     // given
     // when
-    GT::Model::IllegalInnerState exception = GT::Model::ExceptionFactory::getInstance().incompleteCoordinates();
+    GT::Model::IllegalInnerState exception = GT::Model::ExceptionFactory::getInstance()
+                                                .incompleteCoordinates();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -43,13 +45,15 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCoordinateFormat ) {
     positions.insert( GT::Positions::value_type(playerName, strategyName) );
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .invalidCoordinateFormat(positions);
 
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
         GT::Message() +
-        "Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names and strategies are valid"
+        "Coordinates: 'player'='strategy' has invalid format"
+        " - make sure chosen Players' names and strategies are valid"
     );
 }
 
@@ -61,13 +65,15 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidExtensiveCoordinateFormat ) {
     positions.insert( GT::Positions::value_type(playerName, strategyName) );
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidExtensiveCoordinateFormat(positions);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .invalidExtensiveCoordinateFormat(positions);
 
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
         GT::Message() +
-        "Coordinates: 'player'='strategy' has invalid format - make sure chosen Players' names does not collide with other coordinates on the same level of tree"
+        "Coordinates: 'player'='strategy' has invalid format"
+        " - make sure chosen Players' names does not collide with other coordinates on the same level of tree"
     );
 }
 
@@ -77,13 +83,15 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_noParamsForPositions ) {
     GT::Index maxPosition       = 10;
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().noParamsForPositions(positionInStorage, maxPosition);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .noParamsForPositions(positionInStorage, maxPosition);
 
     // then
     BOOST_CHECK_EQUAL(
         exception.what(),
         GT::Message() +
-        "Calculated position (5) has no defined payoff - make sure all Coordinates in range [0,9] has defined payoff"
+        "Calculated position (5) has no defined payoff"
+        " - make sure all Coordinates in range [0,9] has defined payoff"
     );
 }
 
@@ -107,7 +115,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidStrategy ) {
     GT::Identifier strategy = GT::createIdentifier("strategy");
 
     // when
-    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().invalidStrategy(strategy);
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .invalidStrategy(strategy);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -136,7 +145,8 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_propertiesAndResultsDontMatchInSize ) {
     GT::Index resultsSize    = 6;
 
     // when
-    GT::Model::IllegalInnerState exception = GT::Model::ExceptionFactory::getInstance().propertiesAndResultsDontMatchInSize(propertiesSize, resultsSize);
+    GT::Model::IllegalInnerState exception = GT::Model::ExceptionFactory::getInstance()
+                                            .propertiesAndResultsDontMatchInSize(propertiesSize, resultsSize);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -146,6 +156,6 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_propertiesAndResultsDontMatchInSize ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

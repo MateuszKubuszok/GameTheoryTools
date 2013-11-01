@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( Player )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( Player_getName ) {
     // given
@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-    
+
     GT::IdentifierPtr  name       = GT::createIdentifierPtr("test_name");
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( GT::createIdentifierPtr("some_strategy") );
@@ -122,6 +122,6 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

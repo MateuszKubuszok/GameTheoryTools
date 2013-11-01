@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExecutionGameDriver {
+// class ExecutionGameDriver : public GameDriver {
 // public:
 
 ExecutionGameDriver::ExecutionGameDriver(
@@ -108,7 +108,12 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
                 PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
 
                 if (playerPtr) {
-                    players->insert( Model::Players::value_type(*player.getName(), boost::dynamic_pointer_cast<Model::Player>(playerPtr)) );
+                    players->insert(
+                        Model::Players::value_type(
+                            *player.getName(),
+                            boost::dynamic_pointer_cast<Model::Player>(playerPtr)
+                        )
+                    );
                     continue;
                 }
             }
@@ -119,7 +124,12 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
 
                 if (referredPlayer) {
                     PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
-                    players->insert( Model::Players::value_type(*player.getName(), boost::dynamic_pointer_cast<Model::Player>(playerPtr)) );
+                    players->insert(
+                        Model::Players::value_type(
+                            *player.getName(),
+                            boost::dynamic_pointer_cast<Model::Player>(playerPtr)
+                        )
+                    );
                     continue;
                 }
             }
@@ -150,9 +160,9 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
     }
 }
 
-// }
+// }; /* END class ExecutionGameDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

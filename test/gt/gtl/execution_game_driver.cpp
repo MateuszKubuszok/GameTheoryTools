@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ExecutionGameDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
     // given
@@ -131,8 +131,10 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createDetails ) {
     GT::GTL::ContextPtr       context = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectsPtr       players(new GT::GTL::Objects());
-    players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()) );
-    players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()) );
+    players->push_back(
+        boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()) );
+    players->push_back(
+        boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()) );
     GT::GTL::CoordinatesPtr   coordinates(new GT::GTL::Coordinates());
     coordinates->push_back( GT::GTL::NullFactory::getInstance().createCoordinate() );
 
@@ -141,7 +143,8 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createDetails ) {
 
     // when
     GT::GTL::ExecutionGameDriver gameDriver(&driver, context);
-    boost::scoped_ptr<GT::GTL::DetailsPtr> detailsPtr(gameDriver.createDetails(*inputLocation, playersPtr.get(), coordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::DetailsPtr> detailsPtr(
+        gameDriver.createDetails(*inputLocation, playersPtr.get(), coordinatesPtr.get()));
 
     // then
     BOOST_REQUIRE(detailsPtr);
@@ -169,7 +172,8 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createPlayer ) {
 
     // when
     GT::GTL::ExecutionGameDriver gameDriver(&driver, context);
-    boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
+    boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(
+        gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
 
     // then
     BOOST_REQUIRE(playerPtr);
@@ -183,6 +187,6 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createPlayer ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

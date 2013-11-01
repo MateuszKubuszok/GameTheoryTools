@@ -3,11 +3,11 @@
 namespace GT {
 namespace Model {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlainResultBuilder {
+// class PlainResultBuilder : public AbstractResultBuilder {
 // public:
-    
+
 PlainResultBuilder::PlainResultBuilder(
     Message indentation
 ) :
@@ -22,7 +22,7 @@ ResultPtr PlainResultBuilder::buildRaw() {
     checkPropertyToResultMatching();
 
     std::stringstream result;
-    
+
     if (propertiesNames->size() > 0) {
         result << indent;
         for (IdentifierPtr& propertyName : (*propertiesNames))
@@ -52,9 +52,9 @@ ResultPtr PlainResultBuilder::buildRaw() {
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
 
-// }
+// }; /* END class PlainResultBuilder */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */

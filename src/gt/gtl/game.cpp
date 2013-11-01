@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Game {
+// class Game : public virtual Object {
 // public:
 
 Game::Game(
@@ -14,9 +14,15 @@ Game::Game(
     Object(createIdentifier("Game")),
     game(gameImplementation)
 {
-    registerProperty(Identifier("pure_equilibrium"),       ObjectPropertyPtr(new GamePureEquilibriumProperty(this)));
-    registerProperty(Identifier("mixed_equilibrium"),      ObjectPropertyPtr(new GameMixedEquilibriumProperty(this)));
-    registerProperty(Identifier("behavioral_equilibrium"), ObjectPropertyPtr(new GameBehavioralEquilibriumProperty(this)));
+    registerProperty(
+        Identifier("pure_equilibrium"),       ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
+    );
+    registerProperty(
+        Identifier("mixed_equilibrium"),      ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
+    );
+    registerProperty(
+        Identifier("behavioral_equilibrium"), ObjectPropertyPtr(new GameBehavioralEquilibriumProperty(this))
+    );
 }
 
 ResultPtr Game::pureEquilibrium(
@@ -48,9 +54,9 @@ Game::operator Game&() {
     return *this;
 }
 
-// }
+// }; /* END class Game */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

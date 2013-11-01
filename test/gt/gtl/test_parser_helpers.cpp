@@ -1,8 +1,8 @@
 #include "gt/gtl/test_common.hpp"
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestConditionDriverImpl {
+// class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
 // public:
 
 TestConditionDriverImpl::TestConditionDriverImpl() :
@@ -19,11 +19,11 @@ GT::GTL::ConditionPtr* TestConditionDriverImpl::playerChoosed(
     return GT::GTL::NullConditionDriver::playerChoosed(inputLocation, player, strategy);
 }
 
-// }
+// }; /* END class TestConditionDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestCoordinateDriverImpl {
+// class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
 // public:
 
 TestCoordinateDriverImpl::TestCoordinateDriverImpl() :
@@ -60,11 +60,11 @@ GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::merge(
     return GT::GTL::NullCoordinateDriver::merge(inputLocation, coordinate1, coordinate2);
 }
 
-// }
+// }; /* END class TestCoordinateDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestGameDriverImpl {
+// class TestGameDriverImpl : public GT::GTL::NullGameDriver {
 // public:
 
 TestGameDriverImpl::TestGameDriverImpl() :
@@ -109,11 +109,11 @@ GT::GTL::PlayerPtr* TestGameDriverImpl::createPlayer(
     return GT::GTL::NullGameDriver::createPlayer(inputLocation, player, strategies);
 }
 
-// }
+// }; /* END class TestGameDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestStatementDriverImpl {
+// class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
 // public:
 
 TestStatementDriverImpl::TestStatementDriverImpl() :
@@ -136,11 +136,11 @@ bool TestStatementDriverImpl::executeQuery(
     return true;
 }
 
-// }
+// }; /* END class TestStatementDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestValueDriverImpl {
+// class TestValueDriverImpl : public GT::GTL::NullValueDriver {
 // public:
 
 TestValueDriverImpl::TestValueDriverImpl() :
@@ -164,11 +164,11 @@ GT::GTL::ParamPtr* TestValueDriverImpl::get(
     return GT::GTL::NullValueDriver::get(inputLocation, number);
 }
 
-// }
+// }; /* END class TestValueDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestDriverImpl {
+// class TestDriverImpl : public GT::GTL::Driver {
 // public:
 
 TestDriverImpl::TestDriverImpl() :
@@ -239,6 +239,6 @@ GT::Message TestDriverImpl::toString() {
     return GT::Message("TestDriverImpl");
 }
 
-// }
+// }; /* END class TestDriverImpl */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////

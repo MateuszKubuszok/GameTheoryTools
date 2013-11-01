@@ -2,6 +2,8 @@
 
 BOOST_AUTO_TEST_SUITE( ExtensiveDataNode )
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataNode_setPlayer_getPlayer ) {
     // given
     GT::Model::PlayerPtr player = GT::Model::NullFactory::getInstance().createPlayer();
@@ -201,5 +203,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
         "\t\t\t80\n"
     );
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

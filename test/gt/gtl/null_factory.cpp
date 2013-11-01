@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( NullFactory )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( NullFactory_createCondition ) {
     // given
@@ -243,7 +243,8 @@ BOOST_AUTO_TEST_CASE( NullFactory_createStatementDriver ) {
 BOOST_AUTO_TEST_CASE( NullFactory_createCoordinatesDriver ) {
     // given
     // when
-    GT::GTL::CollectionsDriverPtr<GT::GTL::Coordinate> result = GT::GTL::NullFactory::getInstance().createCoordinatesDriver();
+    GT::GTL::CollectionsDriverPtr<GT::GTL::Coordinate> result = GT::GTL::NullFactory::getInstance()
+                                                                    .createCoordinatesDriver();
 
     // then
     BOOST_REQUIRE(result);
@@ -254,7 +255,8 @@ BOOST_AUTO_TEST_CASE( NullFactory_createCoordinatesDriver ) {
 BOOST_AUTO_TEST_CASE( NullFactory_createConditionsDriver ) {
     // given
     // when
-    GT::GTL::CollectionsDriverPtr<GT::GTL::Condition> result = GT::GTL::NullFactory::getInstance().createConditionsDriver();
+    GT::GTL::CollectionsDriverPtr<GT::GTL::Condition> result = GT::GTL::NullFactory::getInstance()
+                                                                    .createConditionsDriver();
 
     // then
     BOOST_REQUIRE(result);
@@ -265,7 +267,8 @@ BOOST_AUTO_TEST_CASE( NullFactory_createConditionsDriver ) {
 BOOST_AUTO_TEST_CASE( NullFactory_createIdentifiersDriver ) {
     // given
     // when
-    GT::GTL::CollectionsDriverPtr<GT::Identifier> result = GT::GTL::NullFactory::getInstance().createIdentifiersDriver();
+    GT::GTL::CollectionsDriverPtr<GT::Identifier> result = GT::GTL::NullFactory::getInstance()
+                                                                .createIdentifiersDriver();
 
     // then
     BOOST_REQUIRE(result);
@@ -276,7 +279,8 @@ BOOST_AUTO_TEST_CASE( NullFactory_createIdentifiersDriver ) {
 BOOST_AUTO_TEST_CASE( NullFactory_createObjectsDriver ) {
     // given
     // when
-    GT::GTL::CollectionsDriverPtr<GT::GTL::Object> result = GT::GTL::NullFactory::getInstance().createObjectsDriver();
+    GT::GTL::CollectionsDriverPtr<GT::GTL::Object> result = GT::GTL::NullFactory::getInstance()
+                                                                .createObjectsDriver();
 
     // then
     BOOST_REQUIRE(result);
@@ -287,7 +291,8 @@ BOOST_AUTO_TEST_CASE( NullFactory_createObjectsDriver ) {
 BOOST_AUTO_TEST_CASE( NullFactory_createParamsDriver ) {
     // given
     // when
-    GT::GTL::CollectionsDriverPtr<GT::GTL::Param> result = GT::GTL::NullFactory::getInstance().createParamsDriver();
+    GT::GTL::CollectionsDriverPtr<GT::GTL::Param> result = GT::GTL::NullFactory::getInstance()
+                                                                .createParamsDriver();
 
     // then
     BOOST_REQUIRE(result);
@@ -295,6 +300,6 @@ BOOST_AUTO_TEST_CASE( NullFactory_createParamsDriver ) {
     BOOST_CHECK(!result->isNotNull());
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

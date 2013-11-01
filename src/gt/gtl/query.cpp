@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Query {
+// class Query : public virtual ValidableSymbol {
 // public:
 
 Query::Query(
@@ -35,7 +35,9 @@ ResultPtr Query::execute(
             IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
 
             if (object.respondsTo(property)) {
-                MessagePtr propertyValue = createMessagePtr( object.findPropertyWithConditions(context, property, *conditions)->getResult() );
+                MessagePtr propertyValue = createMessagePtr(
+                    object.findPropertyWithConditions(context, property, *conditions)->getResult()
+                );
                 propertyResult->addResult(objectName, propertyValue);
             } else
                 propertyResult->addResult(objectName, propertyNotFound);
@@ -67,9 +69,9 @@ Message Query::toString() {
     return resultBuilder->build()->getResult();
 }
 
-// }
+// }; /* END class Query */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

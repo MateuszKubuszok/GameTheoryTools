@@ -4,7 +4,7 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Used for creation of Null instances for GTL classes.
@@ -56,7 +56,7 @@ public:
      * @result NullCoordinates
      */
     CoordinatesPtr createCoordinates();
-    
+
     /**
      * @brief Creates NullDefinition.
      *
@@ -182,14 +182,14 @@ public:
      * @result NullCollectionsDriver<Coordinate>
      */
     CollectionsDriverPtr<Coordinate> createCoordinatesDriver();
-    
+
     /**
      * @brief Creates NullCollectionsDriver<Condition>.
      *
      * @result NullCollectionsDriver<Condition>
      */
     CollectionsDriverPtr<Condition> createConditionsDriver();
-    
+
     /**
      * @brief Creates NullCollectionsDriver<Identifier>.
      *
@@ -239,7 +239,7 @@ private:
     ~NullFactory();
 }; /* END class NullFactory */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

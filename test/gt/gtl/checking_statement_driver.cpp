@@ -2,16 +2,19 @@
 
 BOOST_AUTO_TEST_SUITE( CheckingStatementDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_executeDefinition ) {
     // given
     TestDriverImpl         driver;
-    GT::GTL::DefinitionPtr invalidDefinition = GT::GTL::ErrorFactory::getInstance().createDefinition("Invalid Definition");
+    GT::GTL::DefinitionPtr invalidDefinition =
+        GT::GTL::ErrorFactory::getInstance().createDefinition("Invalid Definition");
     GT::GTL::DefinitionPtr validDefinition   = GT::GTL::NullFactory::getInstance().createDefinition();
 
-    boost::scoped_ptr<GT::GTL::DefinitionPtr> invalidDefinitionPtr( new GT::GTL::DefinitionPtr(invalidDefinition) );
-    boost::scoped_ptr<GT::GTL::DefinitionPtr> validDefinitionPtr( new GT::GTL::DefinitionPtr(validDefinition) );
+    boost::scoped_ptr<GT::GTL::DefinitionPtr>
+        invalidDefinitionPtr( new GT::GTL::DefinitionPtr(invalidDefinition) );
+    boost::scoped_ptr<GT::GTL::DefinitionPtr>
+        validDefinitionPtr( new GT::GTL::DefinitionPtr(validDefinition) );
 
     // when
     GT::GTL::CheckingStatementDriver statementDriver(&driver);
@@ -59,7 +62,8 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
     TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         identifier    = GT::createIdentifierPtr("identifier");
-    GT::GTL::ObjectPtr        invalidObject = GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
+    GT::GTL::ObjectPtr        invalidObject =
+    GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object");
     GT::GTL::ObjectPtr        validObject   = GT::GTL::NullFactory::getInstance().createObject();
 
     boost::scoped_ptr<GT::IdentifierPtr>  identifierPtr( new GT::IdentifierPtr(identifier) );
@@ -68,8 +72,10 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createDefinition ) {
 
     // when
     GT::GTL::CheckingStatementDriver statementDriver(&driver);
-    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition1Ptr(statementDriver.createDefinition(*inputLocation, identifierPtr.get(), invalidObjectPtr.get()));
-    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition2Ptr(statementDriver.createDefinition(*inputLocation, identifierPtr.get(), validObjectPtr.get()));
+    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition1Ptr(
+        statementDriver.createDefinition(*inputLocation, identifierPtr.get(), invalidObjectPtr.get()));
+    boost::scoped_ptr<GT::GTL::DefinitionPtr> definition2Ptr(
+        statementDriver.createDefinition(*inputLocation, identifierPtr.get(), validObjectPtr.get()));
 
     // then
     BOOST_REQUIRE(   definition1Ptr );
@@ -104,14 +110,18 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
     boost::scoped_ptr<GT::IdentifiersPtr>     identifiersPtr(new GT::IdentifiersPtr(identifiers));
     boost::scoped_ptr<GT::GTL::ObjectsPtr>    invalidObjectsPtr(new GT::GTL::ObjectsPtr(invalidObjects));
     boost::scoped_ptr<GT::GTL::ObjectsPtr>    validObjectsPtr(new GT::GTL::ObjectsPtr(validObjects));
-    boost::scoped_ptr<GT::GTL::ConditionsPtr> invalidConditionsPtr(new GT::GTL::ConditionsPtr(invalidConditions));
+    boost::scoped_ptr<GT::GTL::ConditionsPtr> invalidConditionsPtr(
+        new GT::GTL::ConditionsPtr(invalidConditions));
     boost::scoped_ptr<GT::GTL::ConditionsPtr> validConditionsPtr(new GT::GTL::ConditionsPtr(validConditions));
 
     // when
     GT::GTL::CheckingStatementDriver statementDriver(&driver);
-    boost::scoped_ptr<GT::GTL::QueryPtr> query1Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), invalidObjectsPtr.get(), validConditionsPtr.get()));
-    boost::scoped_ptr<GT::GTL::QueryPtr> query2Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   invalidConditionsPtr.get()));
-    boost::scoped_ptr<GT::GTL::QueryPtr> query3Ptr(statementDriver.createQuery(*inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> query1Ptr(statementDriver.createQuery(
+        *inputLocation, identifiersPtr.get(), invalidObjectsPtr.get(), validConditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> query2Ptr(statementDriver.createQuery(
+        *inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   invalidConditionsPtr.get()));
+    boost::scoped_ptr<GT::GTL::QueryPtr> query3Ptr(statementDriver.createQuery(
+        *inputLocation, identifiersPtr.get(), validObjectsPtr.get(),   validConditionsPtr.get()));
 
     // then
     BOOST_REQUIRE(   query1Ptr );
@@ -137,6 +147,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_toString ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

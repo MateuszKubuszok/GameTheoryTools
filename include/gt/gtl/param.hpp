@@ -3,18 +3,18 @@
 
 namespace GT {
 namespace GTL {
- 
-////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Abstract class that defines interface for Params. 
+ * @brief Abstract class that defines interface for Params.
  *
  * @author Mateusz Kubuszok
  *
  * @see Context
  * @see Definition
  * @see ParamFactory
- */   
+ */
 class Param : public virtual Object {
 public:
     /**
@@ -33,7 +33,7 @@ public:
      * @param context               Context with values
      * @return                      Object
      * @throw CyclicIdentifiers     thrown when Identfiers create the cycle
-     * @throw InvalidContentRequest thrown when Param does not contain Object 
+     * @throw InvalidContentRequest thrown when Param does not contain Object
      * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
     virtual ObjectPtr getObject(
@@ -89,14 +89,14 @@ public:
      * @return Param
      */
     virtual operator Param&();
-    
+
 protected:
     /**
      * @brief Checks whether visited Identifiers contain current one.
      *
      * @param visitedIdentifiers already cisited Identifiers
      * @param currentIdentifier  currently visited Identifier
-     * @throw CyclicIdentifiers  thrown when Identifiers create the cycle 
+     * @throw CyclicIdentifiers  thrown when Identifiers create the cycle
      */
     void checkVisitedIdentifiers(
         VisitedIdentifiers& visitedIdentifiers,
@@ -104,7 +104,7 @@ protected:
     );
 }; /* END class Param */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Null Param for handling invalid situations.
@@ -148,7 +148,7 @@ public:
     }
 }; /* END class NullParam */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Error Param for handling invalid situations.
@@ -157,7 +157,7 @@ public:
  */
 class ErrorParam : public Param {
     Message message;
-    
+
 public:
     ErrorParam(
         Message errorMessage
@@ -200,7 +200,7 @@ public:
     }
 }; /* END class ErrorParam */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

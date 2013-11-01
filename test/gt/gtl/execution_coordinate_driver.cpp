@@ -2,7 +2,7 @@
 
 BOOST_AUTO_TEST_SUITE( ExecutionCoordinateDriver )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
     // given
@@ -16,7 +16,8 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
 
     // when
     GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
-    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinatePtr(coordinateDriver.create(*inputLocation, playerPtr.get(), strategyPtr.get()));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinatePtr(
+        coordinateDriver.create(*inputLocation, playerPtr.get(), strategyPtr.get()));
 
     // then
     BOOST_REQUIRE(coordinatePtr);
@@ -60,8 +61,10 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_fillWithData ) {
 
     // when
     GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
-    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(coordinateDriver.fillWithData(*inputLocation, coordinatePtr.get(), paramsPtr.get()));
-    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate4Ptr(coordinateDriver.fillWithData(*inputLocation, coordinatePtr.get(), coordinatesPtr.get()));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(
+        coordinateDriver.fillWithData(*inputLocation, coordinatePtr.get(), paramsPtr.get()));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate4Ptr(
+        coordinateDriver.fillWithData(*inputLocation, coordinatePtr.get(), coordinatesPtr.get()));
 
     // then
     BOOST_REQUIRE(coordinate3Ptr);
@@ -94,7 +97,8 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_merge ) {
 
     // when
     GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
-    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(coordinateDriver.merge(*inputLocation, coordinate1Ptr.get(), coordinate2Ptr.get()));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(
+        coordinateDriver.merge(*inputLocation, coordinate1Ptr.get(), coordinate2Ptr.get()));
 
     // then
     BOOST_REQUIRE(coordinate3Ptr);
@@ -114,6 +118,6 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_merge ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()
