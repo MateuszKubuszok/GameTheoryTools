@@ -25,7 +25,12 @@ enum class ResultIndentationMode { TABS, SPACES, NONE };
 /**
  * @brief Creates some simple Results as well as supplies builders for more complex of them.
  *
+ * <p>The type of ResultBuilder returned by factory is determined by builderMode settings.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Result
+ * @see ResultBuilder
  */
 class ResultFactory {
     SINGLETON_DECLARATION(ResultFactory)

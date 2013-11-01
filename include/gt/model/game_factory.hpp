@@ -25,9 +25,9 @@ public:
     /**
      * @brief Returns Strategic Game builder.
      *
-     * <p>StrategyGame builder requires that Players should be set at the very beginning.
-     * It also require that Each coordinate is set and its set exactly once. Otherwise
-     * InvalidCoordinate or IllegalInnerState exception is thrown.</p>
+     * <p>StrategyGame builder requires that Players should be set at the very beginning. It also require that
+     * Each coordinate is set and its set exactly once. Otherwise InvalidCoordinate or IllegalInnerState
+     * exception is thrown.</p>
      *
      * @return Strategic Game builder
      */
@@ -36,10 +36,9 @@ public:
     /**
      * @brief Returns Extensive Game builder.
      *
-     * <p>StrategyGame builder requires that Players should be set at the very beginning.
-     * It required that at each level/turn only one Player is used. Different turns
-     * can have different Players. Otherwise InvalidCoordinate or IllegalInnerState
-     * exception is thrown.</p>
+     * <p>ExtensiveGame builder requires that Players should be set at the very beginning. It required that
+     * at each node of tree only one Player is used. Different turns can have different Players. Otherwise
+     * InvalidCoordinate or IllegalInnerState exception is thrown.</p>
      *
      * @return Extensive Game builder
      */

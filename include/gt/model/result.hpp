@@ -9,7 +9,14 @@ namespace Model {
 /**
  * @brief Root of all Results created by GTL parser.
  *
+ * <p>Since all classes of GT (except factories, Numbers, Identifiers and Messages) extend this one,
+ * they are guaranteed to have toSting() and isEqual(Root&) methods as well as <pre>==</pre>, <pre>!=</pre>
+ * and <pre><<</pre> operators overloaded.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see ResultBuilder
+ * @see ResultFactory
  */
 class Result : public virtual Root {
 public:

@@ -10,6 +10,9 @@ namespace Model {
  * @brief Builder used for creating Results displayed to user.
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Result
+ * @see ResultFactory
  */
 class ResultBuilder : public virtual Root {
 public:

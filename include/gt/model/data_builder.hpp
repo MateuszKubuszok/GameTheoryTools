@@ -9,7 +9,23 @@ namespace Model {
 /**
  * @brief Helper used to create data for Games.
  *
+ * <p>Intended to be used recursively with clone method:</p>
+ *
+ * <p><pre>
+ * DataBuilderPtr builder1 = dataBuilder->clone();
+ *     builder1->addNextPositions(position11);
+ *     builder->clone()->addNextPositions(positions21).setParams(param11_21); // payoff(p1=s1, p2=s1)
+ *     builder->clone()->addNextPositions(positions22).setParams(param11_22); // payoff(p1=s1, p2=s2)
+ * DataBuilderPtr builder2 = dataBuilder->clone();
+ *     builder2->addNextPositions(position12);
+ *     builder->clone()->addNextPositions(positions21).setParams(param12_21); // payoff(p1=s2, p2=s1)
+ *     builder->clone()->addNextPositions(positions22).setParams(param12_22); // payoff(p1=s2, p2=s2)
+ * </pre></p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Data
+ * @see GameBuilder
  */
 class DataBuilder : public virtual Root {
 public:

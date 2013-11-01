@@ -11,6 +11,8 @@ namespace Model {
  *
  * <p>Is extended by Data interface.</p>
  *
+ * <p>Used to restrict access to Data to ensure that ontent can only be read.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see Data

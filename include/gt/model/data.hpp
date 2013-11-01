@@ -11,6 +11,8 @@ namespace Model {
  *
  * <p>Extends DataAccessor interface.</p>
  *
+ * <p>Used to store all information necessary to calculate Nash equlibria for each type of Games.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see DataAccessor

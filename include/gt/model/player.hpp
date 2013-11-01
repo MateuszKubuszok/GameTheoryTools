@@ -9,7 +9,13 @@ namespace Model {
 /**
  * @brief Defines Player.
  *
+ * <p>Each Player is defined by its name and used strategies. They will later be used during Game definition
+ * and calculation of equilibria.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Game
+ * @see GameBuilder
  */
 class Player : public virtual Root {
     typedef boost::container::map<Identifier, Index>  StrategyMap;

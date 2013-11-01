@@ -9,9 +9,8 @@ namespace Model {
 /**
  * @brief Allows to access data specific for Game in a tree form.
  *
- * <p>Games in this form has all payoffs defined in nodes of a game tree. Each level of that tree has assigned
- * Player and for this level. As such coordinates are mapping from turn into choosen strategy instead
- * of Player to strategy mapping.</p>
+ * <p>Games in this form has all payoffs defined in nodes of a game tree. Each node of that tree has assigned
+ * Player. As such each SubCoordinates is mapped to strategy of the same Player.</p>
  *
  * @author Mateusz Kubuszok
  *
