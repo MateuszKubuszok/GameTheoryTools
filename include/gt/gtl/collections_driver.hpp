@@ -9,7 +9,19 @@ namespace GTL {
 /**
  * @brief Used for handling collections via Driver.
  *
+ * <p>Used by Parser to create collections of ValidableSymbols and insert elements into them. On Parser's they
+ * are used wverywhere where some ValidableSymbols can be listed with <pre>,</pre> character.</p>
+ *
+ * <p>Example of piece of code recognized by Parser:</p>
+ *
+ * <p><pre>
+ * identifier1, identifier2, identifier3
+ * </pre></p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Driver
+ * @see Parser
  */
 template<typename Content>
 class CollectionsDriver : public virtual Root {

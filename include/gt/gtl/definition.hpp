@@ -9,8 +9,12 @@ namespace GTL {
 /**
  * @brief Definition used to define Context.
  *
+ * <p>Contains pair Identifier-Param which will be insterted into current Context in the next step.</p>
+ *
  * @author Mateusz Kubuszok
  *
+ * @see StatementDriver
+ * @see Parser
  * @see Context
  * @see Param
  */

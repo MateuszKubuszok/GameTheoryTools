@@ -9,11 +9,34 @@ namespace GTL {
 /**
  * @brief Defines Query.
  *
+ * <p>Each Query is created within parser with:</p>
+ *
+ * <p><pre>
+ * FIND [propertiesNames]
+ * FOR  [objects]
+ * [WITH condition1[, condition2[, ...]]]
+ * </pre></p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see StatementDriver
+ * @see Condition
+ * @see Parser
  */
 class Query : public virtual ValidableSymbol {
+    /**
+     * @brief Names of properties that Oject will be queried for.
+     */
     IdentifiersPtr propertiesNames;
+
+    /**
+     * @brief Objects that will be queried.
+     */
     ObjectsPtr     objects;
+
+    /**
+     * @brief Conditions of Query.
+     */
     ConditionsPtr  conditions;
 
 public:

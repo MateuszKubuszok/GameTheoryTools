@@ -9,7 +9,12 @@ namespace GTL {
 /**
  * @brief Contains Coordinates as well as defined Players.
  *
+ * <p>Contains information about Players and Coordinates that will be used to build data.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see GameDriver
+ * @see Parser
  */
 class Details : public virtual ValidableSymbol {
     /**

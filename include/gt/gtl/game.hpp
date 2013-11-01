@@ -9,7 +9,12 @@ namespace GTL {
 /**
  * @brief Defines Game.
  *
+ * <p>Game Object can be later used to Query it or to store it into Contextfor later use.</pre>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see GameDriver
+ * @see Parser
  */
 class Game : public virtual Object {
     /**

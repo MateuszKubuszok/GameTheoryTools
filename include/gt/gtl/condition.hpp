@@ -9,7 +9,22 @@ namespace GTL {
 /**
  * @brief Condition used for querying Objects with some requirements.
  *
+ * <p>Each kind of Condition should have its own representation recognized by Parser. It should be then
+ * created by ConditionDriver (which in turn would use ConditionFactory). Conditions would be used e.g.
+ * like that:</p>
+ *
+ * <p><pre>
+ * FIND pure_exuilibrium
+ * FOR  some_game
+ * WITH [condition1](, [condition2](, ...))
+ * </pre></p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see ConditionDriver
+ * @see ConditionFactory
+ * @see Query
+ * @see Parser
  */
 class Condition : public virtual ValidableSymbol {
 public:
@@ -19,9 +34,9 @@ public:
     virtual ~Condition();
 
     /**
-     * @brief Parametrizes query using the inversion of control.
+     * @brief Parametrizes Query using the inversion of control.
      *
-     * @param query query to parametrize
+     * @param query Query to parametrize
      */
     virtual void conditionQuery(
         Query& query

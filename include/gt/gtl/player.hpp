@@ -9,14 +9,24 @@ namespace GTL {
 /**
  * @brief Defines Player.
  *
+ * <p>Player is defined with:</p>
+ *
+ * <p><pre>
+ * PLAYER playerName { [strategies] }
+ * </pre></p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see GameDriver
+ * @see Game
+ * @see Parser
  */
 class Player : public virtual Object, public Model::Player {
 public:
     /**
      * @brief Constructor of the Player.
      *
-     * @param playerName     name of the player
+     * @param playerName     name of the Player
      * @param playerStrategy declared strategies
      */
     Player(

@@ -7,9 +7,20 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Interface used for marking objects that are valid (or not) symbols in parser.
+ * @brief Interface used for marking objects that are valid (or not) symbols in Parser.
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Condition
+ * @see Coordinate
+ * @see Definition
+ * @see Details
+ * @see Game
+ * @see Object
+ * @see Player
+ * @see Param
+ * @see Query
+ * @see Parser
  */
 class ValidableSymbol : public virtual Root {
     /**

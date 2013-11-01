@@ -7,17 +7,39 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Contains some coordinate as well as data boind to it.
+ * @brief Contains some Coordinate as well as data bound to it.
+ *
+ * <p>They can be considered pieces from which sets of pure strategies will be built. For strategic-form
+ * games it means putting together all player-strategy pairs as to create whole vector for payoff function.
+ * For extensive-form games it means going from root to leafs, one node at a time.</p>
+ *
+ * <p>Example of piece of code recognized by Parser:</p>
+ *
+ * <p><pre>
+ * {
+ *    p1 = p1s1 :
+ *    { p2 = p2s1 : 10, 20 },
+ *    { p2 = p2s2 : 30, 40 }
+ * },
+ * {
+ *    p1 = p1s2 :
+ *    { p2 = p2s1 : 50, 60 },
+ *    { p2 = p2s2 : 70, 80 }
+ * }
+ * </pre></p>
  *
  * @author Mateusz Kubuszok
+ *
+ * @see CoordinateDriver
+ * @see Parser
  */
 class Coordinate : public virtual ValidableSymbol {
     /**
      * @brief Merges two Coordinates into one.
      *
-     * @param coordinate1 first coordinate
-     * @param coordinate2 second coordinate
-     * @return            merged coordinates
+     * @param coordinate1 first Coordinate
+     * @param coordinate2 second Coordinate
+     * @return            merged Coordinates
      */
     friend Coordinate operator+(
         Coordinate& coordinate1,
@@ -35,7 +57,7 @@ class Coordinate : public virtual ValidableSymbol {
     const ParamsPtr params;
 
     /**
-     * @brief Defined subcoordinetes.
+     * @brief Defined subCoordinetes.
      */
     const CoordinatesPtr subCoordinates;
 
@@ -109,7 +131,7 @@ public:
     );
 
     /**
-     * @brief Obtains params.
+     * @brief Obtains Params.
      *
      * @return Params
      */

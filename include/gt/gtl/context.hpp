@@ -9,7 +9,16 @@ namespace GTL {
 /**
  * @brief Context containing identifiers and values befind then.
  *
- * Has the ability to dynamically inherit parent context filling it with data specific to itself.
+ * <p>Has the ability to dynamically inherit parent Context filling it with data specific to itself.</p>
+ *
+ * <p>Used by Drivers to store Params under some name. They can be later accessed by their names.</p>
+ *
+ * <p>Example of code recognized by Parsr that would use Context undernath:</p>
+ *
+ * <p><pre>
+ * LET game1 BE [game definition];
+ * FIND mixed_equilibrium FOR game1;
+ * </pre></p>
  *
  * @author Mateusz Kubuszok
  *

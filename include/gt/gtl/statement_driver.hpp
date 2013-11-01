@@ -10,6 +10,11 @@ namespace GTL {
  * @brief Used for handling statements via Driver.
  *
  * @author Mateusz Kubuszok
+ *
+ * @see Driver
+ * @see Definition
+ * @see Query
+ * @see Parser
  */
 class StatementDriver : public virtual Root {
 public:

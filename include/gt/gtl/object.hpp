@@ -9,7 +9,13 @@ namespace GTL {
 /**
  * @brief Root of all Objects used as a data in parsed by GTL.
  *
+ * <p>Common ancestor of all types of data (besides Numbers) that can be used within language.</p>
+ *
  * @author Mateusz Kubuszok
+ *
+ * @see Param
+ * @see Context
+ * @see Parser
  */
 class Object : public virtual ValidableSymbol {
     /**
