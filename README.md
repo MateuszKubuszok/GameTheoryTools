@@ -65,8 +65,7 @@ For more information you can run each of them with `--log_level=test_suite` para
 TODO
 ----
 
-* Write and tests Drivers and connect them to GTL classes,
-* implement actual logic of finding equilibria,
+* Implement actual logic of finding equilibria,
 * test it,
 * create main function that parses arguments and initiates parser.
 
