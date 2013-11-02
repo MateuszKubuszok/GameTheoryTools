@@ -7,7 +7,9 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Implementation used for handling Games via ExecutionDriver.
+ * @brief Implementation used for handling Conditions via ExecutionDriver.
+ *
+ * <p>Performs actual execution of instructions for Conditions.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -15,7 +17,13 @@ namespace GTL {
  * @see ConditionDriver
  */
 class ExecutionConditionDriver : public ConditionDriver {
+    /**
+     * @brief Driver for error handling.
+     */
     CheckingConditionDriver checkingConditionDriver;
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver*                 driver;
 
 public:

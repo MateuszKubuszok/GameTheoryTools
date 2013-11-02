@@ -9,22 +9,57 @@ namespace GTL {
 /**
  * @brief Implementation used for executing only checking actions.
  *
+ * <p>Performs only syntax/type checking on input stream.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see Driver
  */
 class CheckingDriver : public Driver {
+    /**
+     * @brief Driver for Coordinates.
+     */
     CheckingCoordinateDriver               coordinate;
+    /**
+     * @brief Driver for Coordinates' collections.
+     */
     CollectionsDriver<GT::GTL::Coordinate> coordinates;
+    /**
+     * @brief Driver for Conditions.
+     */
     CheckingConditionDriver                condition;
+    /**
+     * @brief Driver for Conditions' collections.
+     */
     CollectionsDriver<GT::GTL::Condition>  conditions;
+    /**
+     * @brief Driver for Games.
+     */
     CheckingGameDriver                     game;
+    /**
+     * @brief Driver for Identifiers' collections.
+     */
     CollectionsDriver<GT::Identifier>      identifiers;
+    /**
+     * @brief Driver for Objects' collections.
+     */
     CollectionsDriver<GT::GTL::Object>     objects;
+    /**
+     * @brief Driver for Params' collections.
+     */
     CollectionsDriver<GT::GTL::Param>      params;
+    /**
+     * @brief Driver for values.
+     */
     CheckingValueDriver                    value;
+    /**
+     * @brief Driver for statements.
+     */
     CheckingStatementDriver                statement;
 
+    /**
+     * @brief Error stream for displaying informations about errors.
+     */
     std::ostream*                          errorStream;
 
 public:

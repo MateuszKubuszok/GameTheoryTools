@@ -9,6 +9,8 @@ namespace GTL {
 /**
  * @brief Implementation used for handling Games via CheckingDriver.
  *
+ * <p>Performs only syntax/type checking on Games' tokens.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see CheckingDriver

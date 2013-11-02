@@ -9,26 +9,68 @@ namespace GTL {
 /**
  * @brief Implementation used for executing both checking and actual actions.
  *
+ * <p>Performs actual execution of instructions from input stream.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see Driver
  */
 class ExecutionDriver : public Driver {
+    /**
+     * @brief CheckingDriver for error handling.
+     */
     CheckingDriver checkingDriver;
+
+    /**
+     * @brief Contains Context.
+     */
     ContextPtr     context;
 
-    std::ostream* outputStream;
-
+    /**
+     * @brief Driver for Coordinates.
+     */
     ExecutionCoordinateDriver              coordinate;
+    /**
+     * @brief Driver for Coordinates' collections.
+     */
     CollectionsDriver<GT::GTL::Coordinate> coordinates;
+    /**
+     * @brief Driver for Conditions.
+     */
     ExecutionConditionDriver               condition;
+    /**
+     * @brief Driver for Conditions' collections.
+     */
     CollectionsDriver<GT::GTL::Condition>  conditions;
+    /**
+     * @brief Driver for Games.
+     */
     ExecutionGameDriver                    game;
+    /**
+     * @brief Driver for Identifiers' collections.
+     */
     CollectionsDriver<GT::Identifier>      identifiers;
+    /**
+     * @brief Driver for Objects' collections.
+     */
     CollectionsDriver<GT::GTL::Object>     objects;
+    /**
+     * @brief Driver for Params' collections.
+     */
     CollectionsDriver<GT::GTL::Param>      params;
+    /**
+     * @brief Driver for values.
+     */
     ExecutionValueDriver                   value;
+    /**
+     * @brief Driver for statements.
+     */
     ExecutionStatementDriver               statement;
+
+    /**
+     * @brief Output stream for displaying results.
+     */
+    std::ostream* outputStream;
 
 public:
     /**

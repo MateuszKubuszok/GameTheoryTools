@@ -9,13 +9,21 @@ namespace GTL {
 /**
  * @brief Implementation used for handling Coordinates via ExecutionDriver.
  *
+ * <p>Performs actual execution of instructions for Coordinates.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see ExecutionDriver
  * @see CoordinateDriver
  */
 class ExecutionCoordinateDriver : public CoordinateDriver {
+    /**
+     * @brief Driver for error handling.
+     */
     CheckingCoordinateDriver checkingCoordinateDriver;
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver*                  driver;
 
 public:

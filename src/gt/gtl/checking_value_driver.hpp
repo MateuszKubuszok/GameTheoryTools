@@ -9,6 +9,8 @@ namespace GTL {
 /**
  * @brief Implementation used for handling values via CheckingDriver.
  *
+ * <p>Performs only syntax/type checking on Values' tokens.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see CheckingDriver

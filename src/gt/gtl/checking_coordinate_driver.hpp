@@ -9,6 +9,8 @@ namespace GTL {
 /**
  * @brief Implementation used for handling Coordinates via CheckingDriver.
  *
+ * <p>Performs only syntax/type checking on Coordinates' tokens.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see CheckingDriver

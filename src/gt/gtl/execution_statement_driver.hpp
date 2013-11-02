@@ -9,14 +9,25 @@ namespace GTL {
 /**
  * @brief Implementation used for handling statements via ExecutionDriver.
  *
+ * <p>Performs actual execution of instructions for statements.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see ExecutionDriver
  * @see StatementDriver
  */
 class ExecutionStatementDriver : public StatementDriver {
+    /**
+     * @brief Driver for error handling.
+     */
     CheckingStatementDriver checkingStatementDriver;
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver*                 driver;
+    /**
+     * @brief Contains Context.
+     */
     ContextPtr              context;
 
 public:

@@ -16,6 +16,9 @@ namespace GTL {
  * @see ParamFactory
  */
 class NumberParam : public Param {
+    /**
+     * @brief Number stored by this Param.
+     */
     NumberPtr value;
 
 public:
@@ -54,7 +57,7 @@ public:
     );
 
     /**
-     * @brief IdntifierParam's Message.
+     * @brief NumberParam's Message.
      *
      * @return Message
      */

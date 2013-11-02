@@ -4,10 +4,12 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Implementation used for handling values via ExecutionDriver.
+ *
+ * <p>Performs actual execution of instructions for values.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -15,7 +17,13 @@ namespace GTL {
  * @see ValueDriver
  */
 class ExecutionValueDriver : public ValueDriver {
+    /**
+     * @brief Driver for error handling.
+     */
     CheckingValueDriver checkingValueDriver;
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver*             driver;
 
 public:
@@ -90,7 +98,7 @@ public:
     virtual Message toString();
 }; /* END class ExecutionValueDriver */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */

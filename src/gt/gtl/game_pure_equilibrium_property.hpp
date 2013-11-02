@@ -6,14 +6,36 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Describes pure-form equilibria for Games.
+ *
+ * @author Mateusz Kubuszok
+ *
+ * @see Game
+ */
 class GamePureEquilibriumProperty : public ObjectProperty {
+    /**
+     * @brief Described Game.
+     */
     Game* game;
 
 public:
+    /**
+     * @brief Initiates Property with Game it's describing.
+     *
+     * @param describedGame described Game
+     */
     explicit GamePureEquilibriumProperty(
         Game* describedGame
     );
 
+    /**
+     * @brief Finds equilibrium for given Conditions.
+     *
+     * @param  context    Context with values
+     * @param  conditions Conditions to check
+     * @result            search Result
+     */
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions

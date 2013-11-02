@@ -6,14 +6,36 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Describes Player's strategies.
+ *
+ * @author Mateusz Kubuszok
+ *
+ * @see Player
+ */
 class PlayerStrategiesProperty : public ObjectProperty {
+    /**
+     * @brief Described Player.
+     */
     Player* player;
 
 public:
+    /**
+     * @brief Initiates Property with Player it's describing.
+     *
+     * @param describedPlayer described Player
+     */
     PlayerStrategiesProperty(
         Player* describedPlayer
     );
 
+    /**
+     * @brief Finds Player's strategies.
+     *
+     * @param  context    Context with values
+     * @param  conditions Conditions to check
+     * @result            search Result
+     */
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions

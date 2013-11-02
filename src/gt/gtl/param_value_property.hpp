@@ -7,13 +7,28 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class ParamValueProperty : public ObjectProperty {
+    /**
+     * @brief Described Param.
+     */
     Param* param;
 
 public:
+    /**
+     * @brief Initiates Property with Param it's describing.
+     *
+     * @param describedParam described Param
+     */
     ParamValueProperty(
-        Param* owner
+        Param* describedParam
     );
 
+    /**
+     * @brief Finds Params's value.
+     *
+     * @param  context    Context with values
+     * @param  conditions Conditions to check
+     * @result            search Result
+     */
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions

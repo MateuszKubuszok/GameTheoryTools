@@ -9,14 +9,25 @@ namespace GTL {
 /**
  * @brief Implementation used for handling Games via ExecutionDriver.
  *
+ * <p>Performs actual execution of instructions for Games.</p>
+ *
  * @author Mateusz Kubuszok
  *
  * @see ExecutionDriver
  * @see GameDriver
  */
 class ExecutionGameDriver : public GameDriver {
+    /**
+     * @brief Driver for error handling.
+     */
     CheckingGameDriver checkingGameDriver;
+    /**
+     * @brief Implementation of a main Driver.
+     */
     Driver*            driver;
+    /**
+     * @brief Contains Context.
+     */
     ContextPtr         context;
 
 public:

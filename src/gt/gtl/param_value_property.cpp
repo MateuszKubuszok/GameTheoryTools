@@ -9,9 +9,9 @@ namespace GTL {
 // public:
 
 ParamValueProperty::ParamValueProperty(
-    Param* owner
+    Param* describedParam
 ) :
-    param(owner)
+    param(describedParam)
     {}
 
 ResultPtr ParamValueProperty::findForConditions(

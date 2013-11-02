@@ -7,15 +7,18 @@ namespace GTL {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Param containing Object value. 
+ * @brief Param containing Object value.
  *
  * @author Mateusz Kubuszok
  *
  * @see Context
  * @see Param
  * @see ParamFactory
- */   
+ */
 class ObjectParam : public Param {
+    /**
+     * @brief Value stored by this Param.
+     */
     ObjectPtr value;
 
 public:
@@ -54,7 +57,7 @@ public:
     );
 
     /**
-     * @brief IdntifierParam's Message.
+     * @brief ObjectParam's Message.
      *
      * @return Message
      */

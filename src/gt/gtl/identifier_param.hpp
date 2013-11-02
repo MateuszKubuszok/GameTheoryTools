@@ -16,6 +16,9 @@ namespace GTL {
  * @see ParamFactory
  */
 class IdentifierParam : public Param {
+    /**
+     * @brief Identifier that this Param points to.
+     */
     Identifier identifier;
 
 public:
@@ -57,7 +60,7 @@ public:
     );
 
     /**
-     * @brief IdntifierParam's Message.
+     * @brief IdentifierParam's Message.
      *
      * @return Message
      */

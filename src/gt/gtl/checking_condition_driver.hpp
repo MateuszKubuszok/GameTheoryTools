@@ -7,7 +7,9 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Implementation used for handling Games via CheckingDriver.
+ * @brief Implementation used for handling Conditions via CheckingDriver.
+ *
+ * <p>Performs only syntax/type checking on Conditions' tokens.</p>
  *
  * @author Mateusz Kubuszok
  *
