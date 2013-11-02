@@ -81,12 +81,10 @@ conf.env.Append(CPPFLAGS=['-std=c++11'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
-# - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner
-#   (poor custom path definitions),
-# - src/ - added for implemetnations headers,
-# - src/gt/gtl - added for using location.hh, position.hh and stack.hh
-#   in GT::GTL::Parser (as above).
-conf.env.Append(CPPPATH=[include, include+gtl, source, source+gtl])
+# - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner (poor custom path definitions), as well
+#   as for location.hh, position.hh and stack.hh
+# - src/ - added for implemetnations headers.
+conf.env.Append(CPPPATH=[include, include+gtl, source])
 
 # Sets used libraries to:
 # - gmp - GNU Multiple Precision library,
@@ -207,7 +205,26 @@ GTL_Scanner_cpp = env.CXXFile(
     source=FnB_Scanner_ll_URI,
     target=GTL_Scanner_cpp_URI
 )
-env.Alias('buildParserClasses', [GTL_Parser_cpp, GTL_Scanner_cpp])
+
+CorrectBisonInstallation = [
+    env.Command(
+        include+gtl+WronglyPlacedBisonHelper_hh.name,
+        WronglyPlacedBisonHelper_hh,
+        Move("$TARGET", "$SOURCE")
+    )
+    for WronglyPlacedBisonHelper_hh in Glob(source+gtl+'*.hh')
+    if  WronglyPlacedBisonHelper_hh.name in [
+        'location.hh',
+        'position.hh',
+        'stack.hh'
+    ]
+]
+Depends(
+    CorrectBisonInstallation,
+    [GTL_Parser_cpp, GTL_Scanner_cpp]
+)
+
+env.Alias('buildParserClasses', CorrectBisonInstallation)
 
 ##############################################################################################################
 
@@ -227,12 +244,12 @@ GTL = [
         target=targetForSource(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if GTL_cpp.name.endswith('scanner.cpp')
-    or GTL_cpp.name.endswith('parser.cpp')
+    if  GTL_cpp.name.endswith('scanner.cpp')
+    or  GTL_cpp.name.endswith('parser.cpp')
 ]
 Depends(
     GTL,
-    ModelsTestsProgram_run
+    [ModelsTestsProgram_run, CorrectBisonInstallation]
 )
 env.Alias('buildGTL', GTL)
 
