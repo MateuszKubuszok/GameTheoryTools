@@ -36,6 +36,8 @@ class Query;             class NullQuery;            class ErrorQuery;
 
 class Context;           class NullContext;
 
+class DriverFactory;
+
 class location;
 class Parser;
 class Scanner;
@@ -138,6 +140,8 @@ bool operator!=(Params&      params1,      Params&      params2);
 #include "gt/gtl/query.hpp"
 
 /* Includes GTL parsers elements */
+
+#include "gt/gtl/driver_factory.hpp"
 
 #include "gt/gtl/collections_driver.hpp"
 #include "gt/gtl/coordinate_driver.hpp"
