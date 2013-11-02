@@ -46,6 +46,12 @@
         {
             "name":        "SCons",
             "selector":    "scons",
+            "shell_cmd":   "scons",
+            "working_dir": "${project_path}"
+        },
+        {
+            "name":        "SCons with errors.log",
+            "selector":    "scons",
             "shell_cmd":   "scons 2> errors.log",
             "working_dir": "${project_path}"
         }
