@@ -24,7 +24,9 @@ typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::
     typename CollectionsDriver<Content>::CollectionPtr* collection
 ) {
     (*collection)->push_back(*element);
-    return collection;
+    return new CollectionsDriver<Content>::CollectionPtr(
+        *collection
+    );
 }
 
 template<typename Content>
