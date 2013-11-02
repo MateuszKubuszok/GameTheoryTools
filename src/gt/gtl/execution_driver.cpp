@@ -14,12 +14,12 @@ ExecutionDriver::ExecutionDriver(
 ) :
     checkingDriver(newErrorStream),
     context(new Context()),
-    outputStream(newOutputStream),
     coordinate(this),
     condition(this),
     game(this, context),
     value(this),
-    statement(this, context)
+    statement(this, context),
+    outputStream(newOutputStream)
     {}
 
 CoordinateDriver& ExecutionDriver::forCoordinate() {
