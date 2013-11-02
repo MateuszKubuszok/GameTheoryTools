@@ -18,7 +18,13 @@ namespace Model {
  * @see DataAccessor
  */
 class PlainDataPiece : public DataPiece {
+    /**
+     * @brief PositionsHelper used to properly locate Index in storage.
+     */
     PositionsHelper positionsHelper;
+    /**
+     * @brief Values of payoff.
+     */
     NumbersPtr      numbers;
 
 public:

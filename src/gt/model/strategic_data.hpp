@@ -23,9 +23,18 @@ namespace Model {
  * @see PositionsHelper
  */
 class StrategicData : public Data {
+    /**
+     * @brief PositionsHelper used to calculate positions in storage vector.
+     */
     PositionsHelper positionsHelper;
 
+    /**
+     * @brief Contains Payoff - indexes can be calculated with PostionsHelper.
+     */
     boost::container::vector<NumbersPtr> payoffStorage;
+    /**
+     * @brief Contains information whether or not some storage poition is already used.
+     */
     boost::container::vector<bool>       payoffStorageAllocation;
 
 public:

@@ -15,14 +15,30 @@ namespace Model {
  * @author Mateusz Kubuszok
  *
  * @see ExtensiveData
+ * @see ExtensiveGame
  */
 class ExtensiveDataBuilder : public DataBuilder {
+    /**
+     * @brief Actual data.
+     */
     ExtensiveDataPtr data;
 
+    /**
+     * @brief Players.
+     */
     PlayersPtr players;
+    /**
+     * @brief Current Positions that will be used to set params with setParams(NumbersPtr).
+     */
     Positions  currentPositions;
 
+    /**
+     * @brief Current depth as numeric value.
+     */
     Index      depthValue;
+     /**
+     * @brief Current depth as Identifier.
+     */
     Identifier depthName;
 
 public:

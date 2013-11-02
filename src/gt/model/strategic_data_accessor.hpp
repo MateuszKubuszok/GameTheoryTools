@@ -23,6 +23,9 @@ namespace Model {
  * @see PositionsHelper
  */
 class StrategicDataAccessor : public DataAccessor {
+    /**
+     * @brief Actual data.
+     */
     StrategicDataPtr data;
 
 public:

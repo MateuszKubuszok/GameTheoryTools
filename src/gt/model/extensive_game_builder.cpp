@@ -9,48 +9,48 @@ namespace Model {
 // public:
 
 ExtensiveGameBuilder::ExtensiveGameBuilder() :
-    treeDataBuilder(new ExtensiveDataBuilder())
+    extensiveDataBuilder(new ExtensiveDataBuilder())
     {}
 
 PlayersPtr ExtensiveGameBuilder::getPlayers() {
-    return treeDataBuilder->getPlayers();
+    return extensiveDataBuilder->getPlayers();
 }
 
 DataBuilder& ExtensiveGameBuilder::setPlayers(
     PlayersPtr players
 ) {
-    treeDataBuilder->setPlayers(players);
+    extensiveDataBuilder->setPlayers(players);
     return *this;
 }
 
 DataBuilder& ExtensiveGameBuilder::addNextPositions(
     PositionsPtr positions
 ) {
-    treeDataBuilder->addNextPositions(positions);
+    extensiveDataBuilder->addNextPositions(positions);
     return *this;
 }
 
 DataBuilder& ExtensiveGameBuilder::setParams(
     NumbersPtr params
 ) {
-    treeDataBuilder->setParams(params);
+    extensiveDataBuilder->setParams(params);
     return *this;
 }
 
 DataBuilderPtr ExtensiveGameBuilder::clone() {
-    return treeDataBuilder->clone();
+    return extensiveDataBuilder->clone();
 }
 
 DataBuilderPtr ExtensiveGameBuilder::dataBuilder() {
-    return boost::dynamic_pointer_cast<DataBuilder>(treeDataBuilder);
+    return boost::dynamic_pointer_cast<DataBuilder>(extensiveDataBuilder);
 }
 
 
 GamePtr ExtensiveGameBuilder::build() {
     return GamePtr(
         new ExtensiveGame(
-            treeDataBuilder->getPlayers(),
-            treeDataBuilder->build()
+            extensiveDataBuilder->getPlayers(),
+            extensiveDataBuilder->build()
         )
     );
 }

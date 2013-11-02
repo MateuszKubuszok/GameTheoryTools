@@ -12,12 +12,27 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class PositionsHelper : public Root {
+    /**
+     * @brief Players.
+     */
     PlayersPtr players;
 
+    /**
+     * @brief Map Players' Identifeirs to a number to quickly find Player's ordinal.
+     */
     IdentifierMap playersHelper;
+     /**
+     * @brief Maps Players' Strategies to a number to match: index = sum playerNumber * strategyNumber.
+     */
     StrategyMap   strategiesHelper;
+    /**
+     * @brief Maps Players' Identifeirs to a number to match: index = sum playerNumber * strategyNumber.
+     */
     IdentifierMap positionsHelper;
 
+    /**
+     * @brief Upper bound of storage's positions.
+     */
     Index upperBound;
 
 public:

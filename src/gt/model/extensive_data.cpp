@@ -31,7 +31,7 @@ PlayerPtr ExtensiveData::getPlayerInTurn(
     return getPlayerInTurn(*positions);
 }
 
-Data& ExtensiveData::setPlayerInTurn(
+ExtensiveData& ExtensiveData::setPlayerInTurn(
     Positions& positions,
     PlayerPtr  player
 ) {
@@ -39,7 +39,7 @@ Data& ExtensiveData::setPlayerInTurn(
     return *this;
 }
 
-Data& ExtensiveData::setPlayerInTurn(
+ExtensiveData& ExtensiveData::setPlayerInTurn(
     PositionsPtr positions,
     PlayerPtr   player
 ) {

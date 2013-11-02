@@ -18,7 +18,10 @@ namespace Model {
  * @see ExtensiveDataBuilder
  */
 class ExtensiveGameBuilder : public GameBuilder {
-    ExtensiveDataBuilderPtr treeDataBuilder;
+    /**
+     * @brief Game's DataBuilder.
+     */
+    ExtensiveDataBuilderPtr extensiveDataBuilder;
 
 public:
     /**

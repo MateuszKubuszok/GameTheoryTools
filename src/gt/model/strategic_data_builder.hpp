@@ -17,13 +17,28 @@ namespace Model {
  * @see StrategicData
  */
 class StrategicDataBuilder : public DataBuilder {
+    /**
+     * @brief Type containing information whether some player-strategy pair is already known.
+     */
     typedef boost::container::map<Identifier, bool> KnownPositions;
 
+    /**
+     * @brief Actual data.
+     */
     StrategicDataPtr data;
 
+    /**
+     * @brief Players.
+     */
     PlayersPtr players;
 
+    /**
+     * @brief Currently known Positions.
+     */
     Positions      currentPositions;
+    /**
+     * @brief Information which Positions are already known.
+     */
     KnownPositions currentlyKnownPositions;
 
 public:

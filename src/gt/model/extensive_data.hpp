@@ -21,9 +21,16 @@ namespace Model {
  * @see ExtensiveDataAccessor
  * @see ExtensiveDataPiece
  * @see ExtensiveDataBuilder
+ * @see ExtensiveDataNode
  */
 class ExtensiveData : public Data {
+    /**
+     * @brief Players.
+     */
     PlayersPtr           players;
+    /**
+     * @brief Root of Data tree.
+     */
     ExtensiveDataNodePtr root;
 
 public:
@@ -70,7 +77,7 @@ public:
      * @param player    Player that plays given position
      * @return          reference ot itdelf for chaining
      */
-    virtual Data& setPlayerInTurn(
+    virtual ExtensiveData& setPlayerInTurn(
         Positions& positions,
         PlayerPtr  player
     );
@@ -82,7 +89,7 @@ public:
      * @param player    Player that plays given position
      * @return          reference ot itdelf for chaining
      */
-    virtual Data& setPlayerInTurn(
+    virtual ExtensiveData& setPlayerInTurn(
         PositionsPtr positions,
         PlayerPtr    player
     );
@@ -194,6 +201,20 @@ public:
         PositionsPtr
     ) {
         return NullFactory::getInstance().createPlayer();
+    }
+
+    virtual ExtensiveData& setPlayerInTurn(
+        Positions&,
+        PlayerPtr
+    ) {
+        return *this;
+    }
+
+    virtual ExtensiveData& setPlayerInTurn(
+        PositionsPtr,
+        PlayerPtr
+    ) {
+        return *this;
     }
 
     virtual DataPiecePtr getValues(

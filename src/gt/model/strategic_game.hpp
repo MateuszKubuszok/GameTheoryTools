@@ -17,7 +17,13 @@ namespace Model {
  * @see StrategicData
  */
 class StrategicGame : public Game {
+    /**
+     * @brief Players.
+     */
     PlayersPtr       players;
+    /**
+     * @brief Game's Data.
+     */
     StrategicDataPtr data;
 
 public:

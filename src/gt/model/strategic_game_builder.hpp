@@ -18,6 +18,9 @@ namespace Model {
  * @see StrategicDataBuilder
  */
 class StrategicGameBuilder : public GameBuilder {
+    /**
+     * @brief Game's DataBuilder.
+     */
     StrategicDataBuilderPtr strategicDataBuilder;
 
 public:

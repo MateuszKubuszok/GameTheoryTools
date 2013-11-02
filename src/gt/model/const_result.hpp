@@ -18,6 +18,9 @@ namespace Model {
  * @see ResultFactory
  */
 class ConstResult : public Result {
+    /**
+     * @brief Result to return.
+     */
     Message result;
 
 public:
