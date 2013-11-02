@@ -13,8 +13,9 @@ objects  = 'objects/'
 programs = 'bin/'
 
 # Packages directories
-gtl   = 'gt/gtl/'
-model = 'gt/model/'
+gtl     = 'gt/gtl/'
+model   = 'gt/model/'
+program = 'gt/program/'
 
 ##############################################################################################################
 
@@ -59,6 +60,18 @@ for header in [
     'boost/container/map.hpp',
     'boost/container/set.hpp',
     'boost/container/vector.hpp',
+    'boost/program_options/cmdline.hpp',
+    'boost/program_options/config.hpp',
+    'boost/program_options/environment_iterator.hpp',
+    'boost/program_options/eof_iterator.hpp',
+    'boost/program_options/errors.hpp',
+    'boost/program_options/option.hpp',
+    'boost/program_options/options_description.hpp',
+    'boost/program_options/parsers.hpp',
+    'boost/program_options/positional_options.hpp',
+    'boost/program_options/value_semantic.hpp',
+    'boost/program_options/variables_map.hpp',
+    'boost/program_options/version.hpp',
     'boost/range/adaptor/map.hpp',
     'boost/range/adaptor/reversed.hpp',
     'boost/thread/mutex.hpp',
@@ -289,3 +302,55 @@ Depends(
 )
 AlwaysBuild(GTLTestsProgram_run)
 testEnv.Alias('runGTLTests', GTLTestsProgram_run)
+
+##############################################################################################################
+
+# Build Program's objects
+
+Programs = [
+    env.Object(
+        source=Program_cpp,
+        target=targetForSource(Program_cpp)
+    )
+    for Program_cpp in Glob(source+program+'*.cpp')
+]
+env.Alias('buildPrograms', Programs)
+
+##############################################################################################################
+
+# Build Program's Tests objects
+
+ProgramsTests = [
+    testEnv.Object(
+        source=ProgramTest_cpp,
+        target=targetForTest(ProgramTest_cpp)
+    )
+    for ProgramTest_cpp in Glob(test+program+'*.cpp')
+]
+testEnv.Alias('buildProgramsTests', ProgramsTests)
+
+##############################################################################################################
+
+# Build and run Program's tests
+
+ProgramsTestsProgram_URI = programs+'ProgramsTests'
+ProgramsTestsProgram_bin = testEnv.Program(
+    source=Models + GTL + Programs + ProgramsTests,
+    target=ProgramsTestsProgram_URI
+)
+ProgramsTestsProgram_run = Command(
+    source=ProgramsTestsProgram_bin,
+    target='programs-mock-content',
+    action=ProgramsTestsProgram_URI+
+        ' --log_level='+logLevel+
+        ' --random='+randomOrder+
+        ' --show_progress='+showProgress
+)
+Depends(
+    ProgramsTestsProgram_run,
+    ProgramsTestsProgram_bin
+)
+AlwaysBuild(ProgramsTestsProgram_run)
+testEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
+
+##############################################################################################################

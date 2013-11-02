@@ -49,7 +49,10 @@ Builder can also run specified tasks:
 * `scons -Q buildPsrserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),
 * `scons -Q buildGTL` - builds GTL classes,
 * `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
-* `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies.
+* `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies,
+* `scons -Q buildPrograms` - builds Program's Controllers classes,
+* `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependancies,
+* `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies.
 
 To build project using Clang you can run builder like this: `CXX="scan-build clang++" scons`,
 but it hasn't been actually tested yet. Obviously, it would require Clang installed.
