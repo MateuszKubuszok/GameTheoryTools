@@ -88,19 +88,19 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
     }
 
  /* Block comments */
-\\\*                  { BEGIN(block_comment); }
-<block_comment>\*\\   { BEGIN(0); }
-<block_comment>(.|\n) { /* Remove block comment content */ }
+"\/\*"                 { BEGIN(block_comment); }
+<block_comment>"\*\/"  { BEGIN(0); }
+<block_comment>(.|\n)  { /* Remove block comment content */ }
 
  /* Inline comments */
-\\\\                  { BEGIN(inline_comment); }
-<inline_comment>\\\n  { /* Don't end comment with \ symbol at the end of line */ }
-<inline_comment>\n    { BEGIN(0); }
-<inline_comment>.     { /* Remove inline comment content */ }
+"\/\/"                 { BEGIN(inline_comment); }
+<inline_comment>"\\\n" { /* Don't end comment with \ symbol at the end of line */ }
+<inline_comment>\n     { BEGIN(0); }
+<inline_comment>.      { /* Remove inline comment content */ }
 
  /* White spaces and errors */
-[ \t\r\f\v\n]+        { /* Removes white chars */ }
-.                     {
+[ \t\r\f\v\n]+         { /* Removes white chars */ }
+.                      {
         lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::lexer_error);
     }
