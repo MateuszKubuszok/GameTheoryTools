@@ -83,7 +83,8 @@ if not validInstallation:
     Exit(1)
 
 # Sets C++11 standard to be used during compilation.
-conf.env.Append(CPPFLAGS=['-std=c++11'])
+# Makes executables contain debug information.
+conf.env.Append(CPPFLAGS=['-std=c++11', '-g'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
@@ -112,6 +113,7 @@ env.Append(CPPFLAGS=['-Wall', '-Wextra', '-pedantic'])
 executablesEnv  = env.Clone()
 executablesConf = Configure(executablesEnv)
 
+# Makes executables compile with Boost Program Options library.
 executablesConf.env.Append(LIBS=['boost_program_options'])
 
 executablesConf.Finish()
@@ -318,6 +320,10 @@ Programs = [
     )
     for Program_cpp in Glob(source+program+'*.cpp')
 ]
+Depends(
+    Programs,
+    GTLTestsProgram_run
+)
 env.Alias('buildPrograms', Programs)
 
 ##############################################################################################################
