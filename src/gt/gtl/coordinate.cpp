@@ -94,7 +94,7 @@ void Coordinate::fillDataBuilder(
     if (subCoordinates->size()){
         for (CoordinatePtr& coordinate : *subCoordinates) {
             Model::DataBuilderPtr passedBuilder = dataBuilder->clone();
-            coordinate->fillDataBuilder(context, dataBuilder);
+            coordinate->fillDataBuilder(context, passedBuilder);
         }
     }
 }
