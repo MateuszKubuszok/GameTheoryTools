@@ -386,3 +386,4 @@ ExecutablesPrograms = [
     )
     for Main_o in Mains
 ]
+env.Alias('buildExecutables', ExecutablesPrograms)

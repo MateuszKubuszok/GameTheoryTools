@@ -52,7 +52,8 @@ Builder can also run specified tasks:
 * `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies,
 * `scons -Q buildPrograms` - builds Program's Controllers classes,
 * `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependancies,
-* `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies.
+* `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies,
+* `scons -Q buildExecutables` - build actual executables.
 
 To build project using Clang you can run builder like this: `CXX="scan-build clang++" scons`,
 but it hasn't been actually tested yet. Obviously, it would require Clang installed.
@@ -64,6 +65,15 @@ To run tests manually call `bin/ModelsTests && bin/GTLTests`. Notice that they w
 automatically during build as well.
 
 For more information you can run each of them with `--log_level=test_suite` parameter.
+
+Running program
+----
+
+To run program you need to execute `./gtl_program` command. If not set otherise it will read
+from standard input and write to standard output and standard error. More information can be found
+when run with `--help` argument: `./gtl_program --help`.
+
+Some examples of correct GTL syntax can be found in `examples` directory.
 
 TODO
 ----
