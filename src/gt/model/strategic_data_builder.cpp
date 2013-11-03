@@ -27,8 +27,7 @@ DataBuilder& StrategicDataBuilder::setPlayers(
     PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
-        throw ExceptionFactory::getInstance()
-                .playersAlreadySet();
+        throw ExceptionFactory::getInstance().playersAlreadySet();
 
     data    = StrategicDataPtr(new StrategicData(newPlayers));
     players = newPlayers;
