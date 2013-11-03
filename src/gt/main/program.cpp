@@ -69,17 +69,17 @@ int main(
         if (variables.count(debugOption))
             controller.setDebugLevel(debugValue);
 
-        if (variables.count(inputOption) && !inputValue.empty())
+        if (!inputValue.empty())
             controller.setInputStream(inputValue);
         else
             controller.setDefaultInputStream();
 
-        if (variables.count(outputOption) && !outputValue.empty())
+        if (!outputValue.empty())
             controller.setOutputStream(outputValue);
         else
             controller.setDefaultOutputStream();
 
-        if (variables.count(errorOption) && !errorValue.empty())
+        if (!errorValue.empty())
             controller.setErrorStream(errorValue);
         else
             controller.setDefaultErrorStream();
