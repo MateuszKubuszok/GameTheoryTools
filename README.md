@@ -61,8 +61,8 @@ but it hasn't been actually tested yet. Obviously, it would require Clang instal
 Running tests
 ----
 
-To run tests manually call `bin/ModelsTests && bin/GTLTests`. Notice that they will be run
-automatically during build as well.
+To run tests manually call `bin/ModelsTests && bin/GTLTests && bin/ProgramsTests`. Notice that they
+will be run automatically during build as well.
 
 For more information you can run each of them with `--log_level=test_suite` parameter.
 
@@ -81,7 +81,6 @@ TODO
 * Implement actual logic of finding equilibria,
 * test it,
 * create main function that parses arguments and initiates parser.
-
 * Improve singletons - instances and mutexes variables can probaby be replaced with statrc ones,
 * same for strings inside toString() methods. It could help avoid continous reallocation of memory,
 * add Sublime Text settings for displaying line at 120 signs and make sure that nowhere that limit
