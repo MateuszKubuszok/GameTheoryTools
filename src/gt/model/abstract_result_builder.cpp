@@ -43,7 +43,7 @@ ResultBuilder& AbstractResultBuilder::addResult(
 Message AbstractResultBuilder::toString() {
     try {
         return build()->getResult();
-    } catch (IllegalInnerState e) {
+    } catch (const IllegalInnerState& e) {
         return Message(e.what());
     }
 }
