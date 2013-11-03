@@ -14,6 +14,7 @@ programs = 'bin/'
 
 # Packages directories
 gtl     = 'gt/gtl/'
+main    = 'gt/main/'
 model   = 'gt/model/'
 program = 'gt/program/'
 
@@ -23,6 +24,9 @@ program = 'gt/program/'
 
 def targetForSource(file):
     return str(file).replace('.cpp', '.o').replace(source, objects)
+
+def targetForExecutable(file):
+    return str(file).replace('.o', '').replace(objects+main, programs+'gtl_')
 
 def targetForTest(file):
     return str(file).replace('.cpp', '_test.o').replace(test, objects)
@@ -60,18 +64,7 @@ for header in [
     'boost/container/map.hpp',
     'boost/container/set.hpp',
     'boost/container/vector.hpp',
-    'boost/program_options/cmdline.hpp',
-    'boost/program_options/config.hpp',
-    'boost/program_options/environment_iterator.hpp',
-    'boost/program_options/eof_iterator.hpp',
-    'boost/program_options/errors.hpp',
-    'boost/program_options/option.hpp',
-    'boost/program_options/options_description.hpp',
-    'boost/program_options/parsers.hpp',
-    'boost/program_options/positional_options.hpp',
-    'boost/program_options/value_semantic.hpp',
-    'boost/program_options/variables_map.hpp',
-    'boost/program_options/version.hpp',
+    'boost/program_options.hpp',
     'boost/range/adaptor/map.hpp',
     'boost/range/adaptor/reversed.hpp',
     'boost/thread/mutex.hpp',
@@ -111,6 +104,17 @@ parserEnv = env.Clone()
 
 # Sets warning informations in main conf.
 env.Append(CPPFLAGS=['-Wall', '-Wextra', '-pedantic'])
+
+##############################################################################################################
+
+# Executables environment configuration
+
+executablesEnv  = env.Clone()
+executablesConf = Configure(executablesEnv)
+
+executablesConf.env.Append(LIBS=['boost_program_options'])
+
+executablesConf.Finish()
 
 ##############################################################################################################
 
@@ -354,3 +358,25 @@ AlwaysBuild(ProgramsTestsProgram_run)
 testEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
 
 ##############################################################################################################
+
+# Build main containing objects
+
+Mains = [
+    env.Object(
+        source=Main_cpp,
+        target=targetForSource(Main_cpp)
+    )
+    for Main_cpp in Glob(source+main+'*.cpp')
+]
+
+##############################################################################################################
+
+# Build actual executables
+
+ExecutablesPrograms = [
+    executablesEnv.Program(
+        source=Models + GTL + Programs + Main_o,
+        target=targetForExecutable(Main_o[0])
+    )
+    for Main_o in Mains
+]
