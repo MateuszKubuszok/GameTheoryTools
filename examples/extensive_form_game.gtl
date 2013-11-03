@@ -1,0 +1,45 @@
+/**
+ * Example: shows some features of language.
+ */
+
+// Players definition
+
+LET player1 BE
+PLAYER p1 { s1, s2 };
+
+LET player2 BE
+PLAYER p2 { s1, s2 };
+
+/**
+ * Defines strtegic-form game under 'game2' identifier.
+ */
+LET game2 BE
+  EXTENSIVE GAME
+  WITH
+    player1,             // player passed by identifier
+    PLAYER p2 { s1, s2 } // player passed explicitly
+  SUCH AS
+    { p1=s1 :             // extensive-form games need to be defined as a trees
+      { p2=s1 : 10, 20 }, // where we pass only one choice at a time
+      { p2=s2 : 30, 40 }  // - notice that from each node we can pass choices of only one player
+    },
+    { p1=s2 :
+      { p2=s1 : 50, 60 },
+      { p2=s2 : 70, 80 }
+    }
+  END; // END can be ommitted when obvious
+
+/**
+ * Searches for pure-strategy equlibrium.
+ */
+FIND pure_equilibrium FOR game2;
+
+/**
+ * Searches for mixed-strategy equlibrium.
+ */
+FIND mixed_equilibrium FOR game2;
+
+/**
+ * Searches for behavioral-strategy equlibrium (non-existent for strategic-form games).
+ */
+FIND mixed_equilibrium FOR game2;

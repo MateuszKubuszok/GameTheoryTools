@@ -4,7 +4,7 @@
         {
             "path":                    ".",
             "name":                    "Configuration",
-            "folder_exclude_patterns": [ "bin", "f_n_b", "include", "objects", "src", "test" ]
+            "folder_exclude_patterns": [ "bin", "examples", "f_n_b", "include", "objects", "src", "test" ]
         },
         {
             "path": "include",
@@ -29,6 +29,10 @@
         {
             "path": "objects",
             "name": "Binary Objects"
+        },
+        {
+            "path": "examples",
+            "name": "Examples"
         }
     ],
 
