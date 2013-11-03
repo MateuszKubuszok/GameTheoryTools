@@ -85,16 +85,20 @@ QueryPtr* CheckingStatementDriver::createQuery(
             Identifier& property = *propertyPtr;
 
             if (!object.respondsTo(property)) {
-                // TODO: create ErrorMessageFactory
-                Message errorMessage = Message() +
-                    "Object: " + object.toString() + '\n' +
-                    "has no property: " + property;
-                return new QueryPtr(
-                    setupLocation<Query>(
-                        ErrorFactory::getInstance().createQuery(errorMessage),
-                        inputLocation
-                    )
-                );
+                Param& param = object;
+
+                if (!param) {
+                    // TODO: create ErrorMessageFactory
+                    Message errorMessage = Message() +
+                        "Object: " + object.toString() + '\n' +
+                        "has no property: " + property;
+                    return new QueryPtr(
+                        setupLocation<Query>(
+                            ErrorFactory::getInstance().createQuery(errorMessage),
+                            inputLocation
+                        )
+                    );
+                }
             }
         }
     }

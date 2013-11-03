@@ -21,7 +21,8 @@ Query::Query(
 ResultPtr Query::execute(
     Context& context
 ) {
-    MessagePtr propertyNotFound = createMessagePtr("Property not found");
+    MessagePtr objectPropertyNotFound = createMessagePtr("Property not found in Object");
+    MessagePtr paramPropertyNotFound  = createMessagePtr("Property not found in Param nor referred Object");
 
     ResultBuilderPtr queryResult = ResultFactory::getInstance().buildResult();
 
@@ -35,12 +36,42 @@ ResultPtr Query::execute(
             IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
 
             if (object.respondsTo(property)) {
+                // Object has this property
+
                 MessagePtr propertyValue = createMessagePtr(
                     object.findPropertyWithConditions(context, property, *conditions)->getResult()
                 );
                 propertyResult->addResult(objectName, propertyValue);
-            } else
-                propertyResult->addResult(objectName, propertyNotFound);
+            } else {
+                Param& param = object;
+                if (param) {
+                    // Object is a Param - property might belong to referred Object
+
+                    try {
+                        ObjectPtr referredObject = param.getObject(context);
+                        if (referredObject->respondsTo(property)) {
+                            // Param refers to Object (not a Number or cyclic reference or udefined Param)
+
+                            MessagePtr propertyValue = createMessagePtr(
+                                referredObject->findPropertyWithConditions(context, property, *conditions)
+                                              ->getResult()
+                            );
+                            propertyResult->addResult(objectName, propertyValue);
+                        } else {
+                            // Referred Object has no sought property
+
+                            propertyResult->addResult(objectName, paramPropertyNotFound);
+                        }
+                    } catch (const std::exception& e) {
+                        MessagePtr errorMessage = createMessagePtr(e.what());
+                        propertyResult->addResult(objectName, errorMessage);
+                    }
+                } else {
+                    // Object has no sought property whatsoever
+
+                    propertyResult->addResult(objectName, objectPropertyNotFound);
+                }
+            }
         }
 
         MessagePtr identifierValue = createMessagePtr(propertyResult->build()->getResult());
