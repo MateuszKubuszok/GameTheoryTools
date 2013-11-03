@@ -64,11 +64,17 @@ bool Player::isEqual(
 
 Message Player::toString() {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
+
+    IdentifierPtr playerName      = createIdentifierPtr("Name");
+    MessagePtr    playerNameValue = createMessagePtr(getName());
+    resultBuilder->addResult(playerName, playerNameValue);
+
     for (IdentifierPtr& strategy : *strategies) {
         IdentifierPtr name  = createIdentifierPtr(getStrategyOrdinal(*strategy));
         MessagePtr    value = createMessagePtr(strategy);
         resultBuilder->addResult(name, value);
     }
+
     return resultBuilder->build()->getResult();
 }
 

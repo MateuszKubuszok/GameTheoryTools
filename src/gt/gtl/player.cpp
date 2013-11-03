@@ -19,7 +19,7 @@ Player::Player(
     registerProperty(createIdentifier("strategies"), ObjectPropertyPtr(new PlayerStrategiesProperty(this)));
 }
 
-GT::Message Player::toString() {
+Message Player::toString() {
     return Model::Player::toString();
 }
 

@@ -115,6 +115,8 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
     BOOST_CHECK_EQUAL(
         player.toString(),
         GT::Message() +
+        "Name:\n"
+        "\ttest_name\n"
         "0:\n"
         "\tsome_strategy\n"
         "1:\n"

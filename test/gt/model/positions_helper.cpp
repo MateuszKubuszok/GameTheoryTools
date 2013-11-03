@@ -366,11 +366,15 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
         positionsHelper.toString(),
         GT::Message() +
         "Player:\n"
+        "\tName:\n"
+        "\t\tplayer1\n"
         "\t0:\n"
         "\t\tp1s1\n"
         "\t1:\n"
         "\t\tp1s2\n"
         "Player:\n"
+        "\tName:\n"
+        "\t\tplayer2\n"
         "\t0:\n"
         "\t\tp2s1\n"
         "\t1:\n"
