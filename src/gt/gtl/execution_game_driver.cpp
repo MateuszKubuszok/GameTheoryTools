@@ -126,8 +126,8 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
                     PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
                     players->insert(
                         Model::Players::value_type(
-                            *player.getName(),
-                            boost::dynamic_pointer_cast<Model::Player>(playerPtr)
+                            *referredPlayer.getName(),
+                            boost::dynamic_pointer_cast<Model::Player>(referredObject)
                         )
                     );
                     continue;
