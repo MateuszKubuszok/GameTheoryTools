@@ -16,7 +16,7 @@ namespace GTL {
  * @see GameDriver
  * @see Parser
  */
-class Game : public virtual Object {
+class Game : public Object {
     /**
      * @brief Model Game implementation.
      */

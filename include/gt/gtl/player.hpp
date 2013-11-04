@@ -21,7 +21,7 @@ namespace GTL {
  * @see Game
  * @see Parser
  */
-class Player : public virtual Object, public Model::Player {
+class Player : public Object, public Model::Player {
 public:
     /**
      * @brief Constructor of the Player.

@@ -15,7 +15,7 @@ namespace GTL {
  * @see Definition
  * @see ParamFactory
  */
-class Param : public virtual Object {
+class Param : public Object {
 public:
     /**
      * @brief Contains visited Identifiers to prevent cycles.

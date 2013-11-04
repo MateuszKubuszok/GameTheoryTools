@@ -5,7 +5,7 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Player : public virtual Object, public Model::Player {
+// class Player : public Object, public Model::Player {
 // public:
 
 Player::Player(

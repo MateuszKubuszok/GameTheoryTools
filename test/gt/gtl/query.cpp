@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( Query_execute ) {
         "\t\t\tObject\n"
         "\t2:\n"
         "\t\tType:\n"
-        "\t\t\tObject\n"
+        "\t\t\tParam\n"
     );
 }
 
