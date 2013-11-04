@@ -136,13 +136,19 @@ BOOST_AUTO_TEST_CASE( Object_listProperties ) {
 BOOST_AUTO_TEST_CASE( Object_type ) {
     // given
     // when
-    GT::GTL::Object object;
+    GT::GTL::Object object1;
+    GT::GTL::Object object2(GT::Identifier("OtherType"));
 
     // then
     BOOST_CHECK_EQUAL(
-        *object.type(),
+        *object1.type(),
         GT::Identifier() +
         "Object"
+    );
+    BOOST_CHECK_EQUAL(
+        *object2.type(),
+        GT::Identifier() +
+        "OtherType"
     );
 }
 
