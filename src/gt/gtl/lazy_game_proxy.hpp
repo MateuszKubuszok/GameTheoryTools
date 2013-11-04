@@ -16,7 +16,7 @@ namespace GTL {
  * @see Coordinate
  * @see Context
  */
-class LazyGameProxy : Model::Game {
+class LazyGameProxy : public Model::Game {
     /**
      * @brief Actual Game's builder.
      */

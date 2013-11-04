@@ -36,9 +36,13 @@ bool ExecutionStatementDriver::executeQuery(
 
     Query& query = **queryPtr;
 
-    driver->showResult(query.execute(*context));
-
-    return true;
+    try {
+        driver->showResult(query.execute(*context));
+        return true;
+    } catch (const std::exception& e) {
+        driver->showError(*query.getInputLocation(), createMessage(e.what()));
+        return false;
+    }
 }
 
 DefinitionPtr* ExecutionStatementDriver::createDefinition(
