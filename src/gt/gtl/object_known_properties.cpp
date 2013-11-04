@@ -3,9 +3,9 @@
 namespace GT {
 namespace GTL {
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ObjectKnownProperties {
+// class ObjectKnownProperties : public ObjectProperty {
 // public:
 
 ObjectKnownProperties::ObjectKnownProperties(
@@ -26,7 +26,7 @@ ResultPtr ObjectKnownProperties::findForConditions(
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     resultBuilder->setHeaders(records);
-    
+
     IdentifiersPtr propertiesList = object->listProperties();
     for (IdentifierPtr& propertyName : *propertiesList) {
         MessagesPtr content = createMessagesPtr();
@@ -37,9 +37,9 @@ ResultPtr ObjectKnownProperties::findForConditions(
     return resultBuilder->build();
 }
 
-// }
+// }; /* END class ObjectKnownProperties */
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
