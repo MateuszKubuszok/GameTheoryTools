@@ -386,4 +386,8 @@ ExecutablesPrograms = [
     )
     for Main_o in Mains
 ]
+Depends(
+    ExecutablesPrograms,
+    ProgramsTestsProgram_run
+)
 env.Alias('buildExecutables', ExecutablesPrograms)
