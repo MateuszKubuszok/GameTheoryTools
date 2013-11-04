@@ -41,6 +41,10 @@ DataBuilderPtr StrategicGameBuilder::clone() {
     return strategicDataBuilder->clone();
 }
 
+GameBuilderPtr StrategicGameBuilder::cloneBuilder() {
+    return GameBuilderPtr(new StrategicGameBuilder());
+}
+
 DataBuilderPtr StrategicGameBuilder::dataBuilder() {
     return boost::dynamic_pointer_cast<DataBuilder>(strategicDataBuilder);
 }

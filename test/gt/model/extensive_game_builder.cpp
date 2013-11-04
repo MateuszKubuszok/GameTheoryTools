@@ -4,6 +4,17 @@ BOOST_AUTO_TEST_SUITE( ExtensiveGameBuilder )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_cloneBuilder ) {
+    // given
+    // when
+    GT::Model::ExtensiveGameBuilder extensiveGameBuilder;
+
+    // then
+    BOOST_CHECK(
+        boost::dynamic_pointer_cast<GT::Model::ExtensiveGameBuilder>(extensiveGameBuilder.cloneBuilder())
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_setPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");

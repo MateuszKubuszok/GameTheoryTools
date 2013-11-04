@@ -4,6 +4,17 @@ BOOST_AUTO_TEST_SUITE( StrategicGameBuilder )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE( StrategicGameBuilder_cloneBuilder ) {
+    // given
+    // when
+    GT::Model::StrategicGameBuilder strategicGameBuilder;
+
+    // then
+    BOOST_CHECK(
+        boost::dynamic_pointer_cast<GT::Model::StrategicGameBuilder>(strategicGameBuilder.cloneBuilder())
+    );
+}
+
 BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");

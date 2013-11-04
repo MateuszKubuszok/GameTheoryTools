@@ -41,6 +41,10 @@ DataBuilderPtr ExtensiveGameBuilder::clone() {
     return extensiveDataBuilder->clone();
 }
 
+GameBuilderPtr ExtensiveGameBuilder::cloneBuilder() {
+    return GameBuilderPtr(new ExtensiveGameBuilder());
+}
+
 DataBuilderPtr ExtensiveGameBuilder::dataBuilder() {
     return boost::dynamic_pointer_cast<DataBuilder>(extensiveDataBuilder);
 }

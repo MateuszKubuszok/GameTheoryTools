@@ -81,6 +81,13 @@ public:
     virtual DataBuilderPtr clone();
 
     /**
+     * @brief Returns new copy of this GameBuilder's type.
+     *
+     * @return GameBuilder
+     */
+    virtual GameBuilderPtr cloneBuilder();
+
+    /**
      * @brief Returns Same's DataBuilder.
      *
      * @return DataBuilder

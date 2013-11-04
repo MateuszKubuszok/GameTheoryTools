@@ -39,6 +39,13 @@ public:
     virtual GamePtr build() = 0;
 
     /**
+     * @brief Returns new copy of this GameBuilder's type.
+     *
+     * @return GameBuilder
+     */
+    virtual GameBuilderPtr cloneBuilder() = 0;
+
+    /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions
@@ -94,6 +101,10 @@ public:
 
     virtual DataBuilderPtr clone() {
         return NullFactory::getInstance().createDataBuilder();
+    }
+
+    virtual GameBuilderPtr cloneBuilder() {
+        return NullFactory::getInstance().createGameBuilder();
     }
 
     virtual bool isNotNull() {

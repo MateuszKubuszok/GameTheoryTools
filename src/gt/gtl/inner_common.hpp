@@ -58,6 +58,8 @@ class ExecutionValueDriver;
 class ExecutionStatementDriver;
 class ExecutionDriver;
 
+class LazyGameProxy;
+
 /* Shortens commonly used names */
 
 typedef Model::ResultFactory    ResultFactory;
@@ -105,6 +107,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/execution_value_driver.hpp"
 #include "gt/gtl/execution_statement_driver.hpp"
 #include "gt/gtl/execution_driver.hpp"
+
+#include "gt/gtl/lazy_game_proxy.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
