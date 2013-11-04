@@ -1,0 +1,49 @@
+/**
+ * Example: shows some features of language.
+ */
+
+
+// Values definitions
+
+LET a BE 1;
+LET b BE -1;
+
+
+// Players definitions
+
+LET player1 BE
+PLAYER p1 { s1, s2 };
+
+LET player2 BE
+PLAYER p2 { s1, s2 };
+
+
+// Game definition
+
+LET game3 BE
+  STRATEGIC GAME
+  WITH
+    player1,
+    player2
+  SUCH AS
+    { p1=s1 :
+      { p2=s1 : a, b },
+      { p2=s2 : b, a }
+    },
+    { p1=s2 :
+      { p2=s1 : b, a },
+      { p2=s2 : a, b }
+    };
+
+
+// Querying for properties
+
+FIND
+    properties, // list of known properties
+    type        // type of object
+FOR
+    a,
+    b,
+    p1,
+    p2,
+    game3;
