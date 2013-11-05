@@ -38,6 +38,13 @@ public:
      */
     ExtensiveDataPtr createExtensiveData();
 
+    /**
+     * @brief Creates null ExtensiveData.
+     *
+     * @result null ExtensiveDataNode
+     */
+    ExtensiveDataNodePtr createExtensiveDataNode();
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

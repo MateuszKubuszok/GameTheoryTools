@@ -47,7 +47,7 @@ class StrategicDataAccessor;
 class StrategicGame;
 class StrategicGameBuilder;
 
-class ExtensiveDataNode;
+class ExtensiveDataNode;        class NullExtensiveDataNode;
 class ExtensiveData;            class NullExtensiveData;
 class ExtensiveDataBuilder;
 class ExtensiveDataAccessor;

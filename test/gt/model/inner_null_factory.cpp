@@ -26,6 +26,18 @@ BOOST_AUTO_TEST_CASE( InnerNullFactory_createExtensiveData ) {
     BOOST_CHECK(!result->isNotNull());
 }
 
+BOOST_AUTO_TEST_CASE( InnerNullFactory_createExtensiveDataNode ) {
+    // given
+    // when
+    GT::Model::ExtensiveDataNodePtr result = GT::Model::InnerNullFactory::getInstance()
+                                                .createExtensiveDataNode();
+
+    // then
+    BOOST_REQUIRE(result);
+    BOOST_CHECK(result->isNull());
+    BOOST_CHECK(!result->isNotNull());
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

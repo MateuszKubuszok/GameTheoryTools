@@ -9,6 +9,7 @@ namespace Model {
 // public:
 
 ExtensiveDataNode::ExtensiveDataNode() :
+    parent(new NullExtensiveDataNode()),
     player(NullFactory::getInstance().createPlayer()),
     payoff(new Numbers()),
     nodes(new ExtensiveDataNodes()),
@@ -16,25 +17,9 @@ ExtensiveDataNode::ExtensiveDataNode() :
     depthName(createIdentifier(1))
     {}
 
-ExtensiveDataNode::ExtensiveDataNode(
-    unsigned int currentDepth
-) :
-    player(NullFactory::getInstance().createPlayer()),
-    payoff(new Numbers()),
-    nodes(new ExtensiveDataNodes()),
-    depthValue(currentDepth),
-    depthName(createIdentifier(currentDepth))
-    {}
-
-ExtensiveDataNode::ExtensiveDataNode(
-    NumbersPtr values
-) :
-    player(NullFactory::getInstance().createPlayer()),
-    payoff(values),
-    nodes(new ExtensiveDataNodes()),
-    depthValue(0),
-    depthName("")
-    {}
+ExtensiveDataNode& ExtensiveDataNode::getParent() {
+    return *parent;
+}
 
 PlayerPtr ExtensiveDataNode::getPlayer() {
     return player;
@@ -80,7 +65,7 @@ ExtensiveDataNode& ExtensiveDataNode::setPlayer(
         Identifier& strategy = positions[depthName];
 
         if (!nodes->count(strategy)) {
-            ExtensiveDataNodePtr node(new ExtensiveDataNode(depthValue+1));
+            ExtensiveDataNodePtr node(new ExtensiveDataNode(this, depthValue+1));
             nodes->insert( ExtensiveDataNodes::value_type(strategy, node) );
         }
 
@@ -115,9 +100,9 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
     if (!nodes->count(strategy)) {
         ExtensiveDataNodePtr node;
         if (depthValue == positions.size())
-            node = ExtensiveDataNodePtr(new ExtensiveDataNode(values));
+            node = ExtensiveDataNodePtr(new ExtensiveDataNode(this, values));
         else {
-            node = ExtensiveDataNodePtr(new ExtensiveDataNode(depthValue+1));
+            node = ExtensiveDataNodePtr(new ExtensiveDataNode(this, depthValue+1));
             node->setValues(positions, values);
         }
         nodes->insert( ExtensiveDataNodes::value_type(strategy, node) );
@@ -152,6 +137,32 @@ Message ExtensiveDataNode::toString() {
 
     return resultBuilder->build()->getResult();
 }
+
+// protected:
+
+ExtensiveDataNode::ExtensiveDataNode(
+    ExtensiveDataNode* definedParent,
+    Index              currentDepth
+) :
+    parent(definedParent),
+    player(NullFactory::getInstance().createPlayer()),
+    payoff(new Numbers()),
+    nodes(new ExtensiveDataNodes()),
+    depthValue(currentDepth),
+    depthName(createIdentifier(currentDepth))
+    {}
+
+ExtensiveDataNode::ExtensiveDataNode(
+    ExtensiveDataNode* definedParent,
+    NumbersPtr         values
+) :
+    parent(definedParent),
+    player(NullFactory::getInstance().createPlayer()),
+    payoff(values),
+    nodes(new ExtensiveDataNodes()),
+    depthValue(0),
+    depthName("")
+    {}
 
 // private:
 

@@ -19,6 +19,10 @@ ExtensiveDataPtr InnerNullFactory::createExtensiveData() {
     return ExtensiveDataPtr(new NullExtensiveData());
 }
 
+ExtensiveDataNodePtr InnerNullFactory::createExtensiveDataNode() {
+    return ExtensiveDataNodePtr(new NullExtensiveDataNode());
+}
+
 // private:
 
 InnerNullFactory::InnerNullFactory() {}

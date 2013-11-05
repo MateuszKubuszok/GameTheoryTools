@@ -8,6 +8,10 @@ namespace Model {
 
 class ExtensiveDataNode : public virtual Root {
     /**
+     * @brief Parent of this node.
+     */
+    ExtensiveDataNode*    parent;
+    /**
      * @brief Player which strategis are allowed in this Node.
      */
     PlayerPtr             player;
@@ -35,29 +39,18 @@ public:
     ExtensiveDataNode();
 
     /**
-     * @brief Child Node constructor.
+     * @brief Returns parent pf this Node (Null object for Root).
      *
-     * @param depth depth of a created Node
+     * @return parent Node
      */
-    explicit ExtensiveDataNode(
-        Index depth
-    );
-
-    /**
-     * @brief Leaf Node constructor.
-     *
-     * @param values Payoff values
-     */
-    explicit ExtensiveDataNode(
-        NumbersPtr values
-    );
+    virtual ExtensiveDataNode& getParent();
 
     /**
      * @brief Returns Player of a current Node.
      *
      * @return Player of this Node
      */
-    PlayerPtr getPlayer();
+    virtual PlayerPtr getPlayer();
 
     /**
      * @brief Returns Player for a given Positions.
@@ -65,7 +58,7 @@ public:
      * @param positions Positions of a sought Player
      * @return          Player of this Node
      */
-    PlayerPtr getPlayer(
+    virtual PlayerPtr getPlayer(
         Positions& positions
     );
 
@@ -75,7 +68,7 @@ public:
      * @param player Player of this Node
      * @return       reference to itself for chaining
      */
-    ExtensiveDataNode& setPlayer(
+    virtual ExtensiveDataNode& setPlayer(
         PlayerPtr player
     );
 
@@ -86,7 +79,7 @@ public:
      * @param player    Player of this Node
      * @return          reference to itself for chaining
      */
-    ExtensiveDataNode& setPlayer(
+    virtual ExtensiveDataNode& setPlayer(
         Positions& positions,
         PlayerPtr  player
     );
@@ -97,7 +90,7 @@ public:
      * @param  positions Positions of a sought Payoff
      * @return           values of Payoffs
      */
-    NumbersPtr getValues(
+    virtual NumbersPtr getValues(
         Positions& positions
     );
 
@@ -108,7 +101,7 @@ public:
      * @param  values    Payoff value
      * @return           reference to itself for chaining
      */
-    ExtensiveDataNode& setValues(
+    virtual ExtensiveDataNode& setValues(
         Positions& positions,
         NumbersPtr values
     );
@@ -118,7 +111,30 @@ public:
      *
      * @return Message
      */
-    Message toString();
+    virtual Message toString();
+
+protected:
+    /**
+     * @brief Child Node constructor.
+     *
+     * @param parent parent of thisNode
+     * @param depth  depth of a created Node
+     */
+    ExtensiveDataNode(
+        ExtensiveDataNode* parent,
+        Index              depth
+    );
+
+    /**
+     * @brief Leaf Node constructor.
+     *
+     * @param parent parent of thisNode
+     * @param values Payoff values
+     */
+    ExtensiveDataNode(
+        ExtensiveDataNode* parent,
+        NumbersPtr         values
+    );
 
 private:
     /**
@@ -151,6 +167,71 @@ private:
         Positions& positions
     );
 }; /* END class ExtensiveDataNode */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Null ExtensiveDriver for acting as a root's parent.
+ *
+ * @author Mateusz Kubuszok
+ */
+class NullExtensiveDataNode : public ExtensiveDataNode {
+public:
+    NullExtensiveDataNode() :
+        ExtensiveDataNode(
+            nullptr, // prevents infinite loop of constructor calls
+            Model::NullFactory::getInstance().createNumbers()
+        )
+        {}
+
+    virtual ExtensiveDataNode& getParent() {
+        return *this;
+    }
+
+    virtual PlayerPtr getPlayer() {
+        return NullFactory::getInstance().createPlayer();
+    }
+
+    virtual PlayerPtr getPlayer(
+        Positions&
+    ) {
+        return NullFactory::getInstance().createPlayer();
+    }
+
+    virtual ExtensiveDataNode& setPlayer(
+        PlayerPtr
+    ) {
+        return *this;
+    }
+
+    virtual ExtensiveDataNode& setPlayer(
+        Positions&,
+        PlayerPtr
+    ) {
+        return *this;
+    }
+
+    virtual NumbersPtr getValues(
+        Positions&
+    ) {
+        return Model::NullFactory::getInstance().createNumbers();
+    }
+
+    virtual ExtensiveDataNode& setValues(
+        Positions&,
+        NumbersPtr
+    ) {
+        return *this;
+    }
+
+    virtual bool isNotNull() {
+        return false;
+    }
+
+    virtual Message toString() {
+        return Message("NullExtensiveDataNode");
+    }
+}; /* END class NullExtensiveDataNode */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
