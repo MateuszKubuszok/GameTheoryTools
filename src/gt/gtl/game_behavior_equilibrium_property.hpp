@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_GAME_BEHAVIORAL_EQUILIBRIUM_PROPERTY_HPP__
-#define __GT_GTL_GAME_BEHAVIORAL_EQUILIBRIUM_PROPERTY_HPP__
+#ifndef __GT_GTL_GAME_BEHAVIOR_EQUILIBRIUM_PROPERTY_HPP__
+#define __GT_GTL_GAME_BEHAVIOR_EQUILIBRIUM_PROPERTY_HPP__
 
 namespace GT {
 namespace GTL {
@@ -7,13 +7,13 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Describes behavioral-form equilibria of Games.
+ * @brief Describes behavior-strategy equilibria of Games.
  *
  * @author Mateusz Kubuszok
  *
  * @see Game
  */
-class GameBehavioralEquilibriumProperty : public ObjectProperty {
+class GameBehaviorEquilibriumProperty : public ObjectProperty {
     /**
      * @brief Described Game.
      */
@@ -25,7 +25,7 @@ public:
      *
      * @param describedGame described Game
      */
-    explicit GameBehavioralEquilibriumProperty(
+    explicit GameBehaviorEquilibriumProperty(
         Game* describedGame
     );
 
@@ -40,11 +40,11 @@ public:
         const Context&    context,
         const Conditions& conditions
     );
-}; /* END class GameBehavioralEquilibriumProperty */
+}; /* END class GameBehaviorEquilibriumProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_GAME_BEHAVIORAL_EQUILIBRIUM_PROPERTY_HPP__ */
+#endif /* #ifndef __GT_GTL_GAME_BEHAVIOR_EQUILIBRIUM_PROPERTY_HPP__ */

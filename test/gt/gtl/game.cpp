@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( Game_mixedEquilibrium ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( Game_behavioralEquilibrium ) {
+BOOST_AUTO_TEST_CASE( Game_behaviorEquilibrium ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
@@ -68,18 +68,19 @@ BOOST_AUTO_TEST_CASE( Game_behavioralEquilibrium ) {
 
     // then
     BOOST_CHECK_EQUAL(
-        game.behavioralEquilibrium(context, conditions)->getResult(),
+        game.behaviorEquilibrium(context, conditions)->getResult(),
         GT::Message("Not yet implemented")
     );
 }
 
 BOOST_AUTO_TEST_CASE( Game_respondsTo ) {
     // given
-    GT::Identifier properties = GT::createIdentifier("properties");
-    GT::Identifier type       = GT::createIdentifier("type");
-    GT::Identifier pureEqu    = GT::createIdentifier("pure_equilibrium");
-    GT::Identifier mixedEqu   = GT::createIdentifier("mixed_equilibrium");
-    GT::Identifier error      = GT::createIdentifier("error");
+    GT::Identifier properties  = GT::createIdentifier("properties");
+    GT::Identifier type        = GT::createIdentifier("type");
+    GT::Identifier pureEqu     = GT::createIdentifier("pure_equilibrium");
+    GT::Identifier mixedEqu    = GT::createIdentifier("mixed_equilibrium");
+    GT::Identifier behaviorEqu = GT::createIdentifier("behavior_equilibrium");
+    GT::Identifier error       = GT::createIdentifier("error");
 
     GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
 
@@ -91,6 +92,7 @@ BOOST_AUTO_TEST_CASE( Game_respondsTo ) {
     BOOST_CHECK(  game.respondsTo(type) );
     BOOST_CHECK(  game.respondsTo(pureEqu) );
     BOOST_CHECK(  game.respondsTo(mixedEqu) );
+    BOOST_CHECK(  game.respondsTo(behaviorEqu) );
     BOOST_CHECK( !game.respondsTo(error) );
 }
 

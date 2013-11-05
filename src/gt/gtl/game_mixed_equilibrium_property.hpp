@@ -7,7 +7,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Describes mixed-form equilibria of Games.
+ * @brief Describes mixed-strategy equilibria of Games.
  *
  * @author Mateusz Kubuszok
  *

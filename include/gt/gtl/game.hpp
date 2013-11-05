@@ -55,12 +55,12 @@ public:
     );
 
     /**
-     * @brief Search behavioral Nash equilibrium for given conditions.
+     * @brief Search behavior Nash equilibrium for given conditions.
      *
      * @param context    context with definitions
      * @param conditions conditions for query
      */
-    virtual ResultPtr behavioralEquilibrium(
+    virtual ResultPtr behaviorEquilibrium(
         const Context&    context,
         const Conditions& conditions
     );
@@ -102,6 +102,13 @@ public:
         return Model::NullFactory::getInstance().createResult();
     }
 
+    virtual ResultPtr behaviorEquilibrium(
+        const Context&,
+        const Conditions&
+    ) {
+        return Model::NullFactory::getInstance().createResult();
+    }
+
     virtual bool isNotNull() {
         return false;
     }
@@ -132,6 +139,13 @@ public:
     }
 
     virtual ResultPtr mixedEquilibrium(
+        const Context&,
+        const Conditions&
+    ) {
+        return Model::NullFactory::getInstance().createResult();
+    }
+
+    virtual ResultPtr behaviorEquilibrium(
         const Context&,
         const Conditions&
     ) {

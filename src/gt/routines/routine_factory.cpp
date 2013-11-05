@@ -23,7 +23,7 @@ RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 
-RoutinePtr RoutineFactory::behaiourStrategyEquilibriumFindingRoutineFor(
+RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
     GamePtr
 ) {
     return RoutinePtr(new NotYetImplementedRoutine());

@@ -48,7 +48,7 @@ public:
      * @param game Game for which equilibrium should be sought
      * @result     Routine finding Nash equilibria
      */
-    RoutinePtr behaiourStrategyEquilibriumFindingRoutineFor(
+    RoutinePtr behaviourStrategyEquilibriumFindingRoutineFor(
         GamePtr game
     );
 

@@ -7,7 +7,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Describes pure-form equilibria for Games.
+ * @brief Describes pure-strategy equilibria for Games.
  *
  * @author Mateusz Kubuszok
  *

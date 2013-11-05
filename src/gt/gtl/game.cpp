@@ -15,13 +15,13 @@ Game::Game(
     game(gameImplementation)
 {
     registerProperty(
-        Identifier("pure_equilibrium"),       ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
+        Identifier("pure_equilibrium"),     ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
     );
     registerProperty(
-        Identifier("mixed_equilibrium"),      ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
+        Identifier("mixed_equilibrium"),    ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
     );
     registerProperty(
-        Identifier("behavioral_equilibrium"), ObjectPropertyPtr(new GameBehavioralEquilibriumProperty(this))
+        Identifier("behavior_equilibrium"), ObjectPropertyPtr(new GameBehaviorEquilibriumProperty(this))
     );
 }
 
@@ -39,7 +39,7 @@ ResultPtr Game::mixedEquilibrium(
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
-ResultPtr Game::behavioralEquilibrium(
+ResultPtr Game::behaviorEquilibrium(
     const Context&,
     const Conditions&
 ) {

@@ -5,23 +5,23 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class GameBehavioralEquilibriumProperty : public ObjectProperty {
+// class GameBehaviorEquilibriumProperty : public ObjectProperty {
 // public:
 
-GameBehavioralEquilibriumProperty::GameBehavioralEquilibriumProperty(
+GameBehaviorEquilibriumProperty::GameBehaviorEquilibriumProperty(
     Game* describedGame
 ) :
     game(describedGame)
     {}
 
-ResultPtr GameBehavioralEquilibriumProperty::findForConditions(
+ResultPtr GameBehaviorEquilibriumProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions
 ) {
-    return game->behavioralEquilibrium(context, conditions);
+    return game->behaviorEquilibrium(context, conditions);
 }
 
-// }; /* END class GameBehavioralEquilibriumProperty */
+// }; /* END class GameBehaviorEquilibriumProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

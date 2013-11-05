@@ -11,7 +11,7 @@ LET player2 BE
 PLAYER p2 { s1, s2 };
 
 /**
- * Defines strtegic-form game under 'game2' identifier.
+ * Defines strategic-form game under 'game2' identifier.
  */
 LET game2 BE
   EXTENSIVE GAME
@@ -40,6 +40,6 @@ FIND pure_equilibrium FOR game2;
 FIND mixed_equilibrium FOR game2;
 
 /**
- * Searches for behavioral-strategy equlibrium (non-existent for strategic-form games).
+ * Searches for behavior-strategy equlibrium (non-existent for strategic-form games).
  */
-FIND mixed_equilibrium FOR game2;
+FIND behavior_equilibrium FOR game2;

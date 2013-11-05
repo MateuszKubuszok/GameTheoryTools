@@ -1,10 +1,10 @@
 #include "gt/gtl/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( GameBehavioralEquilibriumProperty )
+BOOST_AUTO_TEST_SUITE( GameBehaviorEquilibriumProperty )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( GameBehavioralEquilibriumProperty_findForConditions ) {
+BOOST_AUTO_TEST_CASE( GameBehaviorEquilibriumProperty_findForConditions ) {
     // given
     GT::GTL::ContextPtr    contextPtr    = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::Context       context       = *contextPtr;
@@ -14,11 +14,11 @@ BOOST_AUTO_TEST_CASE( GameBehavioralEquilibriumProperty_findForConditions ) {
     GT::GTL::GamePtr game = GT::GTL::NullFactory::getInstance().createGame();
 
     // when
-    GT::GTL::GameBehavioralEquilibriumProperty property(game.get());
+    GT::GTL::GameBehaviorEquilibriumProperty property(game.get());
 
     // then
     BOOST_CHECK_EQUAL(
-        game->behavioralEquilibrium(context, conditions)->getResult(),
+        game->behaviorEquilibrium(context, conditions)->getResult(),
         property.findForConditions(context, conditions)->getResult()
     );
 }
