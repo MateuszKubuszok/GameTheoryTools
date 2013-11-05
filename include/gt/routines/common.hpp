@@ -13,6 +13,7 @@ namespace Routines {
 
 /* Exception declarations */
 
+class InvalidCondition;
 class InvalidPlayerChoice;
 
 /* Factory declarations */
