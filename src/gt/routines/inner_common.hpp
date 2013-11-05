@@ -4,6 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Include standard libraries */
+#include <algorithm>
 #include <sstream>
 
 /* Includes boost libraries */
@@ -24,11 +25,23 @@ namespace Routines {
 
 /* Implementations declarations */
 
-// TODO
+class ExceptionFactory;
+
+class SelectableStrategiesRoutine;
+
+class PlayerChoiceCondition;
 
 /* Shortens commonly used names */
 
-// TODO
+typedef boost::shared_ptr<SelectableStrategiesRoutine> SelectableStrategiesRoutinePtr;
+
+typedef Model::Player           Player;
+typedef Model::PlayerPtr        PlayerPtr;
+typedef Model::Players          Players;
+typedef Model::PlayersPtr       PlayersPtr;
+
+typedef Model::ResultFactory    ResultFactory;
+typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +50,11 @@ namespace Routines {
 
 /* Implementations headers */
 
-// TODO
+#include "gt/routines/exception_factory.hpp"
+
+#include "gt/routines/selectable_strategies_routine.hpp"
+
+#include "gt/routines/player_choice_condition.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

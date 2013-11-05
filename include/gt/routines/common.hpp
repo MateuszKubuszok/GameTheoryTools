@@ -13,7 +13,7 @@ namespace Routines {
 
 /* Exception declarations */
 
-// TODO
+class InvalidPlayerChoice;
 
 /* Factory declarations */
 
@@ -49,6 +49,8 @@ typedef Model::ResultPtr                       ResultPtr;
 } /* END namespace GT */
 
 /* Includes Routinies headers */
+
+#include "gt/routines/exceptions.hpp"
 
 #include "gt/routines/null_factory.hpp"
 

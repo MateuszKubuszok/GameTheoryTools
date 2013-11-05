@@ -6,6 +6,10 @@ BOOST_AUTO_TEST_SUITE( ProgramController )
 
 BOOST_AUTO_TEST_CASE( ProgramController_functional ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     std::string content =
         "FIND type\n"
         "FOR\n"
