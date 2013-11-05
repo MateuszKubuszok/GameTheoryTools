@@ -20,7 +20,7 @@ class InvalidPlayerChoice;
 
 class NullFactory;
 class ConditionFactory;
-// class RoutineFactory;
+class RoutineFactory;
 
 /* Routines declarations */
 
@@ -55,6 +55,7 @@ typedef Model::ResultPtr                       ResultPtr;
 
 #include "gt/routines/null_factory.hpp"
 #include "gt/routines/condition_factory.hpp"
+#include "gt/routines/routine_factory.hpp"
 
 #include "gt/routines/condition.hpp"
 #include "gt/routines/routine.hpp"
