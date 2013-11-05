@@ -14,8 +14,8 @@ BOOST_AUTO_TEST_CASE( ConditionFactory_createPlayerChoiceCondition ) {
                                         .createPlayerChoiceCondition(player, strategy);
 
     // then
-    BOOST_REQUIRE(condition);
-    BOOST_CHECK(boost::dynamic_pointer_cast<GT::GTL::PlayerChoiceCondition>(condition));
+    BOOST_REQUIRE( condition );
+    BOOST_CHECK( boost::dynamic_pointer_cast<GT::GTL::PlayerChoiceCondition>(condition) );
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
