@@ -13,10 +13,11 @@ objects  = 'objects/'
 programs = 'bin/'
 
 # Packages directories
-gtl     = 'gt/gtl/'
-main    = 'gt/main/'
-model   = 'gt/model/'
-program = 'gt/program/'
+gtl      = 'gt/gtl/'
+main     = 'gt/main/'
+model    = 'gt/model/'
+program  = 'gt/program/'
+routines = 'gt/routines/'
 
 ##############################################################################################################
 
@@ -144,9 +145,7 @@ if not validInstallation:
 
 # Adds tests directories to the path:
 # - test
-# - test/gt/model
-# - test/gt/gtl
-testConf.env.Append(CPPPATH=[test, test+model, test+gtl])
+testConf.env.Append(CPPPATH=[test])
 testConf.env.Append(LIBS=['boost_unit_test_framework'])
 
 testConf.Finish()
@@ -204,6 +203,60 @@ Depends(
 )
 AlwaysBuild(ModelsTestsProgram_run)
 testEnv.Alias('runModelsTests', ModelsTestsProgram_run)
+
+##############################################################################################################
+
+# Build Routines objects
+
+Routines = [
+    env.Object(
+        source=Routine_cpp,
+        target=targetForSource(Routine_cpp)
+    )
+    for Routine_cpp in Glob(source+routines+'*.cpp')
+]
+Depends(
+    Routines,
+    ModelsTestsProgram_run
+)
+env.Alias('buildRoutines', Routines)
+
+##############################################################################################################
+
+# Build Routines' Tests objects
+
+RoutinesTests = [
+    testEnv.Object(
+        source=RoutineTest_cpp,
+        target=targetForTest(RoutineTest_cpp)
+    )
+    for RoutineTest_cpp in Glob(test+routines+'*.cpp')
+]
+testEnv.Alias('buildRoutinesTests', RoutinesTests)
+
+##############################################################################################################
+
+# Build and run Routine tests
+
+RoutinesTestsProgram_URI = programs+'RoutinesTests'
+RoutinesTestsProgram_bin = testEnv.Program(
+    source=Models + Routines + RoutinesTests,
+    target=RoutinesTestsProgram_URI
+)
+RoutinesTestsProgram_run = Command(
+    source=RoutinesTestsProgram_bin,
+    target='routines-mock-content',
+    action=RoutinesTestsProgram_URI+
+        ' --log_level='+logLevel+
+        ' --random='+randomOrder+
+        ' --show_progress='+showProgress
+)
+Depends(
+    RoutinesTestsProgram_run,
+    RoutinesTestsProgram_bin
+)
+AlwaysBuild(RoutinesTestsProgram_run)
+testEnv.Alias('runRoutinesTests', RoutinesTestsProgram_run)
 
 ##############################################################################################################
 
@@ -268,7 +321,7 @@ GTL = [
 ]
 Depends(
     GTL,
-    [ModelsTestsProgram_run, CorrectBisonInstallation]
+    [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation]
 )
 env.Alias('buildGTL', GTL)
 
@@ -291,7 +344,7 @@ testEnv.Alias('buildGTLTests', GTLTests)
 
 GTLTestsProgram_URI = programs+'GTLTests'
 GTLTestsProgram_bin = testEnv.Program(
-    source=Models + GTL + GTLTests,
+    source=Models + Routines + GTL + GTLTests,
     target=GTLTestsProgram_URI
 )
 GTLTestsProgram_run = Command(
@@ -381,7 +434,7 @@ Mains = [
 
 ExecutablesPrograms = [
     executablesEnv.Program(
-        source=Models + GTL + Programs + Main_o,
+        source=Models + Routines + GTL + Programs + Main_o,
         target=targetForExecutable(Main_o[0])
     )
     for Main_o in Mains

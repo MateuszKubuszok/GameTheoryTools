@@ -48,15 +48,29 @@
     "build_systems":
     [
         {
-            "name":        "SCons",
+            "name":        "Build All",
             "selector":    "scons",
             "shell_cmd":   "scons",
             "working_dir": "${project_path}"
         },
         {
-            "name":        "SCons with errors.log",
-            "selector":    "scons",
-            "shell_cmd":   "scons 2> errors.log",
+            "name":        "Model Development",
+            "shell_cmd":   "scons -Q runModelsTests 2> errors.log",
+            "working_dir": "${project_path}"
+        },
+        {
+            "name":        "Routines Development",
+            "shell_cmd":   "scons -Q runRoutinesTests 2> errors.log",
+            "working_dir": "${project_path}"
+        },
+        {
+            "name":        "GTL Development",
+            "shell_cmd":   "scons -Q runRoutinesTests 2> errors.log",
+            "working_dir": "${project_path}"
+        },
+        {
+            "name":        "Program Controllers Development",
+            "shell_cmd":   "scons -Q runProgramsTests 2> errors.log",
             "working_dir": "${project_path}"
         }
     ]

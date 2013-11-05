@@ -68,7 +68,7 @@ namespace Model {
 class IllegalInnerState;
 class InvalidCoordinate;
 
-/* Builder declarations */
+/* Factory declarations */
 
 class NullFactory;
 class GameFactory;
