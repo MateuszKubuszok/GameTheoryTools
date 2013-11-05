@@ -55,8 +55,9 @@ if not conf.CheckCXX():
 # Header check
 for header in [
     # standard libraries
-    'cstdlib', 'iostream', 'fstream',
-    'stdexcept', 'string', 'utility',
+    'algorithm', 'cstdlib',
+    'iostream',  'fstream', 'sstream',
+    'stdexcept', 'string',  'utility',
     # boost libraries
     'boost/scoped_ptr.hpp',
     'boost/shared_ptr.hpp',
