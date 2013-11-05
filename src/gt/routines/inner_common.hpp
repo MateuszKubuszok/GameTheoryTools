@@ -27,6 +27,8 @@ namespace Routines {
 
 class ExceptionFactory;
 
+class NotYetImplementedRoutine;
+class PropertyUndefinedRoutine;
 class SelectableStrategiesRoutine;
 
 class PlayerChoiceCondition;
@@ -52,6 +54,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/routines/exception_factory.hpp"
 
+#include "gt/routines/not_yet_implemented_routine.hpp"
+#include "gt/routines/property_undefined_routine.hpp"
 #include "gt/routines/selectable_strategies_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
