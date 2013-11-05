@@ -1,5 +1,5 @@
-#ifndef __GT_MAIN_PROGRAM_CONTROLLER_HPP__
-#define __GT_MAIN_PROGRAM_CONTROLLER_HPP__
+#ifndef __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
+#define __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
 
 namespace GT {
 namespace Program {
@@ -187,4 +187,4 @@ public:
 } /* END namespace Program */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MAIN_PROGRAM_CONTROLLER_HPP__ */
+#endif /* #ifndef __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__ */

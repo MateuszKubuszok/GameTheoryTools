@@ -1,5 +1,5 @@
-#ifndef __GT_MAIN_COMMON_HPP__
-#define __GT_MAIN_COMMON_HPP__
+#ifndef __GT_PROGRAM_COMMON_HPP__
+#define __GT_PROGRAM_COMMON_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,8 +20,10 @@ class ProgramController;
 } /* END namespace Program */
 } /* END namespace GT */
 
+/* Includes Program controllers headers */
+
 #include "gt/program/program_controller.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_MAIN_COMMON_HPP__ */
+#endif /* END #ifndef __GT_PROGRAM_COMMON_HPP__ */
