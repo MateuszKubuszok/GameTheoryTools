@@ -18,7 +18,8 @@ public:
     /**
      * @brief Configureg given Routine.
      *
-     * @param routine Routine to configure
+     * @param routine          Routine to configure
+     * @throw InvalidCondition thrown when Condition is invalid
      */
     virtual void configureRoutine(
         RoutinePtr routine
