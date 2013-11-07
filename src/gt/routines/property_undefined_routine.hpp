@@ -40,4 +40,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_PROPERT_UNDEFINED_ROUTINE_HPP__ */
+#endif /* #ifndef __GT_ROUTINES_PROPERTY_UNDEFINED_ROUTINE_HPP__ */
