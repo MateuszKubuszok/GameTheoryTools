@@ -17,6 +17,15 @@ ExtensiveDataNode::ExtensiveDataNode() :
     depthName(createIdentifier(1))
     {}
 
+ExtensiveDataNode::~ExtensiveDataNode() {
+    if (parent && parent->isNull()) {
+        // 1) ExtensiveDataNode implementation has parent set to nullptr - need to null check first
+        // 2) root's "Parent" is set to ExtensiveDataNode - it needs to be freed manually since no one owns it
+        delete parent;
+        parent = nullptr;
+    }
+}
+
 ExtensiveDataNode& ExtensiveDataNode::getParent() {
     return *parent;
 }

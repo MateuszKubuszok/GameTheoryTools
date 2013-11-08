@@ -6,6 +6,13 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Creates Tree containing whole ExtensiveData content.
+ *
+ * @author Mateusz Kubuszok
+ *
+ * @see ExtensiveData
+ */
 class ExtensiveDataNode : public virtual Root {
     /**
      * @brief Parent of this node.
@@ -34,9 +41,14 @@ class ExtensiveDataNode : public virtual Root {
 
 public:
     /**
-     * @brief Root's constructor.
+     * @brief Tree's root's constructor.
      */
     ExtensiveDataNode();
+
+    /**
+     * @brief Tree's root's destructor.
+     */
+    virtual ~ExtensiveDataNode();
 
     /**
      * @brief Returns parent pf this Node (Null object for Root).
