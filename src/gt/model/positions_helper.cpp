@@ -21,10 +21,12 @@ PositionsHelper::PositionsHelper(
 
     for (Players::value_type& playerPair : (*players)) {
         const Identifier& playerName = playerPair.first;
-        Player& player = *playerPair.second;
+        Player&           player     = *playerPair.second;
+        Identifiers       strategies = *player.getStrategies(); // usage of reference here makes valgrind
+                                                                // yell "Invalid read of size 8" in for below
 
         IdentifierMap strategiesMap;
-        for (IdentifierPtr& strategy : (*player.getStrategies()))
+        for (IdentifierPtr& strategy : strategies)
             strategiesMap.insert(IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)));
         playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
         positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
