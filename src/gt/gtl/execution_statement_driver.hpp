@@ -28,7 +28,7 @@ class ExecutionStatementDriver : public StatementDriver {
     /**
      * @brief Contains Context.
      */
-    ContextPtr              context;
+    Context*                context;
 
 public:
     /**
@@ -38,8 +38,8 @@ public:
      * @param context      Context data
      */
     ExecutionStatementDriver(
-        Driver*    parentDriver,
-        ContextPtr context
+        Driver*  parentDriver,
+        Context* context
     );
 
     /**

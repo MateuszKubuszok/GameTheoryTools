@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( LazyGameBuilder_getPlayers ) {
     GT::GTL::ContextPtr context = GT::GTL::NullFactory::getInstance().createContext();
 
     // when
-    GT::GTL::LazyGameProxy lazyGame(gameBuilder, players, coordinates, context);
+    GT::GTL::LazyGameProxy lazyGame(gameBuilder, players, coordinates, context.get());
     GT::Model::PlayersPtr  gotPlayers;
 
     // then
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE( LazyGameBuilder_getData ) {
     GT::GTL::ContextPtr context = GT::GTL::NullFactory::getInstance().createContext();
 
     // when
-    GT::GTL::LazyGameProxy     lazyGame(gameBuilder, players, coordinates, context);
+    GT::GTL::LazyGameProxy     lazyGame(gameBuilder, players, coordinates, context.get());
     GT::Model::DataAccessorPtr gotData;
 
     // then
@@ -129,7 +129,7 @@ BOOST_AUTO_TEST_CASE( LazyGameBuilder_toString ) {
     GT::GTL::ContextPtr context = GT::GTL::NullFactory::getInstance().createContext();
 
     // when
-    GT::GTL::LazyGameProxy lazyGame(gameBuilder, players, coordinates, context);
+    GT::GTL::LazyGameProxy lazyGame(gameBuilder, players, coordinates, context.get());
     GT::Message            gotString;
 
     // then

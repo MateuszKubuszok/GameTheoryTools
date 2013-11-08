@@ -12,7 +12,7 @@ LazyGameProxy::LazyGameProxy(
     Model::GameBuilderPtr definedGameBuilder,
     ObjectsPtr            definedPlayers,
     CoordinatesPtr        definedCoordinates,
-    ContextPtr            definedContext
+    Context*              definedContext
 ) :
     gameBuilder(definedGameBuilder),
     players(definedPlayers),

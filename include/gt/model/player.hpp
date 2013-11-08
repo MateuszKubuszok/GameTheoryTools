@@ -21,17 +21,17 @@ class Player : public virtual Root {
     typedef boost::container::map<Identifier, Index>  StrategyMap;
 
     /**
-     * @breif Player's name.
+     * @brief Player's name.
      */
     const IdentifierPtr name;
 
     /**
-     * @breif Player's strategies.
+     * @brief Player's strategies.
      */
     const IdentifiersPtr strategies;
 
     /**
-     * @breif Mapps strategies to its ordinal.
+     * @brief Mapps strategies to its ordinal.
      */
     StrategyMap strategyMapping;
 

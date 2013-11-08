@@ -9,8 +9,8 @@ namespace GTL {
 // public:
 
 ExecutionStatementDriver::ExecutionStatementDriver(
-    Driver*    parentDriver,
-    ContextPtr parentContext
+    Driver*  parentDriver,
+    Context* parentContext
 ) :
     checkingStatementDriver(parentDriver),
     driver(parentDriver),

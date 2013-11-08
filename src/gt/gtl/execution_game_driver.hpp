@@ -28,7 +28,7 @@ class ExecutionGameDriver : public GameDriver {
     /**
      * @brief Contains Context.
      */
-    ContextPtr         context;
+    Context*           context;
 
 public:
     /**
@@ -38,8 +38,8 @@ public:
      * @param context      Context data
      */
     ExecutionGameDriver(
-        Driver*     parentDriver,
-        ContextPtr& context
+        Driver*  parentDriver,
+        Context* context
     );
 
     /**

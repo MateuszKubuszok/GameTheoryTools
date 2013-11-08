@@ -246,6 +246,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorCoordinate : public Coordinate {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

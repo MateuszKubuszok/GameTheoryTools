@@ -82,6 +82,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorPlayer : public Player {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

@@ -32,7 +32,7 @@ class LazyGameProxy : public Model::Game {
     /**
      * @brief Context.
      */
-    ContextPtr            context;
+    Context*              context;
 
 public:
     /**
@@ -47,11 +47,11 @@ public:
         Model::GameBuilderPtr gameBuilder,
         ObjectsPtr            players,
         CoordinatesPtr        coordinates,
-        ContextPtr            context
+        Context*              context
     );
 
     /**
-     * @breif Returns Game's Players.
+     * @brief Returns Game's Players.
      *
      * @return Players
      */

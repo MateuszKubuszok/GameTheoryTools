@@ -80,6 +80,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorCondition : public Condition {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

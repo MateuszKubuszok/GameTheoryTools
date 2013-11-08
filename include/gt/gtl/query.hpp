@@ -110,6 +110,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorQuery : public Query {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

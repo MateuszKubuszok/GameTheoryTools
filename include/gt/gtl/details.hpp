@@ -102,6 +102,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorDetails : public Details {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

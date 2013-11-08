@@ -243,6 +243,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorObject : public Object {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

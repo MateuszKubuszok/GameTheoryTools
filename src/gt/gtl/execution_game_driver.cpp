@@ -9,8 +9,8 @@ namespace GTL {
 // public:
 
 ExecutionGameDriver::ExecutionGameDriver(
-    Driver*     parentDriver,
-    ContextPtr& contextPtr
+    Driver*  parentDriver,
+    Context* contextPtr
 ) :
     checkingGameDriver(parentDriver),
     driver(parentDriver),

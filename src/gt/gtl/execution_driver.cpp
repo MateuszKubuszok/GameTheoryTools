@@ -16,9 +16,9 @@ ExecutionDriver::ExecutionDriver(
     context(new Context()),
     coordinate(this),
     condition(this),
-    game(this, context),
+    game(this, context.get()),
     value(this),
-    statement(this, context),
+    statement(this, context.get()),
     outputStream(newOutputStream)
     {}
 

@@ -14,7 +14,7 @@ namespace Model {
 class Game : public virtual Root {
 public:
     /**
-     * @breif Returns Game's Players.
+     * @brief Returns Game's Players.
      *
      * @return Players
      */

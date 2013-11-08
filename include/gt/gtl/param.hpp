@@ -156,6 +156,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorParam : public Param {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

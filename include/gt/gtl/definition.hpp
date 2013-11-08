@@ -104,6 +104,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class ErrorDefinition : public Definition {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

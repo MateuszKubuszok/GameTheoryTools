@@ -82,6 +82,11 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Null Game for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class NullGame : public Game {
 public:
     NullGame() :
@@ -120,7 +125,15 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Error Condition for handling invalid situations.
+ *
+ * @author Mateusz Kubuszok
+ */
 class ErrorGame : public Game {
+    /**
+     * @brief Error message.
+     */
     Message message;
 
 public:

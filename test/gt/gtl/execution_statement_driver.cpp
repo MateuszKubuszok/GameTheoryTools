@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_executeDefinition ) {
     boost::scoped_ptr<GT::GTL::DefinitionPtr> definitionPtr(new GT::GTL::DefinitionPtr(definition));
 
     // when
-    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
+    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context.get());
 
     // then
     BOOST_REQUIRE(statementDriver.executeDefinition(definitionPtr.get()));
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_executeQuery ) {
     boost::scoped_ptr<GT::GTL::QueryPtr> queryPtr(new GT::GTL::QueryPtr(query));
 
     // when
-    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
+    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context.get());
 
     // then
     BOOST_REQUIRE(statementDriver.executeQuery(queryPtr.get()));
@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_createDefinition ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> valuePtr(new GT::GTL::ObjectPtr(value));
 
     // when
-    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
+    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context.get());
     boost::scoped_ptr<GT::GTL::DefinitionPtr> definitionPtr(
         statementDriver.createDefinition(*inputLocation, namePtr.get(), valuePtr.get()));
 
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE( ExecutionStatementDriver_createQuery ) {
     boost::scoped_ptr<GT::GTL::ConditionsPtr> conditionsPtr(new GT::GTL::ConditionsPtr(conditions));
 
     // when
-    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context);
+    GT::GTL::ExecutionStatementDriver statementDriver(&driver, context.get());
     boost::scoped_ptr<GT::GTL::QueryPtr> queryPtr(statementDriver.createQuery(
         *inputLocation, propertiesPtr.get(), objectsPtr.get(), conditionsPtr.get()));
 
