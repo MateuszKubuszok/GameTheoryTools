@@ -65,7 +65,7 @@
         },
         {
             "name":        "GTL Development",
-            "shell_cmd":   "scons -Q runRoutinesTests 2> errors.log",
+            "shell_cmd":   "scons -Q runGTLTests 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
