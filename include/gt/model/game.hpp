@@ -35,7 +35,7 @@ public:
      */
     virtual bool isEqual(
         Root& root
-    );
+    ) override;
 
     /**
      * @brief Game's Message.
@@ -51,7 +51,7 @@ public:
      * @param game2 second Game to compare
      * @return      true if Games are equal
      */
-    friend bool operator==(
+    friend bool operator== (
         GamePtr& game1,
         GamePtr& game2
     );
@@ -63,7 +63,7 @@ public:
      * @param game2 second Game to compare
      * @return      true if Games are not equal
      */
-    friend bool operator!=(
+    friend bool operator!= (
         GamePtr& game1,
         GamePtr& game2
     );
@@ -75,7 +75,7 @@ public:
      * @param game   Game to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<<(
+    friend OutputStream& operator<< (
         OutputStream& stream,
         GamePtr&      game
     );
@@ -90,19 +90,19 @@ public:
  */
 class NullGame : public Game {
 public:
-    virtual PlayersPtr getPlayers() {
+    virtual PlayersPtr getPlayers() override {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataAccessorPtr getData() {
+    virtual DataAccessorPtr getData() override {
         return NullFactory::getInstance().createDataAccessor();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullGame");
     }
 }; /* END class NullGame */

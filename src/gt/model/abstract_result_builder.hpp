@@ -38,7 +38,7 @@ public:
      */
     virtual ResultBuilder& setHeaders(
         IdentifiersPtr& propertiesNames
-    );
+    ) override;
 
     /**
      * @brief Adds record to displayed Result.
@@ -54,7 +54,7 @@ public:
     virtual ResultBuilder& addRecord(
         IdentifierPtr& name,
         MessagesPtr&   propertiesValues
-    );
+    ) override;
 
     /**
      * @brief Adds single named subresult.
@@ -66,7 +66,7 @@ public:
     virtual ResultBuilder& addResult(
         IdentifierPtr& name,
         MessagePtr&    result
-    );
+    ) override;
 
     /**
      * @brief Build Result.
@@ -95,17 +95,41 @@ public:
      *
      * @see #build()
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
 protected:
+    /**
+     * @brief Type containing name-properties pair.
+     */
     typedef std::pair<IdentifierPtr, MessagesPtr>   PartialResult;
+    /**
+     * @brief Type containing name to properties mapping.
+     */
     typedef boost::container::vector<PartialResult> PartialResults;
+    /**
+     * @brief Type containing name-subresult pair.
+     */
     typedef std::pair<IdentifierPtr, MessagePtr>    SubResult;
+    /**
+     * @brief Type containing name to subresult mapping.
+     */
     typedef boost::container::vector<SubResult>     SubResults;
 
+    /**
+     * @brief Names of properties.
+     */
     IdentifiersPtr propertiesNames;
+    /**
+     * @brief Values of declared properties.
+     */
     PartialResults partialResults;
+    /**
+     * @brief SubResults.
+     */
     SubResults     subResults;
+    /**
+     * @brief Indent used.
+     */
     Message        indent;
 
     /**

@@ -90,31 +90,31 @@ class NullDataBuilder : public DataBuilder {
 public:
     virtual DataBuilder& setPlayers(
         PlayersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
         PositionsPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataBuilder& setParams(
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual DataBuilderPtr clone() {
+    virtual DataBuilderPtr clone() override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullDataBuilder");
     }
 }; /* END class NullDataBuilder */

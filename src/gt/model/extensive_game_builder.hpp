@@ -34,14 +34,14 @@ public:
      *
      * @return built Game
      */
-    virtual GamePtr build();
+    virtual GamePtr build() override;
 
     /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers();
+    virtual PlayersPtr getPlayers() override;
 
     /**
      * @brief Sets Players' definitions.
@@ -51,7 +51,7 @@ public:
      */
     virtual DataBuilder& setPlayers(
         PlayersPtr newPlayers
-    );
+    ) override;
 
     /**
      * @brief Specifies next Positions.
@@ -61,7 +61,7 @@ public:
      */
     virtual DataBuilder& addNextPositions(
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Sets payoffs values.
@@ -71,35 +71,35 @@ public:
      */
     virtual DataBuilder& setParams(
         NumbersPtr params
-    );
+    ) override;
 
     /**
      * @brief Returns copy of itsef with shared content and frozen values of already set Positions.
      *
      * @return copy with frozem Positions and content common to parent
      */
-    virtual DataBuilderPtr clone();
+    virtual DataBuilderPtr clone() override;
 
     /**
      * @brief Returns new copy of this GameBuilder's type.
      *
      * @return GameBuilder
      */
-    virtual GameBuilderPtr cloneBuilder();
+    virtual GameBuilderPtr cloneBuilder() override;
 
     /**
      * @brief Returns Same's DataBuilder.
      *
      * @return DataBuilder
      */
-    virtual DataBuilderPtr dataBuilder();
+    virtual DataBuilderPtr dataBuilder() override;
 
     /**
      * @brief ExtensiveGameBuilder Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExtensiveGameBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

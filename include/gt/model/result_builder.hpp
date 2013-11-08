@@ -88,37 +88,37 @@ class NullResultBuilder : public ResultBuilder {
 public:
     virtual ResultBuilder& setHeaders(
         IdentifiersPtr&
-    ) {
+    ) override {
         return *this;
     }
 
     virtual ResultBuilder& addRecord(
         IdentifierPtr&,
         MessagesPtr&
-    ) {
+    ) override {
         return *this;
     }
 
     virtual ResultBuilder& addResult(
         IdentifierPtr&,
         MessagePtr&
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual ResultPtr build() {
+    virtual ResultPtr build() override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual ResultPtr buildRaw() {
+    virtual ResultPtr buildRaw() override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullResultBuilder");
     }
 }; /* END class NullResultBuilder */

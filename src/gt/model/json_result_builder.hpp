@@ -40,7 +40,7 @@ public:
      *
      * @see #buildRaw()
      */
-    virtual ResultPtr build();
+    virtual ResultPtr build() override;
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
@@ -50,7 +50,7 @@ public:
      *
      * @see #build()
      */
-    virtual ResultPtr buildRaw();
+    virtual ResultPtr buildRaw() override;
 }; /* END class JSONResultBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

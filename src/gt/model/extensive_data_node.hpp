@@ -196,51 +196,51 @@ public:
         )
         {}
 
-    virtual ExtensiveDataNode& getParent() {
+    virtual ExtensiveDataNode& getParent() override {
         return *this;
     }
 
-    virtual PlayerPtr getPlayer() {
+    virtual PlayerPtr getPlayer() override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual PlayerPtr getPlayer(
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual ExtensiveDataNode& setPlayer(
         PlayerPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual ExtensiveDataNode& setPlayer(
         Positions&,
         PlayerPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual NumbersPtr getValues(
         Positions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumbers();
     }
 
     virtual ExtensiveDataNode& setValues(
         Positions&,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullExtensiveDataNode");
     }
 }; /* END class NullExtensiveDataNode */

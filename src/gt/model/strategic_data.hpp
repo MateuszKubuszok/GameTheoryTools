@@ -52,7 +52,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers();
+    virtual PlayersPtr getPlayers() override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -75,7 +75,7 @@ public:
      */
     virtual DataPiecePtr getValues(
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -111,7 +111,7 @@ public:
     virtual Data& setValues(
         Positions& positions,
         NumbersPtr numbers
-    );
+    ) override;
 
     /**
      * @brief Sets Positions to contains given payoffs.
@@ -123,7 +123,7 @@ public:
     virtual Data& setValues(
         PositionsPtr positions,
         NumbersPtr   numbers
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -133,7 +133,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Index positionInStorage
     );
 
@@ -144,9 +144,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Positions& positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -155,16 +155,16 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns StrategicData Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class StrategicData */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,72 +180,72 @@ public:
         StrategicData(NullFactory::getInstance().createPlayers())
         {}
 
-    virtual PlayersPtr getPlayers() {
+    virtual PlayersPtr getPlayers() override {
         return NullFactory::getInstance().createPlayers();
     }
 
     virtual DataPiecePtr getValues(
         Index
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual Data& setValues(
         Index,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Data& setValues(
         Positions&,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Data& setValues(
         PositionsPtr,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataPiecePtr operator[](
         Index
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr operator[](
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr operator[](
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullStrategicData");
     }
 }; /* END class NullStrategicData */

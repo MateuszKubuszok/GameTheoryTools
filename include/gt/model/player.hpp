@@ -18,6 +18,9 @@ namespace Model {
  * @see GameBuilder
  */
 class Player : public virtual Root {
+    /**
+     * @brief Type storing strategy to ordinal mapping.
+     */
     typedef boost::container::map<Identifier, Index>  StrategyMap;
 
     /**
@@ -95,14 +98,14 @@ public:
      */
     virtual bool isEqual(
         Root& root
-    );
+    ) override;
 
     /**
      * @brief Returns Message with Player's name and strategies.
      *
      * @return Player's name and strategies
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
     /**
      * @brief Syntax sugar for isEqual method.
@@ -111,7 +114,7 @@ public:
      * @param player2 second Player to compare
      * @return        true if Players are equal
      */
-    friend bool operator==(
+    friend bool operator== (
         PlayerPtr& player1,
         PlayerPtr& player2
     );
@@ -123,7 +126,7 @@ public:
      * @param player2 second Player to compare
      * @return        true if Players are not equal
      */
-    friend bool operator!=(
+    friend bool operator!= (
         PlayerPtr& player1,
         PlayerPtr& player2
     );
@@ -135,7 +138,7 @@ public:
      * @param player Player to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<<(
+    friend OutputStream& operator<< (
         OutputStream& stream,
         PlayerPtr&    player
     );
@@ -157,29 +160,29 @@ public:
         )
         {}
 
-    virtual IdentifierPtr getName() {
+    virtual IdentifierPtr getName() override {
         return NullFactory::getInstance().createIdentifier();
     }
 
-    virtual IdentifiersPtr getStrategies() {
+    virtual IdentifiersPtr getStrategies() override {
         return NullFactory::getInstance().createIdentifiers();
     }
 
-    virtual Index getStrategiesNumber() {
+    virtual Index getStrategiesNumber() override {
         return 0;
     }
 
     virtual Index getStrategyOrdinal(
-        const Identifier&
-    ) {
+        Identifier&
+    ) override {
         return 0;
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullPlayer");
     }
 }; /* END class NullPlayer */

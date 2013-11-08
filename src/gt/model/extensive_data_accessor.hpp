@@ -42,7 +42,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers();
+    virtual PlayersPtr getPlayers() override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -53,7 +53,7 @@ public:
      */
     virtual DataPiecePtr getValues(
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -64,7 +64,7 @@ public:
      */
     virtual DataPiecePtr getValues(
         Positions& positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -73,9 +73,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Positions& positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -84,16 +84,16 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns ExtensiveDataAccessor Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExtensiveDataAccessor */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

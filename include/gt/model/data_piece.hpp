@@ -20,7 +20,7 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& operator[](
+    NumberPtr& operator[] (
         Identifier& playerName
     );
 
@@ -31,7 +31,7 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& operator[](
+    NumberPtr& operator[] (
         IdentifierPtr playerName
     );
 
@@ -73,6 +73,9 @@ public:
  * @author Mateusz Kubuszok
  */
 class NullDataPiece : public DataPiece {
+    /**
+     * @brief NullNumber to return.
+     */
     NumberPtr nullNumber;
 
 public:
@@ -82,15 +85,15 @@ public:
 
     virtual NumberPtr& getValue(
         Identifier&
-    ) {
+    ) override {
         return nullNumber;
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullDataPiece");
     }
 }; /* END class NullDataPiece */

@@ -21,28 +21,6 @@ namespace Model {
 class Data : public DataAccessor {
 public:
     /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
-    ) = 0;
-
-    /**
      * @brief Returns map of Players available in this DataAccessor.
      *
      * @return Players
@@ -96,6 +74,28 @@ public:
     ) = 0;
 
     /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual DataPiecePtr operator[] (
+        Positions& positions
+    ) = 0;
+
+    /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual DataPiecePtr operator[] (
+        PositionsPtr positions
+    ) = 0;
+
+    /**
      * @brief Returns Data's message.
      *
      * @return message
@@ -114,47 +114,47 @@ class NullData : public Data {
 public:
     virtual DataPiecePtr getValues(
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual PlayersPtr getPlayers() {
+    virtual PlayersPtr getPlayers() override {
         return NullFactory::getInstance().createPlayers();
     }
 
     virtual Data& setValues(
         Positions&,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Data& setValues(
         PositionsPtr,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 

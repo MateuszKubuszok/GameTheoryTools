@@ -43,21 +43,21 @@ public:
      *
      * @return Players' denifitions
      */
-    virtual PlayersPtr getPlayers();
+    virtual PlayersPtr getPlayers() override;
 
     /**
      * @brief Returns Game's Data.
      *
      * @return Game's Data
      */
-    virtual DataAccessorPtr getData();
+    virtual DataAccessorPtr getData() override;
 
     /**
      * @brief Returns StrategicGame's Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class StrategicGame */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

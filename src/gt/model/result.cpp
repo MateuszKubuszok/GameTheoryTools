@@ -8,6 +8,8 @@ namespace Model {
 // class Result : public virtual Root {
 // public:
 
+Result::~Result() {}
+
 bool Result::isEqual(
     Root& root
 ) {

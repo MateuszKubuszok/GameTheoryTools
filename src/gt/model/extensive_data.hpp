@@ -48,7 +48,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers();
+    virtual PlayersPtr getPlayers() override;
 
     /**
      * @brief Returns Player that plays for given position.
@@ -103,7 +103,7 @@ public:
      */
     virtual DataPiecePtr getValues(
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -114,7 +114,7 @@ public:
      */
     virtual DataPiecePtr getValues(
         Positions& positions
-    );
+    ) override;
 
     /**
      * @brief Sets Positions to contains given payoffs.
@@ -128,7 +128,7 @@ public:
     virtual Data& setValues(
         Positions& positions,
         NumbersPtr numbers
-    );
+    ) override;
 
     /**
      * @brief Sets Positions to contains given payoffs.
@@ -142,7 +142,7 @@ public:
     virtual Data& setValues(
         PositionsPtr positions,
         NumbersPtr   numbers
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -151,9 +151,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Positions& positions
-    );
+    ) override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -162,9 +162,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Returns ExtensiveData Message.
@@ -187,79 +187,79 @@ public:
         ExtensiveData(NullFactory::getInstance().createPlayers())
         {}
 
-    virtual PlayersPtr getPlayers() {
+    virtual PlayersPtr getPlayers() override {
         return NullFactory::getInstance().createPlayers();
     }
 
     virtual PlayerPtr getPlayerInTurn(
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual PlayerPtr getPlayerInTurn(
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual ExtensiveData& setPlayerInTurn(
         Positions&,
         PlayerPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual ExtensiveData& setPlayerInTurn(
         PositionsPtr,
         PlayerPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataPiecePtr getValues(
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual DataPiecePtr getValues(
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual Data& setValues(
         Positions&,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Data& setValues(
         PositionsPtr,
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         Positions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr operator[](
+    virtual DataPiecePtr operator[] (
         PositionsPtr
-    ) {
+    ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullExtensiveData");
     }
 }; /* END class NullExtensiveData */

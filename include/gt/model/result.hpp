@@ -23,7 +23,7 @@ public:
     /**
      * @brief Default destructor.
      */
-    virtual ~Result() {}
+    virtual ~Result();
 
     /**
      * @brief Returns Result in a form available to send on output stream.
@@ -40,14 +40,14 @@ public:
      */
     virtual bool isEqual(
         Root& root
-    );
+    ) override;
 
     /**
      * @brief Return message with results.
      *
      * @return Result as a Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
     /**
      * @brief Syntax sugar for isEqual method.
@@ -56,7 +56,7 @@ public:
      * @param result2 second Result to compare
      * @return        true if Results are equal
      */
-    friend bool operator==(
+    friend bool operator== (
         ResultPtr& result1,
         ResultPtr& result2
     );
@@ -68,7 +68,7 @@ public:
      * @param result2 second Result to compare
      * @return        true if Results are not equal
      */
-    friend bool operator!=(
+    friend bool operator!= (
         ResultPtr& result1,
         ResultPtr& result2
     );
@@ -80,7 +80,7 @@ public:
      * @param result Result to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<<(
+    friend OutputStream& operator<< (
         OutputStream& stream,
         ResultPtr&    result
     );
@@ -95,15 +95,15 @@ public:
  */
 class NullResult : public virtual Result {
 public:
-    virtual Message getResult() {
+    virtual Message getResult() override {
         return Message("NullResult");
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullResult");
     }
 }; /* END class NullResult */

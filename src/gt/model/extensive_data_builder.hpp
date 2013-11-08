@@ -69,7 +69,7 @@ public:
      */
     virtual DataBuilder& setPlayers(
         PlayersPtr newPlayers
-    );
+    ) override;
 
     /**
      * @brief Specifies next Positions.
@@ -79,7 +79,7 @@ public:
      */
     virtual DataBuilder& addNextPositions(
         PositionsPtr positions
-    );
+    ) override;
 
     /**
      * @brief Sets payoffs values.
@@ -89,21 +89,21 @@ public:
      */
     virtual DataBuilder& setParams(
         NumbersPtr params
-    );
+    ) override;
 
     /**
      * @brief Returns copy of itsef with shared content and frozen values of already set Positions.
      *
      * @return copy with frozem Positions and content common to parent
      */
-    virtual DataBuilderPtr clone();
+    virtual DataBuilderPtr clone() override;
 
     /**
      * @brief ExtensiveDataBuilder Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExtensiveDataBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

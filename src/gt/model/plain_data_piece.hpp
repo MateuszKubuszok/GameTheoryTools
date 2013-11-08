@@ -48,14 +48,14 @@ public:
      */
     virtual NumberPtr& getValue(
         Identifier& playerName
-    );
+    ) override;
 
     /**
      * @brief Returns PlainDataPiece's message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class PlainDataPiece */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

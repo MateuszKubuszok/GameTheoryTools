@@ -69,49 +69,49 @@ public:
  */
 class NullGameBuilder : public GameBuilder {
 public:
-    virtual PlayersPtr getPlayers() {
+    virtual PlayersPtr getPlayers() override {
         return NullFactory::getInstance().createPlayers();
     }
 
     virtual DataBuilder& setPlayers(
         PlayersPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
         PositionsPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual DataBuilder& setParams(
         NumbersPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual DataBuilderPtr dataBuilder() {
+    virtual DataBuilderPtr dataBuilder() override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual GamePtr build() {
+    virtual GamePtr build() override {
         return NullFactory::getInstance().createGame();
     }
 
-    virtual DataBuilderPtr clone() {
+    virtual DataBuilderPtr clone() override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual GameBuilderPtr cloneBuilder() {
+    virtual GameBuilderPtr cloneBuilder() override {
         return NullFactory::getInstance().createGameBuilder();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullGameBuilder");
     }
 }; /* END class NullDataBuilder */

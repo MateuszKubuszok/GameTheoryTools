@@ -65,6 +65,11 @@ public:
         OutputStream& newOutputStream
     );
 
+    /**
+     * @brief Return number of not freed objects.
+     *
+     * @return number of not freed objects
+     */
     static unsigned long notFreed();
 
     /**
@@ -115,7 +120,7 @@ public:
      * @param root2 second Root to compare
      * @return      true if Root are equal
      */
-    friend bool operator==(
+    friend bool operator== (
         Root& root1,
         Root& root2
     );
@@ -127,7 +132,7 @@ public:
      * @param root2 second Root to compare
      * @return      true if Root are not equal
      */
-    friend bool operator!=(
+    friend bool operator!= (
         Root& root1,
         Root& root2
     );
@@ -139,7 +144,7 @@ public:
      * @param root   Root to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<<(
+    friend OutputStream& operator<< (
         OutputStream& stream,
         Root&         root
     );
