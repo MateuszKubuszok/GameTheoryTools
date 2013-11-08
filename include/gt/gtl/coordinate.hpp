@@ -186,54 +186,54 @@ public:
  */
 class NullCoordinate : public Coordinate {
 public:
-    virtual Coordinate& addParams(
+    virtual Coordinate& addParam(
         const ParamPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addParams(
         const ParamsPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addPosition(
         const IdentifierPtr,
         const IdentifierPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual Coordinate& addSubCoordinates(
+    virtual Coordinate& addSubCoordinate(
         const CoordinatePtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
         const CoordinatesPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual ParamsPtr getParams() {
+    virtual ParamsPtr getParams() override {
         return NullFactory::getInstance().createParams();
     }
 
-    virtual PositionsPtr getPositions() {
+    virtual PositionsPtr getPositions() override {
         return NullFactory::getInstance().createPositions();
     }
 
-    virtual CoordinatesPtr getSubCoordinates() {
+    virtual CoordinatesPtr getSubCoordinates() override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullCoordinate");
     }
 }; /* END class NullCoordinate */
@@ -258,54 +258,54 @@ public:
         message(errorMessage)
         {}
 
-    virtual Coordinate& addParams(
+    virtual Coordinate& addParam(
         const ParamPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addParams(
         const ParamsPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addPosition(
         const IdentifierPtr,
         const IdentifierPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual Coordinate& addSubCoordinates(
+    virtual Coordinate& addSubCoordinate(
         const CoordinatePtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual Coordinate& addSubCoordinates(
         const CoordinatesPtr
-    ) {
+    ) override {
         return *this;
     }
 
-    virtual ParamsPtr getParams() {
+    virtual ParamsPtr getParams() override {
         return NullFactory::getInstance().createParams();
     }
 
-    virtual PositionsPtr getPositions() {
+    virtual PositionsPtr getPositions() override {
         return NullFactory::getInstance().createPositions();
     }
 
-    virtual CoordinatesPtr getSubCoordinates() {
+    virtual CoordinatesPtr getSubCoordinates() override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorCoordinate */

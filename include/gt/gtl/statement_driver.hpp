@@ -89,13 +89,13 @@ public:
 
     virtual bool executeDefinition(
         DefinitionPtr*
-    ) {
+    ) override {
         return true;
     }
 
     virtual bool executeQuery(
         QueryPtr*
-    ) {
+    ) override {
         return true;
     }
 
@@ -103,7 +103,7 @@ public:
         InputLocation&,
         IdentifierPtr*,
         ObjectPtr*
-    ) {
+    ) override {
         return new DefinitionPtr(NullFactory::getInstance().createDefinition());
     }
 
@@ -112,15 +112,15 @@ public:
         IdentifiersPtr*,
         ObjectsPtr*,
         ConditionsPtr*
-    ) {
+    ) override {
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullStatementDriver");
     }
 }; /* END class NullStatementDriver */

@@ -39,14 +39,14 @@ public:
      *
      * @return Player's Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
     /**
      * @brief Explicit cast to Player type.
      *
      * @return Player
      */
-    virtual operator Player&();
+    virtual operator Player&() override;
 }; /* END class Player */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,11 +65,11 @@ public:
         )
         {}
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullPlayer");
     }
 }; /* END class NullPlayer */
@@ -98,11 +98,11 @@ public:
         message(errorMessage)
         {}
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorPlayer */

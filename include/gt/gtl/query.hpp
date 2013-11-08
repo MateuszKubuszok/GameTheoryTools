@@ -67,7 +67,7 @@ public:
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class Query */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,15 +89,15 @@ public:
 
     virtual ResultPtr execute(
         Context&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullQuery");
     }
 }; /* END class NullQuery */
@@ -129,15 +129,15 @@ public:
 
     virtual ResultPtr execute(
         Context&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorQuery */

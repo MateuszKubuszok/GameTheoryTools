@@ -32,7 +32,7 @@ public:
      *
      * @param parentDriver parent Driver
      */
-    ExecutionConditionDriver(
+    explicit ExecutionConditionDriver(
         Driver* parentDriver
     );
 
@@ -48,14 +48,14 @@ public:
         InputLocation& inputLocation,
         ObjectPtr*     playerPtr,
         ObjectPtr*     strategyPtr
-    );
+    ) override;
 
     /**
      * @brief ExecutionConditionDriver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExecutionConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

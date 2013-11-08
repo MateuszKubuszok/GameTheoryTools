@@ -130,7 +130,7 @@ public:
      *
      * @return Context's Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class Context */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,42 +142,42 @@ public:
  */
 class NullContext : public Context {
 public:
-    virtual Context& registerObject(
+    virtual Context& registerParam(
         IdentifierPtr,
-        ObjectPtr
-    ) {
+        ParamPtr
+    ) override {
         return *this;
     }
 
-    virtual Context& registerObject(
+    virtual Context& registerParam(
         DefinitionPtr
-    ) {
+    ) override {
         return *this;
     }
 
     virtual NumberPtr getNumber(
         Identifier&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual ObjectPtr getObject(
         Identifier&
-    ) {
+    ) override {
         return NullFactory::getInstance().createObject();
     }
 
     virtual ParamPtr getParam(
         Identifier&
-    ) {
+    ) override {
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullContext");
     }
 }; /* END class NullContext */

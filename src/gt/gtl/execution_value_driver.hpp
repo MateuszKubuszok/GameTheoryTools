@@ -32,7 +32,7 @@ public:
      *
      * @param parentDriver parent Driver
      */
-    ExecutionValueDriver(
+    explicit ExecutionValueDriver(
         Driver* parentDriver
     );
 
@@ -46,7 +46,7 @@ public:
     virtual ParamPtr* get(
         InputLocation& inputLocation,
         IdentifierPtr* identifier
-    );
+    ) override;
 
     /**
      * @brief Creates Param by its value.
@@ -58,7 +58,7 @@ public:
     virtual ParamPtr* get(
         InputLocation& inputLocation,
         NumberPtr*     number
-    );
+    ) override;
 
     /**
      * @brief Converts passed Game to Object.
@@ -68,7 +68,7 @@ public:
      */
     virtual ObjectPtr* toObject(
         GamePtr* game
-    );
+    ) override;
 
     /**
      * @brief Converts passed Player to Object.
@@ -78,7 +78,7 @@ public:
      */
     virtual ObjectPtr* toObject(
         PlayerPtr* player
-    );
+    ) override;
 
     /**
      * @brief Converts passed Param to Object.
@@ -88,14 +88,14 @@ public:
      */
     virtual ObjectPtr* toObject(
         ParamPtr* param
-    );
+    ) override;
 
     /**
      * @brief ExecutionValueDriver message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExecutionValueDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

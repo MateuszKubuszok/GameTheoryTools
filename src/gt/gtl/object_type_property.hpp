@@ -25,7 +25,7 @@ public:
      *
      * @param describedObject described Object
      */
-    ObjectTypeProperty(
+    explicit ObjectTypeProperty(
         Object* describedObject
     );
 
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) override;
 }; /* END class ObjectTypeProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

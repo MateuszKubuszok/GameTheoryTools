@@ -25,7 +25,7 @@ public:
      *
      * @param describedPlayer described Player
      */
-    PlayerNameProperty(
+    explicit PlayerNameProperty(
         Player* describedPlayer
     );
 
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) override;
 }; /* END class PlayerNameProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

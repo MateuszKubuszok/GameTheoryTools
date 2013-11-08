@@ -49,7 +49,7 @@ public:
      */
     virtual bool executeDefinition(
         DefinitionPtr* definition
-    );
+    ) override;
 
     /**
      * @brief Executes Query saving Object under defined name.
@@ -58,7 +58,7 @@ public:
      */
     virtual bool executeQuery(
         QueryPtr* query
-    );
+    ) override;
 
     /**
      * @brief Creates Definition saving Object under defined name.
@@ -72,7 +72,7 @@ public:
         InputLocation& inputLocation,
         IdentifierPtr* identifier,
         ObjectPtr*     object
-    );
+    ) override;
 
     /**
      * @brief Creates Query for given properties.
@@ -88,14 +88,14 @@ public:
         IdentifiersPtr* identifiers,
         ObjectsPtr*     objects,
         ConditionsPtr*  conditions
-    );
+    ) override;
 
     /**
      * @brief ExecutionStatementDriver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExecutionStatementDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

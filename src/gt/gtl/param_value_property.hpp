@@ -6,6 +6,13 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Describes Param's value.
+ *
+ * @author Mateusz Kubuszok
+ *
+ * @see Param
+ */
 class ParamValueProperty : public ObjectProperty {
     /**
      * @brief Described Param.
@@ -18,7 +25,7 @@ public:
      *
      * @param describedParam described Param
      */
-    ParamValueProperty(
+    explicit ParamValueProperty(
         Param* describedParam
     );
 
@@ -32,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) override;
 }; /* END class ParamValueProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

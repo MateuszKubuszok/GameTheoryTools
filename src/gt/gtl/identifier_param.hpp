@@ -43,7 +43,7 @@ public:
     virtual ObjectPtr getObject(
         Context&            context,
         VisitedIdentifiers& visitedIdentifiers
-    );
+    ) override;
 
     /**
      * @brief Returns Number for context.
@@ -57,14 +57,14 @@ public:
     virtual NumberPtr getNumber(
         Context&            context,
         VisitedIdentifiers& visitedIdentifiers
-    );
+    ) override;
 
     /**
      * @brief IdentifierParam's Message.
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class IdentifierParam */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

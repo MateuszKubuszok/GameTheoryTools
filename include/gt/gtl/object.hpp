@@ -50,14 +50,18 @@ public:
     Object();
 
     /**
-     * @brief Default constructor.
+     * @brief Constructor initiated with Object's type.
+     *
+     * @param type Object's type
      */
-    explicit Object(Identifier type);
+    explicit Object(
+        Identifier type
+    );
 
     /**
      * @brief Object's destructor.
      *
-     * Removes the properties' register.
+     * <p>Removes the properties' register.</p>
      */
     virtual ~Object();
 
@@ -117,7 +121,7 @@ public:
      *
      * @return generic Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
     /**
      * @brief Explicit cast to Game type.
@@ -207,14 +211,14 @@ class NullObject : public Object {
 public:
     virtual bool respondsTo(
         Identifier&
-    ) {
+    ) override {
         return false;
     }
 
     virtual ResultPtr findProperty(
         const Context&,
         Identifier&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
@@ -222,15 +226,15 @@ public:
         const Context&,
         Identifier&,
         const Conditions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullObject");
     }
 }; /* END class NullObject */
@@ -257,14 +261,14 @@ public:
 
     virtual bool respondsTo(
         Identifier&
-    ) {
+    ) override {
         return false;
     }
 
     virtual ResultPtr findProperty(
         const Context&,
         Identifier&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
@@ -272,15 +276,15 @@ public:
         const Context&,
         Identifier&,
         const Conditions&
-    ) {
+    ) override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorObject */

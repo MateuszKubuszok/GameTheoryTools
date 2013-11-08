@@ -91,7 +91,7 @@ public:
     virtual ParamPtr* get(
         InputLocation& inputLocation,
         IdentifierPtr*
-    ) {
+    ) override {
         return new ParamPtr(
             setupLocation<Param>(
                 NullFactory::getInstance().createParam(),
@@ -103,7 +103,7 @@ public:
     virtual ParamPtr* get(
         GT::GTL::InputLocation& inputLocation,
         NumberPtr*
-    ) {
+    ) override {
         return new ParamPtr(
             setupLocation<Param>(
                 NullFactory::getInstance().createParam(),
@@ -114,27 +114,27 @@ public:
 
     virtual ObjectPtr* toObject(
         GamePtr*
-    ) {
+    ) override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
     virtual ObjectPtr* toObject(
         PlayerPtr*
-    ) {
+    ) override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
     virtual ObjectPtr* toObject(
         ParamPtr*
-    ) {
+    ) override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullValueDriver");
     }
 };

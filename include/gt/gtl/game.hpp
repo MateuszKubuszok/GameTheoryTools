@@ -70,14 +70,14 @@ public:
      *
      * @return Game's state
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
     /**
      * @brief Explicit cast to Game type.
      *
      * @return Game
      */
-    virtual operator Game&();
+    virtual operator Game&() override;
 }; /* END class Game */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,29 +96,29 @@ public:
     virtual ResultPtr pureEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr mixedEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr behaviorEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullGame");
     }
 }; /* END class NullGame */
@@ -147,29 +147,29 @@ public:
     virtual ResultPtr pureEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr mixedEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr behaviorEquilibrium(
         const Context&,
         const Conditions&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorGame */

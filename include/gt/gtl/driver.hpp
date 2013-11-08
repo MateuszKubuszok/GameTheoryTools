@@ -158,64 +158,64 @@ public:
         statement(NullFactory::getInstance().createStatementDriver())
         {}
 
-    virtual CoordinateDriver& forCoordinate() {
+    virtual CoordinateDriver& forCoordinate() override {
         return *coordinate;
     }
 
-    virtual CollectionsDriver<Coordinate>& forCoordinates() {
+    virtual CollectionsDriver<Coordinate>& forCoordinates() override {
         return *coordinates;
     }
 
-    virtual ConditionDriver& forCondition() {
+    virtual ConditionDriver& forCondition() override {
         return *condition;
     }
 
-    virtual CollectionsDriver<Condition>& forConditions() {
+    virtual CollectionsDriver<Condition>& forConditions() override {
         return *conditions;
     }
 
-    virtual GameDriver& forGame() {
+    virtual GameDriver& forGame() override {
         return *game;
     }
 
-    virtual CollectionsDriver<Identifier>& forIdentifiers() {
+    virtual CollectionsDriver<Identifier>& forIdentifiers() override {
         return *identifiers;
     }
 
-    virtual CollectionsDriver<Object>& forObjects() {
+    virtual CollectionsDriver<Object>& forObjects() override {
         return *objects;
     }
 
-    virtual CollectionsDriver<Param>& forParams() {
+    virtual CollectionsDriver<Param>& forParams() override {
         return *params;
     }
 
-    virtual ValueDriver& forValue() {
+    virtual ValueDriver& forValue() override {
         return *value;
     }
 
-    virtual StatementDriver& forStatement() {
+    virtual StatementDriver& forStatement() override {
         return *statement;
     }
 
     virtual void showResult(
         ResultPtr
-    ) {}
+    ) override {}
 
     virtual void showError(
         InputLocation&,
         const Message&
-    ) {}
+    ) override {}
 
     virtual void showError(
         ValidableSymbol&
-    ) {}
+    ) override {}
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullDriver");
     }
 }; /* END class NullDriver */

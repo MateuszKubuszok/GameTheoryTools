@@ -28,7 +28,7 @@ public:
      *
      * @param parentDriver parent Driver
      */
-    CheckingConditionDriver(
+    explicit CheckingConditionDriver(
         Driver* parentDriver
     );
 
@@ -51,7 +51,7 @@ public:
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class CheckingConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

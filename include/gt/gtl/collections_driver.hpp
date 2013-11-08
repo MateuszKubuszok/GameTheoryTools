@@ -74,7 +74,7 @@ public:
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class CollectionsDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ class NullCollectionsDriver : public CollectionsDriver<Content> {
 public:
     NullCollectionsDriver() {}
 
-    virtual typename CollectionsDriver<Content>::CollectionPtr* empty() {
+    virtual typename CollectionsDriver<Content>::CollectionPtr* empty() override {
         return new typename CollectionsDriver<Content>::CollectionPtr(
             new typename CollectionsDriver<Content>::Collection()
         );
@@ -101,22 +101,22 @@ public:
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* create(
         typename CollectionsDriver<Content>::ContentPtr*
-    ) {
+    ) override {
         return empty();
     }
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* insert(
         typename CollectionsDriver<Content>::ContentPtr*,
         typename CollectionsDriver<Content>::CollectionPtr* collection
-    ) {
+    ) override {
         return new typename CollectionsDriver<Content>::CollectionPtr(*collection);
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullCollectionsDriver");
     }
 }; /* END class NullCollectionsDriver */

@@ -61,13 +61,13 @@ class NullCondition : public Condition {
 public:
     virtual void conditionQuery(
         Query&
-    ) {}
+    ) override {}
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullCondition");
     }
 }; /* END class NullCondition */
@@ -94,13 +94,13 @@ public:
 
     virtual void conditionQuery(
         Query&
-    ) {}
+    ) override {}
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorCondition */

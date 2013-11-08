@@ -7,15 +7,27 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Condition used for selecting strategy for a player.
+ * @brief Condition used for selecting strategy for a Player.
  *
  * @author Mateusz Kubuszok
  */
 class PlayerChoiceCondition : public Condition {
+    /**
+     * @brief Param with Player's name.
+     */
     ObjectPtr player;
+    /**
+     * @brief Param with Player's choice.
+     */
     ObjectPtr strategy;
 
 public:
+    /**
+     * @brief Initiates Condition with a Player's name and choice.
+     *
+     * @param Param with Player's name
+     * @param Param with Player's choice
+     */
     PlayerChoiceCondition(
         const ObjectPtr player,
         const ObjectPtr strategy
@@ -28,14 +40,14 @@ public:
      */
     virtual void conditionQuery(
         Query& query
-    );
+    ) override;
 
     /**
      * @brief Returns Message about Condition.
      *
      * @return Condition's Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class PlayerChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

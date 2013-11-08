@@ -55,21 +55,21 @@ public:
      *
      * @return Players
      */
-    virtual Model::PlayersPtr getPlayers();
+    virtual Model::PlayersPtr getPlayers() override;
 
     /**
      * @brief Grants access to Data specific to a Game.
      *
      * @return DataAccessor returns DataAccessor specific for a Game
      */
-    virtual Model::DataAccessorPtr getData();
+    virtual Model::DataAccessorPtr getData() override;
 
     /**
      * @brief Game's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 
 private:
     /**

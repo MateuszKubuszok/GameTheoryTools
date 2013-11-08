@@ -32,7 +32,7 @@ public:
      *
      * @param parentDriver parent Driver
      */
-    ExecutionCoordinateDriver(
+    explicit ExecutionCoordinateDriver(
         Driver* parentDriver
     );
 
@@ -48,7 +48,7 @@ public:
         InputLocation&       inputLocation,
         const IdentifierPtr* player,
         const IdentifierPtr* strategy
-    );
+    ) override;
 
     /**
      * @brief Fills Coordinate with subcoordinates.
@@ -62,7 +62,7 @@ public:
         InputLocation&        inputLocation,
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
-    );
+    ) override;
 
     /**
      * @brief Fills Coordinate with Params.
@@ -76,7 +76,7 @@ public:
         InputLocation&       inputLocation,
         const CoordinatePtr* coordinate,
         const ParamsPtr*     data
-    );
+    ) override;
 
     /**
      * @brief Merge two coordinates into one.
@@ -90,14 +90,14 @@ public:
         InputLocation&       inputLocation,
         const CoordinatePtr* coordinate1,
         const CoordinatePtr* coordinate2
-    );
+    ) override;
 
     /**
      * @brief ExecutionCoordinateDriver message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class ExecutionCoordinateDriver */
 
 //////////////////////////////////////////////////////1///////////////////////////////////////////////////////

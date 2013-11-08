@@ -89,7 +89,7 @@ public:
     virtual GamePtr* createStrategic(
         InputLocation& inputLocation,
         DetailsPtr*
-    ) {
+    ) override {
         return new GamePtr(
             setupLocation<Game>(
                 NullFactory::getInstance().createGame(),
@@ -101,7 +101,7 @@ public:
     virtual GamePtr* createExtensive(
         InputLocation& inputLocation,
         DetailsPtr*
-    ) {
+    ) override {
         return new GamePtr(
             setupLocation<Game>(
                 NullFactory::getInstance().createGame(),
@@ -114,7 +114,7 @@ public:
         InputLocation& inputLocation,
         ObjectsPtr*,
         CoordinatesPtr*
-    ) {
+    ) override {
         return new DetailsPtr(
             setupLocation<Details>(
                 NullFactory::getInstance().createDetails(),
@@ -127,7 +127,7 @@ public:
         InputLocation& inputLocation,
         IdentifierPtr*,
         IdentifiersPtr*
-    ) {
+    ) override {
         return new PlayerPtr(
             setupLocation<Player>(
                 NullFactory::getInstance().createPlayer(),
@@ -136,11 +136,11 @@ public:
         );
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullGameDriver");
     }
 }; /* END class NullGameDriver */

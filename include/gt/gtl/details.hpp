@@ -58,7 +58,7 @@ public:
      *
      * @return Game Details Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class Details */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,19 +77,19 @@ public:
         )
         {}
 
-    virtual CoordinatesPtr getCoordinates() {
+    virtual CoordinatesPtr getCoordinates() override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual ObjectsPtr getPlayers() {
+    virtual ObjectsPtr getPlayers() override {
         return NullFactory::getInstance().createObjects();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullDetails");
     }
 }; /* END class NullDetails */
@@ -118,19 +118,19 @@ public:
         message(errorMessage)
         {}
 
-    virtual CoordinatesPtr getCoordinates() {
+    virtual CoordinatesPtr getCoordinates() override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual ObjectsPtr getPlayers() {
+    virtual ObjectsPtr getPlayers() override {
         return NullFactory::getInstance().createObjects();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorDetails */

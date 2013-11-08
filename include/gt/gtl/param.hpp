@@ -88,7 +88,7 @@ public:
      *
      * @return Param
      */
-    virtual operator Param&();
+    virtual operator Param&() override;
 
 protected:
     /**
@@ -115,35 +115,35 @@ class NullParam : public Param {
 public:
     virtual ObjectPtr getObject(
         Context&
-    ) {
+    ) override {
         return NullFactory::getInstance().createObject();
     }
 
     virtual ObjectPtr getObject(
         Context&,
         VisitedIdentifiers&
-    ) {
+    ) override {
         return NullFactory::getInstance().createObject();
     }
 
     virtual NumberPtr getNumber(
         Context&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual NumberPtr getNumber(
         Context&,
         VisitedIdentifiers&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullParam");
     }
 }; /* END class NullParam */
@@ -170,35 +170,35 @@ public:
 
     virtual ObjectPtr getObject(
         Context&
-    ) {
+    ) override {
         return NullFactory::getInstance().createObject();
     }
 
     virtual ObjectPtr getObject(
         Context&,
         VisitedIdentifiers&
-    ) {
+    ) override {
         return NullFactory::getInstance().createObject();
     }
 
     virtual NumberPtr getNumber(
         Context&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
     virtual NumberPtr getNumber(
         Context&,
         VisitedIdentifiers&
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorParam */

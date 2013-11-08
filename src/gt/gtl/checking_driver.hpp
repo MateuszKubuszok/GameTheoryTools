@@ -68,7 +68,7 @@ public:
      *
      * @param errorStream error stream
      */
-    CheckingDriver(
+    explicit CheckingDriver(
         std::ostream* errorStream
     );
 
@@ -82,70 +82,70 @@ public:
      *
      * @return CoordinateDriver
      */
-    virtual CoordinateDriver& forCoordinate();
+    virtual CoordinateDriver& forCoordinate() override;
 
     /**
      * @brief Driver for Coordinates.
      *
      * @return CollectionDriver for Coordinates
      */
-    virtual CollectionsDriver<Coordinate>& forCoordinates();
+    virtual CollectionsDriver<Coordinate>& forCoordinates() override;
 
     /**
      * @brief Driver for Condition.
      *
      * @return ConditionDriver
      */
-    virtual ConditionDriver& forCondition();
+    virtual ConditionDriver& forCondition() override;
 
     /**
      * @brief Driver for Conditions.
      *
      * @return CollectionDriver for Conditions
      */
-    virtual CollectionsDriver<Condition>& forConditions();
+    virtual CollectionsDriver<Condition>& forConditions() override;
 
     /**
      * @brief Driver for Game.
      *
      * @return GameDriver
      */
-    virtual GameDriver& forGame();
+    virtual GameDriver& forGame() override;
 
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
-    virtual CollectionsDriver<Identifier>& forIdentifiers();
+    virtual CollectionsDriver<Identifier>& forIdentifiers() override;
 
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
-    virtual CollectionsDriver<Object>& forObjects();
+    virtual CollectionsDriver<Object>& forObjects() override;
 
     /**
      * @brief Driver for Params.
      *
      * @return CollectionDriver for Params
      */
-    virtual CollectionsDriver<Param>& forParams();
+    virtual CollectionsDriver<Param>& forParams() override;
 
     /**
      * @brief Driver for value.
      *
      * @return ValueDriver
      */
-    virtual ValueDriver& forValue();
+    virtual ValueDriver& forValue() override;
 
     /**
      * @brief Driver for Statement.
      *
      * @return StatementDriver
      */
-    virtual StatementDriver& forStatement();
+    virtual StatementDriver& forStatement() override;
 
     /**
      * @brief Displays results.
@@ -154,7 +154,7 @@ public:
      */
     virtual void showResult(
         ResultPtr result
-    );
+    ) override;
 
     /**
      * @brief Displays error.
@@ -165,7 +165,7 @@ public:
     virtual void showError(
         InputLocation& location,
         const Message& message
-    );
+    ) override;
 
     /**
      * @brief Displays error.
@@ -174,14 +174,14 @@ public:
      */
     virtual void showError(
         ValidableSymbol& symbol
-    );
+    ) override;
 
     /**
      * @brief Driver's Message.
      *
      * @return message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class CheckingDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

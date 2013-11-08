@@ -60,7 +60,7 @@ public:
      *
      * @return Definition's Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class Definition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,19 +79,19 @@ public:
         )
         {}
 
-    virtual IdentifierPtr getName() {
+    virtual IdentifierPtr getName() override {
         return Model::NullFactory::getInstance().createIdentifier();
     }
 
-    virtual ParamPtr getValue() {
+    virtual ParamPtr getValue() override {
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullDefinition");
     }
 }; /* END class NullDefinition */
@@ -120,19 +120,19 @@ public:
         message(errorMessage)
         {}
 
-    virtual IdentifierPtr getName() {
+    virtual IdentifierPtr getName() override {
         return Model::NullFactory::getInstance().createIdentifier();
     }
 
-    virtual ParamPtr getValue() {
+    virtual ParamPtr getValue() override {
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isValid() const {
+    virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return message;
     }
 }; /* END class ErrorDefinition */

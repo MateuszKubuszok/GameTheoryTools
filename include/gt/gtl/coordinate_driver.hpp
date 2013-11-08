@@ -94,7 +94,7 @@ public:
         InputLocation& inputLocation,
         const IdentifierPtr*,
         const IdentifierPtr*
-    ) {
+    ) override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -107,7 +107,7 @@ public:
         InputLocation& inputLocation,
         const CoordinatePtr*,
         const CoordinatesPtr*
-    ) {
+    ) override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -120,7 +120,7 @@ public:
         InputLocation& inputLocation,
         const CoordinatePtr*,
         const ParamsPtr*
-    ) {
+    ) override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -133,7 +133,7 @@ public:
         InputLocation& inputLocation,
         const CoordinatePtr*,
         const CoordinatePtr*
-    ) {
+    ) override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -142,11 +142,11 @@ public:
         );
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullCoordinateDriver");
     }
 }; /* END class NullCoordinateDriver */
