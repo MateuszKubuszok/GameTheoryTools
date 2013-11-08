@@ -24,6 +24,7 @@ GamePtr* ExecutionGameDriver::createStrategic(
     GamePtr* errorCheck = checkingGameDriver.createStrategic(inputLocation, detailsPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     Details&              details        = **detailsPtr;
     Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildStrategicGame();
@@ -39,6 +40,7 @@ GamePtr* ExecutionGameDriver::createExtensive(
     GamePtr* errorCheck = checkingGameDriver.createStrategic(inputLocation, detailsPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     Details&              details        = **detailsPtr;
     Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
@@ -55,6 +57,7 @@ DetailsPtr* ExecutionGameDriver::createDetails(
     DetailsPtr* errorCheck = checkingGameDriver.createDetails(inputLocation, playersPtr, dataPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     ObjectsPtr&     objectPlayers = *playersPtr;
     CoordinatesPtr& coordinates   = *dataPtr;
@@ -75,6 +78,7 @@ PlayerPtr* ExecutionGameDriver::createPlayer(
     PlayerPtr* errorCheck = checkingGameDriver.createPlayer(inputLocation, playerPtr, strategiesPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     IdentifierPtr&  player     = *playerPtr;
     IdentifiersPtr& strategies = *strategiesPtr;

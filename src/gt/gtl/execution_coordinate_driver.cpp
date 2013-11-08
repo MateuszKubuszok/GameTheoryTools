@@ -23,6 +23,7 @@ CoordinatePtr* ExecutionCoordinateDriver::create(
     CoordinatePtr* errorCheck = checkingCoordinateDriver.create(inputLocation, playerPtr, strategyPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     return new CoordinatePtr(
         setupLocation<Coordinate>(
@@ -40,6 +41,7 @@ CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
     CoordinatePtr* errorCheck = checkingCoordinateDriver.fillWithData(inputLocation, coordinatePtr, dataPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     (*coordinatePtr)->addSubCoordinates(*dataPtr);
 
@@ -59,6 +61,7 @@ CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
     CoordinatePtr* errorCheck = checkingCoordinateDriver.fillWithData(inputLocation, coordinatePtr, dataPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     (*coordinatePtr)->addParams(*dataPtr);
 
@@ -78,6 +81,7 @@ CoordinatePtr* ExecutionCoordinateDriver::merge(
     CoordinatePtr* errorCheck = checkingCoordinateDriver.merge(inputLocation, coordinate1Ptr, coordinate2Ptr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     Coordinate& coordinate1 = **coordinate1Ptr;
     Coordinate& coordinate2 = **coordinate2Ptr;

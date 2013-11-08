@@ -23,6 +23,7 @@ ConditionPtr* ExecutionConditionDriver::playerChoosed(
     ConditionPtr* errorCheck = checkingConditionDriver.playerChoosed(inputLocation, playerPtr, strategyPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     ObjectPtr& playerObject   = *playerPtr;
     ObjectPtr& strategyObject = *strategyPtr;

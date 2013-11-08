@@ -54,6 +54,7 @@ DefinitionPtr* ExecutionStatementDriver::createDefinition(
         checkingStatementDriver.createDefinition(inputLocation, identifierPtr, objectPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     IdentifierPtr& identifier = *identifierPtr;
     ObjectPtr&     object     = *objectPtr;
@@ -76,6 +77,7 @@ QueryPtr* ExecutionStatementDriver::createQuery(
         checkingStatementDriver.createQuery(inputLocation, identifiersPtr, objectsPtr, conditionsPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
+    delete errorCheck;
 
     IdentifiersPtr& identifiers = *identifiersPtr;
     ObjectsPtr&     objects     = *objectsPtr;
