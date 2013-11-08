@@ -43,13 +43,13 @@ public:
 class NullCondition : public Condition {
     virtual void configureRoutine(
         RoutinePtr
-    ) {}
+    ) override {}
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullCondition");
     }
 }; /* END class NullCondition */

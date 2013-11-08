@@ -46,15 +46,15 @@ class NullRoutine : public Routine {
     virtual ResultPtr findResultFor(
         GamePtr,
         ConditionsPtr
-    ) {
+    ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() override {
         return Message("NullRoutine");
     }
 }; /* END class NullRoutine */

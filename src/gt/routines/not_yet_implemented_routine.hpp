@@ -25,14 +25,14 @@ public:
     virtual ResultPtr findResultFor(
         GamePtr       game,
         ConditionsPtr conditions
-    );
+    ) override;
 
     /**
      * @brief Returns Routine's Message.
      *
      * @return Routine's Message
      */
-    virtual Message toString();
+    virtual Message toString() override;
 }; /* END class NotYetImplementedRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

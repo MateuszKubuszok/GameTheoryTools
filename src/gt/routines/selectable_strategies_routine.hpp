@@ -35,7 +35,7 @@ public:
      *
      * @param players Players definitions
      */
-    SelectableStrategiesRoutine(
+    explicit SelectableStrategiesRoutine(
         PlayersPtr players
     );
 
