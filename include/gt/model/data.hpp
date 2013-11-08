@@ -80,7 +80,7 @@ public:
      * @return                   DataPiece object allowing access to concrete value
      * @throw InvalidCoordinates thrown when positions coordinates are invalid
      */
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         Positions& positions
     ) = 0;
 
@@ -91,7 +91,7 @@ public:
      * @return                   DataPiece object allowing access to concrete value
      * @throw InvalidCoordinates thrown when positions coordinates are invalid
      */
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         PositionsPtr positions
     ) = 0;
 
@@ -142,13 +142,13 @@ public:
         return *this;
     }
 
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         Positions&
     ) override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         PositionsPtr
     ) override {
         return NullFactory::getInstance().createDataPiece();

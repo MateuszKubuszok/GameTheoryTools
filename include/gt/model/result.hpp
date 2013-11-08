@@ -56,7 +56,7 @@ public:
      * @param result2 second Result to compare
      * @return        true if Results are equal
      */
-    friend bool operator== (
+    friend bool operator==(
         ResultPtr& result1,
         ResultPtr& result2
     );
@@ -68,7 +68,7 @@ public:
      * @param result2 second Result to compare
      * @return        true if Results are not equal
      */
-    friend bool operator!= (
+    friend bool operator!=(
         ResultPtr& result1,
         ResultPtr& result2
     );
@@ -80,7 +80,7 @@ public:
      * @param result Result to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<< (
+    friend OutputStream& operator<<(
         OutputStream& stream,
         ResultPtr&    result
     );

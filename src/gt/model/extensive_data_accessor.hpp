@@ -73,7 +73,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         Positions& positions
     ) override;
 
@@ -84,7 +84,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[] (
+    virtual DataPiecePtr operator[](
         PositionsPtr positions
     ) override;
 

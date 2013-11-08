@@ -20,28 +20,6 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& operator[] (
-        Identifier& playerName
-    );
-
-    /**
-     * @brief Returns Player's payoff by its name.
-     *
-     * @param playerName        name of Player for which payoff is required
-     * @return                  value of a payoff
-     * @throw InvalidCoordinate thrown when player name is not known
-     */
-    NumberPtr& operator[] (
-        IdentifierPtr playerName
-    );
-
-    /**
-     * @brief Returns Player's payoff by its name.
-     *
-     * @param playerName        name of Player for which payoff is required
-     * @return                  value of a payoff
-     * @throw InvalidCoordinate thrown when player name is not known
-     */
     virtual NumberPtr& getValue(
         Identifier& playerName
     ) = 0;
@@ -54,6 +32,28 @@ public:
      * @throw InvalidCoordinate thrown when player name is not known
      */
     NumberPtr& getValue(
+        IdentifierPtr playerName
+    );
+
+    /**
+     * @brief Returns Player's payoff by its name.
+     *
+     * @param playerName        name of Player for which payoff is required
+     * @return                  value of a payoff
+     * @throw InvalidCoordinate thrown when player name is not known
+     */
+    NumberPtr& operator[](
+        Identifier& playerName
+    );
+
+    /**
+     * @brief Returns Player's payoff by its name.
+     *
+     * @param playerName        name of Player for which payoff is required
+     * @return                  value of a payoff
+     * @throw InvalidCoordinate thrown when player name is not known
+     */
+    NumberPtr& operator[](
         IdentifierPtr playerName
     );
 

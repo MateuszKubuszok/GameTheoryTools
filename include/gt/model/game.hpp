@@ -51,7 +51,7 @@ public:
      * @param game2 second Game to compare
      * @return      true if Games are equal
      */
-    friend bool operator== (
+    friend bool operator==(
         GamePtr& game1,
         GamePtr& game2
     );
@@ -63,7 +63,7 @@ public:
      * @param game2 second Game to compare
      * @return      true if Games are not equal
      */
-    friend bool operator!= (
+    friend bool operator!=(
         GamePtr& game1,
         GamePtr& game2
     );
@@ -75,7 +75,7 @@ public:
      * @param game   Game to concatenate
      * @return       stream for chaining
      */
-    friend OutputStream& operator<< (
+    friend OutputStream& operator<<(
         OutputStream& stream,
         GamePtr&      game
     );
