@@ -61,7 +61,7 @@ public:
     /**
      * @brief Default destructor - frees resources if necessary.
      */
-    ~ProgramController();
+    virtual ~ProgramController();
 
     /**
      * @brief Sets used driver to Checking Driver.

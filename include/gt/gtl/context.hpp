@@ -60,7 +60,7 @@ public:
     /**
      * @brief Default destructor.
      */
-    ~Context();
+    virtual ~Context();
 
     /**
      * @brief Adds/overrides identifier with value.
