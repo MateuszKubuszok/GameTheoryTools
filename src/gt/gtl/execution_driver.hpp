@@ -85,6 +85,11 @@ public:
     );
 
     /**
+     * @brief Destructor.
+     */
+    virtual ~ExecutionDriver();
+
+    /**
      * @brief Driver for Coordinate.
      *
      * @return CoordinateDriver

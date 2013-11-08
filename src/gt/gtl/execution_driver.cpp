@@ -22,6 +22,8 @@ ExecutionDriver::ExecutionDriver(
     outputStream(newOutputStream)
     {}
 
+ExecutionDriver::~ExecutionDriver() {}
+
 CoordinateDriver& ExecutionDriver::forCoordinate() {
     return coordinate;
 }

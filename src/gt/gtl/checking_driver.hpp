@@ -73,6 +73,11 @@ public:
     );
 
     /**
+     * @brief Destructor.
+     */
+    virtual ~CheckingDriver();
+
+    /**
      * @brief Driver for Coordinate.
      *
      * @return CoordinateDriver

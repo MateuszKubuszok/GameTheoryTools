@@ -19,6 +19,8 @@ CheckingDriver::CheckingDriver(
     errorStream(newErrorStream)
     {}
 
+CheckingDriver::~CheckingDriver() {}
+
 CoordinateDriver& CheckingDriver::forCoordinate() {
     return coordinate;
 }
