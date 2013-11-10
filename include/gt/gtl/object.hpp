@@ -78,10 +78,10 @@ public:
     /**
      * @brief Finds Objects' property and returns it as a result.
      *
-     * @param  context               context with values
-     * @param  propertyName          property's name
-     * @return                       Result for sought property
-     * @throws std::invalid_argument thrown when property is not available for an Object
+     * @param  context        context with values
+     * @param  propertyName   property's name
+     * @return                Result for sought property
+     * @throw InvalidProperty thrown when property is not available for an Object
      */
     virtual ResultPtr findProperty(
         const Context&    context,
@@ -91,10 +91,10 @@ public:
     /**
      * @brief Finds Objects' property for giver conditions and returns it as a result.
      *
-     * @param context                context with values
-     * @param conditions             conditions to consider
-     * @return                       Result for sought property
-     * @throws std::invalid_argument thrown when property is not available for an Object
+     * @param context         context with values
+     * @param conditions      conditions to consider
+     * @return                Result for sought property
+     * @throw InvalidProperty thrown when property is not available for an Object
      */
     virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
