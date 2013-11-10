@@ -38,7 +38,7 @@ class ResultFactory {
     /**
      * @brief Contains current Builder Mode setting.
      */
-    ResultBuilderMode builderMode;
+    ResultBuilderMode     builderMode;
 
      /**
      * @brief Contains current Indentation Mode setting.
