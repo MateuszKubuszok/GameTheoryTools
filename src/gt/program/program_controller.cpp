@@ -52,7 +52,7 @@ ProgramController& ProgramController::setDefaultInputStream() {
 }
 
 ProgramController& ProgramController::setInputStream(
-    std::string filename
+    const std::string filename
 ) {
     std::ifstream* newInputStream = new std::ifstream();
     newInputStream->open(filename);
@@ -77,7 +77,7 @@ ProgramController& ProgramController::setDefaultOutputStream() {
 }
 
 ProgramController& ProgramController::setOutputStream(
-    std::string filename
+    const std::string filename
 ) {
     std::ofstream* newOutputStream = new std::ofstream();
     newOutputStream->open(filename);
@@ -102,7 +102,7 @@ ProgramController& ProgramController::setDefaultErrorStream() {
 }
 
 ProgramController& ProgramController::setErrorStream(
-    std::string filename
+    const std::string filename
 ) {
     std::ofstream* newErrorStream = new std::ofstream();
     newErrorStream->open(filename);
@@ -122,7 +122,7 @@ ProgramController& ProgramController::setErrorStream(
     return *this;
 }
 
-int ProgramController::run() {
+int ProgramController::run() const {
     GTL::ScannerPtr scanner(new GTL::Scanner(inputStream));
     GTL::DriverPtr  driver(
         shouldExecute ?

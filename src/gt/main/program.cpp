@@ -6,33 +6,33 @@ namespace Program = GT::Program;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main(
-    int   argumentsNumber,
-    char* arguments[]
+    const int   argumentsNumber,
+    const char* arguments[]
 ) {
     // Options declaration section
 
-    char helpOption[]         = "help";
-    char helpDescription[]    = "produce this message";
+    const char helpOption[]         = "help";
+    const char helpDescription[]    = "produce this message";
 
-    int  debugValue           = 0;
-    int  debugDefault         = 0;
-    char debugOption[]        = "debug-level";
-    char debugDescription[]   = "0 if no parser debugging, non 0 for debug allowed";
+    int  debugValue                 = 0;
+    const int  debugDefault         = 0;
+    const char debugOption[]        = "debug-level";
+    const char debugDescription[]   = "0 if no parser debugging, non 0 for debug allowed";
 
-    std::string inputValue    = "";
-    std::string inputDefault  = "";
-    char inputOption[]        = "input-file,I";
-    char inputDescription[]   = "input file to be parsed - if no one given reads from standard input";
+    std::string inputValue          = "";
+    const std::string inputDefault  = "";
+    const char inputOption[]        = "input-file,I";
+    const char inputDescription[]   = "input file to be parsed - if no one given reads from standard input";
 
-    std::string outputValue   = "";
-    std::string outputDefault = "";
-    char outputOption[]       = "output-file,O";
-    char outputDescription[]  = "output target - if no one given reads from standard output";
+    std::string outputValue         = "";
+    const std::string outputDefault = "";
+    const char outputOption[]       = "output-file,O";
+    const char outputDescription[]  = "output target - if no one given reads from standard output";
 
-    std::string errorValue    = "";
-    std::string errorDefault  = "";
-    char errorOption[]        = "error-file,E";
-    char errorDescription[]   = "error target - if no one given reads from standard error";
+    std::string errorValue          = "";
+    const std::string errorDefault  = "";
+    const char errorOption[]        = "error-file,E";
+    const char errorDescription[]   = "error target - if no one given reads from standard error";
 
     // Options setup
 

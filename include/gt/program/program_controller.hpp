@@ -101,7 +101,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setInputStream(
-        std::string filename
+        const std::string filename
     );
 
     /**
@@ -130,7 +130,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setOutputStream(
-        std::string filename
+        const std::string filename
     );
 
     /**
@@ -159,7 +159,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setErrorStream(
-        std::string filename
+        const std::string filename
     );
 
     /**
@@ -179,7 +179,7 @@ public:
      *
      * @return 0 of no error occurred, number of errors otherwise
      */
-    int run();
+    int run() const;
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
