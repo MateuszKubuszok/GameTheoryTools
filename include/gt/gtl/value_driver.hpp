@@ -21,9 +21,9 @@ public:
      * @return              Param
      */
     virtual ParamPtr* get(
-        InputLocation& inputLocation,
-        IdentifierPtr* identifier
-    ) = 0;
+        const InputLocation& inputLocation,
+        const IdentifierPtr* identifier
+    ) const = 0;
 
     /**
      * @brief Creates Param by its value.
@@ -33,9 +33,9 @@ public:
      * @return              Param
      */
     virtual ParamPtr* get(
-        InputLocation& inputLocation,
-        NumberPtr*     number
-    ) = 0;
+        const InputLocation& inputLocation,
+        const NumberPtr*     number
+    ) const = 0;
 
     /**
      * @brief Converts passed Game to Object.
@@ -44,8 +44,8 @@ public:
      * @return     Object
      */
     virtual ObjectPtr* toObject(
-        GamePtr* game
-    ) = 0;
+        const GamePtr* game
+    ) const = 0;
 
     /**
      * @brief Converts passed Player to Object.
@@ -54,8 +54,8 @@ public:
      * @return       Object
      */
     virtual ObjectPtr* toObject(
-        PlayerPtr* player
-    ) = 0;
+        const PlayerPtr* player
+    ) const = 0;
 
     /**
      * @brief Converts passed Param to Object.
@@ -64,15 +64,15 @@ public:
      * @return      Object
      */
     virtual ObjectPtr* toObject(
-        ParamPtr* param
-    ) = 0;
+        const ParamPtr* param
+    ) const = 0;
 
     /**
      * @brief ValueDriver message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class ValueDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,9 +89,9 @@ public:
         {}
 
     virtual ParamPtr* get(
-        InputLocation& inputLocation,
-        IdentifierPtr*
-    ) override {
+        const InputLocation& inputLocation,
+        const IdentifierPtr*
+    ) const override {
         return new ParamPtr(
             setupLocation<Param>(
                 NullFactory::getInstance().createParam(),
@@ -101,9 +101,9 @@ public:
     }
 
     virtual ParamPtr* get(
-        GT::GTL::InputLocation& inputLocation,
-        NumberPtr*
-    ) override {
+        const GT::GTL::InputLocation& inputLocation,
+        const NumberPtr*
+    ) const override {
         return new ParamPtr(
             setupLocation<Param>(
                 NullFactory::getInstance().createParam(),
@@ -113,28 +113,28 @@ public:
     }
 
     virtual ObjectPtr* toObject(
-        GamePtr*
-    ) override {
+        const GamePtr*
+    ) const override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
     virtual ObjectPtr* toObject(
-        PlayerPtr*
-    ) override {
+        const PlayerPtr*
+    ) const override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
     virtual ObjectPtr* toObject(
-        ParamPtr*
-    ) override {
+        const ParamPtr*
+    ) const override {
         return new ObjectPtr(NullFactory::getInstance().createObject());
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullValueDriver");
     }
 };

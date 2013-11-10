@@ -1,7 +1,7 @@
 // class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
 // public:
 
-inline unsigned int TestConditionDriverImpl::getCreatedConditions() {
+inline unsigned int TestConditionDriverImpl::getCreatedConditions() const {
     return createdConditions;
 }
 
@@ -13,15 +13,15 @@ inline unsigned int TestConditionDriverImpl::getCreatedConditions() {
 // class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
 // public:
 
-inline unsigned int TestCoordinateDriverImpl::getCreatedCoordinates() {
+inline unsigned int TestCoordinateDriverImpl::getCreatedCoordinates() const {
     return createdCoordinates;
 }
 
-inline unsigned int TestCoordinateDriverImpl::getFilledCoordinates() {
+inline unsigned int TestCoordinateDriverImpl::getFilledCoordinates() const {
     return filledCoordinates;
 }
 
-inline  unsigned int TestCoordinateDriverImpl::getMergeCoordinates() {
+inline  unsigned int TestCoordinateDriverImpl::getMergeCoordinates() const {
     return mergedCoordinates;
 }
 
@@ -32,19 +32,19 @@ inline  unsigned int TestCoordinateDriverImpl::getMergeCoordinates() {
 // class TestGameDriverImpl : public GT::GTL::NullGameDriver {
 // public:
 
-inline unsigned int TestGameDriverImpl::getCreatedStrategicGames() {
+inline unsigned int TestGameDriverImpl::getCreatedStrategicGames() const {
     return createdStrategicGames;
 }
 
-inline unsigned int TestGameDriverImpl::getCreatedExtensiveGames() {
+inline unsigned int TestGameDriverImpl::getCreatedExtensiveGames() const {
     return createdExtensiveGames;
 }
 
-inline unsigned int TestGameDriverImpl::getCreatedDetails() {
+inline unsigned int TestGameDriverImpl::getCreatedDetails() const {
     return createdDetails;
 }
 
-inline unsigned int TestGameDriverImpl::getCreatedPlayers() {
+inline unsigned int TestGameDriverImpl::getCreatedPlayers() const {
     return createdPlayers;
 }
 
@@ -55,11 +55,11 @@ inline unsigned int TestGameDriverImpl::getCreatedPlayers() {
 // class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
 // public:
 
-inline unsigned int TestStatementDriverImpl::getExecutedDefinitions() {
+inline unsigned int TestStatementDriverImpl::getExecutedDefinitions() const {
     return executedDefinitions;
 }
 
-inline unsigned int TestStatementDriverImpl::getExecutedQueries() {
+inline unsigned int TestStatementDriverImpl::getExecutedQueries() const {
     return executedQueries;
 }
 
@@ -70,7 +70,7 @@ inline unsigned int TestStatementDriverImpl::getExecutedQueries() {
 // class TestValueDriverImpl : public GT::GTL::NullValueDriver {
 // public:
 
-inline unsigned int TestValueDriverImpl::getUsedParameters() {
+inline unsigned int TestValueDriverImpl::getUsedParameters() const {
     return usedParameters;
 }
 
@@ -81,11 +81,11 @@ inline unsigned int TestValueDriverImpl::getUsedParameters() {
 // class TestDriverImpl : public GT::GTL::Driver {
 // public:
 
-inline unsigned int TestDriverImpl::getShownResults() {
+inline unsigned int TestDriverImpl::getShownResults() const {
     return shownResults;
 }
 
-inline unsigned int TestDriverImpl::getShownErrors() {
+inline unsigned int TestDriverImpl::getShownErrors() const {
     return shownErrors;
 }
 

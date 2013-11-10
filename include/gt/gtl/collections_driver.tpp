@@ -3,7 +3,7 @@
 // public:
 
 template<typename Content>
-typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::empty() {
+typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::empty() const {
     return new CollectionsDriver<Content>::CollectionPtr(
         new CollectionsDriver<Content>::Collection()
     );
@@ -11,8 +11,8 @@ typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::
 
 template<typename Content>
 typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::create(
-    typename CollectionsDriver<Content>::ContentPtr* element
-) {
+    const typename CollectionsDriver<Content>::ContentPtr* element
+) const {
     CollectionsDriver<Content>::CollectionPtr* collection = empty();
     (*collection)->push_back(*element);
     return collection;
@@ -20,9 +20,9 @@ typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::
 
 template<typename Content>
 typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::insert(
-    typename CollectionsDriver<Content>::ContentPtr*    element,
-    typename CollectionsDriver<Content>::CollectionPtr* collection
-) {
+    const typename CollectionsDriver<Content>::ContentPtr*    element,
+    const typename CollectionsDriver<Content>::CollectionPtr* collection
+) const {
     (*collection)->push_back(*element);
     return new CollectionsDriver<Content>::CollectionPtr(
         *collection
@@ -30,7 +30,7 @@ typename CollectionsDriver<Content>::CollectionPtr* CollectionsDriver<Content>::
 }
 
 template<typename Content>
-Message CollectionsDriver<Content>::toString() {
+Message CollectionsDriver<Content>::toString() const {
     return Message("CollectionsDriver");
 }
 

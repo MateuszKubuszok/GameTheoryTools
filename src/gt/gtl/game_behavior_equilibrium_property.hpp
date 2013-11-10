@@ -17,7 +17,7 @@ class GameBehaviorEquilibriumProperty : public ObjectProperty {
     /**
      * @brief Described Game.
      */
-    Game* game;
+    const Game* game;
 
 public:
     /**
@@ -26,7 +26,7 @@ public:
      * @param describedGame described Game
      */
     explicit GameBehaviorEquilibriumProperty(
-        Game* describedGame
+        const Game* describedGame
     );
 
     /**
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    ) override;
+    ) const override;
 }; /* END class GameBehaviorEquilibriumProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -12,13 +12,13 @@ SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
 // public:
 
 CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
-    Param::VisitedIdentifiers& visitedIdentifiers,
-    Identifier&                currentIdentifier
-) {
+    const Param::VisitedIdentifiers& visitedIdentifiers,
+    const Identifier&                currentIdentifier
+) const {
     std::stringstream result;
 
     result << "Cyclic Identifiers found in list:\n";
-    for (Identifier& identifier : visitedIdentifiers)
+    for (const Identifier& identifier : visitedIdentifiers)
         result << "\t\'" << identifier << "\'\n";
     result << "identifier \'"
            << currentIdentifier
@@ -28,8 +28,8 @@ CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
 }
 
 InvalidProperty ExceptionFactory::invalidObjectProperty(
-    Identifier& propertyName
-) {
+    const Identifier& propertyName
+) const {
     std::stringstream result;
 
     result << "Property \'" << propertyName << "\' not defined";
@@ -38,8 +38,8 @@ InvalidProperty ExceptionFactory::invalidObjectProperty(
 }
 
 InvalidType ExceptionFactory::invalidObjectType(
-    Identifier& expectedType
-) {
+    const Identifier& expectedType
+) const {
     std::stringstream result;
 
     result << "Object is not of type " << expectedType;
@@ -48,8 +48,8 @@ InvalidType ExceptionFactory::invalidObjectType(
 }
 
 NotDefinedParam ExceptionFactory::notDefinedParam(
-    Identifier& paramName
-) {
+    const Identifier& paramName
+) const {
     std::stringstream result;
 
     result << "Param \'" << paramName << "\' not defined";
@@ -57,11 +57,11 @@ NotDefinedParam ExceptionFactory::notDefinedParam(
     return NotDefinedParam(result.str());
 }
 
-InvalidContentRequest ExceptionFactory::requiredUnavailableNumberFromParam() {
+InvalidContentRequest ExceptionFactory::requiredUnavailableNumberFromParam() const {
     return InvalidContentRequest("Cannot obtain Number from this Param");
 }
 
-InvalidContentRequest ExceptionFactory::requiredUnavailableObjectFromParam() {
+InvalidContentRequest ExceptionFactory::requiredUnavailableObjectFromParam() const {
     return InvalidContentRequest("Cannot obtain Object from this Param");
 }
 

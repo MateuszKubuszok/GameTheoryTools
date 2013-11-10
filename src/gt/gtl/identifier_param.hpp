@@ -19,7 +19,7 @@ class IdentifierParam : public Param {
     /**
      * @brief Identifier that this Param points to.
      */
-    Identifier identifier;
+    const Identifier identifier;
 
 public:
     /**
@@ -28,7 +28,7 @@ public:
      * @param id identifier
      */
     explicit IdentifierParam(
-        Identifier& id
+        const Identifier& id
     );
 
     /**
@@ -40,10 +40,10 @@ public:
      * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
      * @throw NotDefinedParam    thrown when Param cannot find value inside Context
      */
-    virtual ObjectPtr getObject(
-        Context&            context,
+    virtual const ObjectPtr getObject(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Number for context.
@@ -54,17 +54,17 @@ public:
      * @throw CyclicIdentifiers  thrown when Identfiers create the cycle
      * @throw NotDefinedParam    thrown when Param cannot find value inside Context
      */
-    virtual NumberPtr getNumber(
-        Context&            context,
+    virtual const NumberPtr getNumber(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief IdentifierParam's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class IdentifierParam */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

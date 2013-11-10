@@ -17,7 +17,7 @@ class PlayerStrategiesProperty : public ObjectProperty {
     /**
      * @brief Described Player.
      */
-    Player* player;
+    const Player* player;
 
 public:
     /**
@@ -26,7 +26,7 @@ public:
      * @param describedPlayer described Player
      */
     explicit PlayerStrategiesProperty(
-        Player* describedPlayer
+        const Player* describedPlayer
     );
 
     /**
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    ) override;
+    ) const override;
 }; /* END class PlayerStrategiesProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

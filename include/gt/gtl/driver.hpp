@@ -23,70 +23,70 @@ public:
      *
      * @return CoordinateDriver
      */
-    virtual CoordinateDriver& forCoordinate() = 0;
+    virtual CoordinateDriver& forCoordinate() const = 0;
 
     /**
      * @brief Driver for Coordinates.
      *
      * @return CollectionDriver for Coordinates
      */
-    virtual CollectionsDriver<Coordinate>& forCoordinates() = 0;
+    virtual CollectionsDriver<Coordinate>& forCoordinates() const = 0;
 
     /**
      * @brief Driver for Condition.
      *
      * @return ConditionDriver
      */
-    virtual ConditionDriver& forCondition() = 0;
+    virtual ConditionDriver& forCondition() const = 0;
 
     /**
      * @brief Driver for Conditions.
      *
      * @return CollectionDriver for Conditions
      */
-    virtual CollectionsDriver<Condition>& forConditions() = 0;
+    virtual CollectionsDriver<Condition>& forConditions() const = 0;
 
     /**
      * @brief Driver for Game.
      *
      * @return GameDriver
      */
-    virtual GameDriver& forGame() = 0;
+    virtual GameDriver& forGame() const = 0;
 
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
-    virtual CollectionsDriver<Identifier>& forIdentifiers() = 0;
+    virtual CollectionsDriver<Identifier>& forIdentifiers() const = 0;
 
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
-    virtual CollectionsDriver<Object>& forObjects() = 0;
+    virtual CollectionsDriver<Object>& forObjects() const = 0;
 
     /**
      * @brief Driver for Params.
      *
      * @return CollectionDriver for Params
      */
-    virtual CollectionsDriver<Param>& forParams() = 0;
+    virtual CollectionsDriver<Param>& forParams() const = 0;
 
     /**
      * @brief Driver for value.
      *
      * @return ValueDriver
      */
-    virtual ValueDriver& forValue() = 0;
+    virtual ValueDriver& forValue() const = 0;
 
     /**
      * @brief Driver for Statement.
      *
      * @return StatementDriver
      */
-    virtual StatementDriver& forStatement() = 0;
+    virtual StatementDriver& forStatement() const = 0;
 
     /**
      * @brief Displays results.
@@ -94,8 +94,8 @@ public:
      * @param result Result to show
      */
     virtual void showResult(
-        ResultPtr result
-    ) = 0;
+        const ResultPtr result
+    ) const = 0;
 
     /**
      * @brief Displays error.
@@ -104,9 +104,9 @@ public:
      * @param message  Message to display
      */
     virtual void showError(
-        InputLocation& location,
-        const Message& message
-    ) = 0;
+        const InputLocation& location,
+        const Message&       message
+    ) const = 0;
 
     /**
      * @brief Displays error.
@@ -114,15 +114,15 @@ public:
      * @param symbol invalid symbol to display
      */
     virtual void showError(
-        ValidableSymbol& symbol
-    ) = 0;
+        const ValidableSymbol& symbol
+    ) const = 0;
 
     /**
      * @brief Driver's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class Driver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -158,64 +158,64 @@ public:
         statement(NullFactory::getInstance().createStatementDriver())
         {}
 
-    virtual CoordinateDriver& forCoordinate() override {
+    virtual CoordinateDriver& forCoordinate() const override {
         return *coordinate;
     }
 
-    virtual CollectionsDriver<Coordinate>& forCoordinates() override {
+    virtual CollectionsDriver<Coordinate>& forCoordinates() const override {
         return *coordinates;
     }
 
-    virtual ConditionDriver& forCondition() override {
+    virtual ConditionDriver& forCondition() const override {
         return *condition;
     }
 
-    virtual CollectionsDriver<Condition>& forConditions() override {
+    virtual CollectionsDriver<Condition>& forConditions() const override {
         return *conditions;
     }
 
-    virtual GameDriver& forGame() override {
+    virtual GameDriver& forGame() const override {
         return *game;
     }
 
-    virtual CollectionsDriver<Identifier>& forIdentifiers() override {
+    virtual CollectionsDriver<Identifier>& forIdentifiers() const override {
         return *identifiers;
     }
 
-    virtual CollectionsDriver<Object>& forObjects() override {
+    virtual CollectionsDriver<Object>& forObjects() const override {
         return *objects;
     }
 
-    virtual CollectionsDriver<Param>& forParams() override {
+    virtual CollectionsDriver<Param>& forParams() const override {
         return *params;
     }
 
-    virtual ValueDriver& forValue() override {
+    virtual ValueDriver& forValue() const override {
         return *value;
     }
 
-    virtual StatementDriver& forStatement() override {
+    virtual StatementDriver& forStatement() const override {
         return *statement;
     }
 
     virtual void showResult(
-        ResultPtr
-    ) override {}
+        const ResultPtr
+    ) const override {}
 
     virtual void showError(
-        InputLocation&,
+        const InputLocation&,
         const Message&
-    ) override {}
+    ) const override {}
 
     virtual void showError(
-        ValidableSymbol&
-    ) override {}
+        const ValidableSymbol&
+    ) const override {}
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullDriver");
     }
 }; /* END class NullDriver */

@@ -70,8 +70,8 @@ public:
      * @return           reference to context for chaining
      */
     virtual Context& registerParam(
-        IdentifierPtr identifier,
-        ParamPtr      param
+        const IdentifierPtr identifier,
+        const ParamPtr      param
     );
 
     /**
@@ -81,7 +81,7 @@ public:
      * @return           reference to context for chaining
      */
     virtual Context& registerParam(
-        DefinitionPtr definition
+        const DefinitionPtr definition
     );
 
     /**
@@ -90,8 +90,8 @@ public:
      * @return true if Identifier has been registerd
      */
     virtual bool hasRegistered(
-        Identifier& identifier
-    );
+        const Identifier& identifier
+    ) const;
 
     /**
      * @brief Obtains value from context by identifer.
@@ -99,9 +99,9 @@ public:
      * @param identifier identifier to obtain
      * @return           value to retur
      */
-    virtual NumberPtr getNumber(
-        Identifier& identifier
-    );
+    virtual const NumberPtr getNumber(
+        const Identifier& identifier
+    ) const;
 
     /**
      * @brief Obtains value from context by identifer.
@@ -109,9 +109,9 @@ public:
      * @param identifier identifier to obtain
      * @return           value to retur
      */
-    virtual ObjectPtr getObject(
-        Identifier& identifier
-    );
+    virtual const ObjectPtr getObject(
+        const Identifier& identifier
+    ) const;
 
     /**
      * @brief Obtains param from context by identifer.
@@ -121,16 +121,16 @@ public:
      * @param identifier param to obtain
      * @return           value to retur
      */
-    virtual ParamPtr getParam(
-        Identifier& identifier
-    );
+    virtual const ParamPtr getParam(
+        const Identifier& identifier
+    ) const;
 
     /**
      * @brief Returns Message about Context.
      *
      * @return Context's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class Context */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,41 +143,41 @@ public:
 class NullContext : public Context {
 public:
     virtual Context& registerParam(
-        IdentifierPtr,
-        ParamPtr
+        const IdentifierPtr,
+        const ParamPtr
     ) override {
         return *this;
     }
 
     virtual Context& registerParam(
-        DefinitionPtr
+        const DefinitionPtr
     ) override {
         return *this;
     }
 
-    virtual NumberPtr getNumber(
-        Identifier&
-    ) override {
+    virtual const NumberPtr getNumber(
+        const Identifier&
+    ) const override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual ObjectPtr getObject(
-        Identifier&
-    ) override {
+    virtual const ObjectPtr getObject(
+        const Identifier&
+    ) const override {
         return NullFactory::getInstance().createObject();
     }
 
-    virtual ParamPtr getParam(
-        Identifier&
-    ) override {
+    virtual const ParamPtr getParam(
+        const Identifier&
+    ) const override {
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullContext");
     }
 }; /* END class NullContext */

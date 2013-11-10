@@ -21,12 +21,12 @@ bool ValidableSymbol::isValid() const {
     return true;
 }
 
-InputLocationPtr ValidableSymbol::getInputLocation() {
+const InputLocationPtr ValidableSymbol::getInputLocation() const {
     return inputLocation;
 }
 
 void ValidableSymbol::setInputLocation(
-    InputLocationPtr newInputLocation
+    const InputLocationPtr newInputLocation
 ) {
     inputLocation = newInputLocation;
 }

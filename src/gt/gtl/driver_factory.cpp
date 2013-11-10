@@ -13,14 +13,14 @@ SINGLETON_DEFINITION(DriverFactory, getInstance, driverFactoryMutex)
 
 DriverPtr DriverFactory::createCheckingDriver(
     OutputStream* errorStream
-) {
+) const {
     return DriverPtr(new CheckingDriver(errorStream));
 }
 
 DriverPtr DriverFactory::createExecutionDriver(
     OutputStream* outputStream,
     OutputStream* errorStream
-) {
+) const {
     return DriverPtr(new ExecutionDriver(outputStream, errorStream));
 }
 

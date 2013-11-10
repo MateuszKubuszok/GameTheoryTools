@@ -34,17 +34,6 @@ namespace GTL {
  * @see Parser
  */
 class Coordinate : public virtual ValidableSymbol {
-    /**
-     * @brief Merges two Coordinates into one.
-     *
-     * @param coordinate1 first Coordinate
-     * @param coordinate2 second Coordinate
-     * @return            merged Coordinates
-     */
-    friend Coordinate operator+(
-        Coordinate& coordinate1,
-        Coordinate& coordinate2
-    );
 
     /**
      * @brief Defined Positions.
@@ -135,21 +124,21 @@ public:
      *
      * @return Params
      */
-    virtual ParamsPtr getParams();
+    virtual const ParamsPtr getParams() const;
 
      /**
      * @brief Obtains Positions.
      *
      * @return Positions
      */
-    virtual PositionsPtr getPositions();
+    virtual const PositionsPtr getPositions() const;
 
     /**
      * @brief Obtain SubCoordinates.
      *
      * @return SubCoordinates
      */
-    virtual CoordinatesPtr getSubCoordinates();
+    virtual const CoordinatesPtr getSubCoordinates() const;
 
     /**
      * @brief Fill DataBuilder with its data.
@@ -165,16 +154,28 @@ public:
      *                              not all coordinates are known
      */
     virtual void fillDataBuilder(
-        Context&               context,
+        const Context&         context,
         Model::DataBuilderPtr& dataBuilder
-    );
+    ) const;
 
     /**
      * @brief Returns Coordinate Message
      *
      * @return Message
      */
-    virtual GT::Message toString();
+    virtual GT::Message toString() const override;
+
+    /**
+     * @brief Merges two Coordinates into one.
+     *
+     * @param coordinate1 first Coordinate
+     * @param coordinate2 second Coordinate
+     * @return            merged Coordinates
+     */
+    friend Coordinate operator+(
+        const Coordinate& coordinate1,
+        const Coordinate& coordinate2
+    );
 }; /* END class Coordinate */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,23 +218,23 @@ public:
         return *this;
     }
 
-    virtual ParamsPtr getParams() override {
+    virtual const ParamsPtr getParams() const override {
         return NullFactory::getInstance().createParams();
     }
 
-    virtual PositionsPtr getPositions() override {
+    virtual const PositionsPtr getPositions() const override {
         return NullFactory::getInstance().createPositions();
     }
 
-    virtual CoordinatesPtr getSubCoordinates() override {
+    virtual const CoordinatesPtr getSubCoordinates() const override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullCoordinate");
     }
 }; /* END class NullCoordinate */
@@ -289,15 +290,15 @@ public:
         return *this;
     }
 
-    virtual ParamsPtr getParams() override {
+    virtual const ParamsPtr getParams() const override {
         return NullFactory::getInstance().createParams();
     }
 
-    virtual PositionsPtr getPositions() override {
+    virtual const PositionsPtr getPositions() const override {
         return NullFactory::getInstance().createPositions();
     }
 
-    virtual CoordinatesPtr getSubCoordinates() override {
+    virtual const CoordinatesPtr getSubCoordinates() const override {
         return NullFactory::getInstance().createCoordinates();
     }
 
@@ -305,7 +306,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorCoordinate */

@@ -20,7 +20,7 @@ class Game : public Object {
     /**
      * @brief Model Game implementation.
      */
-    Model::GamePtr game;
+    const Model::GamePtr game;
 
 public:
     /**
@@ -28,8 +28,8 @@ public:
      *
      * @param game Model Game implementation
      */
-    Game(
-        Model::GamePtr game
+    explicit Game(
+        const Model::GamePtr game
     );
 
     /**
@@ -41,7 +41,7 @@ public:
     virtual ResultPtr pureEquilibrium(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) const;
 
     /**
      * @brief Search mixed Nash equilibrium for given conditions.
@@ -52,7 +52,7 @@ public:
     virtual ResultPtr mixedEquilibrium(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) const;
 
     /**
      * @brief Search behavior Nash equilibrium for given conditions.
@@ -63,21 +63,21 @@ public:
     virtual ResultPtr behaviorEquilibrium(
         const Context&    context,
         const Conditions& conditions
-    );
+    ) const;
 
     /**
      * @brief Returns Message about Game.
      *
      * @return Game's state
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
     /**
      * @brief Explicit cast to Game type.
      *
      * @return Game
      */
-    virtual operator Game&() override;
+    virtual operator const Game&() const override;
 }; /* END class Game */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,29 +96,29 @@ public:
     virtual ResultPtr pureEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr mixedEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr behaviorEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullGame");
     }
 }; /* END class NullGame */
@@ -134,11 +134,11 @@ class ErrorGame : public Game {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorGame(
-        Message errorMessage
+        const Message errorMessage
     ) :
         Game(Model::NullFactory::getInstance().createGame()),
         message(errorMessage)
@@ -147,21 +147,21 @@ public:
     virtual ResultPtr pureEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr mixedEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr behaviorEquilibrium(
         const Context&,
         const Conditions&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 
@@ -169,7 +169,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorGame */

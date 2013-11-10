@@ -6,8 +6,8 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    Conditions& conditions1,
-    Conditions& conditions2
+    const Conditions& conditions1,
+    const Conditions& conditions2
 ) {
     if (&conditions1 == &conditions2)
         return true;
@@ -19,15 +19,15 @@ bool operator==(
     return true;
 }
 bool operator!=(
-    Conditions& conditions1,
-    Conditions& conditions2
+    const Conditions& conditions1,
+    const Conditions& conditions2
 ) {
     return !(conditions1 == conditions2);
 }
 
 bool operator==(
-    Coordinates& coordinates1,
-    Coordinates& coordinates2
+    const Coordinates& coordinates1,
+    const Coordinates& coordinates2
 ) {
     if (&coordinates1 == &coordinates2)
         return true;
@@ -39,15 +39,15 @@ bool operator==(
     return true;
 }
 bool operator!=(
-    Coordinates& coordinates1,
-    Coordinates& coordinates2
+    const Coordinates& coordinates1,
+    const Coordinates& coordinates2
 ) {
     return !(coordinates1 == coordinates2);
 }
 
 bool operator==(
-    Objects& objects1,
-    Objects& objects2
+    const Objects& objects1,
+    const Objects& objects2
 ) {
     if (&objects1 == &objects2)
         return true;
@@ -59,15 +59,15 @@ bool operator==(
     return true;
 }
 bool operator!=(
-    Objects& objects1,
-    Objects& objects2
+    const Objects& objects1,
+    const Objects& objects2
 ) {
     return !(objects1 == objects2);
 }
 
 bool operator==(
-    Params& params1,
-    Params& params2
+    const Params& params1,
+    const Params& params2
 ) {
     if (&params1 == &params2)
         return true;
@@ -79,8 +79,8 @@ bool operator==(
     return true;
 }
 bool operator!=(
-    Params& params1,
-    Params& params2
+    const Params& params1,
+    const Params& params2
 ) {
     return !(params1 == params2);
 }

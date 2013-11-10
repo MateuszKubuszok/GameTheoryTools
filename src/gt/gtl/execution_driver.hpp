@@ -19,58 +19,58 @@ class ExecutionDriver : public Driver {
     /**
      * @brief CheckingDriver for error handling.
      */
-    CheckingDriver checkingDriver;
+    mutable CheckingDriver checkingDriver;
 
     /**
      * @brief Contains Context.
      */
-    ContextPtr     context;
+    mutable ContextPtr     context;
 
     /**
      * @brief Driver for Coordinates.
      */
-    ExecutionCoordinateDriver              coordinate;
+    mutable ExecutionCoordinateDriver              coordinate;
     /**
      * @brief Driver for Coordinates' collections.
      */
-    CollectionsDriver<GT::GTL::Coordinate> coordinates;
+    mutable CollectionsDriver<GT::GTL::Coordinate> coordinates;
     /**
      * @brief Driver for Conditions.
      */
-    ExecutionConditionDriver               condition;
+    mutable ExecutionConditionDriver               condition;
     /**
      * @brief Driver for Conditions' collections.
      */
-    CollectionsDriver<GT::GTL::Condition>  conditions;
+    mutable CollectionsDriver<GT::GTL::Condition>  conditions;
     /**
      * @brief Driver for Games.
      */
-    ExecutionGameDriver                    game;
+    mutable ExecutionGameDriver                    game;
     /**
      * @brief Driver for Identifiers' collections.
      */
-    CollectionsDriver<GT::Identifier>      identifiers;
+    mutable CollectionsDriver<GT::Identifier>      identifiers;
     /**
      * @brief Driver for Objects' collections.
      */
-    CollectionsDriver<GT::GTL::Object>     objects;
+    mutable CollectionsDriver<GT::GTL::Object>     objects;
     /**
      * @brief Driver for Params' collections.
      */
-    CollectionsDriver<GT::GTL::Param>      params;
+    mutable CollectionsDriver<GT::GTL::Param>      params;
     /**
      * @brief Driver for values.
      */
-    ExecutionValueDriver                   value;
+    mutable ExecutionValueDriver                   value;
     /**
      * @brief Driver for statements.
      */
-    ExecutionStatementDriver               statement;
+    mutable ExecutionStatementDriver               statement;
 
     /**
      * @brief Output stream for displaying results.
      */
-    std::ostream* outputStream;
+    mutable OutputStream* outputStream;
 
 public:
     /**
@@ -80,8 +80,8 @@ public:
      * @param errorStream  error stream
      */
     ExecutionDriver(
-        std::ostream* outputStream,
-        std::ostream* errorStream
+        OutputStream* outputStream,
+        OutputStream* errorStream
     );
 
     /**
@@ -94,70 +94,70 @@ public:
      *
      * @return CoordinateDriver
      */
-    virtual CoordinateDriver& forCoordinate() override;
+    virtual CoordinateDriver& forCoordinate() const override;
 
     /**
      * @brief Driver for Coordinates.
      *
      * @return CollectionDriver for Coordinates
      */
-    virtual CollectionsDriver<Coordinate>& forCoordinates() override;
+    virtual CollectionsDriver<Coordinate>& forCoordinates() const override;
 
     /**
      * @brief Driver for Condition.
      *
      * @return ConditionDriver
      */
-    virtual ConditionDriver& forCondition() override;
+    virtual ConditionDriver& forCondition() const override;
 
     /**
      * @brief Driver for Conditions.
      *
      * @return CollectionDriver for Conditions
      */
-    virtual CollectionsDriver<Condition>& forConditions() override;
+    virtual CollectionsDriver<Condition>& forConditions() const override;
 
     /**
      * @brief Driver for Game.
      *
      * @return GameDriver
      */
-    virtual GameDriver& forGame() override;
+    virtual GameDriver& forGame() const override;
 
     /**
      * @brief Driver for Identifiers.
      *
      * @return CollectionDriver for Identifiers
      */
-    virtual CollectionsDriver<Identifier>& forIdentifiers() override;
+    virtual CollectionsDriver<Identifier>& forIdentifiers() const override;
 
     /**
      * @brief Driver for Objects.
      *
      * @return CollectionDriver for Objects
      */
-    virtual CollectionsDriver<Object>& forObjects() override;
+    virtual CollectionsDriver<Object>& forObjects() const override;
 
     /**
      * @brief Driver for Params.
      *
      * @return CollectionDriver for Params
      */
-    virtual CollectionsDriver<Param>& forParams() override;
+    virtual CollectionsDriver<Param>& forParams() const override;
 
     /**
      * @brief Driver for value.
      *
      * @return ValueDriver
      */
-    virtual ValueDriver& forValue() override;
+    virtual ValueDriver& forValue() const override;
 
     /**
      * @brief Driver for Statement.
      *
      * @return StatementDriver
      */
-    virtual StatementDriver& forStatement() override;
+    virtual StatementDriver& forStatement() const override;
 
     /**
      * @brief Displays results.
@@ -165,8 +165,8 @@ public:
      * @param result Result to show
      */
     virtual void showResult(
-        ResultPtr result
-    ) override;
+        const ResultPtr result
+    ) const override;
 
     /**
      * @brief Displays error.
@@ -175,9 +175,9 @@ public:
      * @param message  Message to display
      */
     virtual void showError(
-        InputLocation& location,
-        const Message& message
-    ) override;
+        const InputLocation& location,
+        const Message&       message
+    ) const override;
 
     /**
      * @brief Displays error.
@@ -185,15 +185,15 @@ public:
      * @param symbol invalid symbol to display
      */
     virtual void showError(
-        ValidableSymbol& symbol
-    ) override;
+        const ValidableSymbol& symbol
+    ) const override;
 
     /**
      * @brief Driver's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExecutionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

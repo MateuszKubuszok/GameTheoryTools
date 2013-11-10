@@ -14,31 +14,31 @@ Param::Param() :
     registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
 }
 
-ObjectPtr Param::getObject(
-    Context& context
-) {
+const ObjectPtr Param::getObject(
+    const Context& context
+) const {
     VisitedIdentifiers visitedIdentifiers;
     return getObject(context, visitedIdentifiers);
 }
 
-NumberPtr Param::getNumber(
-    Context& context
-) {
+const NumberPtr Param::getNumber(
+    const Context& context
+) const {
     VisitedIdentifiers visitedIdentifiers;
     return getNumber(context, visitedIdentifiers);
 }
 
-Param::operator Param&() {
+Param::operator const Param&() const {
     return *this;
 }
 
 // protected:
 
 void Param::checkVisitedIdentifiers(
-    VisitedIdentifiers& visitedIdentifiers,
-    Identifier&         currentIdentifier
-) {
-    for (Identifier& visitedIdentifier : visitedIdentifiers)
+    const VisitedIdentifiers& visitedIdentifiers,
+    const Identifier&         currentIdentifier
+) const {
+    for (const Identifier& visitedIdentifier : visitedIdentifiers)
         if (visitedIdentifier == currentIdentifier)
             throw ExceptionFactory::getInstance()
                 .cyclicIdentifiersFound(visitedIdentifiers, currentIdentifier);

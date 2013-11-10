@@ -21,54 +21,54 @@ CheckingDriver::CheckingDriver(
 
 CheckingDriver::~CheckingDriver() {}
 
-CoordinateDriver& CheckingDriver::forCoordinate() {
+CoordinateDriver& CheckingDriver::forCoordinate() const {
     return coordinate;
 }
 
-CollectionsDriver<Coordinate>& CheckingDriver::forCoordinates() {
+CollectionsDriver<Coordinate>& CheckingDriver::forCoordinates() const {
     return coordinates;
 }
 
-ConditionDriver& CheckingDriver::forCondition() {
+ConditionDriver& CheckingDriver::forCondition() const {
     return condition;
 }
 
-CollectionsDriver<Condition>& CheckingDriver::forConditions() {
+CollectionsDriver<Condition>& CheckingDriver::forConditions() const {
     return conditions;
 }
 
-GameDriver& CheckingDriver::forGame() {
+GameDriver& CheckingDriver::forGame() const {
     return game;
 }
 
-CollectionsDriver<Identifier>& CheckingDriver::forIdentifiers() {
+CollectionsDriver<Identifier>& CheckingDriver::forIdentifiers() const {
     return identifiers;
 }
 
-CollectionsDriver<Object>& CheckingDriver::forObjects() {
+CollectionsDriver<Object>& CheckingDriver::forObjects() const {
     return objects;
 }
 
-CollectionsDriver<Param>& CheckingDriver::forParams() {
+CollectionsDriver<Param>& CheckingDriver::forParams() const {
     return params;
 }
 
-ValueDriver& CheckingDriver::forValue() {
+ValueDriver& CheckingDriver::forValue() const {
     return value;
 }
 
-StatementDriver& CheckingDriver::forStatement() {
+StatementDriver& CheckingDriver::forStatement() const {
     return statement;
 }
 
 void CheckingDriver::showResult(
-    ResultPtr
-) {}
+    const ResultPtr
+) const {}
 
 void CheckingDriver::showError(
-    InputLocation& location,
-    const Message& message
-) {
+    const InputLocation& location,
+    const Message&       message
+) const {
     if (errorStream) {
         std::stringstream builder;
         builder << message << std::endl
@@ -84,12 +84,12 @@ void CheckingDriver::showError(
 }
 
 void CheckingDriver::showError(
-    ValidableSymbol& symbol
-) {
+    const ValidableSymbol& symbol
+) const {
     showError(*symbol.getInputLocation(), symbol.toString());
 }
 
-Message CheckingDriver::toString() {
+Message CheckingDriver::toString() const {
     return Message("CheckingDriver");
 }
 

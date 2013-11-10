@@ -18,7 +18,7 @@ ExecutionStatementDriver::ExecutionStatementDriver(
     {}
 
 bool ExecutionStatementDriver::executeDefinition(
-    DefinitionPtr* definitionPtr
+    const DefinitionPtr* definitionPtr
 ) {
     if (!checkingStatementDriver.executeDefinition(definitionPtr))
         return false;
@@ -29,7 +29,7 @@ bool ExecutionStatementDriver::executeDefinition(
 }
 
 bool ExecutionStatementDriver::executeQuery(
-    QueryPtr* queryPtr
+    const QueryPtr* queryPtr
 ) {
     if (!checkingStatementDriver.executeQuery(queryPtr))
         return false;
@@ -46,18 +46,18 @@ bool ExecutionStatementDriver::executeQuery(
 }
 
 DefinitionPtr* ExecutionStatementDriver::createDefinition(
-    InputLocation& inputLocation,
-    IdentifierPtr* identifierPtr,
-    ObjectPtr*     objectPtr
-) {
+    const InputLocation& inputLocation,
+    const IdentifierPtr* identifierPtr,
+    const ObjectPtr*     objectPtr
+) const {
     DefinitionPtr* errorCheck =
         checkingStatementDriver.createDefinition(inputLocation, identifierPtr, objectPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
     delete errorCheck;
 
-    IdentifierPtr& identifier = *identifierPtr;
-    ObjectPtr&     object     = *objectPtr;
+    const IdentifierPtr& identifier = *identifierPtr;
+    const ObjectPtr&     object     = *objectPtr;
 
     return new DefinitionPtr(
         setupLocation<Definition>(
@@ -68,20 +68,20 @@ DefinitionPtr* ExecutionStatementDriver::createDefinition(
 }
 
 QueryPtr* ExecutionStatementDriver::createQuery(
-    InputLocation&  inputLocation,
-    IdentifiersPtr* identifiersPtr,
-    ObjectsPtr*     objectsPtr,
-    ConditionsPtr*  conditionsPtr
-) {
+    const InputLocation&  inputLocation,
+    const IdentifiersPtr* identifiersPtr,
+    const ObjectsPtr*     objectsPtr,
+    const ConditionsPtr*  conditionsPtr
+) const {
     QueryPtr* errorCheck =
         checkingStatementDriver.createQuery(inputLocation, identifiersPtr, objectsPtr, conditionsPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
     delete errorCheck;
 
-    IdentifiersPtr& identifiers = *identifiersPtr;
-    ObjectsPtr&     objects     = *objectsPtr;
-    ConditionsPtr&  conditions  = *conditionsPtr;
+    const IdentifiersPtr& identifiers = *identifiersPtr;
+    const ObjectsPtr&     objects     = *objectsPtr;
+    const ConditionsPtr&  conditions  = *conditionsPtr;
 
     return new QueryPtr(
         setupLocation<Query>(
@@ -91,7 +91,7 @@ QueryPtr* ExecutionStatementDriver::createQuery(
     );
 }
 
-Message ExecutionStatementDriver::toString() {
+Message ExecutionStatementDriver::toString() const {
     return Message("ExecutionStatementDriver");
 }
 

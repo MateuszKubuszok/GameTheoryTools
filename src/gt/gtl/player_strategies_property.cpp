@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 PlayerStrategiesProperty::PlayerStrategiesProperty(
-    Player* describedPlayer
+    const Player* describedPlayer
 ) :
     player(describedPlayer)
     {}
@@ -17,7 +17,7 @@ PlayerStrategiesProperty::PlayerStrategiesProperty(
 ResultPtr PlayerStrategiesProperty::findForConditions(
     const Context&,
     const Conditions&
-) {
+) const {
     IdentifierPtr strategiesName  = createIdentifierPtr("Strategies");
 
     IdentifierPtr name  = createIdentifierPtr("Strategy");

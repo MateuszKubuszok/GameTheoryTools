@@ -27,196 +27,196 @@ public:
      *
      * @result NullCondition
      */
-    ConditionPtr createCondition();
+    ConditionPtr createCondition() const;
 
     /**
      * @brief Creates NullConditions.
      *
      * @result NullConditions
      */
-    ConditionsPtr createConditions();
+    ConditionsPtr createConditions() const;
 
     /**
      * @brief Creates NullContext.
      *
      * @result NullContext
      */
-    ContextPtr createContext();
+    ContextPtr createContext() const;
 
     /**
      * @brief Creates NullCoordinate.
      *
      * @result NullCoordinate
      */
-    CoordinatePtr createCoordinate();
+    CoordinatePtr createCoordinate() const;
 
     /**
      * @brief Creates NullCoordinates.
      *
      * @result NullCoordinates
      */
-    CoordinatesPtr createCoordinates();
+    CoordinatesPtr createCoordinates() const;
 
     /**
      * @brief Creates NullDefinition.
      *
      * @result NullDefinition
      */
-    DefinitionPtr createDefinition();
+    DefinitionPtr createDefinition() const;
 
     /**
      * @brief Creates NullDetails.
      *
      * @result NullDetails
      */
-    DetailsPtr createDetails();
+    DetailsPtr createDetails() const;
 
     /**
      * @brief Creates NullGame.
      *
      * @result NullGame
      */
-    GamePtr createGame();
+    GamePtr createGame() const;
 
     /**
      * @brief Creates NullObject.
      *
      * @result NullObject
      */
-    ObjectPtr createObject();
+    ObjectPtr createObject() const;
 
     /**
      * @brief Creates NullObjects.
      *
      * @result NullObjects
      */
-    ObjectsPtr createObjects();
+    ObjectsPtr createObjects() const;
 
     /**
      * @brief Creates NullParam.
      *
      * @result NullParam
      */
-    ParamPtr createParam();
+    ParamPtr createParam() const;
 
     /**
      * @brief Creates NullParams.
      *
      * @result NullParams
      */
-    ParamsPtr createParams();
+    ParamsPtr createParams() const;
 
     /**
      * @brief Creates NullPlayer.
      *
      * @result NullPlayer
      */
-    PlayerPtr createPlayer();
+    PlayerPtr createPlayer() const;
 
     /**
      * @brief Creates NullPositions.
      *
      * @result NullPositions
      */
-    PositionsPtr createPositions();
+    PositionsPtr createPositions() const;
 
     /**
      * @brief Creates NullResult.
      *
      * @result NullResult
      */
-    ResultPtr createResult();
+    ResultPtr createResult() const;
 
     /**
      * @brief Creates NullQuery.
      *
      * @result NullQuery
      */
-    QueryPtr createQuery();
+    QueryPtr createQuery() const;
 
     /**
      * @brief Creates NullDriver.
      *
      * @result NullDriver
      */
-    DriverPtr createDriver();
+    DriverPtr createDriver() const;
 
     /**
      * @brief Creates NullConditionDriver.
      *
      * @result NullConditionDriver
      */
-    ConditionDriverPtr createConditionDriver();
+    ConditionDriverPtr createConditionDriver() const;
 
     /**
      * @brief Creates NullCoordinateDriver.
      *
      * @result NullCooridnateDriver
      */
-    CoordinateDriverPtr createCoordinateDriver();
+    CoordinateDriverPtr createCoordinateDriver() const;
 
     /**
      * @brief Creates NullGameDriver.
      *
      * @result NullGameDriver
      */
-    GameDriverPtr createGameDriver();
+    GameDriverPtr createGameDriver() const;
 
     /**
      * @brief Creates NullValueDriver.
      *
      * @result NullValueDriver
      */
-    ValueDriverPtr createValueDriver();
+    ValueDriverPtr createValueDriver() const;
 
     /**
      * @brief Creates NullStatementDriver.
      *
      * @result NullStatementDriver
      */
-    StatementDriverPtr createStatementDriver();
+    StatementDriverPtr createStatementDriver() const;
 
     /**
      * @brief Creates NullCollectionsDriver<Coordinate>.
      *
      * @result NullCollectionsDriver<Coordinate>
      */
-    CollectionsDriverPtr<Coordinate> createCoordinatesDriver();
+    CollectionsDriverPtr<Coordinate> createCoordinatesDriver() const;
 
     /**
      * @brief Creates NullCollectionsDriver<Condition>.
      *
      * @result NullCollectionsDriver<Condition>
      */
-    CollectionsDriverPtr<Condition> createConditionsDriver();
+    CollectionsDriverPtr<Condition> createConditionsDriver() const;
 
     /**
      * @brief Creates NullCollectionsDriver<Identifier>.
      *
      * @result NullCollectionsDriver<Identifier>
      */
-    CollectionsDriverPtr<Identifier> createIdentifiersDriver();
+    CollectionsDriverPtr<Identifier> createIdentifiersDriver() const;
 
     /**
      * @brief Creates NullCollectionsDriver<Object>.
      *
      * @result NullCollectionsDriver<Object>
      */
-    CollectionsDriverPtr<Object> createObjectsDriver();
+    CollectionsDriverPtr<Object> createObjectsDriver() const;
 
     /**
      * @brief Creates NullCollectionsDriver<Param>.
      *
      * @result NullCollectionsDriver<Param>
      */
-    CollectionsDriverPtr<Param> createParamsDriver();
+    CollectionsDriverPtr<Param> createParamsDriver() const;
 
     /**
      * @brief Creates null InputLocation.
      *
      * @return InputLocation
      */
-    InputLocationPtr createInputLocation();
+    InputLocationPtr createInputLocation() const;
 
 private:
     /**

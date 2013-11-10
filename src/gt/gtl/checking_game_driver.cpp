@@ -15,10 +15,10 @@ CheckingGameDriver::CheckingGameDriver(
     {}
 
 GamePtr* CheckingGameDriver::createStrategic(
-    InputLocation& inputLocation,
-    DetailsPtr*    detailsPtr
-) {
-    Details& details = **detailsPtr;
+    const InputLocation& inputLocation,
+    const DetailsPtr*    detailsPtr
+) const {
+    const Details& details = **detailsPtr;
 
     if (!details) {
         // TODO: create ErrorMessageFactory
@@ -41,10 +41,10 @@ GamePtr* CheckingGameDriver::createStrategic(
 }
 
 GamePtr* CheckingGameDriver::createExtensive(
-    InputLocation& inputLocation,
-    DetailsPtr*    detailsPtr
-) {
-    Details& details = **detailsPtr;
+    const InputLocation& inputLocation,
+    const DetailsPtr*    detailsPtr
+) const {
+    const Details& details = **detailsPtr;
 
     if (!details) {
         // TODO: create ErrorMessageFactory
@@ -67,17 +67,17 @@ GamePtr* CheckingGameDriver::createExtensive(
 }
 
 DetailsPtr* CheckingGameDriver::createDetails(
-    InputLocation&  inputLocation,
-    ObjectsPtr*     playersPtr,
-    CoordinatesPtr* dataPtr
-) {
-    Objects&     objectPlayers = **playersPtr;
-    Coordinates& coordinates   = **dataPtr;
+    const InputLocation&  inputLocation,
+    const ObjectsPtr*     playersPtr,
+    const CoordinatesPtr* dataPtr
+) const {
+    const Objects&     objectPlayers = **playersPtr;
+    const Coordinates& coordinates   = **dataPtr;
 
-    for (ObjectPtr& objectPlayerPtr : objectPlayers) {
-        Object& objectPlayer = *objectPlayerPtr;
-        Player& player       = objectPlayer;
-        Param&  param        = objectPlayer;
+    for (const ObjectPtr& objectPlayerPtr : objectPlayers) {
+        const Object& objectPlayer = *objectPlayerPtr;
+        const Player& player       = objectPlayer;
+        const Param&  param        = objectPlayer;
         if (!player && !param) {
             // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
@@ -91,8 +91,8 @@ DetailsPtr* CheckingGameDriver::createDetails(
         }
     }
 
-    for (CoordinatePtr& coordinatePtr : coordinates) {
-        Coordinate& coorinate = *coordinatePtr;
+    for (const CoordinatePtr& coordinatePtr : coordinates) {
+        const Coordinate& coorinate = *coordinatePtr;
         if (!coorinate) {
             // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
@@ -115,10 +115,10 @@ DetailsPtr* CheckingGameDriver::createDetails(
 }
 
 PlayerPtr* CheckingGameDriver::createPlayer(
-    InputLocation&  inputLocation,
-    IdentifierPtr*,
-    IdentifiersPtr*
-) {
+    const InputLocation&  inputLocation,
+    const IdentifierPtr*,
+    const IdentifiersPtr*
+) const {
     return new PlayerPtr(
         setupLocation<Player>(
             NullFactory::getInstance().createPlayer(),
@@ -127,7 +127,7 @@ PlayerPtr* CheckingGameDriver::createPlayer(
     );
 }
 
-Message CheckingGameDriver::toString() {
+Message CheckingGameDriver::toString() const {
     return Message("CheckingGameDriver");
 }
 

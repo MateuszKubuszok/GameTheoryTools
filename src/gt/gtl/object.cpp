@@ -7,11 +7,11 @@ namespace GTL {
 
 // class Object : public virtual ValidableSymbol {
 
-GamePtr   Object::noGame   = ErrorFactory::getInstance().createGame("This Object is not a Game");
+const GamePtr   Object::noGame   = ErrorFactory::getInstance().createGame("This Object is not a Game");
 
-ParamPtr  Object::noParam  = ErrorFactory::getInstance().createParam("This Object is not a Param");
+const ParamPtr  Object::noParam  = ErrorFactory::getInstance().createParam("This Object is not a Param");
 
-PlayerPtr Object::noPlayer = ErrorFactory::getInstance().createPlayer("This Object is not a Player");
+const PlayerPtr Object::noPlayer = ErrorFactory::getInstance().createPlayer("This Object is not a Player");
 
 // public:
 
@@ -25,7 +25,7 @@ Object::Object() :
 }
 
 Object::Object(
-    Identifier type
+    const Identifier type
 ) :
     Root(),
     registeredProperties(),
@@ -38,28 +38,28 @@ Object::Object(
 Object::~Object() {}
 
 bool Object::respondsTo(
-    Identifier& propertyName
-) {
+    const Identifier& propertyName
+) const {
     return isPropertyRegistered(propertyName);
 }
 
 ResultPtr Object::findProperty(
-    const Context& context,
-    Identifier&    propertyName
-) {
+    const Context&    context,
+    const Identifier& propertyName
+) const {
     ConditionsPtr noConditions = NullFactory::getInstance().createConditions();
     return findPropertyWithConditions(context, propertyName, *noConditions);
 }
 
 ResultPtr Object::findPropertyWithConditions(
     const Context&    context,
-    Identifier&       propertyName,
+    const Identifier& propertyName,
     const Conditions& conditions
-) {
+) const {
     return getProperty(propertyName)->findForConditions(context, conditions);
 }
 
-IdentifiersPtr Object::listProperties() {
+IdentifiersPtr Object::listProperties() const {
     IdentifiersPtr properties = createIdentifiersPtr();
 
     for (Identifier property : registeredProperties | boost::adaptors::map_keys)
@@ -68,45 +68,45 @@ IdentifiersPtr Object::listProperties() {
     return properties;
 }
 
-IdentifierPtr Object::type() {
+const IdentifierPtr Object::type() const {
     return typeName;
 }
 
-Message Object::toString() {
+Message Object::toString() const {
     return createMessage(typeName);
 }
 
-Object::operator Game&() {
+Object::operator const Game&() const {
     return *noGame;
 }
 
-Object::operator Param&() {
+Object::operator const Param&() const {
     return *noParam;
 }
 
-Object::operator Player&() {
+Object::operator const Player&() const {
     return *noPlayer;
 }
 
 // protected:
 
 bool Object::isPropertyRegistered(
-    Identifier& propertyName
-) {
+    const Identifier& propertyName
+) const {
     return registeredProperties.count(propertyName);
 }
 
-ObjectPropertyPtr Object::getProperty(
-    Identifier& propertyName
-) {
+const ObjectPropertyPtr Object::getProperty(
+    const Identifier& propertyName
+) const {
     if (registeredProperties.count(propertyName))
-        return registeredProperties[propertyName];
+        return registeredProperties.at(propertyName);
     throw ExceptionFactory::getInstance().invalidObjectProperty(propertyName);
 }
 
 void Object::registerProperty(
-    Identifier        propertyName,
-    ObjectPropertyPtr property
+    const Identifier        propertyName,
+    const ObjectPropertyPtr property
 ) {
     registeredProperties.insert( ObjectPropertyMap::value_type(propertyName, property) );
 }

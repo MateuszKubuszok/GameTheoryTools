@@ -65,22 +65,22 @@ Coordinate& Coordinate::addSubCoordinates(
     return *this;
 }
 
-ParamsPtr Coordinate::getParams() {
+const ParamsPtr Coordinate::getParams() const {
     return params;
 }
 
-PositionsPtr Coordinate::getPositions() {
+const PositionsPtr Coordinate::getPositions() const {
     return positions;
 }
 
-CoordinatesPtr Coordinate::getSubCoordinates() {
+const CoordinatesPtr Coordinate::getSubCoordinates() const {
     return subCoordinates;
 }
 
 void Coordinate::fillDataBuilder(
-    Context&               context,
+    const Context&         context,
     Model::DataBuilderPtr& dataBuilder
-) {
+) const {
     if (positions->size())
         dataBuilder->addNextPositions(positions);
 
@@ -99,7 +99,7 @@ void Coordinate::fillDataBuilder(
     }
 }
 
-Message Coordinate::toString() {
+Message Coordinate::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     if (params->size()) {
@@ -152,24 +152,24 @@ Message Coordinate::toString() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Coordinate operator+(
-    Coordinate& coordinate1,
-    Coordinate& coordinate2
+    const Coordinate& coordinate1,
+    const Coordinate& coordinate2
 ) {
     Coordinate result;
 
-    for (Positions::value_type& position : *coordinate1.getPositions())
+    for (const Positions::value_type& position : *coordinate1.getPositions())
         result.positions->insert(position);
-    for (Positions::value_type& position : *coordinate2.getPositions())
+    for (const Positions::value_type& position : *coordinate2.getPositions())
         result.positions->insert(position);
 
-    for (ParamPtr& param : *coordinate1.getParams())
+    for (const ParamPtr& param : *coordinate1.getParams())
         result.params->push_back(param);
-    for (ParamPtr& param : *coordinate2.getParams())
+    for (const ParamPtr& param : *coordinate2.getParams())
         result.params->push_back(param);
 
-    for (CoordinatePtr& subCoordinate : *coordinate1.getSubCoordinates())
+    for (const CoordinatePtr& subCoordinate : *coordinate1.getSubCoordinates())
         result.subCoordinates->push_back(subCoordinate);
-    for (CoordinatePtr& subCoordinate : *coordinate2.getSubCoordinates())
+    for (const CoordinatePtr& subCoordinate : *coordinate2.getSubCoordinates())
         result.subCoordinates->push_back(subCoordinate);
 
     return result;

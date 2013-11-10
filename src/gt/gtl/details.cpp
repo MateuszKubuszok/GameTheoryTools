@@ -16,21 +16,21 @@ Details::Details(
     coordinates(coordinatesDetails)
     {}
 
-CoordinatesPtr Details::getCoordinates() {
+const CoordinatesPtr Details::getCoordinates() const {
     return coordinates;
 }
 
-ObjectsPtr Details::getPlayers() {
+const ObjectsPtr Details::getPlayers() const {
     return players;
 }
 
-Message Details::toString() {
+Message Details::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     IdentifierPtr playersName = createIdentifierPtr("Players");
     ResultBuilderPtr playersResultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr playerName = createIdentifierPtr("Player");
-    for (ObjectPtr& player : *players) {
+    for (const ObjectPtr& player : *players) {
         MessagePtr playerValue = createMessagePtr(player->toString());
         playersResultBuilder->addResult(playerName, playerValue);
     }
@@ -40,7 +40,7 @@ Message Details::toString() {
     IdentifierPtr coordinatesName = createIdentifierPtr("Coordinates");
     ResultBuilderPtr coordinatesResultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr coordinateName = createIdentifierPtr("Coordinate");
-    for (CoordinatePtr& coordinate : *coordinates) {
+    for (const CoordinatePtr& coordinate : *coordinates) {
         MessagePtr coordinateValue = createMessagePtr(coordinate->toString());
         coordinatesResultBuilder->addResult(coordinateName, coordinateValue);
     }

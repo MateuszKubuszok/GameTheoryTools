@@ -30,9 +30,9 @@ public:
      * @return                   CyclicIdentifiers exception to throw
      */
     CyclicIdentifiers cyclicIdentifiersFound(
-        Param::VisitedIdentifiers& visitedIdentifiers,
-        Identifier&                currentIdentifier
-    );
+        const Param::VisitedIdentifiers& visitedIdentifiers,
+        const Identifier&                currentIdentifier
+    ) const;
 
     /**
      * @brief Thrown when attepting to obtain nonexisting property from Object.
@@ -41,8 +41,8 @@ public:
      * @return             InvalidProperty exception to throw
      */
     InvalidProperty invalidObjectProperty(
-        Identifier& propertyName
-    );
+        const Identifier& propertyName
+    ) const;
 
     /**
      * @brief Thrown when attepting to obtain cast Object to invalid type.
@@ -51,8 +51,8 @@ public:
      * @return             InvalidType exception to throw
      */
     InvalidType invalidObjectType(
-        Identifier& expectedType
-    );
+        const Identifier& expectedType
+    ) const;
 
     /**
      * @brief Thrown when attepting to obtain not defined Param.
@@ -61,22 +61,22 @@ public:
      * @return          NotDefinedParam exception to throw
      */
     NotDefinedParam notDefinedParam(
-        Identifier& paramName
-    );
+        const Identifier& paramName
+    ) const;
 
     /**
      * @brief Thrown when attemting to obtain Number from ObjectParam.
      *
      * @return InvalidContentRequest exception to throw
      */
-    InvalidContentRequest requiredUnavailableNumberFromParam();
+    InvalidContentRequest requiredUnavailableNumberFromParam() const;
 
     /**
      * @brief Thrown when attemting to obtain Object from NumberParam.
      *
      * @return InvalidContentRequest exception to throw
      */
-    InvalidContentRequest requiredUnavailableObjectFromParam();
+    InvalidContentRequest requiredUnavailableObjectFromParam() const;
 
 private:
     /**

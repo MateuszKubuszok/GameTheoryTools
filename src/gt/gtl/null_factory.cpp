@@ -11,115 +11,115 @@ SINGLETON_DEFINITION(NullFactory, getInstance, nullFactoryMutex)
 
 // public:
 
-ConditionPtr NullFactory::createCondition() {
+ConditionPtr NullFactory::createCondition() const {
     return ConditionPtr(new NullCondition());
 }
 
-ConditionsPtr NullFactory::createConditions() {
+ConditionsPtr NullFactory::createConditions() const {
     return ConditionsPtr(new Conditions());
 }
 
-ContextPtr NullFactory::createContext() {
+ContextPtr NullFactory::createContext() const {
     return ContextPtr(new NullContext());
 }
 
-CoordinatePtr NullFactory::createCoordinate() {
+CoordinatePtr NullFactory::createCoordinate() const {
     return CoordinatePtr(new NullCoordinate());
 }
 
-CoordinatesPtr NullFactory::createCoordinates() {
+CoordinatesPtr NullFactory::createCoordinates() const {
     return CoordinatesPtr(new Coordinates());
 }
 
-DefinitionPtr NullFactory::createDefinition() {
+DefinitionPtr NullFactory::createDefinition() const {
     return DefinitionPtr(new NullDefinition());
 }
 
-DetailsPtr NullFactory::createDetails() {
+DetailsPtr NullFactory::createDetails() const {
     return DetailsPtr(new NullDetails());
 }
 
-GamePtr NullFactory::createGame() {
+GamePtr NullFactory::createGame() const {
     return GamePtr(new NullGame());
 }
 
-ObjectPtr NullFactory::createObject() {
+ObjectPtr NullFactory::createObject() const {
     return ObjectPtr(new NullObject());
 }
 
-ObjectsPtr NullFactory::createObjects() {
+ObjectsPtr NullFactory::createObjects() const {
     return ObjectsPtr(new Objects());
 }
 
-ParamPtr NullFactory::createParam() {
+ParamPtr NullFactory::createParam() const {
     return ParamPtr(new NullParam());
 }
 
-ParamsPtr NullFactory::createParams() {
+ParamsPtr NullFactory::createParams() const {
     return ParamsPtr(new Params());
 }
 
-PlayerPtr NullFactory::createPlayer() {
+PlayerPtr NullFactory::createPlayer() const {
     return PlayerPtr(new NullPlayer());
 }
 
-PositionsPtr NullFactory::createPositions() {
+PositionsPtr NullFactory::createPositions() const {
     return PositionsPtr(new Positions());
 }
 
-ResultPtr NullFactory::createResult() {
+ResultPtr NullFactory::createResult() const {
     return ResultPtr(new NullResult());
 }
 
-QueryPtr NullFactory::createQuery() {
+QueryPtr NullFactory::createQuery() const {
     return QueryPtr(new NullQuery());
 }
 
-DriverPtr NullFactory::createDriver() {
+DriverPtr NullFactory::createDriver() const {
     return DriverPtr(new NullDriver());
 }
 
-ConditionDriverPtr NullFactory::createConditionDriver() {
+ConditionDriverPtr NullFactory::createConditionDriver() const {
     return ConditionDriverPtr(new NullConditionDriver());
 }
 
-CoordinateDriverPtr NullFactory::createCoordinateDriver() {
+CoordinateDriverPtr NullFactory::createCoordinateDriver() const {
     return CoordinateDriverPtr(new NullCoordinateDriver());
 }
 
-GameDriverPtr NullFactory::createGameDriver() {
+GameDriverPtr NullFactory::createGameDriver() const {
     return GameDriverPtr(new NullGameDriver());
 }
 
-ValueDriverPtr NullFactory::createValueDriver() {
+ValueDriverPtr NullFactory::createValueDriver() const {
     return ValueDriverPtr(new NullValueDriver());
 }
 
-StatementDriverPtr NullFactory::createStatementDriver() {
+StatementDriverPtr NullFactory::createStatementDriver() const {
     return StatementDriverPtr(new NullStatementDriver());
 }
 
-CollectionsDriverPtr<Coordinate> NullFactory::createCoordinatesDriver() {
+CollectionsDriverPtr<Coordinate> NullFactory::createCoordinatesDriver() const {
     return CollectionsDriverPtr<Coordinate>(new NullCollectionsDriver<Coordinate>());
 }
 
-CollectionsDriverPtr<Condition> NullFactory::createConditionsDriver() {
+CollectionsDriverPtr<Condition> NullFactory::createConditionsDriver() const {
     return CollectionsDriverPtr<Condition>(new NullCollectionsDriver<Condition>());
 }
 
-CollectionsDriverPtr<Identifier> NullFactory::createIdentifiersDriver() {
+CollectionsDriverPtr<Identifier> NullFactory::createIdentifiersDriver() const {
     return CollectionsDriverPtr<Identifier>(new NullCollectionsDriver<Identifier>());
 }
 
-CollectionsDriverPtr<Object> NullFactory::createObjectsDriver() {
+CollectionsDriverPtr<Object> NullFactory::createObjectsDriver() const {
     return CollectionsDriverPtr<Object>(new NullCollectionsDriver<Object>());
 }
 
-CollectionsDriverPtr<Param> NullFactory::createParamsDriver() {
+CollectionsDriverPtr<Param> NullFactory::createParamsDriver() const {
     return CollectionsDriverPtr<Param>(new NullCollectionsDriver<Param>());
 }
 
-InputLocationPtr NullFactory::createInputLocation() {
+InputLocationPtr NullFactory::createInputLocation() const {
     return InputLocationPtr(new InputLocation());
 }
 

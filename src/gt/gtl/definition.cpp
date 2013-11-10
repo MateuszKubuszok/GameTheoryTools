@@ -9,22 +9,22 @@ namespace GTL {
 // public:
 
 Definition::Definition(
-    IdentifierPtr definedName,
-    ParamPtr      definedValue
+    const IdentifierPtr definedName,
+    const ParamPtr      definedValue
 ) :
     name(definedName),
     value(definedValue)
     {}
 
-IdentifierPtr Definition::getName() {
+const IdentifierPtr Definition::getName() const {
     return name;
 }
 
-ParamPtr Definition::getValue() {
+const ParamPtr Definition::getValue() const {
     return value;
 }
 
-Message Definition::toString() {
+Message Definition::toString() const {
     IdentifierPtr nam = createIdentifierPtr(name);
     MessagePtr    val = createMessagePtr(value->toString());
     return ResultFactory::getInstance().buildResult()->addResult(nam, val).build()->getResult();

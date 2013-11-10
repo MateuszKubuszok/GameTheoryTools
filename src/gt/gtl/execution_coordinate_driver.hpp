@@ -45,10 +45,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* create(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const IdentifierPtr* player,
         const IdentifierPtr* strategy
-    ) override;
+    ) const override;
 
     /**
      * @brief Fills Coordinate with subcoordinates.
@@ -59,10 +59,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
-        InputLocation&        inputLocation,
+        const InputLocation&  inputLocation,
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
-    ) override;
+    ) const override;
 
     /**
      * @brief Fills Coordinate with Params.
@@ -73,10 +73,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr* coordinate,
         const ParamsPtr*     data
-    ) override;
+    ) const override;
 
     /**
      * @brief Merge two coordinates into one.
@@ -87,17 +87,17 @@ public:
      * @return              merged Coordinates
      */
     virtual CoordinatePtr* merge(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr* coordinate1,
         const CoordinatePtr* coordinate2
-    ) override;
+    ) const override;
 
     /**
      * @brief ExecutionCoordinateDriver message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExecutionCoordinateDriver */
 
 //////////////////////////////////////////////////////1///////////////////////////////////////////////////////

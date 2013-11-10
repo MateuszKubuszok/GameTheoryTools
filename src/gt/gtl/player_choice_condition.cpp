@@ -18,11 +18,11 @@ PlayerChoiceCondition::PlayerChoiceCondition(
 
 void PlayerChoiceCondition::conditionQuery(
     Query& //query
-) {
+) const {
     // TODO when routines are implemented
 }
 
-Message PlayerChoiceCondition::toString() {
+Message PlayerChoiceCondition::toString() const {
     std::stringstream result;
     result << "Player \"" << player << "\" choosed \"" << strategy << "\"";
 

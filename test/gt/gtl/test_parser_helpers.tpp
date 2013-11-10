@@ -10,15 +10,16 @@ TestCollectionsDriverImpl<Content>::TestCollectionsDriverImpl() :
     {}
 
 template<typename Content>
-typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* TestCollectionsDriverImpl<Content>::empty() {
+typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* TestCollectionsDriverImpl<Content>::empty()
+const {
     createdCollections++;
     return GT::GTL::NullCollectionsDriver<Content>::empty();
 }
 
 template<typename Content>
 typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* TestCollectionsDriverImpl<Content>::create(
-    typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr* element
-) {
+    const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr* element
+) const {
     createdCollections++;
     addedElements++;
     return GT::GTL::NullCollectionsDriver<Content>::create(element);
@@ -26,20 +27,20 @@ typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* TestCollections
 
 template<typename Content>
 typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* TestCollectionsDriverImpl<Content>::insert(
-    typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr*    element,
-    typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* collection
-) {
+    const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr*    element,
+    const typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* collection
+) const {
     addedElements++;
     return GT::GTL::NullCollectionsDriver<Content>::insert(element, collection);
 }
 
 template<typename Content>
-inline unsigned int TestCollectionsDriverImpl<Content>::getCreatedCollections() {
+inline unsigned int TestCollectionsDriverImpl<Content>::getCreatedCollections() const {
     return createdCollections;
 }
 
 template<typename Content>
-inline unsigned int TestCollectionsDriverImpl<Content>::getAddedElements() {
+inline unsigned int TestCollectionsDriverImpl<Content>::getAddedElements() const {
     return addedElements;
 }
 

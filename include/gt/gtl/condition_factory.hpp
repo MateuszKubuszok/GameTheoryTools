@@ -32,7 +32,7 @@ public:
     ConditionPtr createPlayerChoiceCondition(
         const ObjectPtr player,
         const ObjectPtr strategy
-    );
+    ) const;
 
 private:
     /**

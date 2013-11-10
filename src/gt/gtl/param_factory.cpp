@@ -12,33 +12,33 @@ SINGLETON_DEFINITION(ParamFactory, getInstance, paramFactoryMutex)
 // public:
 
 ParamPtr ParamFactory::createParam(
-    Identifier& identifier
-) {
+    const Identifier& identifier
+) const {
     return ParamPtr(new IdentifierParam(identifier));
 }
 
 ParamPtr ParamFactory::createParam(
-    IdentifierPtr identifier
-) {
+    const IdentifierPtr identifier
+) const {
     return ParamPtr(new IdentifierParam(*identifier));
 }
 
 ParamPtr ParamFactory::createParam(
-    Number& number
-) {
+    const Number& number
+) const {
     NumberPtr value(new Number(number));
     return ParamPtr(new NumberParam(value));
 }
 
 ParamPtr ParamFactory::createParam(
-    NumberPtr number
-) {
+    const NumberPtr number
+) const {
     return ParamPtr(new NumberParam(number));
 }
 
 ParamPtr ParamFactory::createParam(
-    ObjectPtr object
-) {
+    const ObjectPtr object
+) const {
     return ParamPtr(new ObjectParam(object));
 }
 

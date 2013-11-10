@@ -98,14 +98,14 @@ typedef Model::ResultPtr                              ResultPtr;
 
 /* Declares functions for equality check */
 
-bool operator==(Conditions&  conditions1,  Conditions&  conditions2);
-bool operator!=(Conditions&  conditions1,  Conditions&  conditions2);
-bool operator==(Coordinates& coordinates1, Coordinates& coordinates2);
-bool operator!=(Coordinates& coordinates1, Coordinates& coordinates2);
-bool operator==(Objects&     objects1,     Objects&     objects2);
-bool operator!=(Objects&     objects1,     Objects&     objects2);
-bool operator==(Params&      params1,      Params&      params2);
-bool operator!=(Params&      params1,      Params&      params2);
+bool operator==(const Conditions&  conditions1,  const Conditions&  conditions2);
+bool operator!=(const Conditions&  conditions1,  const Conditions&  conditions2);
+bool operator==(const Coordinates& coordinates1, const Coordinates& coordinates2);
+bool operator!=(const Coordinates& coordinates1, const Coordinates& coordinates2);
+bool operator==(const Objects&     objects1,     const Objects&     objects2);
+bool operator!=(const Objects&     objects1,     const Objects&     objects2);
+bool operator==(const Params&      params1,      const Params&      params2);
+bool operator!=(const Params&      params1,      const Params&      params2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

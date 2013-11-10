@@ -45,17 +45,17 @@ public:
      * @return              Condition
      */
     virtual ConditionPtr* playerChoosed(
-        InputLocation& inputLocation,
-        ObjectPtr*     playerPtr,
-        ObjectPtr*     strategyPtr
-    ) override;
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     strategyPtr
+    ) const override;
 
     /**
      * @brief ExecutionConditionDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExecutionConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 ObjectTypeProperty::ObjectTypeProperty(
-    Object* describedObject
+    const Object* describedObject
 ) :
     object(describedObject)
     {}
@@ -17,7 +17,7 @@ ObjectTypeProperty::ObjectTypeProperty(
 ResultPtr ObjectTypeProperty::findForConditions(
     const Context&,
     const Conditions&
-) {
+) const {
     IdentifierPtr name  = createIdentifierPtr("Type");
     MessagePtr    value = createMessagePtr(object->type());
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build();

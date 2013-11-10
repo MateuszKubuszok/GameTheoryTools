@@ -22,10 +22,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* create(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const IdentifierPtr* player,
         const IdentifierPtr* strategy
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Fills Coordinate with subcoordinates.
@@ -36,10 +36,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
-        InputLocation&        inputLocation,
+        const InputLocation&  inputLocation,
         const CoordinatePtr*  coordinate,
         const CoordinatesPtr* data
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Fills Coordinate with Params.
@@ -50,10 +50,10 @@ public:
      * @return              Coordinate
      */
     virtual CoordinatePtr* fillWithData(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr* coordinate,
         const ParamsPtr*     data
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Merge two coordinates into one.
@@ -64,17 +64,17 @@ public:
      * @return              merged Coordinates
      */
     virtual CoordinatePtr* merge(
-        InputLocation&       inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr* coordinate1,
         const CoordinatePtr* coordinate2
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief CoordinateDriver message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class CoordinateDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,10 +91,10 @@ public:
         {}
 
     virtual CoordinatePtr* create(
-        InputLocation& inputLocation,
+        const InputLocation& inputLocation,
         const IdentifierPtr*,
         const IdentifierPtr*
-    ) override {
+    ) const override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -104,10 +104,10 @@ public:
     }
 
     virtual CoordinatePtr* fillWithData(
-        InputLocation& inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr*,
         const CoordinatesPtr*
-    ) override {
+    ) const override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -117,10 +117,10 @@ public:
     }
 
     virtual CoordinatePtr* fillWithData(
-        InputLocation& inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr*,
         const ParamsPtr*
-    ) override {
+    ) const override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -130,10 +130,10 @@ public:
     }
 
     virtual CoordinatePtr* merge(
-        InputLocation& inputLocation,
+        const InputLocation& inputLocation,
         const CoordinatePtr*,
         const CoordinatePtr*
-    ) override {
+    ) const override {
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 NullFactory::getInstance().createCoordinate(),
@@ -142,11 +142,11 @@ public:
         );
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullCoordinateDriver");
     }
 }; /* END class NullCoordinateDriver */

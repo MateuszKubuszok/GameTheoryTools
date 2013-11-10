@@ -44,21 +44,21 @@ public:
      *
      * @return Coordinates wit data
      */
-    virtual CoordinatesPtr getCoordinates();
+    virtual const CoordinatesPtr getCoordinates() const;
 
     /**
      * @brief Returns Players definitions.
      *
      * @return Players definitions
      */
-    virtual ObjectsPtr getPlayers();
+    virtual const ObjectsPtr getPlayers() const;
 
     /**
      * @brief Returns Message about Game details.
      *
      * @return Game Details Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class Details */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,19 +77,19 @@ public:
         )
         {}
 
-    virtual CoordinatesPtr getCoordinates() override {
+    virtual const CoordinatesPtr getCoordinates() const override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual ObjectsPtr getPlayers() override {
+    virtual const ObjectsPtr getPlayers() const override {
         return NullFactory::getInstance().createObjects();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullDetails");
     }
 }; /* END class NullDetails */
@@ -105,11 +105,11 @@ class ErrorDetails : public Details {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorDetails(
-        Message errorMessage
+        const Message errorMessage
     ) :
         Details(
             NullFactory::getInstance().createObjects(),
@@ -118,11 +118,11 @@ public:
         message(errorMessage)
         {}
 
-    virtual CoordinatesPtr getCoordinates() override {
+    virtual const CoordinatesPtr getCoordinates() const override {
         return NullFactory::getInstance().createCoordinates();
     }
 
-    virtual ObjectsPtr getPlayers() override {
+    virtual const ObjectsPtr getPlayers() const override {
         return NullFactory::getInstance().createObjects();
     }
 
@@ -130,7 +130,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorDetails */

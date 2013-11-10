@@ -19,7 +19,7 @@ class ObjectParam : public Param {
     /**
      * @brief Value stored by this Param.
      */
-    ObjectPtr value;
+    const ObjectPtr value;
 
 public:
     /**
@@ -28,7 +28,7 @@ public:
      * @param number Number
      */
     explicit ObjectParam(
-        ObjectPtr object
+        const ObjectPtr object
     );
 
     /**
@@ -38,10 +38,10 @@ public:
      * @param visitedIdentifiers already visited Identifiers
      * @return                   Object
      */
-    virtual ObjectPtr getObject(
-        Context&            context,
+    virtual const ObjectPtr getObject(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Number for context.
@@ -51,17 +51,17 @@ public:
      * @return                       Number
      * @thrown InvalidContentRequest thrown always for this implementation
      */
-    virtual NumberPtr getNumber(
-        Context&            context,
+    virtual const NumberPtr getNumber(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief ObjectParam's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ObjectParam */
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -38,7 +38,7 @@ public:
      * @param definition definition to execute
      */
     virtual bool executeDefinition(
-        DefinitionPtr* definition
+        const DefinitionPtr* definition
     ) override;
 
     /**
@@ -47,7 +47,7 @@ public:
      * @param query query to execute
      */
     virtual bool executeQuery(
-        QueryPtr* query
+        const QueryPtr* query
     ) override;
 
     /**
@@ -59,10 +59,10 @@ public:
      * @return              Definition
      */
     virtual DefinitionPtr* createDefinition(
-        InputLocation& inputLocation,
-        IdentifierPtr* identifier,
-        ObjectPtr*     object
-    ) override;
+        const InputLocation& inputLocation,
+        const IdentifierPtr* identifier,
+        const ObjectPtr*     object
+    ) const override;
 
     /**
      * @brief Creates Query for given properties.
@@ -74,18 +74,18 @@ public:
      * @return              Query
      */
     virtual QueryPtr* createQuery(
-        InputLocation&  inputLocation,
-        IdentifiersPtr* identifiers,
-        ObjectsPtr*     objects,
-        ConditionsPtr*  conditions
-    ) override;
+        const InputLocation&  inputLocation,
+        const IdentifiersPtr* identifiers,
+        const ObjectsPtr*     objects,
+        const ConditionsPtr*  conditions
+    ) const override;
 
     /**
      * @brief CheckingStatementDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class CheckingStatementDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

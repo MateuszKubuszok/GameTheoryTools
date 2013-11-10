@@ -15,9 +15,9 @@ CheckingValueDriver::CheckingValueDriver(
     {}
 
 ParamPtr* CheckingValueDriver::get(
-    InputLocation& inputLocation,
-    IdentifierPtr*
-) {
+    const InputLocation& inputLocation,
+    const IdentifierPtr*
+) const {
     return new ParamPtr(
         setupLocation<Param>(
             NullFactory::getInstance().createParam(),
@@ -27,9 +27,9 @@ ParamPtr* CheckingValueDriver::get(
 }
 
 ParamPtr* CheckingValueDriver::get(
-    InputLocation& inputLocation,
-    NumberPtr*
-) {
+    const InputLocation& inputLocation,
+    const NumberPtr*
+) const {
     return new ParamPtr(
         setupLocation<Param>(
             NullFactory::getInstance().createParam(),
@@ -39,24 +39,24 @@ ParamPtr* CheckingValueDriver::get(
 }
 
 ObjectPtr* CheckingValueDriver::toObject(
-    GamePtr* game
-) {
+    const GamePtr* game
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*game));
 }
 
 ObjectPtr* CheckingValueDriver::toObject(
-    PlayerPtr* player
-) {
+    const PlayerPtr* player
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*player));
 }
 
 ObjectPtr* CheckingValueDriver::toObject(
-    ParamPtr* param
-) {
+    const ParamPtr* param
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*param));
 }
 
-Message CheckingValueDriver::toString() {
+Message CheckingValueDriver::toString() const {
     return Message("CheckingValueDriver");
 }
 

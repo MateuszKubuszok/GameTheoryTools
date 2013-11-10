@@ -5,223 +5,223 @@
 
 template<typename Content>
 class TestCollectionsDriverImpl : public GT::GTL::NullCollectionsDriver<Content> {
-    unsigned int createdCollections;
-    unsigned int addedElements;
+    mutable unsigned int createdCollections;
+    mutable unsigned int addedElements;
 
 public:
     TestCollectionsDriverImpl<Content>();
 
-    virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* empty();
+    virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* empty() const override;
 
     virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* create(
-        typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr* element
-    );
+        const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr* element
+    ) const override;
 
     virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* insert(
-        typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr*    element,
-        typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* collection
-    );
+        const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr*    element,
+        const typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* collection
+    ) const override;
 
-    inline unsigned int getCreatedCollections();
+    inline unsigned int getCreatedCollections() const;
 
-    inline unsigned int getAddedElements();
+    inline unsigned int getAddedElements() const;
 }; /* END class TestCollectionsDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
-    unsigned int createdConditions;
+    mutable unsigned int createdConditions;
 
 public:
     TestConditionDriverImpl();
 
     virtual GT::GTL::ConditionPtr* playerChoosed(
-        GT::GTL::InputLocation& inputLocation,
-        GT::GTL::ObjectPtr*     player,
-        GT::GTL::ObjectPtr*     strategy
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::ObjectPtr*     player,
+        const GT::GTL::ObjectPtr*     strategy
+    ) const override;
 
-    inline unsigned int getCreatedConditions();
+    inline unsigned int getCreatedConditions() const;
 }; /* END class TestConditionDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
-    unsigned int createdCoordinates;
-    unsigned int filledCoordinates;
-    unsigned int mergedCoordinates;
+    mutable unsigned int createdCoordinates;
+    mutable unsigned int filledCoordinates;
+    mutable unsigned int mergedCoordinates;
 
 public:
     TestCoordinateDriverImpl();
 
     virtual GT::GTL::CoordinatePtr* create(
-        GT::GTL::InputLocation&  inputLocation,
-        const GT::IdentifierPtr* player,
-        const GT::IdentifierPtr* strategy
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::IdentifierPtr*      player,
+        const GT::IdentifierPtr*      strategy
+    ) const override;
 
     virtual GT::GTL::CoordinatePtr* fillWithData(
-        GT::GTL::InputLocation&       inputLocation,
+        const GT::GTL::InputLocation& inputLocation,
         const GT::GTL::CoordinatePtr* coordinate,
         const GT::GTL::ParamsPtr*     data
-    );
+    ) const override;
 
     virtual GT::GTL::CoordinatePtr* merge(
-        GT::GTL::InputLocation&       inputLocation,
+        const GT::GTL::InputLocation& inputLocation,
         const GT::GTL::CoordinatePtr* coordinate1,
         const GT::GTL::CoordinatePtr* coordinate2
-    );
+    ) const override;
 
-    inline unsigned int getCreatedCoordinates();
+    inline unsigned int getCreatedCoordinates() const;
 
-    inline unsigned int getFilledCoordinates();
+    inline unsigned int getFilledCoordinates() const;
 
-    inline unsigned int getMergeCoordinates();
+    inline unsigned int getMergeCoordinates() const;
 }; /* END class TestCoordinateDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestGameDriverImpl : public GT::GTL::NullGameDriver {
-    unsigned int createdStrategicGames;
-    unsigned int createdExtensiveGames;
-    unsigned int createdDetails;
-    unsigned int createdPlayers;
+    mutable unsigned int createdStrategicGames;
+    mutable unsigned int createdExtensiveGames;
+    mutable unsigned int createdDetails;
+    mutable unsigned int createdPlayers;
 
 public:
     TestGameDriverImpl();
 
     virtual GT::GTL::GamePtr* createStrategic(
-        GT::GTL::InputLocation& inputLocation,
-        GT::GTL::DetailsPtr*    details
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::DetailsPtr*    details
+    ) const override;
 
     virtual GT::GTL::GamePtr* createExtensive(
-        GT::GTL::InputLocation& inputLocation,
-        GT::GTL::DetailsPtr*    details
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::DetailsPtr*    details
+    ) const override;
 
     virtual GT::GTL::DetailsPtr* createDetails(
-        GT::GTL::InputLocation&  inputLocation,
-        GT::GTL::ObjectsPtr*     players,
-        GT::GTL::CoordinatesPtr* data
-    );
+        const GT::GTL::InputLocation&  inputLocation,
+        const GT::GTL::ObjectsPtr*     players,
+        const GT::GTL::CoordinatesPtr* data
+    ) const override;
 
     virtual GT::GTL::PlayerPtr* createPlayer(
-        GT::GTL::InputLocation& inputLocation,
-        GT::IdentifierPtr*      player,
-        GT::IdentifiersPtr*     strategies
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::IdentifierPtr*      player,
+        const GT::IdentifiersPtr*     strategies
+    ) const override;
 
-    inline unsigned int getCreatedStrategicGames();
+    inline unsigned int getCreatedStrategicGames() const;
 
-    inline unsigned int getCreatedExtensiveGames();
+    inline unsigned int getCreatedExtensiveGames() const;
 
-    inline unsigned int getCreatedDetails();
+    inline unsigned int getCreatedDetails() const;
 
-    inline unsigned int getCreatedPlayers();
+    inline unsigned int getCreatedPlayers() const;
 }; /* END class TestGameDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
-    unsigned int executedDefinitions;
-    unsigned int executedQueries;
+    mutable unsigned int executedDefinitions;
+    mutable unsigned int executedQueries;
 
 public:
     TestStatementDriverImpl();
 
     virtual bool executeDefinition(
-        GT::GTL::DefinitionPtr* definition
-    );
+        const GT::GTL::DefinitionPtr* definition
+    ) override;
 
     virtual bool executeQuery(
-        GT::GTL::QueryPtr* query
-    );
+        const GT::GTL::QueryPtr* query
+    ) override;
 
-    inline unsigned int getExecutedDefinitions();
+    inline unsigned int getExecutedDefinitions() const;
 
-    inline unsigned int getExecutedQueries();
+    inline unsigned int getExecutedQueries() const;
 }; /* END class TestStatementDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestValueDriverImpl : public GT::GTL::NullValueDriver {
-    unsigned int usedParameters;
+    mutable unsigned int usedParameters;
 
 public:
     TestValueDriverImpl();
 
     virtual GT::GTL::ParamPtr* get(
-        GT::GTL::InputLocation& inputLocation,
-        GT::IdentifierPtr*      identifier
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::IdentifierPtr*      identifier
+    ) const override;
 
     virtual GT::GTL::ParamPtr* get(
-        GT::GTL::InputLocation& inputLocation,
-        GT::NumberPtr*          number
-    );
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::NumberPtr*          number
+    ) const override;
 
-    inline unsigned int getUsedParameters();
+    inline unsigned int getUsedParameters() const;
 }; /* END class TestValueDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class TestDriverImpl : public GT::GTL::Driver {
-    unsigned int shownResults;
-    unsigned int shownErrors;
+    mutable unsigned int shownResults;
+    mutable unsigned int shownErrors;
 
 public:
-    TestCoordinateDriverImpl                       coordinate;
-    TestCollectionsDriverImpl<GT::GTL::Coordinate> coordinates;
-    TestConditionDriverImpl                        condition;
-    TestCollectionsDriverImpl<GT::GTL::Condition>  conditions;
-    TestGameDriverImpl                             game;
-    TestCollectionsDriverImpl<GT::Identifier>      identifiers;
-    TestCollectionsDriverImpl<GT::GTL::Object>     objects;
-    TestCollectionsDriverImpl<GT::GTL::Param>      params;
-    TestValueDriverImpl                            value;
-    TestStatementDriverImpl                        statement;
+    mutable TestCoordinateDriverImpl                       coordinate;
+    mutable TestCollectionsDriverImpl<GT::GTL::Coordinate> coordinates;
+    mutable TestConditionDriverImpl                        condition;
+    mutable TestCollectionsDriverImpl<GT::GTL::Condition>  conditions;
+    mutable TestGameDriverImpl                             game;
+    mutable TestCollectionsDriverImpl<GT::Identifier>      identifiers;
+    mutable TestCollectionsDriverImpl<GT::GTL::Object>     objects;
+    mutable TestCollectionsDriverImpl<GT::GTL::Param>      params;
+    mutable TestValueDriverImpl                            value;
+    mutable TestStatementDriverImpl                        statement;
 
     TestDriverImpl();
 
-    virtual GT::GTL::CoordinateDriver& forCoordinate();
+    virtual GT::GTL::CoordinateDriver& forCoordinate() const override;
 
-    virtual GT::GTL::CollectionsDriver<GT::GTL::Coordinate>& forCoordinates();
+    virtual GT::GTL::CollectionsDriver<GT::GTL::Coordinate>& forCoordinates() const override;
 
-    virtual GT::GTL::ConditionDriver& forCondition();
+    virtual GT::GTL::ConditionDriver& forCondition() const override;
 
-    virtual GT::GTL::CollectionsDriver<GT::GTL::Condition>& forConditions();
+    virtual GT::GTL::CollectionsDriver<GT::GTL::Condition>& forConditions() const override;
 
-    virtual GT::GTL::GameDriver& forGame();
+    virtual GT::GTL::GameDriver& forGame() const override;
 
-    virtual GT::GTL::CollectionsDriver<GT::Identifier>& forIdentifiers();
+    virtual GT::GTL::CollectionsDriver<GT::Identifier>& forIdentifiers() const override;
 
-    virtual GT::GTL::CollectionsDriver<GT::GTL::Object>& forObjects();
+    virtual GT::GTL::CollectionsDriver<GT::GTL::Object>& forObjects() const override;
 
-    virtual GT::GTL::CollectionsDriver<GT::GTL::Param>& forParams();
+    virtual GT::GTL::CollectionsDriver<GT::GTL::Param>& forParams() const override;
 
-    virtual GT::GTL::ValueDriver& forValue();
+    virtual GT::GTL::ValueDriver& forValue() const override;
 
-    virtual GT::GTL::StatementDriver& forStatement();
+    virtual GT::GTL::StatementDriver& forStatement() const override;
 
     virtual void showResult(
-        GT::GTL::ResultPtr result
-    );
+        const GT::GTL::ResultPtr result
+    ) const override;
 
     virtual void showError(
-        GT::GTL::InputLocation&,
+        const GT::GTL::InputLocation&,
         const GT::Message&
-    );
+    ) const override;
 
     virtual void showError(
-        GT::GTL::ValidableSymbol&
-    );
+        const GT::GTL::ValidableSymbol&
+    ) const override;
 
-    inline unsigned int getShownResults();
+    inline unsigned int getShownResults() const;
 
-    inline unsigned int getShownErrors();
+    inline unsigned int getShownErrors() const;
 
-    virtual GT::Message toString();
+    virtual GT::Message toString() const override;
 }; /* END class TestDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

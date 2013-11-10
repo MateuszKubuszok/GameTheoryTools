@@ -24,67 +24,67 @@ ExecutionDriver::ExecutionDriver(
 
 ExecutionDriver::~ExecutionDriver() {}
 
-CoordinateDriver& ExecutionDriver::forCoordinate() {
+CoordinateDriver& ExecutionDriver::forCoordinate() const {
     return coordinate;
 }
 
-CollectionsDriver<Coordinate>& ExecutionDriver::forCoordinates() {
+CollectionsDriver<Coordinate>& ExecutionDriver::forCoordinates() const {
     return coordinates;
 }
 
-ConditionDriver& ExecutionDriver::forCondition() {
+ConditionDriver& ExecutionDriver::forCondition() const {
     return condition;
 }
 
-CollectionsDriver<Condition>& ExecutionDriver::forConditions() {
+CollectionsDriver<Condition>& ExecutionDriver::forConditions() const {
     return conditions;
 }
 
-GameDriver& ExecutionDriver::forGame() {
+GameDriver& ExecutionDriver::forGame() const {
     return game;
 }
 
-CollectionsDriver<Identifier>& ExecutionDriver::forIdentifiers() {
+CollectionsDriver<Identifier>& ExecutionDriver::forIdentifiers() const {
     return identifiers;
 }
 
-CollectionsDriver<Object>& ExecutionDriver::forObjects() {
+CollectionsDriver<Object>& ExecutionDriver::forObjects() const {
     return objects;
 }
 
-CollectionsDriver<Param>& ExecutionDriver::forParams() {
+CollectionsDriver<Param>& ExecutionDriver::forParams() const {
     return params;
 }
 
-ValueDriver& ExecutionDriver::forValue() {
+ValueDriver& ExecutionDriver::forValue() const {
     return value;
 }
 
-StatementDriver& ExecutionDriver::forStatement() {
+StatementDriver& ExecutionDriver::forStatement() const {
     return statement;
 }
 
 void ExecutionDriver::showResult(
-    ResultPtr result
-) {
+    const ResultPtr result
+) const {
     if (outputStream)
         (*outputStream) << result->getResult();
 }
 
 void ExecutionDriver::showError(
-    InputLocation& location,
-    const Message& message
-) {
+    const InputLocation& location,
+    const Message&       message
+) const {
     checkingDriver.showError(location, message);
 }
 
 void ExecutionDriver::showError(
-    ValidableSymbol& symbol
-) {
+    const ValidableSymbol& symbol
+) const {
     checkingDriver.showError(symbol);
 }
 
-Message ExecutionDriver::toString() {
+Message ExecutionDriver::toString() const {
     return Message("ExecutionDriver");
 }
 

@@ -12,56 +12,56 @@ SINGLETON_DEFINITION(ErrorFactory, getInstance, errorFactoryMutex)
 // public:
 
 ConditionPtr ErrorFactory::createCondition(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return ConditionPtr(new ErrorCondition(errorMessage));
 }
 
 CoordinatePtr ErrorFactory::createCoordinate(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return CoordinatePtr(new ErrorCoordinate(errorMessage));
 }
 
 DefinitionPtr ErrorFactory::createDefinition(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return DefinitionPtr(new ErrorDefinition(errorMessage));
 }
 
 DetailsPtr ErrorFactory::createDetails(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return DetailsPtr(new ErrorDetails(errorMessage));
 }
 
 GamePtr ErrorFactory::createGame(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return GamePtr(new ErrorGame(errorMessage));
 }
 
 ObjectPtr ErrorFactory::createObject(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return ObjectPtr(new ErrorObject(errorMessage));
 }
 
 ParamPtr ErrorFactory::createParam(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return ParamPtr(new ErrorParam(errorMessage));
 }
 
 PlayerPtr ErrorFactory::createPlayer(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return PlayerPtr(new ErrorPlayer(errorMessage));
 }
 
 QueryPtr ErrorFactory::createQuery(
-    Message errorMessage
-) {
+    const Message errorMessage
+) const {
     return QueryPtr(new ErrorQuery(errorMessage));
 }
 

@@ -40,14 +40,14 @@ public:
      */
     virtual void conditionQuery(
         Query& query
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Returns Message about Condition.
      *
      * @return Condition's Message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class Condition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,13 +61,13 @@ class NullCondition : public Condition {
 public:
     virtual void conditionQuery(
         Query&
-    ) override {}
+    ) const override {}
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullCondition");
     }
 }; /* END class NullCondition */
@@ -83,24 +83,24 @@ class ErrorCondition : public Condition {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorCondition(
-        Message errorMessage
+        const Message errorMessage
     ) :
         message(errorMessage)
         {}
 
     virtual void conditionQuery(
         Query&
-    ) override {}
+    ) const override {}
 
     virtual bool isValid() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorCondition */

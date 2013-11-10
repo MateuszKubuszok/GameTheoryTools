@@ -46,7 +46,7 @@ public:
      *
      * @return pointer to collection
      */
-    virtual CollectionPtr* empty();
+    virtual CollectionPtr* empty() const;
 
     /**
      * @brief Creates a collection with one element.
@@ -55,8 +55,8 @@ public:
      * @return        pointer to collection
      */
     virtual CollectionPtr* create(
-        ContentPtr* element
-    );
+        const ContentPtr* element
+    ) const;
 
     /**
      * @brief Adds an element to the collection.
@@ -65,16 +65,16 @@ public:
      * @return        pointer to collection
      */
     virtual CollectionPtr* insert(
-        ContentPtr*    element,
-        CollectionPtr* collection
-    );
+        const ContentPtr*    element,
+        const CollectionPtr* collection
+    ) const;
 
     /**
      * @brief CollectionsDriver message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class CollectionsDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,30 +93,30 @@ class NullCollectionsDriver : public CollectionsDriver<Content> {
 public:
     NullCollectionsDriver() {}
 
-    virtual typename CollectionsDriver<Content>::CollectionPtr* empty() override {
+    virtual typename CollectionsDriver<Content>::CollectionPtr* empty() const override {
         return new typename CollectionsDriver<Content>::CollectionPtr(
             new typename CollectionsDriver<Content>::Collection()
         );
     }
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* create(
-        typename CollectionsDriver<Content>::ContentPtr*
-    ) override {
+        const typename CollectionsDriver<Content>::ContentPtr*
+    ) const override {
         return empty();
     }
 
     virtual typename CollectionsDriver<Content>::CollectionPtr* insert(
-        typename CollectionsDriver<Content>::ContentPtr*,
-        typename CollectionsDriver<Content>::CollectionPtr* collection
-    ) override {
+        const typename CollectionsDriver<Content>::ContentPtr*,
+        const typename CollectionsDriver<Content>::CollectionPtr* collection
+    ) const override {
         return new typename CollectionsDriver<Content>::CollectionPtr(*collection);
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullCollectionsDriver");
     }
 }; /* END class NullCollectionsDriver */

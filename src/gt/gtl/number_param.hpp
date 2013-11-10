@@ -19,7 +19,7 @@ class NumberParam : public Param {
     /**
      * @brief Number stored by this Param.
      */
-    NumberPtr value;
+    const NumberPtr value;
 
 public:
     /**
@@ -28,7 +28,7 @@ public:
      * @param number Number
      */
     explicit NumberParam(
-        NumberPtr number
+        const NumberPtr number
     );
 
     /**
@@ -39,10 +39,10 @@ public:
      * @return                       Object
      * @thrown InvalidContentRequest thrown always for this implementation
      */
-    virtual ObjectPtr getObject(
-        Context&            context,
+    virtual const ObjectPtr getObject(
+        const Context&      context,
         VisitedIdentifiers& visitiedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Number for context.
@@ -51,17 +51,17 @@ public:
      * @param visitedIdentifiers already visited Identifiers
      * @return                   Number
      */
-    virtual NumberPtr getNumber(
-        Context&            context,
+    virtual const NumberPtr getNumber(
+        const Context&      context,
         VisitedIdentifiers& visitiedIdentifiers
-    ) override;
+    ) const override;
 
     /**
      * @brief NumberParam's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class NumberParam */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

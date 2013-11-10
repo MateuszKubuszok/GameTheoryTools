@@ -40,9 +40,9 @@ public:
      * @return              Param
      */
     virtual ParamPtr* get(
-        InputLocation& inputLocation,
-        IdentifierPtr* identifier
-    ) override;
+        const InputLocation& inputLocation,
+        const IdentifierPtr* identifier
+    ) const override;
 
     /**
      * @brief Creates Param by its value.
@@ -52,9 +52,9 @@ public:
      * @return              Param
      */
     virtual ParamPtr* get(
-        InputLocation& inputLocation,
-        NumberPtr*     number
-    ) override;
+        const InputLocation& inputLocation,
+        const NumberPtr*     number
+    ) const override;
 
     /**
      * @brief Converts passed Game to Object.
@@ -63,8 +63,8 @@ public:
      * @return     Object
      */
     virtual ObjectPtr* toObject(
-        GamePtr* game
-    ) override;
+        const GamePtr* game
+    ) const override;
 
     /**
      * @brief Converts passed Player to Object.
@@ -73,8 +73,8 @@ public:
      * @return       Object
      */
     virtual ObjectPtr* toObject(
-        PlayerPtr* player
-    ) override;
+        const PlayerPtr* player
+    ) const override;
 
     /**
      * @brief Converts passed Param to Object.
@@ -83,15 +83,15 @@ public:
      * @return      Object
      */
     virtual ObjectPtr* toObject(
-        ParamPtr* param
-    ) override;
+        const ParamPtr* param
+    ) const override;
 
     /**
      * @brief CheckingValueDriver message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class CheckingValueDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 PlayerNameProperty::PlayerNameProperty(
-    Player* describedPlayer
+    const Player* describedPlayer
 ) :
     player(describedPlayer)
     {}
@@ -17,7 +17,7 @@ PlayerNameProperty::PlayerNameProperty(
 ResultPtr PlayerNameProperty::findForConditions(
     const Context&,
     const Conditions&
-) {
+) const {
     IdentifierPtr name  = createIdentifierPtr("Name");
     MessagePtr    value = createMessagePtr(player->getName());
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build();

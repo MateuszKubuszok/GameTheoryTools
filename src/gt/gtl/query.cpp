@@ -9,9 +9,9 @@ namespace GTL {
 // public:
 
 Query::Query(
-    IdentifiersPtr definedPropertiesNames,
-    ObjectsPtr     definedObjects,
-    ConditionsPtr  definedConditions
+    const IdentifiersPtr definedPropertiesNames,
+    const ObjectsPtr     definedObjects,
+    const ConditionsPtr  definedConditions
 ) :
     propertiesNames(definedPropertiesNames),
     objects(definedObjects),
@@ -19,21 +19,21 @@ Query::Query(
     {}
 
 ResultPtr Query::execute(
-    Context& context
-) {
+    const Context& context
+) const {
     MessagePtr objectPropertyNotFound = createMessagePtr("Property not found in Object");
     MessagePtr paramPropertyNotFound  = createMessagePtr("Property not found in Param nor referred Object");
 
     ResultBuilderPtr queryResult = ResultFactory::getInstance().buildResult();
 
-    for (IdentifierPtr& propertyPtr : *propertiesNames) {
+    for (const IdentifierPtr& propertyPtr : *propertiesNames) {
         Identifier& property = *propertyPtr;
         ResultBuilderPtr propertyResult = ResultFactory::getInstance().buildResult();
 
         Index objectNumber = 0;
         for (ObjectPtr& objectPtr : *objects) {
-            Object&       object     = *objectPtr;
-            IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
+            const Object&       object     = *objectPtr;
+            const IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
 
             if (object.respondsTo(property)) {
                 // Object has this property
@@ -43,12 +43,12 @@ ResultPtr Query::execute(
                 );
                 propertyResult->addResult(objectName, propertyValue);
             } else {
-                Param& param = object;
+                const Param& param = object;
                 if (param) {
                     // Object is a Param - property might belong to referred Object
 
                     try {
-                        ObjectPtr referredObject = param.getObject(context);
+                        const ObjectPtr referredObject = param.getObject(context);
                         if (referredObject->respondsTo(property)) {
                             // Param refers to Object (not a Number or cyclic reference or udefined Param)
 
@@ -81,7 +81,7 @@ ResultPtr Query::execute(
     return queryResult->build();
 }
 
-Message Query::toString() {
+Message Query::toString() const {
     IdentifiersPtr properties(new Identifiers());
     properties->push_back( createIdentifierPtr("Properties") );
 

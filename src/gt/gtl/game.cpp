@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 Game::Game(
-    Model::GamePtr gameImplementation
+    const Model::GamePtr gameImplementation
 ) :
     Object(createIdentifier("Game")),
     game(gameImplementation)
@@ -28,29 +28,29 @@ Game::Game(
 ResultPtr Game::pureEquilibrium(
     const Context&,
     const Conditions&
-) {
+) const {
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
 ResultPtr Game::mixedEquilibrium(
     const Context&,
     const Conditions&
-) {
+) const {
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
 ResultPtr Game::behaviorEquilibrium(
     const Context&,
     const Conditions&
-) {
+) const {
     return ResultFactory::getInstance().constResult("Not yet implemented");
 }
 
-Message Game::toString() {
+Message Game::toString() const {
     return game->toString();
 }
 
-Game::operator Game&() {
+Game::operator const Game&() const {
     return *this;
 }
 

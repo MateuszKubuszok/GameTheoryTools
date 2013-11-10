@@ -16,10 +16,10 @@ ExecutionValueDriver::ExecutionValueDriver(
     {}
 
 ParamPtr* ExecutionValueDriver::get(
-    InputLocation& inputLocation,
-    IdentifierPtr* identifierPtr
-) {
-    IdentifierPtr& identifier = *identifierPtr;
+    const InputLocation& inputLocation,
+    const IdentifierPtr* identifierPtr
+) const {
+    const IdentifierPtr& identifier = *identifierPtr;
 
     return new ParamPtr(
         setupLocation<Param>(
@@ -30,10 +30,10 @@ ParamPtr* ExecutionValueDriver::get(
 }
 
 ParamPtr* ExecutionValueDriver::get(
-    InputLocation& inputLocation,
-    NumberPtr*     valuePtr
-) {
-    NumberPtr& value = *valuePtr;
+    const InputLocation& inputLocation,
+    const NumberPtr*     valuePtr
+) const {
+    const NumberPtr& value = *valuePtr;
 
     return new ParamPtr(
         setupLocation<Param>(
@@ -44,24 +44,24 @@ ParamPtr* ExecutionValueDriver::get(
 }
 
 ObjectPtr* ExecutionValueDriver::toObject(
-    GamePtr* game
-) {
+    const GamePtr* game
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*game));
 }
 
 ObjectPtr* ExecutionValueDriver::toObject(
-    PlayerPtr* player
-) {
+    const PlayerPtr* player
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*player));
 }
 
 ObjectPtr* ExecutionValueDriver::toObject(
-    ParamPtr* param
-) {
+    const ParamPtr* param
+) const {
     return new ObjectPtr(boost::dynamic_pointer_cast<Object>(*param));
 }
 
-Message ExecutionValueDriver::toString() {
+Message ExecutionValueDriver::toString() const {
     return Message("ExecutionValueDriver");
 }
 

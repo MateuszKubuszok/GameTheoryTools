@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 GamePureEquilibriumProperty::GamePureEquilibriumProperty(
-    Game* describedGame
+    const Game* describedGame
 ) :
     game(describedGame)
     {}
@@ -17,7 +17,7 @@ GamePureEquilibriumProperty::GamePureEquilibriumProperty(
 ResultPtr GamePureEquilibriumProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions
-) {
+) const {
     return game->pureEquilibrium(context, conditions);
 }
 

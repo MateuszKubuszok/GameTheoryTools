@@ -41,17 +41,17 @@ public:
      * @return              Condition
      */
     virtual ConditionPtr* playerChoosed(
-        InputLocation& inputLocation,
-        ObjectPtr*     playerPtr,
-        ObjectPtr*     strategyPtr
-    );
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     strategyPtr
+    ) const;
 
     /**
      * @brief CheckingConditionDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class CheckingConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

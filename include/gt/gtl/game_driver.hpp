@@ -21,9 +21,9 @@ public:
      * @return              Game
      */
     virtual GamePtr* createStrategic(
-        InputLocation& inputLocation,
-        DetailsPtr*    details
-    ) = 0;
+        const InputLocation& inputLocation,
+        const DetailsPtr*    details
+    ) const = 0;
 
     /**
      * @brief Create Extensive Game.
@@ -33,9 +33,9 @@ public:
      * @return              Game
      */
     virtual GamePtr* createExtensive(
-        InputLocation& inputLocation,
-        DetailsPtr*    details
-    ) = 0;
+        const InputLocation& inputLocation,
+        const DetailsPtr*    details
+    ) const = 0;
 
     /**
      * @brief Create Details.
@@ -46,10 +46,10 @@ public:
      * @return              Details
      */
     virtual DetailsPtr* createDetails(
-        InputLocation&  inputLocation,
-        ObjectsPtr*     players,
-        CoordinatesPtr* data
-    ) = 0;
+        const InputLocation&  inputLocation,
+        const ObjectsPtr*     players,
+        const CoordinatesPtr* data
+    ) const = 0;
 
     /**
      * @brief Create Player.
@@ -60,17 +60,17 @@ public:
      * @return              Player
      */
     virtual PlayerPtr* createPlayer(
-        InputLocation&  inputLocation,
-        IdentifierPtr*  player,
-        IdentifiersPtr* strategies
-    ) = 0;
+        const InputLocation&  inputLocation,
+        const IdentifierPtr*  player,
+        const IdentifiersPtr* strategies
+    ) const = 0;
 
     /**
      * @brief GameDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class GameDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,9 +87,9 @@ public:
         {}
 
     virtual GamePtr* createStrategic(
-        InputLocation& inputLocation,
-        DetailsPtr*
-    ) override {
+        const InputLocation& inputLocation,
+        const DetailsPtr*
+    ) const override {
         return new GamePtr(
             setupLocation<Game>(
                 NullFactory::getInstance().createGame(),
@@ -99,9 +99,9 @@ public:
     }
 
     virtual GamePtr* createExtensive(
-        InputLocation& inputLocation,
-        DetailsPtr*
-    ) override {
+        const InputLocation& inputLocation,
+        const DetailsPtr*
+    ) const override {
         return new GamePtr(
             setupLocation<Game>(
                 NullFactory::getInstance().createGame(),
@@ -111,10 +111,10 @@ public:
     }
 
     virtual DetailsPtr* createDetails(
-        InputLocation& inputLocation,
-        ObjectsPtr*,
-        CoordinatesPtr*
-    ) override {
+        const InputLocation& inputLocation,
+        const ObjectsPtr*,
+        const CoordinatesPtr*
+    ) const override {
         return new DetailsPtr(
             setupLocation<Details>(
                 NullFactory::getInstance().createDetails(),
@@ -124,10 +124,10 @@ public:
     }
 
     virtual PlayerPtr* createPlayer(
-        InputLocation& inputLocation,
-        IdentifierPtr*,
-        IdentifiersPtr*
-    ) override {
+        const InputLocation& inputLocation,
+        const IdentifierPtr*,
+        const IdentifiersPtr*
+    ) const override {
         return new PlayerPtr(
             setupLocation<Player>(
                 NullFactory::getInstance().createPlayer(),
@@ -136,11 +136,11 @@ public:
         );
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullGameDriver");
     }
 }; /* END class NullGameDriver */

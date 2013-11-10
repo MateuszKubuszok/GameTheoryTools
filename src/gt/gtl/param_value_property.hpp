@@ -17,7 +17,7 @@ class ParamValueProperty : public ObjectProperty {
     /**
      * @brief Described Param.
      */
-    Param* param;
+    const Param* param;
 
 public:
     /**
@@ -26,7 +26,7 @@ public:
      * @param describedParam described Param
      */
     explicit ParamValueProperty(
-        Param* describedParam
+        const Param* describedParam
     );
 
     /**
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    ) override;
+    ) const override;
 }; /* END class ParamValueProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

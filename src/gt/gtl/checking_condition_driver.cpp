@@ -15,12 +15,12 @@ CheckingConditionDriver::CheckingConditionDriver(
     {}
 
 ConditionPtr* CheckingConditionDriver::playerChoosed(
-    InputLocation& inputLocation,
-    ObjectPtr*     playerPtr,
-    ObjectPtr*     strategyPtr
-) {
-    Object& playerObject   = **playerPtr;
-    Object& strategyObject = **strategyPtr;
+    const InputLocation& inputLocation,
+    const ObjectPtr*     playerPtr,
+    const ObjectPtr*     strategyPtr
+) const {
+    const Object& playerObject   = **playerPtr;
+    const Object& strategyObject = **strategyPtr;
 
     if (!playerObject) {
         // TODO: create ErrorMessageFactory
@@ -34,8 +34,8 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         );
     }
 
-    Player& player       = playerObject;
-    Param&  playerParam  = playerObject;
+    const Player& player       = playerObject;
+    const Param&  playerParam  = playerObject;
     if (!player && !playerParam) {
         // TODO: create ErrorMessageFactory
         Message errorMessage = Message() + "Object does not define a Player: " + player.toString();
@@ -47,7 +47,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         );
     }
 
-    Param& strategyParam = strategyObject;
+    const Param& strategyParam = strategyObject;
     if (!strategyParam) {
         // TODO: create ErrorMessageFactory
         Message errorMessage = Message() +
@@ -68,7 +68,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     );
 }
 
-Message CheckingConditionDriver::toString() {
+Message CheckingConditionDriver::toString() const {
     return Message("CheckingConditionDriver");
 }
 

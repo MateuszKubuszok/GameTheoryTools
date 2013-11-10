@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 ParamValueProperty::ParamValueProperty(
-    Param* describedParam
+    const Param* describedParam
 ) :
     param(describedParam)
     {}
@@ -17,7 +17,7 @@ ParamValueProperty::ParamValueProperty(
 ResultPtr ParamValueProperty::findForConditions(
     const Context&,
     const Conditions&
-) {
+) const {
     return ResultFactory::getInstance().constResult(param->toString());
 }
 

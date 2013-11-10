@@ -15,11 +15,11 @@ class PlayerChoiceCondition : public Condition {
     /**
      * @brief Param with Player's name.
      */
-    ObjectPtr player;
+    const ObjectPtr player;
     /**
      * @brief Param with Player's choice.
      */
-    ObjectPtr strategy;
+    const ObjectPtr strategy;
 
 public:
     /**
@@ -40,14 +40,14 @@ public:
      */
     virtual void conditionQuery(
         Query& query
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Message about Condition.
      *
      * @return Condition's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class PlayerChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

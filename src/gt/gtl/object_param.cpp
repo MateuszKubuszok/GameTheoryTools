@@ -9,27 +9,27 @@ namespace GTL {
 // public:
 
 ObjectParam::ObjectParam(
-    ObjectPtr object
+    const ObjectPtr object
 ) :
     Param(),
     value(object)
     {}
 
-ObjectPtr ObjectParam::getObject(
-    Context&,
-    VisitedIdentifiers& 
-) {
+const ObjectPtr ObjectParam::getObject(
+    const Context&,
+    VisitedIdentifiers&
+) const {
     return value;
 }
 
-NumberPtr ObjectParam::getNumber(
-    Context&,
+const NumberPtr ObjectParam::getNumber(
+    const Context&,
     VisitedIdentifiers&
-) {
+) const {
     throw ExceptionFactory::getInstance().requiredUnavailableNumberFromParam();
 }
 
-Message ObjectParam::toString() {
+Message ObjectParam::toString() const {
     IdentifierPtr name  = createIdentifierPtr("ObjectParam");
     MessagePtr    val   = createMessagePtr(value->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, val).build()->getResult();

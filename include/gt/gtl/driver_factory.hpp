@@ -30,7 +30,7 @@ public:
      */
     DriverPtr createCheckingDriver(
         OutputStream* errorStream
-    );
+    ) const;
 
     /**
      * @brief Creates Driver that executes input.
@@ -42,7 +42,7 @@ public:
     DriverPtr createExecutionDriver(
         OutputStream* outputStream,
         OutputStream* errorStream
-    );
+    ) const;
 
 private:
     /**

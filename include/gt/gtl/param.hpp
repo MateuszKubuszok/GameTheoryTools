@@ -36,9 +36,9 @@ public:
      * @throw InvalidContentRequest thrown when Param does not contain Object
      * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
-    virtual ObjectPtr getObject(
-        Context& context
-    );
+    virtual const ObjectPtr getObject(
+        const Context& context
+    ) const;
 
     /**
      * @brief Returns Object for Context.
@@ -50,10 +50,10 @@ public:
      * @throw InvalidContentRequest thrown when Param does not contain Object
      * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
-    virtual ObjectPtr getObject(
-        Context&            context,
+    virtual const ObjectPtr getObject(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Returns Number for context.
@@ -64,9 +64,9 @@ public:
      * @throw InvalidContentRequest thrown when Param does not contain Number
      * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
-    virtual NumberPtr getNumber(
-        Context& context
-    );
+    virtual const NumberPtr getNumber(
+        const Context& context
+    ) const;
 
     /**
      * @brief Returns Number for context.
@@ -78,17 +78,17 @@ public:
      * @throw InvalidContentRequest thrown when Param does not contain Number
      * @throw NotDefinedParam       thrown when Param cannot find value inside Context
      */
-    virtual NumberPtr getNumber(
-        Context&            context,
+    virtual const NumberPtr getNumber(
+        const Context&      context,
         VisitedIdentifiers& visitedIdentifiers
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Explicit cast to Param type.
      *
      * @return Param
      */
-    virtual operator Param&() override;
+    virtual operator const Param&() const override;
 
 protected:
     /**
@@ -99,9 +99,9 @@ protected:
      * @throw CyclicIdentifiers  thrown when Identifiers create the cycle
      */
     void checkVisitedIdentifiers(
-        VisitedIdentifiers& visitedIdentifiers,
-        Identifier&         currentIdentifier
-    );
+        const VisitedIdentifiers& visitedIdentifiers,
+        const Identifier&         currentIdentifier
+    ) const;
 }; /* END class Param */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,37 +113,37 @@ protected:
  */
 class NullParam : public Param {
 public:
-    virtual ObjectPtr getObject(
-        Context&
-    ) override {
+    virtual const ObjectPtr getObject(
+        const Context&
+    ) const override {
         return NullFactory::getInstance().createObject();
     }
 
-    virtual ObjectPtr getObject(
-        Context&,
+    virtual const ObjectPtr getObject(
+        const Context&,
         VisitedIdentifiers&
-    ) override {
+    ) const override {
         return NullFactory::getInstance().createObject();
     }
 
-    virtual NumberPtr getNumber(
-        Context&
-    ) override {
+    virtual const NumberPtr getNumber(
+        const Context&
+    ) const override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual NumberPtr getNumber(
-        Context&,
+    virtual const NumberPtr getNumber(
+        const Context&,
         VisitedIdentifiers&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullParam");
     }
 }; /* END class NullParam */
@@ -159,38 +159,38 @@ class ErrorParam : public Param {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorParam(
-        Message errorMessage
+        const Message errorMessage
     ) :
         message(errorMessage)
         {}
 
-    virtual ObjectPtr getObject(
-        Context&
-    ) override {
+    virtual const ObjectPtr getObject(
+        const Context&
+    ) const override {
         return NullFactory::getInstance().createObject();
     }
 
-    virtual ObjectPtr getObject(
-        Context&,
+    virtual const ObjectPtr getObject(
+        const Context&,
         VisitedIdentifiers&
-    ) override {
+    ) const override {
         return NullFactory::getInstance().createObject();
     }
 
-    virtual NumberPtr getNumber(
-        Context&
-    ) override {
+    virtual const NumberPtr getNumber(
+        const Context&
+    ) const override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
-    virtual NumberPtr getNumber(
-        Context&,
+    virtual const NumberPtr getNumber(
+        const Context&,
         VisitedIdentifiers&
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createNumber();
     }
 
@@ -198,7 +198,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorParam */

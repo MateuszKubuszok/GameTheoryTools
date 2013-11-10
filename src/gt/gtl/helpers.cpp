@@ -6,8 +6,8 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Message suberrorMessage(
-    Message&         parentMessage,
-    ValidableSymbol& invalidSymbol
+    const Message&         parentMessage,
+    const ValidableSymbol& invalidSymbol
 ) {
     std::stringstream result;
     result << parentMessage << ":" << std::endl;

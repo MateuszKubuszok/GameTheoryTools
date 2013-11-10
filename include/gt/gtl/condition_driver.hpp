@@ -22,17 +22,17 @@ public:
      * @return              Condition
      */
     virtual ConditionPtr* playerChoosed(
-        InputLocation& inputLocation,
-        ObjectPtr*     playerPtr,
-        ObjectPtr*     strategyPtr
-    ) = 0;
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     strategyPtr
+    ) const = 0;
 
     /**
      * @brief ConditionDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class ConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,18 +50,18 @@ public:
         {}
 
     virtual ConditionPtr* playerChoosed(
-        InputLocation&,
-        ObjectPtr*,
-        ObjectPtr*
-    ) {
+        const InputLocation&,
+        const ObjectPtr*,
+        const ObjectPtr*
+    ) const {
         return new ConditionPtr(NullFactory::getInstance().createCondition());
     }
 
-    virtual bool isNotNull() {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() const override {
         return Message("NullConditionDriver");
     }
 }; /* END class NullConditionDriver */

@@ -19,11 +19,11 @@ Player::Player(
     registerProperty(createIdentifier("strategies"), ObjectPropertyPtr(new PlayerStrategiesProperty(this)));
 }
 
-Message Player::toString() {
+Message Player::toString() const {
     return Model::Player::toString();
 }
 
-Player::operator Player&() {
+Player::operator const Player&() const {
     return *this;
 }
 

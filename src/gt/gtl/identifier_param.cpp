@@ -9,31 +9,31 @@ namespace GTL {
 // public:
 
 IdentifierParam::IdentifierParam(
-    Identifier& id
+    const Identifier& id
 ) :
     Param(),
     identifier(id)
     {}
 
-ObjectPtr IdentifierParam::getObject(
-    Context&            context,
+const ObjectPtr IdentifierParam::getObject(
+    const Context&      context,
     VisitedIdentifiers& visitedIdentifiers
-) {
+) const {
     checkVisitedIdentifiers(visitedIdentifiers, identifier);
     visitedIdentifiers.insert(identifier);
     return context.getParam(identifier)->getObject(context, visitedIdentifiers);
 }
 
-NumberPtr IdentifierParam::getNumber(
-    Context&            context,
+const NumberPtr IdentifierParam::getNumber(
+    const Context&      context,
     VisitedIdentifiers& visitedIdentifiers
-) {
+) const {
     checkVisitedIdentifiers(visitedIdentifiers, identifier);
     visitedIdentifiers.insert(identifier);
     return context.getParam(identifier)->getNumber(context, visitedIdentifiers);
 }
 
-Message IdentifierParam::toString() {
+Message IdentifierParam::toString() const {
     IdentifierPtr name  = createIdentifierPtr("IdentifierParam");
     MessagePtr    value = createMessagePtr(identifier);
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build()->getResult();

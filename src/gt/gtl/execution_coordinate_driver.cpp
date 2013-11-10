@@ -16,10 +16,10 @@ ExecutionCoordinateDriver::ExecutionCoordinateDriver(
     {}
 
 CoordinatePtr* ExecutionCoordinateDriver::create(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const IdentifierPtr* playerPtr,
     const IdentifierPtr* strategyPtr
-) {
+) const {
     CoordinatePtr* errorCheck = checkingCoordinateDriver.create(inputLocation, playerPtr, strategyPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
@@ -34,10 +34,10 @@ CoordinatePtr* ExecutionCoordinateDriver::create(
 }
 
 CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
-    InputLocation&        inputLocation,
+    const InputLocation&  inputLocation,
     const CoordinatePtr*  coordinatePtr,
     const CoordinatesPtr* dataPtr
-) {
+) const {
     CoordinatePtr* errorCheck = checkingCoordinateDriver.fillWithData(inputLocation, coordinatePtr, dataPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
@@ -54,10 +54,10 @@ CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
 }
 
 CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const CoordinatePtr* coordinatePtr,
     const ParamsPtr*     dataPtr
-) {
+) const {
     CoordinatePtr* errorCheck = checkingCoordinateDriver.fillWithData(inputLocation, coordinatePtr, dataPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
@@ -74,17 +74,17 @@ CoordinatePtr* ExecutionCoordinateDriver::fillWithData(
 }
 
 CoordinatePtr* ExecutionCoordinateDriver::merge(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const CoordinatePtr* coordinate1Ptr,
     const CoordinatePtr* coordinate2Ptr
-) {
+) const {
     CoordinatePtr* errorCheck = checkingCoordinateDriver.merge(inputLocation, coordinate1Ptr, coordinate2Ptr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
     delete errorCheck;
 
-    Coordinate& coordinate1 = **coordinate1Ptr;
-    Coordinate& coordinate2 = **coordinate2Ptr;
+    const Coordinate& coordinate1 = **coordinate1Ptr;
+    const Coordinate& coordinate2 = **coordinate2Ptr;
 
     return new CoordinatePtr(
         setupLocation<Coordinate>(
@@ -94,7 +94,7 @@ CoordinatePtr* ExecutionCoordinateDriver::merge(
     );
 }
 
-Message ExecutionCoordinateDriver::toString() {
+Message ExecutionCoordinateDriver::toString() const {
     return Message("ExecutionCoordinateDriver");
 }
 

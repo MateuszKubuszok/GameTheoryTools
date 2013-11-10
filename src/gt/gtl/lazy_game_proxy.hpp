@@ -20,19 +20,19 @@ class LazyGameProxy : public Model::Game {
     /**
      * @brief Actual Game's builder.
      */
-    Model::GameBuilderPtr gameBuilder;
+    const Model::GameBuilderPtr gameBuilder;
     /**
      * @brief Players.
      */
-    ObjectsPtr            players;
+    const ObjectsPtr            players;
     /**
      * @brief Coordinates to setup data.
      */
-    CoordinatesPtr        coordinates;
+    const CoordinatesPtr        coordinates;
     /**
      * @brief Context.
      */
-    Context*              context;
+    const Context*              context;
 
 public:
     /**
@@ -44,10 +44,10 @@ public:
      * @param context     actual Context
      */
     LazyGameProxy(
-        Model::GameBuilderPtr gameBuilder,
-        ObjectsPtr            players,
-        CoordinatesPtr        coordinates,
-        Context*              context
+        const Model::GameBuilderPtr gameBuilder,
+        const ObjectsPtr            players,
+        const CoordinatesPtr        coordinates,
+        const Context*              context
     );
 
     /**
@@ -55,21 +55,21 @@ public:
      *
      * @return Players
      */
-    virtual Model::PlayersPtr getPlayers() override;
+    virtual const Model::PlayersPtr getPlayers() const override;
 
     /**
      * @brief Grants access to Data specific to a Game.
      *
      * @return DataAccessor returns DataAccessor specific for a Game
      */
-    virtual Model::DataAccessorPtr getData() override;
+    virtual const Model::DataAccessorPtr getData() const override;
 
     /**
      * @brief Game's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
 private:
     /**
@@ -77,7 +77,7 @@ private:
      *
      * @return Games instance
      */
-    Model::GamePtr accessGame();
+    const Model::GamePtr accessGame() const;
 }; /* END class LazyGameProxy */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

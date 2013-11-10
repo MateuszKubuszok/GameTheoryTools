@@ -39,14 +39,14 @@ public:
      *
      * @return Player's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
     /**
      * @brief Explicit cast to Player type.
      *
      * @return Player
      */
-    virtual operator Player&() override;
+    virtual operator const Player&() const override;
 }; /* END class Player */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,11 +65,11 @@ public:
         )
         {}
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullPlayer");
     }
 }; /* END class NullPlayer */
@@ -85,11 +85,11 @@ class ErrorPlayer : public Player {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorPlayer(
-        Message errorMessage
+        const Message errorMessage
     ) :
         Player(
             Model::NullFactory::getInstance().createIdentifier(),
@@ -102,7 +102,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorPlayer */

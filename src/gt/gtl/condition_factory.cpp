@@ -14,7 +14,7 @@ SINGLETON_DEFINITION(ConditionFactory, getInstance, conditionFactoryMutex)
 ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     const ObjectPtr player,
     const ObjectPtr strategy
-) {
+) const {
     return ConditionPtr(
         new PlayerChoiceCondition(player, strategy)
     );

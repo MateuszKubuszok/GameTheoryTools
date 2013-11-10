@@ -9,7 +9,7 @@ namespace GTL {
 // public:
 
 ObjectKnownProperties::ObjectKnownProperties(
-    Object* describedObject
+    const Object* describedObject
 ) :
     object(describedObject)
     {}
@@ -17,7 +17,7 @@ ObjectKnownProperties::ObjectKnownProperties(
 ResultPtr ObjectKnownProperties::findForConditions(
     const Context&,
     const Conditions&
-) {
+) const {
     IdentifierPtr knownProperties  = createIdentifierPtr("Known Properties");
     IdentifierPtr property         = createIdentifierPtr("Property");
 

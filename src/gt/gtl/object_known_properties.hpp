@@ -17,7 +17,7 @@ class ObjectKnownProperties : public ObjectProperty {
     /**
      * @brief Described Object.
      */
-    Object* object;
+    const Object* object;
 
 public:
     /**
@@ -26,7 +26,7 @@ public:
      * @param describedObject described Object
      */
     ObjectKnownProperties(
-        Object* describedObject
+        const Object* describedObject
     );
 
     /**
@@ -39,7 +39,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    ) override;
+    ) const override;
 }; /* END class ObjectKnownProperties */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

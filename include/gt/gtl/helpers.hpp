@@ -16,7 +16,7 @@ namespace GTL {
 template<typename Symbol>
 boost::shared_ptr<Symbol> setupLocation(
     boost::shared_ptr<Symbol> symbol,
-    InputLocation&            inputLocation
+    const InputLocation&      inputLocation
 );
 
 /**
@@ -27,8 +27,8 @@ boost::shared_ptr<Symbol> setupLocation(
  * @return              message to show
  */
 Message suberrorMessage(
-    Message&         parentMessage,
-    ValidableSymbol& invalidSymbol
+    const Message&         parentMessage,
+    const ValidableSymbol& invalidSymbol
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

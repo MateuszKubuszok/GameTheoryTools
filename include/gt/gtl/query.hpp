@@ -27,17 +27,17 @@ class Query : public virtual ValidableSymbol {
     /**
      * @brief Names of properties that Oject will be queried for.
      */
-    IdentifiersPtr propertiesNames;
+    const IdentifiersPtr propertiesNames;
 
     /**
      * @brief Objects that will be queried.
      */
-    ObjectsPtr     objects;
+    const ObjectsPtr     objects;
 
     /**
      * @brief Conditions of Query.
      */
-    ConditionsPtr  conditions;
+    const ConditionsPtr  conditions;
 
 public:
     /**
@@ -48,9 +48,9 @@ public:
      * @param conditions     Conditions for queries
      */
     Query(
-        IdentifiersPtr propertiesName,
-        ObjectsPtr     objects,
-        ConditionsPtr  conditions
+        const IdentifiersPtr propertiesName,
+        const ObjectsPtr     objects,
+        const ConditionsPtr  conditions
     );
 
     /**
@@ -59,15 +59,15 @@ public:
      * @param context Context with definitions
      */
     virtual ResultPtr execute(
-        Context& context
-    );
+        const Context& context
+    ) const;
 
     /**
      * @brief Returns Query's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class Query */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,16 +88,16 @@ public:
         {}
 
     virtual ResultPtr execute(
-        Context&
-    ) override {
+        const Context&
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullQuery");
     }
 }; /* END class NullQuery */
@@ -113,11 +113,11 @@ class ErrorQuery : public Query {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorQuery(
-        Message errorMessage
+        const Message errorMessage
     ) :
         Query(
             Model::NullFactory::getInstance().createIdentifiers(),
@@ -128,8 +128,8 @@ public:
         {}
 
     virtual ResultPtr execute(
-        Context&
-    ) override {
+        const Context&
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
@@ -137,7 +137,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorQuery */

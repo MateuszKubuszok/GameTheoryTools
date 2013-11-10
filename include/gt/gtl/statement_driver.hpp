@@ -24,7 +24,7 @@ public:
      * @param definition definition to execute
      */
     virtual bool executeDefinition(
-        DefinitionPtr* definition
+        const DefinitionPtr* definition
     ) = 0;
 
     /**
@@ -33,7 +33,7 @@ public:
      * @param query query to execute
      */
     virtual bool executeQuery(
-        QueryPtr* query
+        const QueryPtr* query
     ) = 0;
 
     /**
@@ -45,10 +45,10 @@ public:
      * @return              Definition
      */
     virtual DefinitionPtr* createDefinition(
-        InputLocation& inputLocation,
-        IdentifierPtr* identifier,
-        ObjectPtr*     object
-    ) = 0;
+        const InputLocation& inputLocation,
+        const IdentifierPtr* identifier,
+        const ObjectPtr*     object
+    ) const = 0;
 
     /**
      * @brief Creates Query for given properties.
@@ -60,18 +60,18 @@ public:
      * @return              Query
      */
     virtual QueryPtr* createQuery(
-        InputLocation&  inputLocation,
-        IdentifiersPtr* identifiers,
-        ObjectsPtr*     objects,
-        ConditionsPtr*  conditions
-    ) = 0;
+        const InputLocation&  inputLocation,
+        const IdentifiersPtr* identifiers,
+        const ObjectsPtr*     objects,
+        const ConditionsPtr*  conditions
+    ) const = 0;
 
     /**
      * @brief StatementDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class StatementDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,39 +88,39 @@ public:
         {}
 
     virtual bool executeDefinition(
-        DefinitionPtr*
+        const DefinitionPtr*
     ) override {
         return true;
     }
 
     virtual bool executeQuery(
-        QueryPtr*
+        const QueryPtr*
     ) override {
         return true;
     }
 
     virtual DefinitionPtr* createDefinition(
-        InputLocation&,
-        IdentifierPtr*,
-        ObjectPtr*
-    ) override {
+        const InputLocation&,
+        const IdentifierPtr*,
+        const ObjectPtr*
+    ) const override {
         return new DefinitionPtr(NullFactory::getInstance().createDefinition());
     }
 
     virtual QueryPtr* createQuery(
-        InputLocation&,
-        IdentifiersPtr*,
-        ObjectsPtr*,
-        ConditionsPtr*
-    ) override {
+        const InputLocation&,
+        const IdentifiersPtr*,
+        const ObjectsPtr*,
+        const ConditionsPtr*
+    ) const override {
         return new QueryPtr(NullFactory::getInstance().createQuery());
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullStatementDriver");
     }
 }; /* END class NullStatementDriver */

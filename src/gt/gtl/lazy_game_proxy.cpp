@@ -9,10 +9,10 @@ namespace GTL {
 // public:
 
 LazyGameProxy::LazyGameProxy(
-    Model::GameBuilderPtr definedGameBuilder,
-    ObjectsPtr            definedPlayers,
-    CoordinatesPtr        definedCoordinates,
-    Context*              definedContext
+    const Model::GameBuilderPtr definedGameBuilder,
+    const ObjectsPtr            definedPlayers,
+    const CoordinatesPtr        definedCoordinates,
+    const Context*              definedContext
 ) :
     gameBuilder(definedGameBuilder),
     players(definedPlayers),
@@ -20,30 +20,30 @@ LazyGameProxy::LazyGameProxy(
     context(definedContext)
     {}
 
-Model::PlayersPtr LazyGameProxy::getPlayers() {
+const Model::PlayersPtr LazyGameProxy::getPlayers() const {
     return accessGame()->getPlayers();
 }
 
-Model::DataAccessorPtr LazyGameProxy::getData() {
+const Model::DataAccessorPtr LazyGameProxy::getData() const {
     return accessGame()->getData();
 }
 
-Message LazyGameProxy::toString() {
+Message LazyGameProxy::toString() const {
     return accessGame()->toString();
 }
 
 // private:
 
-Model::GamePtr LazyGameProxy::accessGame() {
+const Model::GamePtr LazyGameProxy::accessGame() const {
     Model::GameBuilderPtr currentGameBuilder = gameBuilder->cloneBuilder();
 
     Model::PlayersPtr modelPlayers(new Model::Players());
-    for (ObjectPtr& objectPtr : *players) {
-        Player& player = *objectPtr;
-        Param&  param  = *objectPtr;
+    for (const ObjectPtr& objectPtr : *players) {
+        const Player& player = *objectPtr;
+        const Param&  param  = *objectPtr;
 
         if (player) {
-            PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
+            const PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
 
             if (playerPtr) {
                 modelPlayers->insert(
@@ -57,8 +57,8 @@ Model::GamePtr LazyGameProxy::accessGame() {
         }
 
         if (param) {
-            ObjectPtr referredObject = param.getObject(*context);
-            Player&   referredPlayer = *referredObject;
+            const ObjectPtr referredObject = param.getObject(*context);
+            const Player&   referredPlayer = *referredObject;
 
             if (referredPlayer) {
                 PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
@@ -77,7 +77,7 @@ Model::GamePtr LazyGameProxy::accessGame() {
     }
     currentGameBuilder->dataBuilder()->setPlayers(modelPlayers);
 
-    for (CoordinatePtr& coordinate : *coordinates) {
+    for (const CoordinatePtr& coordinate : *coordinates) {
         Model::DataBuilderPtr builderForCoordinate = currentGameBuilder->clone();
         coordinate->fillDataBuilder(*context, builderForCoordinate);
     }

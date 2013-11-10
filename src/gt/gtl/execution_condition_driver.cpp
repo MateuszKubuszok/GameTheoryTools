@@ -16,17 +16,17 @@ ExecutionConditionDriver::ExecutionConditionDriver(
     {}
 
 ConditionPtr* ExecutionConditionDriver::playerChoosed(
-    InputLocation& inputLocation,
-    ObjectPtr*     playerPtr,
-    ObjectPtr*     strategyPtr
-) {
+    const InputLocation& inputLocation,
+    const ObjectPtr*     playerPtr,
+    const ObjectPtr*     strategyPtr
+) const {
     ConditionPtr* errorCheck = checkingConditionDriver.playerChoosed(inputLocation, playerPtr, strategyPtr);
     if (!(*errorCheck)->isValid())
         return errorCheck;
     delete errorCheck;
 
-    ObjectPtr& playerObject   = *playerPtr;
-    ObjectPtr& strategyObject = *strategyPtr;
+    const ObjectPtr& playerObject   = *playerPtr;
+    const ObjectPtr& strategyObject = *strategyPtr;
 
     return new ConditionPtr(
         setupLocation<Condition>(
@@ -36,7 +36,7 @@ ConditionPtr* ExecutionConditionDriver::playerChoosed(
     );
 }
 
-Message ExecutionConditionDriver::toString() {
+Message ExecutionConditionDriver::toString() const {
     return Message("ExecutionConditionDriver");
 }
 

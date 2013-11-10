@@ -15,10 +15,10 @@ CheckingCoordinateDriver::CheckingCoordinateDriver(
     {}
 
 CoordinatePtr* CheckingCoordinateDriver::create(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const IdentifierPtr*,
     const IdentifierPtr*
-) {
+) const {
     return new CoordinatePtr(
         setupLocation<Coordinate>(
             NullFactory::getInstance().createCoordinate(),
@@ -28,12 +28,12 @@ CoordinatePtr* CheckingCoordinateDriver::create(
 }
 
 CoordinatePtr* CheckingCoordinateDriver::fillWithData(
-    InputLocation&        inputLocation,
+    const InputLocation&  inputLocation,
     const CoordinatePtr*  coordinatePtr,
     const CoordinatesPtr* dataPtr
-) {
-    Coordinate&  coordinate = **coordinatePtr;
-    Coordinates& data       = **dataPtr;
+) const {
+    const Coordinate&  coordinate = **coordinatePtr;
+    const Coordinates& data       = **dataPtr;
 
     if (!coordinate) {
         // TODO: create ErrorMessageFactory
@@ -71,12 +71,12 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
 }
 
 CoordinatePtr* CheckingCoordinateDriver::fillWithData(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const CoordinatePtr* coordinatePtr,
     const ParamsPtr*     dataPtr
-) {
-    Coordinate&  coordinate = **coordinatePtr;
-    Params&      data       = **dataPtr;
+) const {
+    const Coordinate&  coordinate = **coordinatePtr;
+    const Params&      data       = **dataPtr;
 
     if (!coordinate) {
         // TODO: create ErrorMessageFactory
@@ -114,12 +114,12 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
 }
 
 CoordinatePtr* CheckingCoordinateDriver::merge(
-    InputLocation&       inputLocation,
+    const InputLocation& inputLocation,
     const CoordinatePtr* coordinate1Ptr,
     const CoordinatePtr* coordinate2Ptr
-) {
-    Coordinate&  coordinate1 = **coordinate1Ptr;
-    Coordinate&  coordinate2 = **coordinate2Ptr;
+) const {
+    const Coordinate&  coordinate1 = **coordinate1Ptr;
+    const Coordinate&  coordinate2 = **coordinate2Ptr;
 
     if (!coordinate1) {
         // TODO: create ErrorMessageFactory
@@ -153,7 +153,7 @@ CoordinatePtr* CheckingCoordinateDriver::merge(
     );
 }
 
-Message CheckingCoordinateDriver::toString() {
+Message CheckingCoordinateDriver::toString() const {
     return Message("CheckingCoordinateDriver");
 }
 

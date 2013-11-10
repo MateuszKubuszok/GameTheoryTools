@@ -29,8 +29,8 @@ public:
      * @return           Param instance
      */
     ParamPtr createParam(
-        Identifier& identifier
-    );
+        const Identifier& identifier
+    ) const;
 
     /**
      * @brief Creates Param by identifier attatched to it.
@@ -39,8 +39,8 @@ public:
      * @return           Param instance
      */
     ParamPtr createParam(
-        IdentifierPtr identifier
-    );
+        const IdentifierPtr identifier
+    ) const;
 
     /**
      * @brief Creates Param by value contained by it.
@@ -49,8 +49,8 @@ public:
      * @return       Param instance
      */
     ParamPtr createParam(
-        Number& number
-    );
+        const Number& number
+    ) const;
 
     /**
      * @brief Creates Param by value contained by it.
@@ -59,8 +59,8 @@ public:
      * @return       Param instance
      */
     ParamPtr createParam(
-        NumberPtr number
-    );
+        const NumberPtr number
+    ) const;
 
     /**
      * @brief Creates Param by value contained by it.
@@ -69,8 +69,8 @@ public:
      * @return       Param instance
      */
     ParamPtr createParam(
-        ObjectPtr object
-    );
+        const ObjectPtr object
+    ) const;
 
 private:
     /**

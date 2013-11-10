@@ -37,8 +37,8 @@ public:
      * @param definedValue value of the defined property
      */
     Definition(
-        IdentifierPtr definedName,
-        ParamPtr      definedValue
+        const IdentifierPtr definedName,
+        const ParamPtr      definedValue
     );
 
     /**
@@ -46,21 +46,21 @@ public:
      *
      * @return value of the property
      */
-    virtual IdentifierPtr getName();
+    virtual const IdentifierPtr getName() const;
 
     /**
      * @brief Returns value of the property.
      *
      * @return value of the property
      */
-    virtual ParamPtr getValue();
+    virtual const ParamPtr getValue() const;
 
     /**
      * @brief Returns Message about Definition.
      *
      * @return Definition's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class Definition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,19 +79,19 @@ public:
         )
         {}
 
-    virtual IdentifierPtr getName() override {
+    virtual const IdentifierPtr getName() const override {
         return Model::NullFactory::getInstance().createIdentifier();
     }
 
-    virtual ParamPtr getValue() override {
+    virtual const ParamPtr getValue() const override {
         return NullFactory::getInstance().createParam();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullDefinition");
     }
 }; /* END class NullDefinition */
@@ -120,11 +120,11 @@ public:
         message(errorMessage)
         {}
 
-    virtual IdentifierPtr getName() override {
+    virtual const IdentifierPtr getName() const override {
         return Model::NullFactory::getInstance().createIdentifier();
     }
 
-    virtual ParamPtr getValue() override {
+    virtual const ParamPtr getValue() const override {
         return NullFactory::getInstance().createParam();
     }
 
@@ -132,7 +132,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorDefinition */

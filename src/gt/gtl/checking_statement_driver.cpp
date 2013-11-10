@@ -15,30 +15,30 @@ CheckingStatementDriver::CheckingStatementDriver(
     {}
 
 bool CheckingStatementDriver::executeDefinition(
-    DefinitionPtr* definitionPtr
+    const DefinitionPtr* definitionPtr
 ) {
-    Definition& definition = **definitionPtr;
+    const Definition& definition = **definitionPtr;
     if (!definition)
         driver->showError(definition);
     return definition.isValid();
 }
 
 bool CheckingStatementDriver::executeQuery(
-    QueryPtr* queryPtr
+    const QueryPtr* queryPtr
 ) {
-    Query& query = **queryPtr;
+    const Query& query = **queryPtr;
     if (!query)
         driver->showError(query);
     return query.isValid();
 }
 
 DefinitionPtr* CheckingStatementDriver::createDefinition(
-    InputLocation& inputLocation,
-    IdentifierPtr* identifierPtr,
-    ObjectPtr*     objectPtr
-) {
-    Identifier& identifier = **identifierPtr;
-    Object&     object     = **objectPtr;
+    const InputLocation& inputLocation,
+    const IdentifierPtr* identifierPtr,
+    const ObjectPtr*     objectPtr
+) const {
+    const Identifier& identifier = **identifierPtr;
+    const Object&     object     = **objectPtr;
 
     if (!object) {
         // TODO: create ErrorMessageFactory
@@ -61,17 +61,17 @@ DefinitionPtr* CheckingStatementDriver::createDefinition(
 }
 
 QueryPtr* CheckingStatementDriver::createQuery(
-    InputLocation&  inputLocation,
-    IdentifiersPtr* identifiersPtr,
-    ObjectsPtr*     objectsPtr,
-    ConditionsPtr*  conditionsPtr
-) {
-    Identifiers& identifiers = **identifiersPtr;
-    Objects&     objects     = **objectsPtr;
-    Conditions&  conditions  = **conditionsPtr;
+    const InputLocation&  inputLocation,
+    const IdentifiersPtr* identifiersPtr,
+    const ObjectsPtr*     objectsPtr,
+    const ConditionsPtr*  conditionsPtr
+) const {
+    const Identifiers& identifiers = **identifiersPtr;
+    const Objects&     objects     = **objectsPtr;
+    const Conditions&  conditions  = **conditionsPtr;
 
-    for (ObjectPtr& objectPtr : objects) {
-        Object& object = *objectPtr;
+    for (const ObjectPtr& objectPtr : objects) {
+        const Object& object = *objectPtr;
 
         if (!object)
             return new QueryPtr(
@@ -81,11 +81,11 @@ QueryPtr* CheckingStatementDriver::createQuery(
                 )
             );
 
-        for (IdentifierPtr& propertyPtr : identifiers) {
-            Identifier& property = *propertyPtr;
+        for (const IdentifierPtr& propertyPtr : identifiers) {
+            const Identifier& property = *propertyPtr;
 
             if (!object.respondsTo(property)) {
-                Param& param = object;
+                const Param& param = object;
 
                 if (!param) {
                     // TODO: create ErrorMessageFactory
@@ -103,8 +103,8 @@ QueryPtr* CheckingStatementDriver::createQuery(
         }
     }
 
-    for (ConditionPtr& conditionPtr : conditions) {
-        Condition& condition = *conditionPtr;
+    for (const ConditionPtr& conditionPtr : conditions) {
+        const Condition& condition = *conditionPtr;
 
         if (!condition) {
             // TODO: create ErrorMessageFactory
@@ -127,7 +127,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
     );
 }
 
-Message CheckingStatementDriver::toString() {
+Message CheckingStatementDriver::toString() const {
     return Message("CheckingStatementDriver");
 }
 

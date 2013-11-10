@@ -50,9 +50,9 @@ public:
      * @return              Game
      */
     virtual GamePtr* createStrategic(
-        InputLocation& inputLocation,
-        DetailsPtr*    details
-    ) override;
+        const InputLocation& inputLocation,
+        const DetailsPtr*    details
+    ) const override;
 
     /**
      * @brief Create Extensive Game.
@@ -62,9 +62,9 @@ public:
      * @return              Game
      */
     virtual GamePtr* createExtensive(
-        InputLocation& inputLocation,
-        DetailsPtr*    details
-    ) override;
+        const InputLocation& inputLocation,
+        const DetailsPtr*    details
+    ) const override;
 
     /**
      * @brief Create Details.
@@ -75,10 +75,10 @@ public:
      * @return              Details
      */
     virtual DetailsPtr* createDetails(
-        InputLocation&  inputLocation,
-        ObjectsPtr*     players,
-        CoordinatesPtr* data
-    ) override;
+        const InputLocation&  inputLocation,
+        const ObjectsPtr*     players,
+        const CoordinatesPtr* data
+    ) const override;
 
     /**
      * @brief Create Player.
@@ -89,17 +89,17 @@ public:
      * @return              Player
      */
     virtual PlayerPtr* createPlayer(
-        InputLocation&  inputLocation,
-        IdentifierPtr*  player,
-        IdentifiersPtr* strategies
-    ) override;
+        const InputLocation&  inputLocation,
+        const IdentifierPtr*  player,
+        const IdentifiersPtr* strategies
+    ) const override;
 
     /**
      * @brief ExecutionGameDriver's Message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
 private:
     /**
@@ -111,10 +111,10 @@ private:
      * @return              Game instance (valid or not)
      */
     GamePtr* createGameWithBuilder(
-        InputLocation&      inputLocation,
-        Details&            details,
-        Model::GameBuilder& gameBuilder
-    );
+        const InputLocation&      inputLocation,
+        const Details&            details,
+        const Model::GameBuilder& gameBuilder
+    ) const;
 }; /* END class ExecutionGameDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

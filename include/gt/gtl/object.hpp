@@ -21,17 +21,17 @@ class Object : public virtual ValidableSymbol {
     /**
      * @brief Returned when Object cannot be casted to Game.
      */
-    static GamePtr noGame;
+    static const GamePtr noGame;
 
     /**
      * @brief Returned when Object cannot be casted to Param.
      */
-    static ParamPtr noParam;
+    static const ParamPtr noParam;
 
     /**
      * @brief Returned when Object cannot be casted to Player.
      */
-    static PlayerPtr noPlayer;
+    static const PlayerPtr noPlayer;
 
     /**
      * @brief Map containing ObjectProperties bound to their name.
@@ -41,7 +41,7 @@ class Object : public virtual ValidableSymbol {
     /**
      * @brief Object's type name.
      */
-    IdentifierPtr typeName;
+    const IdentifierPtr typeName;
 
 public:
     /**
@@ -55,7 +55,7 @@ public:
      * @param type Object's type
      */
     explicit Object(
-        Identifier type
+        const Identifier type
     );
 
     /**
@@ -72,8 +72,8 @@ public:
      * @return          true if Object responds to such property
      */
     virtual bool respondsTo(
-        Identifier& propertyName
-    );
+        const Identifier& propertyName
+    ) const;
 
     /**
      * @brief Finds Objects' property and returns it as a result.
@@ -84,9 +84,9 @@ public:
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
     virtual ResultPtr findProperty(
-        const Context& context,
-        Identifier&    propertyName
-    );
+        const Context&    context,
+        const Identifier& propertyName
+    ) const;
 
     /**
      * @brief Finds Objects' property for giver conditions and returns it as a result.
@@ -98,51 +98,51 @@ public:
      */
     virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
-        Identifier&       propertyName,
+        const Identifier& propertyName,
         const Conditions& conditions
-    );
+    ) const;
 
     /**
      * @brief Returns list of available properties.
      *
      * @return properties list
      */
-    IdentifiersPtr listProperties();
+    IdentifiersPtr listProperties() const;
 
     /**
      * @brief Returns type of an Object.
      *
      * @return type name
      */
-    IdentifierPtr type();
+    const IdentifierPtr type() const ;
 
     /**
      * @brief Returns message about object.
      *
      * @return generic Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
     /**
      * @brief Explicit cast to Game type.
      *
      * @return Game
      */
-    virtual operator Game&();
+    virtual operator const Game&() const;
 
     /**
      * @brief Explicit cast to Param type.
      *
      * @return Param
      */
-    virtual operator Param&();
+    virtual operator const Param&() const;
 
     /**
      * @brief Explicit cast to Player type.
      *
      * @return Player
      */
-    virtual operator Player&();
+    virtual operator const Player&() const;
 
 protected:
     /**
@@ -152,8 +152,8 @@ protected:
      * @return             true if property is registered
      */
     bool isPropertyRegistered(
-        Identifier& propertyName
-    );
+        const Identifier& propertyName
+    ) const;
 
     /**
      * @brief Obtains ObjectProperty by name under which it was registered.
@@ -162,9 +162,9 @@ protected:
      * @return                       required ObjectProperty
      * @throws std::invalid_argument thrown when property is not available for an Object
      */
-    ObjectPropertyPtr getProperty(
-        Identifier& propertyName
-    );
+    const ObjectPropertyPtr getProperty(
+        const Identifier& propertyName
+    ) const;
 
     /**
      * @brief Registers property together with its name.
@@ -173,8 +173,8 @@ protected:
      * @param property     property instance
      */
     void registerProperty(
-        Identifier        propertyName,
-        ObjectPropertyPtr property
+        const Identifier        propertyName,
+        const ObjectPropertyPtr property
     );
 }; /* END class Object */
 
@@ -197,7 +197,7 @@ public:
     virtual ResultPtr findForConditions(
         const Context&    context,
         const Conditions& conditions
-    ) = 0;
+    ) const = 0;
 }; /* END class ObjectProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -210,31 +210,31 @@ public:
 class NullObject : public Object {
 public:
     virtual bool respondsTo(
-        Identifier&
-    ) override {
+        const Identifier&
+    ) const override {
         return false;
     }
 
     virtual ResultPtr findProperty(
         const Context&,
-        Identifier&
-    ) override {
+        const Identifier&
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr findPropertyWithConditions(
         const Context&,
-        Identifier&,
+        const Identifier&,
         const Conditions&
-    ) override {
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullObject");
     }
 }; /* END class NullObject */
@@ -250,33 +250,33 @@ class ErrorObject : public Object {
     /**
      * @brief Error message.
      */
-    Message message;
+    const Message message;
 
 public:
     ErrorObject(
-        Message errorMessage
+        const Message errorMessage
     ) :
         message(errorMessage)
         {}
 
     virtual bool respondsTo(
-        Identifier&
-    ) override {
+        const Identifier&
+    ) const override {
         return false;
     }
 
     virtual ResultPtr findProperty(
         const Context&,
-        Identifier&
-    ) override {
+        const Identifier&
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr findPropertyWithConditions(
         const Context&,
-        Identifier&,
+        const Identifier&,
         const Conditions&
-    ) override {
+    ) const override {
         return NullFactory::getInstance().createResult();
     }
 
@@ -284,7 +284,7 @@ public:
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return message;
     }
 }; /* END class ErrorObject */

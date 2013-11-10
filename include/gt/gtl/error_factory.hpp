@@ -29,8 +29,8 @@ public:
      * @result             ErrorCondition
      */
     ConditionPtr createCondition(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorCoordinate.
@@ -39,8 +39,8 @@ public:
      * @result             ErrorCoordinate
      */
     CoordinatePtr createCoordinate(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorDefinition.
@@ -49,8 +49,8 @@ public:
      * @result             ErrorDefinition
      */
     DefinitionPtr createDefinition(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorDetails.
@@ -59,8 +59,8 @@ public:
      * @result             ErrorDetails
      */
     DetailsPtr createDetails(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorGame.
@@ -69,8 +69,8 @@ public:
      * @result             ErrorGame
      */
     GamePtr createGame(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorObject.
@@ -79,8 +79,8 @@ public:
      * @result             ErrorObject
      */
     ObjectPtr createObject(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorParam.
@@ -89,8 +89,8 @@ public:
      * @result             ErrorParam
      */
     ParamPtr createParam(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorPlayer.
@@ -99,8 +99,8 @@ public:
      * @result             ErrorPlayer
      */
     PlayerPtr createPlayer(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
 
     /**
      * @brief Creates ErrorQuery.
@@ -109,8 +109,9 @@ public:
      * @result             ErrorQuery
      */
     QueryPtr createQuery(
-        Message errorMessage
-    );
+        const Message errorMessage
+    ) const;
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

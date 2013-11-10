@@ -38,8 +38,8 @@ BOOST_AUTO_TEST_CASE( Player_Player ) {
     GT::IdentifiersPtr playerStrategies = GT::Model::NullFactory::getInstance().createIdentifiers();
 
     // when
-    GT::GTL::Player  player(playerName, playerStrategies);
-    GT::GTL::Player& playerRef = player;
+    GT::GTL::Player        player(playerName, playerStrategies);
+    const GT::GTL::Player& playerRef = player;
 
     // then
     BOOST_CHECK_EQUAL(

@@ -56,7 +56,7 @@ public:
      *
      * @return input location
      */
-    virtual InputLocationPtr getInputLocation();
+    virtual const InputLocationPtr getInputLocation() const;
 
     /**
      * @brief Sets input location.
@@ -64,7 +64,7 @@ public:
      * @param inutLocation input location
      */
     virtual void setInputLocation(
-        InputLocationPtr inputLocation
+        const InputLocationPtr inputLocation
     );
 
     /**
