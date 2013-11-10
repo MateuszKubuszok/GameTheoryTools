@@ -24,7 +24,7 @@ public:
      *
      * @return Players
      */
-    virtual PlayersPtr getPlayers() = 0;
+    virtual const PlayersPtr getPlayers() const = 0;
 
     /**
      * @brief Returns values handler for given coordiantes.
@@ -33,9 +33,9 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) = 0;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const = 0;
 
     /**
      * @brief Returns values handler for given coordiantes.
@@ -44,38 +44,38 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
-    ) = 0;
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const = 0;
 
     /**
      * @brief Returns Data's message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
+
+    /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const = 0;
+
+    /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const = 0;
 }; /* END class Data */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,40 +87,40 @@ public:
  */
 class NullDataAccessor : public DataAccessor {
 public:
-    virtual DataPiecePtr getValues(
-        Positions&
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr getValues(
-        PositionsPtr
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataPiecePtr operator[](
-        Positions&
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const Positions&
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr operator[](
-        PositionsPtr
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullData");
+    }
+
+    virtual const DataPiecePtr operator[](
+        const Positions&
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
     }
 }; /* END class NullDataAccessor */
 

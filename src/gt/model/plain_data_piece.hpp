@@ -35,8 +35,8 @@ public:
      * @param params  params definitions
      */
     PlainDataPiece(
-        PlayersPtr players,
-        NumbersPtr params
+        const PlayersPtr players,
+        const NumbersPtr params
     );
 
     /**
@@ -46,16 +46,16 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    virtual NumberPtr& getValue(
-        Identifier& playerName
-    ) override;
+    virtual const NumberPtr& getValue(
+        const Identifier& playerName
+    ) const override;
 
     /**
      * @brief Returns PlainDataPiece's message.
      *
      * @return message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class PlainDataPiece */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

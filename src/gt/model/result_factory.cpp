@@ -11,7 +11,7 @@ SINGLETON_DEFINITION(ResultFactory, getInstance, resultFactoryMutex)
 
 // public:
 
-ResultBuilderPtr ResultFactory::buildResult() {
+ResultBuilderPtr ResultFactory::buildResult() const {
     Message indent;
     switch (indentationMode) {
     case ResultIndentationMode::TABS:
@@ -37,31 +37,31 @@ ResultBuilderPtr ResultFactory::buildResult() {
 
 ResultPtr ResultFactory::constResult(
     const Message& content
-) {
+) const {
     return ResultPtr(new ConstResult(content));
 }
 
-ResultPtr ResultFactory::emptyResult() {
+ResultPtr ResultFactory::emptyResult() const {
     return ResultPtr(new EmptyResult());
 }
 
-ResultBuilderMode ResultFactory::getBuilderMode() {
+ResultBuilderMode ResultFactory::getBuilderMode() const {
     return builderMode;
 }
 
 ResultFactory& ResultFactory::setBuilderMode(
-    ResultBuilderMode newBuilderMode
+    const ResultBuilderMode newBuilderMode
 ) {
     builderMode = newBuilderMode;
     return *this;
 }
 
-ResultIndentationMode ResultFactory::getIndentationMode() {
+ResultIndentationMode ResultFactory::getIndentationMode() const {
     return indentationMode;
 }
 
 ResultFactory& ResultFactory::setIndentationMode(
-    ResultIndentationMode newIndentationMode
+    const ResultIndentationMode newIndentationMode
 ) {
     indentationMode = newIndentationMode;
     return *this;

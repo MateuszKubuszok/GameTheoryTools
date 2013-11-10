@@ -12,45 +12,45 @@ StrategicGameBuilder::StrategicGameBuilder() :
     strategicDataBuilder(new StrategicDataBuilder())
     {}
 
-PlayersPtr StrategicGameBuilder::getPlayers() {
+const PlayersPtr StrategicGameBuilder::getPlayers() const {
     return strategicDataBuilder->getPlayers();
 }
 
 DataBuilder& StrategicGameBuilder::setPlayers(
-    PlayersPtr players
+    const PlayersPtr players
 ) {
     strategicDataBuilder->setPlayers(players);
     return *this;
 }
 
 DataBuilder& StrategicGameBuilder::addNextPositions(
-    PositionsPtr positions
+    const PositionsPtr positions
 ) {
     strategicDataBuilder->addNextPositions(positions);
     return *this;
 }
 
 DataBuilder& StrategicGameBuilder::setParams(
-    NumbersPtr params
+    const NumbersPtr params
 ) {
     strategicDataBuilder->setParams(params);
     return *this;
 }
 
-DataBuilderPtr StrategicGameBuilder::clone() {
+DataBuilderPtr StrategicGameBuilder::clone() const {
     return strategicDataBuilder->clone();
 }
 
-GameBuilderPtr StrategicGameBuilder::cloneBuilder() {
+GameBuilderPtr StrategicGameBuilder::cloneBuilder() const {
     return GameBuilderPtr(new StrategicGameBuilder());
 }
 
-DataBuilderPtr StrategicGameBuilder::dataBuilder() {
+DataBuilderPtr StrategicGameBuilder::dataBuilder() const {
     return boost::dynamic_pointer_cast<DataBuilder>(strategicDataBuilder);
 }
 
 
-GamePtr StrategicGameBuilder::build() {
+GamePtr StrategicGameBuilder::build() const {
     return GamePtr(
         new StrategicGame(
             strategicDataBuilder->getPlayers(),
@@ -59,7 +59,7 @@ GamePtr StrategicGameBuilder::build() {
     );
 }
 
-Message StrategicGameBuilder::toString() {
+Message StrategicGameBuilder::toString() const {
     IdentifierPtr name    = createIdentifierPtr("Current Strategic Game");
     MessagePtr    message = createMessagePtr(dataBuilder()->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

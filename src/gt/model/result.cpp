@@ -11,9 +11,9 @@ namespace Model {
 Result::~Result() {}
 
 bool Result::isEqual(
-    Root& root
-) {
-    Result* result = dynamic_cast<Result*>(&root);
+    const Root& root
+) const {
+    const Result* result = dynamic_cast<const Result*>(&root);
     if (!result)
         return false;
     if (result == this)
@@ -21,7 +21,7 @@ bool Result::isEqual(
     return getResult() == result->getResult();
 }
 
-Message Result::toString() {
+Message Result::toString() const {
     return getResult();
 }
 
@@ -30,22 +30,22 @@ Message Result::toString() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    ResultPtr& result1,
-    ResultPtr& result2
+    const ResultPtr& result1,
+    const ResultPtr& result2
 ) {
     return (*result1) == (*result2);
 }
 
 bool operator!=(
-    ResultPtr& result1,
-    ResultPtr& result2
+    const ResultPtr& result1,
+    const ResultPtr& result2
 ) {
     return (*result1) != (*result2);
 }
 
 OutputStream& operator<<(
-    OutputStream& stream,
-    ResultPtr&    result
+    OutputStream&    stream,
+    const ResultPtr& result
 ) {
     return stream << result->toString();
 }

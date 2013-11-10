@@ -9,16 +9,16 @@ namespace Model {
 // public:
 
 PlainResultBuilder::PlainResultBuilder(
-    Message indentation
+    const Message indentation
 ) :
     AbstractResultBuilder(indentation)
     {}
 
-ResultPtr PlainResultBuilder::build() {
+ResultPtr PlainResultBuilder::build() const {
     return buildRaw();
 }
 
-ResultPtr PlainResultBuilder::buildRaw() {
+ResultPtr PlainResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
     std::stringstream result;
@@ -29,7 +29,7 @@ ResultPtr PlainResultBuilder::buildRaw() {
             result << indent << (*propertyName) << ',';
         result << std::endl;
 
-        for (PartialResult& partialResult : partialResults) {
+        for (const PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
@@ -41,7 +41,7 @@ ResultPtr PlainResultBuilder::buildRaw() {
     }
 
     if (subResults.size() > 0) {
-        for (SubResult& subResult : subResults) {
+        for (const SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 

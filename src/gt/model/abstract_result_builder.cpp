@@ -9,7 +9,7 @@ namespace Model {
 // public:
 
 AbstractResultBuilder::AbstractResultBuilder(
-    Message indentation
+    const Message indentation
 ) :
     propertiesNames(new Identifiers()),
     partialResults(),
@@ -18,29 +18,29 @@ AbstractResultBuilder::AbstractResultBuilder(
     {}
 
 ResultBuilder& AbstractResultBuilder::setHeaders(
-    IdentifiersPtr& newPropertiesNames
+    const IdentifiersPtr& newPropertiesNames
 ) {
     propertiesNames = newPropertiesNames;
     return *this;
 }
 
 ResultBuilder& AbstractResultBuilder::addRecord(
-    IdentifierPtr& name,
-    MessagesPtr&   propertiesValues
+    const IdentifierPtr& name,
+    const MessagesPtr&   propertiesValues
 ) {
     partialResults.push_back( PartialResults::value_type(name, propertiesValues) );
     return *this;
 }
 
 ResultBuilder& AbstractResultBuilder::addResult(
-    IdentifierPtr& name,
-    MessagePtr&    result
+    const IdentifierPtr& name,
+    const MessagePtr&    result
 ) {
     subResults.push_back( SubResults::value_type(name, result) );
     return *this;
 }
 
-Message AbstractResultBuilder::toString() {
+Message AbstractResultBuilder::toString() const {
     try {
         return build()->getResult();
     } catch (const IllegalInnerState& e) {
@@ -50,9 +50,9 @@ Message AbstractResultBuilder::toString() {
 
 // protected:
 
-void AbstractResultBuilder::checkPropertyToResultMatching() {
+void AbstractResultBuilder::checkPropertyToResultMatching() const {
     Index propertiesSize = propertiesNames->size();
-    for (PartialResult& partialResult : partialResults) {
+    for (const PartialResult& partialResult : partialResults) {
         MessagesPtr checkedProperties = partialResult.second;
         if (checkedProperties->size() != propertiesSize)
             throw ExceptionFactory::getInstance().propertiesAndResultsDontMatchInSize(
@@ -63,8 +63,8 @@ void AbstractResultBuilder::checkPropertyToResultMatching() {
 }
 
 Message AbstractResultBuilder::addIndent(
-    Message content
-) {
+    const Message content
+) const {
     // do not use boost::container::vector here
     // - it causes memory access violation with split function
     std::vector<Message> lines;

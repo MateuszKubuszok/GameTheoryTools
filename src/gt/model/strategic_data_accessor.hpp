@@ -35,7 +35,7 @@ public:
      * @param gameData StrategicData
      */
     explicit StrategicDataAccessor(
-        StrategicDataPtr gameData
+        const StrategicDataPtr gameData
     );
 
     /**
@@ -43,7 +43,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -53,9 +53,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Index positionInStorage
-    );
+    virtual const DataPiecePtr getValues(
+        const Index positionInStorage
+    ) const;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -64,9 +64,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -75,9 +75,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -87,9 +87,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
-    );
+    virtual const DataPiecePtr operator[](
+        const Index positionInStorage
+    ) const;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -98,9 +98,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -109,16 +109,16 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns StrategicDataAccessor Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class StrategicDataAccessor*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

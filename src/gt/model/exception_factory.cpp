@@ -12,14 +12,14 @@ SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
 // public:
 
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     std::stringstream result;
 
     result << "Coordinates:";
-    for (Positions::value_type& position : positions) {
-        Identifier  playerName   = position.first;
-        Identifier& strategyName = position.second;
+    for (const Positions::value_type& position : positions) {
+        const Identifier  playerName   = position.first;
+        const Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
     }
     result << " already has defined payoff";
@@ -27,19 +27,19 @@ InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     return InvalidCoordinate(result.str());
 }
 
-IllegalInnerState ExceptionFactory::incompleteCoordinates() {
+IllegalInnerState ExceptionFactory::incompleteCoordinates() const {
     return IllegalInnerState("Cannot set parameters when not all coordinates are known");
 }
 
 InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     std::stringstream result;
 
     result << "Coordinates:";
-    for (Positions::value_type& position : positions) {
-        Identifier  playerName   = position.first;
-        Identifier& strategyName = position.second;
+    for (const Positions::value_type& position : positions) {
+        const Identifier  playerName   = position.first;
+        const Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
     }
     result << " has invalid format - make sure chosen Players' names and strategies are valid";
@@ -48,14 +48,14 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
 }
 
 InvalidCoordinate ExceptionFactory::invalidExtensiveCoordinateFormat(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     std::stringstream result;
 
     result << "Coordinates:";
     for (Positions::value_type position : positions) {
-        Identifier  playerName   = position.first;
-        Identifier& strategyName = position.second;
+        const Identifier  playerName   = position.first;
+        const Identifier& strategyName = position.second;
         result << " '" << playerName << "'='" << strategyName << "'";
     }
     result << " has invalid format - make sure chosen Players' names does not collide"
@@ -65,9 +65,9 @@ InvalidCoordinate ExceptionFactory::invalidExtensiveCoordinateFormat(
 }
 
 InvalidCoordinate ExceptionFactory::noParamsForPositions(
-    Index positionInStorage,
-    Index maxPosition
-) {
+    const Index positionInStorage,
+    const Index maxPosition
+) const {
     std::stringstream result;
 
     result << "Calculated position ("
@@ -80,8 +80,8 @@ InvalidCoordinate ExceptionFactory::noParamsForPositions(
 }
 
 InvalidCoordinate ExceptionFactory::invalidPlayer(
-    Identifier& playerName
-) {
+    const Identifier& playerName
+) const {
     std::stringstream result;
 
     result << "No Player '" << playerName << "' has been defined";
@@ -90,8 +90,8 @@ InvalidCoordinate ExceptionFactory::invalidPlayer(
 }
 
 InvalidCoordinate ExceptionFactory::invalidStrategy(
-    Identifier& strategyName
-) {
+    const Identifier& strategyName
+) const {
     std::stringstream result;
 
     result << "No Strategy '" << strategyName << "' has been defined";
@@ -99,14 +99,14 @@ InvalidCoordinate ExceptionFactory::invalidStrategy(
     return InvalidCoordinate(result.str());
 }
 
-IllegalInnerState ExceptionFactory::playersAlreadySet() {
+IllegalInnerState ExceptionFactory::playersAlreadySet() const {
     return IllegalInnerState("Cannot change already set Players");
 }
 
 IllegalInnerState ExceptionFactory::propertiesAndResultsDontMatchInSize(
-    Index propertiesSize,
-    Index resultsSize
-) {
+    const Index propertiesSize,
+    const Index resultsSize
+) const {
     std::stringstream result;
 
     result << "Properties size ("

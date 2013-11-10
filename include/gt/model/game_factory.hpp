@@ -31,7 +31,7 @@ public:
      *
      * @return Strategic Game builder
      */
-    GameBuilderPtr buildStrategicGame();
+    GameBuilderPtr buildStrategicGame() const;
 
     /**
      * @brief Returns Extensive Game builder.
@@ -42,7 +42,7 @@ public:
      *
      * @return Extensive Game builder
      */
-    GameBuilderPtr buildExtensiveGame();
+    GameBuilderPtr buildExtensiveGame() const;
 
 private:
     /**

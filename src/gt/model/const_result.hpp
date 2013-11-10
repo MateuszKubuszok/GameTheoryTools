@@ -21,7 +21,7 @@ class ConstResult : public Result {
     /**
      * @brief Result to return.
      */
-    Message result;
+    const Message result;
 
 public:
     /**
@@ -38,7 +38,7 @@ public:
      *
      * @return Results's Message
      */
-    virtual Message getResult() override;
+    virtual Message getResult() const override;
 }; /* END class ConstResult */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

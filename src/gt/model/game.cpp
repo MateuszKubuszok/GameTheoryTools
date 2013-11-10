@@ -9,9 +9,9 @@ namespace Model {
 // public:
 
 bool Game::isEqual(
-    Root& root
-) {
-    Game* game = dynamic_cast<Game*>(&root);
+    const Root& root
+) const {
+    const Game* game = dynamic_cast<const Game*>(&root);
     if (!game)
         return false;
     if (game == this)
@@ -28,22 +28,22 @@ bool Game::isEqual(
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    GamePtr& game1,
-    GamePtr& game2
+    const GamePtr& game1,
+    const GamePtr& game2
 ) {
     return (*game1) == (*game2);
 }
 
 bool operator!=(
-    GamePtr& game1,
-    GamePtr& game2
+    const GamePtr& game1,
+    const GamePtr& game2
 ) {
     return (*game1) != (*game2);
 }
 
 OutputStream& operator<<(
-    OutputStream& stream,
-    GamePtr&      game
+    OutputStream&  stream,
+    const GamePtr& game
 ) {
     return stream << game->toString();
 }

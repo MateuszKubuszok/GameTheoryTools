@@ -27,7 +27,7 @@ public:
      * @see #addRecord(IdentifierPtr&,MessagesPtr&)
      */
     virtual ResultBuilder& setHeaders(
-        IdentifiersPtr& properties
+        const IdentifiersPtr& properties
     ) = 0;
 
     /**
@@ -42,8 +42,8 @@ public:
      * @see #setHeaders(IdentifiersPtr&)
      */
     virtual ResultBuilder& addRecord(
-        IdentifierPtr& object,
-        MessagesPtr&   results
+        const IdentifierPtr& object,
+        const MessagesPtr&   results
     ) = 0;
 
     /**
@@ -54,8 +54,8 @@ public:
      * @result       reference for itself for chaining
      */
     virtual ResultBuilder& addResult(
-        IdentifierPtr& name,
-        MessagePtr&    result
+        const IdentifierPtr& name,
+        const MessagePtr&    result
     ) = 0;
 
     /**
@@ -65,7 +65,7 @@ public:
      * @throw IllegalInnerState  thrown when number of Messages for any Object
      *                           does not match number of properties
      */
-    virtual ResultPtr build() = 0;
+    virtual ResultPtr build() const = 0;
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
@@ -74,7 +74,7 @@ public:
      * @throw IllegalInnerState  thrown when number of Messages for any Object
      *                           does not match number of properties
      */
-    virtual ResultPtr buildRaw() = 0;
+    virtual ResultPtr buildRaw() const = 0;
 }; /* END class ResultBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,38 +87,38 @@ public:
 class NullResultBuilder : public ResultBuilder {
 public:
     virtual ResultBuilder& setHeaders(
-        IdentifiersPtr&
+        const IdentifiersPtr&
     ) override {
         return *this;
     }
 
     virtual ResultBuilder& addRecord(
-        IdentifierPtr&,
-        MessagesPtr&
+        const IdentifierPtr&,
+        const MessagesPtr&
     ) override {
         return *this;
     }
 
     virtual ResultBuilder& addResult(
-        IdentifierPtr&,
-        MessagePtr&
+        const IdentifierPtr&,
+        const MessagePtr&
     ) override {
         return *this;
     }
 
-    virtual ResultPtr build() override {
+    virtual ResultPtr build() const override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual ResultPtr buildRaw() override {
+    virtual ResultPtr buildRaw() const override {
         return NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullResultBuilder");
     }
 }; /* END class NullResultBuilder */

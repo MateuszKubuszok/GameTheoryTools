@@ -16,16 +16,16 @@ ExtensiveDataBuilder::ExtensiveDataBuilder() :
     depthName(createIdentifier(1))
     {}
 
-ExtensiveDataPtr ExtensiveDataBuilder::build() {
+ExtensiveDataPtr ExtensiveDataBuilder::build() const {
     return data;
 }
 
-PlayersPtr ExtensiveDataBuilder::getPlayers() {
+const PlayersPtr ExtensiveDataBuilder::getPlayers() const {
     return players;
 }
 
 DataBuilder& ExtensiveDataBuilder::setPlayers(
-    PlayersPtr newPlayers
+    const PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
         throw ExceptionFactory::getInstance().playersAlreadySet();
@@ -37,7 +37,7 @@ DataBuilder& ExtensiveDataBuilder::setPlayers(
 }
 
 DataBuilder& ExtensiveDataBuilder::addNextPositions(
-    PositionsPtr positions
+    const PositionsPtr positions
 ) {
     if (positions->size() != 1)
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
@@ -60,17 +60,17 @@ DataBuilder& ExtensiveDataBuilder::addNextPositions(
 }
 
 DataBuilder& ExtensiveDataBuilder::setParams(
-    NumbersPtr params
+    const NumbersPtr params
 ) {
     data->setValues(currentPositions, params);
     return *this;
 }
 
-DataBuilderPtr ExtensiveDataBuilder::clone() {
+DataBuilderPtr ExtensiveDataBuilder::clone() const {
     return DataBuilderPtr(new ExtensiveDataBuilder(*this));
 }
 
-Message ExtensiveDataBuilder::toString() {
+Message ExtensiveDataBuilder::toString() const {
     IdentifierPtr name    = createIdentifierPtr("Current Data");
     MessagePtr    message = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

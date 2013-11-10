@@ -12,45 +12,45 @@ ExtensiveGameBuilder::ExtensiveGameBuilder() :
     extensiveDataBuilder(new ExtensiveDataBuilder())
     {}
 
-PlayersPtr ExtensiveGameBuilder::getPlayers() {
+const PlayersPtr ExtensiveGameBuilder::getPlayers() const {
     return extensiveDataBuilder->getPlayers();
 }
 
 DataBuilder& ExtensiveGameBuilder::setPlayers(
-    PlayersPtr players
+    const PlayersPtr players
 ) {
     extensiveDataBuilder->setPlayers(players);
     return *this;
 }
 
 DataBuilder& ExtensiveGameBuilder::addNextPositions(
-    PositionsPtr positions
+    const PositionsPtr positions
 ) {
     extensiveDataBuilder->addNextPositions(positions);
     return *this;
 }
 
 DataBuilder& ExtensiveGameBuilder::setParams(
-    NumbersPtr params
+    const NumbersPtr params
 ) {
     extensiveDataBuilder->setParams(params);
     return *this;
 }
 
-DataBuilderPtr ExtensiveGameBuilder::clone() {
+DataBuilderPtr ExtensiveGameBuilder::clone() const {
     return extensiveDataBuilder->clone();
 }
 
-GameBuilderPtr ExtensiveGameBuilder::cloneBuilder() {
+GameBuilderPtr ExtensiveGameBuilder::cloneBuilder() const {
     return GameBuilderPtr(new ExtensiveGameBuilder());
 }
 
-DataBuilderPtr ExtensiveGameBuilder::dataBuilder() {
+DataBuilderPtr ExtensiveGameBuilder::dataBuilder() const {
     return boost::dynamic_pointer_cast<DataBuilder>(extensiveDataBuilder);
 }
 
 
-GamePtr ExtensiveGameBuilder::build() {
+GamePtr ExtensiveGameBuilder::build() const {
     return GamePtr(
         new ExtensiveGame(
             extensiveDataBuilder->getPlayers(),
@@ -59,7 +59,7 @@ GamePtr ExtensiveGameBuilder::build() {
     );
 }
 
-Message ExtensiveGameBuilder::toString() {
+Message ExtensiveGameBuilder::toString() const {
     IdentifierPtr name    = createIdentifierPtr("Current Extensive Game");
     MessagePtr    message = createMessagePtr(dataBuilder()->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

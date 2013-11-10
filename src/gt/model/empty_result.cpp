@@ -10,7 +10,7 @@ namespace Model {
 
 EmptyResult::EmptyResult() {}
 
-Message EmptyResult::getResult() {
+Message EmptyResult::getResult() const {
     return Message("");
 }
 

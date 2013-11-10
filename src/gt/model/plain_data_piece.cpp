@@ -9,22 +9,22 @@ namespace Model {
 // public:
 
 PlainDataPiece::PlainDataPiece(
-    PlayersPtr players,
-    NumbersPtr params
+    const PlayersPtr players,
+    const NumbersPtr params
 ) :
     positionsHelper(players),
     numbers(params)
     {}
 
-NumberPtr& PlainDataPiece::getValue(
-    Identifier& playerName
-) {
+const NumberPtr& PlainDataPiece::getValue(
+    const Identifier& playerName
+) const {
     if (!positionsHelper.checkPlayer(playerName))
         throw ExceptionFactory::getInstance().invalidPlayer(playerName);
     return (*numbers)[positionsHelper.calculatePlayer(playerName)];
 }
 
-Message PlainDataPiece::toString() {
+Message PlainDataPiece::toString() const {
     IdentifierPtr  name = createIdentifierPtr("Payoff");
     IdentifiersPtr players(new Identifiers());
     MessagesPtr    values(new Messages());

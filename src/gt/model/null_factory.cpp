@@ -11,67 +11,67 @@ SINGLETON_DEFINITION(NullFactory, getInstance, nullFactoryMutex)
 
 // public:
 
-IdentifierPtr NullFactory::createIdentifier() {
+IdentifierPtr NullFactory::createIdentifier() const {
     return IdentifierPtr(new Identifier("NullIdentifier"));
 }
 
-IdentifiersPtr NullFactory::createIdentifiers() {
+IdentifiersPtr NullFactory::createIdentifiers() const {
     return IdentifiersPtr(new Identifiers());
 }
 
-MessagePtr NullFactory::createMessage() {
+MessagePtr NullFactory::createMessage() const {
     return MessagePtr(new Message("NullMessage"));
 }
 
-MessagesPtr NullFactory::createMessages() {
+MessagesPtr NullFactory::createMessages() const {
     return MessagesPtr(new Messages());
 }
 
-NumberPtr NullFactory::createNumber() {
+NumberPtr NullFactory::createNumber() const {
     return NumberPtr(new Number(0));
 }
 
-NumbersPtr NullFactory::createNumbers() {
+NumbersPtr NullFactory::createNumbers() const {
     return NumbersPtr(new Numbers());
 }
 
-PlayerPtr NullFactory::createPlayer() {
+PlayerPtr NullFactory::createPlayer() const {
     return PlayerPtr(new NullPlayer());
 }
 
-PlayersPtr NullFactory::createPlayers() {
+PlayersPtr NullFactory::createPlayers() const {
     return PlayersPtr(new Players());
 }
 
-DataPtr NullFactory::createData() {
+DataPtr NullFactory::createData() const {
     return DataPtr(new NullData());
 }
 
-DataAccessorPtr NullFactory::createDataAccessor() {
+DataAccessorPtr NullFactory::createDataAccessor() const {
     return DataAccessorPtr(new NullDataAccessor());
 }
 
-DataPiecePtr NullFactory::createDataPiece() {
+DataPiecePtr NullFactory::createDataPiece() const {
     return DataPiecePtr(new NullDataPiece());
 }
 
-DataBuilderPtr NullFactory::createDataBuilder() {
+DataBuilderPtr NullFactory::createDataBuilder() const {
     return DataBuilderPtr(new NullDataBuilder());
 }
 
-GamePtr NullFactory::createGame() {
+GamePtr NullFactory::createGame() const {
     return GamePtr(new NullGame());
 }
 
-GameBuilderPtr NullFactory::createGameBuilder() {
+GameBuilderPtr NullFactory::createGameBuilder() const {
     return GameBuilderPtr(new NullGameBuilder());
 }
 
-ResultPtr NullFactory::createResult() {
+ResultPtr NullFactory::createResult() const {
     return ResultPtr(new NullResult());
 }
 
-ResultBuilderPtr NullFactory::createResultBuilder() {
+ResultBuilderPtr NullFactory::createResultBuilder() const {
     return ResultBuilderPtr(new NullResultBuilder());
 }
 

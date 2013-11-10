@@ -14,7 +14,7 @@ ConstResult::ConstResult(
     result(content)
     {}
 
-Message ConstResult::getResult() {
+Message ConstResult::getResult() const {
     return result;
 }
 

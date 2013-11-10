@@ -8,21 +8,21 @@ namespace Model {
 // class DataPiece : public virtual Root {
 // public:
 
-NumberPtr& DataPiece::getValue(
-    IdentifierPtr playerName
-) {
+const NumberPtr& DataPiece::getValue(
+    const IdentifierPtr playerName
+) const {
     return getValue(*playerName);
 }
 
-NumberPtr& DataPiece::operator[](
-    Identifier& playerName
-) {
+const NumberPtr& DataPiece::operator[](
+    const Identifier& playerName
+) const {
     return getValue(playerName);
 }
 
-NumberPtr& DataPiece::operator[](
-    IdentifierPtr playerName
-) {
+const NumberPtr& DataPiece::operator[](
+    const IdentifierPtr playerName
+) const {
     return getValue(playerName);
 }
 

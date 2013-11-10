@@ -10,7 +10,7 @@ public:
         Root()
         {}
 
-    virtual GT::Message toString() {
+    virtual GT::Message toString() const override {
         return GT::Message("RootTestImpl");
     }
 }; /* END class RootTestImpl */

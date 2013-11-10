@@ -20,9 +20,9 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    virtual NumberPtr& getValue(
-        Identifier& playerName
-    ) = 0;
+    virtual const NumberPtr& getValue(
+        const Identifier& playerName
+    ) const = 0;
 
     /**
      * @brief Returns Player's payoff by its name.
@@ -31,9 +31,9 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& getValue(
-        IdentifierPtr playerName
-    );
+    const NumberPtr& getValue(
+        const IdentifierPtr playerName
+    ) const;
 
     /**
      * @brief Returns Player's payoff by its name.
@@ -42,9 +42,9 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& operator[](
-        Identifier& playerName
-    );
+    const NumberPtr& operator[](
+        const Identifier& playerName
+    ) const;
 
     /**
      * @brief Returns Player's payoff by its name.
@@ -53,16 +53,16 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    NumberPtr& operator[](
-        IdentifierPtr playerName
-    );
+    const NumberPtr& operator[](
+        const IdentifierPtr playerName
+    ) const;
 
     /**
      * @brief Returns DataPiece's message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const = 0;
 }; /* END class DataPiece */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,24 +76,24 @@ class NullDataPiece : public DataPiece {
     /**
      * @brief NullNumber to return.
      */
-    NumberPtr nullNumber;
+    const NumberPtr nullNumber;
 
 public:
     NullDataPiece() :
         nullNumber(NullFactory::getInstance().createNumber())
         {}
 
-    virtual NumberPtr& getValue(
-        Identifier&
-    ) override {
+    virtual const NumberPtr& getValue(
+        const Identifier&
+    ) const override {
         return nullNumber;
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullDataPiece");
     }
 }; /* END class NullDataPiece */

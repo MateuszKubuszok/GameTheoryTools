@@ -53,7 +53,7 @@ public:
      * @param newDebugMode new debug mode
      */
     static void setDebugMode(
-        bool newDebugMode
+        const bool newDebugMode
     );
 
     /**
@@ -89,29 +89,29 @@ public:
      * @return     true if roots are equal
      */
     virtual bool isEqual(
-        Root& root
-    );
+        const Root& root
+    ) const;
 
     /**
      * @brief Wheter Root is not a null object (null guardian).
      *
      * @return true if object is not a null object
      */
-    virtual bool isNotNull();
+    virtual bool isNotNull() const;
 
     /**
      * @brief Wheter Root is a null object (null guardian).
      *
      * @return true if object is a null object
      */
-    bool isNull();
+    bool isNull() const;
 
     /**
      * @brief Returns Message about an object allowing its debuging.
      *
      * @return Root's Message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const = 0;
 
         /**
      * @brief Syntax sugar for isEqual method.
@@ -121,8 +121,8 @@ public:
      * @return      true if Root are equal
      */
     friend bool operator==(
-        Root& root1,
-        Root& root2
+        const Root& root1,
+        const Root& root2
     );
 
      /**
@@ -133,8 +133,8 @@ public:
      * @return      true if Root are not equal
      */
     friend bool operator!=(
-        Root& root1,
-        Root& root2
+        const Root& root1,
+        const Root& root2
     );
 
      /**
@@ -146,7 +146,7 @@ public:
      */
     friend OutputStream& operator<<(
         OutputStream& stream,
-        Root&         root
+        const Root&   root
     );
 }; /* END class Root */
 

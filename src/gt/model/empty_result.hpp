@@ -29,7 +29,7 @@ public:
      *
      * @return Results's Message
      */
-    virtual Message getResult() override;
+    virtual Message getResult() const override;
 }; /* END class EmptyString */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

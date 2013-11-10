@@ -20,11 +20,11 @@ class ExtensiveGame : public Game {
     /**
      * @brief Players.
      */
-    PlayersPtr       players;
+    const PlayersPtr       players;
     /**
      * @brief Game's data.
      */
-    ExtensiveDataPtr data;
+    const ExtensiveDataPtr data;
 
 public:
     /**
@@ -34,8 +34,8 @@ public:
      * @param newData    Data for Game
      */
     ExtensiveGame(
-        PlayersPtr       newPlayers,
-        ExtensiveDataPtr newData
+        const PlayersPtr       newPlayers,
+        const ExtensiveDataPtr newData
     );
 
     /**
@@ -43,21 +43,21 @@ public:
      *
      * @return Players' denifitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns Game's Data.
      *
      * @return Game's Data
      */
-    virtual DataAccessorPtr getData() override;
+    virtual const DataAccessorPtr getData() const override;
 
     /**
      * @brief Returns ExtensiveGame's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExtensiveGame */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

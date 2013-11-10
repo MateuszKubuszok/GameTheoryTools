@@ -36,28 +36,28 @@ public:
      *
      * @return Game
      */
-    virtual GamePtr build() = 0;
+    virtual GamePtr build() const = 0;
 
     /**
      * @brief Returns new copy of this GameBuilder's type.
      *
      * @return GameBuilder
      */
-    virtual GameBuilderPtr cloneBuilder() = 0;
+    virtual GameBuilderPtr cloneBuilder() const = 0;
 
     /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() = 0;
+    virtual const PlayersPtr getPlayers() const = 0;
 
     /**
      * @brief Returns inner DataBuilder.
      *
      * @return DataBuilder
      */
-    virtual DataBuilderPtr dataBuilder() = 0;
+    virtual DataBuilderPtr dataBuilder() const = 0;
 }; /* END class GameBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,49 +69,49 @@ public:
  */
 class NullGameBuilder : public GameBuilder {
 public:
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
     virtual DataBuilder& setPlayers(
-        PlayersPtr
+        const PlayersPtr
     ) override {
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
-        PositionsPtr
+        const PositionsPtr
     ) override {
         return *this;
     }
 
     virtual DataBuilder& setParams(
-        NumbersPtr
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual DataBuilderPtr dataBuilder() override {
+    virtual DataBuilderPtr dataBuilder() const override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual GamePtr build() override {
+    virtual GamePtr build() const override {
         return NullFactory::getInstance().createGame();
     }
 
-    virtual DataBuilderPtr clone() override {
+    virtual DataBuilderPtr clone() const override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual GameBuilderPtr cloneBuilder() override {
+    virtual GameBuilderPtr cloneBuilder() const override {
         return NullFactory::getInstance().createGameBuilder();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullGameBuilder");
     }
 }; /* END class NullDataBuilder */

@@ -9,22 +9,22 @@ namespace Model {
 // public:
 
 ExtensiveGame::ExtensiveGame(
-    PlayersPtr  newPlayers,
-    ExtensiveDataPtr newData
+    const PlayersPtr       newPlayers,
+    const ExtensiveDataPtr newData
 ) :
     players(newPlayers),
     data(newData)
     {}
 
-PlayersPtr ExtensiveGame::getPlayers() {
+const PlayersPtr ExtensiveGame::getPlayers() const {
     return players;
 }
 
-DataAccessorPtr ExtensiveGame::getData() {
+const DataAccessorPtr ExtensiveGame::getData() const {
     return DataAccessorPtr(new ExtensiveDataAccessor(data));
 }
 
-Message ExtensiveGame::toString() {
+Message ExtensiveGame::toString() const {
     IdentifierPtr name      = createIdentifierPtr("Extensive Game");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();

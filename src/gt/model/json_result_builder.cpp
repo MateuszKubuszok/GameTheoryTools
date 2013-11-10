@@ -9,12 +9,12 @@ namespace Model {
 // public:
 
 JSONResultBuilder::JSONResultBuilder(
-    Message indentation
+    const Message indentation
 ) :
     AbstractResultBuilder(indentation)
     {}
 
-ResultPtr JSONResultBuilder::build() {
+ResultPtr JSONResultBuilder::build() const {
     std::stringstream result;
 
     result << '{' << std::endl;
@@ -24,14 +24,14 @@ ResultPtr JSONResultBuilder::build() {
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
 
-ResultPtr JSONResultBuilder::buildRaw() {
+ResultPtr JSONResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
     int propertiesSize = propertiesNames->size();
     std::stringstream result;
 
     if (propertiesSize > 0)
-        for (PartialResult& partialResult : partialResults) {
+        for (const PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
@@ -50,7 +50,7 @@ ResultPtr JSONResultBuilder::buildRaw() {
         }
 
     if (subResults.size() > 0)
-        for (SubResult& subResult : subResults) {
+        for (const SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 

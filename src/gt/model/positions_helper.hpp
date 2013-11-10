@@ -15,7 +15,7 @@ class PositionsHelper : public Root {
     /**
      * @brief Players.
      */
-    PlayersPtr players;
+    const PlayersPtr players;
 
     /**
      * @brief Map Players' Identifeirs to a number to quickly find Player's ordinal.
@@ -42,7 +42,7 @@ public:
      * @param players Players definitions
      */
     explicit PositionsHelper(
-        PlayersPtr players
+        const PlayersPtr players
     );
 
     /**
@@ -50,14 +50,14 @@ public:
      *
      * @return Players definitions
      */
-    PlayersPtr getPlayers();
+    const PlayersPtr getPlayers() const;
 
     /**
      * @brief Returns upper bound of Indexes.
      *
      * @return upper bound of Indexes
      */
-    Index getUpperBound();
+    Index getUpperBound() const;
 
     /**
      * @brief Calculates Player's position in Numbers collection.
@@ -66,8 +66,8 @@ public:
      * @return           Index of Player's Number
      */
     Index calculatePlayer(
-        Identifier& playerName
-    );
+        const Identifier& playerName
+    ) const;
 
     /**
      * @brief Calculates Player's position in Numbers collection.
@@ -76,8 +76,8 @@ public:
      * @return           Index of Player's Number
      */
     Index calculatePlayer(
-        IdentifierPtr playerName
-    );
+        const IdentifierPtr playerName
+    ) const;
 
     /**
      * @brief Calculates Player's name by its position in Numbers collection.
@@ -85,9 +85,9 @@ public:
      * @param playerPosition Index of Player's Number
      * @return               name of required Player
      */
-    IdentifierPtr retrievePlayer(
-        Index playerPosition
-    );
+    const IdentifierPtr retrievePlayer(
+        const Index playerPosition
+    ) const;
 
     /**
      * @brief Calculates Numbers's position in params storage.
@@ -96,8 +96,8 @@ public:
      * @return          Index in params storage
      */
     Index calculatePosition(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Calculates Numbers's position in params storage.
@@ -106,8 +106,8 @@ public:
      * @return          Index in params storage
      */
     Index calculatePosition(
-        PositionsPtr positions
-    );
+        const PositionsPtr positions
+    ) const;
 
     /**
      * @brief Calculates Positions by its Index in params storage.
@@ -115,9 +115,9 @@ public:
      * @param positionInStorage Index of Positions
      * @return                  Positions as coordinates
      */
-    PositionsPtr retrievePositions(
-        Index positionInStorage
-    );
+    const PositionsPtr retrievePositions(
+        const Index positionInStorage
+    ) const;
 
     /**
      * @brief Checks whether given Player exists.
@@ -126,8 +126,8 @@ public:
      * @return           true if Player exists
      */
     bool checkPlayer(
-        Identifier& playerName
-    );
+        const Identifier& playerName
+    ) const;
 
     /**
      * @brief Checks whether given Player exists.
@@ -136,8 +136,8 @@ public:
      * @return           true if Player exists
      */
     bool checkPlayer(
-        IdentifierPtr playerName
-    );
+        const IdentifierPtr playerName
+    ) const;
 
     /**
      * @brief Checks whether given Position is vaid.
@@ -146,8 +146,8 @@ public:
      * @return          true if Position is valid
      */
     bool checkPositions(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Checks whether given Position is vaid.
@@ -156,15 +156,15 @@ public:
      * @return          true if Position is valid
      */
     bool checkPositions(
-        PositionsPtr positions
-    );
+        const PositionsPtr positions
+    ) const;
 
     /**
      * @brief Retuns PositionsHelper's Message.
      *
      * @return Message
      */
-    Message toString();
+    virtual Message toString() const override;
 }; /* END class PositionsHelper */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,51 +9,51 @@ namespace Model {
 // public:
 
 ExtensiveData::ExtensiveData(
-    PlayersPtr playersDefinitions
+    const PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
     root(new ExtensiveDataNode())
     {}
 
-PlayersPtr ExtensiveData::getPlayers() {
+const PlayersPtr ExtensiveData::getPlayers() const {
     return players;
 }
 
-PlayerPtr ExtensiveData::getPlayerInTurn(
-    Positions& positions
-) {
+const PlayerPtr ExtensiveData::getPlayerInTurn(
+    const Positions& positions
+) const {
     return root->getPlayer(positions);
 }
 
-PlayerPtr ExtensiveData::getPlayerInTurn(
-    PositionsPtr positions
-) {
+const PlayerPtr ExtensiveData::getPlayerInTurn(
+    const PositionsPtr positions
+) const {
     return getPlayerInTurn(*positions);
 }
 
 ExtensiveData& ExtensiveData::setPlayerInTurn(
-    Positions& positions,
-    PlayerPtr  player
+    const Positions& positions,
+    const PlayerPtr  player
 ) {
     root->setPlayer(positions, player);
     return *this;
 }
 
 ExtensiveData& ExtensiveData::setPlayerInTurn(
-    PositionsPtr positions,
-    PlayerPtr   player
+    const PositionsPtr positions,
+    const PlayerPtr    player
 ) {
     return setPlayerInTurn(*positions, player);
 }
 
-DataPiecePtr ExtensiveData::getValues(
-    Positions& positions
-) {
+const DataPiecePtr ExtensiveData::getValues(
+    const Positions& positions
+) const {
     Positions checkedPositions;
 
-    for (Positions::value_type& position : positions) {
-        PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
-        Identifier& strategy     = position.second;
+    for (const Positions::value_type& position : positions) {
+        const PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
+        const Identifier& strategy     = position.second;
 
         if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
@@ -65,21 +65,21 @@ DataPiecePtr ExtensiveData::getValues(
     return DataPiecePtr(new PlainDataPiece(players, payoff));
 }
 
-DataPiecePtr ExtensiveData::getValues(
-    PositionsPtr positions
-) {
+const DataPiecePtr ExtensiveData::getValues(
+    const PositionsPtr positions
+) const {
     return getValues(*positions);
 }
 
 Data& ExtensiveData::setValues(
-    Positions& positions,
-    NumbersPtr numbers
+    const Positions& positions,
+    const NumbersPtr numbers
 ) {
     Positions checkedPositions;
 
-    for (Positions::value_type& position : positions) {
-        PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
-        Identifier& strategy     = position.second;
+    for (const Positions::value_type& position : positions) {
+        const PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
+        const Identifier& strategy     = position.second;
 
         if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
@@ -93,28 +93,28 @@ Data& ExtensiveData::setValues(
 }
 
 Data& ExtensiveData::setValues(
-    PositionsPtr positions,
-    NumbersPtr   numbers
+    const PositionsPtr positions,
+    const NumbersPtr   numbers
 ) {
     return setValues(*positions, numbers);
 }
 
-DataPiecePtr ExtensiveData::operator[](
-    Positions& positions
-) {
-    return getValues(positions);
-}
-
-DataPiecePtr ExtensiveData::operator[](
-    PositionsPtr positions
-) {
-    return getValues(positions);
-}
-
-Message ExtensiveData::toString() {
+Message ExtensiveData::toString() const {
     IdentifierPtr name   = createIdentifierPtr("ExtensiveData");
     MessagePtr    result = createMessagePtr(root->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
+}
+
+const DataPiecePtr ExtensiveData::operator[](
+    const Positions& positions
+) const {
+    return getValues(positions);
+}
+
+const DataPiecePtr ExtensiveData::operator[](
+    const PositionsPtr positions
+) const {
+    return getValues(positions);
 }
 
 // }; /* END class ExtensiveData */

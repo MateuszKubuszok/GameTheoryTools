@@ -11,11 +11,11 @@ SINGLETON_DEFINITION(GameFactory, getInstance, gameFactoryMutex)
 
 // public:
 
-GameBuilderPtr GameFactory::buildStrategicGame() {
+GameBuilderPtr GameFactory::buildStrategicGame() const {
     return GameBuilderPtr(new StrategicGameBuilder());
 }
 
-GameBuilderPtr GameFactory::buildExtensiveGame() {
+GameBuilderPtr GameFactory::buildExtensiveGame() const {
     return GameBuilderPtr(new ExtensiveGameBuilder());
 }
 

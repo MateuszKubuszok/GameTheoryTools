@@ -9,22 +9,22 @@ namespace Model {
 // public:
 
 StrategicGame::StrategicGame(
-    PlayersPtr       newPlayers,
-    StrategicDataPtr newData
+    const PlayersPtr       newPlayers,
+    const StrategicDataPtr newData
 ) :
     players(newPlayers),
     data(newData)
     {}
 
-PlayersPtr StrategicGame::getPlayers() {
+const PlayersPtr StrategicGame::getPlayers() const {
     return players;
 }
 
-DataAccessorPtr StrategicGame::getData() {
+const DataAccessorPtr StrategicGame::getData() const {
     return DataAccessorPtr(new StrategicDataAccessor(data));
 }
 
-Message StrategicGame::toString() {
+Message StrategicGame::toString() const {
     IdentifierPtr name      = createIdentifierPtr("Strategic Game");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();

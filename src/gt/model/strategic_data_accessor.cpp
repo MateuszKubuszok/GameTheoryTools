@@ -9,55 +9,55 @@ namespace Model {
 // public:
 
 StrategicDataAccessor::StrategicDataAccessor(
-    StrategicDataPtr strategicData
+    const StrategicDataPtr strategicData
 ) :
     data(strategicData)
     {}
 
-DataPiecePtr StrategicDataAccessor::operator[](
-    Index positionInStorage
-) {
-    return (*data)[positionInStorage];
-}
-
-DataPiecePtr StrategicDataAccessor::operator[](
-    Positions& positions
-) {
-    return (*data)[positions];
-}
-
-DataPiecePtr StrategicDataAccessor::operator[](
-    PositionsPtr positions
-) {
-    return (*data)[positions];
-}
-
-PlayersPtr StrategicDataAccessor::getPlayers() {
+const PlayersPtr StrategicDataAccessor::getPlayers() const {
     return data->getPlayers();
 }
 
-DataPiecePtr StrategicDataAccessor::getValues(
-    Index positionInStorage
-) {
+const DataPiecePtr StrategicDataAccessor::getValues(
+    const Index positionInStorage
+) const {
     return data->getValues(positionInStorage);
 }
 
-DataPiecePtr StrategicDataAccessor::getValues(
-    PositionsPtr positions
-) {
+const DataPiecePtr StrategicDataAccessor::getValues(
+    const PositionsPtr positions
+) const {
     return data->getValues(positions);
 }
 
-DataPiecePtr StrategicDataAccessor::getValues(
-    Positions& positions
-) {
+const DataPiecePtr StrategicDataAccessor::getValues(
+    const Positions& positions
+) const {
     return data->getValues(positions);
 }
 
-Message StrategicDataAccessor::toString() {
+Message StrategicDataAccessor::toString() const {
     IdentifierPtr name      = createIdentifierPtr("Strategic Data Accessor");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
+}
+
+const DataPiecePtr StrategicDataAccessor::operator[](
+    const Index positionInStorage
+) const {
+    return (*data)[positionInStorage];
+}
+
+const DataPiecePtr StrategicDataAccessor::operator[](
+    const Positions& positions
+) const {
+    return (*data)[positions];
+}
+
+const DataPiecePtr StrategicDataAccessor::operator[](
+    const PositionsPtr positions
+) const {
+    return (*data)[positions];
 }
 
 // }; /* END class StrategicDataAccessor*/

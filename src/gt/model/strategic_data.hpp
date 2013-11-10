@@ -44,7 +44,7 @@ public:
      * @param playersDefinitions Players' definitions
      */
     explicit StrategicData(
-        PlayersPtr playersDefinitions
+        const PlayersPtr playersDefinitions
     );
 
     /**
@@ -52,7 +52,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -62,9 +62,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Index positionInStorage
-    );
+    virtual const DataPiecePtr getValues(
+        const Index positionInStorage
+    ) const;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -73,9 +73,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -84,9 +84,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
-    );
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Sets Positions to contains given payoffs.
@@ -97,8 +97,8 @@ public:
      * @throw InvalidCoordinate thrown when Index in not in allowed range
      */
     virtual Data& setValues(
-        Index      positionInStorage,
-        NumbersPtr numbers
+        const Index      positionInStorage,
+        const NumbersPtr numbers
     );
 
     /**
@@ -109,8 +109,8 @@ public:
      * @return                  reference to itself for chaining
      */
     virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
+        const Positions& positions,
+        const NumbersPtr numbers
     ) override;
 
     /**
@@ -121,8 +121,8 @@ public:
      * @return                  reference to itself for chaining
      */
     virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
+        const PositionsPtr positions,
+        const NumbersPtr   numbers
     ) override;
 
     /**
@@ -133,9 +133,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        Index positionInStorage
-    );
+    virtual const DataPiecePtr operator[](
+        const Index positionInStorage
+    ) const;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -144,9 +144,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -155,16 +155,16 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns StrategicData Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class StrategicData */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,73 +180,73 @@ public:
         StrategicData(NullFactory::getInstance().createPlayers())
         {}
 
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataPiecePtr getValues(
-        Index
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const Index
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr getValues(
-        Positions&
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const Positions&
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr getValues(
-        PositionsPtr
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual Data& setValues(
-        Index,
-        NumbersPtr
+        const Index,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
     virtual Data& setValues(
-        Positions&,
-        NumbersPtr
+        const Positions&,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
     virtual Data& setValues(
-        PositionsPtr,
-        NumbersPtr
+        const PositionsPtr,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual DataPiecePtr operator[](
-        Index
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr operator[](
-        Positions&
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr operator[](
-        PositionsPtr
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullStrategicData");
+    }
+
+    virtual const DataPiecePtr operator[](
+        const Index
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr operator[](
+        const Positions&
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
     }
 }; /* END class NullStrategicData */
 

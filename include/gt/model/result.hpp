@@ -30,7 +30,7 @@ public:
      *
      * @return string with result
      */
-    virtual Message getResult() = 0;
+    virtual Message getResult() const = 0;
 
     /**
      * @brief Defines equality relation.
@@ -39,15 +39,15 @@ public:
      * @return     true if roots are equal
      */
     virtual bool isEqual(
-        Root& root
-    ) override;
+        const Root& root
+    ) const override;
 
     /**
      * @brief Return message with results.
      *
      * @return Result as a Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
     /**
      * @brief Syntax sugar for isEqual method.
@@ -57,8 +57,8 @@ public:
      * @return        true if Results are equal
      */
     friend bool operator==(
-        ResultPtr& result1,
-        ResultPtr& result2
+        const ResultPtr& result1,
+        const ResultPtr& result2
     );
 
     /**
@@ -69,8 +69,8 @@ public:
      * @return        true if Results are not equal
      */
     friend bool operator!=(
-        ResultPtr& result1,
-        ResultPtr& result2
+        const ResultPtr& result1,
+        const ResultPtr& result2
     );
 
     /**
@@ -81,8 +81,8 @@ public:
      * @return       stream for chaining
      */
     friend OutputStream& operator<<(
-        OutputStream& stream,
-        ResultPtr&    result
+        OutputStream&    stream,
+        const ResultPtr& result
     );
 }; /* END class Result */
 
@@ -95,15 +95,15 @@ public:
  */
 class NullResult : public virtual Result {
 public:
-    virtual Message getResult() override {
+    virtual Message getResult() const override {
         return Message("NullResult");
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullResult");
     }
 }; /* END class NullResult */

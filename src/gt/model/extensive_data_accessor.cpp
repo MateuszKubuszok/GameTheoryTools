@@ -9,43 +9,43 @@ namespace Model {
 // public:
 
 ExtensiveDataAccessor::ExtensiveDataAccessor(
-    ExtensiveDataPtr strategicData
+    const ExtensiveDataPtr strategicData
 ) :
     data(strategicData)
     {}
 
-DataPiecePtr ExtensiveDataAccessor::operator[](
-    Positions& positions
-) {
-    return (*data)[positions];
-}
-
-DataPiecePtr ExtensiveDataAccessor::operator[](
-    PositionsPtr positions
-) {
-    return (*data)[positions];
-}
-
-PlayersPtr ExtensiveDataAccessor::getPlayers() {
+const PlayersPtr ExtensiveDataAccessor::getPlayers() const {
     return data->getPlayers();
 }
 
-DataPiecePtr ExtensiveDataAccessor::getValues(
-    PositionsPtr positions
-) {
+const DataPiecePtr ExtensiveDataAccessor::getValues(
+    const PositionsPtr positions
+) const {
     return data->getValues(positions);
 }
 
-DataPiecePtr ExtensiveDataAccessor::getValues(
-    Positions& positions
-) {
+const DataPiecePtr ExtensiveDataAccessor::getValues(
+    const Positions& positions
+) const {
     return data->getValues(positions);
 }
 
-Message ExtensiveDataAccessor::toString() {
+Message ExtensiveDataAccessor::toString() const {
     IdentifierPtr name      = createIdentifierPtr("Extensive Data Accessor");
     MessagePtr    subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
+}
+
+const DataPiecePtr ExtensiveDataAccessor::operator[](
+    const Positions& positions
+) const {
+    return (*data)[positions];
+}
+
+const DataPiecePtr ExtensiveDataAccessor::operator[](
+    const PositionsPtr positions
+) const {
+    return (*data)[positions];
 }
 
 // }; /* END class ExtensiveDataAccessor */

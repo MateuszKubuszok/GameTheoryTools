@@ -6,7 +6,7 @@ BOOST_AUTO_TEST_SUITE( Result )
 
 class ResultTestImpl : public GT::Model::Result {
 public:
-    virtual GT::Message getResult() {
+    virtual GT::Message getResult() const override {
         return GT::Message("TestResult");
     }
 }; /* END class ResultTestImpl */

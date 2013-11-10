@@ -55,21 +55,21 @@ public:
      *
      * @return Player's name
      */
-    virtual IdentifierPtr getName();
+    virtual const IdentifierPtr getName() const;
 
     /**
      * @brief Returns Player's strategies.
      *
      * @return Player's strategies
      */
-    virtual IdentifiersPtr getStrategies();
+    virtual const IdentifiersPtr getStrategies() const;
 
     /**
      * @brief Returns number of strategies.
      *
      * @return number of strategies
      */
-    virtual Index getStrategiesNumber();
+    virtual Index getStrategiesNumber() const;
 
      /**
      * @brief Returns ordinal of a strategy with given identifier.
@@ -78,8 +78,8 @@ public:
      * @throws InvalidCoordinate thrown if Player has no such strategy
      */
     virtual Index getStrategyOrdinal(
-        Identifier& strategy
-    );
+        const Identifier& strategy
+    ) const;
 
      /**
      * @brief Returns whether strategy with such name exists.
@@ -87,8 +87,8 @@ public:
      * @return true if Player has such strategy
      */
     virtual bool hasStrategy(
-        Identifier& strategy
-    );
+        const Identifier& strategy
+    ) const;
 
     /**
      * @brief Defines equality relation.
@@ -97,15 +97,15 @@ public:
      * @return     true if roots are equal
      */
     virtual bool isEqual(
-        Root& root
-    ) override;
+        const Root& root
+    ) const override;
 
     /**
      * @brief Returns Message with Player's name and strategies.
      *
      * @return Player's name and strategies
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
     /**
      * @brief Syntax sugar for isEqual method.
@@ -115,8 +115,8 @@ public:
      * @return        true if Players are equal
      */
     friend bool operator== (
-        PlayerPtr& player1,
-        PlayerPtr& player2
+        const PlayerPtr& player1,
+        const PlayerPtr& player2
     );
 
     /**
@@ -127,8 +127,8 @@ public:
      * @return        true if Players are not equal
      */
     friend bool operator!= (
-        PlayerPtr& player1,
-        PlayerPtr& player2
+        const PlayerPtr& player1,
+        const PlayerPtr& player2
     );
 
     /**
@@ -139,8 +139,8 @@ public:
      * @return       stream for chaining
      */
     friend OutputStream& operator<< (
-        OutputStream& stream,
-        PlayerPtr&    player
+        OutputStream&    stream,
+        const PlayerPtr& player
     );
 }; /* END class Player */
 
@@ -160,29 +160,29 @@ public:
         )
         {}
 
-    virtual IdentifierPtr getName() override {
+    virtual const IdentifierPtr getName() const override {
         return NullFactory::getInstance().createIdentifier();
     }
 
-    virtual IdentifiersPtr getStrategies() override {
+    virtual const IdentifiersPtr getStrategies() const override {
         return NullFactory::getInstance().createIdentifiers();
     }
 
-    virtual Index getStrategiesNumber() override {
+    virtual Index getStrategiesNumber() const override {
         return 0;
     }
 
     virtual Index getStrategyOrdinal(
-        Identifier&
-    ) override {
+        const Identifier&
+    ) const override {
         return 0;
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullPlayer");
     }
 }; /* END class NullPlayer */

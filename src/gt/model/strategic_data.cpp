@@ -9,7 +9,7 @@ namespace Model {
 // public:
 
 StrategicData::StrategicData(
-    PlayersPtr players
+    const PlayersPtr players
 ) :
     positionsHelper(players),
     payoffStorage(),
@@ -22,14 +22,14 @@ StrategicData::StrategicData(
     }
 }
 
-PlayersPtr StrategicData::getPlayers() {
+const PlayersPtr StrategicData::getPlayers() const {
     return positionsHelper.getPlayers();
 }
 
-DataPiecePtr StrategicData::getValues(
-    Index positionInStorage
-) {
-    if (!payoffStorageAllocation[positionInStorage])
+const DataPiecePtr StrategicData::getValues(
+    const Index positionInStorage
+) const {
+    if (!payoffStorageAllocation.at(positionInStorage))
         throw ExceptionFactory::getInstance().noParamsForPositions(
             positionInStorage,
             positionsHelper.getUpperBound()
@@ -38,26 +38,26 @@ DataPiecePtr StrategicData::getValues(
     return DataPiecePtr(
         new PlainDataPiece(
             positionsHelper.getPlayers(),
-            payoffStorage[positionInStorage]
+            payoffStorage.at(positionInStorage)
         )
     );
 }
 
-DataPiecePtr StrategicData::getValues(
-    Positions& positions
-) {
+const DataPiecePtr StrategicData::getValues(
+    const Positions& positions
+) const {
     return getValues(positionsHelper.calculatePosition(positions));
 }
 
-DataPiecePtr StrategicData::getValues(
-    PositionsPtr positions
-) {
+const DataPiecePtr StrategicData::getValues(
+    const PositionsPtr positions
+) const {
     return getValues(*positions);
 }
 
 Data& StrategicData::setValues(
-    Index      positionInStorage,
-    NumbersPtr numbers
+    const Index      positionInStorage,
+    const NumbersPtr numbers
 ) {
     if (positionsHelper.getUpperBound() <= positionInStorage)
         throw ExceptionFactory::getInstance().noParamsForPositions(
@@ -65,15 +65,15 @@ Data& StrategicData::setValues(
             positionsHelper.getUpperBound()
         );
 
-    payoffStorage[positionInStorage]           = numbers;
-    payoffStorageAllocation[positionInStorage] = true;
+    payoffStorage.at(positionInStorage)           = numbers;
+    payoffStorageAllocation.at(positionInStorage) = true;
 
     return *this;
 }
 
 Data& StrategicData::setValues(
-    Positions& positions,
-    NumbersPtr numbers
+    const Positions& positions,
+    const NumbersPtr numbers
 ) {
     if (!positionsHelper.checkPositions(positions))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
@@ -85,49 +85,49 @@ Data& StrategicData::setValues(
 }
 
 Data& StrategicData::setValues(
-    PositionsPtr positions,
-    NumbersPtr   numbers
+    const PositionsPtr positions,
+    const NumbersPtr   numbers
 ) {
     return setValues(*positions, numbers);
 }
 
-DataPiecePtr StrategicData::operator[](
-    Index positionInStorage
-) {
+const DataPiecePtr StrategicData::operator[](
+    const Index positionInStorage
+) const {
     return getValues(positionInStorage);
 }
 
-DataPiecePtr StrategicData::operator[](
-    Positions& positions
-) {
+const DataPiecePtr StrategicData::operator[](
+    const Positions& positions
+) const {
     return getValues(positions);
 }
 
-DataPiecePtr StrategicData::operator[](
-    PositionsPtr positions
-) {
+const DataPiecePtr StrategicData::operator[](
+    const PositionsPtr positions
+) const {
     return getValues(positions);
 }
 
-Message StrategicData::toString() {
+Message StrategicData::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    IdentifierPtr positionName = createIdentifierPtr("Position");
-    IdentifierPtr payoffName   = createIdentifierPtr("Payoff");
+    IdentifierPtr positionName  = createIdentifierPtr("Position");
+    IdentifierPtr payoffName    = createIdentifierPtr("Payoff");
     IdentifiersPtr playersNames = createIdentifiersPtr();
     for (Index i = 0; i < positionsHelper.getPlayers()->size(); i++)
         playersNames->push_back( createIdentifierPtr(positionsHelper.retrievePlayer(i)) );
 
     Index maxPosition = payoffStorage.size();
     for (Index i = 0; i < maxPosition; i++)
-        if (payoffStorageAllocation[i]) {
-            IdentifierPtr  name       = createIdentifierPtr("Value");
-            PositionsPtr   positions  = positionsHelper.retrievePositions(i);
-            NumbersPtr     numbers    = payoffStorage[i];
-            IdentifiersPtr strategies = createIdentifiersPtr();
-            MessagesPtr    numbersStr = createMessagesPtr();
+        if (payoffStorageAllocation.at(i)) {
+            const IdentifierPtr  name       = createIdentifierPtr("Value");
+            const PositionsPtr   positions  = positionsHelper.retrievePositions(i);
+            const NumbersPtr     numbers    = payoffStorage[i];
+            const IdentifiersPtr strategies = createIdentifiersPtr();
+            const MessagesPtr    numbersStr = createMessagesPtr();
 
-            for (IdentifierPtr& playerName : (*playersNames)) {
+            for (const IdentifierPtr& playerName : (*playersNames)) {
                 strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );
                 numbersStr->push_back( createMessagePtr(
                     (*numbers)[positionsHelper.calculatePlayer(playerName)]

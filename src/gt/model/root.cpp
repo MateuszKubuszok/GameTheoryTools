@@ -50,15 +50,17 @@ Root::~Root() {
         *outputStream << "Freed id:" << rootID << std::endl;
 }
 
-bool Root::isEqual(Root& root) {
+bool Root::isEqual(
+    const Root& root
+) const {
     return this == &root;
 }
 
-bool Root::isNotNull() {
+bool Root::isNotNull() const {
     return true;
 }
 
-bool Root::isNull() {
+bool Root::isNull() const {
     return !isNotNull();
 }
 
@@ -67,22 +69,22 @@ bool Root::isNull() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    Root& root1,
-    Root& root2
+    const Root& root1,
+    const Root& root2
 ) {
     return root1.isEqual(root2);
 }
 
 bool operator!=(
-    Root& root1,
-    Root& root2
+    const Root& root1,
+    const Root& root2
 ) {
     return !root1.isEqual(root2);
 }
 
 OutputStream& operator<<(
     OutputStream& stream,
-    Root&         root
+    const Root&   root
 ) {
     return stream << root.toString();
 }

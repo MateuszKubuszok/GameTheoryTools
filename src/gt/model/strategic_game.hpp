@@ -20,11 +20,11 @@ class StrategicGame : public Game {
     /**
      * @brief Players.
      */
-    PlayersPtr       players;
+    const PlayersPtr       players;
     /**
      * @brief Game's Data.
      */
-    StrategicDataPtr data;
+    const StrategicDataPtr data;
 
 public:
     /**
@@ -34,8 +34,8 @@ public:
      * @param newData    Data for Game
      */
     StrategicGame(
-        PlayersPtr       newPlayers,
-        StrategicDataPtr newData
+        const PlayersPtr       newPlayers,
+        const StrategicDataPtr newData
     );
 
     /**
@@ -43,21 +43,21 @@ public:
      *
      * @return Players' denifitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns Game's Data.
      *
      * @return Game's Data
      */
-    virtual DataAccessorPtr getData() override;
+    virtual const DataAccessorPtr getData() const override;
 
     /**
      * @brief Returns StrategicGame's Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class StrategicGame */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -26,24 +26,24 @@ ExtensiveDataNode::~ExtensiveDataNode() {
     }
 }
 
-ExtensiveDataNode& ExtensiveDataNode::getParent() {
+const ExtensiveDataNode& ExtensiveDataNode::getParent() const {
     return *parent;
 }
 
-PlayerPtr ExtensiveDataNode::getPlayer() {
+const PlayerPtr ExtensiveDataNode::getPlayer() const {
     return player;
 }
 
-PlayerPtr ExtensiveDataNode::getPlayer(
-    Positions& positions
-) {
+const PlayerPtr ExtensiveDataNode::getPlayer(
+    const Positions& positions
+) const {
     if (isPositionOfCurrentNodePlayer(positions))
         return player;
 
     if (!checkPlayerPositions(positions))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
-    Identifier& strategy = positions[depthName];
+    const Identifier& strategy = positions.at(depthName);
 
     if (nodes->count(strategy))
         return (*nodes)[strategy]->getPlayer(positions);
@@ -51,15 +51,15 @@ PlayerPtr ExtensiveDataNode::getPlayer(
 }
 
 ExtensiveDataNode& ExtensiveDataNode::setPlayer(
-    PlayerPtr newPlayer
+    const PlayerPtr newPlayer
 ) {
     player = newPlayer;
     return *this;
 }
 
 ExtensiveDataNode& ExtensiveDataNode::setPlayer(
-    Positions& positions,
-    PlayerPtr  newPlayer
+    const Positions& positions,
+    const PlayerPtr  newPlayer
 ) {
     if (isPositionOfCurrentNodePlayer(positions)) {
         if (player->isNotNull() && player != newPlayer)
@@ -71,7 +71,7 @@ ExtensiveDataNode& ExtensiveDataNode::setPlayer(
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
     else {
-        Identifier& strategy = positions[depthName];
+        const Identifier& strategy = positions.at(depthName);
 
         if (!nodes->count(strategy)) {
             ExtensiveDataNodePtr node(new ExtensiveDataNode(this, depthValue+1));
@@ -84,27 +84,27 @@ ExtensiveDataNode& ExtensiveDataNode::setPlayer(
     return *this;
 }
 
-NumbersPtr ExtensiveDataNode::getValues(
-    Positions& positions
-) {
+const NumbersPtr ExtensiveDataNode::getValues(
+    const Positions& positions
+) const {
     if (depthValue == 0)
         return payoff;
 
     if (!checkPositions(positions))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
-    Identifier& strategy = positions[depthName];
+    const Identifier& strategy = positions.at(depthName);
     return (*nodes)[strategy]->getValues(positions);
 }
 
 ExtensiveDataNode& ExtensiveDataNode::setValues(
-    Positions& positions,
-    NumbersPtr values
+    const Positions& positions,
+    const NumbersPtr values
 ) {
     if (!positions.count(depthName))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
-    Identifier& strategy = positions[depthName];
+    const Identifier& strategy = positions.at(depthName);
 
     if (!nodes->count(strategy)) {
         ExtensiveDataNodePtr node;
@@ -123,7 +123,7 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
     return *this;
 }
 
-Message ExtensiveDataNode::toString() {
+Message ExtensiveDataNode::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr    valueName     = createIdentifierPtr("Value");
 
@@ -176,20 +176,20 @@ ExtensiveDataNode::ExtensiveDataNode(
 // private:
 
 bool ExtensiveDataNode::isPositionOfCurrentNodePlayer(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     return depthValue == positions.size()+1;
 }
 
 bool ExtensiveDataNode::checkPositions(
-    Positions& positions
-) {
-    return positions.count(depthName) && nodes->count(positions[depthName]);
+    const Positions& positions
+) const {
+    return positions.count(depthName) && nodes->count(positions.at(depthName));
 }
 
 bool ExtensiveDataNode::checkPlayerPositions(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     return positions.empty() || positions.count(depthName);
 }
 

@@ -25,7 +25,7 @@ public:
      *
      * @return Players
      */
-    virtual PlayersPtr getPlayers() = 0;
+    virtual const PlayersPtr getPlayers() const = 0;
 
     /**
      * @brief Returns values handler for given coordiantes.
@@ -34,9 +34,9 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) = 0;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const = 0;
 
     /**
      * @brief Returns values handler for given coordiantes.
@@ -45,8 +45,20 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const = 0;
+
+    /**
+     * @brief Sets values for given coordiantes.
+     *
+     * @param positions         coordinates in a Game
+     * @return                  reference to itself
+     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
+     */
+    virtual Data& setValues(
+        const Positions& positions,
+        const NumbersPtr numbers
     ) = 0;
 
     /**
@@ -57,42 +69,8 @@ public:
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
     virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
-    ) = 0;
-
-    /**
-     * @brief Sets values for given coordiantes.
-     *
-     * @param positions         coordinates in a Game
-     * @return                  reference to itself
-     * @throw InvalidCoordinate thrown when calculated coordinates are invalid
-     */
-    virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) = 0;
-
-    /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
-     *
-     * @param positions          coordinates
-     * @return                   DataPiece object allowing access to concrete value
-     * @throw InvalidCoordinates thrown when positions coordinates are invalid
-     */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
+        const PositionsPtr positions,
+        const NumbersPtr   numbers
     ) = 0;
 
     /**
@@ -100,7 +78,29 @@ public:
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
+
+    /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const = 0;
+
+    /**
+     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     *
+     * @param positions          coordinates
+     * @return                   DataPiece object allowing access to concrete value
+     * @throw InvalidCoordinates thrown when positions coordinates are invalid
+     */
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const = 0;
 }; /* END class Data */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,54 +112,54 @@ public:
  */
 class NullData : public Data {
 public:
-    virtual DataPiecePtr getValues(
-        Positions&
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr getValues(
-        PositionsPtr
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
+    virtual const DataPiecePtr getValues(
+        const Positions&
+    )  const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
     virtual Data& setValues(
-        Positions&,
-        NumbersPtr
+        const Positions&,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
     virtual Data& setValues(
-        PositionsPtr,
-        NumbersPtr
+        const PositionsPtr,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual DataPiecePtr operator[](
-        Positions&
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr operator[](
-        PositionsPtr
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() {
+    virtual Message toString() const override {
         return Message("NullData");
+    }
+
+    virtual const DataPiecePtr operator[](
+        const Positions&
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
     }
 }; /* END class NullData */
 

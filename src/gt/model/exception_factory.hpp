@@ -29,15 +29,15 @@ public:
      * @return         InvalidCoordinate exception to throw
      */
     InvalidCoordinate coordinatesAlreadySet(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Thrown when some coordinates are uknown yet attept to store values is made.
      *
      * @return IllegalInnerState exception to throw
      */
-    IllegalInnerState incompleteCoordinates();
+    IllegalInnerState incompleteCoordinates() const;
 
     /**
      * @brief Thrown when some of the Players' names or strategies are invalid.
@@ -46,8 +46,8 @@ public:
      * @return         InvalidCoordinate exception to throw
      */
     InvalidCoordinate invalidCoordinateFormat(
-        Positions& position
-    );
+        const Positions& position
+    ) const;
 
     /**
      * @brief Thrown when there are colliding definitions of Player's playing in some turn.
@@ -56,8 +56,8 @@ public:
      * @return         InvalidCoordinate exception to throw
      */
     InvalidCoordinate invalidExtensiveCoordinateFormat(
-        Positions& position
-    );
+        const Positions& position
+    ) const;
 
     /**
      * @brief Thrown when ettepting to read from position that has not values defined.
@@ -67,9 +67,9 @@ public:
      * @return                  InvalidCoordinate exception to throw
      */
     InvalidCoordinate noParamsForPositions(
-        Index positionInStorage,
-        Index maxPosition
-    );
+        const Index positionInStorage,
+        const Index maxPosition
+    ) const;
 
     /**
      * @brief Thrown when no Player with given name has been defined.
@@ -78,8 +78,8 @@ public:
      * @return           InvalidCoordinate exception to throw
      */
     InvalidCoordinate invalidPlayer(
-        Identifier& playerName
-    );
+        const Identifier& playerName
+    ) const;
 
     /**
      * @brief @brief Thrown when no strategy with given name has been defined.
@@ -88,15 +88,15 @@ public:
      * @return             InvalidCoordinate exception to throw
      */
     InvalidCoordinate invalidStrategy(
-        Identifier& strategyName
-    );
+        const Identifier& strategyName
+    ) const;
 
     /**
      * @brief Thrown when attempt to redefine Players is made.
      *
      * @return IllegalInnerState exception to throw
      */
-    IllegalInnerState playersAlreadySet();
+    IllegalInnerState playersAlreadySet() const;
 
     /**
      * @brief Thrown during attempt to build Result with properties' names and results not matching in size.
@@ -106,9 +106,9 @@ public:
      * @return               IllegalInnerState exception to throw
      */
     IllegalInnerState propertiesAndResultsDontMatchInSize(
-        Index propertiesSize,
-        Index resultsSize
-    );
+        const Index propertiesSize,
+        const Index resultsSize
+    ) const;
 
 private:
     /**

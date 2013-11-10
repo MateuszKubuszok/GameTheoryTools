@@ -21,36 +21,36 @@ Player::Player(
         strategyMapping.insert( StrategyMap::value_type(*strategy, index++) );
 }
 
-IdentifierPtr Player::getName() {
+const IdentifierPtr Player::getName() const {
     return name;
 }
 
-IdentifiersPtr Player::getStrategies() {
+const IdentifiersPtr Player::getStrategies() const {
     return strategies;
 }
 
-Index Player::getStrategiesNumber() {
+Index Player::getStrategiesNumber() const {
     return strategies->size();
 }
 
 Index Player::getStrategyOrdinal(
-    Identifier& strategy
-) {
+    const Identifier& strategy
+) const {
     if (strategyMapping.count(strategy))
-        return strategyMapping[strategy];
+        return strategyMapping.at(strategy);
     throw ExceptionFactory::getInstance().invalidStrategy(strategy);
 }
 
 bool Player::hasStrategy(
-    Identifier& strategy
-) {
+    const Identifier& strategy
+) const {
     return strategyMapping.count(strategy);
 }
 
 bool Player::isEqual(
-    Root& root
-) {
-    Player* player = dynamic_cast<Player*>(&root);
+    const Root& root
+) const {
+    const Player* player = dynamic_cast<const Player*>(&root);
     if (!player)
         return false;
     if (player == this)
@@ -62,7 +62,7 @@ bool Player::isEqual(
     return true;
 }
 
-Message Player::toString() {
+Message Player::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     IdentifierPtr playerName      = createIdentifierPtr("Name");
@@ -83,22 +83,22 @@ Message Player::toString() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool operator==(
-    PlayerPtr& player1,
-    PlayerPtr& player2
+    const PlayerPtr& player1,
+    const PlayerPtr& player2
 ) {
     return (*player1) == (*player2);
 }
 
 bool operator!=(
-    PlayerPtr& player1,
-    PlayerPtr& player2
+    const PlayerPtr& player1,
+    const PlayerPtr& player2
 ) {
     return (*player1) != (*player2);
 }
 
 OutputStream& operator<<(
-    OutputStream& stream,
-    PlayerPtr&    player
+    OutputStream&    stream,
+    const PlayerPtr& player
 ) {
     return stream << player->toString();
 }

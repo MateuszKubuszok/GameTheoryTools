@@ -29,7 +29,7 @@ public:
      * @param indentation sequence used for indentation
      */
     explicit JSONResultBuilder(
-        Message indentation
+        const Message indentation
     );
 
     /**
@@ -40,7 +40,7 @@ public:
      *
      * @see #buildRaw()
      */
-    virtual ResultPtr build() override;
+    virtual ResultPtr build() const override;
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
@@ -50,7 +50,7 @@ public:
      *
      * @see #build()
      */
-    virtual ResultPtr buildRaw() override;
+    virtual ResultPtr buildRaw() const override;
 }; /* END class JSONResultBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@ XMLResultBuilder::XMLResultBuilder(
     AbstractResultBuilder(indentation)
     {}
 
-ResultPtr XMLResultBuilder::build() {
+ResultPtr XMLResultBuilder::build() const {
     std::stringstream result;
 
     result << "<results>" << std::endl;
@@ -24,14 +24,14 @@ ResultPtr XMLResultBuilder::build() {
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
 
-ResultPtr XMLResultBuilder::buildRaw() {
+ResultPtr XMLResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
     int propertiesSize = propertiesNames->size();
     std::stringstream result;
 
     if (propertiesSize > 0)
-        for (PartialResult& partialResult : partialResults) {
+        for (const PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
@@ -52,7 +52,7 @@ ResultPtr XMLResultBuilder::buildRaw() {
         }
 
     if (subResults.size() > 0)
-        for (SubResult& subResult : subResults) {
+        for (const SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 

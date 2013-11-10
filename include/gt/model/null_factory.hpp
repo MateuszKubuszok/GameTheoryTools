@@ -27,112 +27,112 @@ public:
      *
      * @result null Identifier
      */
-    IdentifierPtr createIdentifier();
+    IdentifierPtr createIdentifier() const;
 
     /**
      * @brief Creates null Identifiers.
      *
      * @result null Identifiers
      */
-    IdentifiersPtr createIdentifiers();
+    IdentifiersPtr createIdentifiers() const;
 
     /**
      * @brief Creates null Message.
      *
      * @result null Message
      */
-    MessagePtr createMessage();
+    MessagePtr createMessage() const;
 
     /**
      * @brief Creates null Messages.
      *
      * @result null Messages
      */
-    MessagesPtr createMessages();
+    MessagesPtr createMessages() const;
 
     /**
      * @brief Creates NullNumber.
      *
      * @result NullNumber
      */
-    NumberPtr createNumber();
+    NumberPtr createNumber() const;
 
     /**
      * @brief Creates Null Numbers.
      *
      * @result Null Numbers
      */
-    NumbersPtr createNumbers();
+    NumbersPtr createNumbers() const;
 
     /**
      * @brief Creates NullPlayer.
      *
      * @result NullPlayer
      */
-    PlayerPtr createPlayer();
+    PlayerPtr createPlayer() const;
 
     /**
      * @brief Creates NullPlayers.
      *
      * @result Player
      */
-    PlayersPtr createPlayers();
+    PlayersPtr createPlayers() const;
 
     /**
      * @brief Creates NullData.
      *
      * @result NullData
      */
-    DataPtr createData();
+    DataPtr createData() const;
 
     /**
      * @brief Creates NullDataAccessor.
      *
      * @result NullDataAccessor
      */
-    DataAccessorPtr createDataAccessor();
+    DataAccessorPtr createDataAccessor() const;
 
     /**
      * @brief Creates NullDataPiece.
      *
      * @result NullDataPiece
      */
-    DataPiecePtr createDataPiece();
+    DataPiecePtr createDataPiece() const;
 
     /**
      * @brief Creates NullDataBuilder.
      *
      * @result NullDataBuilder
      */
-    DataBuilderPtr createDataBuilder();
+    DataBuilderPtr createDataBuilder() const;
 
     /**
      * @brief Creates NullGame.
      *
      * @result NullGame
      */
-    GamePtr createGame();
+    GamePtr createGame() const;
 
     /**
      * @brief Creates NullGameBuilder.
      *
      * @result NullGameBuilder
      */
-    GameBuilderPtr createGameBuilder();
+    GameBuilderPtr createGameBuilder() const;
 
     /**
      * @brief Creates NullResult.
      *
      * @result NullResult
      */
-    ResultPtr createResult();
+    ResultPtr createResult() const;
 
     /**
      * @brief Creates NullResultBuilder.
      *
      * @result NullResultBuilder
      */
-    ResultBuilderPtr createResultBuilder();
+    ResultBuilderPtr createResultBuilder() const;
 
 private:
     /**

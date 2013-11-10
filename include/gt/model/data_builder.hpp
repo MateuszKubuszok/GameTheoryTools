@@ -37,7 +37,7 @@ public:
      * @throw IllegalInnerState thrown when Players are already set
      */
     virtual DataBuilder& setPlayers(
-        PlayersPtr players
+        const PlayersPtr players
     ) = 0;
 
     /**
@@ -49,7 +49,7 @@ public:
      * @throw InvalidCoordinate thrown when some of values are not valid strategies names
      */
     virtual DataBuilder& addNextPositions(
-        PositionsPtr positions
+        const PositionsPtr positions
     ) = 0;
 
     /**
@@ -61,7 +61,7 @@ public:
      *                          not all coordinates are known
      */
     virtual DataBuilder& setParams(
-        NumbersPtr params
+        const NumbersPtr params
     ) = 0;
 
     /**
@@ -69,14 +69,14 @@ public:
      *
      * @return DataBuilder clone
      */
-    virtual DataBuilderPtr clone() = 0;
+    virtual DataBuilderPtr clone() const = 0;
 
     /**
      * @brief DataBuilder's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class DataBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,32 +89,32 @@ public:
 class NullDataBuilder : public DataBuilder {
 public:
     virtual DataBuilder& setPlayers(
-        PlayersPtr
+        const PlayersPtr
     ) override {
         return *this;
     }
 
     virtual DataBuilder& addNextPositions(
-        PositionsPtr
+        const PositionsPtr
     ) override {
         return *this;
     }
 
     virtual DataBuilder& setParams(
-        NumbersPtr
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual DataBuilderPtr clone() override {
+    virtual DataBuilderPtr clone() const override {
         return NullFactory::getInstance().createDataBuilder();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullDataBuilder");
     }
 }; /* END class NullDataBuilder */

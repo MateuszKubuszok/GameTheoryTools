@@ -23,7 +23,7 @@ public:
      * @param indentation sequence used for indentation
      */
     explicit AbstractResultBuilder(
-        Message indentation
+        const Message indentation
     );
 
     /**
@@ -37,7 +37,7 @@ public:
      * @see #addRecord(IdentifierPtr&,MessagesPtr&)
      */
     virtual ResultBuilder& setHeaders(
-        IdentifiersPtr& propertiesNames
+        const IdentifiersPtr& propertiesNames
     ) override;
 
     /**
@@ -52,8 +52,8 @@ public:
      * @see #setHeaders(IdentifiersPtr&)
      */
     virtual ResultBuilder& addRecord(
-        IdentifierPtr& name,
-        MessagesPtr&   propertiesValues
+        const IdentifierPtr& name,
+        const MessagesPtr&   propertiesValues
     ) override;
 
     /**
@@ -64,8 +64,8 @@ public:
      * @result       reference for itself for chaining
      */
     virtual ResultBuilder& addResult(
-        IdentifierPtr& name,
-        MessagePtr&    result
+        const IdentifierPtr& name,
+        const MessagePtr&    result
     ) override;
 
     /**
@@ -76,7 +76,7 @@ public:
      *
      * @see #buildRaw()
      */
-    virtual ResultPtr build() = 0;
+    virtual ResultPtr build() const = 0;
 
     /**
      * @brief Build raw Result - one that can be inserted into other results.
@@ -86,7 +86,7 @@ public:
      *
      * @see #build()
      */
-    virtual ResultPtr buildRaw() = 0;
+    virtual ResultPtr buildRaw() const = 0;
 
     /**
      * Displays what would be build or error message that would be thrown.
@@ -95,7 +95,7 @@ public:
      *
      * @see #build()
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 
 protected:
     /**
@@ -137,7 +137,7 @@ protected:
      *
      * @throw IllegalInnerState thrown when some record does not match headers size
      */
-    void checkPropertyToResultMatching();
+    void checkPropertyToResultMatching() const;
 
     /**
      * @brief Adds indent to the beginning of each line of passes content.
@@ -146,8 +146,8 @@ protected:
      * @return        indented content
      */
     Message addIndent(
-        Message content
-    );
+        const Message content
+    ) const;
 }; /* END class AbstractResultBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

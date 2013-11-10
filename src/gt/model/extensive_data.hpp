@@ -27,7 +27,7 @@ class ExtensiveData : public Data {
     /**
      * @brief Players.
      */
-    PlayersPtr           players;
+    const PlayersPtr     players;
     /**
      * @brief Root of Data tree.
      */
@@ -40,7 +40,7 @@ public:
      * @param playersDefinitions Players' definitions
      */
     explicit ExtensiveData(
-        PlayersPtr playersDefinitions
+        const PlayersPtr playersDefinitions
     );
 
     /**
@@ -48,7 +48,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns Player that plays for given position.
@@ -56,9 +56,9 @@ public:
      * @param positions Positions in payoff storage
      * @return          Player that plays given position
      */
-    virtual PlayerPtr getPlayerInTurn(
-        Positions& positions
-    );
+    virtual const PlayerPtr getPlayerInTurn(
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Returns Player that plays for given position.
@@ -66,8 +66,20 @@ public:
      * @param positions Positions in payoff storage
      * @return          Player that plays given position
      */
-    virtual PlayerPtr getPlayerInTurn(
-        PositionsPtr positions
+    virtual const PlayerPtr getPlayerInTurn(
+        const PositionsPtr positions
+    ) const;
+
+    /**
+     * @brief Sets Player that plays for given position.
+     *
+     * @param positions Positions for which player Player
+     * @param player    Player that plays given position
+     * @return          reference ot itdelf for chaining
+     */
+    virtual ExtensiveData& setPlayerInTurn(
+        const Positions& positions,
+        const PlayerPtr  player
     );
 
     /**
@@ -78,20 +90,8 @@ public:
      * @return          reference ot itdelf for chaining
      */
     virtual ExtensiveData& setPlayerInTurn(
-        Positions& positions,
-        PlayerPtr  player
-    );
-
-    /**
-     * @brief Sets Player that plays for given position.
-     *
-     * @param positions Positions for which player Player
-     * @param player    Player that plays given position
-     * @return          reference ot itdelf for chaining
-     */
-    virtual ExtensiveData& setPlayerInTurn(
-        PositionsPtr positions,
-        PlayerPtr    player
+        const PositionsPtr positions,
+        const PlayerPtr    player
     );
 
     /**
@@ -101,9 +101,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -112,8 +112,22 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const override;
+
+    /**
+     * @brief Sets Positions to contains given payoffs.
+     *
+     * @param positions         Positions to set
+     * @param numbers           payoffs values
+     * @return                  reference to itself for chaining
+     * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
+     *                          or some strategies do not match assigned for each turn Players
+     */
+    virtual Data& setValues(
+        const Positions& positions,
+        const NumbersPtr numbers
     ) override;
 
     /**
@@ -126,44 +140,8 @@ public:
      *                          or some strategies do not match assigned for each turn Players
      */
     virtual Data& setValues(
-        Positions& positions,
-        NumbersPtr numbers
-    ) override;
-
-    /**
-     * @brief Sets Positions to contains given payoffs.
-     *
-     * @param positions         Positions to set
-     * @param numbers           payoffs values
-     * @return                  reference to itself for chaining
-     * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
-     *                          or some strategies do not match assigned for each turn Players
-     */
-    virtual Data& setValues(
-        PositionsPtr positions,
-        NumbersPtr   numbers
-    ) override;
-
-    /**
-     * @brief Returns DataPiece that gives access to payoffs.
-     *
-     * @param positions         Positions in payoff storage
-     * @return                  DataPiece handling access to payoffs
-     * @throw InvalidCoordinate thrown when no data is set under such position
-     */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) override;
-
-    /**
-     * @brief Returns DataPiece that gives access to payoffs.
-     *
-     * @param positions         Positions in payoff storage
-     * @return                  DataPiece handling access to payoffs
-     * @throw InvalidCoordinate thrown when no data is set under such position
-     */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
+        const PositionsPtr positions,
+        const NumbersPtr   numbers
     ) override;
 
     /**
@@ -171,7 +149,29 @@ public:
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() const override;
+
+    /**
+     * @brief Returns DataPiece that gives access to payoffs.
+     *
+     * @param positions         Positions in payoff storage
+     * @return                  DataPiece handling access to payoffs
+     * @throw InvalidCoordinate thrown when no data is set under such position
+     */
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const override;
+
+    /**
+     * @brief Returns DataPiece that gives access to payoffs.
+     *
+     * @param positions         Positions in payoff storage
+     * @return                  DataPiece handling access to payoffs
+     * @throw InvalidCoordinate thrown when no data is set under such position
+     */
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const override;
 }; /* END class ExtensiveData */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,80 +187,80 @@ public:
         ExtensiveData(NullFactory::getInstance().createPlayers())
         {}
 
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual PlayerPtr getPlayerInTurn(
-        Positions&
-    ) override {
+    virtual const PlayerPtr getPlayerInTurn(
+        const Positions&
+    ) const override {
         return NullFactory::getInstance().createPlayer();
     }
 
-    virtual PlayerPtr getPlayerInTurn(
-        PositionsPtr
-    ) override {
+    virtual const PlayerPtr getPlayerInTurn(
+        const PositionsPtr
+    ) const override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual ExtensiveData& setPlayerInTurn(
-        Positions&,
-        PlayerPtr
+        const Positions&,
+        const PlayerPtr
     ) override {
         return *this;
     }
 
     virtual ExtensiveData& setPlayerInTurn(
-        PositionsPtr,
-        PlayerPtr
+        const PositionsPtr,
+        const PlayerPtr
     ) override {
         return *this;
     }
 
-    virtual DataPiecePtr getValues(
-        Positions&
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const Positions&
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual DataPiecePtr getValues(
-        PositionsPtr
-    ) override {
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr
+    ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
     virtual Data& setValues(
-        Positions&,
-        NumbersPtr
+        const Positions&,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
     virtual Data& setValues(
-        PositionsPtr,
-        NumbersPtr
+        const PositionsPtr,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual DataPiecePtr operator[](
-        Positions&
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual DataPiecePtr operator[](
-        PositionsPtr
-    ) override {
-        return NullFactory::getInstance().createDataPiece();
-    }
-
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullExtensiveData");
+    }
+
+    virtual const DataPiecePtr operator[](
+        const Positions&
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
+    }
+
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr
+    ) const override {
+        return NullFactory::getInstance().createDataPiece();
     }
 }; /* END class NullExtensiveData */
 

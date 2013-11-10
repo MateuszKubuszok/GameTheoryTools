@@ -9,7 +9,7 @@ namespace Model {
 // public:
 
 PositionsHelper::PositionsHelper(
-    PlayersPtr playersDefinitions
+    const PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
     playersHelper(),
@@ -19,14 +19,14 @@ PositionsHelper::PositionsHelper(
     Index playerIndex   = 0;
     Index positionIndex = 1;
 
-    for (Players::value_type& playerPair : (*players)) {
+    for (const Players::value_type& playerPair : (*players)) {
         const Identifier& playerName = playerPair.first;
-        Player&           player     = *playerPair.second;
-        Identifiers       strategies = *player.getStrategies(); // usage of reference here makes valgrind
+        const Player&     player     = *playerPair.second;
+        const Identifiers strategies = *player.getStrategies(); // usage of reference here makes valgrind
                                                                 // yell "Invalid read of size 8" in for below
 
         IdentifierMap strategiesMap;
-        for (IdentifierPtr& strategy : strategies)
+        for (const IdentifierPtr& strategy : strategies)
             strategiesMap.insert(IdentifierMap::value_type(*strategy, player.getStrategyOrdinal(*strategy)));
         playersHelper.insert( IdentifierMap::value_type(playerName, playerIndex) );
         positionsHelper.insert( IdentifierMap::value_type(playerName, positionIndex) );
@@ -39,76 +39,77 @@ PositionsHelper::PositionsHelper(
     upperBound = positionIndex;
 }
 
-PlayersPtr PositionsHelper::getPlayers() {
+const PlayersPtr PositionsHelper::getPlayers() const {
     return players;
 }
 
-Index PositionsHelper::getUpperBound() {
+Index PositionsHelper::getUpperBound() const {
     return upperBound;
 }
 
 Index PositionsHelper::calculatePlayer(
-    Identifier& playerName
-) {
+    const Identifier& playerName
+) const {
     return playersHelper.left.at(playerName);
 }
 
 Index PositionsHelper::calculatePlayer(
-    IdentifierPtr playerName
-) {
+    const IdentifierPtr playerName
+) const {
     return calculatePlayer(*playerName);
 }
 
-IdentifierPtr PositionsHelper::retrievePlayer(
-    Index playerPosition
-) {
+const IdentifierPtr PositionsHelper::retrievePlayer(
+    const Index playerPosition
+) const {
     return createIdentifierPtr(playersHelper.right.at(playerPosition));
 }
 
 Index PositionsHelper::calculatePosition(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     Index storagePosition = 0;
-    for (Positions::value_type& position : positions) {
-        Identifier playerName   = position.first;
-        Identifier strategyName = position.second;
+    for (const Positions::value_type& position : positions) {
+        const Identifier playerName   = position.first;
+        const Identifier strategyName = position.second;
         storagePosition +=
             // dirty hack to "handle" situation when some players have only 1 strategy
             (positionsHelper.left.count(playerName) ? positionsHelper.left.at(playerName) : 0)
             *
-            strategiesHelper[playerName].left.at(strategyName);
+            strategiesHelper.at(playerName).left.at(strategyName);
     }
     return storagePosition;
 }
 
 Index PositionsHelper::calculatePosition(
-    PositionsPtr positions
-) {
+    const PositionsPtr positions
+) const {
     return calculatePosition(*positions);
 }
 
-PositionsPtr PositionsHelper::retrievePositions(
-    Index positionInStorage
-) {
-    PositionsPtr positions = createPositionsPtr();
+const PositionsPtr PositionsHelper::retrievePositions(
+    const Index positionInStorage
+) const {
+    PositionsPtr positions       = createPositionsPtr();
+    Index        checkedPosition = positionInStorage;
 
     for (Index playerValue : positionsHelper.right
                            | boost::adaptors::map_keys
                            | boost::adaptors::reversed
     ) {
         Identifier playerName = positionsHelper.right.at(playerValue);
-        for (Index strategyValue = strategiesHelper[playerName].size()-1;
+        for (Index strategyValue = strategiesHelper.at(playerName).size()-1;
                    true;
                    strategyValue--
         ) {
-            if (playerValue*strategyValue <= positionInStorage) {
+            if (playerValue*strategyValue <= checkedPosition) {
                 positions->insert(
                     Positions::value_type(
                         playerName,
-                        strategiesHelper[playerName].right.at(strategyValue)
+                        strategiesHelper.at(playerName).right.at(strategyValue)
                     )
                 );
-                positionInStorage -= playerValue*strategyValue;
+                checkedPosition -= playerValue*strategyValue;
                 break;
             }
             if (!strategyValue)
@@ -120,40 +121,40 @@ PositionsPtr PositionsHelper::retrievePositions(
 }
 
 bool PositionsHelper::checkPlayer(
-    Identifier& playerName
-) {
+    const Identifier& playerName
+) const {
     return playersHelper.left.count(playerName);
 }
 
 bool PositionsHelper::checkPlayer(
-    IdentifierPtr playerName
-) {
+    const IdentifierPtr playerName
+) const {
     return checkPlayer(*playerName);
 }
 
 bool PositionsHelper::checkPositions(
-    Positions& positions
-) {
+    const Positions& positions
+) const {
     for (Identifier playerName : positions | boost::adaptors::map_keys) {
         if (!checkPlayer(playerName))
             return false;
-        Identifier strategyName = positions[playerName];
-        if (!strategiesHelper[playerName].left.count(strategyName))
+        Identifier strategyName = positions.at(playerName);
+        if (!strategiesHelper.at(playerName).left.count(strategyName))
             return false;
     }
     return true;
 }
 
 bool PositionsHelper::checkPositions(
-    PositionsPtr positions
-) {
+    const PositionsPtr positions
+) const {
     return checkPositions(*positions);
 }
 
-Message PositionsHelper::toString() {
+Message PositionsHelper::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr    name          = createIdentifierPtr("Player");
-    for (Players::value_type& player : (*players)) {
+    for (const Players::value_type& player : (*players)) {
         MessagePtr playerContent = createIdentifierPtr(player.second->toString());
         resultBuilder->addResult(name, playerContent);
     }

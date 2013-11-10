@@ -34,14 +34,14 @@ public:
      *
      * @return built Game
      */
-    virtual GamePtr build() override;
+    virtual GamePtr build() const override;
 
     /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Sets Players' definitions.
@@ -50,7 +50,7 @@ public:
      * @return           reference to itself for chanining
      */
     virtual DataBuilder& setPlayers(
-        PlayersPtr newPlayers
+        const PlayersPtr newPlayers
     ) override;
 
     /**
@@ -60,7 +60,7 @@ public:
      * @return          reference to itself for chanining
      */
     virtual DataBuilder& addNextPositions(
-        PositionsPtr positions
+        const PositionsPtr positions
     ) override;
 
     /**
@@ -70,7 +70,7 @@ public:
      * @return       reference to itself for chanining
      */
     virtual DataBuilder& setParams(
-        NumbersPtr params
+        const NumbersPtr params
     ) override;
 
     /**
@@ -78,28 +78,28 @@ public:
      *
      * @return copy with frozem Positions and content common to parent
      */
-    virtual DataBuilderPtr clone() override;
+    virtual DataBuilderPtr clone() const override;
 
     /**
      * @brief Returns new copy of this GameBuilder's type.
      *
      * @return GameBuilder
      */
-    virtual GameBuilderPtr cloneBuilder() override;
+    virtual GameBuilderPtr cloneBuilder() const override;
 
     /**
      * @brief Returns Same's DataBuilder.
      *
      * @return DataBuilder
      */
-    virtual DataBuilderPtr dataBuilder() override;
+    virtual DataBuilderPtr dataBuilder() const override;
 
     /**
      * @brief ExtensiveGameBuilder Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExtensiveGameBuilder */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

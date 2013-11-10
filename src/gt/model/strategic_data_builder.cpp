@@ -15,16 +15,16 @@ StrategicDataBuilder::StrategicDataBuilder() :
     currentlyKnownPositions()
     {}
 
-StrategicDataPtr StrategicDataBuilder::build() {
+StrategicDataPtr StrategicDataBuilder::build() const {
     return data;
 }
 
-PlayersPtr StrategicDataBuilder::getPlayers() {
+const PlayersPtr StrategicDataBuilder::getPlayers() const {
     return players;
 }
 
 DataBuilder& StrategicDataBuilder::setPlayers(
-    PlayersPtr newPlayers
+    const PlayersPtr newPlayers
 ) {
     if (data->isNotNull())
         throw ExceptionFactory::getInstance().playersAlreadySet();
@@ -36,7 +36,7 @@ DataBuilder& StrategicDataBuilder::setPlayers(
 }
 
 DataBuilder& StrategicDataBuilder::addNextPositions(
-    PositionsPtr positions
+    const PositionsPtr positions
 ) {
     for (Positions::value_type& position : (*positions)) {
         if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
@@ -54,7 +54,7 @@ DataBuilder& StrategicDataBuilder::addNextPositions(
 }
 
 DataBuilder& StrategicDataBuilder::setParams(
-    NumbersPtr params
+    const NumbersPtr params
 ) {
     for (Identifier player : (*players) | boost::adaptors::map_keys)
         if (!currentlyKnownPositions.count(player) || !currentlyKnownPositions[player])
@@ -65,11 +65,11 @@ DataBuilder& StrategicDataBuilder::setParams(
     return *this;
 }
 
-DataBuilderPtr StrategicDataBuilder::clone() {
+DataBuilderPtr StrategicDataBuilder::clone() const {
     return DataBuilderPtr(new StrategicDataBuilder(*this));
 }
 
-Message StrategicDataBuilder::toString() {
+Message StrategicDataBuilder::toString() const {
     IdentifierPtr name    = createIdentifierPtr("Current Data");
     MessagePtr    message = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();

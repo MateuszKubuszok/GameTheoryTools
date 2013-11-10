@@ -58,7 +58,7 @@ public:
      *
      * @return ResultBuilder
      */
-    ResultBuilderPtr buildResult();
+    ResultBuilderPtr buildResult() const;
 
     /**
      * @brief Returns Results with predefined const content.
@@ -68,21 +68,21 @@ public:
      */
     ResultPtr constResult(
         const Message& content
-    );
+    ) const;
 
     /**
      * @brief Returns empty Result.
      *
      * @return an empty result
      */
-    ResultPtr emptyResult();
+    ResultPtr emptyResult() const;
 
     /**
      * @brief Returns current builder mode.
      *
      * @return currently used builder mode
      */
-    ResultBuilderMode getBuilderMode();
+    ResultBuilderMode getBuilderMode() const;
 
     /**
      * @brief Sets current builder mode.
@@ -99,7 +99,7 @@ public:
      *
      * @return currently used indentation mode
      */
-    ResultIndentationMode getIndentationMode();
+    ResultIndentationMode getIndentationMode() const;
 
      /**
      * @brief Sets current indentation mode.

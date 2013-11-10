@@ -55,14 +55,14 @@ public:
      *
      * @return parent Node
      */
-    virtual ExtensiveDataNode& getParent();
+    virtual const ExtensiveDataNode& getParent() const;
 
     /**
      * @brief Returns Player of a current Node.
      *
      * @return Player of this Node
      */
-    virtual PlayerPtr getPlayer();
+    virtual const PlayerPtr getPlayer() const;
 
     /**
      * @brief Returns Player for a given Positions.
@@ -70,9 +70,9 @@ public:
      * @param positions Positions of a sought Player
      * @return          Player of this Node
      */
-    virtual PlayerPtr getPlayer(
-        Positions& positions
-    );
+    virtual const PlayerPtr getPlayer(
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Sets Player of a current Node.
@@ -81,7 +81,7 @@ public:
      * @return       reference to itself for chaining
      */
     virtual ExtensiveDataNode& setPlayer(
-        PlayerPtr player
+        const PlayerPtr player
     );
 
     /**
@@ -92,8 +92,8 @@ public:
      * @return          reference to itself for chaining
      */
     virtual ExtensiveDataNode& setPlayer(
-        Positions& positions,
-        PlayerPtr  player
+        const Positions& positions,
+        const PlayerPtr  player
     );
 
     /**
@@ -102,9 +102,9 @@ public:
      * @param  positions Positions of a sought Payoff
      * @return           values of Payoffs
      */
-    virtual NumbersPtr getValues(
-        Positions& positions
-    );
+    virtual const NumbersPtr getValues(
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Sets Payoff values.
@@ -114,8 +114,8 @@ public:
      * @return           reference to itself for chaining
      */
     virtual ExtensiveDataNode& setValues(
-        Positions& positions,
-        NumbersPtr values
+        const Positions& positions,
+        const NumbersPtr values
     );
 
     /**
@@ -123,7 +123,7 @@ public:
      *
      * @return Message
      */
-    virtual Message toString();
+    virtual Message toString() const override;
 
 protected:
     /**
@@ -156,8 +156,8 @@ private:
      * @return          true if Positions point to a Player in this Node
      */
     bool isPositionOfCurrentNodePlayer(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Whether Positions contains choice for current Node.
@@ -166,8 +166,8 @@ private:
      * @return          true if Positions contains strategy for current depth that is available in this node
      */
     bool checkPositions(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 
     /**
      * @brief Whether Positions contains NEXT choice.
@@ -176,8 +176,8 @@ private:
      * @return          true if Positions are empty or contains some choice for this depth
      */
     bool checkPlayerPositions(
-        Positions& positions
-    );
+        const Positions& positions
+    ) const;
 }; /* END class ExtensiveDataNode */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,51 +196,51 @@ public:
         )
         {}
 
-    virtual ExtensiveDataNode& getParent() override {
+    virtual const ExtensiveDataNode& getParent() const override {
         return *this;
     }
 
-    virtual PlayerPtr getPlayer() override {
+    virtual const PlayerPtr getPlayer() const override {
         return NullFactory::getInstance().createPlayer();
     }
 
-    virtual PlayerPtr getPlayer(
-        Positions&
-    ) override {
+    virtual const PlayerPtr getPlayer(
+        const Positions&
+    ) const override {
         return NullFactory::getInstance().createPlayer();
     }
 
     virtual ExtensiveDataNode& setPlayer(
-        PlayerPtr
+        const PlayerPtr
     ) override {
         return *this;
     }
 
     virtual ExtensiveDataNode& setPlayer(
-        Positions&,
-        PlayerPtr
+        const Positions&,
+        const PlayerPtr
     ) override {
         return *this;
     }
 
-    virtual NumbersPtr getValues(
-        Positions&
-    ) override {
+    virtual const NumbersPtr getValues(
+        const Positions&
+    ) const override {
         return Model::NullFactory::getInstance().createNumbers();
     }
 
     virtual ExtensiveDataNode& setValues(
-        Positions&,
-        NumbersPtr
+        const Positions&,
+        const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullExtensiveDataNode");
     }
 }; /* END class NullExtensiveDataNode */

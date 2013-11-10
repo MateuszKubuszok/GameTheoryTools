@@ -25,7 +25,7 @@ class ExtensiveDataAccessor : public DataAccessor {
     /**
      * @brief Actual data.
      */
-    ExtensiveDataPtr data;
+    const ExtensiveDataPtr data;
 
 public:
     /**
@@ -34,7 +34,7 @@ public:
      * @param gameData ExtensiveData
      */
     explicit ExtensiveDataAccessor(
-        ExtensiveDataPtr gameData
+        const ExtensiveDataPtr gameData
     );
 
     /**
@@ -42,7 +42,7 @@ public:
      *
      * @return Players' definitions
      */
-    virtual PlayersPtr getPlayers() override;
+    virtual const PlayersPtr getPlayers() const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -51,9 +51,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -62,9 +62,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr getValues(
-        Positions& positions
-    ) override;
+    virtual const DataPiecePtr getValues(
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -73,9 +73,9 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        Positions& positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const Positions& positions
+    ) const override;
 
     /**
      * @brief Returns DataPiece that gives access to payoffs.
@@ -84,16 +84,16 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual DataPiecePtr operator[](
-        PositionsPtr positions
-    ) override;
+    virtual const DataPiecePtr operator[](
+        const PositionsPtr positions
+    ) const override;
 
     /**
      * @brief Returns ExtensiveDataAccessor Message.
      *
      * @return Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class ExtensiveDataAccessor */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

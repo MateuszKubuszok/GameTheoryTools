@@ -18,14 +18,14 @@ public:
      *
      * @return Players
      */
-    virtual PlayersPtr getPlayers() = 0;
+    virtual const PlayersPtr getPlayers() const = 0;
 
     /**
      * @brief Grants access to Data specific to a Game.
      *
      * @return DataAccessor returns DataAccessor specific for a Game
      */
-    virtual DataAccessorPtr getData() = 0;
+    virtual const DataAccessorPtr getData() const = 0;
 
     /**
      * @brief Defines equality relation.
@@ -34,15 +34,15 @@ public:
      * @return     true if roots are equal
      */
     virtual bool isEqual(
-        Root& root
-    ) override;
+        const Root& root
+    ) const override;
 
     /**
      * @brief Game's Message.
      *
      * @return message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const = 0;
 
     /**
      * @brief Syntax sugar for isEqual method.
@@ -52,8 +52,8 @@ public:
      * @return      true if Games are equal
      */
     friend bool operator==(
-        GamePtr& game1,
-        GamePtr& game2
+        const GamePtr& game1,
+        const GamePtr& game2
     );
 
     /**
@@ -64,8 +64,8 @@ public:
      * @return      true if Games are not equal
      */
     friend bool operator!=(
-        GamePtr& game1,
-        GamePtr& game2
+        const GamePtr& game1,
+        const GamePtr& game2
     );
 
     /**
@@ -76,8 +76,8 @@ public:
      * @return       stream for chaining
      */
     friend OutputStream& operator<<(
-        OutputStream& stream,
-        GamePtr&      game
+        OutputStream&  stream,
+        const GamePtr& game
     );
 }; /* END class Game */
 
@@ -90,19 +90,19 @@ public:
  */
 class NullGame : public Game {
 public:
-    virtual PlayersPtr getPlayers() override {
+    virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual DataAccessorPtr getData() override {
+    virtual const DataAccessorPtr getData() const override {
         return NullFactory::getInstance().createDataAccessor();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullGame");
     }
 }; /* END class NullGame */
