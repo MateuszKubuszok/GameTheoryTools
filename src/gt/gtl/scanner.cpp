@@ -29,7 +29,7 @@
      * We will address this in a future release of flex, or omit the C++ scanner
      * altogether.
      */
-    #define yyFlexLexer yyFlexLexer
+    #define yyFlexLexer GTLFlexLexer
 /* %endif */
 
 /* %if-c-only */
@@ -364,9 +364,9 @@ struct yy_buffer_state
 /* %endif */
 /* %endif */
 
-void *yyalloc (yy_size_t  );
-void *yyrealloc (void *,yy_size_t  );
-void yyfree (void *  );
+void *GTLalloc (yy_size_t  );
+void *GTLrealloc (void *,yy_size_t  );
+void GTLfree (void *  );
 
 #define yy_new_buffer yy_create_buffer
 
@@ -591,9 +591,9 @@ static yyconst flex_int32_t yy_rule_can_match_eol[32] =
 
 static yyconst flex_int16_t yy_rule_linenum[31] =
     {   0,
-       58,   59,   60,   61,   62,   63,   64,   65,   66,   67,
-       68,   69,   70,   71,   72,   73,   74,   75,   76,   79,
-       85,   91,   92,   93,   96,   97,   98,   99,  102,  103
+       66,   67,   68,   69,   70,   71,   72,   73,   74,   75,
+       76,   77,   78,   79,   80,   81,   82,   83,   84,   87,
+       93,   99,  100,  101,  104,  105,  106,  107,  110,  111
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -604,16 +604,23 @@ static yyconst flex_int16_t yy_rule_linenum[31] =
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 #line 1 "f_n_b/scanner.ll"
-/********************************************* Code for header *********************************************/
-#line 4 "f_n_b/scanner.ll"
+#line 2 "f_n_b/scanner.ll"
+
+/****************************************** Required by scanner.cpp *****************************************/
+
 /**
  * @brief Scanner used for processing input for GTL.
  *
  * @author Mateusz Kubuszok
  */
 
-/* System libraries */
-#include <cstdlib>         /* Standard library */
+/* Make GTLFlexLexer be defined only once */
+#ifndef __GTL_FLEX_LEXER__
+#define __GTL_FLEX_LEXER__
+#endif /* END #ifndef __GTL_FLEX_LEXER__ */
+
+/* Standard library */
+#include <cstdlib>
 
 /* GTL prototypes */
 #include "gt/gtl/inner_common.hpp"
@@ -624,13 +631,14 @@ typedef GT::GTL::Parser::token token;
 /* Defines termination token */
 #define yyterminate() return (token::TERMINATE)
 
-/******************************************** Options and states *******************************************/
+/******************************************* Options and states ********************************************/
 /* Lexer's options */
 /* Allow debugging */
 /* Doesn't allow usage of default values */
 /* yylex wrapper should be created manually */
 /* Allows following of error appearance */
 /* Code should be generated for C++ instead of C */
+/* Changes generated class name to GTLFlexLexer */
 /* Sets output filename */
 /* Do not use Unix-specific unistd.h */
 #define YY_NO_UNISTD_H 1
@@ -638,7 +646,7 @@ typedef GT::GTL::Parser::token token;
 
 
 /* RegEx definitions */
-#line 642 "src/gt/gtl/scanner.cpp"
+#line 650 "src/gt/gtl/scanner.cpp"
 
 #define INITIAL 0
 #define block_comment 1
@@ -802,13 +810,13 @@ YY_DECL
 	register int yy_act;
     
 /* %% [7.0] user's declarations go here */
-#line 53 "f_n_b/scanner.ll"
+#line 61 "f_n_b/scanner.ll"
 
 
- /******************************************** Tokens definitions *******************************************/
+ /******************************************* Tokens definitions ********************************************/
 
  /* Keywords and symbols definitions */
-#line 812 "src/gt/gtl/scanner.cpp"
+#line 820 "src/gt/gtl/scanner.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -933,103 +941,103 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 58 "f_n_b/scanner.ll"
+#line 66 "f_n_b/scanner.ll"
 { return (token::LET); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 59 "f_n_b/scanner.ll"
+#line 67 "f_n_b/scanner.ll"
 { return (token::BE); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 60 "f_n_b/scanner.ll"
+#line 68 "f_n_b/scanner.ll"
 { return (token::PLAYER); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 61 "f_n_b/scanner.ll"
+#line 69 "f_n_b/scanner.ll"
 { return (token::GAME); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 62 "f_n_b/scanner.ll"
+#line 70 "f_n_b/scanner.ll"
 { return (token::STRATEGIC); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 63 "f_n_b/scanner.ll"
+#line 71 "f_n_b/scanner.ll"
 { return (token::EXTENSIVE); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 64 "f_n_b/scanner.ll"
+#line 72 "f_n_b/scanner.ll"
 { return (token::WITH); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 65 "f_n_b/scanner.ll"
+#line 73 "f_n_b/scanner.ll"
 { return (token::SUCH); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 66 "f_n_b/scanner.ll"
+#line 74 "f_n_b/scanner.ll"
 { return (token::AS); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 67 "f_n_b/scanner.ll"
+#line 75 "f_n_b/scanner.ll"
 { return (token::END); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 68 "f_n_b/scanner.ll"
+#line 76 "f_n_b/scanner.ll"
 { return (token::FIND); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 69 "f_n_b/scanner.ll"
+#line 77 "f_n_b/scanner.ll"
 { return (token::FOR); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 70 "f_n_b/scanner.ll"
+#line 78 "f_n_b/scanner.ll"
 { return (token::CHOOSE); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 71 "f_n_b/scanner.ll"
+#line 79 "f_n_b/scanner.ll"
 { return (token::EQUAL); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 72 "f_n_b/scanner.ll"
+#line 80 "f_n_b/scanner.ll"
 { return (token::LCBR); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 73 "f_n_b/scanner.ll"
+#line 81 "f_n_b/scanner.ll"
 { return (token::RCBR); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 74 "f_n_b/scanner.ll"
+#line 82 "f_n_b/scanner.ll"
 { return (token::COLON); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 75 "f_n_b/scanner.ll"
+#line 83 "f_n_b/scanner.ll"
 { return (token::COMA); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 76 "f_n_b/scanner.ll"
+#line 84 "f_n_b/scanner.ll"
 { return (token::EOC); }
 	YY_BREAK
 /* Numbers definitions */
 case 20:
 YY_RULE_SETUP
-#line 79 "f_n_b/scanner.ll"
+#line 87 "f_n_b/scanner.ll"
 {
         lval->number = new GT::NumberPtr(new GT::Number(yytext));
         return (token::number);
@@ -1038,7 +1046,7 @@ YY_RULE_SETUP
 /* Identifiers */
 case 21:
 YY_RULE_SETUP
-#line 85 "f_n_b/scanner.ll"
+#line 93 "f_n_b/scanner.ll"
 {
         lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::identifier);
@@ -1047,53 +1055,53 @@ YY_RULE_SETUP
 /* Block comments */
 case 22:
 YY_RULE_SETUP
-#line 91 "f_n_b/scanner.ll"
+#line 99 "f_n_b/scanner.ll"
 { BEGIN(block_comment); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 92 "f_n_b/scanner.ll"
+#line 100 "f_n_b/scanner.ll"
 { BEGIN(0); }
 	YY_BREAK
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 93 "f_n_b/scanner.ll"
+#line 101 "f_n_b/scanner.ll"
 { /* Remove block comment content */ }
 	YY_BREAK
 /* Inline comments */
 case 25:
 YY_RULE_SETUP
-#line 96 "f_n_b/scanner.ll"
+#line 104 "f_n_b/scanner.ll"
 { BEGIN(inline_comment); }
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 97 "f_n_b/scanner.ll"
+#line 105 "f_n_b/scanner.ll"
 { /* Don't end comment with \ symbol at the end of line */ }
 	YY_BREAK
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 98 "f_n_b/scanner.ll"
+#line 106 "f_n_b/scanner.ll"
 { BEGIN(0); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 99 "f_n_b/scanner.ll"
+#line 107 "f_n_b/scanner.ll"
 { /* Remove inline comment content */ }
 	YY_BREAK
 /* White spaces and errors */
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 102 "f_n_b/scanner.ll"
+#line 110 "f_n_b/scanner.ll"
 { /* Removes white chars */ }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 103 "f_n_b/scanner.ll"
+#line 111 "f_n_b/scanner.ll"
 {
         lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::lexer_error);
@@ -1101,10 +1109,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 108 "f_n_b/scanner.ll"
+#line 116 "f_n_b/scanner.ll"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1108 "src/gt/gtl/scanner.cpp"
+#line 1116 "src/gt/gtl/scanner.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(block_comment):
 case YY_STATE_EOF(inline_comment):
@@ -1279,9 +1287,9 @@ yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
 yyFlexLexer::~yyFlexLexer()
 {
 	delete [] yy_state_buf;
-	yyfree(yy_start_stack  );
+	GTLfree(yy_start_stack  );
 	yy_delete_buffer( YY_CURRENT_BUFFER );
-	yyfree(yy_buffer_stack  );
+	GTLfree(yy_buffer_stack  );
 }
 
 /* The contents of this function are C++ specific, so the () macro is not used.
@@ -1416,7 +1424,7 @@ int yyFlexLexer::yy_get_next_buffer()
 
 				b->yy_ch_buf = (char *)
 					/* Include room in for 2 EOB chars. */
-					yyrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
+					GTLrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
 				}
 			else
 				/* Can't grow it, we don't own it. */
@@ -1465,7 +1473,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
 		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) yyrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
+		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) GTLrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
 	}
@@ -1764,7 +1772,7 @@ int yyFlexLexer::yy_get_next_buffer()
 {
 	YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) yyalloc(sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) GTLalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
@@ -1773,7 +1781,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) yyalloc(b->yy_buf_size + 2  );
+	b->yy_ch_buf = (char *) GTLalloc(b->yy_buf_size + 2  );
 	if ( ! b->yy_ch_buf )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
@@ -1802,9 +1810,9 @@ int yyFlexLexer::yy_get_next_buffer()
 		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
 	if ( b->yy_is_our_buffer )
-		yyfree((void *) b->yy_ch_buf  );
+		GTLfree((void *) b->yy_ch_buf  );
 
-	yyfree((void *) b  );
+	GTLfree((void *) b  );
 }
 
 /* %if-c-only */
@@ -1965,7 +1973,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		 * immediate realloc on the next call.
          */
 		num_to_alloc = 1;
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyalloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)GTLalloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		if ( ! (yy_buffer_stack) )
@@ -1984,7 +1992,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		int grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyrealloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)GTLrealloc
 								((yy_buffer_stack),
 								num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
@@ -2021,10 +2029,10 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		new_size = (yy_start_stack_depth) * sizeof( int );
 
 		if ( ! (yy_start_stack) )
-			(yy_start_stack) = (int *) yyalloc(new_size  );
+			(yy_start_stack) = (int *) GTLalloc(new_size  );
 
 		else
-			(yy_start_stack) = (int *) yyrealloc((void *) (yy_start_stack),new_size  );
+			(yy_start_stack) = (int *) GTLrealloc((void *) (yy_start_stack),new_size  );
 
 		if ( ! (yy_start_stack) )
 			YY_FATAL_ERROR( "out of memory expanding start-condition stack" );
@@ -2133,12 +2141,12 @@ static int yy_flex_strlen (yyconst char * s )
 }
 #endif
 
-void *yyalloc (yy_size_t  size )
+void *GTLalloc (yy_size_t  size )
 {
 	return (void *) malloc( size );
 }
 
-void *yyrealloc  (void * ptr, yy_size_t  size )
+void *GTLrealloc  (void * ptr, yy_size_t  size )
 {
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
@@ -2150,9 +2158,9 @@ void *yyrealloc  (void * ptr, yy_size_t  size )
 	return (void *) realloc( (char *) ptr, size );
 }
 
-void yyfree (void * ptr )
+void GTLfree (void * ptr )
 {
-	free( (char *) ptr );	/* see yyrealloc() for (char *) cast */
+	free( (char *) ptr );	/* see GTLrealloc() for (char *) cast */
 }
 
 /* %if-tables-serialization definitions */
@@ -2162,16 +2170,38 @@ void yyfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 108 "f_n_b/scanner.ll"
+#line 116 "f_n_b/scanner.ll"
 
 
 
- /************************************** Code after scanner definition **************************************/
+/******************************* Not-generated Scanner's methods definition's *******************************/
+
+namespace GT {
+namespace GTL {
+
+Scanner::Scanner(
+    InputStream* inputStream
+) :
+    GTLFlexLexer(inputStream),
+    lval(nullptr)
+    {}
+
+int Scanner::lex(
+    Parser::semantic_type* newlval
+) {
+    lval = newlval;
+    return lex();
+}
+
+} /* END namespace GTL */
+} /* END namespace GT */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Mock implementation for yyFlexLexer::yylex() - without it compiler throws error.
+ * @brief Mock implementation for GTLFlexLexer::yylex() - without it compiler would throw error.
  */
-int yyFlexLexer::yylex() {
+int GTLFlexLexer::yylex() {
     return 0;
 }
 

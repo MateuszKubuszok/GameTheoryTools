@@ -1,14 +1,20 @@
- /********************************************* Code for header *********************************************/
-
 %{
+
+/****************************************** Required by scanner.cpp *****************************************/
+
 /**
  * @brief Scanner used for processing input for GTL.
  *
  * @author Mateusz Kubuszok
  */
 
-/* System libraries */
-#include <cstdlib>         /* Standard library */
+/* Make GTLFlexLexer be defined only once */
+#ifndef __GTL_FLEX_LEXER__
+#define __GTL_FLEX_LEXER__
+#endif /* END #ifndef __GTL_FLEX_LEXER__ */
+
+/* Standard library */
+#include <cstdlib>
 
 /* GTL prototypes */
 #include "gt/gtl/inner_common.hpp"
@@ -21,7 +27,7 @@ typedef GT::GTL::Parser::token token;
 
 %}
 
- /******************************************** Options and states *******************************************/
+ /******************************************* Options and states ********************************************/
 
  /* Lexer's options */
     /* Allow debugging */
@@ -34,6 +40,8 @@ typedef GT::GTL::Parser::token token;
 %option yylineno
     /* Code should be generated for C++ instead of C */
 %option c++
+    /* Changes generated class name to GTLFlexLexer */
+%option prefix="GTL"
     /* Sets output filename */
 %option outfile="src/gt/gtl/scanner.cpp"
     /* Do not use Unix-specific unistd.h */
@@ -52,7 +60,7 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
 
- /******************************************** Tokens definitions *******************************************/
+ /******************************************* Tokens definitions ********************************************/
 
  /* Keywords and symbols definitions */
 (?i:LET)       { return (token::LET); }
@@ -107,11 +115,33 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 
 %%
 
- /************************************** Code after scanner definition **************************************/
+/******************************* Not-generated Scanner's methods definition's *******************************/
+
+namespace GT {
+namespace GTL {
+
+Scanner::Scanner(
+    InputStream* inputStream
+) :
+    GTLFlexLexer(inputStream),
+    lval(nullptr)
+    {}
+
+int Scanner::lex(
+    Parser::semantic_type* newlval
+) {
+    lval = newlval;
+    return lex();
+}
+
+} /* END namespace GTL */
+} /* END namespace GT */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Mock implementation for yyFlexLexer::yylex() - without it compiler throws error.
+ * @brief Mock implementation for GTLFlexLexer::yylex() - without it compiler would throw error.
  */
-int yyFlexLexer::yylex() {
+int GTLFlexLexer::yylex() {
     return 0;
 }
