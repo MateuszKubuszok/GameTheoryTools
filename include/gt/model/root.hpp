@@ -14,69 +14,7 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class Root {
-    /**
-     * @brief Whether class is in debug mode.
-     */
-    static bool debugMode;
-
-    /**
-     * @brief Number of allocations till now.
-     */
-    static unsigned long allocations;
-
-    /**
-     * @brief Number of deallocations till now.
-     */
-    static unsigned long deallocations;
-
-    /**
-     * @brief OutputStream to print debug results.
-     */
-    static OutputStream* outputStream;
-
-    /**
-     * @brief Current Root's ID for debug mode.
-     */
-    unsigned long rootID;
-
 public:
-    /**
-     * @brief Whether debug mode is used.
-     *
-     * @return true if debug mode is set
-     */
-    static bool getDebugMode();
-
-    /**
-     * @brief Sets debug mode.
-     *
-     * @param newDebugMode new debug mode
-     */
-    static void setDebugMode(
-        const bool newDebugMode
-    );
-
-    /**
-     * @brief Sets output stream.
-     *
-     * @param newOutputStream new output stream
-     */
-    static void setOutputStream(
-        OutputStream& newOutputStream
-    );
-
-    /**
-     * @brief Return number of not freed objects.
-     *
-     * @return number of not freed objects
-     */
-    static unsigned long notFreed();
-
-    /**
-     * @brief Default constructor.
-     */
-    Root();
-
     /**
      * @brief Default destructor.
      */

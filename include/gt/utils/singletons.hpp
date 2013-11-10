@@ -62,7 +62,7 @@
  * @param MUTEX_NAME        name of mutex to generate
  */
 #define SINGLETON_DEFINITION(SINGLETON_NAME,GET_INSTANCE_NAME,MUTEX_NAME) \
-    boost::mutex MUTEX_NAME; \
+    static boost::mutex MUTEX_NAME; \
     \
     std::unique_ptr<SINGLETON_NAME, void (*)(SINGLETON_NAME*)> \
         SINGLETON_NAME::instance(nullptr, &deleter); \

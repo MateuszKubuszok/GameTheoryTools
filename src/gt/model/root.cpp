@@ -6,49 +6,9 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class Root {
-
-bool Root::debugMode = false;
-
-unsigned long Root::allocations = 0;
-
-unsigned long Root::deallocations = 0;
-
-OutputStream* Root::outputStream = &std::cout;
-
 // public:
 
-bool Root::getDebugMode() {
-    return debugMode;
-}
-
-void Root::setDebugMode(
-    bool newDebugMode
-) {
-    debugMode = newDebugMode;
-}
-
-void Root::setOutputStream(
-    OutputStream& newOutputStream
-) {
-    outputStream = &newOutputStream;
-}
-
-unsigned long Root::notFreed() {
-    return (allocations - deallocations);
-}
-
-Root::Root() :
-    rootID(++allocations)
-{
-    if (debugMode)
-        *outputStream << "Allocated id:" << rootID << std::endl;
-}
-
-Root::~Root() {
-    --deallocations;
-    if (debugMode)
-        *outputStream << "Freed id:" << rootID << std::endl;
-}
+Root::~Root() {}
 
 bool Root::isEqual(
     const Root& root
