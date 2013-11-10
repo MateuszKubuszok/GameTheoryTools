@@ -9,13 +9,13 @@ namespace Routines {
 // public:
 
 ResultPtr NotYetImplementedRoutine::findResultFor(
-    GamePtr,
-    ConditionsPtr
+    const GamePtr,
+    const ConditionsPtr
 ) {
     return ResultFactory::getInstance().constResult(Message("Not yet implemented"));
 }
 
-Message NotYetImplementedRoutine::toString() {
+Message NotYetImplementedRoutine::toString() const {
     return Message("NotYetImplementedRoutine");
 }
 

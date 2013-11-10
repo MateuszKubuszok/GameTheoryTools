@@ -23,8 +23,8 @@ public:
      * @return           Result for fiven Game and Conditions
      */
     virtual ResultPtr findResultFor(
-        GamePtr       game,
-        ConditionsPtr conditions
+        const GamePtr       game,
+        const ConditionsPtr conditions
     ) = 0;
 
     /**
@@ -32,7 +32,7 @@ public:
      *
      * @return Routine's Message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class Routine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,17 +44,17 @@ public:
  */
 class NullRoutine : public Routine {
     virtual ResultPtr findResultFor(
-        GamePtr,
-        ConditionsPtr
+        const GamePtr,
+        const ConditionsPtr
     ) override {
         return Model::NullFactory::getInstance().createResult();
     }
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullRoutine");
     }
 }; /* END class NullRoutine */

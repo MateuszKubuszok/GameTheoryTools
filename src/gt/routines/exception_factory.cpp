@@ -12,8 +12,8 @@ SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
 // public:
 
 InvalidCondition ExceptionFactory::invalidCondition(
-    std::exception& exception
-) {
+    const std::exception& exception
+) const {
     std::stringstream result;
 
     result << "Invalid Condition: " << exception.what();
@@ -22,8 +22,8 @@ InvalidCondition ExceptionFactory::invalidCondition(
 }
 
 InvalidPlayerChoice ExceptionFactory::playerNotFound(
-    Identifier& playerName
-) {
+    const Identifier& playerName
+) const {
     std::stringstream result;
 
     result << "Player \"" << playerName << "\" do not exists";
@@ -32,9 +32,9 @@ InvalidPlayerChoice ExceptionFactory::playerNotFound(
 }
 
 InvalidPlayerChoice ExceptionFactory::strategyNotFound(
-    Identifier& playerName,
-    Identifier& strategy
-) {
+    const Identifier& playerName,
+    const Identifier& strategy
+) const {
     std::stringstream result;
 
     result << "There is no strategy \"" << strategy << "\" for player \"" <<  playerName << "\"";

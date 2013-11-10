@@ -6,19 +6,19 @@
 // public:
 
 TestSelectableStrategiesRoutineImpl::TestSelectableStrategiesRoutineImpl(
-    GT::Model::PlayersPtr players
+    const GT::Model::PlayersPtr players
 ) :
     GT::Routines::SelectableStrategiesRoutine(players)
     {}
 
 GT::Model::ResultPtr TestSelectableStrategiesRoutineImpl::findResultFor(
-    GT::Routines::GamePtr,
-    GT::Routines::ConditionsPtr
+    const GT::Routines::GamePtr,
+    const GT::Routines::ConditionsPtr
 ) {
     return GT::Model::NullFactory::getInstance().createResult();
 }
 
-GT::Message TestSelectableStrategiesRoutineImpl::toString() {
+GT::Message TestSelectableStrategiesRoutineImpl::toString() const {
     return GT::Message("TestSelectableStrategiesRoutineImpl");
 }
 

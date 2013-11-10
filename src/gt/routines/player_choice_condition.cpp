@@ -9,8 +9,8 @@ namespace Routines {
 // public:
 
 PlayerChoiceCondition::PlayerChoiceCondition(
-    IdentifierPtr definedPlayer,
-    IdentifierPtr definedStrategy
+    const IdentifierPtr definedPlayer,
+    const IdentifierPtr definedStrategy
 ) :
     player(definedPlayer),
     strategy(definedStrategy)
@@ -18,7 +18,7 @@ PlayerChoiceCondition::PlayerChoiceCondition(
 
 void PlayerChoiceCondition::configureRoutine(
     RoutinePtr routine
-) {
+) const {
     SelectableStrategiesRoutinePtr specificRoutine =
         boost::dynamic_pointer_cast<SelectableStrategiesRoutine>(routine);
 
@@ -49,7 +49,7 @@ void PlayerChoiceCondition::configureRoutine(
     }
 }
 
-Message PlayerChoiceCondition::toString() {
+Message PlayerChoiceCondition::toString() const {
     MessagePtr strategyName = createMessagePtr(strategy);
 
     return ResultFactory::getInstance()

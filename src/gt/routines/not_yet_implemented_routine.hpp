@@ -23,8 +23,8 @@ public:
      * @return           Result for fiven Game and Conditions
      */
     virtual ResultPtr findResultFor(
-        GamePtr       game,
-        ConditionsPtr conditions
+        const GamePtr       game,
+        const ConditionsPtr conditions
     ) override;
 
     /**
@@ -32,7 +32,7 @@ public:
      *
      * @return Routine's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class NotYetImplementedRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

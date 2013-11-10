@@ -9,13 +9,13 @@ namespace Routines {
 // public:
 
 ResultPtr PropertyUndefinedRoutine::findResultFor(
-    GamePtr,
-    ConditionsPtr
+    const GamePtr,
+    const ConditionsPtr
 ) {
     return ResultFactory::getInstance().constResult(Message("Property not defined for this kind of Game"));
 }
 
-Message PropertyUndefinedRoutine::toString() {
+Message PropertyUndefinedRoutine::toString() const {
     return Message("PropertyUndefinedRoutine");
 }
 

@@ -23,14 +23,14 @@ public:
      */
     virtual void configureRoutine(
         RoutinePtr routine
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Returns Condition's Message.
      *
      * @return Condition's Message
      */
-    virtual Message toString() = 0;
+    virtual Message toString() const override = 0;
 }; /* END class Condition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,13 +43,13 @@ public:
 class NullCondition : public Condition {
     virtual void configureRoutine(
         RoutinePtr
-    ) override {}
+    ) const override {}
 
-    virtual bool isNotNull() override {
+    virtual bool isNotNull() const override {
         return false;
     }
 
-    virtual Message toString() override {
+    virtual Message toString() const override {
         return Message("NullCondition");
     }
 }; /* END class NullCondition */

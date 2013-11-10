@@ -9,13 +9,13 @@ namespace Routines {
 // public:
 
 ResultPtr StrategicPureEquilibriumRoutine::findResultFor(
-    GamePtr,
-    ConditionsPtr
+    const GamePtr,
+    const ConditionsPtr
 ) {
     return ResultFactory::getInstance().constResult(Message("Not yet implemented"));
 }
 
-Message StrategicPureEquilibriumRoutine::toString() {
+Message StrategicPureEquilibriumRoutine::toString() const {
     return Message("StrategicPureEquilibriumRoutine");
 }
 

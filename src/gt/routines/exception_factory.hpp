@@ -29,8 +29,8 @@ public:
      * @return          InvalidCondition exception to throw
      */
     InvalidCondition invalidCondition(
-        std::exception& exception
-    );
+        const std::exception& exception
+    ) const;
 
     /**
      * @brief Thrown when non existing Player is chosen.
@@ -39,8 +39,8 @@ public:
      * @return           InvalidPlayerChoice exception to throw
      */
     InvalidPlayerChoice playerNotFound(
-        Identifier& playerName
-    );
+        const Identifier& playerName
+    ) const;
 
     /**
      * @brief Thrown when non existing strategy is chosen.
@@ -50,9 +50,9 @@ public:
      * @return           InvalidPlayerChoice exception to throw
      */
     InvalidPlayerChoice strategyNotFound(
-        Identifier& playerName,
-        Identifier& strategy
-    );
+        const Identifier& playerName,
+        const Identifier& strategy
+    ) const;
 
 private:
     /**

@@ -22,7 +22,7 @@ class SelectableStrategiesRoutine : virtual public Routine {
     /**
      * @brief Available Players.
      */
-    PlayersPtr          players;
+    const PlayersPtr    players;
 
     /**
      * @brief Available strategies.
@@ -36,7 +36,7 @@ public:
      * @param players Players definitions
      */
     explicit SelectableStrategiesRoutine(
-        PlayersPtr players
+        const PlayersPtr players
     );
 
     /**
@@ -44,7 +44,7 @@ public:
      *
      * @return available Players
      */
-    PlayersPtr getAvailablePlayers();
+    const PlayersPtr getAvailablePlayers() const;
 
     /**
      * @brief Returna available strategies for a Player.
@@ -53,8 +53,8 @@ public:
      * @return       currently available strategies
      */
     IdentifiersPtr getAvailableStrategiesForPlayer(
-        Identifier& player
-    );
+        const Identifier& player
+    ) const;
 
     /**
      * @brief Sets available strategies for given Players.
@@ -63,8 +63,8 @@ public:
      * @param strategies avialable strategies for Player
      */
     void setAvailableStrategiesForPlayer(
-        Identifier&    player,
-        IdentifiersPtr strategies
+        const Identifier& player,
+        IdentifiersPtr    strategies
     );
 }; /* END class SelectableStrategiesRoutine */
 

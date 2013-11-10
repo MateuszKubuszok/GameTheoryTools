@@ -27,28 +27,28 @@ public:
      *
      * @result NullCondition
      */
-    ConditionPtr createCondition();
+    ConditionPtr createCondition() const;
 
     /**
      * @brief Creates NullConditions.
      *
      * @result NullConditions
      */
-    ConditionsPtr createConditions();
+    ConditionsPtr createConditions() const;
 
     /**
      * @brief Creates NullRoutine.
      *
      * @result NullRoutine
      */
-    RoutinePtr createRoutine();
+    RoutinePtr createRoutine() const;
 
     /**
      * @brief Creates NullRoutines.
      *
      * @result NullRoutines
      */
-    RoutinesPtr createRoutines();
+    RoutinesPtr createRoutines() const;
 
 private:
     /**

@@ -43,14 +43,14 @@ public:
      */
     virtual void configureRoutine(
         RoutinePtr routine
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Condition's Message.
      *
      * @return Condition's Message
      */
-    virtual Message toString() override;
+    virtual Message toString() const override;
 }; /* END class PlayerChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

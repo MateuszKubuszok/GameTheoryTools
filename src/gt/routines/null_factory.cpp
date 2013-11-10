@@ -11,19 +11,19 @@ SINGLETON_DEFINITION(NullFactory, getInstance, nullFactoryMutex)
 
 // public:
 
-ConditionPtr NullFactory::createCondition() {
+ConditionPtr NullFactory::createCondition() const {
     return ConditionPtr(new NullCondition());
 }
 
-ConditionsPtr NullFactory::createConditions() {
+ConditionsPtr NullFactory::createConditions() const {
     return ConditionsPtr(new Conditions());
 }
 
-RoutinePtr NullFactory::createRoutine() {
+RoutinePtr NullFactory::createRoutine() const {
     return RoutinePtr(new NullRoutine());
 }
 
-RoutinesPtr NullFactory::createRoutines() {
+RoutinesPtr NullFactory::createRoutines() const {
     return RoutinesPtr(new Routines());
 }
 

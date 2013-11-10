@@ -12,20 +12,20 @@ SINGLETON_DEFINITION(RoutineFactory, getInstance, routineFactoryMutex)
 // public:
 
 RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
-    GamePtr
-) {
+    const GamePtr
+) const {
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
-    GamePtr
-) {
+    const GamePtr
+) const {
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 
 RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
-    GamePtr
-) {
+    const GamePtr
+) const {
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 

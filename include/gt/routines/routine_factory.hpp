@@ -29,8 +29,8 @@ public:
      * @result     Routine finding Nash equilibria
      */
     RoutinePtr pureStrategyEquilibriumFindingRoutineFor(
-        GamePtr game
-    );
+        const GamePtr game
+    ) const;
 
     /**
      * @brief Creates Routine that find mixed-stratgy Nash eqilibrium.
@@ -39,8 +39,8 @@ public:
      * @result     Routine finding Nash equilibria
      */
     RoutinePtr mixedStrategyEquilibriumFindingRoutineFor(
-        GamePtr game
-    );
+        const GamePtr game
+    ) const;
 
     /**
      * @brief Creates Routine that find behaiour-stratgy Nash eqilibrium.
@@ -49,8 +49,8 @@ public:
      * @result     Routine finding Nash equilibria
      */
     RoutinePtr behaviourStrategyEquilibriumFindingRoutineFor(
-        GamePtr game
-    );
+        const GamePtr game
+    ) const;
 
 private:
     /**

@@ -9,14 +9,14 @@ namespace Routines {
 // public:
 
 SelectableStrategiesRoutine::SelectableStrategiesRoutine(
-    PlayersPtr definedPlayers
+    const PlayersPtr definedPlayers
 ) :
     players(definedPlayers),
     availableStrategies()
 {
-    for (Model::Players::value_type& playerPair : *players) {
-        Identifier   playerName = playerPair.first;
-        Identifiers& strategies = *playerPair.second->getStrategies();
+    for (const Model::Players::value_type& playerPair : *players) {
+        const Identifier   playerName = playerPair.first;
+        const Identifiers& strategies = *playerPair.second->getStrategies();
 
         IdentifiersPtr availableStrategiesForPlayer(new Identifiers(strategies));
 
@@ -28,24 +28,24 @@ SelectableStrategiesRoutine::SelectableStrategiesRoutine(
 }
 
 
-Model::PlayersPtr SelectableStrategiesRoutine::getAvailablePlayers() {
+const Model::PlayersPtr SelectableStrategiesRoutine::getAvailablePlayers() const {
     return players;
 }
 
 
 IdentifiersPtr SelectableStrategiesRoutine::getAvailableStrategiesForPlayer(
-    Identifier& player
-) {
+    const Identifier& player
+) const {
     if (!availableStrategies.count(player))
         throw ExceptionFactory::getInstance().playerNotFound(player);
 
-    return availableStrategies[player];
+    return availableStrategies.at(player);
 }
 
 
 void SelectableStrategiesRoutine::setAvailableStrategiesForPlayer(
-    Identifier&    player,
-    IdentifiersPtr strategies
+    const Identifier& player,
+    IdentifiersPtr    strategies
 ) {
     if (!availableStrategies.count(player))
         throw ExceptionFactory::getInstance().playerNotFound(player);
