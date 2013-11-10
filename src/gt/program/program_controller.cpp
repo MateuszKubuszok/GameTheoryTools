@@ -16,7 +16,9 @@ ProgramController::ProgramController() :
     errorStream(&std::cerr),
     shouldFreeInputStream(false),
     shouldFreeOutputStream(false),
-    shouldFreeErrorStream(false)
+    shouldFreeErrorStream(false),
+    resultBuilderMode(Model::ResultBuilderMode::PLAIN),
+    resultIndentationMode(Model::ResultIndentationMode::TABS)
     {}
 
 ProgramController::~ProgramController() {
@@ -122,7 +124,25 @@ ProgramController& ProgramController::setErrorStream(
     return *this;
 }
 
+ProgramController& ProgramController::setResultBuilderMode(
+    const Model::ResultBuilderMode newResultBuilderMode
+) {
+    resultBuilderMode = newResultBuilderMode;
+    return *this;
+}
+
+ProgramController& ProgramController::setResultIndentationMode(
+    const Model::ResultIndentationMode newResultIndentationMode
+) {
+    resultIndentationMode = newResultIndentationMode;
+    return *this;
+}
+
 int ProgramController::run() const {
+    Model::ResultFactory::getInstance()
+        .setBuilderMode(resultBuilderMode)
+        .setIndentationMode(resultIndentationMode);
+
     GTL::ScannerPtr scanner(new GTL::Scanner(inputStream));
     GTL::DriverPtr  driver(
         shouldExecute ?

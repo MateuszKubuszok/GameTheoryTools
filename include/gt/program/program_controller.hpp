@@ -26,15 +26,15 @@ class ProgramController {
     /**
      * @brief Pointer to input stream.
      */
-    std::istream*  inputStream;
+    InputStream*   inputStream;
     /**
      * @brief Pointer to output stream.
      */
-    std::ostream*  outputStream;
+    OutputStream*  outputStream;
     /**
      * @brief Pointer to error stream.
      */
-    std::ostream*  errorStream;
+    OutputStream*  errorStream;
 
     /**
      * @brief Whether input stream need to be released after usage.
@@ -48,6 +48,16 @@ class ProgramController {
      * @brief Whether error stream need to be released after usage.
      */
     bool shouldFreeErrorStream;
+
+    /**
+     * @brief Contains current Builder Mode setting.
+     */
+    Model::ResultBuilderMode     resultBuilderMode;
+
+     /**
+     * @brief Contains current Indentation Mode setting.
+     */
+    Model::ResultIndentationMode resultIndentationMode;
 
 public:
     /**
@@ -172,6 +182,26 @@ public:
     ProgramController& setErrorStream(
         OutputStream* errorStream,
         bool          shouldBeFreed
+    );
+
+    /**
+     * @brief Defines type of returned result (output).
+     *
+     * @param resultBuilderMode new builder mode
+     * @return                  reference to itself for chaining
+     */
+    ProgramController& setResultBuilderMode(
+        const Model::ResultBuilderMode resultBuilderMode
+    );
+
+    /**
+     * @brief Defines type of used indentation (output).
+     *
+     * @param resultIndentationMode new indentation mode
+     * @return                      reference to itself for chaining
+     */
+    ProgramController& setResultIndentationMode(
+        const Model::ResultIndentationMode resultIndentationMode
     );
 
     /**

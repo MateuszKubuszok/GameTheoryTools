@@ -62,6 +62,7 @@ for header in [
     'boost/scoped_ptr.hpp',
     'boost/shared_ptr.hpp',
     'boost/weak_ptr.hpp',
+    'boost/algorithm/string.hpp',
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
     'boost/container/set.hpp',
@@ -154,6 +155,18 @@ testConf.Finish()
 logLevel     = 'message'    # log level for Boost Test Framework
 randomOrder  = '0'          # whether tests should be run in random order
 showProgress = 'yes'        # should progress bar be displayed
+
+##############################################################################################################
+
+# Test executables environment configuration
+
+executablesTestEnv  = testEnv.Clone()
+executablesTestConf = Configure(executablesTestEnv)
+
+# Makes executables compile with Boost Program Options library.
+executablesTestConf.env.Append(LIBS=['boost_program_options'])
+
+executablesTestConf.Finish()
 
 ##############################################################################################################
 
@@ -398,7 +411,7 @@ testEnv.Alias('buildProgramsTests', ProgramsTests)
 # Build and run Program's tests
 
 ProgramsTestsProgram_URI = programs+'ProgramsTests'
-ProgramsTestsProgram_bin = testEnv.Program(
+ProgramsTestsProgram_bin = executablesTestEnv.Program(
     source=Models + GTL + Programs + ProgramsTests,
     target=ProgramsTestsProgram_URI
 )
@@ -415,7 +428,7 @@ Depends(
     ProgramsTestsProgram_bin
 )
 AlwaysBuild(ProgramsTestsProgram_run)
-testEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
+executablesTestEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
 
 ##############################################################################################################
 

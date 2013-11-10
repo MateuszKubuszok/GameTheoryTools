@@ -22,6 +22,8 @@ class ProgramController;
 
 /* Includes Program controllers headers */
 
+#include "gt/program/helpers.hpp"
+
 #include "gt/program/program_controller.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

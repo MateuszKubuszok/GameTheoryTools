@@ -5,18 +5,58 @@ namespace Program = GT::Program;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void validate(
+    boost::any&                     value,
+    const std::vector<std::string>& values,
+    GT::Model::ResultBuilderMode*,
+    int
+) {
+    // make sure no previous assignment to value was made
+    Options::validators::check_first_occurrence(value);
+
+    // Extract the first string from 'values'. If there is more than
+    // one string, it's an error, and exception will be thrown.
+    const std::string&           stringValue = Options::validators::get_single_string(values);
+    std::istringstream           streamValue(stringValue);
+    GT::Model::ResultBuilderMode parsedValue;
+    streamValue >> parsedValue;
+
+    value = boost::any( parsedValue );
+}
+
+void validate(
+    boost::any&                     value,
+    const std::vector<std::string>& values,
+    GT::Model::ResultIndentationMode*,
+    int
+) {
+    // make sure no previous assignment to value was made
+    Options::validators::check_first_occurrence(value);
+
+    // Extract the first string from 'values'. If there is more than
+    // one string, it's an error, and exception will be thrown.
+    const std::string&               stringValue = Options::validators::get_single_string(values);
+    std::istringstream               streamValue(stringValue);
+    GT::Model::ResultIndentationMode parsedValue;
+    streamValue >> parsedValue;
+
+    value = boost::any( parsedValue );
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int main(
     const int   argumentsNumber,
     const char* arguments[]
 ) {
     // Options declaration section
 
-    const char helpOption[]         = "help";
+    const char helpOption[]         = "help,H";
     const char helpDescription[]    = "produce this message";
 
     int  debugValue                 = 0;
     const int  debugDefault         = 0;
-    const char debugOption[]        = "debug-level";
+    const char debugOption[]        = "debug-level,D";
     const char debugDescription[]   = "0 if no parser debugging, non 0 for debug allowed";
 
     std::string inputValue          = "";
@@ -34,15 +74,43 @@ int main(
     const char errorOption[]        = "error-file,E";
     const char errorDescription[]   = "error target - if no one given reads from standard error";
 
+    GT::Model::ResultBuilderMode
+               resultValue             = GT::Model::ResultBuilderMode::PLAIN;
+    const GT::Model::ResultBuilderMode
+               resultDefault           = GT::Model::ResultBuilderMode::PLAIN;
+    const char resultOption[]          = "result,R";
+    const char resultDescription[]     = "result type - PLAIN, JSON and XML allowed";
+
+    GT::Model::ResultIndentationMode
+               indentationValue            = GT::Model::ResultIndentationMode::TABS;
+    const GT::Model::ResultIndentationMode
+               indentationDefault          = GT::Model::ResultIndentationMode::TABS;
+    const char indentationOption[]         = "indent,T";
+    const char indentationDescription[]    = "indentation used - TABS, SPACES and NONE allowed";
+
     // Options setup
 
     Options::options_description description("Available options");
     description.add_options()
-    (helpOption,                                                                            helpDescription)
-    (debugOption,  Options::value<int>(&debugValue)->default_value(debugDefault),           debugDescription)
-    (inputOption,  Options::value<std::string>(&inputValue)->default_value(inputDefault),   inputDescription)
-    (outputOption, Options::value<std::string>(&outputValue)->default_value(outputDefault), outputDescription)
-    (errorOption,  Options::value<std::string>(&errorValue)->default_value(errorDefault),   errorDescription)
+    (helpOption,                                                helpDescription)
+    (debugOption,       Options::value<int>(
+                            &debugValue
+                        )->default_value(debugDefault),         debugDescription)
+    (inputOption,       Options::value<std::string>(
+                            &inputValue
+                        )->default_value(inputDefault),         inputDescription)
+    (outputOption,      Options::value<std::string>(
+                            &outputValue
+                        )->default_value(outputDefault),        outputDescription)
+    (errorOption,      Options::value<std::string>(
+                            &errorValue
+                        )->default_value(errorDefault),         errorDescription)
+    (resultOption,      Options::value<GT::Model::ResultBuilderMode>(
+                            &resultValue
+                        )->default_value(resultDefault),        resultDescription)
+    (indentationOption, Options::value<GT::Model::ResultIndentationMode>(
+                            &indentationValue
+                        )->default_value(indentationDefault),   indentationDescription)
     ;
 
     // Parsing variables from arguments
@@ -84,7 +152,9 @@ int main(
         else
             controller.setDefaultErrorStream();
 
-        return controller.run();
+        return controller.setResultBuilderMode(resultValue)
+                         .setResultIndentationMode(indentationValue)
+                         .run();
     } catch (const std::exception& exception) {
         // last resort error handling
         std::cerr << exception.what() << std::endl;
