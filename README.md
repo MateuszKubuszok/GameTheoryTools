@@ -84,9 +84,6 @@ TODO
 
 * Implement actual logic of finding equilibria,
 * test it,
-* create main function that parses arguments and initiates parser.
-* Improve singletons - instances and mutexes variables can probaby be replaced with statrc ones,
+* Improve singletons - instances and mutexes variables can probaby be replaced with static ones,
 * same for strings inside toString() methods. It could help avoid continous reallocation of memory,
-* add Sublime Text settings for displaying line at 120 signs and make sure that nowhere that limit
-  is exceeded,
 * add Condition to set calculations accuracy.
