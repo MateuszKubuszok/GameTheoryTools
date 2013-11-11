@@ -89,17 +89,17 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
         GT::Message() +
         "Current Data:\n"
         "\tValue:\n"
-        "\t\t\t\tp1,\n"
+        "\t\t\t\tp1\n"
         "\t\tPosition:\n"
-        "\t\t\t\tp1s1,\n"
+        "\t\t\t\tp1s1\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t10,\n"
+        "\t\t\t\t10\n"
         "\tValue:\n"
-        "\t\t\t\tp1,\n"
+        "\t\t\t\tp1\n"
         "\t\tPosition:\n"
-        "\t\t\t\tp1s2,\n"
+        "\t\t\t\tp1s2\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t20,\n"
+        "\t\t\t\t20\n"
     );
 }
 
@@ -143,17 +143,17 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
         data->toString(),
         GT::Message() +
         "Value:\n"
-        "\t\t\tp1,\n"
+        "\t\t\tp1\n"
         "\tPosition:\n"
-        "\t\t\tp1s1,\n"
+        "\t\t\tp1s1\n"
         "\tPayoff:\n"
-        "\t\t\t10,\n"
+        "\t\t\t10\n"
         "Value:\n"
-        "\t\t\tp1,\n"
+        "\t\t\tp1\n"
         "\tPosition:\n"
-        "\t\t\tp1s2,\n"
+        "\t\t\tp1s2\n"
         "\tPayoff:\n"
-        "\t\t\t20,\n"
+        "\t\t\t20\n"
     );
 }
 

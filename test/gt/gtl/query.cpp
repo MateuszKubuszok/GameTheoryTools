@@ -33,19 +33,19 @@ BOOST_AUTO_TEST_CASE( Query_execute ) {
         GT::Message() +
         "properties:\n"
         "\t1:\n"
-        "\t\t\t\tKnown Properties,\n"
+        "\t\t\t\tKnown Properties\n"
         "\t\tProperty:\n"
-        "\t\t\t\tproperties,\n"
+        "\t\t\t\tproperties\n"
         "\t\tProperty:\n"
-        "\t\t\t\ttype,\n"
+        "\t\t\t\ttype\n"
         "\t2:\n"
-        "\t\t\t\tKnown Properties,\n"
+        "\t\t\t\tKnown Properties\n"
         "\t\tProperty:\n"
-        "\t\t\t\tproperties,\n"
+        "\t\t\t\tproperties\n"
         "\t\tProperty:\n"
-        "\t\t\t\ttype,\n"
+        "\t\t\t\ttype\n"
         "\t\tProperty:\n"
-        "\t\t\t\tvalue,\n"
+        "\t\t\t\tvalue\n"
         "type:\n"
         "\t1:\n"
         "\t\tType:\n"
@@ -81,11 +81,11 @@ BOOST_AUTO_TEST_CASE( Query_toString ) {
     BOOST_CHECK_EQUAL(
         query.toString(),
         GT::Message() +
-        "\t\tProperties,\n"
+        "\t\tProperties\n"
         "Property Name:\n"
-        "\t\tproperties,\n"
+        "\t\tproperties\n"
         "Property Name:\n"
-        "\t\ttype,\n"
+        "\t\ttype\n"
     );
 }
 

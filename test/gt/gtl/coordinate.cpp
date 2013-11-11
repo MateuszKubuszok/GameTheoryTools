@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE( Coordinate_addPosition_getPositions ) {
         coordinate.getPositions()->size(),
         1
     );
-    BOOST_CHECK_EQUAL( coordinate.getPositions()->begin()->first, *player );
+    BOOST_CHECK_EQUAL( coordinate.getPositions()->begin()->first,  *player );
     BOOST_CHECK_EQUAL( coordinate.getPositions()->begin()->second, *strategy );
 }
 
@@ -77,13 +77,13 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     GT::IdentifierPtr  player1Name = GT::createIdentifierPtr("p1");
-    GT::IdentifierPtr  strategy1 = GT::createIdentifierPtr("p1s1");
+    GT::IdentifierPtr  strategy1   = GT::createIdentifierPtr("p1s1");
     GT::IdentifiersPtr strategies1(new GT::Identifiers());
     strategies1->push_back( strategy1 );
     GT::GTL::PlayerPtr player1(new GT::GTL::Player(player1Name, strategies1));
 
     GT::IdentifierPtr  player2Name = GT::createIdentifierPtr("p2");
-    GT::IdentifierPtr  strategy2 = GT::createIdentifierPtr("p2s1");
+    GT::IdentifierPtr  strategy2   = GT::createIdentifierPtr("p2s1");
     GT::IdentifiersPtr strategies2(new GT::Identifiers());
     strategies2->push_back( strategy2 );
     GT::GTL::PlayerPtr player2(new GT::GTL::Player(player2Name, strategies2));

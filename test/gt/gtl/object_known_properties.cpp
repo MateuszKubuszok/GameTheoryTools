@@ -23,11 +23,11 @@ BOOST_AUTO_TEST_CASE( ObjectKnownProperties_findForConditions ) {
     BOOST_CHECK_EQUAL(
         property.findForConditions(context, conditions)->getResult(),
         GT::Message() +
-        "\t\tKnown Properties,\n"
+        "\t\tKnown Properties\n"
         "Property:\n"
-        "\t\tproperties,\n"
+        "\t\tproperties\n"
         "Property:\n"
-        "\t\ttype,\n"
+        "\t\ttype\n"
     );
 }
 

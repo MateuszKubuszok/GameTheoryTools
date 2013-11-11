@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
     payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
     payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(20)) );
 
-    GT::GTL::CoordinatePtr coordinate1(new GT::GTL::Coordinate(player1Name, strategy1) );
+    GT::GTL::CoordinatePtr coordinate1(new GT::GTL::Coordinate(player1Name, strategy1));
     GT::GTL::CoordinatePtr coordinate2(new GT::GTL::Coordinate(player2Name, strategy2));
     coordinate2->addParams(payoff);
     coordinate1->addSubCoordinate(coordinate2);
@@ -53,11 +53,11 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
         GT::Message() +
         "Strategic Game:\n"
         "\tValue:\n"
-        "\t\t\t\tp1,\tp2,\n"
+        "\t\t\t\tp1,\tp2\n"
         "\t\tPosition:\n"
-        "\t\t\t\tp1s1,\t,\n"
+        "\t\t\t\tp1s1,\tp2s1\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t10,\t20,\n"
+        "\t\t\t\t10,\t20\n"
     );
 }
 

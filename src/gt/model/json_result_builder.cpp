@@ -27,35 +27,62 @@ ResultPtr JSONResultBuilder::build() const {
 ResultPtr JSONResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
-    int propertiesSize = propertiesNames->size();
+    Index propertiesSize = propertiesNames->size();
     std::stringstream result;
 
-    if (propertiesSize > 0)
+    if (propertiesSize > 0) {
+        bool firstPartial = true;
         for (const PartialResult& partialResult : partialResults) {
+            if (!firstPartial)
+                result << ',' << std::endl;
+
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
-            result << '"' << recordName << '"' << " : [" << std::endl;
-            for (int property = 0; property < propertiesSize; property++) {
+            result << '"' << recordName << '"' << " : [";
+            bool firstProperty = true;
+            for (Index property = 0; property < propertiesSize; property++) {
+                if (firstProperty)
+                    result << std::endl;
+                else
+                    result << ',' << std::endl;
+
                 Identifier propertyName  = *(*propertiesNames)[property];
                 Message    propertyValue = *(*partialResult.second)[property];
 
                 result << indent
                        << '"' << propertyName << '"'
                        << " : "
-                       << '"' << propertyValue << '"'
-                       << ',' << std::endl;
+                       << '"' << propertyValue << '"';
+
+                firstProperty = false;
             }
-            result << "]," << std::endl;
+            result << std::endl << ']';
+
+            firstPartial = false;
         }
 
-    if (subResults.size() > 0)
+        if (!subResults.empty())
+            result << ',';
+    }
+
+    if (!subResults.empty()) {
+        bool firstSubResult = true;
         for (const SubResult& subResult : subResults) {
+            if (firstSubResult)
+                result << std::endl;
+            else
+                result << ',' << std::endl;
+
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 
-            result << '"' << resultName << '"' << " : " << resultValue << ',' << std::endl;
+            result << '"' << resultName << '"' << " : " << resultValue;
+
+            firstSubResult = false;
         }
+        result << std::endl;
+    }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }

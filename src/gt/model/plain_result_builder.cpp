@@ -23,24 +23,39 @@ ResultPtr PlainResultBuilder::buildRaw() const {
 
     std::stringstream result;
 
-    if (propertiesNames->size() > 0) {
-        result << indent;
-        for (IdentifierPtr& propertyName : (*propertiesNames))
-            result << indent << (*propertyName) << ',';
+    if (!propertiesNames->empty()) {
+        bool firstProperty = true;
+        for (IdentifierPtr& propertyName : (*propertiesNames)) {
+            if (firstProperty)
+                result << indent;
+            else
+                result << ',';
+            result << indent << (*propertyName);
+
+            firstProperty = false;
+        }
         result << std::endl;
 
         for (const PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
-            result << recordName << ':' << std::endl << indent;
-            for (MessagePtr& propertyValue : properties)
-                result << indent << (*propertyValue) << ',';
+            result << recordName << ':' << std::endl;
+            firstProperty = true;
+            for (MessagePtr& propertyValue : properties) {
+                if (firstProperty)
+                    result << indent;
+                else
+                    result << ',';
+                result << indent << (*propertyValue);
+
+                firstProperty = false;
+            }
             result << std::endl;
         }
     }
 
-    if (subResults.size() > 0) {
+    if (!subResults.empty()) {
         for (const SubResult& subResult : subResults) {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;

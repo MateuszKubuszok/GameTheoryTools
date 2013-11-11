@@ -93,6 +93,7 @@ const PositionsPtr PositionsHelper::retrievePositions(
     PositionsPtr positions       = createPositionsPtr();
     Index        checkedPosition = positionInStorage;
 
+    // this adds at most one Player with only 1 strategy!
     for (Index playerValue : positionsHelper.right
                            | boost::adaptors::map_keys
                            | boost::adaptors::reversed
@@ -114,6 +115,23 @@ const PositionsPtr PositionsHelper::retrievePositions(
             }
             if (!strategyValue)
                 break;
+        }
+    }
+
+    // dirty hack adding all missing Players with just 1 strategy
+    for (const Players::value_type& player : *players) {
+        const Identifier& playerName     = player.first;
+        const Player&     playerInstance = *player.second;
+
+        if (playerInstance.getStrategiesNumber() == 1 && !positions->count(playerName)) {
+            const Identifier& strategy = *(*playerInstance.getStrategies())[0];
+
+            positions->insert(
+                Positions::value_type(
+                    playerName,
+                    strategy
+                )
+            );
         }
     }
 

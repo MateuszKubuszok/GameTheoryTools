@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "\t\tproperty1,\tproperty2,\n"
+        "\t\tproperty1,\tproperty2\n"
         "TestObject:\n"
-        "\t\tresult1,\tresult2,\n"
+        "\t\tresult1,\tresult2\n"
         "name:\n"
         "\tresult\n"
     );
@@ -60,9 +60,9 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_buildRaw ) {
     BOOST_CHECK_EQUAL(
         builder->buildRaw()->getResult(),
         GT::Message() +
-        "\t\tproperty1,\tproperty2,\n"
+        "\t\tproperty1,\tproperty2\n"
         "TestObject:\n"
-        "\t\tresult1,\tresult2,\n"
+        "\t\tresult1,\tresult2\n"
         "name:\n"
         "\tresult\n"
     );

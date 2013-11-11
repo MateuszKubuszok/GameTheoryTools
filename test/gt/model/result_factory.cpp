@@ -101,8 +101,8 @@ BOOST_AUTO_TEST_CASE( ResultFactory_JSONResultBuilder ) {
         "{\n"
         "\t\"TestObject\" : [\n"
         "\t\t\"property1\" : \"result1\",\n"
-        "\t\t\"property2\" : \"result2\",\n"
-        "\t],\n"
+        "\t\t\"property2\" : \"result2\"\n"
+        "\t]\n"
         "}\n"
     );
 }
@@ -164,9 +164,9 @@ BOOST_AUTO_TEST_CASE( ResultFactory_PlainResultBuilder ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "\t\tproperty1,\tproperty2,\n"
+        "\t\tproperty1,\tproperty2\n"
         "TestObject:\n"
-        "\t\tresult1,\tresult2,\n"
+        "\t\tresult1,\tresult2\n"
     );
 }
 
