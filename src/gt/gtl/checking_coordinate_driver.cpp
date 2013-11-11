@@ -42,7 +42,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 ErrorFactory::getInstance().createCoordinate(errorMessage),
-                inputLocation
+                *coordinate.getInputLocation()
             )
         );
     }
@@ -56,7 +56,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
             return new CoordinatePtr(
                 setupLocation<Coordinate>(
                     ErrorFactory::getInstance().createCoordinate(errorMessage),
-                    inputLocation
+                    *subCoordinate.getInputLocation()
                 )
             );
         }
@@ -85,7 +85,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 ErrorFactory::getInstance().createCoordinate(errorMessage),
-                inputLocation
+                *coordinate.getInputLocation()
             )
         );
     }
@@ -99,7 +99,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
             return new CoordinatePtr(
                 setupLocation<Coordinate>(
                     ErrorFactory::getInstance().createCoordinate(errorMessage),
-                    inputLocation
+                    *subData.getInputLocation()
                 )
             );
         }
@@ -128,7 +128,7 @@ CoordinatePtr* CheckingCoordinateDriver::merge(
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 ErrorFactory::getInstance().createCoordinate(errorMessage),
-                inputLocation
+                *coordinate1.getInputLocation()
             )
         );
     }
@@ -140,7 +140,7 @@ CoordinatePtr* CheckingCoordinateDriver::merge(
         return new CoordinatePtr(
             setupLocation<Coordinate>(
                 ErrorFactory::getInstance().createCoordinate(errorMessage),
-                inputLocation
+                *coordinate2.getInputLocation()
             )
         );
     }

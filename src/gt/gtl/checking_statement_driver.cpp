@@ -47,7 +47,7 @@ DefinitionPtr* CheckingStatementDriver::createDefinition(
         return new DefinitionPtr(
             setupLocation<Definition>(
                 ErrorFactory::getInstance().createDefinition(errorMessage),
-                inputLocation
+                *object.getInputLocation()
             )
         );
     }
@@ -77,7 +77,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
             return new QueryPtr(
                 setupLocation<Query>(
                     ErrorFactory::getInstance().createQuery(object.toString()),
-                    inputLocation
+                    *object.getInputLocation()
                 )
             );
 
@@ -95,7 +95,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
                     return new QueryPtr(
                         setupLocation<Query>(
                             ErrorFactory::getInstance().createQuery(errorMessage),
-                            inputLocation
+                            *param.getInputLocation()
                         )
                     );
                 }
@@ -113,7 +113,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
             return new QueryPtr(
                 setupLocation<Query>(
                     ErrorFactory::getInstance().createQuery(errorMessage),
-                    inputLocation
+                    *condition.getInputLocation()
                 )
             );
         }

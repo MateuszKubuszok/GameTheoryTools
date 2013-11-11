@@ -27,7 +27,7 @@ GamePtr* CheckingGameDriver::createStrategic(
         return new GamePtr(
             setupLocation<Game>(
                 ErrorFactory::getInstance().createGame(errorMessage),
-                inputLocation
+                *details.getInputLocation()
             )
         );
     }
@@ -53,7 +53,7 @@ GamePtr* CheckingGameDriver::createExtensive(
         return new GamePtr(
             setupLocation<Game>(
                 ErrorFactory::getInstance().createGame(errorMessage),
-                inputLocation
+                *details.getInputLocation()
             )
         );
     }
@@ -85,22 +85,22 @@ DetailsPtr* CheckingGameDriver::createDetails(
             return new DetailsPtr(
                 setupLocation<Details>(
                     ErrorFactory::getInstance().createDetails(errorMessage),
-                    inputLocation
+                    *player.getInputLocation()
                 )
             );
         }
     }
 
     for (const CoordinatePtr& coordinatePtr : coordinates) {
-        const Coordinate& coorinate = *coordinatePtr;
-        if (!coorinate) {
+        const Coordinate& coordinate = *coordinatePtr;
+        if (!coordinate) {
             // TODO: create ErrorMessageFactory
             Message errorMessage = Message() +
-                "Invalid Data: " + coorinate.toString();
+                "Invalid Data: " + coordinate.toString();
             return new DetailsPtr(
                 setupLocation<Details>(
                     ErrorFactory::getInstance().createDetails(errorMessage),
-                    inputLocation
+                    *coordinate.getInputLocation()
                 )
             );
         }

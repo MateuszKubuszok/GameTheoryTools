@@ -29,7 +29,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
-                inputLocation
+                *playerObject.getInputLocation()
             )
         );
     }
@@ -42,7 +42,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
-                inputLocation
+                *player.getInputLocation()
             )
         );
     }
@@ -55,7 +55,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
-                inputLocation
+                *strategyParam.getInputLocation()
             )
         );
     }
