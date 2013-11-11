@@ -28,6 +28,39 @@ public:
     Param();
 
     /**
+     * @brief Finds reffered Objects' property and returns it as a Result.
+     *
+     * <p>Returns Result for reffered Object if there is any and it has required property.</p>
+     *
+     * @param context           Context with values
+     * @param propertyName      property's name
+     * @return                  Result for sought property
+     * @throw CyclicIdentifiers thrown when there is Param with cyclic references
+     * @throw InvalidProperty   thrown when property is not available for an Object
+     */
+    virtual ResultPtr findProperty(
+        const Context&    context,
+        const Identifier& propertyName
+    ) const override;
+
+    /**
+     * @brief Finds referred Objects' property for giver conditions and returns it as a Result.
+     *
+     * <p>Returns Result for reffered Object if there is any and it has required property.</p>
+     *
+     * @param context           Context with values
+     * @param conditions        Conditions to consider
+     * @return                  Result for sought property
+     * @throw CyclicIdentifiers thrown when there is Param with cyclic references
+     * @throw InvalidProperty   thrown when property is not available for an Object
+     */
+    virtual ResultPtr findPropertyWithConditions(
+        const Context&    context,
+        const Identifier& propertyName,
+        const Conditions& conditions
+    ) const override;
+
+    /**
      * @brief Returns Object for Context.
      *
      * @param context               Context with values

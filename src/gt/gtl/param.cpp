@@ -11,7 +11,39 @@ namespace GTL {
 Param::Param() :
     Object(createIdentifier("Param"))
 {
-    registerProperty(Identifier("value"), ObjectPropertyPtr(new ParamValueProperty(this)));
+    registerProperty(Identifier("referred_properties"), ObjectPropertyPtr(new ParamKnownProperties(this)));
+    registerProperty(Identifier("value"),               ObjectPropertyPtr(new ParamValueProperty(this)));
+}
+
+ResultPtr Param::findProperty(
+    const Context&    context,
+    const Identifier& propertyName
+) const {
+    try {
+        const ObjectPtr object = getObject(context);
+        if (object->respondsTo(propertyName))
+            return object->findProperty(context, propertyName);
+    } catch (const CyclicIdentifiers&) {
+    } catch (const InvalidContentRequest&) {
+    } catch (const NotDefinedParam&) {}
+
+    return Object::findProperty(context, propertyName);
+}
+
+ResultPtr Param::findPropertyWithConditions(
+    const Context&    context,
+    const Identifier& propertyName,
+    const Conditions& conditions
+) const {
+    try {
+        const ObjectPtr object = getObject(context);
+        if (object->respondsTo(propertyName))
+            return object->findPropertyWithConditions(context, propertyName, conditions);
+    } catch (const CyclicIdentifiers&) {
+    } catch (const InvalidContentRequest&) {
+    } catch (const NotDefinedParam&) {}
+
+    return Object::findPropertyWithConditions(context, propertyName, conditions);
 }
 
 const ObjectPtr Param::getObject(

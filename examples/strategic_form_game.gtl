@@ -28,6 +28,11 @@ LET game1 BE
   END; // END can be ommitted when obvious
 
 /**
+ * Displays game definition.
+ */
+FIND value FOR game1;
+
+/**
  * Searches for pure-strategy equlibrium.
  */
 FIND pure_equilibrium FOR game1;

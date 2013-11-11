@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_OBJECT_KNOWN_PROPERTIES_HPP__
-#define __GT_GTL_OBJECT_KNOWN_PROPERTIES_HPP__
+#ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__
+#define __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__
 
 namespace GT {
 namespace GTL {
@@ -7,30 +7,30 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Describes Object's known properties.
+ * @brief Describes referred Object's known properties.
  *
  * @author Mateusz Kubuszok
  *
- * @see Object
+ * @see Param
  */
-class ObjectKnownProperties : public ObjectProperty {
+class ParamKnownProperties : public ObjectProperty {
     /**
-     * @brief Described Object.
+     * @brief Described Param.
      */
-    const Object* object;
+    const Param* param;
 
 public:
     /**
-     * @brief Initiates Property with Object it's describing.
+     * @brief Initiates Property with Param it's describing.
      *
      * @param describedObject described Object
      */
-    explicit ObjectKnownProperties(
-        const Object* describedObject
+    explicit ParamKnownProperties(
+        const Param* describedParam
     );
 
     /**
-     * @brief Finds Object's known propertes.
+     * @brief Finds Param's known propertes.
      *
      * @param  context    Context with values
      * @param  conditions Conditions to check
@@ -40,11 +40,11 @@ public:
         const Context&    context,
         const Conditions& conditions
     ) const override;
-}; /* END class ObjectKnownProperties */
+}; /* END class ParamKnownProperties */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_OBJECT_KNOWN_PROPERTIES_HPP__ */
+#endif /* #ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__ */

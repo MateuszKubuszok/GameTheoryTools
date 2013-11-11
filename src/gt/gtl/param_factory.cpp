@@ -39,7 +39,8 @@ ParamPtr ParamFactory::createParam(
 ParamPtr ParamFactory::createParam(
     const ObjectPtr object
 ) const {
-    return ParamPtr(new ObjectParam(object));
+    const Param& param = *object;
+    return param ? boost::dynamic_pointer_cast<Param>(object) : ParamPtr(new ObjectParam(object));
 }
 
 // private:

@@ -76,12 +76,13 @@ public:
     ) const;
 
     /**
-     * @brief Finds Objects' property and returns it as a result.
+     * @brief Finds Objects' property and returns it as a Result.
      *
-     * @param  context        context with values
-     * @param  propertyName   property's name
-     * @return                Result for sought property
-     * @throw InvalidProperty thrown when property is not available for an Object
+     * @param  context          Context with values
+     * @param  propertyName     property's name
+     * @return                  Result for sought property
+     * @throw CyclicIdentifiers thrown when there is Param with cyclic references
+     * @throw InvalidProperty   thrown when property is not available for an Object
      */
     virtual ResultPtr findProperty(
         const Context&    context,
@@ -89,11 +90,12 @@ public:
     ) const;
 
     /**
-     * @brief Finds Objects' property for giver conditions and returns it as a result.
+     * @brief Finds Objects' property for giver Conditions and returns it as a Result.
      *
-     * @param context         context with values
-     * @param conditions      conditions to consider
+     * @param context         Context with values
+     * @param conditions      Conditions to consider
      * @return                Result for sought property
+     * @throw CyclicIdentifiers thrown when there is Param with cyclic references
      * @throw InvalidProperty thrown when property is not available for an Object
      */
     virtual ResultPtr findPropertyWithConditions(
@@ -107,14 +109,14 @@ public:
      *
      * @return properties list
      */
-    IdentifiersPtr listProperties() const;
+    virtual IdentifiersPtr listProperties() const;
 
     /**
      * @brief Returns type of an Object.
      *
      * @return type name
      */
-    const IdentifierPtr type() const ;
+    virtual const IdentifierPtr type() const;
 
     /**
      * @brief Returns message about object.

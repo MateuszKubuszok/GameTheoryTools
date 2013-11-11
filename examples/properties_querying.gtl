@@ -39,11 +39,12 @@ LET game3 BE
 // Querying for properties
 
 FIND
-    properties, // list of known properties
-    type        // type of object
+    properties,          // list of known properties
+    referred_properties, // list of known properties of referred object
+    type                 // type of object
 FOR
     a,
     b,
-    p1,
-    p2,
+    player1,
+    player2,
     game3;

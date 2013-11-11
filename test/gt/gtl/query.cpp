@@ -43,6 +43,8 @@ BOOST_AUTO_TEST_CASE( Query_execute ) {
         "\t\tProperty:\n"
         "\t\t\t\tproperties\n"
         "\t\tProperty:\n"
+        "\t\t\t\treferred_properties\n"
+        "\t\tProperty:\n"
         "\t\t\t\ttype\n"
         "\t\tProperty:\n"
         "\t\t\t\tvalue\n"

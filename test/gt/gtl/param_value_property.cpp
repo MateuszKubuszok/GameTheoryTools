@@ -23,11 +23,11 @@ BOOST_AUTO_TEST_CASE( ParamValueProperty_findForConditions ) {
     // then
     BOOST_CHECK_EQUAL(
         numberValueProperty.findForConditions(context, conditions)->getResult(),
-        numberParam.toString()
+        GT::createMessage(number)
     );
     BOOST_CHECK_EQUAL(
         objectValueProperty.findForConditions(context, conditions)->getResult(),
-        objectParam.toString()
+        object->toString()
     );
 }
 

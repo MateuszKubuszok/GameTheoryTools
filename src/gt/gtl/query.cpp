@@ -40,10 +40,15 @@ ResultPtr Query::execute(
             if (object.respondsTo(property)) {
                 // Object has this property
 
-                MessagePtr propertyValue = createMessagePtr(
-                    object.findPropertyWithConditions(context, property, *conditions)->getResult()
-                );
-                propertyResult->addResult(objectName, propertyValue);
+                try {
+                    MessagePtr propertyValue = createMessagePtr(
+                        object.findPropertyWithConditions(context, property, *conditions)->getResult()
+                    );
+                    propertyResult->addResult(objectName, propertyValue);
+                } catch (const std::exception& e) {
+                    MessagePtr errorMessage = createMessagePtr(e.what());
+                    propertyResult->addResult(objectName, errorMessage);
+                }
             } else {
                 const Param& param = object;
                 if (param) {

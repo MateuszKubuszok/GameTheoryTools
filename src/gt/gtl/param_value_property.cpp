@@ -15,10 +15,20 @@ ParamValueProperty::ParamValueProperty(
     {}
 
 ResultPtr ParamValueProperty::findForConditions(
-    const Context&,
+    const Context& context,
     const Conditions&
 ) const {
-    return ResultFactory::getInstance().constResult(param->toString());
+    Message content;
+    try {
+        content = param->getObject(context)->toString();
+    } catch (const InvalidContentRequest&) {
+        try {
+            content = createMessage(param->getNumber(context));
+        } catch (const InvalidContentRequest&) {
+            content = param->toString();
+        }
+    }
+    return ResultFactory::getInstance().constResult(content);
 }
 
 // }; /* END class ParamValueProperty */
