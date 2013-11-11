@@ -103,10 +103,10 @@ Message Coordinate::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
     if (params->size()) {
-        IdentifierPtr paramsName = createIdentifierPtr("Params");
+        static const IdentifierPtr paramsName = createIdentifierPtr("Params");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-        IdentifierPtr name = createIdentifierPtr("Param");
+        static const IdentifierPtr name = createIdentifierPtr("Param");
         for (ParamPtr& param : *params) {
             MessagePtr value = createMessagePtr(param->toString());
             subResultBuilder->addResult(name, value);
@@ -117,7 +117,7 @@ Message Coordinate::toString() const {
     }
 
     if (positions->size()) {
-        IdentifierPtr positionsName = createIdentifierPtr("Positions");
+        static const IdentifierPtr positionsName = createIdentifierPtr("Positions");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
         for (Positions::value_type& position : *positions) {
@@ -131,10 +131,10 @@ Message Coordinate::toString() const {
     }
 
     if (subCoordinates->size()) {
-        IdentifierPtr subCoordinatesName = createIdentifierPtr("SubCoordinates");
+        static const IdentifierPtr subCoordinatesName = createIdentifierPtr("SubCoordinates");
+        static const IdentifierPtr name               = createIdentifierPtr("Coordinate");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-        IdentifierPtr name = createIdentifierPtr("Coordinate");
         for (CoordinatePtr& subCoordinate : *subCoordinates) {
             MessagePtr value = createMessagePtr(subCoordinate->toString());
             subResultBuilder->addResult(name, value);

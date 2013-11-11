@@ -8,6 +8,7 @@
 
 /* Includes boost libraries */
 #include <boost/algorithm/string.hpp>
+#include <boost/assign.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>
 #include <boost/thread/mutex.hpp>

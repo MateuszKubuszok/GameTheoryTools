@@ -18,8 +18,8 @@ ResultPtr ObjectKnownProperties::findForConditions(
     const Context&,
     const Conditions&
 ) const {
-    IdentifierPtr knownProperties  = createIdentifierPtr("Known Properties");
-    IdentifierPtr property         = createIdentifierPtr("Property");
+    static const IdentifierPtr knownProperties = createIdentifierPtr("Known Properties");
+    static const IdentifierPtr property        = createIdentifierPtr("Property");
 
     IdentifiersPtr records = createIdentifiersPtr();
     records->push_back(knownProperties);

@@ -27,9 +27,9 @@ const ObjectsPtr Details::getPlayers() const {
 Message Details::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    IdentifierPtr playersName = createIdentifierPtr("Players");
-    ResultBuilderPtr playersResultBuilder = ResultFactory::getInstance().buildResult();
-    IdentifierPtr playerName = createIdentifierPtr("Player");
+    static const IdentifierPtr playersName = createIdentifierPtr("Players");
+    static const IdentifierPtr playerName  = createIdentifierPtr("Player");
+    ResultBuilderPtr playersResultBuilder  = ResultFactory::getInstance().buildResult();
     for (const ObjectPtr& player : *players) {
         MessagePtr playerValue = createMessagePtr(player->toString());
         playersResultBuilder->addResult(playerName, playerValue);
@@ -37,9 +37,9 @@ Message Details::toString() const {
     MessagePtr playersValue = createMessagePtr(playersResultBuilder->build()->getResult());
     resultBuilder->addResult(playersName, playersValue);
 
-    IdentifierPtr coordinatesName = createIdentifierPtr("Coordinates");
-    ResultBuilderPtr coordinatesResultBuilder = ResultFactory::getInstance().buildResult();
-    IdentifierPtr coordinateName = createIdentifierPtr("Coordinate");
+    static const IdentifierPtr coordinatesName = createIdentifierPtr("Coordinates");
+    static const IdentifierPtr coordinateName  = createIdentifierPtr("Coordinate");
+    ResultBuilderPtr coordinatesResultBuilder  = ResultFactory::getInstance().buildResult();
     for (const CoordinatePtr& coordinate : *coordinates) {
         MessagePtr coordinateValue = createMessagePtr(coordinate->toString());
         coordinatesResultBuilder->addResult(coordinateName, coordinateValue);

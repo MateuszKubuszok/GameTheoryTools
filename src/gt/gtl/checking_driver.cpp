@@ -75,8 +75,8 @@ void CheckingDriver::showError(
                 << "\tat line \"" << location << "\"" << std::endl;
         std::string errorMessage(builder.str());
 
-        IdentifierPtr name   = createIdentifierPtr("Error");
-        MessagePtr    result = createMessagePtr(builder.str());
+        static const IdentifierPtr name   = createIdentifierPtr("Error");
+        const MessagePtr           result = createMessagePtr(builder.str());
 
         (*errorStream)
             << ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();

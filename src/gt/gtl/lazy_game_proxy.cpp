@@ -72,7 +72,7 @@ const Model::GamePtr LazyGameProxy::accessGame() const {
             }
         }
 
-        Identifier typeName = createIdentifier("Player");
+        static const Identifier typeName = createIdentifier("Player");
         throw ExceptionFactory::getInstance().invalidObjectType(typeName);
     }
     currentGameBuilder->dataBuilder()->setPlayers(modelPlayers);

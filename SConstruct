@@ -63,6 +63,7 @@ for header in [
     'boost/shared_ptr.hpp',
     'boost/weak_ptr.hpp',
     'boost/algorithm/string.hpp',
+    'boost/assign.hpp',
     'boost/bimap/bimap.hpp',
     'boost/container/map.hpp',
     'boost/container/set.hpp',
@@ -74,7 +75,7 @@ for header in [
     # Flex library
     'FlexLexer.h',
     # GNU Multiple Precision library
-    'gmpxx.h',
+    'gmpxx.h'
 ]:
     if not conf.CheckCXXHeader(header):
         print('Your environment does not seem to have header <'+header+'>!!')

@@ -26,8 +26,8 @@ Message PlayerChoiceCondition::toString() const {
     std::stringstream result;
     result << "Player \"" << player << "\" choosed \"" << strategy << "\"";
 
-    IdentifierPtr name  = createIdentifierPtr("Condtion");
-    MessagePtr    value = createMessagePtr(result.str());
+    static const IdentifierPtr name  = createIdentifierPtr("Condtion");
+    MessagePtr                 value = createMessagePtr(result.str());
 
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build()->getResult();
 }

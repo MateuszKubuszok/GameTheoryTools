@@ -124,8 +124,8 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
 }
 
 Message ExtensiveDataNode::toString() const {
-    ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
-    IdentifierPtr    valueName     = createIdentifierPtr("Value");
+    static const IdentifierPtr    valueName     = createIdentifierPtr("Value");
+    ResultBuilderPtr              resultBuilder = ResultFactory::getInstance().buildResult();
 
     if (depthValue == 0)
         for (NumberPtr& number : (*payoff)) {
@@ -133,8 +133,8 @@ Message ExtensiveDataNode::toString() const {
             resultBuilder->addResult(valueName, result);
         }
     else {
-        IdentifierPtr playerName  = createIdentifierPtr("Player");
-        MessagePtr    playerValue = createMessagePtr(player->toString());
+        static const IdentifierPtr playerName  = createIdentifierPtr("Player");
+        const MessagePtr           playerValue = createMessagePtr(player->toString());
         resultBuilder->addResult(playerName, playerValue);
 
         for (ExtensiveDataNodes::value_type& node : (*nodes)) {

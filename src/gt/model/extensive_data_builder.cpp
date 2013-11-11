@@ -71,8 +71,8 @@ DataBuilderPtr ExtensiveDataBuilder::clone() const {
 }
 
 Message ExtensiveDataBuilder::toString() const {
-    IdentifierPtr name    = createIdentifierPtr("Current Data");
-    MessagePtr    message = createMessagePtr(data->toString());
+    static const IdentifierPtr name    = createIdentifierPtr("Current Data");
+    const MessagePtr           message = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }
 

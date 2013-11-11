@@ -25,9 +25,9 @@ const NumberPtr& PlainDataPiece::getValue(
 }
 
 Message PlainDataPiece::toString() const {
-    IdentifierPtr  name = createIdentifierPtr("Payoff");
-    IdentifiersPtr players(new Identifiers());
-    MessagesPtr    values(new Messages());
+    static const IdentifierPtr  name = createIdentifierPtr("Payoff");
+    const IdentifiersPtr        players(new Identifiers());
+    const MessagesPtr           values(new Messages());
 
     for (Identifier playerName : (*positionsHelper.getPlayers()) | boost::adaptors::map_keys) {
         players->push_back( createIdentifierPtr(playerName) );

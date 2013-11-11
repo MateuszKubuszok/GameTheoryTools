@@ -37,8 +37,8 @@ const DataPiecePtr StrategicDataAccessor::getValues(
 }
 
 Message StrategicDataAccessor::toString() const {
-    IdentifierPtr name      = createIdentifierPtr("Strategic Data Accessor");
-    MessagePtr    subresult = createMessagePtr(data->toString());
+    static const IdentifierPtr name      = createIdentifierPtr("Strategic Data Accessor");
+    const MessagePtr           subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 

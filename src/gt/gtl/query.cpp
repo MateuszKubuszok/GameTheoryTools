@@ -21,8 +21,10 @@ Query::Query(
 ResultPtr Query::execute(
     const Context& context
 ) const {
-    MessagePtr objectPropertyNotFound = createMessagePtr("Property not found in Object");
-    MessagePtr paramPropertyNotFound  = createMessagePtr("Property not found in Param nor referred Object");
+    static const MessagePtr objectPropertyNotFound =
+        createMessagePtr("Property not found in Object");
+    static const MessagePtr paramPropertyNotFound  =
+        createMessagePtr("Property not found in Param nor referred Object");
 
     ResultBuilderPtr queryResult = ResultFactory::getInstance().buildResult();
 
@@ -82,13 +84,14 @@ ResultPtr Query::execute(
 }
 
 Message Query::toString() const {
-    IdentifiersPtr properties(new Identifiers());
-    properties->push_back( createIdentifierPtr("Properties") );
+    static const IdentifierPtr  propertiesName = createIdentifierPtr("Properties");
+    static const Identifiers    properties     = boost::assign::list_of( propertiesName );
+    static const IdentifiersPtr propertiesPtr(new Identifiers(properties));
 
-    IdentifierPtr  name = createIdentifierPtr("Property Name");
+    static const IdentifierPtr  name = createIdentifierPtr("Property Name");
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
-    resultBuilder->setHeaders(properties);
+    resultBuilder->setHeaders(propertiesPtr);
 
     for (IdentifierPtr& value : *propertiesNames) {
         MessagesPtr results(new Messages());

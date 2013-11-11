@@ -60,8 +60,8 @@ GamePtr StrategicGameBuilder::build() const {
 }
 
 Message StrategicGameBuilder::toString() const {
-    IdentifierPtr name    = createIdentifierPtr("Current Strategic Game");
-    MessagePtr    message = createMessagePtr(dataBuilder()->toString());
+    static const IdentifierPtr name    = createIdentifierPtr("Current Strategic Game");
+    const MessagePtr           message = createMessagePtr(dataBuilder()->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, message).build()->getResult();
 }
 

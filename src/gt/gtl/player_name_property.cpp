@@ -18,8 +18,8 @@ ResultPtr PlayerNameProperty::findForConditions(
     const Context&,
     const Conditions&
 ) const {
-    IdentifierPtr name  = createIdentifierPtr("Name");
-    MessagePtr    value = createMessagePtr(player->getName());
+    static const IdentifierPtr name  = createIdentifierPtr("Name");
+    MessagePtr                 value = createMessagePtr(player->getName());
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build();
 }
 

@@ -65,8 +65,8 @@ bool Player::isEqual(
 Message Player::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    IdentifierPtr playerName      = createIdentifierPtr("Name");
-    MessagePtr    playerNameValue = createMessagePtr(getName());
+    static const IdentifierPtr playerName      = createIdentifierPtr("Name");
+    const MessagePtr           playerNameValue = createMessagePtr(getName());
     resultBuilder->addResult(playerName, playerNameValue);
 
     for (IdentifierPtr& strategy : *strategies) {

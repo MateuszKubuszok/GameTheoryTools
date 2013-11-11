@@ -18,9 +18,9 @@ ResultPtr PlayerStrategiesProperty::findForConditions(
     const Context&,
     const Conditions&
 ) const {
-    IdentifierPtr strategiesName  = createIdentifierPtr("Strategies");
+    static const IdentifierPtr strategiesName  = createIdentifierPtr("Strategies");
 
-    IdentifierPtr name  = createIdentifierPtr("Strategy");
+    static const IdentifierPtr name  = createIdentifierPtr("Strategy");
     ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
     for (IdentifierPtr& strategy : *player->getStrategies()) {
         MessagePtr value = createMessagePtr(strategy);

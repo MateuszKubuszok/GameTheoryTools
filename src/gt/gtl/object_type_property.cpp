@@ -18,8 +18,8 @@ ResultPtr ObjectTypeProperty::findForConditions(
     const Context&,
     const Conditions&
 ) const {
-    IdentifierPtr name  = createIdentifierPtr("Type");
-    MessagePtr    value = createMessagePtr(object->type());
+    static const IdentifierPtr name  = createIdentifierPtr("Type");
+    MessagePtr                 value = createMessagePtr(object->type());
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build();
 }
 

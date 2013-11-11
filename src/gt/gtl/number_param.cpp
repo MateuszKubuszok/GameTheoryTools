@@ -30,8 +30,8 @@ const NumberPtr NumberParam::getNumber(
 }
 
 Message NumberParam::toString() const {
-    IdentifierPtr name  = createIdentifierPtr("NumberParam");
-    MessagePtr    val   = createMessagePtr(value);
+    static const IdentifierPtr name  = createIdentifierPtr("NumberParam");
+    MessagePtr                 val   = createMessagePtr(value);
     return ResultFactory::getInstance().buildResult()->addResult(name, val).build()->getResult();
 }
 

@@ -25,8 +25,8 @@ const DataAccessorPtr StrategicGame::getData() const {
 }
 
 Message StrategicGame::toString() const {
-    IdentifierPtr name      = createIdentifierPtr("Strategic Game");
-    MessagePtr    subresult = createMessagePtr(data->toString());
+    static const IdentifierPtr name      = createIdentifierPtr("Strategic Game");
+    const MessagePtr           subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 

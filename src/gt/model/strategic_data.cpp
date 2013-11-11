@@ -112,8 +112,8 @@ const DataPiecePtr StrategicData::operator[](
 Message StrategicData::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    IdentifierPtr positionName  = createIdentifierPtr("Position");
-    IdentifierPtr payoffName    = createIdentifierPtr("Payoff");
+    static const IdentifierPtr positionName  = createIdentifierPtr("Position");
+    static const IdentifierPtr payoffName    = createIdentifierPtr("Payoff");
     IdentifiersPtr playersNames = createIdentifiersPtr();
     for (Index i = 0; i < positionsHelper.getPlayers()->size(); i++)
         playersNames->push_back( createIdentifierPtr(positionsHelper.retrievePlayer(i)) );
@@ -121,11 +121,11 @@ Message StrategicData::toString() const {
     Index maxPosition = payoffStorage.size();
     for (Index i = 0; i < maxPosition; i++)
         if (payoffStorageAllocation.at(i)) {
-            const IdentifierPtr  name       = createIdentifierPtr("Value");
-            const PositionsPtr   positions  = positionsHelper.retrievePositions(i);
-            const NumbersPtr     numbers    = payoffStorage[i];
-            const IdentifiersPtr strategies = createIdentifiersPtr();
-            const MessagesPtr    numbersStr = createMessagesPtr();
+            static const IdentifierPtr name       = createIdentifierPtr("Value");
+            const PositionsPtr         positions  = positionsHelper.retrievePositions(i);
+            const NumbersPtr           numbers    = payoffStorage[i];
+            const IdentifiersPtr       strategies = createIdentifiersPtr();
+            const MessagesPtr          numbersStr = createMessagesPtr();
 
             for (const IdentifierPtr& playerName : (*playersNames)) {
                 strategies->push_back( createIdentifierPtr((*positions)[*playerName]) );

@@ -25,8 +25,8 @@ const DataAccessorPtr ExtensiveGame::getData() const {
 }
 
 Message ExtensiveGame::toString() const {
-    IdentifierPtr name      = createIdentifierPtr("Extensive Game");
-    MessagePtr    subresult = createMessagePtr(data->toString());
+    static const IdentifierPtr name      = createIdentifierPtr("Extensive Game");
+    const MessagePtr           subresult = createMessagePtr(data->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 

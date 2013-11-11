@@ -100,8 +100,8 @@ Data& ExtensiveData::setValues(
 }
 
 Message ExtensiveData::toString() const {
-    IdentifierPtr name   = createIdentifierPtr("ExtensiveData");
-    MessagePtr    result = createMessagePtr(root->toString());
+    static const IdentifierPtr name   = createIdentifierPtr("ExtensiveData");
+    const MessagePtr          result = createMessagePtr(root->toString());
     return ResultFactory::getInstance().buildResult()->addResult(name, result).build()->getResult();
 }
 
