@@ -32,6 +32,13 @@ public:
     );
 
     /**
+     * @brief Returns Identifier.
+     *
+     * @return Identifier
+     */
+    const Identifier& getIdentifier() const;
+
+    /**
      * @brief Returns Object for Context.
      *
      * @param context            Context with values

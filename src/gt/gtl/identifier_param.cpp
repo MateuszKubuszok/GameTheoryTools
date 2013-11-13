@@ -15,6 +15,10 @@ IdentifierParam::IdentifierParam(
     identifier(id)
     {}
 
+const Identifier& IdentifierParam::getIdentifier() const {
+    return identifier;
+}
+
 const ObjectPtr IdentifierParam::getObject(
     const Context&      context,
     VisitedIdentifiers& visitedIdentifiers

@@ -34,12 +34,14 @@ public:
     );
 
     /**
-     * @brief Parametrizes query using the inversion of control.
+     * @brief Returns Condition applicable to Route.
      *
-     * @param query query to parametrize
+     * @param             Context
+     * @return            Condition applicable to Route
+     * @throw InvalidType thrown when either player or strategy are not IdentifierParams
      */
-    virtual void conditionQuery(
-        Query& query
+    virtual Routines::ConditionPtr getCondition(
+        const Context& context
     ) const override;
 
     /**

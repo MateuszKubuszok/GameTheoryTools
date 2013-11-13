@@ -413,7 +413,7 @@ testEnv.Alias('buildProgramsTests', ProgramsTests)
 
 ProgramsTestsProgram_URI = programs+'ProgramsTests'
 ProgramsTestsProgram_bin = executablesTestEnv.Program(
-    source=Models + GTL + Programs + ProgramsTests,
+    source=Models + Routines + GTL + Programs + ProgramsTests,
     target=ProgramsTestsProgram_URI
 )
 ProgramsTestsProgram_run = Command(

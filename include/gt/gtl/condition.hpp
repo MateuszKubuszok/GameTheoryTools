@@ -34,12 +34,14 @@ public:
     virtual ~Condition();
 
     /**
-     * @brief Parametrizes Query using the inversion of control.
+     * @brief Returns Condition applicable to Route.
      *
-     * @param query Query to parametrize
+     * @param             Context
+     * @return            Condition applicable to Route
+     * @throw InvalidType thrown when condition make use of not accepted Objects
      */
-    virtual void conditionQuery(
-        Query& query
+    virtual Routines::ConditionPtr getCondition(
+        const Context& context
     ) const = 0;
 
     /**
@@ -59,9 +61,11 @@ public:
  */
 class NullCondition : public Condition {
 public:
-    virtual void conditionQuery(
-        Query&
-    ) const override {}
+    virtual Routines::ConditionPtr getCondition(
+        const Context&
+    ) const override {
+        return Routines::NullFactory::getInstance().createCondition();
+    }
 
     virtual bool isNotNull() const override {
         return false;
@@ -92,9 +96,11 @@ public:
         message(errorMessage)
         {}
 
-    virtual void conditionQuery(
-        Query&
-    ) const override {}
+    virtual Routines::ConditionPtr getCondition(
+        const Context&
+    ) const override {
+        return Routines::NullFactory::getInstance().createCondition();
+    }
 
     virtual bool isValid() const override {
         return false;

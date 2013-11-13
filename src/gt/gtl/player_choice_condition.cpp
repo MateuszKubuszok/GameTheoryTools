@@ -16,10 +16,23 @@ PlayerChoiceCondition::PlayerChoiceCondition(
     strategy(definedStrategy)
     {}
 
-void PlayerChoiceCondition::conditionQuery(
-    Query& //query
+Routines::ConditionPtr PlayerChoiceCondition::getCondition(
+    const Context&
 ) const {
-    // TODO when routines are implemented
+    const boost::shared_ptr<IdentifierParam> playerParam =
+        boost::dynamic_pointer_cast<IdentifierParam>(player);
+    const boost::shared_ptr<IdentifierParam> strategyParam =
+        boost::dynamic_pointer_cast<IdentifierParam>(strategy);
+
+    if (!playerParam || !strategyParam) {
+        Identifier expectedType = createIdentifier("Identifier Param");
+        throw ExceptionFactory::getInstance().invalidObjectType(expectedType);
+    }
+
+    return Routines::ConditionFactory::getInstance().createPlayerChoiceCondition(
+        createIdentifierPtr(playerParam->getIdentifier()),
+        createIdentifierPtr(strategyParam->getIdentifier())
+    );
 }
 
 Message PlayerChoiceCondition::toString() const {

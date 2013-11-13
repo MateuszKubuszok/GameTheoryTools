@@ -9,6 +9,8 @@
 
 /* Includes GT model headers  */
 #include "gt/model/common.hpp"
+/* Includes Routines headers  */
+#include "gt/routines/common.hpp"
 
 namespace GT {
 namespace GTL {

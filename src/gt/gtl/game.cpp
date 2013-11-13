@@ -26,24 +26,45 @@ Game::Game(
 }
 
 ResultPtr Game::pureEquilibrium(
-    const Context&,
-    const Conditions&
+    const Context&    context,
+    const Conditions& conditions
 ) const {
-    return ResultFactory::getInstance().constResult("Not yet implemented");
+    Routines::RoutinePtr routine =
+        Routines::RoutineFactory::getInstance().pureStrategyEquilibriumFindingRoutineFor(game);
+
+    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    for (const ConditionPtr& condition : conditions)
+        routineConditions->push_back(condition->getCondition(context));
+
+    return routine->findResultFor(game, routineConditions);
 }
 
 ResultPtr Game::mixedEquilibrium(
-    const Context&,
-    const Conditions&
+    const Context&    context,
+    const Conditions& conditions
 ) const {
-    return ResultFactory::getInstance().constResult("Not yet implemented");
+    Routines::RoutinePtr routine =
+        Routines::RoutineFactory::getInstance().mixedStrategyEquilibriumFindingRoutineFor(game);
+
+    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    for (const ConditionPtr& condition : conditions)
+        routineConditions->push_back(condition->getCondition(context));
+
+    return routine->findResultFor(game, routineConditions);
 }
 
 ResultPtr Game::behaviorEquilibrium(
-    const Context&,
-    const Conditions&
+    const Context&    context,
+    const Conditions& conditions
 ) const {
-    return ResultFactory::getInstance().constResult("Not yet implemented");
+    Routines::RoutinePtr routine =
+        Routines::RoutineFactory::getInstance().behaviourStrategyEquilibriumFindingRoutineFor(game);
+
+    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    for (const ConditionPtr& condition : conditions)
+        routineConditions->push_back(condition->getCondition(context));
+
+    return routine->findResultFor(game, routineConditions);
 }
 
 Message Game::toString() const {
