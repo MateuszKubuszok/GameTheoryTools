@@ -6,9 +6,6 @@ BOOST_AUTO_TEST_SUITE( PlayerChoiceCondition )
 
 BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_configureRoutine ) {
     // given
-    GT::IdentifierPtr player   = GT::createIdentifierPtr("p1");
-    GT::IdentifierPtr strategy = GT::createIdentifierPtr("p2");
-
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr s1 = GT::createIdentifierPtr("s1");

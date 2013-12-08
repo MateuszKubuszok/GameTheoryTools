@@ -38,6 +38,8 @@ class StrategicPureEquilibriumRoutine;
 
 class PlayerChoiceCondition;
 
+class ExtensivePureStrategyPath;
+
 /* Shortens commonly used names */
 
 typedef boost::shared_ptr<SelectableStrategiesRoutine> SelectableStrategiesRoutinePtr;
@@ -66,6 +68,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/strategic_pure_equilibrium_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
+
+#include "gt/routines/extensive_pure_strategy_path.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
