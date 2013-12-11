@@ -4,3 +4,4 @@
 /objects/*
 /bin/*
 /GTT.sublime-workspace
+.fuse_hidden*
