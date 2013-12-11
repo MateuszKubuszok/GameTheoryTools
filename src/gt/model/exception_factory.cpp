@@ -99,6 +99,16 @@ InvalidCoordinate ExceptionFactory::invalidStrategy(
     return InvalidCoordinate(result.str());
 }
 
+InvalidCoordinate ExceptionFactory::invalidInformationSet(
+    const Identifier& infromationSetName
+) const {
+    std::stringstream result;
+
+    result << "No Information Set '" << infromationSetName << "' has been defined";
+
+    return InvalidCoordinate(result.str());
+}
+
 IllegalInnerState ExceptionFactory::playersAlreadySet() const {
     return IllegalInnerState("Cannot change already set Players");
 }

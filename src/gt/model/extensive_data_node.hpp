@@ -51,11 +51,18 @@ public:
     virtual ~ExtensiveDataNode();
 
     /**
-     * @brief Returns parent pf this Node (Null object for Root).
+     * @brief Returns parent of this Node (Null object for Root).
      *
      * @return parent Node
      */
     virtual const ExtensiveDataNode& getParent() const;
+
+    /**
+     * @brief Returns children of this Node (empty for leaf).
+     *
+     * @return children Nodes
+     */
+    virtual const ExtensiveDataNodes& getChildren() const;
 
     /**
      * @brief Returns Player of a current Node.
@@ -142,7 +149,7 @@ public:
      * @return                node for choice
      * @thors InvalidStrategy thrown if such strategy isn't available choice
      */
-    virtual const ExtensiveDataNode getNodeForChoice(
+    virtual const ExtensiveDataNode& getNodeForChoice(
         const Identifier& strategy
     ) const;
 

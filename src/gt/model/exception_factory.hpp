@@ -92,6 +92,16 @@ public:
     ) const;
 
     /**
+     * @brief @brief Thrown when no information ser with given name has been defined.
+     *
+     * @param informationSetName invalid strategy's name
+     * @return                   InvalidCoordinate exception to throw
+     */
+    InvalidCoordinate invalidInformationSet(
+        const Identifier& infromationSetName
+    ) const;
+
+    /**
      * @brief Thrown when attempt to redefine Players is made.
      *
      * @return IllegalInnerState exception to throw

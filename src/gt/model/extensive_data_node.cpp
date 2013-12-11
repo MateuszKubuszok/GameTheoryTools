@@ -30,6 +30,10 @@ const ExtensiveDataNode& ExtensiveDataNode::getParent() const {
     return *parent;
 }
 
+const ExtensiveDataNodes& ExtensiveDataNode::getChildren() const {
+    return *nodes;
+}
+
 const PlayerPtr ExtensiveDataNode::getPlayer() const {
     return player;
 }
@@ -142,7 +146,7 @@ bool ExtensiveDataNode::isLeaf() const {
     return nodes->empty();
 }
 
-const ExtensiveDataNode ExtensiveDataNode::getNodeForChoice(
+const ExtensiveDataNode& ExtensiveDataNode::getNodeForChoice(
     const Identifier& strategy
 ) const {
     if (!nodes->count(strategy))

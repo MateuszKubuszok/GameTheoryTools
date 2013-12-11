@@ -126,6 +126,22 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidStrategy ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidInformationSet ) {
+    // given
+    GT::Identifier informationSet = GT::createIdentifier("informationSet");
+
+    // when
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .invalidInformationSet(informationSet);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "No Information Set 'informationSet' has been defined"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_playersAlreadySet ) {
     // given
     // when
