@@ -15,6 +15,10 @@ ExtensiveData::ExtensiveData(
     root(new ExtensiveDataNode())
     {}
 
+const ExtensiveDataNodePtr ExtensiveData::getRoot() const {
+    return root;
+}
+
 const PlayersPtr ExtensiveData::getPlayers() const {
     return players;
 }

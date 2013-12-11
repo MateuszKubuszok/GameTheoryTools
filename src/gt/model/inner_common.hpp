@@ -56,20 +56,22 @@ class ExtensiveGameBuilder;
 
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<StrategicData>                   StrategicDataPtr;
-typedef boost::shared_ptr<StrategicDataBuilder>            StrategicDataBuilderPtr;
+typedef boost::shared_ptr<StrategicDataAccessor>                StrategicDataAccessorPtr;
+typedef boost::shared_ptr<StrategicData>                        StrategicDataPtr;
+typedef boost::shared_ptr<StrategicDataBuilder>                 StrategicDataBuilderPtr;
 
-typedef boost::bimaps::bimap<Identifier, Index>            IdentifierMap;
-typedef boost::container::map<Identifier, IdentifierMap>   StrategyMap;
+typedef boost::bimaps::bimap<Identifier, Index>                 IdentifierMap;
+typedef boost::container::map<Identifier, IdentifierMap>        StrategyMap;
 
 typedef boost::shared_ptr<ExtensiveDataNode>                    ExtensiveDataNodePtr;
 typedef boost::container::map<Identifier, ExtensiveDataNodePtr> ExtensiveDataNodes;
 typedef boost::shared_ptr<ExtensiveDataNodes>                   ExtensiveDataNodesPtr;
+typedef boost::shared_ptr<ExtensiveDataAccessor>                ExtensiveDataAccessorPtr;
 typedef boost::shared_ptr<ExtensiveData>                        ExtensiveDataPtr;
 typedef boost::shared_ptr<ExtensiveDataBuilder>                 ExtensiveDataBuilderPtr;
 
-typedef boost::container::map<Identifier, PlayerPtr>       PlayersInTurns;
-typedef boost::shared_ptr<PlayersInTurns>                  PlayersInTurnsPtr;
+typedef boost::container::map<Identifier, PlayerPtr>            PlayersInTurns;
+typedef boost::shared_ptr<PlayersInTurns>                       PlayersInTurnsPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

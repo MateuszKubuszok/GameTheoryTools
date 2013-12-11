@@ -21,6 +21,16 @@ InvalidCondition ExceptionFactory::invalidCondition(
     return InvalidCondition(result.str());
 }
 
+InvalidGameType ExceptionFactory::invalidGameType(
+    const Identifier& expectedGame
+) const {
+    std::stringstream result;
+
+    result << "Invalid Game Type: " << expectedGame << " expected" ;
+
+    return InvalidGameType(result.str());
+}
+
 InvalidPlayerChoice ExceptionFactory::playerNotFound(
     const Identifier& playerName
 ) const {

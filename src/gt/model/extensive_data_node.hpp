@@ -97,7 +97,7 @@ public:
     );
 
     /**
-     * @brief Return Payoff values.
+     * @brief Returns Payoff values.
      *
      * @param  positions Positions of a sought Payoff
      * @return           values of Payoffs
@@ -117,6 +117,41 @@ public:
         const Positions& positions,
         const NumbersPtr values
     );
+
+    /**
+     * @brief Returns available choices.
+     *
+     * @return choices
+     */
+    virtual IdentifiersPtr getChoices() const;
+
+    /**
+     * @brief Returns whether such choice is available.
+     *
+     * @param strategy choice to check
+     * @return         true if choice is available
+     */
+    virtual bool hasChoice(
+        const Identifier& strategy
+    ) const;
+
+    /**
+     * @brief Returns node for given choice.
+     *
+     * @param strategy        choice to obtain
+     * @return                node for choice
+     * @thors InvalidStrategy thrown if such strategy isn't available choice
+     */
+    virtual const ExtensiveDataNode getNodeForChoice(
+        const Identifier& strategy
+    ) const;
+
+    /**
+     * @brief Returns whether the node is a leaf.
+     *
+     * @return true if the node is a leaf
+     */
+    virtual bool isLeaf() const;
 
     /**
      * @brief ExtensiveDataNode's Message.
@@ -234,6 +269,14 @@ public:
         const NumbersPtr
     ) override {
         return *this;
+    }
+
+    virtual IdentifiersPtr getChoices() const override {
+        return Model::NullFactory::getInstance().createIdentifiers();
+    }
+
+    virtual bool isLeaf() const override {
+        return true;
     }
 
     virtual bool isNotNull() const override {

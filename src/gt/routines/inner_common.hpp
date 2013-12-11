@@ -34,11 +34,12 @@ class NotYetImplementedRoutine;
 class PropertyUndefinedRoutine;
 class SelectableStrategiesRoutine;
 
+class ExtensivePureStrategyPath;
+
 class StrategicPureEquilibriumRoutine;
+class ExtensivePureEquilibriumRoutine;
 
 class PlayerChoiceCondition;
-
-class ExtensivePureStrategyPath;
 
 /* Shortens commonly used names */
 
@@ -65,11 +66,12 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/property_undefined_routine.hpp"
 #include "gt/routines/selectable_strategies_routine.hpp"
 
+#include "gt/routines/extensive_pure_strategy_path.hpp"
+
 #include "gt/routines/strategic_pure_equilibrium_routine.hpp"
+#include "gt/routines/extensive_pure_equilibrium_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
-
-#include "gt/routines/extensive_pure_strategy_path.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

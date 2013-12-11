@@ -95,6 +95,39 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
         got22->begin(),    got22->end(),
         payoff22->begin(), payoff22->end()
     );
+
+    BOOST_CHECK(      !root.isLeaf() );
+    BOOST_CHECK_EQUAL( root.getChoices()->size(), 2 );
+
+    BOOST_CHECK(            root.hasChoice(s1) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s1) );
+    BOOST_CHECK(           !root.getNodeForChoice(s1).isLeaf() );
+    BOOST_CHECK_EQUAL(      root.getNodeForChoice(s1).getChoices()->size(), 2 );
+
+    BOOST_CHECK(            root.getNodeForChoice(s1).hasChoice(s1) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s1).getNodeForChoice(s1) );
+    BOOST_CHECK(            root.getNodeForChoice(s1).getNodeForChoice(s1).isLeaf() );
+    BOOST_CHECK(            root.getNodeForChoice(s1).getNodeForChoice(s1).getChoices()->empty() );
+
+    BOOST_CHECK(            root.getNodeForChoice(s1).hasChoice(s2) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s1).getNodeForChoice(s2) );
+    BOOST_CHECK(            root.getNodeForChoice(s1).getNodeForChoice(s2).isLeaf() );
+    BOOST_CHECK(            root.getNodeForChoice(s1).getNodeForChoice(s2).getChoices()->empty() );
+
+    BOOST_CHECK(            root.hasChoice(s2) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s2) );
+    BOOST_CHECK(           !root.getNodeForChoice(s2).isLeaf() );
+    BOOST_CHECK_EQUAL(      root.getNodeForChoice(s2).getChoices()->size(), 2 );
+
+    BOOST_CHECK(            root.getNodeForChoice(s2).hasChoice(s1) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s2).getNodeForChoice(s1) );
+    BOOST_CHECK(            root.getNodeForChoice(s2).getNodeForChoice(s1).isLeaf() );
+    BOOST_CHECK(            root.getNodeForChoice(s2).getNodeForChoice(s1).getChoices()->empty() );
+
+    BOOST_CHECK(            root.getNodeForChoice(s2).hasChoice(s2) );
+    BOOST_REQUIRE_NO_THROW( root.getNodeForChoice(s2).getNodeForChoice(s2) );
+    BOOST_CHECK(            root.getNodeForChoice(s2).getNodeForChoice(s2).isLeaf() );
+    BOOST_CHECK(            root.getNodeForChoice(s2).getNodeForChoice(s2).getChoices()->empty() );
 }
 
 BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {

@@ -44,6 +44,13 @@ public:
     );
 
     /**
+     * @brief Returns root of ExtensiveData tree.
+     *
+     * @return root
+     */
+    virtual const ExtensiveDataNodePtr getRoot() const;
+
+    /**
      * @brief Returns Players' definitions.
      *
      * @return Players' definitions

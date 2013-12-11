@@ -33,6 +33,16 @@ public:
     ) const;
 
     /**
+     * @brief Thrown when Condition is invalid for some Routine.
+     *
+     * @param expectedGame expected Game type
+     * @return             InvalidGameType exception to throw
+     */
+    InvalidGameType invalidGameType(
+        const Identifier& expectedGame
+    ) const;
+
+    /**
      * @brief Thrown when non existing Player is chosen.
      *
      * @param playerName name of sought Player

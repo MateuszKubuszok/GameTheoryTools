@@ -20,6 +20,22 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCondition ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidGameType ) {
+    // given
+    GT::Identifier type("SomeType");
+
+    // when
+    GT::Routines::InvalidGameType exception = GT::Routines::ExceptionFactory::getInstance()
+                                                 .invalidGameType(type);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Invalid Game Type: SomeType expected"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_playerNotFound ) {
     // given
     GT::Identifier identifier = GT::createIdentifier("identifier");

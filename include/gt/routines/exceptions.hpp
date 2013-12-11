@@ -7,25 +7,6 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Intened to be thrown when non existing Player or strategy is chosen.
- *
- * @author Mateusz Kubuszok
- */
-class InvalidPlayerChoice : public std::runtime_error {
-public:
-    /**
-     * @brief Constructor initialized with Message.
-     *
-     * @param message initializing Message
-     */
-    explicit InvalidPlayerChoice(const Message& message) :
-        std::runtime_error(message)
-        {}
-}; /* END class InvalidPlayerChoice */
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
  * @brief Intened to be thrown when Condition is in some way invalid.
  *
  * @author Mateusz Kubuszok
@@ -41,6 +22,44 @@ public:
         std::runtime_error(message)
         {}
 }; /* END class InvalidCondition */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Intened to be thrown when passed Game is not allowed for such Routine.
+ *
+ * @author Mateusz Kubuszok
+ */
+class InvalidGameType : public std::runtime_error {
+public:
+    /**
+     * @brief Constructor initialized with Message.
+     *
+     * @param message initializing Message
+     */
+    explicit InvalidGameType(const Message& message) :
+        std::runtime_error(message)
+        {}
+}; /* END class InvalidGameType */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Intened to be thrown when non existing Player or strategy is chosen.
+ *
+ * @author Mateusz Kubuszok
+ */
+class InvalidPlayerChoice : public std::runtime_error {
+public:
+    /**
+     * @brief Constructor initialized with Message.
+     *
+     * @param message initializing Message
+     */
+    explicit InvalidPlayerChoice(const Message& message) :
+        std::runtime_error(message)
+        {}
+}; /* END class InvalidPlayerChoice */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

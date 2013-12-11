@@ -14,6 +14,10 @@ ExtensiveDataAccessor::ExtensiveDataAccessor(
     data(strategicData)
     {}
 
+const ExtensiveDataNodePtr ExtensiveDataAccessor::getRoot() const {
+    return data->getRoot();
+}
+
 const PlayersPtr ExtensiveDataAccessor::getPlayers() const {
     return data->getPlayers();
 }

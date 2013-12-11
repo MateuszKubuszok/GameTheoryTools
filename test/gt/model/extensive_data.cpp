@@ -4,6 +4,34 @@ BOOST_AUTO_TEST_SUITE( ExtensiveData )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE( ExtensiveData_getRoot ) {
+    // given
+    GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
+    GT::IdentifierPtr s1 = GT::createIdentifierPtr("s1");
+    GT::IdentifierPtr s2 = GT::createIdentifierPtr("s2");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back(s1);
+    strategies->push_back(s2);
+
+    GT::Identifier l1 = GT::createIdentifier("1");
+    GT::Identifier l2 = GT::createIdentifier("2");
+
+    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
+    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*p1, player1) );
+    players->insert( GT::Model::Players::value_type(*p2, player2) );
+
+    // when
+    GT::Model::ExtensiveData extensiveData(players);
+    GT::Model::ExtensiveDataNodePtr root = extensiveData.getRoot();
+
+    // then
+    BOOST_REQUIRE( root );
+    BOOST_CHECK( root->isLeaf() );
+}
+
 BOOST_AUTO_TEST_CASE( ExtensiveData_getPlayers ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");

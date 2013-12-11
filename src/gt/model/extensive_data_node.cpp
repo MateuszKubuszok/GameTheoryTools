@@ -123,6 +123,34 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
     return *this;
 }
 
+IdentifiersPtr ExtensiveDataNode::getChoices() const {
+    IdentifiersPtr choices = createIdentifiersPtr();
+
+    for (Identifier choice : *nodes | boost::adaptors::map_keys)
+        choices->push_back( createIdentifierPtr(choice) );
+
+    return choices;
+}
+
+bool ExtensiveDataNode::hasChoice(
+    const Identifier& strategy
+) const {
+    return nodes->count(strategy);
+}
+
+bool ExtensiveDataNode::isLeaf() const {
+    return nodes->empty();
+}
+
+const ExtensiveDataNode ExtensiveDataNode::getNodeForChoice(
+    const Identifier& strategy
+) const {
+    if (!nodes->count(strategy))
+        throw ExceptionFactory::getInstance().invalidStrategy(strategy);
+
+    return *nodes->at(strategy);
+}
+
 Message ExtensiveDataNode::toString() const {
     static const IdentifierPtr    valueName     = createIdentifierPtr("Value");
     ResultBuilderPtr              resultBuilder = ResultFactory::getInstance().buildResult();
