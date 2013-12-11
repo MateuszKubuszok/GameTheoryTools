@@ -1,42 +1,10 @@
 #include "gt/model/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PositionsHelper )
+BOOST_AUTO_TEST_SUITE( StrategicGamePositionsHelper )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_getUpperBound ) {
-    // given
-       GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
-    GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
-    GT::IdentifierPtr player1strategy2 = GT::createIdentifierPtr("p1s2");
-    GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
-    strategies1->push_back(player1strategy1);
-    strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
-
-    GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
-    GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
-    GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
-    GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
-    strategies2->push_back(player2strategy1);
-    strategies2->push_back(player2strategy2);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
-
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    players->insert( GT::Model::Players::value_type(*player1name, player1) );
-    players->insert( GT::Model::Players::value_type(*player2name, player2) );
-
-    // when
-    GT::Model::PositionsHelper positionsHelper(players);
-
-    // then
-    BOOST_CHECK_EQUAL(
-        positionsHelper.getUpperBound(),
-        4
-    );
-}
-
-BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePlayer ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_getUpperBound ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -59,7 +27,39 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePlayer ) {
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        positionsHelper.getUpperBound(),
+        4
+    );
+}
+
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_calculatePlayer ) {
+    // given
+    GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
+    GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
+    GT::IdentifierPtr player1strategy2 = GT::createIdentifierPtr("p1s2");
+    GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
+    strategies1->push_back(player1strategy1);
+    strategies1->push_back(player1strategy2);
+    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+
+    GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
+    GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
+    GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
+    GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
+    strategies2->push_back(player2strategy1);
+    strategies2->push_back(player2strategy2);
+    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*player1name, player1) );
+    players->insert( GT::Model::Players::value_type(*player2name, player2) );
+
+    // when
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePlayer ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePlayer ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_retrievePlayer ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -95,7 +95,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePlayer ) {
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -108,7 +108,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePlayer ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePosition ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_calculatePosition ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -144,7 +144,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePosition ) {
     position22->insert( GT::Positions::value_type(*player2name, *player2strategy2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -165,7 +165,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_calculatePosition ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePositions ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_retrievePositions ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -201,7 +201,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePositions ) {
     position22->insert( GT::Positions::value_type(*player2name, *player2strategy2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
     GT::PositionsPtr retrievedPosition0 = positionsHelper.retrievePositions(0);
     GT::PositionsPtr retrievedPosition1 = positionsHelper.retrievePositions(1);
     GT::PositionsPtr retrievedPosition2 = positionsHelper.retrievePositions(2);
@@ -242,7 +242,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_retrievePositions ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_checkPlayer ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_checkPlayer ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_checkPlayer ) {
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK(positionsHelper.checkPlayer(player1name));
@@ -276,7 +276,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_checkPlayer ) {
     BOOST_CHECK(!positionsHelper.checkPlayer(player3name));
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_checkPositions ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_checkPositions ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -321,7 +321,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_checkPositions ) {
     wrongPosition2->insert( GT::Positions::value_type(*player2name, *wrongStrategy) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK(positionsHelper.checkPositions(position11));
@@ -332,7 +332,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_checkPositions ) {
     BOOST_CHECK(!positionsHelper.checkPositions(wrongPosition2));
 }
 
-BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
+BOOST_AUTO_TEST_CASE( StrategicGamePositionsHelper_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
@@ -359,7 +359,7 @@ BOOST_AUTO_TEST_CASE( PositionsHelper_toString ) {
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
     // when
-    GT::Model::PositionsHelper positionsHelper(players);
+    GT::Model::StrategicGamePositionsHelper positionsHelper(players);
 
     // then
     BOOST_CHECK_EQUAL(

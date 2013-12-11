@@ -37,10 +37,10 @@ class PlainResultBuilder;
 class JSONResultBuilder;
 class XMLResultBuilder;
 
+class StrategicGamePositionsHelper;
 
 class PlainDataPiece;
 
-class StrategicPositionsHelper;
 class StrategicData;            class NullStrategicData;
 class StrategicDataBuilder;
 class StrategicDataAccessor;
@@ -94,7 +94,7 @@ typedef boost::shared_ptr<PlayersInTurns>                       PlayersInTurnsPt
 #include "gt/model/json_result_builder.hpp"
 #include "gt/model/xml_result_builder.hpp"
 
-#include "gt/model/positions_helper.hpp"
+#include "gt/model/strategic_game_positions_helper.hpp"
 
 #include "gt/model/plain_data_piece.hpp"
 

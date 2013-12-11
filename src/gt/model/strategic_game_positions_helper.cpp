@@ -5,10 +5,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PositionsHelper : public Root {
+// class StrategicGamePositionsHelper : public Root {
 // public:
 
-PositionsHelper::PositionsHelper(
+StrategicGamePositionsHelper::StrategicGamePositionsHelper(
     const PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
@@ -39,33 +39,33 @@ PositionsHelper::PositionsHelper(
     upperBound = positionIndex;
 }
 
-const PlayersPtr PositionsHelper::getPlayers() const {
+const PlayersPtr StrategicGamePositionsHelper::getPlayers() const {
     return players;
 }
 
-Index PositionsHelper::getUpperBound() const {
+Index StrategicGamePositionsHelper::getUpperBound() const {
     return upperBound;
 }
 
-Index PositionsHelper::calculatePlayer(
+Index StrategicGamePositionsHelper::calculatePlayer(
     const Identifier& playerName
 ) const {
     return playersHelper.left.at(playerName);
 }
 
-Index PositionsHelper::calculatePlayer(
+Index StrategicGamePositionsHelper::calculatePlayer(
     const IdentifierPtr playerName
 ) const {
     return calculatePlayer(*playerName);
 }
 
-const IdentifierPtr PositionsHelper::retrievePlayer(
+const IdentifierPtr StrategicGamePositionsHelper::retrievePlayer(
     const Index playerPosition
 ) const {
     return createIdentifierPtr(playersHelper.right.at(playerPosition));
 }
 
-Index PositionsHelper::calculatePosition(
+Index StrategicGamePositionsHelper::calculatePosition(
     const Positions& positions
 ) const {
     Index storagePosition = 0;
@@ -81,13 +81,13 @@ Index PositionsHelper::calculatePosition(
     return storagePosition;
 }
 
-Index PositionsHelper::calculatePosition(
+Index StrategicGamePositionsHelper::calculatePosition(
     const PositionsPtr positions
 ) const {
     return calculatePosition(*positions);
 }
 
-const PositionsPtr PositionsHelper::retrievePositions(
+const PositionsPtr StrategicGamePositionsHelper::retrievePositions(
     const Index positionInStorage
 ) const {
     PositionsPtr positions       = createPositionsPtr();
@@ -138,19 +138,19 @@ const PositionsPtr PositionsHelper::retrievePositions(
     return positions;
 }
 
-bool PositionsHelper::checkPlayer(
+bool StrategicGamePositionsHelper::checkPlayer(
     const Identifier& playerName
 ) const {
     return playersHelper.left.count(playerName);
 }
 
-bool PositionsHelper::checkPlayer(
+bool StrategicGamePositionsHelper::checkPlayer(
     const IdentifierPtr playerName
 ) const {
     return checkPlayer(*playerName);
 }
 
-bool PositionsHelper::checkPositions(
+bool StrategicGamePositionsHelper::checkPositions(
     const Positions& positions
 ) const {
     for (Identifier playerName : positions | boost::adaptors::map_keys) {
@@ -163,13 +163,13 @@ bool PositionsHelper::checkPositions(
     return true;
 }
 
-bool PositionsHelper::checkPositions(
+bool StrategicGamePositionsHelper::checkPositions(
     const PositionsPtr positions
 ) const {
     return checkPositions(*positions);
 }
 
-Message PositionsHelper::toString() const {
+Message StrategicGamePositionsHelper::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
     IdentifierPtr    name          = createIdentifierPtr("Player");
     for (const Players::value_type& player : (*players)) {
@@ -179,7 +179,7 @@ Message PositionsHelper::toString() const {
     return resultBuilder->build()->getResult();
 }
 
-// }; /* END class PositionsHelper */
+// }; /* END class StrategicGamePositionsHelper */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

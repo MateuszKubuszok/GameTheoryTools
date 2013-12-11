@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_POSITIONS_HELPER_HPP__
-#define __GT_MODEL_POSITIONS_HELPER_HPP__
+#ifndef __GT_MODEL_STRATEGIC_GAME_POSITIONS_HELPER_HPP__
+#define __GT_MODEL_STRATEGIC_GAME_POSITIONS_HELPER_HPP__
 
 namespace GT {
 namespace Model {
@@ -11,7 +11,7 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-class PositionsHelper : public Root {
+class StrategicGamePositionsHelper : public Root {
     /**
      * @brief Players.
      */
@@ -41,7 +41,7 @@ public:
      *
      * @param players Players definitions
      */
-    explicit PositionsHelper(
+    explicit StrategicGamePositionsHelper(
         const PlayersPtr players
     );
 
@@ -160,16 +160,16 @@ public:
     ) const;
 
     /**
-     * @brief Retuns PositionsHelper's Message.
+     * @brief Retuns StrategicGamePositionsHelper's Message.
      *
      * @return Message
      */
     virtual Message toString() const override;
-}; /* END class PositionsHelper */
+}; /* END class StrategicGamePositionsHelper */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_POSITIONS_HELPER_HPP__ */
+#endif /* #ifndef __GT_MODEL_STRATEGIC_GAME_POSITIONS_HELPER_HPP__ */

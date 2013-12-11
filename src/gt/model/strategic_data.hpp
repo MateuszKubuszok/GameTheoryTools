@@ -10,7 +10,8 @@ namespace Model {
  * @brief Contins data specific for Game in a strategic form.
  *
  * <p>Games in this form should have all coordinates filled with payoffs. Since all Players and their
- * strategies are known beforehand, positions can also be hashed to Indexes with PositionsHelper.</p>
+ * strategies are known beforehand, positions can also be hashed to Indexes with
+ * StrategicGamePositionsHelper.</p>
  *
  * @author Mateusz Kubuszok
  *
@@ -20,13 +21,13 @@ namespace Model {
  * @see StrategicDataAccessor
  * @see StrategicDataPiece
  * @see StrategicDataBuilder
- * @see PositionsHelper
+ * @see StrategicGamePositionsHelper
  */
 class StrategicData : public Data {
     /**
-     * @brief PositionsHelper used to calculate positions in storage vector.
+     * @brief StrategicGamePositionsHelper used to calculate positions in storage vector.
      */
-    PositionsHelper positionsHelper;
+    StrategicGamePositionsHelper positionsHelper;
 
     /**
      * @brief Contains Payoff - indexes can be calculated with PostionsHelper.
@@ -58,7 +59,7 @@ public:
      * @brief Returns DataPiece that gives access to payoffs.
      *
      * @param positionInStorage Index of positon in payoff storage
-     *                          according to PositionsHelper
+     *                          according to StrategicGamePositionsHelper
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
@@ -129,7 +130,7 @@ public:
      * @brief Returns DataPiece that gives access to payoffs.
      *
      * @param positionInStorage Index of positon in payoff storage
-     *                          according to PositionsHelper
+     *                          according to StrategicGamePositionsHelper
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */

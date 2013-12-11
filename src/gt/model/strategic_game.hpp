@@ -10,11 +10,13 @@ namespace Model {
  * @brief Defnies StrategicGame.
  *
  * <p>Games in this form should have all coordinates filled with payoffs. Since all Players and their
- * strategies are known beforehand, positions can also be hashed to Indexes with PositionsHelper.</p>
+ * strategies are known beforehand, positions can also be hashed to Indexes with
+ * StrategicGamePositionsHelper.</p>
  *
  * @author Mateusz Kubuszok
  *
  * @see StrategicData
+ * @see StrategicGamePositionsHelper
  */
 class StrategicGame : public Game {
     /**

@@ -19,9 +19,9 @@ namespace Model {
  */
 class PlainDataPiece : public DataPiece {
     /**
-     * @brief PositionsHelper used to properly locate Index in storage.
+     * @brief StrategicGamePositionsHelper used to properly locate Index in storage.
      */
-    PositionsHelper positionsHelper;
+    StrategicGamePositionsHelper positionsHelper;
     /**
      * @brief Values of payoff.
      */
