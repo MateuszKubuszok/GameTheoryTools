@@ -55,7 +55,7 @@ if not conf.CheckCXX():
 # Header check
 for header in [
     # standard libraries
-    'algorithm', 'cstdlib',
+    'algorithm', 'cstdlib', 'iomanip',
     'iostream',  'fstream', 'sstream',
     'stdexcept', 'string',  'utility',
     # boost libraries

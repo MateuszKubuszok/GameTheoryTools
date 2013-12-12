@@ -4,7 +4,8 @@
         {
             "path":                    ".",
             "name":                    "Configuration",
-            "folder_exclude_patterns": [ "bin", "examples", "f_n_b", "include", "objects", "src", "test" ]
+            "file_exclude_patterns":   [ ".sconsign.dblite" ],
+            "folder_exclude_patterns": [ "bin", "examples", "f_n_b", "include", "objects", "src", "test", ".sconf_temp" ]
         },
         {
             "path": "include",
@@ -49,7 +50,7 @@
     [
         {
             "name":        "Build All",
-            "selector":    "scons",
+            "selector":    "source.c++, source.bison",
             "shell_cmd":   "scons",
             "working_dir": "${project_path}"
         },

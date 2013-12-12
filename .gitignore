@@ -1,7 +1,7 @@
-/*.sconsign.dblite
-/*.log
-/.sconf_temp
 /objects/*
 /bin/*
+/.sconf_temp
+/.sconsign.dblite
+/*.log
 /GTT.sublime-workspace
 .fuse_hidden*
