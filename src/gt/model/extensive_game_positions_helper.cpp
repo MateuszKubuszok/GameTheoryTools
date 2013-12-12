@@ -45,6 +45,7 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
             }
         }
         currentlyChecked.clear();
+        currentlyChecked.reserve( nextToBeChecked.size() );
         currentlyChecked.insert(currentlyChecked.end(), nextToBeChecked.begin(), nextToBeChecked.end());
         nextToBeChecked.clear();
     }
