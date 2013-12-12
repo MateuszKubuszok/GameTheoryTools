@@ -21,7 +21,7 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
 
     while (!currentlyChecked.empty()) {
         for (ExtensiveDataNode* currentNode : currentlyChecked) {
-            // leafs dones't contains decisions and thus cannot make information sets
+            // leafs doesn't contains decisions and thus cannot make information sets
             if (!currentNode->isLeaf()) {
                 const Identifier& player = *currentNode->getPlayer()->getName();
 
@@ -67,7 +67,7 @@ IdentifiersPtr ExtensiveGamePositionsHelper::getPossibleInformationSetsForPlayer
 
     IdentifiersPtr informationSets = createIdentifiersPtr();
 
-    for (Identifier setName : playersInformationSets.at(player) | boost::adaptors::map_keys)
+    for (Identifier setName : playersInformationSets.at(player).left | boost::adaptors::map_keys)
         informationSets->push_back( createIdentifierPtr(setName) );
 
     return informationSets;
@@ -89,10 +89,10 @@ const ExtensiveDataNode& ExtensiveGamePositionsHelper::getInformationSetForPlaye
 ) const {
     if (!playersInformationSets.count(player))
         throw ExceptionFactory::getInstance().invalidPlayer(player);
-    if (!playersInformationSets.at(player).count(setName))
+    if (!playersInformationSets.at(player).left.count(setName))
         throw ExceptionFactory::getInstance().invalidInformationSet(setName);
 
-    return *playersInformationSets.at(player).at(setName);
+    return *playersInformationSets.at(player).left.at(setName);
 }
 
 Message ExtensiveGamePositionsHelper::toString() const {

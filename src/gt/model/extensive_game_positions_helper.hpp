@@ -17,19 +17,19 @@ class ExtensiveGamePositionsHelper : public Root {
      */
     boost::container::map<
         Identifier,
-        boost::container::map<Identifier,ExtensiveDataNode*>
+        boost::bimaps::bimap<Identifier, ExtensiveDataNode*>
     > playersInformationSets;
 
 public:
     /**
      * @brief Contains single element information set for one Player.
      */
-    typedef boost::container::map<Identifier,ExtensiveDataNode*>    PlayerInformationSets;
+    typedef boost::bimaps::bimap<Identifier, ExtensiveDataNode*>      PlayerInformationSets;
 
     /**
      * @brief Contains information sets' collections for each Player.
      */
-    typedef boost::container::map<Identifier,PlayerInformationSets> PlayersInformationSets;
+    typedef boost::container::map<Identifier, PlayerInformationSets> PlayersInformationSets;
 
     /**
      * @brief Inititiates helper with ExtensiveGame tree's root.
