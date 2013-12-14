@@ -16,10 +16,11 @@ ExtensivePureStrategyPath::ExtensivePureStrategyPath(
     playersChoices()
 {
     for (Players::value_type& player : *players)
-        playersChoices.insert( PlayersChoices::value_type(player.first, createIdentifiers()) );
+        playersChoices.insert( PlayersChoices::value_type(player.first, Positions()) );
 }
 
 ExtensivePureStrategyPath& ExtensivePureStrategyPath::addOlderChoice(
+    const Identifier& informationSet,
     const Identifier& player,
     const Identifier& strategy
 ) {
@@ -28,8 +29,8 @@ ExtensivePureStrategyPath& ExtensivePureStrategyPath::addOlderChoice(
     if (!(*players)[player]->hasStrategy(strategy))
         throw ExceptionFactory::getInstance().strategyNotFound(player, strategy);
 
-    Identifiers& choices = playersChoices[player];
-    choices.insert( choices.begin(), createIdentifierPtr(strategy) );
+    Positions& choices = playersChoices[player];
+    choices.insert( choices.begin(), Positions::value_type( informationSet, strategy ) );
 
     return *this;
 }
@@ -50,7 +51,6 @@ ExtensivePureStrategyPath& ExtensivePureStrategyPath::setPayoff(
 }
 
 Message ExtensivePureStrategyPath::toString() const {
-    static IdentifierPtr choiceName = createIdentifierPtr("Choice");
     static IdentifierPtr payoffName = createIdentifierPtr("Payoffs");
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
@@ -58,8 +58,8 @@ Message ExtensivePureStrategyPath::toString() const {
     for (PlayersChoices::value_type playerChoices : playersChoices) {
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
 
-        for (IdentifierPtr& choice : playerChoices.second)
-            subResultBuilder->addResult( choiceName, createMessagePtr(choice) );
+        for (Positions::value_type& choice : playerChoices.second)
+            subResultBuilder->addResult( createIdentifierPtr(choice.first), createMessagePtr(choice.second) );
 
         resultBuilder->addResult(
             createIdentifierPtr(playerChoices.first),

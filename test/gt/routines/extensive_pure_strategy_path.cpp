@@ -61,19 +61,19 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_addOlderChoice_getPlayersChoices
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);
-    path.addOlderChoice(*p2, *s2)
-        .addOlderChoice(*p1, *s2)
-        .addOlderChoice(*p2, *s1)
-        .addOlderChoice(*p1, *s1);
+    path.addOlderChoice(l2, *p2, *s2)
+        .addOlderChoice(l2, *p1, *s2)
+        .addOlderChoice(l1, *p2, *s1)
+        .addOlderChoice(l1, *p1, *s1);
 
     // then
     BOOST_REQUIRE_EQUAL( path.getPlayersChoices().size(), 2 );
     BOOST_REQUIRE_EQUAL( path.getPlayersChoices().at(*p1).size(), 2 );
     BOOST_REQUIRE_EQUAL( path.getPlayersChoices().at(*p2).size(), 2 );
-    BOOST_CHECK_EQUAL( *path.getPlayersChoices().at(*p1)[0], *s1 );
-    BOOST_CHECK_EQUAL( *path.getPlayersChoices().at(*p1)[1], *s2 );
-    BOOST_CHECK_EQUAL( *path.getPlayersChoices().at(*p2)[0], *s1 );
-    BOOST_CHECK_EQUAL( *path.getPlayersChoices().at(*p2)[1], *s2 );
+    BOOST_CHECK_EQUAL( path.getPlayersChoices().at(*p1).at(l1), *s1 );
+    BOOST_CHECK_EQUAL( path.getPlayersChoices().at(*p1).at(l2), *s2 );
+    BOOST_CHECK_EQUAL( path.getPlayersChoices().at(*p2).at(l1), *s1 );
+    BOOST_CHECK_EQUAL( path.getPlayersChoices().at(*p2).at(l2), *s2 );
 }
 
 BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
@@ -107,25 +107,25 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);
-    path.setPayoff(dataPiece)
-        .addOlderChoice(*p2, *s2)
-        .addOlderChoice(*p1, *s2)
-        .addOlderChoice(*p2, *s1)
-        .addOlderChoice(*p1, *s1);
+    path.addOlderChoice(l2, *p2, *s2)
+        .addOlderChoice(l2, *p1, *s2)
+        .addOlderChoice(l1, *p2, *s1)
+        .addOlderChoice(l1, *p1, *s1)
+        .setPayoff(dataPiece);
 
     // then
     BOOST_CHECK_EQUAL(
         path.toString(),
         GT::Message() +
         "p1:\n"
-        "\tChoice:\n"
+        "\t1:\n"
         "\t\ts1\n"
-        "\tChoice:\n"
+        "\t2:\n"
         "\t\ts2\n"
         "p2:\n"
-        "\tChoice:\n"
+        "\t1:\n"
         "\t\ts1\n"
-        "\tChoice:\n"
+        "\t2:\n"
         "\t\ts2\n"
         "Payoffs:\n"
         "\t\t\tp1,\tp2\n"

@@ -25,13 +25,13 @@ class ExtensivePureStrategyPath : public Root {
     /**
      * @brief Contains choices for given Players.
      */
-    boost::container::map<Identifier, Identifiers> playersChoices;
+    boost::container::map<Identifier, Positions> playersChoices;
 
 public:
     /**
      * @brief Contains choices for given Players.
      */
-    typedef boost::container::map<Identifier, Identifiers> PlayersChoices;
+    typedef boost::container::map<Identifier, Positions> PlayersChoices;
 
     /**
      * @brief Initiates path with Players definitions.
@@ -45,12 +45,14 @@ public:
     /**
      * @brief Adds older choice to the beginning of list.
      *
+     * @param informationSet      information set's name
      * @param player              Player's name
      * @param strategy            chosen strategy
      * @return                    reference for itself for chaining
      * @throw InvalidPlayerChoice thrown when Player's name or chosen strategy is invalid
      */
     ExtensivePureStrategyPath& addOlderChoice(
+        const Identifier& informationSet,
         const Identifier& player,
         const Identifier& strategy
     );
