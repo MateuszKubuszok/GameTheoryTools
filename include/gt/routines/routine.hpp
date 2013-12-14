@@ -25,7 +25,7 @@ public:
     virtual ResultPtr findResultFor(
         const GamePtr       game,
         const ConditionsPtr conditions
-    ) = 0;
+    ) const = 0;
 
     /**
      * @brief Returns Routine's Message.
@@ -46,7 +46,7 @@ class NullRoutine : public Routine {
     virtual ResultPtr findResultFor(
         const GamePtr,
         const ConditionsPtr
-    ) override {
+    ) const override {
         return Model::NullFactory::getInstance().createResult();
     }
 

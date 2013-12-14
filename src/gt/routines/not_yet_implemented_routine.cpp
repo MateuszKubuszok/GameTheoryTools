@@ -11,7 +11,7 @@ namespace Routines {
 ResultPtr NotYetImplementedRoutine::findResultFor(
     const GamePtr,
     const ConditionsPtr
-) {
+) const {
     return ResultFactory::getInstance().constResult(Message("Not yet implemented"));
 }
 

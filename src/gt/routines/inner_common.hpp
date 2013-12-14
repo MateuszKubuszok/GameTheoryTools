@@ -43,7 +43,9 @@ class PlayerChoiceCondition;
 
 /* Shortens commonly used names */
 
-typedef boost::shared_ptr<SelectableStrategiesRoutine> SelectableStrategiesRoutinePtr;
+typedef boost::shared_ptr<SelectableStrategiesRoutine>      SelectableStrategiesRoutinePtr;
+
+typedef boost::container::vector<ExtensivePureStrategyPath> ExtensivePureStrategyPaths;
 
 typedef Model::Player           Player;
 typedef Model::PlayerPtr        PlayerPtr;

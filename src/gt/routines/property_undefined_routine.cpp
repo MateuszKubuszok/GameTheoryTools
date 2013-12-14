@@ -11,7 +11,7 @@ namespace Routines {
 ResultPtr PropertyUndefinedRoutine::findResultFor(
     const GamePtr,
     const ConditionsPtr
-) {
+) const {
     return ResultFactory::getInstance().constResult(Message("Property not defined for this kind of Game"));
 }
 

@@ -14,7 +14,7 @@ TestSelectableStrategiesRoutineImpl::TestSelectableStrategiesRoutineImpl(
 GT::Model::ResultPtr TestSelectableStrategiesRoutineImpl::findResultFor(
     const GT::Routines::GamePtr,
     const GT::Routines::ConditionsPtr
-) {
+) const {
     return GT::Model::NullFactory::getInstance().createResult();
 }
 

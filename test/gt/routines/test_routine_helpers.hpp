@@ -5,14 +5,14 @@
 
 class TestSelectableStrategiesRoutineImpl : public GT::Routines::SelectableStrategiesRoutine {
 public:
-    TestSelectableStrategiesRoutineImpl(
+    explicit TestSelectableStrategiesRoutineImpl(
         const GT::Model::PlayersPtr players
     );
 
     virtual GT::Model::ResultPtr findResultFor(
         const GT::Routines::GamePtr,
         const GT::Routines::ConditionsPtr
-    ) override;
+    ) const override;
 
     virtual GT::Message toString() const override;
 }; /* END class TestSelectableStrategiesRoutineImpl */

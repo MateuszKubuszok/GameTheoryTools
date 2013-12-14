@@ -25,7 +25,7 @@ public:
     virtual ResultPtr findResultFor(
         const GamePtr       game,
         const ConditionsPtr conditions
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Routine's Message.

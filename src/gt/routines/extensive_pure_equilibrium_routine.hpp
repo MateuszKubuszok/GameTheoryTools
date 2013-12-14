@@ -25,7 +25,7 @@ public:
     virtual ResultPtr findResultFor(
         const GamePtr       game,
         const ConditionsPtr conditions
-    ) override;
+    ) const override;
 
     /**
      * @brief Returns Routine's Message.
@@ -33,6 +33,26 @@ public:
      * @return Routine's Message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Continas bottom-top best payoff partial results.
+     */
+    typedef boost::container::map<Identifier, const NumbersPtr> CalculatedPayoffs;
+
+    /**
+     * @brief Returns best payoff for Player in checkedNode and adds that choice to optimalChoices.
+     *
+     * @param positionsHelper positions helper that calculates the information set of checkedNode
+     * @param checkedNode     node that should its best payoff calculated
+     * @param optimalChoices  contains all optimal choices of already checked decisions
+     * @return                value of optimal Payoff for current Player in checkedNode
+     */
+    NumbersPtr getBestPayoffWhen(
+        const Model::ExtensiveGamePositionsHelper& positionsHelper,
+        const Model::ExtensiveDataNode&            checkedNode,
+        ExtensivePureStrategyPath&                 optimalChoices
+    ) const;
 }; /* END class ExtensivePureEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
