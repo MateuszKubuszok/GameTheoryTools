@@ -48,6 +48,16 @@ public:
     virtual IdentifiersPtr getPossiblePlayers() const;
 
     /**
+     * @brief Returns whether Player is available.
+     *
+     * @param player Player's name
+     * @return       true if Player is available
+     */
+    virtual bool isPlayerPossible(
+        const Identifier& player
+    ) const;
+
+    /**
      * @brief Returns list of available information sets.
      *
      * @param player            Player's name

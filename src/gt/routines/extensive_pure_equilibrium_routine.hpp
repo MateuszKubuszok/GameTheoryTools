@@ -43,13 +43,15 @@ private:
     /**
      * @brief Returns best payoff for Player in checkedNode and adds that choice to optimalChoices.
      *
-     * @param positionsHelper positions helper that calculates the information set of checkedNode
-     * @param checkedNode     node that should its best payoff calculated
-     * @param optimalChoices  contains all optimal choices of already checked decisions
-     * @return                value of optimal Payoff for current Player in checkedNode
+     * @param strategicPositionsHelper positions helper that calculates position of compared payoff
+     * @param extensivePositionsHelper positions helper that calculates the information set of checkedNode
+     * @param checkedNode              node that should its best payoff calculated
+     * @param optimalChoices           contains all optimal choices of already checked decisions
+     * @return                         value of optimal Payoff for current Player in checkedNode
      */
     NumbersPtr getBestPayoffWhen(
-        const Model::ExtensiveGamePositionsHelper& positionsHelper,
+        const Model::StrategicGamePositionsHelper& strategicPositionsHelper,
+        const Model::ExtensiveGamePositionsHelper& extensivePositionsHelper,
         const Model::ExtensiveDataNode&            checkedNode,
         ExtensivePureStrategyPath&                 optimalChoices
     ) const;

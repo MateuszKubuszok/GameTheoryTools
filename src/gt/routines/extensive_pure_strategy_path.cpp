@@ -19,7 +19,7 @@ ExtensivePureStrategyPath::ExtensivePureStrategyPath(
         playersChoices.insert( PlayersChoices::value_type(player.first, Positions()) );
 }
 
-ExtensivePureStrategyPath& ExtensivePureStrategyPath::addOlderChoice(
+ExtensivePureStrategyPath& ExtensivePureStrategyPath::addPlayerChoice(
     const Identifier& informationSet,
     const Identifier& player,
     const Identifier& strategy
@@ -29,8 +29,7 @@ ExtensivePureStrategyPath& ExtensivePureStrategyPath::addOlderChoice(
     if (!(*players)[player]->hasStrategy(strategy))
         throw ExceptionFactory::getInstance().strategyNotFound(player, strategy);
 
-    Positions& choices = playersChoices[player];
-    choices.insert( choices.begin(), Positions::value_type( informationSet, strategy ) );
+    playersChoices[player].insert( Positions::value_type( informationSet, strategy ) );
 
     return *this;
 }

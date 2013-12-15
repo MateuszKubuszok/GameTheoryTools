@@ -69,6 +69,23 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_strategyNotFound ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_incompletePayoffInformation ) {
+    // given
+    GT::Identifier identifier1 = GT::createIdentifier("identifier1");
+    GT::Identifier identifier2 = GT::createIdentifier("identifier2");
+
+    // when
+    GT::Routines::IncompletePayoffInformation exception = GT::Routines::ExceptionFactory::getInstance()
+                                                 .incompletePayoffInformation(identifier1, identifier2);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "There is no Payoff information about \"identifier2\" for player \"identifier1\""
+    );
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

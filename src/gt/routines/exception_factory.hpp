@@ -64,6 +64,18 @@ public:
         const Identifier& strategy
     ) const;
 
+    /**
+     * @brief Thrown when payoff is not available for some Player's strategy.
+     *
+     * @param playerName name of Player
+     * @param strategy   name of strategy
+     * @return           IncompletePayoffInformation exception to throw
+     */
+    IncompletePayoffInformation incompletePayoffInformation(
+        const Identifier& playerName,
+        const Identifier& strategy
+    ) const;
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

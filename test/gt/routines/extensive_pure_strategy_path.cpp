@@ -61,10 +61,10 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_addOlderChoice_getPlayersChoices
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);
-    path.addOlderChoice(l2, *p2, *s2)
-        .addOlderChoice(l2, *p1, *s2)
-        .addOlderChoice(l1, *p2, *s1)
-        .addOlderChoice(l1, *p1, *s1);
+    path.addPlayerChoice(l2, *p2, *s2)
+        .addPlayerChoice(l2, *p1, *s2)
+        .addPlayerChoice(l1, *p2, *s1)
+        .addPlayerChoice(l1, *p1, *s1);
 
     // then
     BOOST_REQUIRE_EQUAL( path.getPlayersChoices().size(), 2 );
@@ -107,10 +107,10 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);
-    path.addOlderChoice(l2, *p2, *s2)
-        .addOlderChoice(l2, *p1, *s2)
-        .addOlderChoice(l1, *p2, *s1)
-        .addOlderChoice(l1, *p1, *s1)
+    path.addPlayerChoice(l2, *p2, *s2)
+        .addPlayerChoice(l2, *p1, *s2)
+        .addPlayerChoice(l1, *p2, *s1)
+        .addPlayerChoice(l1, *p1, *s1)
         .setPayoff(dataPiece);
 
     // then

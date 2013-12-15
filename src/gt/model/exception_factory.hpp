@@ -98,7 +98,7 @@ public:
      * @return                   InvalidCoordinate exception to throw
      */
     InvalidCoordinate invalidInformationSet(
-        const Identifier& infromationSetName
+        const Identifier& informationSetName
     ) const;
 
     /**

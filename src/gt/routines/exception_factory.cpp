@@ -52,6 +52,17 @@ InvalidPlayerChoice ExceptionFactory::strategyNotFound(
     return InvalidPlayerChoice(result.str());
 }
 
+IncompletePayoffInformation ExceptionFactory::incompletePayoffInformation(
+    const Identifier& playerName,
+    const Identifier& strategy
+) const {
+    std::stringstream result;
+
+    result << "There is no Payoff information about \"" << strategy << "\" for player \"" <<  playerName << "\"";
+
+    return IncompletePayoffInformation(result.str());
+}
+
 // private:
 
 ExceptionFactory::ExceptionFactory() {}

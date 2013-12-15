@@ -63,6 +63,25 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Intened to be thrown when payoff for some player is not set.
+ *
+ * @author Mateusz Kubuszok
+ */
+class IncompletePayoffInformation : public std::runtime_error {
+public:
+    /**
+     * @brief Constructor initialized with Message.
+     *
+     * @param message initializing Message
+     */
+    explicit IncompletePayoffInformation(const Message& message) :
+        std::runtime_error(message)
+        {}
+}; /* END class IncompletePayoffInformation */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace Routines */
 } /* END namespace GT */
 

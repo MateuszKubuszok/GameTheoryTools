@@ -51,7 +51,7 @@ public:
      * @return                    reference for itself for chaining
      * @throw InvalidPlayerChoice thrown when Player's name or chosen strategy is invalid
      */
-    ExtensivePureStrategyPath& addOlderChoice(
+    ExtensivePureStrategyPath& addPlayerChoice(
         const Identifier& informationSet,
         const Identifier& player,
         const Identifier& strategy

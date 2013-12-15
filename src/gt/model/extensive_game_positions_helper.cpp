@@ -54,10 +54,19 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
 IdentifiersPtr ExtensiveGamePositionsHelper::getPossiblePlayers() const {
     IdentifiersPtr players = createIdentifiersPtr();
 
-    for (Identifier setName : playersInformationSets | boost::adaptors::map_keys)
-        players->push_back( createIdentifierPtr(setName) );
+    for (Identifier playerName : playersInformationSets | boost::adaptors::map_keys)
+        players->push_back( createIdentifierPtr(playerName) );
 
     return players;
+}
+
+bool ExtensiveGamePositionsHelper::isPlayerPossible(
+    const Identifier& playerName
+) const {
+    for (Identifier checkedPlayerName : playersInformationSets | boost::adaptors::map_keys)
+        if (playerName == checkedPlayerName)
+            return true;
+    return false;
 }
 
 IdentifiersPtr ExtensiveGamePositionsHelper::getPossibleInformationSetsForPlayer(
