@@ -11,7 +11,7 @@ namespace Routines {
  *
  * @author Mateusz Kubuszok
  */
-class ExtensivePureStrategyPath : public Root {
+class ExtensivePureStrategyPath final : public Root {
     /**
      * @brief Players definitions.
      */

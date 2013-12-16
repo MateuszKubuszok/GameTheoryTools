@@ -16,7 +16,7 @@ namespace GTL {
  * @see CheckingDriver
  * @see ConditionDriver
  */
-class CheckingConditionDriver : public ConditionDriver {
+class CheckingConditionDriver final : public ConditionDriver {
     /**
      * @brief Implementation of a main Driver.
      */

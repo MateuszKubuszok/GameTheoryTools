@@ -13,7 +13,7 @@ namespace GTL {
  *
  * @see Object
  */
-class ObjectTypeProperty : public ObjectProperty {
+class ObjectTypeProperty final : public ObjectProperty {
     /**
      * @brief Described Object.
      */

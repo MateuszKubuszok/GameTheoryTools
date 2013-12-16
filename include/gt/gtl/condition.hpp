@@ -59,7 +59,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullCondition : public Condition {
+class NullCondition final : public Condition {
 public:
     virtual Routines::ConditionPtr getCondition(
         const Context&
@@ -83,7 +83,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorCondition : public Condition {
+class ErrorCondition final : public Condition {
     /**
      * @brief Error message.
      */

@@ -16,7 +16,7 @@ namespace GTL {
  * @see ExecutionDriver
  * @see ValueDriver
  */
-class ExecutionValueDriver : public ValueDriver {
+class ExecutionValueDriver final : public ValueDriver {
     /**
      * @brief Driver for error handling.
      */

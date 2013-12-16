@@ -13,7 +13,7 @@ namespace Routines {
  *
  * @see Condition
  */
-class ExtensivePureEquilibriumRoutine : public SelectableStrategiesRoutine {
+class ExtensivePureEquilibriumRoutine final : public SelectableStrategiesRoutine {
 public:
     /**
      * @brief Initiates Routine with available Players.

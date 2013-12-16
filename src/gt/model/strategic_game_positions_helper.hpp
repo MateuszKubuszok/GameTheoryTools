@@ -11,7 +11,7 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-class StrategicGamePositionsHelper : public Root {
+class StrategicGamePositionsHelper final : public Root {
     /**
      * @brief Players.
      */

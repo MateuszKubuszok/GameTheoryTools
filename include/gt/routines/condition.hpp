@@ -40,7 +40,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullCondition : public Condition {
+class NullCondition final : public Condition {
     virtual void configureRoutine(
         RoutinePtr
     ) const override {}

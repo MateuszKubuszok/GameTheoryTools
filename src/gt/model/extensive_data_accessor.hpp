@@ -21,7 +21,7 @@ namespace Model {
  * @see ExtensiveDataPiece
  * @see ExtensiveDataBuilder
  */
-class ExtensiveDataAccessor : public DataAccessor {
+class ExtensiveDataAccessor final : public DataAccessor {
     /**
      * @brief Actual data.
      */

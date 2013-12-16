@@ -70,7 +70,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDefinition : public Definition {
+class NullDefinition final : public Definition {
 public:
     NullDefinition() :
         Definition(
@@ -103,7 +103,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorDefinition : public Definition {
+class ErrorDefinition final : public Definition {
     /**
      * @brief Error message.
      */

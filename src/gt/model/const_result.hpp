@@ -17,7 +17,7 @@ namespace Model {
  * @see EmptyResult
  * @see ResultFactory
  */
-class ConstResult : public Result {
+class ConstResult final : public Result {
     /**
      * @brief Result to return.
      */

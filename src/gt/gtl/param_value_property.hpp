@@ -13,7 +13,7 @@ namespace GTL {
  *
  * @see Param
  */
-class ParamValueProperty : public ObjectProperty {
+class ParamValueProperty final : public ObjectProperty {
     /**
      * @brief Described Param.
      */

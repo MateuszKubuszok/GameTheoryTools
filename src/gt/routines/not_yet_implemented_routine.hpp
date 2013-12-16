@@ -13,7 +13,7 @@ namespace Routines {
  *
  * @see Condition
  */
-class NotYetImplementedRoutine : public Routine {
+class NotYetImplementedRoutine final : public Routine {
 public:
     /**
      * @brief Returns "Not yet implemented" Message.

@@ -16,7 +16,7 @@ namespace GTL {
  * @see ExecutionDriver
  * @see ConditionDriver
  */
-class ExecutionConditionDriver : public ConditionDriver {
+class ExecutionConditionDriver final : public ConditionDriver {
     /**
      * @brief Driver for error handling.
      */

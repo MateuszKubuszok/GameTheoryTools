@@ -13,7 +13,7 @@ namespace Routines {
  *
  * @see Condition
  */
-class PropertyUndefinedRoutine : public Routine {
+class PropertyUndefinedRoutine final : public Routine {
 public:
     /**
      * @brief Returns "Property not defined for this kind of Game" Message.

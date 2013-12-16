@@ -72,7 +72,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDataPiece : public DataPiece {
+class NullDataPiece final : public DataPiece {
     /**
      * @brief NullNumber to return.
      */

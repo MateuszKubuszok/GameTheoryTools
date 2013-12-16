@@ -16,7 +16,7 @@ namespace Model {
  *
  * @see ExtensiveData
  */
-class ExtensiveGame : public Game {
+class ExtensiveGame final : public Game {
     /**
      * @brief Players.
      */

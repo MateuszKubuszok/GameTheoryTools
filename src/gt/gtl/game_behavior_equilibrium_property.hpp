@@ -13,7 +13,7 @@ namespace GTL {
  *
  * @see Game
  */
-class GameBehaviorEquilibriumProperty : public ObjectProperty {
+class GameBehaviorEquilibriumProperty final : public ObjectProperty {
     /**
      * @brief Described Game.
      */

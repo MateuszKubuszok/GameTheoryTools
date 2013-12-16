@@ -13,7 +13,7 @@ namespace Routines {
  *
  * @see SelectableStrategiesRoutine
  */
-class PlayerChoiceCondition : public Condition {
+class PlayerChoiceCondition final : public Condition {
     /**
      * @brief Player's name.
      */

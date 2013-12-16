@@ -18,7 +18,7 @@ namespace Model {
  * @see StrategicData
  * @see StrategicGamePositionsHelper
  */
-class StrategicDataBuilder : public DataBuilder {
+class StrategicDataBuilder final : public DataBuilder {
     /**
      * @brief Type containing information whether some player-strategy pair is already known.
      */

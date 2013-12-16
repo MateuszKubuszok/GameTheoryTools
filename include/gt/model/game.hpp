@@ -88,7 +88,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullGame : public Game {
+class NullGame final : public Game {
 public:
     virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();

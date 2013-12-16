@@ -17,7 +17,7 @@ namespace Model {
  * @see Data
  * @see DataAccessor
  */
-class PlainDataPiece : public DataPiece {
+class PlainDataPiece final : public DataPiece {
     /**
      * @brief StrategicGamePositionsHelper used to properly locate Index in storage.
      */

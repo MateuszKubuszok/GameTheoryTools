@@ -68,7 +68,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDetails : public Details {
+class NullDetails final : public Details {
 public:
     NullDetails() :
         Details(
@@ -101,7 +101,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorDetails : public Details {
+class ErrorDetails final : public Details {
     /**
      * @brief Error message.
      */

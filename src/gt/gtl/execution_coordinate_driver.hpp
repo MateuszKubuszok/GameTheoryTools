@@ -16,7 +16,7 @@ namespace GTL {
  * @see ExecutionDriver
  * @see CoordinateDriver
  */
-class ExecutionCoordinateDriver : public CoordinateDriver {
+class ExecutionCoordinateDriver final : public CoordinateDriver {
     /**
      * @brief Driver for error handling.
      */

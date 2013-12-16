@@ -124,7 +124,7 @@ int main(
 
     // Display help if requested
 
-    if (variables.count(helpOption)) {
+    if (variables.count("help") || variables.count("H")) {
         std::cout << description << std::endl;
         return 0;
     }

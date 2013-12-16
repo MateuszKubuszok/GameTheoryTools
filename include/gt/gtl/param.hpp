@@ -144,7 +144,7 @@ protected:
  *
  * @author Mateusz Kubuszok
  */
-class NullParam : public Param {
+class NullParam final : public Param {
 public:
     virtual const ObjectPtr getObject(
         const Context&
@@ -188,7 +188,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorParam : public Param {
+class ErrorParam final : public Param {
     /**
      * @brief Error message.
      */

@@ -2,32 +2,41 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
+// class TestConditionDriverImpl final : public GT::GTL::ConditionDriver {
 // public:
 
 TestConditionDriverImpl::TestConditionDriverImpl() :
-    GT::GTL::NullConditionDriver(),
+    GT::GTL::ConditionDriver(),
     createdConditions(0)
     {}
 
 GT::GTL::ConditionPtr* TestConditionDriverImpl::playerChoosed(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::GTL::ObjectPtr*     player,
-    const GT::GTL::ObjectPtr*     strategy
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectPtr*
 ) const {
     createdConditions++;
-    return GT::GTL::NullConditionDriver::playerChoosed(inputLocation, player, strategy);
+    return new GT::GTL::ConditionPtr(
+        GT::GTL::setupLocation<GT::GTL::Condition>(
+            GT::GTL::NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
+GT::Message TestConditionDriverImpl::toString() const {
+    return GT::Message("TestCollectionsDriverImpl");
 }
 
 // }; /* END class TestConditionDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
+// class TestCoordinateDriverImpl final : public GT::GTL::CoordinateDriver {
 // public:
 
 TestCoordinateDriverImpl::TestCoordinateDriverImpl() :
-    GT::GTL::NullCoordinateDriver(),
+    GT::GTL::CoordinateDriver(),
     createdCoordinates(0),
     filledCoordinates(0),
     mergedCoordinates(0)
@@ -35,40 +44,73 @@ TestCoordinateDriverImpl::TestCoordinateDriverImpl() :
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::create(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::IdentifierPtr*      player,
-    const GT::IdentifierPtr*      strategy
+    const GT::IdentifierPtr*,
+    const GT::IdentifierPtr*
 ) const {
     createdCoordinates++;
-    return GT::GTL::NullCoordinateDriver::create(inputLocation, player, strategy);
+    return new GT::GTL::CoordinatePtr(
+        GT::GTL::setupLocation<GT::GTL::Coordinate>(
+            GT::GTL::NullFactory::getInstance().createCoordinate(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::fillWithData(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::GTL::CoordinatePtr* coordinate,
-    const GT::GTL::ParamsPtr*     data
+    const GT::GTL::CoordinatePtr*,
+    const GT::GTL::CoordinatesPtr*
 ) const {
     filledCoordinates++;
-    return GT::GTL::NullCoordinateDriver::fillWithData(inputLocation, coordinate, data);
+    return new GT::GTL::CoordinatePtr(
+        GT::GTL::setupLocation<GT::GTL::Coordinate>(
+            GT::GTL::NullFactory::getInstance().createCoordinate(),
+            inputLocation
+        )
+    );
+}
+
+GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::fillWithData(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::GTL::CoordinatePtr*,
+    const GT::GTL::ParamsPtr*
+) const {
+    filledCoordinates++;
+    return new GT::GTL::CoordinatePtr(
+        GT::GTL::setupLocation<GT::GTL::Coordinate>(
+            GT::GTL::NullFactory::getInstance().createCoordinate(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::CoordinatePtr* TestCoordinateDriverImpl::merge(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::GTL::CoordinatePtr* coordinate1,
-    const GT::GTL::CoordinatePtr* coordinate2
+    const GT::GTL::CoordinatePtr*,
+    const GT::GTL::CoordinatePtr*
 ) const {
     mergedCoordinates++;
-    return GT::GTL::NullCoordinateDriver::merge(inputLocation, coordinate1, coordinate2);
+    return new GT::GTL::CoordinatePtr(
+        GT::GTL::setupLocation<GT::GTL::Coordinate>(
+            GT::GTL::NullFactory::getInstance().createCoordinate(),
+            inputLocation
+        )
+    );
+}
+
+GT::Message TestCoordinateDriverImpl::toString() const {
+    return GT::Message("TestCoordinateDriverImpl");
 }
 
 // }; /* END class TestCoordinateDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestGameDriverImpl : public GT::GTL::NullGameDriver {
+// class TestGameDriverImpl final : public GT::GTL::GameDriver {
 // public:
 
 TestGameDriverImpl::TestGameDriverImpl() :
-    GT::GTL::NullGameDriver(),
+    GT::GTL::GameDriver(),
     createdStrategicGames(0),
     createdExtensiveGames(0),
     createdDetails(0),
@@ -77,47 +119,71 @@ TestGameDriverImpl::TestGameDriverImpl() :
 
 GT::GTL::GamePtr* TestGameDriverImpl::createStrategic(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::GTL::DetailsPtr*    details
+    const GT::GTL::DetailsPtr*
 ) const {
     createdStrategicGames++;
-    return GT::GTL::NullGameDriver::createStrategic(inputLocation, details);
+    return new GT::GTL::GamePtr(
+        GT::GTL::setupLocation<GT::GTL::Game>(
+            GT::GTL::NullFactory::getInstance().createGame(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::GamePtr* TestGameDriverImpl::createExtensive(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::GTL::DetailsPtr*    details
+    const GT::GTL::DetailsPtr*
 ) const {
     createdExtensiveGames++;
-    return GT::GTL::NullGameDriver::createExtensive(inputLocation, details);
+    return new GT::GTL::GamePtr(
+        GT::GTL::setupLocation<GT::GTL::Game>(
+            GT::GTL::NullFactory::getInstance().createGame(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::DetailsPtr* TestGameDriverImpl::createDetails(
-    const GT::GTL::InputLocation&  inputLocation,
-    const GT::GTL::ObjectsPtr*     players,
-    const GT::GTL::CoordinatesPtr* data
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::GTL::ObjectsPtr*,
+    const GT::GTL::CoordinatesPtr*
 ) const {
     createdDetails++;
-    return GT::GTL::NullGameDriver::createDetails(inputLocation, players, data);
+    return new GT::GTL::DetailsPtr(
+        GT::GTL::setupLocation<GT::GTL::Details>(
+            GT::GTL::NullFactory::getInstance().createDetails(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::PlayerPtr* TestGameDriverImpl::createPlayer(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::IdentifierPtr*      player,
-    const GT::IdentifiersPtr*     strategies
+    const GT::IdentifierPtr*,
+    const GT::IdentifiersPtr*
 ) const {
     createdPlayers++;
-    return GT::GTL::NullGameDriver::createPlayer(inputLocation, player, strategies);
+    return new GT::GTL::PlayerPtr(
+        GT::GTL::setupLocation<GT::GTL::Player>(
+            GT::GTL::NullFactory::getInstance().createPlayer(),
+            inputLocation
+        )
+    );
+}
+
+GT::Message TestGameDriverImpl::toString() const {
+    return GT::Message("TestGameDriverImpl");
 }
 
 // }; /* END class TestGameDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
+// class TestStatementDriverImpl final : public GT::GTL::StatementDriver {
 // public:
 
 TestStatementDriverImpl::TestStatementDriverImpl() :
-    GT::GTL::NullStatementDriver(),
+    GT::GTL::StatementDriver(),
     executedDefinitions(0),
     executedQueries(0)
     {}
@@ -136,39 +202,117 @@ bool TestStatementDriverImpl::executeQuery(
     return true;
 }
 
+GT::GTL::DefinitionPtr* TestStatementDriverImpl::createDefinition(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::IdentifierPtr*,
+    const GT::GTL::ObjectPtr*
+) const {
+    return new GT::GTL::DefinitionPtr(
+        GT::GTL::setupLocation<GT::GTL::Definition>(
+            GT::GTL::NullFactory::getInstance().createDefinition(),
+            inputLocation
+        )
+    );
+}
+
+GT::GTL::QueryPtr* TestStatementDriverImpl::createQuery(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::IdentifiersPtr*,
+    const GT::GTL::ObjectsPtr*,
+    const GT::GTL::ConditionsPtr*
+) const {
+    return new GT::GTL::QueryPtr(
+        GT::GTL::setupLocation<GT::GTL::Query>(
+            GT::GTL::NullFactory::getInstance().createQuery(),
+            inputLocation
+        )
+    );
+}
+
+GT::Message TestStatementDriverImpl::toString() const {
+    return GT::Message("TestStatementDriverImpl");
+}
+
 // }; /* END class TestStatementDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestValueDriverImpl : public GT::GTL::NullValueDriver {
+// class TestValueDriverImpl final : public GT::GTL::ValueDriver {
 // public:
 
 TestValueDriverImpl::TestValueDriverImpl() :
-    GT::GTL::NullValueDriver(),
+    GT::GTL::ValueDriver(),
     usedParameters(0)
     {}
 
 GT::GTL::ParamPtr* TestValueDriverImpl::get(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::IdentifierPtr*      identifier
+    const GT::IdentifierPtr*
 ) const {
     usedParameters++;
-    return GT::GTL::NullValueDriver::get(inputLocation, identifier);
+    return new GT::GTL::ParamPtr(
+        GT::GTL::setupLocation<GT::GTL::Param>(
+            GT::GTL::NullFactory::getInstance().createParam(),
+            inputLocation
+        )
+    );
 }
 
 GT::GTL::ParamPtr* TestValueDriverImpl::get(
     const GT::GTL::InputLocation& inputLocation,
-    const GT::NumberPtr*          number
+    const GT::NumberPtr*
 ) const {
     usedParameters++;
-    return GT::GTL::NullValueDriver::get(inputLocation, number);
+    return new GT::GTL::ParamPtr(
+        GT::GTL::setupLocation<GT::GTL::Param>(
+            GT::GTL::NullFactory::getInstance().createParam(),
+            inputLocation
+        )
+    );
+}
+
+GT::GTL::ObjectPtr* TestValueDriverImpl::toObject(
+    const GT::GTL::GamePtr* game
+) const {
+    return new GT::GTL::ObjectPtr(
+        GT::GTL::setupLocation<GT::GTL::Object>(
+            GT::GTL::NullFactory::getInstance().createObject(),
+            *(*game)->getInputLocation()
+        )
+    );
+}
+
+GT::GTL::ObjectPtr* TestValueDriverImpl::toObject(
+    const GT::GTL::PlayerPtr* player
+) const {
+    return new GT::GTL::ObjectPtr(
+        GT::GTL::setupLocation<GT::GTL::Object>(
+            GT::GTL::NullFactory::getInstance().createObject(),
+            *(*player)->getInputLocation()
+        )
+    );
+}
+
+GT::GTL::ObjectPtr* TestValueDriverImpl::toObject(
+    const GT::GTL::ParamPtr* param
+) const {
+    return new GT::GTL::ObjectPtr(
+        GT::GTL::setupLocation<GT::GTL::Object>(
+            GT::GTL::NullFactory::getInstance().createObject(),
+            *(*param)->getInputLocation()
+        )
+    );
+}
+
+GT::Message TestValueDriverImpl::toString() const {
+    return GT::Message("TestValueDriverImpl");
 }
 
 // }; /* END class TestValueDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class TestDriverImpl : public GT::GTL::Driver {
+// class TestDriverImpl final : public GT::GTL::Driver {
 // public:
 
 TestDriverImpl::TestDriverImpl() :

@@ -17,7 +17,7 @@ namespace Model {
  * @see ConstResult
  * @see ResultFactory
  */
-class EmptyResult : public Result {
+class EmptyResult final : public Result {
 public:
     /**
      * @brief Creates Result with empty Message.

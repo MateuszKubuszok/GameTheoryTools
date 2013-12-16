@@ -84,7 +84,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullResultBuilder : public ResultBuilder {
+class NullResultBuilder final : public ResultBuilder {
 public:
     virtual ResultBuilder& setHeaders(
         const IdentifiersPtr&

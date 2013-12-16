@@ -77,7 +77,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullQuery : public Query {
+class NullQuery final : public Query {
 public:
     NullQuery() :
         Query(
@@ -109,7 +109,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorQuery : public Query {
+class ErrorQuery final : public Query {
     /**
      * @brief Error message.
      */

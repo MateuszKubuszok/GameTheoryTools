@@ -42,7 +42,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullConditionDriver : public ConditionDriver {
+class NullConditionDriver final : public ConditionDriver {
 public:
     NullConditionDriver() :
         Root(),
@@ -50,11 +50,16 @@ public:
         {}
 
     virtual ConditionPtr* playerChoosed(
-        const InputLocation&,
+        const InputLocation& inputLocation,
         const ObjectPtr*,
         const ObjectPtr*
     ) const {
-        return new ConditionPtr(NullFactory::getInstance().createCondition());
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                NullFactory::getInstance().createCondition(),
+                inputLocation
+            )
+        );
     }
 
     virtual bool isNotNull() const override {

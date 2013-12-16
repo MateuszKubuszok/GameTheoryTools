@@ -15,7 +15,7 @@ namespace GTL {
  * @see Param
  * @see ParamFactory
  */
-class NumberParam : public Param {
+class NumberParam final : public Param {
     /**
      * @brief Number stored by this Param.
      */

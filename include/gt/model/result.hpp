@@ -93,7 +93,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullResult : public virtual Result {
+class NullResult final : public virtual Result {
 public:
     virtual Message getResult() const override {
         return Message("NullResult");

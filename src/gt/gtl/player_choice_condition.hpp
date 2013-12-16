@@ -11,7 +11,7 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class PlayerChoiceCondition : public Condition {
+class PlayerChoiceCondition final : public Condition {
     /**
      * @brief Param with Player's name.
      */

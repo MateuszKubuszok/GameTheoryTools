@@ -185,7 +185,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullCoordinate : public Coordinate {
+class NullCoordinate final : public Coordinate {
 public:
     virtual Coordinate& addParam(
         const ParamPtr
@@ -246,7 +246,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorCoordinate : public Coordinate {
+class ErrorCoordinate final : public Coordinate {
     /**
      * @brief Error message.
      */

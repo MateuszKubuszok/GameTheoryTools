@@ -86,7 +86,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDataBuilder : public DataBuilder {
+class NullDataBuilder final : public DataBuilder {
 public:
     virtual DataBuilder& setPlayers(
         const PlayersPtr

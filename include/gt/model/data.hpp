@@ -110,7 +110,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullData : public Data {
+class NullData final : public Data {
 public:
     virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();

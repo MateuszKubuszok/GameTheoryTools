@@ -87,7 +87,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullGame : public Game {
+class NullGame final : public Game {
 public:
     NullGame() :
         Game(Model::NullFactory::getInstance().createGame())
@@ -130,7 +130,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorGame : public Game {
+class ErrorGame final : public Game {
     /**
      * @brief Error message.
      */

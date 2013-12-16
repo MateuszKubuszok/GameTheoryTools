@@ -8,6 +8,12 @@ namespace Routines {
 // class StrategicPureEquilibriumRoutine : public SelectableStrategiesRoutine {
 // public:
 
+StrategicPureEquilibriumRoutine::StrategicPureEquilibriumRoutine(
+    const PlayersPtr players
+) :
+    SelectableStrategiesRoutine(players)
+    {}
+
 ResultPtr StrategicPureEquilibriumRoutine::findResultFor(
     const GamePtr,
     const ConditionsPtr

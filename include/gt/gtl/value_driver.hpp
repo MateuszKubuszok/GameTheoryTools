@@ -82,7 +82,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullValueDriver : public ValueDriver {
+class NullValueDriver final : public ValueDriver {
 public:
     NullValueDriver() :
         ValueDriver()
@@ -113,21 +113,36 @@ public:
     }
 
     virtual ObjectPtr* toObject(
-        const GamePtr*
+        const GamePtr* game
     ) const override {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
+        return new ObjectPtr(
+            setupLocation<Object>(
+                NullFactory::getInstance().createObject(),
+                *(*game)->getInputLocation()
+            )
+        );
     }
 
     virtual ObjectPtr* toObject(
-        const PlayerPtr*
+        const PlayerPtr* player
     ) const override {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
+        return new ObjectPtr(
+            setupLocation<Object>(
+                NullFactory::getInstance().createObject(),
+                *(*player)->getInputLocation()
+            )
+        );
     }
 
     virtual ObjectPtr* toObject(
-        const ParamPtr*
+        const ParamPtr* param
     ) const override {
-        return new ObjectPtr(NullFactory::getInstance().createObject());
+        return new ObjectPtr(
+            setupLocation<Object>(
+                NullFactory::getInstance().createObject(),
+                *(*param)->getInputLocation()
+            )
+        );
     }
 
     virtual bool isNotNull() const override {

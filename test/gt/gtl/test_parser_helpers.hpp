@@ -4,32 +4,34 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template<typename Content>
-class TestCollectionsDriverImpl : public GT::GTL::NullCollectionsDriver<Content> {
+class TestCollectionsDriverImpl final : public GT::GTL::CollectionsDriver<Content> {
     mutable unsigned int createdCollections;
     mutable unsigned int addedElements;
 
 public:
     TestCollectionsDriverImpl<Content>();
 
-    virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* empty() const override;
+    virtual typename TestCollectionsDriverImpl<Content>::CollectionPtr* empty() const override;
 
-    virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* create(
-        const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr* element
+    virtual typename TestCollectionsDriverImpl<Content>::CollectionPtr* create(
+        const typename TestCollectionsDriverImpl<Content>::ContentPtr* element
     ) const override;
 
-    virtual typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* insert(
-        const typename GT::GTL::NullCollectionsDriver<Content>::ContentPtr*    element,
-        const typename GT::GTL::NullCollectionsDriver<Content>::CollectionPtr* collection
+    virtual typename TestCollectionsDriverImpl<Content>::CollectionPtr* insert(
+        const typename TestCollectionsDriverImpl<Content>::ContentPtr*    element,
+        const typename TestCollectionsDriverImpl<Content>::CollectionPtr* collection
     ) const override;
 
     inline unsigned int getCreatedCollections() const;
 
     inline unsigned int getAddedElements() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestCollectionsDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestConditionDriverImpl : public GT::GTL::NullConditionDriver {
+class TestConditionDriverImpl final : public GT::GTL::ConditionDriver {
     mutable unsigned int createdConditions;
 
 public:
@@ -42,11 +44,13 @@ public:
     ) const override;
 
     inline unsigned int getCreatedConditions() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestConditionDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestCoordinateDriverImpl : public GT::GTL::NullCoordinateDriver {
+class TestCoordinateDriverImpl final : public GT::GTL::CoordinateDriver {
     mutable unsigned int createdCoordinates;
     mutable unsigned int filledCoordinates;
     mutable unsigned int mergedCoordinates;
@@ -58,6 +62,12 @@ public:
         const GT::GTL::InputLocation& inputLocation,
         const GT::IdentifierPtr*      player,
         const GT::IdentifierPtr*      strategy
+    ) const override;
+
+    virtual GT::GTL::CoordinatePtr* fillWithData(
+        const GT::GTL::InputLocation&  inputLocation,
+        const GT::GTL::CoordinatePtr*  coordinate,
+        const GT::GTL::CoordinatesPtr* data
     ) const override;
 
     virtual GT::GTL::CoordinatePtr* fillWithData(
@@ -77,11 +87,13 @@ public:
     inline unsigned int getFilledCoordinates() const;
 
     inline unsigned int getMergeCoordinates() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestCoordinateDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestGameDriverImpl : public GT::GTL::NullGameDriver {
+class TestGameDriverImpl final : public GT::GTL::GameDriver {
     mutable unsigned int createdStrategicGames;
     mutable unsigned int createdExtensiveGames;
     mutable unsigned int createdDetails;
@@ -119,11 +131,13 @@ public:
     inline unsigned int getCreatedDetails() const;
 
     inline unsigned int getCreatedPlayers() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestGameDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestStatementDriverImpl : public GT::GTL::NullStatementDriver {
+class TestStatementDriverImpl final : public GT::GTL::StatementDriver {
     mutable unsigned int executedDefinitions;
     mutable unsigned int executedQueries;
 
@@ -138,14 +152,29 @@ public:
         const GT::GTL::QueryPtr* query
     ) override;
 
+    virtual GT::GTL::DefinitionPtr* createDefinition(
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::IdentifierPtr*      identifier,
+        const GT::GTL::ObjectPtr*     object
+    ) const;
+
+    virtual GT::GTL::QueryPtr* createQuery(
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::IdentifiersPtr*     identifiers,
+        const GT::GTL::ObjectsPtr*    objects,
+        const GT::GTL::ConditionsPtr* conditions
+    ) const;
+
     inline unsigned int getExecutedDefinitions() const;
 
     inline unsigned int getExecutedQueries() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestStatementDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestValueDriverImpl : public GT::GTL::NullValueDriver {
+class TestValueDriverImpl final : public GT::GTL::ValueDriver {
     mutable unsigned int usedParameters;
 
 public:
@@ -161,12 +190,26 @@ public:
         const GT::NumberPtr*          number
     ) const override;
 
+    virtual GT::GTL::ObjectPtr* toObject(
+        const GT::GTL::GamePtr*
+    ) const override;
+
+    virtual GT::GTL::ObjectPtr* toObject(
+        const GT::GTL::PlayerPtr*
+    ) const override;
+
+    virtual GT::GTL::ObjectPtr* toObject(
+        const GT::GTL::ParamPtr*
+    ) const override;
+
     inline unsigned int getUsedParameters() const;
+
+    virtual GT::Message toString() const override;
 }; /* END class TestValueDriverImpl */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TestDriverImpl : public GT::GTL::Driver {
+class TestDriverImpl final : public GT::GTL::Driver {
     mutable unsigned int shownResults;
     mutable unsigned int shownErrors;
 

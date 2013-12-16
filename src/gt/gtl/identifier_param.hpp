@@ -15,7 +15,7 @@ namespace GTL {
  * @see Param
  * @see ParamFactory
  */
-class IdentifierParam : public Param {
+class IdentifierParam final : public Param {
     /**
      * @brief Identifier that this Param points to.
      */

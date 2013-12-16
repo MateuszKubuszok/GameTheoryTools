@@ -16,7 +16,7 @@ namespace GTL {
  * @see ExecutionDriver
  * @see GameDriver
  */
-class ExecutionGameDriver : public GameDriver {
+class ExecutionGameDriver final : public GameDriver {
     /**
      * @brief Driver for error handling.
      */

@@ -18,7 +18,7 @@ namespace Model {
  * @see StrategicData
  * @see StrategicGamePositionsHelper
  */
-class StrategicGame : public Game {
+class StrategicGame final : public Game {
     /**
      * @brief Players.
      */

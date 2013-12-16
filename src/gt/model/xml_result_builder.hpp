@@ -21,7 +21,7 @@ namespace Model {
  * @see AbstractResultBuilder
  * @see ResultFactory#buildResult()
  */
-class XMLResultBuilder : public AbstractResultBuilder {
+class XMLResultBuilder final : public AbstractResultBuilder {
 public:
     /**
      * @brief Constructor initiating class with indentation.

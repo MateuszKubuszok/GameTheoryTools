@@ -132,7 +132,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDriver : public Driver {
+class NullDriver final : public Driver {
     CoordinateDriverPtr              coordinate;
     CollectionsDriverPtr<Coordinate> coordinates;
     ConditionDriverPtr               condition;

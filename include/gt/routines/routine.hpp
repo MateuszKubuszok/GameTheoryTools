@@ -42,7 +42,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullRoutine : public Routine {
+class NullRoutine final : public Routine {
     virtual ResultPtr findResultFor(
         const GamePtr,
         const ConditionsPtr

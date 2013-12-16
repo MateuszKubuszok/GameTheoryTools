@@ -151,7 +151,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullPlayer : public Player {
+class NullPlayer final : public Player {
 public:
     NullPlayer() :
         Player(

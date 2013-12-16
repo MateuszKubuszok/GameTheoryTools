@@ -13,7 +13,7 @@ namespace Program {
  *
  * @see GTL::Parser
  */
-class ProgramController {
+class ProgramController final {
     /**
      * @brief Debug level - if its different to 0 parser messages are shown.
      */

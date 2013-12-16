@@ -13,7 +13,7 @@ namespace GTL {
  *
  * @see Player
  */
-class PlayerStrategiesProperty : public ObjectProperty {
+class PlayerStrategiesProperty final : public ObjectProperty {
     /**
      * @brief Described Player.
      */

@@ -56,7 +56,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullPlayer : public Player {
+class NullPlayer final : public Player {
 public:
     NullPlayer() :
         Player(
@@ -81,7 +81,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorPlayer : public Player {
+class ErrorPlayer final : public Player {
     /**
      * @brief Error message.
      */

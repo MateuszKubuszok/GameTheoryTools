@@ -16,7 +16,7 @@ namespace GTL {
  * @see CheckingDriver
  * @see StatementDriver
  */
-class CheckingStatementDriver : public StatementDriver {
+class CheckingStatementDriver final : public StatementDriver {
     /**
      * @brief Implementation of a main Driver.
      */

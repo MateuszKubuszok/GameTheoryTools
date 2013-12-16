@@ -81,7 +81,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullStatementDriver : public StatementDriver {
+class NullStatementDriver final : public StatementDriver {
 public:
     NullStatementDriver() :
         StatementDriver()
@@ -100,20 +100,30 @@ public:
     }
 
     virtual DefinitionPtr* createDefinition(
-        const InputLocation&,
+        const InputLocation& inputLocation,
         const IdentifierPtr*,
         const ObjectPtr*
     ) const override {
-        return new DefinitionPtr(NullFactory::getInstance().createDefinition());
+        return new DefinitionPtr(
+            setupLocation<Definition>(
+                NullFactory::getInstance().createDefinition(),
+                inputLocation
+            )
+        );
     }
 
     virtual QueryPtr* createQuery(
-        const InputLocation&,
+        const InputLocation& inputLocation,
         const IdentifiersPtr*,
         const ObjectsPtr*,
         const ConditionsPtr*
     ) const override {
-        return new QueryPtr(NullFactory::getInstance().createQuery());
+        return new QueryPtr(
+            setupLocation<Query>(
+                NullFactory::getInstance().createQuery(),
+                inputLocation
+            )
+        );
     }
 
     virtual bool isNotNull() const override {

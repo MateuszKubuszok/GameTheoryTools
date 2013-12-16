@@ -85,7 +85,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullDataAccessor : public DataAccessor {
+class NullDataAccessor final : public DataAccessor {
 public:
     virtual const PlayersPtr getPlayers() const override {
         return NullFactory::getInstance().createPlayers();

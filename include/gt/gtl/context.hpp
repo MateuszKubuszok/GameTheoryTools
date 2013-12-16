@@ -140,7 +140,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullContext : public Context {
+class NullContext final : public Context {
 public:
     virtual Context& registerParam(
         const IdentifierPtr,

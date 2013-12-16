@@ -23,7 +23,7 @@ namespace Model {
  * @see StrategicDataBuilder
  * @see StrategicGamePositionsHelper
  */
-class StrategicDataAccessor : public DataAccessor {
+class StrategicDataAccessor final : public DataAccessor {
     /**
      * @brief Actual data.
      */

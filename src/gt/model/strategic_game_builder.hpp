@@ -17,7 +17,7 @@ namespace Model {
  * @see StrategicGame
  * @see StrategicDataBuilder
  */
-class StrategicGameBuilder : public GameBuilder {
+class StrategicGameBuilder final : public GameBuilder {
     /**
      * @brief Game's DataBuilder.
      */

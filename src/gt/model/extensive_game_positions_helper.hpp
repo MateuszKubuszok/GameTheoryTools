@@ -6,7 +6,7 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class ExtensiveGamePositionsHelper : public Root {
+class ExtensiveGamePositionsHelper final : public Root {
     /**
      * @brief Root of Data tree.
      */
@@ -45,7 +45,7 @@ public:
      *
      * @return list of available Players
      */
-    virtual IdentifiersPtr getPossiblePlayers() const;
+    IdentifiersPtr getPossiblePlayers() const;
 
     /**
      * @brief Returns whether Player is available.
@@ -53,7 +53,7 @@ public:
      * @param player Player's name
      * @return       true if Player is available
      */
-    virtual bool isPlayerPossible(
+    bool isPlayerPossible(
         const Identifier& player
     ) const;
 
@@ -64,7 +64,7 @@ public:
      * @return                  list of available information sets for a Player
      * @throw InvalidCoordinate thrown when no such Player available
      */
-    virtual IdentifiersPtr getPossibleInformationSetsForPlayer(
+    IdentifiersPtr getPossibleInformationSetsForPlayer(
         const Identifier& player
     ) const;
 
@@ -75,7 +75,7 @@ public:
      * @return                  information sets for a Player
      * @throw InvalidCoordinate thrown when no such Player available
      */
-    virtual const PlayerInformationSets& getInformationSetsForPlayer(
+    const PlayerInformationSets& getInformationSetsForPlayer(
         const Identifier& player
     ) const;
 
@@ -87,7 +87,7 @@ public:
      * @return                  list of available information sets for a Player
      * @throw InvalidCoordinate thrown when no such Player or information set available
      */
-    virtual const ExtensiveDataNode& getInformationSetForPlayer(
+    const ExtensiveDataNode& getInformationSetForPlayer(
         const Identifier& player,
         const Identifier& setName
     ) const;

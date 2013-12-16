@@ -209,7 +209,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class NullObject : public Object {
+class NullObject final : public Object {
 public:
     virtual bool respondsTo(
         const Identifier&
@@ -248,7 +248,7 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class ErrorObject : public Object {
+class ErrorObject final : public Object {
     /**
      * @brief Error message.
      */

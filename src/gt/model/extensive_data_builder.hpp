@@ -17,7 +17,7 @@ namespace Model {
  * @see ExtensiveData
  * @see ExtensiveGame
  */
-class ExtensiveDataBuilder : public DataBuilder {
+class ExtensiveDataBuilder final : public DataBuilder {
     /**
      * @brief Actual data.
      */

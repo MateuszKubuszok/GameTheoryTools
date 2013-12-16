@@ -89,7 +89,7 @@ public:
  * @author Mateusz Kubuszok
  */
 template <typename Content>
-class NullCollectionsDriver : public CollectionsDriver<Content> {
+class NullCollectionsDriver final : public CollectionsDriver<Content> {
 public:
     NullCollectionsDriver() {}
 
