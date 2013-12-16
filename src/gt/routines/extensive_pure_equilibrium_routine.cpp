@@ -8,6 +8,12 @@ namespace Routines {
 // class ExtensivePureEquilibriumRoutine : public SelectableStrategiesRoutine {
 // public:
 
+ExtensivePureEquilibriumRoutine::ExtensivePureEquilibriumRoutine(
+    const PlayersPtr players
+) :
+    SelectableStrategiesRoutine(players)
+    {}
+
 ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
     const GamePtr       game,
     const ConditionsPtr
@@ -102,7 +108,7 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
                 optimalChoices
             );
 
-            if (bestSubTreePayoff->size() >= comparedPayoffIndex)
+            if (bestSubTreePayoff->size() <= comparedPayoffIndex)
                 throw ExceptionFactory::getInstance().incompletePayoffInformation(playerName, strategy);
 
             calculatedPayoffs.insert( CalculatedPayoffs::value_type(strategy, bestSubTreePayoff) );
@@ -111,7 +117,6 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
         Identifier decision = calculatedPayoffs.begin()->first;
         NumberPtr  payoff   = calculatedPayoffs.begin()->second->at(comparedPayoffIndex);
         for (const CalculatedPayoffs::value_type& calculatedPayoff : calculatedPayoffs) {
-
             const Identifier& nextDecision = calculatedPayoff.first;
             const NumberPtr&  nextPayoff   = calculatedPayoff.second->at(comparedPayoffIndex);
 

@@ -16,6 +16,15 @@ namespace Routines {
 class ExtensivePureEquilibriumRoutine : public SelectableStrategiesRoutine {
 public:
     /**
+     * @brief Initiates Routine with available Players.
+     *
+     * @param players Players definitions
+     */
+    explicit ExtensivePureEquilibriumRoutine(
+        const PlayersPtr players
+    );
+
+    /**
      * @brief Returns pure strategy equilibrium for Extensive Game.
      *
      * @param game       Game definition
