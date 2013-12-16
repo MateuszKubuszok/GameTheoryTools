@@ -113,25 +113,25 @@ int main(
                         )->default_value(indentationDefault),   indentationDescription)
     ;
 
-    // Parsing variables from arguments
-
-    Options::variables_map variables;
-    Options::store(
-        Options::parse_command_line(argumentsNumber, arguments, description),
-        variables
-    );
-    Options::notify(variables);
-
-    // Display help if requested
-
-    if (variables.count("help") || variables.count("H")) {
-        std::cout << description << std::endl;
-        return 0;
-    }
-
-    // Execute program otherwise
-
     try {
+        // Parsing variables from arguments
+
+        Options::variables_map variables;
+        Options::store(
+            Options::parse_command_line(argumentsNumber, arguments, description),
+            variables
+        );
+        Options::notify(variables);
+
+        // Display help if requested
+
+        if (variables.count("help") || variables.count("H")) {
+            std::cout << description << std::endl;
+            return 0;
+        }
+
+        // Execute program otherwise
+
         Program::ProgramController controller;
 
         if (variables.count(debugOption))
@@ -155,6 +155,11 @@ int main(
         return controller.setResultBuilderMode(resultValue)
                          .setResultIndentationMode(indentationValue)
                          .run();
+    } catch (const boost::program_options::unknown_option& exception) {
+        // uknown option error
+        std::cerr << "Uknown option, use one of listed instead." << std::endl;
+        std::cout << std::endl << description << std::endl;
+        return -1;
     } catch (const std::exception& exception) {
         // last resort error handling
         std::cerr << exception.what() << std::endl;
