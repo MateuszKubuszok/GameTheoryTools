@@ -58,6 +58,24 @@ public:
     );
 
     /**
+     * @brief Whether scanner is currently interactive.
+     *
+     * @return true if current buffer is set and it's interactive
+     */
+    bool isInteractive() const;
+
+    /**
+     * @brief Set whether scanner should be interactive or not.
+     *
+     * <p>Interactive scanner behaves better (?) in a console but is slower than non-interactive one.</p>
+     *
+     * @param isInteractive true if scanner should be interactive
+     */
+    void setInteractive(
+        bool isInteractive
+    );
+
+    /**
      * @brief Scans for next token.
      *
      * @param newlval initiates next scanning with value

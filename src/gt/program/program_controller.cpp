@@ -14,6 +14,7 @@ ProgramController::ProgramController() :
     inputStream(&std::cin),
     outputStream(&std::cout),
     errorStream(&std::cerr),
+    isInteractiveInput(true),
     shouldFreeInputStream(false),
     shouldFreeOutputStream(false),
     shouldFreeErrorStream(false),
@@ -50,7 +51,7 @@ ProgramController& ProgramController::setDebugLevel(
 }
 
 ProgramController& ProgramController::setDefaultInputStream() {
-    return setInputStream(&std::cin, false);
+    return setInputStream(&std::cin, false, true);
 }
 
 ProgramController& ProgramController::setInputStream(
@@ -58,18 +59,20 @@ ProgramController& ProgramController::setInputStream(
 ) {
     std::ifstream* newInputStream = new std::ifstream();
     newInputStream->open(filename);
-    return setInputStream(newInputStream, true);
+    return setInputStream(newInputStream, true, false);
 }
 
 ProgramController& ProgramController::setInputStream(
     InputStream* newInputStream,
-    bool         shouldFreeStream
+    bool         shouldFreeStream,
+    bool         isInteractive
 ) {
     if (inputStream != nullptr && shouldFreeInputStream)
         delete inputStream;
 
     inputStream           = newInputStream;
     shouldFreeInputStream = shouldFreeStream;
+    isInteractiveInput    = isInteractive;
 
     return *this;
 }
@@ -143,13 +146,14 @@ int ProgramController::run() const {
         .setBuilderMode(resultBuilderMode)
         .setIndentationMode(resultIndentationMode);
 
-    GTL::ScannerPtr scanner(new GTL::Scanner(inputStream));
-    GTL::DriverPtr  driver(
+    GTL::DriverPtr driver(
         shouldExecute ?
         GTL::DriverFactory::getInstance().createExecutionDriver(outputStream, errorStream) :
         GTL::DriverFactory::getInstance().createCheckingDriver(errorStream)
     );
-    GTL::Parser     parser(*scanner, *driver);
+    GTL::Scanner scanner(inputStream);
+    scanner.setInteractive(isInteractiveInput);
+    GTL::Parser  parser(scanner, *driver);
     parser.set_debug_level(debugLevel);
 
     return parser.parse();

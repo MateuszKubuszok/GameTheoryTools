@@ -2186,6 +2186,16 @@ Scanner::Scanner(
     lval(nullptr)
     {}
 
+bool Scanner::isInteractive() const {
+    return YY_CURRENT_BUFFER && YY_CURRENT_BUFFER->yy_is_interactive;
+}
+
+void Scanner::setInteractive(
+    bool isNowInteractive
+) {
+    yy_set_interactive(isNowInteractive);
+}
+
 int Scanner::lex(
     Parser::semantic_type* newlval
 ) {

@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( ProgramController_functional ) {
     // when
     GT::Program::ProgramController controller;
     controller.setCheckingAndExecution();
-    controller.setInputStream(&inputStream, false);
+    controller.setInputStream(&inputStream, false, false);
     controller.setOutputStream(&outputStream, false);
     controller.setErrorStream(&errorStream, false);
 

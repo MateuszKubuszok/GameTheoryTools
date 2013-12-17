@@ -37,6 +37,11 @@ class ProgramController final {
     OutputStream*  errorStream;
 
     /**
+     * @brief Whether input stream is interactive (read from std input).
+     */
+    bool isInteractiveInput;
+
+    /**
      * @brief Whether input stream need to be released after usage.
      */
     bool shouldFreeInputStream;
@@ -118,12 +123,14 @@ public:
      * @brief Sets used input stream to given input stream.
      *
      * @param inputStream   name of new input stream
-     * @param shouldBeFreed whether resource shoud be freed after usage
+     * @param shouldBeFreed whether resource should be freed after usage
+     * @param isInteractive whether input should be treated as interactive
      * @return              reference to itself for chaining
      */
     ProgramController& setInputStream(
         InputStream* inputStream,
-        bool         shouldBeFreed
+        bool         shouldBeFreed,
+        bool         isInteractive
     );
 
     /**
@@ -147,7 +154,7 @@ public:
      * @brief Sets used output stream to given output stream.
      *
      * @param outputStream  name of new output stream
-     * @param shouldBeFreed whether resource shoud be freed after usage
+     * @param shouldBeFreed whether resource should be freed after usage
      * @return              reference to itself for chaining
      */
     ProgramController& setOutputStream(
@@ -176,7 +183,7 @@ public:
      * @brief Sets used error stream to given error stream.
      *
      * @param errorStream   name of new error stream
-     * @param shouldBeFreed whether resource shoud be freed after usage
+     * @param shouldBeFreed whether resource should be freed after usage
      * @return              reference to itself for chaining
      */
     ProgramController& setErrorStream(
