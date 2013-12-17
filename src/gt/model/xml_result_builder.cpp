@@ -15,13 +15,7 @@ XMLResultBuilder::XMLResultBuilder(
     {}
 
 ResultPtr XMLResultBuilder::build() const {
-    std::stringstream result;
-
-    result << "<results>" << std::endl;
-    result << addIndent( buildRaw()->getResult() );
-    result << "</results>" << std::endl;
-
-    return ResultFactory::getInstance().constResult(Message(result.str()));
+    return buildRaw();
 }
 
 ResultPtr XMLResultBuilder::buildRaw() const {

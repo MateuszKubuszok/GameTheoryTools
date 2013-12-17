@@ -131,12 +131,10 @@ BOOST_AUTO_TEST_CASE( ResultFactory_XMLResultBuilder ) {
     BOOST_CHECK_EQUAL(
         builder->build()->getResult(),
         GT::Message() +
-        "<results>\n"
-        "\t<TestObject>\n"
-        "\t\t<result property=\"property1\" value=\"result1\" />\n"
-        "\t\t<result property=\"property2\" value=\"result2\" />\n"
-        "\t</TestObject>\n"
-        "</results>\n"
+        "<TestObject>\n"
+        "\t<result property=\"property1\" value=\"result1\" />\n"
+        "\t<result property=\"property2\" value=\"result2\" />\n"
+        "</TestObject>\n"
     );
 }
 
