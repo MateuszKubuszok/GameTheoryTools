@@ -5,6 +5,12 @@ namespace Program = GT::Program;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Validator for boost::program_options to parse GT::Model::ResultBuilderMode.
+ *
+ * @param value  target value handler
+ * @param values values all values that match validator
+ */
 void validate(
     boost::any&                     value,
     const std::vector<std::string>& values,
@@ -24,6 +30,12 @@ void validate(
     value = boost::any( parsedValue );
 }
 
+/**
+ * @brief Validator for boost::program_options to parse GT::Model::ResultIndentationMode.
+ *
+ * @param value  target value handler
+ * @param values values all values that match validator
+ */
 void validate(
     boost::any&                     value,
     const std::vector<std::string>& values,
@@ -45,6 +57,13 @@ void validate(
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Parses arguments and runs program accordingly.
+ *
+ * @param argumentNumber number of arguments passed into program
+ * @param arguments      actual arguments passed into program (arguments[0] being the executable's name)
+ * @return               program exit code
+ */
 int main(
     const int   argumentsNumber,
     const char* arguments[]
