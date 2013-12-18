@@ -87,3 +87,21 @@ TODO
 * Improve singletons - instances and mutexes variables can probaby be replaced with static ones,
 * same for strings inside toString() methods. It could help avoid continous reallocation of memory,
 * add Condition to set calculations accuracy.
+
+License
+----
+
+Game Theory Tools - tools for calculating Nash equilibria.
+Copyright (C) 2013-2014  Mateusz Kubuszok
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+Full license an be found [here](LICENSE.md) or on [gnu.org](http://www.gnu.org/licenses/).
