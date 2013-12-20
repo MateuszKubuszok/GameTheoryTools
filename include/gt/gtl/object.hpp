@@ -183,28 +183,6 @@ protected:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Root of all Object's properties that can be registered.
- *
- * @author Mateusz Kubuszok
- */
-class ObjectProperty {
-public:
-    /**
-     * @brief Finds results for given Conditions.
-     *
-     * @param  context    Context with values
-     * @param  conditions Conditions to check
-     * @result            search Result
-     */
-    virtual ResultPtr findForConditions(
-        const Context&    context,
-        const Conditions& conditions
-    ) const = 0;
-}; /* END class ObjectProperty */
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
  * @brief Null Object for handling invalid situations.
  *
  * @author Mateusz Kubuszok

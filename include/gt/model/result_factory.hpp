@@ -33,8 +33,6 @@ enum class ResultIndentationMode { TABS, SPACES, NONE };
  * @see ResultBuilder
  */
 class ResultFactory {
-    SINGLETON_DECLARATION(ResultFactory)
-
     /**
      * @brief Contains current Builder Mode setting.
      */

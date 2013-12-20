@@ -12,8 +12,6 @@ namespace Routines {
  * @author Mateusz Kubuszok
  */
 class ConditionFactory {
-    SINGLETON_DECLARATION(ConditionFactory)
-
 public:
     /**
      * @brief Returns the instance of a ConditionFactory.

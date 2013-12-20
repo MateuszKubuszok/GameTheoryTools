@@ -7,7 +7,10 @@ namespace Routines {
 
 // class ExceptionFactory {
 
-SINGLETON_DEFINITION(ExceptionFactory, getInstance, exceptionFactoryMutex)
+ExceptionFactory& ExceptionFactory::getInstance() {
+    static ExceptionFactory instance;
+    return instance;
+}
 
 // public:
 

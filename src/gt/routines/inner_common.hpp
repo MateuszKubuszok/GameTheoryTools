@@ -11,7 +11,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>
-#include <boost/thread/mutex.hpp>
 
 /* Includes public interface */
 #include "gt/routines/common.hpp"

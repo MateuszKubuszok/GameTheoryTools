@@ -12,7 +12,6 @@
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>
 #include <boost/range/adaptor/reversed.hpp>
-#include <boost/thread/mutex.hpp>
 
 /* Includes public interface */
 #include "gt/model/common.hpp"

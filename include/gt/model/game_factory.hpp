@@ -12,8 +12,6 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class GameFactory {
-    SINGLETON_DECLARATION(GameFactory)
-
 public:
      /**
      * @brief Returns the instance of a GameFactory.

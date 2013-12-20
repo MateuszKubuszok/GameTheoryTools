@@ -7,7 +7,10 @@ namespace Model {
 
 // class GameFactory {
 
-SINGLETON_DEFINITION(GameFactory, getInstance, gameFactoryMutex)
+GameFactory& GameFactory::getInstance() {
+    static GameFactory instance;
+    return instance;
+}
 
 // public:
 

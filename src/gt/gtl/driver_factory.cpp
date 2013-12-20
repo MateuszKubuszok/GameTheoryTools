@@ -7,7 +7,10 @@ namespace GTL {
 
 // class DriverFactory {
 
-SINGLETON_DEFINITION(DriverFactory, getInstance, driverFactoryMutex)
+DriverFactory& DriverFactory::getInstance() {
+    static DriverFactory instance;
+    return instance;
+}
 
 // public:
 

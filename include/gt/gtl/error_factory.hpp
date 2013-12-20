@@ -12,8 +12,6 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ErrorFactory {
-    SINGLETON_DECLARATION(ErrorFactory)
-
 public:
     /**
      * @brief Returns the instance of a ErrorFactory.

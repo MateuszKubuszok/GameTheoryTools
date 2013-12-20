@@ -71,7 +71,6 @@ for header in [
     'boost/program_options.hpp',
     'boost/range/adaptor/map.hpp',
     'boost/range/adaptor/reversed.hpp',
-    'boost/thread/mutex.hpp',
     # Flex library
     'FlexLexer.h',
     # GNU Multiple Precision library

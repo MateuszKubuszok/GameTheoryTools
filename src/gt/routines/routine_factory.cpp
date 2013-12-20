@@ -7,7 +7,10 @@ namespace Routines {
 
 // class RoutineFactory {
 
-SINGLETON_DEFINITION(RoutineFactory, getInstance, routineFactoryMutex)
+RoutineFactory& RoutineFactory::getInstance() {
+    static RoutineFactory instance;
+    return instance;
+}
 
 // public:
 
@@ -33,14 +36,44 @@ RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
 }
 
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
-    const GamePtr
+    const GamePtr // game
 ) const {
+    // Model::DataAccessorPtr data    = game->getData();
+    // Model::PlayersPtr      players = game->getPlayers();
+
+    // boost::shared_ptr<Model::StrategicDataAccessor> strategicData(
+    //     boost::dynamic_pointer_cast<Model::StrategicDataAccessor>(data)
+    // );
+    // if (strategicData)
+    //     return RoutinePtr( new StrategicMixedEquilibriumRoutine(players) );
+
+    // boost::shared_ptr<Model::ExtensiveDataAccessor> extensiveData(
+    //     boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(data)
+    // );
+    // if (extensiveData)
+    //     return RoutinePtr( new ExtensiveMixedEquilibriumRoutine(players) );
+
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 
 RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
-    const GamePtr
+    const GamePtr game
 ) const {
+    Model::DataAccessorPtr data    = game->getData();
+    Model::PlayersPtr      players = game->getPlayers();
+
+    boost::shared_ptr<Model::StrategicDataAccessor> strategicData(
+        boost::dynamic_pointer_cast<Model::StrategicDataAccessor>(data)
+    );
+    if (strategicData)
+        return RoutinePtr( new PropertyUndefinedRoutine() );
+
+    // boost::shared_ptr<Model::ExtensiveDataAccessor> extensiveData(
+    //     boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(data)
+    // );
+    // if (extensiveData)
+    //     return RoutinePtr( new ExtensiveBehaviourEquilibriumRoutine(players) );
+
     return RoutinePtr(new NotYetImplementedRoutine());
 }
 

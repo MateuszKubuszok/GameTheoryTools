@@ -7,7 +7,10 @@ namespace Routines {
 
 // class NullFactory {
 
-SINGLETON_DEFINITION(NullFactory, getInstance, nullFactoryMutex)
+NullFactory& NullFactory::getInstance() {
+    static NullFactory instance;
+    return instance;
+}
 
 // public:
 

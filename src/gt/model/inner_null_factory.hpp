@@ -14,8 +14,6 @@ namespace Model {
  * @see NullFactory
  */
 class InnerNullFactory {
-    SINGLETON_DECLARATION(InnerNullFactory)
-
 public:
     /**
      * @brief Returns the instance of a InnerNullFactory.

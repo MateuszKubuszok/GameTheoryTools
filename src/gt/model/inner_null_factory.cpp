@@ -7,7 +7,10 @@ namespace Model {
 
 // class InnerNullFactory {
 
-SINGLETON_DEFINITION(InnerNullFactory, getInstance, innerNullFactoryMutex)
+InnerNullFactory& InnerNullFactory::getInstance() {
+    static InnerNullFactory instance;
+    return instance;
+}
 
 // public:
 

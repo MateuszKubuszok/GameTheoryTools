@@ -12,8 +12,6 @@ namespace Routines {
  * @author Mateusz Kubuszok
  */
 class RoutineFactory {
-    SINGLETON_DECLARATION(RoutineFactory)
-
 public:
     /**
      * @brief Returns the instance of a RoutineFactory.

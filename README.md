@@ -84,8 +84,6 @@ TODO
 
 * Implement actual logic of finding equilibria,
 * test it,
-* Improve singletons - instances and mutexes variables can probaby be replaced with static ones,
-* same for strings inside toString() methods. It could help avoid continous reallocation of memory,
 * add Condition to set calculations accuracy.
 
 License

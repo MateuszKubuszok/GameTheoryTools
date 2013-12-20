@@ -7,7 +7,10 @@ namespace Routines {
 
 // class ConditionFactory {
 
-SINGLETON_DEFINITION(ConditionFactory, getInstance, conditionFactoryMutex)
+ConditionFactory& ConditionFactory::getInstance() {
+    static ConditionFactory instance;
+    return instance;
+}
 
 // public:
 

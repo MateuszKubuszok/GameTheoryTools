@@ -7,7 +7,10 @@ namespace GTL {
 
 // class ErrorFactory {
 
-SINGLETON_DEFINITION(ErrorFactory, getInstance, errorFactoryMutex)
+ErrorFactory& ErrorFactory::getInstance() {
+    static ErrorFactory instance;
+    return instance;
+}
 
 // public:
 

@@ -12,8 +12,6 @@ namespace Model {
  * @author Mateusz Kubuszok
  */
 class NullFactory {
-    SINGLETON_DECLARATION(NullFactory)
-
 public:
     /**
      * @brief Returns the instance of a NullFactory.

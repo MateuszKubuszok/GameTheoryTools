@@ -6,11 +6,7 @@
 /* Include standard libraries */
 #include <stdexcept>
 #include <string>
-#include <memory>
 #include <utility>
-
-/* Includes GT helpers */
-#include "gt/utils/singletons.hpp"
 
 /* Includes boost libraries */
 #include <boost/shared_ptr.hpp>

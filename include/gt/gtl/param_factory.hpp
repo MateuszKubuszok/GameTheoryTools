@@ -12,8 +12,6 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ParamFactory {
-    SINGLETON_DECLARATION(ParamFactory)
-
 public:
     /**
      * @brief Returns the instance of a ParamFactory.

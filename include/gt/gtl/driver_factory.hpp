@@ -12,8 +12,6 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class DriverFactory {
-    SINGLETON_DECLARATION(DriverFactory)
-
 public:
     /**
      * @brief Returns the instance of a DriverFactory.

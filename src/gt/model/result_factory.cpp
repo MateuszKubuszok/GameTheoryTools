@@ -7,7 +7,10 @@ namespace Model {
 
 // class ResultFactory {
 
-SINGLETON_DEFINITION(ResultFactory, getInstance, resultFactoryMutex)
+ResultFactory& ResultFactory::getInstance() {
+    static ResultFactory instance;
+    return instance;
+}
 
 // public:
 

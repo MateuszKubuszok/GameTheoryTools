@@ -12,8 +12,6 @@ namespace GTL {
  * @author Mateusz Kubuszok
  */
 class ExceptionFactory {
-    SINGLETON_DECLARATION(ExceptionFactory)
-
 public:
     /**
      * @brief Returns the instance of a ExceptionFactory.

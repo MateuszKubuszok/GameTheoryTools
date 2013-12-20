@@ -7,7 +7,10 @@ namespace GTL {
 
 // class ParamFactory {
 
-SINGLETON_DEFINITION(ParamFactory, getInstance, paramFactoryMutex)
+ParamFactory& ParamFactory::getInstance() {
+    static ParamFactory instance;
+    return instance;
+}
 
 // public:
 
