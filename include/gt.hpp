@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_HPP__
-#define __GT_ROUTINES_HPP__
+#ifndef __GT_HPP__
+#define __GT_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines.hpp
- * @brief     Includes classes for GT::Rotines module.
+ * @file      gt.hpp
+ * @brief     Includes common classes for all GT modules.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -24,8 +24,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Mock header for libraries  */
-#include "gt/routines/common.hpp"
+#include "gt/common.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_ROUTINES_HPP__ */
+#endif /* END #ifndef __GT_HPP__ */

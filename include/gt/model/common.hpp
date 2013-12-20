@@ -3,59 +3,51 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* Include standard libraries */
-#include <stdexcept>
-#include <string>
-#include <utility>
-
-/* Includes boost libraries */
-#include <boost/shared_ptr.hpp>
-#include <boost/container/map.hpp>
-#include <boost/container/set.hpp>
-#include <boost/container/vector.hpp>
-
-/* GNU MultiPrecision library */
-#include <gmpxx.h>
-
-namespace GT {
+/**
+ * @file      gt/model/common.hpp
+ * @brief     Declares classes for GT::Model module.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* Rename of some primary types */
+/* Include standard libraries */
+#include <stdexcept>
 
-typedef unsigned int Index;
+/* Includes GT headers  */
+#include "gt/common.hpp"
 
-/* Shortens commonly used names */
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef std::istream                                  InputStream;
-typedef std::ostream                                  OutputStream;
-typedef std::string                                   Message;
-typedef boost::shared_ptr<Message>                    MessagePtr;
-typedef boost::container::vector<MessagePtr>          Messages;
-typedef boost::shared_ptr<Messages>                   MessagesPtr;
-typedef std::string                                   Identifier;
-typedef boost::shared_ptr<Identifier>                 IdentifierPtr;
-typedef boost::container::vector<IdentifierPtr>       Identifiers;
-typedef boost::shared_ptr<Identifiers>                IdentifiersPtr;
-typedef mpf_class                                     Number;
-typedef boost::shared_ptr<Number>                     NumberPtr;
-typedef boost::container::vector<NumberPtr>           Numbers;
-typedef boost::shared_ptr<Numbers>                    NumbersPtr;
-typedef boost::container::map<Identifier, Identifier> Positions;
-typedef boost::shared_ptr<Positions>                  PositionsPtr;
-
-/* Declares functions for equality check */
-
-bool operator==(Messages&    messages1,   Messages&    messages2);
-bool operator!=(Messages&    messages1,   Messages&    messages2);
-bool operator==(Identifiers& identifier1, Identifiers& identifier2);
-bool operator!=(Identifiers& identifier1, Identifiers& identifier2);
-bool operator==(Numbers&     numbers1,    Numbers&     numbers2);
-bool operator!=(Numbers&     numbers1,    Numbers&     numbers2);
-bool operator==(Positions&   positions1,  Positions&   positions2);
-bool operator!=(Positions&   positions1,  Positions&   positions2);
-
+namespace GT {
 namespace Model {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @namespace GT::Model
+ * @brief     Contains classes related to storing GT data.
+ *
+ * It consists of Players, Games, Datas, DataAccessors and builders that help with creating models.
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::container::map;
+using boost::container::vector;
+using boost::shared_ptr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,29 +76,40 @@ class ResultBuilder; class NullResultBuilder;
 
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<Player>                    PlayerPtr;
-typedef boost::container::map<Identifier, PlayerPtr> Players;
-typedef boost::shared_ptr<Players>                   PlayersPtr;
-typedef boost::shared_ptr<Data>                      DataPtr;
-typedef boost::shared_ptr<DataAccessor>              DataAccessorPtr;
-typedef boost::shared_ptr<DataPiece>                 DataPiecePtr;
-typedef boost::shared_ptr<DataBuilder>               DataBuilderPtr;
-typedef boost::shared_ptr<Game>                      GamePtr;
-typedef boost::shared_ptr<GameBuilder>               GameBuilderPtr;
-typedef boost::shared_ptr<Result>                    ResultPtr;
-typedef boost::shared_ptr<ResultBuilder>             ResultBuilderPtr;
+typedef shared_ptr<Player>         PlayerPtr;        /**< @brief Smart pointer to Player. */
+typedef map<Identifier, PlayerPtr> Players;          /**< @brief Map of Identifier-PlayerPtr pairs. */
+typedef shared_ptr<Players>        PlayersPtr;       /**< @brief Smart pointer to Players. */
+typedef shared_ptr<Data>           DataPtr;          /**< @brief Smart pointer to Data. */
+typedef shared_ptr<DataAccessor>   DataAccessorPtr;  /**< @brief Smart pointer to DataAccessor. */
+typedef shared_ptr<DataPiece>      DataPiecePtr;     /**< @brief Smart pointer to DataPiece. */
+typedef shared_ptr<DataBuilder>    DataBuilderPtr;   /**< @brief Smart pointer to DataBuilder. */
+typedef shared_ptr<Game>           GamePtr;          /**< @brief Smart pointer to Game. */
+typedef shared_ptr<GameBuilder>    GameBuilderPtr;   /**< @brief Smart pointer to GameBuilder. */
+typedef shared_ptr<Result>         ResultPtr;        /**< @brief Smart pointer to Result. */
+typedef shared_ptr<ResultBuilder>  ResultBuilderPtr; /**< @brief Smart pointer to ResultBuilder. */
 
 /* Declares functions for equality check */
 
+/**
+ * @brief Check if Players are equal.
+ *
+ * @param players1 first Players vector
+ * @param players2 second Players vector
+ * @return         true if vectors have equal content
+ */
 bool operator==(Players& players1, Players& players2);
+/**
+ * @brief Check if Players are different.
+ *
+ * @param players1 first Players vector
+ * @param players2 second Players vector
+ * @return         true if vectors have different content
+ */
 bool operator!=(Players& players1, Players& players2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Model */
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 } /* END namespace GT */
 
 /* Includes GT model headers */

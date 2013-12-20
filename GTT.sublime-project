@@ -5,7 +5,7 @@
             "path":                    ".",
             "name":                    "Configuration",
             "file_exclude_patterns":   [ ".sconsign.dblite" ],
-            "folder_exclude_patterns": [ "bin", "examples", "f_n_b", "include", "objects", "src", "test", ".sconf_temp" ]
+            "folder_exclude_patterns": [ "bin", "docs", "doxygen", "examples", "f_n_b", "include", "objects", "src", "test", ".sconf_temp" ]
         },
         {
             "path": "include",
@@ -24,12 +24,8 @@
             "name": "Flex and Bison"
         },
         {
-            "path": "bin",
-            "name": "Binary Executables"
-        },
-        {
-            "path": "objects",
-            "name": "Binary Objects"
+            "path": "doxygen",
+            "name": "Doxygen documentation"
         },
         {
             "path": "examples",
