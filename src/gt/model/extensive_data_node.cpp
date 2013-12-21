@@ -1,7 +1,31 @@
+/**
+ * @file      gt/model/extensive_data_node.cpp
+ * @brief     Defines GT::Model::ExtensiveDataNode methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
 namespace Model {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::adaptors::map_keys;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -18,8 +42,8 @@ ExtensiveDataNode::ExtensiveDataNode() :
     {}
 
 ExtensiveDataNode::~ExtensiveDataNode() {
+    // 1) ExtensiveDataNode implementation has parent set to nullptr - need to null check first
     if (parent && parent->isNull()) {
-        // 1) ExtensiveDataNode implementation has parent set to nullptr - need to null check first
         // 2) root's "Parent" is set to ExtensiveDataNode - it needs to be freed manually since no one owns it
         delete parent;
         parent = nullptr;
@@ -130,7 +154,7 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
 IdentifiersPtr ExtensiveDataNode::getChoices() const {
     IdentifiersPtr choices = createIdentifiersPtr();
 
-    for (Identifier choice : *nodes | boost::adaptors::map_keys)
+    for (Identifier choice : *nodes | map_keys)
         choices->push_back( createIdentifierPtr(choice) );
 
     return choices;

@@ -1,3 +1,23 @@
+/**
+ * @file      gt/model/json_result_builder.cpp
+ * @brief     Defines GT::Model::JSONResultBuilder methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,12 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class JSONResultBuilder : public AbstractResultBuilder {
+using std::endl;
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class JSONResultBuilder final : public AbstractResultBuilder {
 // public:
 
 JSONResultBuilder::JSONResultBuilder(
@@ -15,11 +40,11 @@ JSONResultBuilder::JSONResultBuilder(
     {}
 
 ResultPtr JSONResultBuilder::build() const {
-    std::stringstream result;
+    stringstream result;
 
-    result << '{' << std::endl;
+    result << '{' << endl;
     result << addIndent( buildRaw()->getResult() );
-    result << '}' << std::endl;
+    result << '}' << endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));
 }
@@ -28,13 +53,13 @@ ResultPtr JSONResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
     Index propertiesSize = propertiesNames->size();
-    std::stringstream result;
+    stringstream result;
 
     if (propertiesSize > 0) {
         bool firstPartial = true;
         for (const PartialResult& partialResult : partialResults) {
             if (!firstPartial)
-                result << ',' << std::endl;
+                result << ',' << endl;
 
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
@@ -43,9 +68,9 @@ ResultPtr JSONResultBuilder::buildRaw() const {
             bool firstProperty = true;
             for (Index property = 0; property < propertiesSize; property++) {
                 if (firstProperty)
-                    result << std::endl;
+                    result << endl;
                 else
-                    result << ',' << std::endl;
+                    result << ',' << endl;
 
                 Identifier propertyName  = *(*propertiesNames)[property];
                 Message    propertyValue = *(*partialResult.second)[property];
@@ -57,7 +82,7 @@ ResultPtr JSONResultBuilder::buildRaw() const {
 
                 firstProperty = false;
             }
-            result << std::endl << ']';
+            result << endl << ']';
 
             firstPartial = false;
         }
@@ -70,9 +95,9 @@ ResultPtr JSONResultBuilder::buildRaw() const {
         bool firstSubResult = true;
         for (const SubResult& subResult : subResults) {
             if (firstSubResult)
-                result << std::endl;
+                result << endl;
             else
-                result << ',' << std::endl;
+                result << ',' << endl;
 
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
@@ -81,7 +106,7 @@ ResultPtr JSONResultBuilder::buildRaw() const {
 
             firstSubResult = false;
         }
-        result << std::endl;
+        result << endl;
     }
 
     return ResultFactory::getInstance().constResult(Message(result.str()));

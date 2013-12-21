@@ -1,6 +1,30 @@
+/**
+ * @file      gt/model/common.cpp
+ * @brief     Defines GT::Model common functions.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::adaptors::map_keys;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +98,7 @@ bool operator==(
         return true;
     if (positions1.size() != positions2.size())
         return false;
-    for (Identifier identifier : positions1 | boost::adaptors::map_keys)
+    for (Identifier identifier : positions1 | map_keys)
         if (!positions2.count(identifier) || positions1[identifier] != positions2[identifier])
             return false;
     return true;
@@ -100,7 +124,7 @@ bool operator==(
         return true;
     if (players1.size() != players2.size())
         return false;
-    for (Identifier playerName : players1 | boost::adaptors::map_keys)
+    for (Identifier playerName : players1 | map_keys)
         if (!players2.count(playerName) || *players1[playerName] != *players2[playerName])
             return false;
     return true;

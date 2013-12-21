@@ -1,17 +1,45 @@
 #ifndef __GT_MODEL_STRATEGIC_DATA_HPP__
 #define __GT_MODEL_STRATEGIC_DATA_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/strategic_data.hpp
+ * @brief     Defines GT::Model::StrategicData class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::vector;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
- * @brief Contins data specific for Game in a strategic form.
+ * @class StrategicData
+ * @brief Contains data specific for Game in a strategic form.
  *
- * <p>Games in this form should have all coordinates filled with payoffs. Since all Players and their
+ * Games in this form should have all coordinates filled with payoffs. Since all Players and their
  * strategies are known beforehand, positions can also be hashed to Indexes with
- * StrategicGamePositionsHelper.</p>
+ * StrategicGamePositionsHelper.
  *
  * @author Mateusz Kubuszok
  *
@@ -32,11 +60,11 @@ class StrategicData : public Data {
     /**
      * @brief Contains Payoff - indexes can be calculated with PostionsHelper.
      */
-    boost::container::vector<NumbersPtr> payoffStorage;
+    vector<NumbersPtr> payoffStorage;
     /**
      * @brief Contains information whether or not some storage poition is already used.
      */
-    boost::container::vector<bool>       payoffStorageAllocation;
+    vector<bool>       payoffStorageAllocation;
 
 public:
     /**
@@ -171,11 +199,12 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullStrategicData
  * @brief Null StrategicData for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
-class NullStrategicData : public StrategicData {
+class NullStrategicData final : public StrategicData {
 public:
     NullStrategicData() :
         StrategicData(NullFactory::getInstance().createPlayers())

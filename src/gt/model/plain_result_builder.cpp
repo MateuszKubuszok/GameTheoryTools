@@ -1,3 +1,23 @@
+/**
+ * @file      gt/model/plain_result_builder.cpp
+ * @brief     Defines GT::Model::PlainResultBuilder methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,12 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlainResultBuilder : public AbstractResultBuilder {
+using std::endl;
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class PlainResultBuilder final : public AbstractResultBuilder {
 // public:
 
 PlainResultBuilder::PlainResultBuilder(
@@ -21,7 +46,7 @@ ResultPtr PlainResultBuilder::build() const {
 ResultPtr PlainResultBuilder::buildRaw() const {
     checkPropertyToResultMatching();
 
-    std::stringstream result;
+    stringstream result;
 
     if (!propertiesNames->empty()) {
         bool firstProperty = true;
@@ -34,13 +59,13 @@ ResultPtr PlainResultBuilder::buildRaw() const {
 
             firstProperty = false;
         }
-        result << std::endl;
+        result << endl;
 
         for (const PartialResult& partialResult : partialResults) {
             Identifier recordName = *partialResult.first;
             Messages   properties = *partialResult.second;
 
-            result << recordName << ':' << std::endl;
+            result << recordName << ':' << endl;
             firstProperty = true;
             for (MessagePtr& propertyValue : properties) {
                 if (firstProperty)
@@ -51,7 +76,7 @@ ResultPtr PlainResultBuilder::buildRaw() const {
 
                 firstProperty = false;
             }
-            result << std::endl;
+            result << endl;
         }
     }
 
@@ -60,7 +85,7 @@ ResultPtr PlainResultBuilder::buildRaw() const {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 
-            result << resultName << ':' << std::endl << addIndent(resultValue);
+            result << resultName << ':' << endl << addIndent(resultValue);
         }
     }
 

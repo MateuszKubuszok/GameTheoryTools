@@ -1,19 +1,42 @@
 #ifndef __GT_MODEL_JSON_RESULT_BUILDER_HPP__
 #define __GT_MODEL_JSON_RESULT_BUILDER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/json_result_builder.hpp
+ * @brief     Defines GT::Model::JSONResultBuilder class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class JSONResultBuilder
  * @brief Builder used for creating Results displayed to user in JSON format.
  *
- * <p>Implements ResultBuilder interface via AbstractResultBuilder class.</p>
+ * Implements ResultBuilder interface via AbstractResultBuilder class.
  *
- * <p>Used when ResultFactory's BuilderMode is set to JSON.</p>
+ * Used when ResultFactory's BuilderMode is set to BuilderMode#JSON.
 
- * <p>Indentation depends on ResultFactory's IndentationMode.</p>
+ * Indentation depends on ResultFactory's IndentationMode.
  *
  * @author Mateusz Kubuszok
  *

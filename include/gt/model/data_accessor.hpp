@@ -1,17 +1,40 @@
 #ifndef __GT_MODEL_DATA_ACCESSOR_HPP__
 #define __GT_MODEL_DATA_ACCESSOR_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/data_accessor.hpp
+ * @brief     Defines GT::Model::DataAccessor interface.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class DataAccessor
  * @brief Custom interface for all Data accessing instances for Games.
  *
- * <p>Is extended by Data interface.</p>
+ * Is extended by Data interface.
  *
- * <p>Used to restrict access to Data to ensure that ontent can only be read.</p>
+ * Used to restrict access to Data to ensure that ontent can only be read.
  *
  * @author Mateusz Kubuszok
  *
@@ -51,7 +74,7 @@ public:
     /**
      * @brief Returns Data's message.
      *
-     * @return message
+     * @return Message
      */
     virtual Message toString() const override = 0;
 
@@ -81,6 +104,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullDataAccessor
  * @brief Null DataAccessor for handling invalid situations.
  *
  * @author Mateusz Kubuszok

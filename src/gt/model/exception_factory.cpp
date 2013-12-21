@@ -1,3 +1,23 @@
+/**
+ * @file      gt/model/exception_factory.cpp
+ * @brief     Defines GT::Model::ExceptionFactory methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,11 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExceptionFactory {
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class ExceptionFactory final {
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     static ExceptionFactory instance;
@@ -17,7 +41,7 @@ ExceptionFactory& ExceptionFactory::getInstance() {
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     const Positions& positions
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Coordinates:";
     for (const Positions::value_type& position : positions) {
@@ -37,7 +61,7 @@ IllegalInnerState ExceptionFactory::incompleteCoordinates() const {
 InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
     const Positions& positions
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Coordinates:";
     for (const Positions::value_type& position : positions) {
@@ -53,7 +77,7 @@ InvalidCoordinate ExceptionFactory::invalidCoordinateFormat(
 InvalidCoordinate ExceptionFactory::invalidExtensiveCoordinateFormat(
     const Positions& positions
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Coordinates:";
     for (Positions::value_type position : positions) {
@@ -71,7 +95,7 @@ InvalidCoordinate ExceptionFactory::noParamsForPositions(
     const Index positionInStorage,
     const Index maxPosition
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Calculated position ("
            << positionInStorage
@@ -85,7 +109,7 @@ InvalidCoordinate ExceptionFactory::noParamsForPositions(
 InvalidCoordinate ExceptionFactory::invalidPlayer(
     const Identifier& playerName
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "No Player '" << playerName << "' has been defined";
 
@@ -95,7 +119,7 @@ InvalidCoordinate ExceptionFactory::invalidPlayer(
 InvalidCoordinate ExceptionFactory::invalidStrategy(
     const Identifier& strategyName
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "No Strategy '" << strategyName << "' has been defined";
 
@@ -105,7 +129,7 @@ InvalidCoordinate ExceptionFactory::invalidStrategy(
 InvalidCoordinate ExceptionFactory::invalidInformationSet(
     const Identifier& infromationSetName
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "No Information Set '" << infromationSetName << "' has been defined";
 
@@ -120,7 +144,7 @@ IllegalInnerState ExceptionFactory::propertiesAndResultsDontMatchInSize(
     const Index propertiesSize,
     const Index resultsSize
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Properties size ("
            << propertiesSize

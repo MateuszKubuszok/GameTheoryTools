@@ -1,0 +1,13 @@
+/**
+ * @mainpage Game Theory Tools - public API
+ *
+ * @section intro_sec Introduction
+ *
+ * This documentation provides public API documentation. It is intended to use when program is build agains
+ * already compiled GTT library.
+ *
+ * @section how_to_sec How to use it
+ *
+ * It is recommended to use this documentation to see some details about specific class/method. General
+ * information about library usage will be provided in a separate tutorial.
+ */

@@ -1,16 +1,39 @@
 #ifndef __GT_MODEL_PLAYER_HPP__
 #define __GT_MODEL_PLAYER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/player.hpp
+ * @brief     Defines GT::Model::Player class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class Player
  * @brief Defines Player.
  *
- * <p>Each Player is defined by its name and used strategies. They will later be used during Game definition
- * and calculation of equilibria.</p>
+ * Each Player is defined by its name and used strategies. They will later be used during Game definition and
+ * calculation of equilibria.
  *
  * @author Mateusz Kubuszok
  *
@@ -19,9 +42,9 @@ namespace Model {
  */
 class Player : public virtual Root {
     /**
-     * @brief Type storing strategy to ordinal mapping.
+     * @brief Type storing strategy-to-ordinal mapping.
      */
-    typedef boost::container::map<Identifier, Index>  StrategyMap;
+    typedef boost::container::map<Identifier, Index> StrategyMap;
 
     /**
      * @brief Player's name.
@@ -42,7 +65,7 @@ public:
     /**
      * @brief Constructor of the Player.
      *
-     * @param playerName     name of the player
+     * @param playerName     name of the Player
      * @param playerStrategy declared strategies
      */
     Player(
@@ -72,9 +95,9 @@ public:
     virtual Index getStrategiesNumber() const;
 
      /**
-     * @brief Returns ordinal of a strategy with given identifier.
+     * @brief Returns ordinal of a strategy with given Identifier.
      *
-     * @return                   ordinal of strategy with given identifier
+     * @return                   ordinal of strategy with given Identifier
      * @throws InvalidCoordinate thrown if Player has no such strategy
      */
     virtual Index getStrategyOrdinal(
@@ -108,7 +131,7 @@ public:
     virtual Message toString() const override;
 
     /**
-     * @brief Syntax sugar for isEqual method.
+     * @brief Syntax sugar for #isEqual(const PlayerPtr&) method.
      *
      * @param player1 first Player to compare
      * @param player2 second Player to compare
@@ -120,7 +143,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !isEqual method.
+     * @brief Syntax sugar for !#isEqual(const PlayerPtr&) method.
      *
      * @param player1 first Player to compare
      * @param player2 second Player to compare
@@ -132,7 +155,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for toStream method.
+     * @brief Syntax sugar for #toString() method.
      *
      * @param stream stream to concatenate
      * @param player Player to concatenate
@@ -147,6 +170,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullPlayer
  * @brief Null Player for handling invalid situations.
  *
  * @author Mateusz Kubuszok

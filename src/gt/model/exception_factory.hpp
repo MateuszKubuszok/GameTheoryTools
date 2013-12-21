@@ -1,17 +1,40 @@
 #ifndef __GT_MODEL_EXCEPTION_FACTORY_HPP__
 #define __GT_MODEL_EXCEPTION_FACTORY_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/exception_factory.hpp
+ * @brief     Defines GT::Model::ExceptionFactory class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class ExceptionFactory
  * @brief Used for creation of exceptions with predefined message format.
  *
  * @author Mateusz Kubuszok
  */
-class ExceptionFactory {
+class ExceptionFactory final {
 public:
     /**
      * @brief Returns the instance of a ExceptionFactory.
@@ -21,7 +44,7 @@ public:
     static ExceptionFactory& getInstance();
 
     /**
-     * @brief Thrown when values for given positions are already set.
+     * @brief Thrown when values for given Positions are already set.
      *
      * @param position invalid Positions
      * @return         InvalidCoordinate exception to throw
@@ -90,7 +113,7 @@ public:
     ) const;
 
     /**
-     * @brief @brief Thrown when no information ser with given name has been defined.
+     * @brief @brief Thrown when no information set with given name has been defined.
      *
      * @param informationSetName invalid strategy's name
      * @return                   InvalidCoordinate exception to throw

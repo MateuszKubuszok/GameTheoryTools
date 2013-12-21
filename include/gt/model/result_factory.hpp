@@ -1,12 +1,35 @@
 #ifndef __GT_MODEL_RESULT_FACTORY_HPP__
 #define __GT_MODEL_RESULT_FACTORY_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/result_factory.hpp
+ * @brief     Defines GT::Model::ResultFactory class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @enum  ResultBuilderMode
  * @brief Used for configuring what kind of builders should be returned by ResultFactory.
  *
  * @author Mateusz Kubuszok
@@ -14,6 +37,7 @@ namespace Model {
 enum class ResultBuilderMode { PLAIN, JSON, XML };
 
 /**
+ * @enum  ResultIndentationMode
  * @brief Used for configuring whether builders returned by ResultFacotry should use indentation and how.
  *
  * @author Mateusz Kubuszok
@@ -23,16 +47,17 @@ enum class ResultIndentationMode { TABS, SPACES, NONE };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class ResultFactory
  * @brief Creates some simple Results as well as supplies builders for more complex of them.
  *
- * <p>The type of ResultBuilder returned by factory is determined by builderMode settings.</p>
+ * The type of ResultBuilder returned by factory is determined by builderMode settings.
  *
  * @author Mateusz Kubuszok
  *
  * @see Result
  * @see ResultBuilder
  */
-class ResultFactory {
+class ResultFactory final {
     /**
      * @brief Contains current Builder Mode setting.
      */

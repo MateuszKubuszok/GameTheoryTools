@@ -1,19 +1,42 @@
 #ifndef __GT_MODEL_GAME_BUILDER_HPP__
 #define __GT_MODEL_GAME_BUILDER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/game_builder.hpp
+ * @brief     Defines GT::Model::GameBuilder interface.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class GameBuilder
  * @brief Helper used to create Games.
  *
- * <p>Has the same interface as DataBuilder to make decoration possible.</p>
+ * Has the same interface as DataBuilder to make easy decoration possible.
  *
- * <p>Intended to be used recursively with clone method:</p>
+ * Intended to be used recursively with clone method:
  *
- * <p><pre>
+ * @code
  * DataBuilderPtr builder1 = gameBuilder->clone();
  *     builder1->addNextPositions(position11);
  *     builder->clone()->addNextPositions(positions21).setParams(param11_21); // payoff(p1=s1, p2=s1)
@@ -22,7 +45,7 @@ namespace Model {
  *     builder2->addNextPositions(position12);
  *     builder->clone()->addNextPositions(positions21).setParams(param12_21); // payoff(p1=s2, p2=s1)
  *     builder->clone()->addNextPositions(positions22).setParams(param12_22); // payoff(p1=s2, p2=s2)
- * </pre></p>
+ * @endcode
  *
  * @author Mateusz Kubuszok
  *
@@ -63,6 +86,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NulGameBuilder
  * @brief Null GameBuilder for handling invalid situations.
  *
  * @author Mateusz Kubuszok

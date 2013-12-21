@@ -3,6 +3,26 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @file      gt/model/inner_common.hpp
+ * @brief     Declares inner classes for GT::Model module.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /* Include standard libraries */
 #include <sstream>
 #include <iomanip>
@@ -20,6 +40,12 @@
 
 namespace GT {
 namespace Model {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::bimaps::bimap;
+using boost::container::map;
+using boost::shared_ptr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,22 +83,22 @@ class ExtensiveGameBuilder;
 
 /* Shortens comonly used names */
 
-typedef boost::shared_ptr<StrategicDataAccessor>                StrategicDataAccessorPtr;
-typedef boost::shared_ptr<StrategicData>                        StrategicDataPtr;
-typedef boost::shared_ptr<StrategicDataBuilder>                 StrategicDataBuilderPtr;
+typedef shared_ptr<StrategicDataAccessor>     StrategicDataAccessorPtr;
+typedef shared_ptr<StrategicData>             StrategicDataPtr;
+typedef shared_ptr<StrategicDataBuilder>      StrategicDataBuilderPtr;
 
-typedef boost::bimaps::bimap<Identifier, Index>                 IdentifierMap;
-typedef boost::container::map<Identifier, IdentifierMap>        StrategyMap;
+typedef bimap<Identifier, Index>              IdentifierMap;
+typedef map<Identifier, IdentifierMap>        StrategyMap;
 
-typedef boost::shared_ptr<ExtensiveDataNode>                    ExtensiveDataNodePtr;
-typedef boost::container::map<Identifier, ExtensiveDataNodePtr> ExtensiveDataNodes;
-typedef boost::shared_ptr<ExtensiveDataNodes>                   ExtensiveDataNodesPtr;
-typedef boost::shared_ptr<ExtensiveDataAccessor>                ExtensiveDataAccessorPtr;
-typedef boost::shared_ptr<ExtensiveData>                        ExtensiveDataPtr;
-typedef boost::shared_ptr<ExtensiveDataBuilder>                 ExtensiveDataBuilderPtr;
+typedef shared_ptr<ExtensiveDataNode>         ExtensiveDataNodePtr;
+typedef map<Identifier, ExtensiveDataNodePtr> ExtensiveDataNodes;
+typedef shared_ptr<ExtensiveDataNodes>        ExtensiveDataNodesPtr;
+typedef shared_ptr<ExtensiveDataAccessor>     ExtensiveDataAccessorPtr;
+typedef shared_ptr<ExtensiveData>             ExtensiveDataPtr;
+typedef shared_ptr<ExtensiveDataBuilder>      ExtensiveDataBuilderPtr;
 
-typedef boost::container::map<Identifier, PlayerPtr>            PlayersInTurns;
-typedef boost::shared_ptr<PlayersInTurns>                       PlayersInTurnsPtr;
+typedef map<Identifier, PlayerPtr>            PlayersInTurns;
+typedef shared_ptr<PlayersInTurns>            PlayersInTurnsPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

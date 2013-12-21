@@ -1,3 +1,23 @@
+/**
+ * @file      gt/model/strategic_game_positions_helper.cpp
+ * @brief     Defines GT::Model::StrategicGamePositionsHelper methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,12 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class StrategicGamePositionsHelper : public Root {
+using boost::adaptors::map_keys;
+using boost::adaptors::reversed;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class StrategicGamePositionsHelper final : public Root {
 // public:
 
 StrategicGamePositionsHelper::StrategicGamePositionsHelper(
@@ -94,10 +119,7 @@ const PositionsPtr StrategicGamePositionsHelper::retrievePositions(
     Index        checkedPosition = positionInStorage;
 
     // this adds at most one Player with only 1 strategy!
-    for (Index playerValue : positionsHelper.right
-                           | boost::adaptors::map_keys
-                           | boost::adaptors::reversed
-    ) {
+    for (Index playerValue : positionsHelper.right | map_keys | reversed) {
         Identifier playerName = positionsHelper.right.at(playerValue);
         for (Index strategyValue = strategiesHelper.at(playerName).size()-1;
                    true;
@@ -153,7 +175,7 @@ bool StrategicGamePositionsHelper::checkPlayer(
 bool StrategicGamePositionsHelper::checkPositions(
     const Positions& positions
 ) const {
-    for (Identifier playerName : positions | boost::adaptors::map_keys) {
+    for (Identifier playerName : positions | map_keys) {
         if (!checkPlayer(playerName))
             return false;
         Identifier strategyName = positions.at(playerName);

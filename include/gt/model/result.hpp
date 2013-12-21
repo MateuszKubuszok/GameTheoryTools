@@ -1,17 +1,41 @@
 #ifndef __GT_MODEL_RESULT_HPP__
 #define __GT_MODEL_RESULT_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/result.hpp
+ * @brief     Defines GT::Model::Result interface.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Root of all Results created by GTL parser.
+ * @class Result
+ * @brief Root of all Results created by GTL Parser.
  *
- * <p>Since all classes of GT (except factories, Numbers, Identifiers and Messages) extend this one,
- * they are guaranteed to have toSting() and isEqual(Root&) methods as well as <pre>==</pre>, <pre>!=</pre>
- * and <pre><<</pre> operators overloaded.</p>
+ * Since all classes of GT (except factories, Numbers, Identifiers and Messages) extend this one,
+ * they are guaranteed to have toSting() and isEqual(Root&) methods as well as
+ * #==(const ResultPtr&, const ResultPtr&), #!=(const ResultPtr&, const ResultPtr&)
+ * and #<<(OutputStream&, const ResultPtr&) operators overloaded.
  *
  * @author Mateusz Kubuszok
  *
@@ -26,9 +50,9 @@ public:
     virtual ~Result();
 
     /**
-     * @brief Returns Result in a form available to send on output stream.
+     * @brief Returns Result in a form available to send on OutputStream.
      *
-     * @return string with result
+     * @return Message with Result
      */
     virtual Message getResult() const = 0;
 
@@ -50,7 +74,7 @@ public:
     virtual Message toString() const override;
 
     /**
-     * @brief Syntax sugar for isEqual method.
+     * @brief Syntax sugar for #isEqual(const ResultPtr&) method.
      *
      * @param result1 first Result to compare
      * @param result2 second Result to compare
@@ -62,7 +86,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !isEqual method.
+     * @brief Syntax sugar for !#isEqual(const ResultPtr&) method.
      *
      * @param result1 first Result to compare
      * @param result2 second Result to compare
@@ -74,7 +98,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for toStream method.
+     * @brief Syntax sugar for #toString() method.
      *
      * @param stream stream to concatenate
      * @param result Result to concatenate
@@ -89,6 +113,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullResult
  * @brief Null Result for handling invalid situations.
  *
  * @author Mateusz Kubuszok

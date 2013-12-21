@@ -1,15 +1,38 @@
 #ifndef __GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP__
 #define __GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/abstract_result_builder.hpp
+ * @brief     Defines GT::Model::AbstractResultBuilder abstract class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class AbstractResultBuilder
  * @brief Common base class of all actual implemetations used in Model.
  *
- * <p>Implements ResultBuilder interface.</p>
+ * Implements ResultBuilder interface.
  *
  * @author Mateusz Kubuszok
  *
@@ -29,12 +52,12 @@ public:
     /**
      * @brief Sets headers used for displaying records.
      *
-     * <p>Size of headers must match size of each record.</p>
+     * Size of headers must match size of each record.
      *
      * @param   propertiesNames headers' names that will be used in a Result
      * @return                  refernce to self for chaining
      *
-     * @see #addRecord(IdentifierPtr&,MessagesPtr&)
+     * @see #addRecord(const IdentifierPtr&, const MessagesPtr&)
      */
     virtual ResultBuilder& setHeaders(
         const IdentifiersPtr& propertiesNames
@@ -43,13 +66,13 @@ public:
     /**
      * @brief Adds record to displayed Result.
      *
-     * <p>Results size must match headers size.</p>
+     * Results size must match headers size.
      *
      * @param name             name of added record
      * @param propertiesValues properties that should be displayed
      * @return                 refernce to self for chaining
      *
-     * @see #setHeaders(IdentifiersPtr&)
+     * @see #setHeaders(const IdentifiersPtr&)
      */
     virtual ResultBuilder& addRecord(
         const IdentifierPtr& name,

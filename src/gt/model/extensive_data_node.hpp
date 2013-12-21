@@ -1,13 +1,36 @@
 #ifndef __GT_MODEL_EXTENSIVE_DATA_NODE_HPP__
 #define __GT_MODEL_EXTENSIVE_DATA_NODE_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/model/extensive_data_node.hpp
+ * @brief     Defines GT::Model::ExtensiveDataNode class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Creates Tree containing whole ExtensiveData content.
+ * @class ExtensiveDataNode
+ * @brief Creates tree containing whole ExtensiveData content.
  *
  * @author Mateusz Kubuszok
  *
@@ -225,11 +248,12 @@ private:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullExtensiveDataNode
  * @brief Null ExtensiveDriver for acting as a root's parent.
  *
  * @author Mateusz Kubuszok
  */
-class NullExtensiveDataNode : public ExtensiveDataNode {
+class NullExtensiveDataNode final : public ExtensiveDataNode {
 public:
     NullExtensiveDataNode() :
         ExtensiveDataNode(

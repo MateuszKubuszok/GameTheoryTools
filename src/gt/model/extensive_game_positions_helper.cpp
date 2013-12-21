@@ -1,7 +1,33 @@
+/**
+ * @file      gt/model/extensive_game_positions_helper.cpp
+ * @brief     Defines GT::Model::ExtensiveGamePositionsHelper methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/model/inner_common.hpp"
 
 namespace GT {
 namespace Model {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::adaptors::map_keys;
+using boost::adaptors::map_values;
+using boost::container::vector;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -14,8 +40,8 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
     root(extensiveGameRoot),
     playersInformationSets()
 {
-    boost::container::vector<ExtensiveDataNode*> currentlyChecked;
-    boost::container::vector<ExtensiveDataNode*> nextToBeChecked;
+    vector<ExtensiveDataNode*> currentlyChecked;
+    vector<ExtensiveDataNode*> nextToBeChecked;
 
     currentlyChecked.push_back( root.get() );
 
@@ -40,7 +66,7 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
 
                 const ExtensiveDataNodes& children = currentNode->getChildren();
                 nextToBeChecked.reserve( nextToBeChecked.size() + children.size() );
-                for (const ExtensiveDataNodePtr& nextNode : children | boost::adaptors::map_values)
+                for (const ExtensiveDataNodePtr& nextNode : children | map_values)
                     nextToBeChecked.push_back( nextNode.get() );
             }
         }
@@ -54,7 +80,7 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
 IdentifiersPtr ExtensiveGamePositionsHelper::getPossiblePlayers() const {
     IdentifiersPtr players = createIdentifiersPtr();
 
-    for (Identifier playerName : playersInformationSets | boost::adaptors::map_keys)
+    for (Identifier playerName : playersInformationSets | map_values)
         players->push_back( createIdentifierPtr(playerName) );
 
     return players;
@@ -63,7 +89,7 @@ IdentifiersPtr ExtensiveGamePositionsHelper::getPossiblePlayers() const {
 bool ExtensiveGamePositionsHelper::isPlayerPossible(
     const Identifier& playerName
 ) const {
-    for (Identifier checkedPlayerName : playersInformationSets | boost::adaptors::map_keys)
+    for (Identifier checkedPlayerName : playersInformationSets | map_values)
         if (playerName == checkedPlayerName)
             return true;
     return false;
@@ -77,7 +103,7 @@ IdentifiersPtr ExtensiveGamePositionsHelper::getPossibleInformationSetsForPlayer
 
     IdentifiersPtr informationSets = createIdentifiersPtr();
 
-    for (Identifier setName : playersInformationSets.at(player).left | boost::adaptors::map_keys)
+    for (Identifier setName : playersInformationSets.at(player).left | map_values)
         informationSets->push_back( createIdentifierPtr(setName) );
 
     return informationSets;

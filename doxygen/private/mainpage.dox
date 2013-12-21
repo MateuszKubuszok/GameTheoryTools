@@ -1,0 +1,15 @@
+/**
+ * @mainpage Game Theory Tools - full project documentation
+ *
+ * @section intro_sec Introduction
+ *
+ * This documentation provides full documentation for the project with description for each documented class,
+ * member and function. It is intended to help further developing GTT as well as to help understand actual
+ * processes happening under the hood.
+ *
+ * @section how_to_sec How to use it
+ *
+ * It is recommended to use this documentation as a help during and actual code inspection. Especially
+ * unit/functional tests might provide additional inslight into how different classes works and interacts with
+ * each other.
+ */
