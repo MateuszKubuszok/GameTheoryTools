@@ -1,3 +1,23 @@
+/**
+ * @file      gt/routines/routine_factory.cpp
+ * @brief     Defines GT::Routines::RoutineFactory methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/routines/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,17 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class RoutineFactory {
+using boost::dynamic_pointer_cast;
+using boost::shared_ptr;
+
+using Model::DataAccessorPtr;
+using Model::ExtensiveDataAccessor;
+using Model::PlayersPtr;
+using Model::StrategicDataAccessor;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class RoutineFactory final {
 
 RoutineFactory& RoutineFactory::getInstance() {
     static RoutineFactory instance;
@@ -17,17 +47,17 @@ RoutineFactory& RoutineFactory::getInstance() {
 RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
     const GamePtr game
 ) const {
-    Model::DataAccessorPtr data    = game->getData();
-    Model::PlayersPtr      players = game->getPlayers();
+    DataAccessorPtr data    = game->getData();
+    PlayersPtr      players = game->getPlayers();
 
-    boost::shared_ptr<Model::StrategicDataAccessor> strategicData(
-        boost::dynamic_pointer_cast<Model::StrategicDataAccessor>(data)
+    shared_ptr<StrategicDataAccessor> strategicData(
+        dynamic_pointer_cast<StrategicDataAccessor>(data)
     );
     if (strategicData)
         return RoutinePtr( new StrategicPureEquilibriumRoutine(players) );
 
-    boost::shared_ptr<Model::ExtensiveDataAccessor> extensiveData(
-        boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(data)
+    shared_ptr<ExtensiveDataAccessor> extensiveData(
+        dynamic_pointer_cast<ExtensiveDataAccessor>(data)
     );
     if (extensiveData)
         return RoutinePtr( new ExtensivePureEquilibriumRoutine(players) );
@@ -38,17 +68,17 @@ RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
     const GamePtr // game
 ) const {
-    // Model::DataAccessorPtr data    = game->getData();
-    // Model::PlayersPtr      players = game->getPlayers();
+    // DataAccessorPtr data    = game->getData();
+    // PlayersPtr      players = game->getPlayers();
 
-    // boost::shared_ptr<Model::StrategicDataAccessor> strategicData(
-    //     boost::dynamic_pointer_cast<Model::StrategicDataAccessor>(data)
+    // shared_ptr<StrategicDataAccessor> strategicData(
+    //     dynamic_pointer_cast<StrategicDataAccessor>(data)
     // );
     // if (strategicData)
     //     return RoutinePtr( new StrategicMixedEquilibriumRoutine(players) );
 
-    // boost::shared_ptr<Model::ExtensiveDataAccessor> extensiveData(
-    //     boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(data)
+    // shared_ptr<ExtensiveDataAccessor> extensiveData(
+    //     dynamic_pointer_cast<ExtensiveDataAccessor>(data)
     // );
     // if (extensiveData)
     //     return RoutinePtr( new ExtensiveMixedEquilibriumRoutine(players) );
@@ -59,17 +89,17 @@ RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
 RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
     const GamePtr game
 ) const {
-    Model::DataAccessorPtr data    = game->getData();
-    Model::PlayersPtr      players = game->getPlayers();
+    DataAccessorPtr data    = game->getData();
+    PlayersPtr      players = game->getPlayers();
 
-    boost::shared_ptr<Model::StrategicDataAccessor> strategicData(
-        boost::dynamic_pointer_cast<Model::StrategicDataAccessor>(data)
+    shared_ptr<StrategicDataAccessor> strategicData(
+        dynamic_pointer_cast<StrategicDataAccessor>(data)
     );
     if (strategicData)
         return RoutinePtr( new PropertyUndefinedRoutine() );
 
-    // boost::shared_ptr<Model::ExtensiveDataAccessor> extensiveData(
-    //     boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(data)
+    // shared_ptr<ExtensiveDataAccessor> extensiveData(
+    //     dynamic_pointer_cast<ExtensiveDataAccessor>(data)
     // );
     // if (extensiveData)
     //     return RoutinePtr( new ExtensiveBehaviourEquilibriumRoutine(players) );

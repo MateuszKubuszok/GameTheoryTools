@@ -1,3 +1,23 @@
+/**
+ * @file      gt/routines/exception_factory.cpp
+ * @brief     Defines GT::Routines::ExceptionFactory methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/routines/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,11 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExceptionFactory {
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class ExceptionFactory final {
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     static ExceptionFactory instance;
@@ -17,7 +41,7 @@ ExceptionFactory& ExceptionFactory::getInstance() {
 InvalidCondition ExceptionFactory::invalidCondition(
     const std::exception& exception
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Invalid Condition: " << exception.what();
 
@@ -27,7 +51,7 @@ InvalidCondition ExceptionFactory::invalidCondition(
 InvalidGameType ExceptionFactory::invalidGameType(
     const Identifier& expectedGame
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Invalid Game Type: " << expectedGame << " expected" ;
 
@@ -37,7 +61,7 @@ InvalidGameType ExceptionFactory::invalidGameType(
 InvalidPlayerChoice ExceptionFactory::playerNotFound(
     const Identifier& playerName
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "Player \"" << playerName << "\" do not exists";
 
@@ -48,7 +72,7 @@ InvalidPlayerChoice ExceptionFactory::strategyNotFound(
     const Identifier& playerName,
     const Identifier& strategy
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "There is no strategy \"" << strategy << "\" for player \"" <<  playerName << "\"";
 
@@ -59,7 +83,7 @@ IncompletePayoffInformation ExceptionFactory::incompletePayoffInformation(
     const Identifier& playerName,
     const Identifier& strategy
 ) const {
-    std::stringstream result;
+    stringstream result;
 
     result << "There is no Payoff information about \"" << strategy << "\" for player \"" <<  playerName << "\"";
 

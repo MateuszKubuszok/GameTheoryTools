@@ -1,12 +1,43 @@
 #ifndef __GT_ROUTINES_EXTENSIVE_PURE_EQUILIBRIUM_ROUTINE_HPP__
 #define __GT_ROUTINES_EXTENSIVE_PURE_EQUILIBRIUM_ROUTINE_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/routines/extensive_pure_equilibrium_routine.hpp
+ * @brief     Defines GT::Routines::ExtensivePureEquilibriumRoutine class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::map;
+
+using Model::ExtensiveDataNode;
+using Model::ExtensiveGamePositionsHelper
+using Model::StrategicGamePositionsHelper;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class ExtensivePureEquilibriumRoutine
  * @brief Routune returning pure strategy equilibrium for Extensive Game.
  *
  * @author Mateusz Kubuszok
@@ -47,7 +78,7 @@ private:
     /**
      * @brief Continas bottom-top best payoff partial results.
      */
-    typedef boost::container::map<Identifier, const NumbersPtr> CalculatedPayoffs;
+    typedef map<Identifier, const NumbersPtr> CalculatedPayoffs;
 
     /**
      * @brief Returns best payoff for Player in checkedNode and adds that choice to optimalChoices.
@@ -59,10 +90,10 @@ private:
      * @return                         value of optimal Payoff for current Player in checkedNode
      */
     NumbersPtr getBestPayoffWhen(
-        const Model::StrategicGamePositionsHelper& strategicPositionsHelper,
-        const Model::ExtensiveGamePositionsHelper& extensivePositionsHelper,
-        const Model::ExtensiveDataNode&            checkedNode,
-        ExtensivePureStrategyPath&                 optimalChoices
+        const StrategicGamePositionsHelper& strategicPositionsHelper,
+        const ExtensiveGamePositionsHelper& extensivePositionsHelper,
+        const ExtensiveDataNode&            checkedNode,
+        ExtensivePureStrategyPath&          optimalChoices
     ) const;
 }; /* END class ExtensivePureEquilibriumRoutine */
 

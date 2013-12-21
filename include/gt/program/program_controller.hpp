@@ -1,12 +1,42 @@
 #ifndef __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
 #define __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/program/program_controller.hpp
+ * @brief     Defines GT::Program::ProgramControler class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Program {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::string;
+
+using Model::ResultBuilderMode;
+using Model::ResultIndentationMode;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class ProgramController
  * @brief Sets up Parser and runs it.
  *
  * @author Mateusz Kubuszok
@@ -57,12 +87,12 @@ class ProgramController final {
     /**
      * @brief Contains current Builder Mode setting.
      */
-    Model::ResultBuilderMode     resultBuilderMode;
+    ResultBuilderMode     resultBuilderMode;
 
      /**
      * @brief Contains current Indentation Mode setting.
      */
-    Model::ResultIndentationMode resultIndentationMode;
+    ResultIndentationMode resultIndentationMode;
 
 public:
     /**
@@ -116,7 +146,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setInputStream(
-        const std::string filename
+        const string filename
     );
 
     /**
@@ -147,7 +177,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setOutputStream(
-        const std::string filename
+        const string filename
     );
 
     /**
@@ -176,7 +206,7 @@ public:
      * @return         reference to itself for chaining
      */
     ProgramController& setErrorStream(
-        const std::string filename
+        const string filename
     );
 
     /**
@@ -198,7 +228,7 @@ public:
      * @return                  reference to itself for chaining
      */
     ProgramController& setResultBuilderMode(
-        const Model::ResultBuilderMode resultBuilderMode
+        const ResultBuilderMode resultBuilderMode
     );
 
     /**
@@ -208,7 +238,7 @@ public:
      * @return                      reference to itself for chaining
      */
     ProgramController& setResultIndentationMode(
-        const Model::ResultIndentationMode resultIndentationMode
+        const ResultIndentationMode resultIndentationMode
     );
 
     /**

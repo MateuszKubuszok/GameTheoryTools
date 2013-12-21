@@ -1,12 +1,39 @@
 #ifndef __GT_ROUTINES_SELECTABLE_STRATEGIES_ROUTINE_HPP__
 #define __GT_ROUTINES_SELECTABLE_STRATEGIES_ROUTINE_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/routines/selectable_strategies_routine.hpp
+ * @brief     Defines GT::Routines::SelectableStrategiesRoutine class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::map;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class SelectableStrategiesRoutine
  * @brief Interface used to setup available Players.
  *
  * @author Mateusz Kubuszok
@@ -17,7 +44,7 @@ class SelectableStrategiesRoutine : virtual public Routine {
     /**
      * @brief Map containing available strategies.
      */
-    typedef boost::container::map<Identifier, IdentifiersPtr> AvailableStrategies;
+    typedef map<Identifier, IdentifiersPtr> AvailableStrategies;
 
     /**
      * @brief Available Players.

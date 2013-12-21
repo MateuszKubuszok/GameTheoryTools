@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/routines.hpp
- * @brief     Includes classes for GT::Rotines module.
+ * @brief     Includes classes for GT::Routines module.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

@@ -86,7 +86,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class NulGameBuilder
+ * @class NullGameBuilder
  * @brief Null GameBuilder for handling invalid situations.
  *
  * @author Mateusz Kubuszok

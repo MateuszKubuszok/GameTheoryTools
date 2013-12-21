@@ -33,9 +33,9 @@ namespace Model {
  * @brief Root of all Results created by GTL Parser.
  *
  * Since all classes of GT (except factories, Numbers, Identifiers and Messages) extend this one,
- * they are guaranteed to have toSting() and isEqual(Root&) methods as well as
- * #==(const ResultPtr&, const ResultPtr&), #!=(const ResultPtr&, const ResultPtr&)
- * and #<<(OutputStream&, const ResultPtr&) operators overloaded.
+ * they are guaranteed to have Result#toSting() and Result#isEqual(const Root&) methods as well as
+ * Result#==(const ResultPtr&, const ResultPtr&), Result#!=(const ResultPtr&, const ResultPtr&)
+ * and Result#<<(OutputStream&, const ResultPtr&) operators overloaded.
  *
  * @author Mateusz Kubuszok
  *
@@ -74,7 +74,7 @@ public:
     virtual Message toString() const override;
 
     /**
-     * @brief Syntax sugar for #isEqual(const ResultPtr&) method.
+     * @brief Syntax sugar for Result#isEqual(const Root&) method.
      *
      * @param result1 first Result to compare
      * @param result2 second Result to compare
@@ -86,7 +86,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !#isEqual(const ResultPtr&) method.
+     * @brief Syntax sugar for !Result#isEqual(const Root&) method.
      *
      * @param result1 first Result to compare
      * @param result2 second Result to compare

@@ -1,22 +1,55 @@
+/**
+ * @file      gt/program/helpers.cpp
+ * @brief     Defines GT::Program helpers.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/program/inner_common.hpp"
 
 namespace std {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-GT::OutputStream& operator<<(
-    GT::OutputStream&                  outputStream,
-    const GT::Model::ResultBuilderMode resultBuilderMode
+using std::string;
+
+using boost::iequals;
+using boost::program_options::validation_error;
+
+using GT::InputStream;
+using GT::OutputStream;
+
+using GT::Model::ResultBuilderMode;
+using GT::Model::ResultIndentationMode;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OutputStream& operator<<(
+    OutputStream&           outputStream,
+    const ResultBuilderMode resultBuilderMode
 ) {
     switch(resultBuilderMode) {
         default:
-        case GT::Model::ResultBuilderMode::PLAIN:
+        case ResultBuilderMode::PLAIN:
             outputStream << "PLAIN";
             break;
-        case GT::Model::ResultBuilderMode::JSON:
+        case ResultBuilderMode::JSON:
             outputStream << "JSON";
             break;
-        case GT::Model::ResultBuilderMode::XML:
+        case ResultBuilderMode::XML:
             outputStream << "XML";
             break;
     }
@@ -24,26 +57,26 @@ GT::OutputStream& operator<<(
     return outputStream;
 }
 
-GT::InputStream& operator>>(
-    GT::InputStream&              inputStream,
-    GT::Model::ResultBuilderMode& resultBuilderMode
+InputStream& operator>>(
+    InputStream&       inputStream,
+    ResultBuilderMode& resultBuilderMode
 ) {
-    std::string plain = "PLAIN";
-    std::string json  = "JSON";
-    std::string xml   = "XML";
+    string plain = "PLAIN";
+    string json  = "JSON";
+    string xml   = "XML";
 
-    std::string token;
+    string token;
     inputStream >> token;
 
-    if (boost::iequals(token, plain))
-        resultBuilderMode = GT::Model::ResultBuilderMode::PLAIN;
-    else if (boost::iequals(token, json))
-        resultBuilderMode = GT::Model::ResultBuilderMode::JSON;
-    else if (boost::iequals(token, xml))
-        resultBuilderMode = GT::Model::ResultBuilderMode::XML;
+    if (iequals(token, plain))
+        resultBuilderMode = ResultBuilderMode::PLAIN;
+    else if (iequals(token, json))
+        resultBuilderMode = ResultBuilderMode::JSON;
+    else if (iequals(token, xml))
+        resultBuilderMode = ResultBuilderMode::XML;
     else
-        throw boost::program_options::validation_error(
-            boost::program_options::validation_error::invalid_option_value,
+        throw validation_error(
+            validation_error::invalid_option_value,
             "Result Mode",
             token
         );
@@ -51,19 +84,19 @@ GT::InputStream& operator>>(
     return inputStream;
 }
 
-GT::OutputStream& operator<<(
-    GT::OutputStream&                      outputStream,
-    const GT::Model::ResultIndentationMode resultIndentationMode
+OutputStream& operator<<(
+    OutputStream&               outputStream,
+    const ResultIndentationMode resultIndentationMode
 ) {
     switch(resultIndentationMode) {
         default:
-        case GT::Model::ResultIndentationMode::TABS:
+        case ResultIndentationMode::TABS:
             outputStream << "TABS";
             break;
-        case GT::Model::ResultIndentationMode::SPACES:
+        case ResultIndentationMode::SPACES:
             outputStream << "SPACES";
             break;
-        case GT::Model::ResultIndentationMode::NONE:
+        case ResultIndentationMode::NONE:
             outputStream << "NONE";
             break;
     }
@@ -71,26 +104,26 @@ GT::OutputStream& operator<<(
     return outputStream;
 }
 
-GT::InputStream& operator>>(
-    GT::InputStream&                  inputStream,
-    GT::Model::ResultIndentationMode& resultIndentationMode
+InputStream& operator>>(
+    InputStream&           inputStream,
+    ResultIndentationMode& resultIndentationMode
 ) {
-    std::string tabs   = "TABS";
-    std::string spaces = "SPACES";
-    std::string none   = "NONE";
+    string tabs   = "TABS";
+    string spaces = "SPACES";
+    string none   = "NONE";
 
-    std::string token;
+    string token;
     inputStream >> token;
 
-    if (boost::iequals(token, tabs))
-        resultIndentationMode = GT::Model::ResultIndentationMode::TABS;
-    else if (boost::iequals(token, spaces))
-        resultIndentationMode = GT::Model::ResultIndentationMode::SPACES;
-    else if (boost::iequals(token, none))
-        resultIndentationMode = GT::Model::ResultIndentationMode::NONE;
+    if (iequals(token, tabs))
+        resultIndentationMode = ResultIndentationMode::TABS;
+    else if (iequals(token, spaces))
+        resultIndentationMode = ResultIndentationMode::SPACES;
+    else if (iequals(token, none))
+        resultIndentationMode = ResultIndentationMode::NONE;
     else
-        throw boost::program_options::validation_error(
-            boost::program_options::validation_error::invalid_option_value,
+        throw validation_error(
+            validation_error::invalid_option_value,
             "Result Indentation",
             token
         );

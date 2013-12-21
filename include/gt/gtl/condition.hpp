@@ -36,7 +36,7 @@ public:
     /**
      * @brief Returns Condition applicable to Route.
      *
-     * @param             Context
+     * @param context     Context
      * @return            Condition applicable to Route
      * @throw InvalidType thrown when condition make use of not accepted Objects
      */

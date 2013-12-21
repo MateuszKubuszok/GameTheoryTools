@@ -61,8 +61,9 @@ public:
     /**
      * @brief Adds an element to the collection.
      *
-     * @param element element to add
-     * @return        pointer to collection
+     * @param element    element to add
+     * @param collection collection to increase
+     * @return           pointer to collection
      */
     virtual CollectionPtr* insert(
         const ContentPtr*    element,

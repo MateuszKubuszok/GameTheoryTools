@@ -1,7 +1,38 @@
+/**
+ * @file      gt/routines/extensive_pure_equilibrium_routine.cpp
+ * @brief     Defines GT::Routines::ExtensivePureEquilibriumRoutine methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/routines/inner_common.hpp"
 
 namespace GT {
 namespace Routines {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::dynamic_pointer_cast;
+
+using Model::ExtensiveDataAccessor;
+using Model::ExtensiveDataAccessorPtr;
+using Model::ExtensiveDataNode;
+using Model::ExtensiveGamePositionsHelper
+using Model::PlainDataPiece;
+using Model::StrategicGamePositionsHelper;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -18,18 +49,18 @@ ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
     const GamePtr       game,
     const ConditionsPtr
 ) const {
-    const Model::ExtensiveDataAccessorPtr data =
-        boost::dynamic_pointer_cast<Model::ExtensiveDataAccessor>(game->getData());
+    const ExtensiveDataAccessorPtr data =
+        dynamic_pointer_cast<ExtensiveDataAccessor>(game->getData());
 
     if (!data) {
         static Identifier extensiveGameName("Extensive Game");
         throw ExceptionFactory::getInstance().invalidGameType(extensiveGameName);
     }
 
-    const Model::StrategicGamePositionsHelper strategicPositionsHelper(data->getPlayers());
-    const Model::ExtensiveGamePositionsHelper extensivePositionsHelper(data->getRoot());
-    const Model::ExtensiveDataNode&           root = *data->getRoot();
-    ExtensivePureStrategyPath                 resultPath(game->getPlayers());
+    const StrategicGamePositionsHelper strategicPositionsHelper(data->getPlayers());
+    const ExtensiveGamePositionsHelper extensivePositionsHelper(data->getRoot());
+    const ExtensiveDataNode&           root = *data->getRoot();
+    ExtensivePureStrategyPath          resultPath(game->getPlayers());
 
     NumbersPtr finalPayoff = getBestPayoffWhen(
         strategicPositionsHelper,
@@ -62,7 +93,7 @@ ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
 
     static const IdentifierPtr finalPayoffName = createIdentifierPtr("Payoff");
     const MessagePtr finalPayoffResult = createMessagePtr(
-        Model::PlainDataPiece(game->getPlayers(), finalPayoff).toString()
+        PlainDataPiece(game->getPlayers(), finalPayoff).toString()
     );
     resultBuilder->addResult( finalPayoffName, finalPayoffResult );
 
@@ -76,10 +107,10 @@ Message ExtensivePureEquilibriumRoutine::toString() const {
 // private:
 
 NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
-    const Model::StrategicGamePositionsHelper& strategicPositionsHelper,
-    const Model::ExtensiveGamePositionsHelper& extensivePositionsHelper,
-    const Model::ExtensiveDataNode&            checkedNode,
-    ExtensivePureStrategyPath&                 optimalChoices
+    const StrategicGamePositionsHelper& strategicPositionsHelper,
+    const ExtensiveGamePositionsHelper& extensivePositionsHelper,
+    const ExtensiveDataNode&            checkedNode,
+    ExtensivePureStrategyPath&          optimalChoices
 ) const {
     NumbersPtr bestPayoff = createNumbersPtr();
 
@@ -93,13 +124,13 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
 
         const Identifier& informationSet =
             extensivePositionsHelper.getInformationSetsForPlayer( playerName )
-            .right.at( const_cast<Model::ExtensiveDataNode* const>(&checkedNode) );
+            .right.at( const_cast<ExtensiveDataNode* const>(&checkedNode) );
         const Index comparedPayoffIndex = strategicPositionsHelper.calculatePlayer( playerName );
 
         CalculatedPayoffs calculatedPayoffs;
-        for (const Model::ExtensiveDataNodes::value_type& child : checkedNode.getChildren()) {
+        for (const ExtensiveDataNodes::value_type& child : checkedNode.getChildren()) {
             const Identifier& strategy                = child.first;
-            const Model::ExtensiveDataNode& childNode = *child.second;
+            const ExtensiveDataNode& childNode = *child.second;
 
             const NumbersPtr& bestSubTreePayoff = getBestPayoffWhen(
                 strategicPositionsHelper,

@@ -140,17 +140,17 @@ typedef Model::ResultPtr                   ResultPtr;         /**< @brief Alias 
 /**
  * @brief Check if Conditions are equal.
  *
- * @param condtions1 first Conditions vector
- * @param condtions2 second Conditions vector
- * @return           true if vectors have equal content
+ * @param conditions1 first Conditions vector
+ * @param conditions2 second Conditions vector
+ * @return            true if vectors have equal content
  */
 bool operator==(const Conditions&  conditions1,  const Conditions&  conditions2);
 /**
  * @brief Check if Conditions are different.
  *
- * @param condtions1 first Conditions vector
- * @param condtions2 second Conditions vector
- * @return           true if vectors have different content
+ * @param conditions1 first Conditions vector
+ * @param conditions2 second Conditions vector
+ * @return            true if vectors have different content
  */
 bool operator!=(const Conditions&  conditions1,  const Conditions&  conditions2);
 /**
