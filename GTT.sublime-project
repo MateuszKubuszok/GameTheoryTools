@@ -69,6 +69,16 @@
             "name":        "Program Controllers Development",
             "shell_cmd":   "scons -Q runProgramsTests 2> errors.log",
             "working_dir": "${project_path}"
+        },
+        {
+            "name":        "Public API documentation",
+            "shell_cmd":   "doxygen doxygen/public_api",
+            "working_dir": "${project_path}"
+        },
+        {
+            "name":        "Full API documentation",
+            "shell_cmd":   "doxygen doxygen/private_api",
+            "working_dir": "${project_path}"
         }
     ]
 }
