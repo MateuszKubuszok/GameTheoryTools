@@ -42,10 +42,10 @@ public:
     /**
      * @brief Sets headers used for displaying records.
      *
-     * <p>Size of headers must match size of each record.</p>
+     * Size of headers must match size of each record.
      *
-     * @param   newProperties headers' names that will be used in a Result
-     * @return                refernce to self for chaining
+     * @param  newProperties headers' names that will be used in a Result
+     * @return               refernce to self for chaining
      *
      * @see #addRecord(IdentifierPtr&,MessagesPtr&)
      */
@@ -56,7 +56,7 @@ public:
     /**
      * @brief Adds record to displayed Result.
      *
-     * <p>Results size must match headers size.</p>
+     * Results size must match headers size.
      *
      * @param object  name of added record
      * @param results properties that should be displayed

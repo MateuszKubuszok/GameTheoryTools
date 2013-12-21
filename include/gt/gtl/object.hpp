@@ -1,15 +1,38 @@
 #ifndef __GT_GTL_OBJECT_HPP__
 #define __GT_GTL_OBJECT_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/object.hpp
+ * @brief     Defines GT::GTL::Object class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class Object
  * @brief Root of all Objects used as a data in parsed by GTL.
  *
- * <p>Common ancestor of all types of data (besides Numbers) that can be used within language.</p>
+ * Common ancestor of all types of data (besides Numbers) that can be used within language.
  *
  * @author Mateusz Kubuszok
  *
@@ -61,7 +84,7 @@ public:
     /**
      * @brief Object's destructor.
      *
-     * <p>Removes the properties' register.</p>
+     * Removes the properties' register.
      */
     virtual ~Object();
 
@@ -92,11 +115,11 @@ public:
     /**
      * @brief Finds Objects' property for giver Conditions and returns it as a Result.
      *
-     * @param context         Context with values
-     * @param conditions      Conditions to consider
-     * @return                Result for sought property
+     * @param context           Context with values
+     * @param conditions        Conditions to consider
+     * @return                  Result for sought property
      * @throw CyclicIdentifiers thrown when there is Param with cyclic references
-     * @throw InvalidProperty thrown when property is not available for an Object
+     * @throw InvalidProperty   thrown when property is not available for an Object
      */
     virtual ResultPtr findPropertyWithConditions(
         const Context&    context,
@@ -160,9 +183,9 @@ protected:
     /**
      * @brief Obtains ObjectProperty by name under which it was registered.
      *
-     * @param propertyName           name of a required property
-     * @return                       required ObjectProperty
-     * @throws std::invalid_argument thrown when property is not available for an Object
+     * @param propertyName     name of a required property
+     * @return                 required ObjectProperty
+     * @throws InvalidProperty thrown when property is not available for an Object
      */
     const ObjectPropertyPtr getProperty(
         const Identifier& propertyName
@@ -183,6 +206,7 @@ protected:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullObject
  * @brief Null Object for handling invalid situations.
  *
  * @author Mateusz Kubuszok
@@ -222,6 +246,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class ErrorObject
  * @brief Error Object for handling invalid situations.
  *
  * @author Mateusz Kubuszok

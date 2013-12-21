@@ -1,12 +1,39 @@
 #ifndef __GT_GTL_LAZY_GAME_PROXY_HPP__
 #define __GT_GTL_LAZY_GAME_PROXY_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/lazy_game_proxy.hpp
+ * @brief     Defines GT::Model::LazyGameProxy class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Model::DataAccessorPtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class LazyGameProxy
  * @brief Makes Game act in functional manner by building it from scratch each time some property is required.
  *
  * @author Mateusz Kubuszok
@@ -20,19 +47,19 @@ class LazyGameProxy final : public Model::Game {
     /**
      * @brief Actual Game's builder.
      */
-    const Model::GameBuilderPtr gameBuilder;
+    const GameBuilderPtr gameBuilder;
     /**
      * @brief Players.
      */
-    const ObjectsPtr            players;
+    const ObjectsPtr     players;
     /**
      * @brief Coordinates to setup data.
      */
-    const CoordinatesPtr        coordinates;
+    const CoordinatesPtr coordinates;
     /**
      * @brief Context.
      */
-    const Context*              context;
+    const Context*       context;
 
 public:
     /**
@@ -44,10 +71,10 @@ public:
      * @param context     actual Context
      */
     LazyGameProxy(
-        const Model::GameBuilderPtr gameBuilder,
-        const ObjectsPtr            players,
-        const CoordinatesPtr        coordinates,
-        const Context*              context
+        const GameBuilderPtr gameBuilder,
+        const ObjectsPtr     players,
+        const CoordinatesPtr coordinates,
+        const Context*       context
     );
 
     /**
@@ -62,7 +89,7 @@ public:
      *
      * @return DataAccessor returns DataAccessor specific for a Game
      */
-    virtual const Model::DataAccessorPtr getData() const override;
+    virtual const DataAccessorPtr getData() const override;
 
     /**
      * @brief Game's Message.

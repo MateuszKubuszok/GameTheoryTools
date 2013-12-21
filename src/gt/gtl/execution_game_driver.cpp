@@ -1,3 +1,23 @@
+/**
+ * @file      gt/gtl/execution_game_driver.cpp
+ * @brief     Defines GT::GTL::ExecutionGameDriver methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/gtl/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,12 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExecutionGameDriver : public GameDriver {
+using Model::GameBuilder;
+using Model::GameBuilderPtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class ExecutionGameDriver final : public GameDriver {
 // public:
 
 ExecutionGameDriver::ExecutionGameDriver(
@@ -26,9 +51,9 @@ GamePtr* ExecutionGameDriver::createStrategic(
         return errorCheck;
     delete errorCheck;
 
-    const Details&              details        = **detailsPtr;
-    const Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildStrategicGame();
-    const Model::GameBuilder&   gameBuilder    = *gameBuilderPtr;
+    const Details&       details        = **detailsPtr;
+    const GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildStrategicGame();
+    const GameBuilder&   gameBuilder    = *gameBuilderPtr;
 
     return createGameWithBuilder(inputLocation, details, gameBuilder);
 }
@@ -42,9 +67,9 @@ GamePtr* ExecutionGameDriver::createExtensive(
         return errorCheck;
     delete errorCheck;
 
-    const Details&              details        = **detailsPtr;
-    const Model::GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
-    const Model::GameBuilder&   gameBuilder    = *gameBuilderPtr;
+    const Details&       details        = **detailsPtr;
+    const GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
+    const GameBuilder&   gameBuilder    = *gameBuilderPtr;
 
     return createGameWithBuilder(inputLocation, details, gameBuilder);
 }
@@ -100,7 +125,7 @@ Message ExecutionGameDriver::toString() const {
 GamePtr* ExecutionGameDriver::createGameWithBuilder(
     const InputLocation&      inputLocation,
     const Details&            details,
-    const Model::GameBuilder& gameBuilder
+    const GameBuilder& gameBuilder
 ) const {
     Model::GamePtr lazyGame(
         new LazyGameProxy(

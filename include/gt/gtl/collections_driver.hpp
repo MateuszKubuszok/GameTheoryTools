@@ -1,22 +1,50 @@
 #ifndef __GT_GTL_COLLECTIONS_DRIVER_HPP__
 #define __GT_GTL_COLLECTIONS_DRIVER_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/collections_driver.hpp
+ * @brief     Defines GT::GTL::CollectionsDriver class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::vector;
+using boost::shared_ptr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class CollectionsDriver
  * @brief Used for handling collections via Driver.
  *
- * <p>Used by Parser to create collections of ValidableSymbols and insert elements into them. On Parser's they
- * are used wverywhere where some ValidableSymbols can be listed with <pre>,</pre> character.</p>
+ * Used by Parser to create collections of ValidableSymbols and insert elements into them. On Parser's they
+ * are used everywhere where some ValidableSymbols can be listed with `,` character.
  *
- * <p>Example of piece of code recognized by Parser:</p>
+ * Example of piece of code recognized by Parser:
  *
- * <p><pre>
+ * @code
  * identifier1, identifier2, identifier3
- * </pre></p>
+ * @endcode
  *
  * @author Mateusz Kubuszok
  *
@@ -29,17 +57,17 @@ public:
     /**
      * @brief Pointer to template type.
      */
-    typedef typename boost::shared_ptr<Content> ContentPtr;
+    typedef typename shared_ptr<Content> ContentPtr;
 
     /**
      * @brief Collection of pointers.
      */
-    typedef typename boost::container::vector<ContentPtr> Collection;
+    typedef typename vector<ContentPtr> Collection;
 
     /**
      * @brief Poiter to collection.
      */
-    typedef typename boost::shared_ptr<Collection> CollectionPtr;
+    typedef typename shared_ptr<Collection> CollectionPtr;
 
     /**
      * @brief Creates an empty collection.
@@ -85,6 +113,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullCollectionsDriver
  * @brief Null CollectionsDriver for handling invalid situations.
  *
  * @author Mateusz Kubuszok

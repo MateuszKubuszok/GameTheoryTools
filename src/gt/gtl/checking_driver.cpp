@@ -1,3 +1,23 @@
+/**
+ * @file      gt/gtl/checking_driver.cpp
+ * @brief     Defines GT::GTL::CheckingDriver methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/gtl/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,13 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class CheckingDriver : public Driver {
+using std::endl;
+using std::string;
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class CheckingDriver final : public Driver {
 // public:
 
 CheckingDriver::CheckingDriver(
@@ -70,10 +96,10 @@ void CheckingDriver::showError(
     const Message&       message
 ) const {
     if (errorStream) {
-        std::stringstream builder;
-        builder << message << std::endl
-                << "\tat line \"" << location << "\"" << std::endl;
-        std::string errorMessage(builder.str());
+        stringstream builder;
+        builder << message << endl
+                << "\tat line \"" << location << "\"" << endl;
+        string errorMessage(builder.str());
 
         static const IdentifierPtr name   = createIdentifierPtr("Error");
         const MessagePtr           result = createMessagePtr(builder.str());

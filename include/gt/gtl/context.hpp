@@ -1,24 +1,51 @@
 #ifndef __GT_GTL_CONTEXT_HPP__
 #define __GT_GTL_CONTEXT_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/context.hpp
+ * @brief     Defines GT::GTL::Context interface.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::map;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class Context
  * @brief Context containing identifiers and values befind then.
  *
- * <p>Has the ability to dynamically inherit parent Context filling it with data specific to itself.</p>
+ * Has the ability to dynamically inherit parent Context filling it with data specific to itself.
  *
- * <p>Used by Drivers to store Params under some name. They can be later accessed by their names.</p>
+ * Used by Drivers to store Params under some name. They can be later accessed by their names.
  *
- * <p>Example of code recognized by Parsr that would use Context undernath:</p>
+ * Example of code recognized by Parsr that would use Context undernath:
  *
- * <p><pre>
+ * @code
  * LET game1 BE [game definition];
  * FIND mixed_equilibrium FOR game1;
- * </pre></p>
+ * @endcode
  *
  * @author Mateusz Kubuszok
  *
@@ -30,7 +57,7 @@ class Context : public virtual Root {
     /**
      * @brief Known objects map.
      */
-    typedef boost::container::map<Identifier, ParamPtr> KnownObjects;
+    typedef map<Identifier, ParamPtr> KnownObjects;
 
     /**
      * @brief Possible parent Context.
@@ -136,6 +163,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullContext
  * @brief Null Context for handling invalid situations.
  *
  * @author Mateusz Kubuszok

@@ -1,12 +1,39 @@
 #ifndef __GT_GTL_PARAM_HPP__
 #define __GT_GTL_PARAM_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/param.hpp
+ * @brief     Defines GT::GTL::Param abstract class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::set;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class Param
  * @brief Abstract class that defines interface for Params.
  *
  * @author Mateusz Kubuszok
@@ -20,7 +47,7 @@ public:
     /**
      * @brief Contains visited Identifiers to prevent cycles.
      */
-    typedef boost::container::set<Identifier> VisitedIdentifiers;
+    typedef set<Identifier> VisitedIdentifiers;
 
     /**
      * @brief Default constructor.
@@ -28,9 +55,9 @@ public:
     Param();
 
     /**
-     * @brief Finds reffered Objects' property and returns it as a Result.
+     * @brief Finds referred Objects' property and returns it as a Result.
      *
-     * <p>Returns Result for reffered Object if there is any and it has required property.</p>
+     * Returns Result for referred Object if there is any and it has required property.
      *
      * @param context           Context with values
      * @param propertyName      property's name
@@ -46,7 +73,7 @@ public:
     /**
      * @brief Finds referred Objects' property for giver conditions and returns it as a Result.
      *
-     * <p>Returns Result for reffered Object if there is any and it has required property.</p>
+     * Returns Result for referred Object if there is any and it has required property.
      *
      * @param context           Context with values
      * @param conditions        Conditions to consider
@@ -140,6 +167,7 @@ protected:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullParam
  * @brief Null Param for handling invalid situations.
  *
  * @author Mateusz Kubuszok
@@ -184,6 +212,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class ErrorParam
  * @brief Error Param for handling invalid situations.
  *
  * @author Mateusz Kubuszok

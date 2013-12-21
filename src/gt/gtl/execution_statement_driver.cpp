@@ -1,3 +1,23 @@
+/**
+ * @file      gt/gtl/execution_statement_driver.cpp
+ * @brief     Defines GT::GTL::ExecutionStatementDriver methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/gtl/inner_common.hpp"
 
 namespace GT {
@@ -5,7 +25,11 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExecutionStatementDriver : public StatementDriver {
+using std::exception;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class ExecutionStatementDriver final : public StatementDriver {
 // public:
 
 ExecutionStatementDriver::ExecutionStatementDriver(
@@ -39,7 +63,7 @@ bool ExecutionStatementDriver::executeQuery(
     try {
         driver->showResult(query.execute(*context));
         return true;
-    } catch (const std::exception& e) {
+    } catch (const exception& e) {
         driver->showError(*query.getInputLocation(), createMessage(e.what()));
         return false;
     }

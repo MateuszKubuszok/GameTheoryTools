@@ -1,3 +1,23 @@
+/**
+ * @file      gt/gtl/lazy_game_proxy.cpp
+ * @brief     Defines GT::Model::LazyGameProxy methods.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/gtl/inner_common.hpp"
 
 namespace GT {
@@ -5,14 +25,23 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class LazyGameProxy : Model::Game {
+using boost::dynamic_pointer_cast;
+
+using Model::DataBuilderPtr;
+using Model::GameBuilderPtr;
+using Model::Players;
+using Model::PlayersPtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class LazyGameProxy final : Model::Game {
 // public:
 
 LazyGameProxy::LazyGameProxy(
-    const Model::GameBuilderPtr definedGameBuilder,
-    const ObjectsPtr            definedPlayers,
-    const CoordinatesPtr        definedCoordinates,
-    const Context*              definedContext
+    const GameBuilderPtr definedGameBuilder,
+    const ObjectsPtr     definedPlayers,
+    const CoordinatesPtr definedCoordinates,
+    const Context*       definedContext
 ) :
     gameBuilder(definedGameBuilder),
     players(definedPlayers),
@@ -20,7 +49,7 @@ LazyGameProxy::LazyGameProxy(
     context(definedContext)
     {}
 
-const Model::PlayersPtr LazyGameProxy::getPlayers() const {
+const PlayersPtr LazyGameProxy::getPlayers() const {
     return accessGame()->getPlayers();
 }
 
@@ -35,21 +64,21 @@ Message LazyGameProxy::toString() const {
 // private:
 
 const Model::GamePtr LazyGameProxy::accessGame() const {
-    Model::GameBuilderPtr currentGameBuilder = gameBuilder->cloneBuilder();
+    GameBuilderPtr currentGameBuilder = gameBuilder->cloneBuilder();
 
-    Model::PlayersPtr modelPlayers(new Model::Players());
+    PlayersPtr modelPlayers(new Players());
     for (const ObjectPtr& objectPtr : *players) {
         const Player& player = *objectPtr;
         const Param&  param  = *objectPtr;
 
         if (player) {
-            const PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
+            const PlayerPtr playerPtr = dynamic_pointer_cast<Player>(objectPtr);
 
             if (playerPtr) {
                 modelPlayers->insert(
-                    Model::Players::value_type(
+                    Players::value_type(
                         *player.getName(),
-                        boost::dynamic_pointer_cast<Model::Player>(playerPtr)
+                        dynamic_pointer_cast<Model::Player>(playerPtr)
                     )
                 );
                 continue;
@@ -61,11 +90,11 @@ const Model::GamePtr LazyGameProxy::accessGame() const {
             const Player&   referredPlayer = *referredObject;
 
             if (referredPlayer) {
-                PlayerPtr playerPtr = boost::dynamic_pointer_cast<Player>(objectPtr);
+                PlayerPtr playerPtr = dynamic_pointer_cast<Player>(objectPtr);
                 modelPlayers->insert(
-                    Model::Players::value_type(
+                    Players::value_type(
                         *referredPlayer.getName(),
-                        boost::dynamic_pointer_cast<Model::Player>(referredObject)
+                        dynamic_pointer_cast<Model::Player>(referredObject)
                     )
                 );
                 continue;
@@ -78,7 +107,7 @@ const Model::GamePtr LazyGameProxy::accessGame() const {
     currentGameBuilder->dataBuilder()->setPlayers(modelPlayers);
 
     for (const CoordinatePtr& coordinate : *coordinates) {
-        Model::DataBuilderPtr builderForCoordinate = currentGameBuilder->clone();
+        DataBuilderPtr builderForCoordinate = currentGameBuilder->clone();
         coordinate->fillDataBuilder(*context, builderForCoordinate);
     }
 

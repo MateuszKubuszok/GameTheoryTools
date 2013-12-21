@@ -1,21 +1,48 @@
 #ifndef __GT_GTL_COORDINATE_HPP__
 #define __GT_GTL_COORDINATE_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/coordinate.hpp
+ * @brief     Defines GT::GTL::Coordinate class.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Model::DataBuilderPtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
+ * @class Coordinate
  * @brief Contains some Coordinate as well as data bound to it.
  *
- * <p>They can be considered pieces from which sets of pure strategies will be built. For strategic-form
- * games it means putting together all player-strategy pairs as to create whole vector for payoff function.
- * For extensive-form games it means going from root to leafs, one node at a time.</p>
+ * They can be considered pieces from which sets of pure strategies will be built. For strategic-form games it
+ * means putting together all player-strategy pairs as to create whole vector for payoff function. For
+ * extensive-form games it means going from root to leafs, one node at a time.
  *
- * <p>Example of piece of code recognized by Parser:</p>
+ * Example of piece of code recognized by Parser:
  *
- * <p><pre>
+ * @code
  * {
  *    p1 = p1s1 :
  *    { p2 = p2s1 : 10, 20 },
@@ -26,7 +53,7 @@ namespace GTL {
  *    { p2 = p2s1 : 50, 60 },
  *    { p2 = p2s2 : 70, 80 }
  * }
- * </pre></p>
+ * @endcode
  *
  * @author Mateusz Kubuszok
  *
@@ -154,8 +181,8 @@ public:
      *                              not all coordinates are known
      */
     virtual void fillDataBuilder(
-        const Context&         context,
-        Model::DataBuilderPtr& dataBuilder
+        const Context&  context,
+        DataBuilderPtr& dataBuilder
     ) const;
 
     /**
@@ -163,7 +190,7 @@ public:
      *
      * @return Message
      */
-    virtual GT::Message toString() const override;
+    virtual Message toString() const override;
 
     /**
      * @brief Merges two Coordinates into one.
@@ -181,6 +208,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NullCoordinate
  * @brief Null Coordinate for handling invalid situations.
  *
  * @author Mateusz Kubuszok
@@ -230,6 +258,11 @@ public:
         return NullFactory::getInstance().createCoordinates();
     }
 
+    virtual void fillDataBuilder(
+        const Context&,
+        DataBuilderPtr&
+    ) const {}
+
     virtual bool isNotNull() const override {
         return false;
     }
@@ -242,7 +275,8 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @brief Null Coordinate for handling invalid situations.
+ * @class ErrorCoordinate
+ * @brief Error Coordinate for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
@@ -301,6 +335,11 @@ public:
     virtual const CoordinatesPtr getSubCoordinates() const override {
         return NullFactory::getInstance().createCoordinates();
     }
+
+    virtual void fillDataBuilder(
+        const Context&,
+        DataBuilderPtr&
+    ) const {}
 
     virtual bool isValid() const override {
         return false;

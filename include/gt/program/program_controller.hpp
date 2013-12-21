@@ -98,8 +98,8 @@ public:
     /**
      * @brief Initiates controller with default settings.
      *
-     * <p>By default stream are set to standard ones (without freeing), debug level is set to 0 and driver
-     * executes input.</p>
+     * By default stream are set to standard ones (without freeing), debug level is set to 0 and driver
+     * executes input.
      */
     ProgramController();
 

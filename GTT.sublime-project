@@ -5,7 +5,10 @@
             "path":                    ".",
             "name":                    "Configuration",
             "file_exclude_patterns":   [ ".sconsign.dblite" ],
-            "folder_exclude_patterns": [ "bin", "docs", "doxygen", "examples", "f_n_b", "include", "objects", "src", "test", ".sconf_temp" ]
+            "folder_exclude_patterns": [
+                "bin", "docs", "doxygen", "examples", "f_n_b", "include", "objects", "src", "test",
+                ".sconf_temp"
+            ]
         },
         {
             "path": "include",
@@ -25,7 +28,7 @@
         },
         {
             "path": "doxygen",
-            "name": "Doxygen documentation"
+            "name": "Doxygen Documentation"
         },
         {
             "path": "examples",
@@ -71,12 +74,12 @@
             "working_dir": "${project_path}"
         },
         {
-            "name":        "Public API documentation",
+            "name":        "Public API Documentation",
             "shell_cmd":   "doxygen doxygen/public_api",
             "working_dir": "${project_path}"
         },
         {
-            "name":        "Full API documentation",
+            "name":        "Full API Documentation",
             "shell_cmd":   "doxygen doxygen/private_api",
             "working_dir": "${project_path}"
         }

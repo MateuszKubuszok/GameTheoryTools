@@ -1,3 +1,23 @@
+/**
+ * @file      gt/main/program.hpp
+ * @brief     Defines main function for GTL program.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "gt/program/inner_common.hpp"
 
 namespace Options = boost::program_options;
@@ -5,54 +25,71 @@ namespace Program = GT::Program;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::cout;
+using std::err;
+using std::endl;
+using std::istringstream;
+using std::string;
+using std::vector;
+
+using boost::any;
+
+using Options::validators::check_first_occurrence;
+using Options::validators::get_single_string;
+
+using GT::Model::ResultBuilderMode;
+using GT::Model::ResultIndentationMode;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
- * @brief Validator for boost::program_options to parse GT::Model::ResultBuilderMode.
+ * @brief Validator for boost::program_options to parse ResultBuilderMode.
  *
  * @param value  target value handler
  * @param values values all values that match validator
  */
 void validate(
-    boost::any&                     value,
-    const std::vector<std::string>& values,
-    GT::Model::ResultBuilderMode*,
+    any&               value,
+    const any<string>& values,
+    ResultBuilderMode*,
     int
 ) {
     // make sure no previous assignment to value was made
-    Options::validators::check_first_occurrence(value);
+    check_first_occurrence(value);
 
     // Extract the first string from 'values'. If there is more than
     // one string, it's an error, and exception will be thrown.
-    const std::string&           stringValue = Options::validators::get_single_string(values);
-    std::istringstream           streamValue(stringValue);
-    GT::Model::ResultBuilderMode parsedValue;
+    const string&     stringValue = get_single_string(values);
+    istringstream     streamValue(stringValue);
+    ResultBuilderMode parsedValue;
     streamValue >> parsedValue;
 
-    value = boost::any( parsedValue );
+    value = any( parsedValue );
 }
 
 /**
- * @brief Validator for boost::program_options to parse GT::Model::ResultIndentationMode.
+ * @brief Validator for boost::program_options to parse ResultIndentationMode.
  *
  * @param value  target value handler
  * @param values values all values that match validator
  */
 void validate(
-    boost::any&                     value,
-    const std::vector<std::string>& values,
-    GT::Model::ResultIndentationMode*,
+    any&               value,
+    const any<string>& values,
+    ResultIndentationMode*,
     int
 ) {
     // make sure no previous assignment to value was made
-    Options::validators::check_first_occurrence(value);
+    check_first_occurrence(value);
 
     // Extract the first string from 'values'. If there is more than
     // one string, it's an error, and exception will be thrown.
-    const std::string&               stringValue = Options::validators::get_single_string(values);
-    std::istringstream               streamValue(stringValue);
-    GT::Model::ResultIndentationMode parsedValue;
+    const string&         stringValue = get_single_string(values);
+    istringstream         streamValue(stringValue);
+    ResultIndentationMode parsedValue;
     streamValue >> parsedValue;
 
-    value = boost::any( parsedValue );
+    value = any( parsedValue );
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,32 +115,32 @@ int main(
     const char debugOption[]        = "debug-level,D";
     const char debugDescription[]   = "0 if no parser debugging, non 0 for debug allowed";
 
-    std::string inputValue          = "";
-    const std::string inputDefault  = "";
+    string inputValue               = "";
+    const string inputDefault       = "";
     const char inputOption[]        = "input-file,I";
     const char inputDescription[]   = "input file to be parsed - if no one given reads from standard input";
 
-    std::string outputValue         = "";
-    const std::string outputDefault = "";
+    string outputValue              = "";
+    const string outputDefault      = "";
     const char outputOption[]       = "output-file,O";
     const char outputDescription[]  = "output target - if no one given reads from standard output";
 
-    std::string errorValue          = "";
-    const std::string errorDefault  = "";
+    string errorValue               = "";
+    const string errorDefault       = "";
     const char errorOption[]        = "error-file,E";
     const char errorDescription[]   = "error target - if no one given reads from standard error";
 
-    GT::Model::ResultBuilderMode
-               resultValue             = GT::Model::ResultBuilderMode::PLAIN;
-    const GT::Model::ResultBuilderMode
-               resultDefault           = GT::Model::ResultBuilderMode::PLAIN;
+    ResultBuilderMode
+               resultValue             = ResultBuilderMode::PLAIN;
+    const ResultBuilderMode
+               resultDefault           = ResultBuilderMode::PLAIN;
     const char resultOption[]          = "result,R";
     const char resultDescription[]     = "result type - PLAIN, JSON and XML allowed";
 
-    GT::Model::ResultIndentationMode
-               indentationValue            = GT::Model::ResultIndentationMode::TABS;
-    const GT::Model::ResultIndentationMode
-               indentationDefault          = GT::Model::ResultIndentationMode::TABS;
+    ResultIndentationMode
+               indentationValue            = ResultIndentationMode::TABS;
+    const ResultIndentationMode
+               indentationDefault          = ResultIndentationMode::TABS;
     const char indentationOption[]         = "indent,T";
     const char indentationDescription[]    = "indentation used - TABS, SPACES and NONE allowed";
 
@@ -115,19 +152,19 @@ int main(
     (debugOption,       Options::value<int>(
                             &debugValue
                         )->default_value(debugDefault),         debugDescription)
-    (inputOption,       Options::value<std::string>(
+    (inputOption,       Options::value<string>(
                             &inputValue
                         )->default_value(inputDefault),         inputDescription)
-    (outputOption,      Options::value<std::string>(
+    (outputOption,      Options::value<string>(
                             &outputValue
                         )->default_value(outputDefault),        outputDescription)
-    (errorOption,      Options::value<std::string>(
+    (errorOption,      Options::value<string>(
                             &errorValue
                         )->default_value(errorDefault),         errorDescription)
-    (resultOption,      Options::value<GT::Model::ResultBuilderMode>(
+    (resultOption,      Options::value<ResultBuilderMode>(
                             &resultValue
                         )->default_value(resultDefault),        resultDescription)
-    (indentationOption, Options::value<GT::Model::ResultIndentationMode>(
+    (indentationOption, Options::value<ResultIndentationMode>(
                             &indentationValue
                         )->default_value(indentationDefault),   indentationDescription)
     ;
@@ -145,7 +182,7 @@ int main(
         // Display help if requested
 
         if (variables.count("help") || variables.count("H")) {
-            std::cout << description << std::endl;
+            cout << description << endl;
             return 0;
         }
 
@@ -176,12 +213,12 @@ int main(
                          .run();
     } catch (const boost::program_options::unknown_option& exception) {
         // uknown option error
-        std::cerr << "Uknown option, use one of listed instead." << std::endl;
-        std::cout << std::endl << description << std::endl;
+        cerr << "Uknown option, use one of listed instead." << endl;
+        cout << endl << description << endl;
         return -1;
     } catch (const std::exception& exception) {
         // last resort error handling
-        std::cerr << exception.what() << std::endl;
+        cerr << exception.what() << endl;
         return -1;
     }
 }

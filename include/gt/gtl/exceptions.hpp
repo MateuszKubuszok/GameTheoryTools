@@ -1,17 +1,40 @@
 #ifndef __GT_GTL_EXCEPTIONS_HPP__
 #define __GT_GTL_EXCEPTIONS_HPP__
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @file      gt/gtl/exceptions.hpp
+ * @brief     Defines GT::GTL exceptions.
+ * @copyright (C) 2013-2014
+ * @author    Mateusz Kubuszok
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+ * General Public License as published by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not,
+ * see [http://www.gnu.org/licenses/].
+ */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 namespace GT {
 namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class CyclicIdentifiers
  * @brief Intened to be thrown when Params create the cycle.
  *
  * @author Mateusz Kubuszok
  */
-class CyclicIdentifiers : public std::runtime_error {
+class CyclicIdentifiers final : public std::runtime_error {
 public:
     /**
      * @brief Constructor initialized with Message.
@@ -26,14 +49,14 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class InvalidContentRequest
  * @brief Intened to be thrown when attempting to access content in invalid way.
  *
- * <p>By invalid it should be understand e.g. accessing Object for ValueParam,
- * or Value for ObjectParam.</p>
+ * By invalid it should be understand e.g. accessing Object for ValueParam, or Value for ObjectParam.
  *
  * @author Mateusz Kubuszok
  */
-class InvalidContentRequest : public std::runtime_error {
+class InvalidContentRequest final : public std::runtime_error {
 public:
     /**
      * @brief Constructor initialized with Message.
@@ -48,11 +71,12 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class InvalidProperty
  * @brief Intened to be thrown when accessing non-existing Objects' property.
  *
  * @author Mateusz Kubuszok
  */
-class InvalidProperty : public std::invalid_argument {
+class InvalidProperty final : public std::invalid_argument {
 public:
     /**
      * @brief Constructor initialized with Message.
@@ -67,11 +91,12 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class InvalidType
  * @brief Intened to be thrown when casting Object to invalid type.
  *
  * @author Mateusz Kubuszok
  */
-class InvalidType : public std::runtime_error {
+class InvalidType final : public std::runtime_error {
 public:
     /**
      * @brief Constructor initialized with Message.
@@ -86,14 +111,14 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
+ * @class NotDefinedParam
  * @brief Intened to be thrown when attempting to access not defined Param.
  *
- * <p>By invalid it should be understand e.g. accessing Object for ValueParam,
- * or Value for ObjectParam.</p>
+ * By invalid it should be understand e.g. accessing Object for ValueParam, or Value for ObjectParam.
  *
  * @author Mateusz Kubuszok
  */
-class NotDefinedParam : public std::invalid_argument {
+class NotDefinedParam final : public std::invalid_argument {
 public:
     /**
      * @brief Constructor initialized with Message.
