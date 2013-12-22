@@ -117,7 +117,7 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
 
     if (checkedNode.isLeaf()) {
         static const Positions emptyPositions;
-        bestPayoff = checkedNode.getValues(emptyPositions);
+        bestPayoff = checkedNode.getPayoffs(emptyPositions);
     } else {
         const Identifier& playerName = *checkedNode.getPlayer()->getName();
         if (!extensivePositionsHelper.isPlayerPossible(playerName))

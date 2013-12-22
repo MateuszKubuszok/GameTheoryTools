@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
                     GT::NumbersPtr payoff = GT::createNumbersPtr();
                     payoff->push_back( GT::createNumberPtr( 0 ) ); // p1
                     payoff->push_back( GT::createNumberPtr( 0 ) ); // p2
-                    s1_s1_s1_node->setParams(payoff);
+                    s1_s1_s1_node->setPayoffs(payoff);
                 }
             }
             {
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
                     GT::NumbersPtr payoff = GT::createNumbersPtr();
                     payoff->push_back( GT::createNumberPtr( 20 ) ); // p1
                     payoff->push_back( GT::createNumberPtr( 20 ) ); // p2
-                    s1_s1_s2_node->setParams(payoff);
+                    s1_s1_s2_node->setPayoffs(payoff);
                 }
             }
         }
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
                 GT::NumbersPtr payoff = GT::createNumbersPtr();
                 payoff->push_back( GT::createNumberPtr(  10 ) ); // p1
                 payoff->push_back( GT::createNumberPtr( -10 ) ); // p2
-                s1_s2_node->setParams(payoff);
+                s1_s2_node->setPayoffs(payoff);
             }
         }
     }
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
             GT::NumbersPtr payoff = GT::createNumbersPtr();
             payoff->push_back( GT::createNumberPtr( -10 ) ); // p1
             payoff->push_back( GT::createNumberPtr(  10 ) ); // p2
-            s2_node->setParams(payoff);
+            s2_node->setPayoffs(payoff);
         }
     }
 

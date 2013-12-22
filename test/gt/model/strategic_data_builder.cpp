@@ -17,9 +17,9 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_setPlayers_getPlayers ) {
     players->insert( GT::Model::Players::value_type(*playerName, player) );
 
     // when
-    GT::Model::StrategicDataBuilder strategicDataBuilder;
-    strategicDataBuilder.setPlayers(players);
-    GT::Model::PlayersPtr gotPlayers = strategicDataBuilder.getPlayers();
+    GT::Model::StrategicDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
+    GT::Model::PlayersPtr gotPlayers = dataBuilder.getPlayers();
 
     // then
     BOOST_CHECK_EQUAL(
@@ -41,12 +41,12 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_build ) {
     players->insert( GT::Model::Players::value_type(*playerName, player) );
 
     // when
-    GT::Model::StrategicDataBuilder strategicDataBuilder;
-    strategicDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
 
     // then
     BOOST_CHECK_NO_THROW(
-        strategicDataBuilder.build();
+        dataBuilder.build();
     );
 }
 
@@ -77,15 +77,15 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
     positions2->insert( GT::Positions::value_type(*playerName, *strategy2) );
 
     // when
-    GT::Model::StrategicDataBuilder strategicDataBuilder;
-    strategicDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
 
-    strategicDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    strategicDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    dataBuilder.clone()->addNextPositions(positions1).setPayoffs(params1);
+    dataBuilder.clone()->addNextPositions(positions2).setPayoffs(params2);
 
     // then
     BOOST_CHECK_EQUAL(
-        strategicDataBuilder.toString(),
+        dataBuilder.toString(),
         GT::Message() +
         "Current Data:\n"
         "\tValue:\n"
@@ -130,13 +130,13 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
     positions2->insert( GT::Positions::value_type(*playerName, *strategy2 ) );
 
     // when
-    GT::Model::StrategicDataBuilder strategicDataBuilder;
-    strategicDataBuilder.setPlayers(players);
+    GT::Model::StrategicDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
 
-    strategicDataBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    strategicDataBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    dataBuilder.clone()->addNextPositions(positions1).setPayoffs(params1);
+    dataBuilder.clone()->addNextPositions(positions2).setPayoffs(params2);
 
-    GT::Model::DataPtr data = strategicDataBuilder.build();
+    GT::Model::DataPtr data = dataBuilder.build();
 
     // then
     BOOST_CHECK_EQUAL(

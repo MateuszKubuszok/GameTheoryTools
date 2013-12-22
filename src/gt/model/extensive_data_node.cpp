@@ -112,7 +112,7 @@ ExtensiveDataNode& ExtensiveDataNode::setPlayer(
     return *this;
 }
 
-const NumbersPtr ExtensiveDataNode::getValues(
+const NumbersPtr ExtensiveDataNode::getPayoffs(
     const Positions& positions
 ) const {
     if (depthValue == 0)
@@ -122,10 +122,10 @@ const NumbersPtr ExtensiveDataNode::getValues(
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
     const Identifier& strategy = positions.at(depthName);
-    return (*nodes)[strategy]->getValues(positions);
+    return (*nodes)[strategy]->getPayoffs(positions);
 }
 
-ExtensiveDataNode& ExtensiveDataNode::setValues(
+ExtensiveDataNode& ExtensiveDataNode::setPayoffs(
     const Positions& positions,
     const NumbersPtr values
 ) {
@@ -140,11 +140,11 @@ ExtensiveDataNode& ExtensiveDataNode::setValues(
             node = ExtensiveDataNodePtr(new ExtensiveDataNode(this, values));
         else {
             node = ExtensiveDataNodePtr(new ExtensiveDataNode(this, depthValue+1));
-            node->setValues(positions, values);
+            node->setPayoffs(positions, values);
         }
         nodes->insert( ExtensiveDataNodes::value_type(strategy, node) );
     } else if (depthValue != positions.size())
-        (*nodes)[strategy]->setValues(positions, values);
+        (*nodes)[strategy]->setPayoffs(positions, values);
     else
         throw ExceptionFactory::getInstance().coordinatesAlreadySet(positions);
 

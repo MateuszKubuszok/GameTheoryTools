@@ -69,7 +69,7 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when player name is not known
      */
-    virtual const NumberPtr& getValue(
+    virtual const NumberPtr& getPayoff(
         const Identifier& playerName
     ) const override;
 

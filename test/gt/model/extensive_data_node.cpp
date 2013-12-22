@@ -70,13 +70,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
     root.setPlayer( plRoot, player )
         .setPlayer( pl11,   player ).setPlayer( pl12, player );
 
-    root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
-        .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    root.setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+        .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
-    GT::NumbersPtr got11 = root.getValues(p11);
-    GT::NumbersPtr got12 = root.getValues(p12);
-    GT::NumbersPtr got21 = root.getValues(p21);
-    GT::NumbersPtr got22 = root.getValues(p22);
+    GT::NumbersPtr got11 = root.getPayoffs(p11);
+    GT::NumbersPtr got12 = root.getPayoffs(p12);
+    GT::NumbersPtr got21 = root.getPayoffs(p21);
+    GT::NumbersPtr got22 = root.getPayoffs(p22);
 
     // then
     BOOST_CHECK_EQUAL_COLLECTIONS(
@@ -185,13 +185,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     root.setPlayer( plRoot, player )
         .setPlayer( pl11,   player ).setPlayer( pl12, player );
 
-    root.setValues( p11, payoff11 ).setValues( p12, payoff12 )
-        .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    root.setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+        .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
-    GT::NumbersPtr got11 = root.getValues(p11);
-    GT::NumbersPtr got12 = root.getValues(p12);
-    GT::NumbersPtr got21 = root.getValues(p21);
-    GT::NumbersPtr got22 = root.getValues(p22);
+    GT::NumbersPtr got11 = root.getPayoffs(p11);
+    GT::NumbersPtr got12 = root.getPayoffs(p12);
+    GT::NumbersPtr got21 = root.getPayoffs(p21);
+    GT::NumbersPtr got22 = root.getPayoffs(p22);
 
     // then
     BOOST_CHECK_EQUAL(

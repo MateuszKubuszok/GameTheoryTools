@@ -54,10 +54,10 @@ DataBuilder& StrategicGameBuilder::addNextPositions(
     return *this;
 }
 
-DataBuilder& StrategicGameBuilder::setParams(
+DataBuilder& StrategicGameBuilder::setPayoffs(
     const NumbersPtr params
 ) {
-    strategicDataBuilder->setParams(params);
+    strategicDataBuilder->setPayoffs(params);
     return *this;
 }
 

@@ -4,7 +4,7 @@ BOOST_AUTO_TEST_SUITE( StrategicData )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( StrategicData_setValue_getValue ) {
+BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getPayoff ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -54,23 +54,23 @@ BOOST_AUTO_TEST_CASE( StrategicData_setValue_getValue ) {
 
     // when
     GT::Model::StrategicData strategicData(players);
-    strategicData.setValues(position11, values11);
-    strategicData.setValues(position12, values12);
-    strategicData.setValues(position21, values21);
-    strategicData.setValues(position22, values22);
+    strategicData.setPayoffs(position11, values11);
+    strategicData.setPayoffs(position12, values12);
+    strategicData.setPayoffs(position21, values21);
+    strategicData.setPayoffs(position22, values22);
 
     // then
-    BOOST_CHECK_EQUAL( strategicData.getValues(position11)->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( strategicData.getValues(position11)->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position11)->getPayoff(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position11)->getPayoff(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData.getValues(position12)->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( strategicData.getValues(position12)->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position12)->getPayoff(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position12)->getPayoff(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData.getValues(position21)->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( strategicData.getValues(position21)->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position21)->getPayoff(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position21)->getPayoff(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData.getValues(position22)->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( strategicData.getValues(position22)->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position22)->getPayoff(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicData.getPayoffs(position22)->getPayoff(*player2name), (*values22)[1] );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
@@ -123,23 +123,23 @@ BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
 
     // when
     GT::Model::StrategicData strategicData(players);
-    strategicData.setValues(position11, values11);
-    strategicData.setValues(position12, values12);
-    strategicData.setValues(position21, values21);
-    strategicData.setValues(position22, values22);
+    strategicData.setPayoffs(position11, values11);
+    strategicData.setPayoffs(position12, values12);
+    strategicData.setPayoffs(position21, values21);
+    strategicData.setPayoffs(position22, values22);
 
     // then
-    BOOST_CHECK_EQUAL( strategicData[position11]->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( strategicData[position11]->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position11]->getPayoff(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position11]->getPayoff(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData[position12]->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( strategicData[position12]->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position12]->getPayoff(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position12]->getPayoff(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData[position21]->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( strategicData[position21]->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position21]->getPayoff(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position21]->getPayoff(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( strategicData[position22]->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( strategicData[position22]->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicData[position22]->getPayoff(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicData[position22]->getPayoff(*player2name), (*values22)[1] );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicData_throwExceptionOnInvalidCoordinate ) {
@@ -184,11 +184,11 @@ BOOST_AUTO_TEST_CASE( StrategicData_throwExceptionOnInvalidCoordinate ) {
 
     // then
     BOOST_CHECK_THROW(
-        strategicData.setValues(invalidPosition1, values1),
+        strategicData.setPayoffs(invalidPosition1, values1),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        strategicData.setValues(invalidPosition2, values2),
+        strategicData.setPayoffs(invalidPosition2, values2),
         GT::Model::InvalidCoordinate
     );
 }
@@ -247,10 +247,10 @@ BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
 
     // when
     GT::Model::StrategicData strategicData(players);
-    strategicData.setValues(position11, values11);
-    strategicData.setValues(position12, values12);
-    strategicData.setValues(position21, values21);
-    strategicData.setValues(position22, values22);
+    strategicData.setPayoffs(position11, values11);
+    strategicData.setPayoffs(position12, values12);
+    strategicData.setPayoffs(position21, values21);
+    strategicData.setPayoffs(position22, values22);
 
     // then
     BOOST_CHECK_EQUAL(

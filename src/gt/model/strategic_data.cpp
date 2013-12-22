@@ -46,7 +46,7 @@ const PlayersPtr StrategicData::getPlayers() const {
     return positionsHelper.getPlayers();
 }
 
-const DataPiecePtr StrategicData::getValues(
+const DataPiecePtr StrategicData::getPayoffs(
     const Index positionInStorage
 ) const {
     if (!payoffStorageAllocation.at(positionInStorage))
@@ -63,19 +63,19 @@ const DataPiecePtr StrategicData::getValues(
     );
 }
 
-const DataPiecePtr StrategicData::getValues(
+const DataPiecePtr StrategicData::getPayoffs(
     const Positions& positions
 ) const {
-    return getValues(positionsHelper.calculatePosition(positions));
+    return getPayoffs(positionsHelper.calculatePosition(positions));
 }
 
-const DataPiecePtr StrategicData::getValues(
+const DataPiecePtr StrategicData::getPayoffs(
     const PositionsPtr positions
 ) const {
-    return getValues(*positions);
+    return getPayoffs(*positions);
 }
 
-Data& StrategicData::setValues(
+Data& StrategicData::setPayoffs(
     const Index      positionInStorage,
     const NumbersPtr numbers
 ) {
@@ -91,42 +91,42 @@ Data& StrategicData::setValues(
     return *this;
 }
 
-Data& StrategicData::setValues(
+Data& StrategicData::setPayoffs(
     const Positions& positions,
     const NumbersPtr numbers
 ) {
     if (!positionsHelper.checkPositions(positions))
         throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
-    return setValues(
+    return setPayoffs(
         positionsHelper.calculatePosition(positions),
         numbers
     );
 }
 
-Data& StrategicData::setValues(
+Data& StrategicData::setPayoffs(
     const PositionsPtr positions,
     const NumbersPtr   numbers
 ) {
-    return setValues(*positions, numbers);
+    return setPayoffs(*positions, numbers);
 }
 
 const DataPiecePtr StrategicData::operator[](
     const Index positionInStorage
 ) const {
-    return getValues(positionInStorage);
+    return getPayoffs(positionInStorage);
 }
 
 const DataPiecePtr StrategicData::operator[](
     const Positions& positions
 ) const {
-    return getValues(positions);
+    return getPayoffs(positions);
 }
 
 const DataPiecePtr StrategicData::operator[](
     const PositionsPtr positions
 ) const {
-    return getValues(positions);
+    return getPayoffs(positions);
 }
 
 Message StrategicData::toString() const {

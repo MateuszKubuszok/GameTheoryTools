@@ -38,22 +38,22 @@ const PlayersPtr StrategicDataAccessor::getPlayers() const {
     return data->getPlayers();
 }
 
-const DataPiecePtr StrategicDataAccessor::getValues(
+const DataPiecePtr StrategicDataAccessor::getPayoffs(
     const Index positionInStorage
 ) const {
-    return data->getValues(positionInStorage);
+    return data->getPayoffs(positionInStorage);
 }
 
-const DataPiecePtr StrategicDataAccessor::getValues(
+const DataPiecePtr StrategicDataAccessor::getPayoffs(
     const PositionsPtr positions
 ) const {
-    return data->getValues(positions);
+    return data->getPayoffs(positions);
 }
 
-const DataPiecePtr StrategicDataAccessor::getValues(
+const DataPiecePtr StrategicDataAccessor::getPayoffs(
     const Positions& positions
 ) const {
-    return data->getValues(positions);
+    return data->getPayoffs(positions);
 }
 
 Message StrategicDataAccessor::toString() const {

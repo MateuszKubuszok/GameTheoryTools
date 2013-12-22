@@ -51,7 +51,7 @@ class ExtensiveDataBuilder final : public DataBuilder {
      */
     PlayersPtr players;
     /**
-     * @brief Current Positions that will be used to set params with setParams(NumbersPtr).
+     * @brief Current Positions that will be used to set params with setPayoffs(NumbersPtr).
      */
     Positions  currentPositions;
 
@@ -110,7 +110,7 @@ public:
      * @param params values of payoffs
      * @return       reference to itself for chanining
      */
-    virtual DataBuilder& setParams(
+    virtual DataBuilder& setPayoffs(
         const NumbersPtr params
     ) override;
 

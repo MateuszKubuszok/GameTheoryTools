@@ -123,28 +123,28 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_functional ) {
     extensiveData->setPlayerInTurn(pl11, player2);
     extensiveData->setPlayerInTurn(pl12, player2);
 
-    extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData->setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+                  .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
-    GT::Model::DataPiecePtr got11 = extensiveDataAccessor.getValues(p11);
-    GT::Model::DataPiecePtr got12 = extensiveDataAccessor.getValues(p12);
-    GT::Model::DataPiecePtr got21 = extensiveDataAccessor.getValues(p21);
-    GT::Model::DataPiecePtr got22 = extensiveDataAccessor.getValues(p22);
+    GT::Model::DataPiecePtr got11 = extensiveDataAccessor.getPayoffs(p11);
+    GT::Model::DataPiecePtr got12 = extensiveDataAccessor.getPayoffs(p12);
+    GT::Model::DataPiecePtr got21 = extensiveDataAccessor.getPayoffs(p21);
+    GT::Model::DataPiecePtr got22 = extensiveDataAccessor.getPayoffs(p22);
 
     // then
-    BOOST_CHECK_EQUAL(*got11->getValue(p1), *(*payoff11)[0]);
-    BOOST_CHECK_EQUAL(*got11->getValue(p2), *(*payoff11)[1]);
+    BOOST_CHECK_EQUAL(*got11->getPayoff(p1), *(*payoff11)[0]);
+    BOOST_CHECK_EQUAL(*got11->getPayoff(p2), *(*payoff11)[1]);
 
-    BOOST_CHECK_EQUAL(*got12->getValue(p1), *(*payoff12)[0]);
-    BOOST_CHECK_EQUAL(*got12->getValue(p2), *(*payoff12)[1]);
+    BOOST_CHECK_EQUAL(*got12->getPayoff(p1), *(*payoff12)[0]);
+    BOOST_CHECK_EQUAL(*got12->getPayoff(p2), *(*payoff12)[1]);
 
-    BOOST_CHECK_EQUAL(*got21->getValue(p1), *(*payoff21)[0]);
-    BOOST_CHECK_EQUAL(*got21->getValue(p2), *(*payoff21)[1]);
+    BOOST_CHECK_EQUAL(*got21->getPayoff(p1), *(*payoff21)[0]);
+    BOOST_CHECK_EQUAL(*got21->getPayoff(p2), *(*payoff21)[1]);
 
-    BOOST_CHECK_EQUAL(*got22->getValue(p1), *(*payoff22)[0]);
-    BOOST_CHECK_EQUAL(*got22->getValue(p2), *(*payoff22)[1]);
+    BOOST_CHECK_EQUAL(*got22->getPayoff(p1), *(*payoff22)[0]);
+    BOOST_CHECK_EQUAL(*got22->getPayoff(p2), *(*payoff22)[1]);
 }
 
 BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
@@ -204,8 +204,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
     extensiveData->setPlayerInTurn(pl11, player2);
     extensiveData->setPlayerInTurn(pl12, player2);
 
-    extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData->setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+                  .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -285,8 +285,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
     extensiveData->setPlayerInTurn(pl11, player2);
     extensiveData->setPlayerInTurn(pl12, player2);
 
-    extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData->setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+                  .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
     GT::Positions pos1 = GT::createPositions();
     pos1.insert( GT::Positions::value_type(*p1, *s1) );
@@ -303,15 +303,15 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
 
     // then
     BOOST_CHECK_THROW(
-        extensiveDataAccessor.getValues(pos1),
+        extensiveDataAccessor.getPayoffs(pos1),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        extensiveDataAccessor.getValues(pos2),
+        extensiveDataAccessor.getPayoffs(pos2),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        extensiveDataAccessor.getValues(pos3),
+        extensiveDataAccessor.getPayoffs(pos3),
         GT::Model::InvalidCoordinate
     );
 }
@@ -377,8 +377,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
     extensiveData->setPlayerInTurn(pl11, player2);
     extensiveData->setPlayerInTurn(pl12, player2);
 
-    extensiveData->setValues( p11, payoff11 ).setValues( p12, payoff12 )
-                  .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData->setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+                  .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);

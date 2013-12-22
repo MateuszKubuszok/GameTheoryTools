@@ -91,7 +91,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Index positionInStorage
     ) const;
 
@@ -102,7 +102,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr positions
     ) const override;
 
@@ -113,7 +113,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions& positions
     ) const override;
 
@@ -125,7 +125,7 @@ public:
      * @return                  reference to itself for chaining
      * @throw InvalidCoordinate thrown when Index in not in allowed range
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Index      positionInStorage,
         const NumbersPtr numbers
     );
@@ -137,7 +137,7 @@ public:
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions& positions,
         const NumbersPtr numbers
     ) override;
@@ -149,7 +149,7 @@ public:
      * @param numbers           payoffs values
      * @return                  reference to itself for chaining
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr positions,
         const NumbersPtr   numbers
     ) override;
@@ -214,39 +214,39 @@ public:
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Index
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions&
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Index,
         const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions&,
         const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr,
         const NumbersPtr
     ) override {

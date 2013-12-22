@@ -77,14 +77,14 @@ DataBuilder& StrategicDataBuilder::addNextPositions(
     return *this;
 }
 
-DataBuilder& StrategicDataBuilder::setParams(
+DataBuilder& StrategicDataBuilder::setPayoffs(
     const NumbersPtr params
 ) {
     for (Identifier player : (*players) | map_keys)
         if (!currentlyKnownPositions.count(player) || !currentlyKnownPositions[player])
             throw ExceptionFactory::getInstance().incompleteCoordinates();
 
-    data->setValues(currentPositions, params);
+    data->setPayoffs(currentPositions, params);
 
     return *this;
 }

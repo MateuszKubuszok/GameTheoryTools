@@ -7,11 +7,11 @@ BOOST_AUTO_TEST_SUITE( StrategicGameBuilder )
 BOOST_AUTO_TEST_CASE( StrategicGameBuilder_cloneBuilder ) {
     // given
     // when
-    GT::Model::StrategicGameBuilder strategicGameBuilder;
+    GT::Model::StrategicGameBuilder gameBuilder;
 
     // then
     BOOST_CHECK(
-        boost::dynamic_pointer_cast<GT::Model::StrategicGameBuilder>(strategicGameBuilder.cloneBuilder())
+        boost::dynamic_pointer_cast<GT::Model::StrategicGameBuilder>(gameBuilder.cloneBuilder())
     );
 }
 
@@ -28,11 +28,11 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    GT::Model::StrategicGameBuilder strategicGameBuilder;
-    strategicGameBuilder.setPlayers(players);
+    GT::Model::StrategicGameBuilder gameBuilder;
+    gameBuilder.setPlayers(players);
     GT::Model::PlayersPtr gotPlayers =
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
-            strategicGameBuilder.dataBuilder()
+            gameBuilder.dataBuilder()
         )->getPlayers();
 
     // then
@@ -69,15 +69,15 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    GT::Model::StrategicGameBuilder strategicGameBuilder;
-    strategicGameBuilder.setPlayers(players);
+    GT::Model::StrategicGameBuilder gameBuilder;
+    gameBuilder.setPlayers(players);
 
-    strategicGameBuilder.clone()->addNextPositions(positions1).setParams(params1);
-    strategicGameBuilder.clone()->addNextPositions(positions2).setParams(params2);
+    gameBuilder.clone()->addNextPositions(positions1).setPayoffs(params1);
+    gameBuilder.clone()->addNextPositions(positions2).setPayoffs(params2);
 
     GT::Model::DataPtr data =
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
-            strategicGameBuilder.dataBuilder()
+            gameBuilder.dataBuilder()
         )->build();
 
     // then

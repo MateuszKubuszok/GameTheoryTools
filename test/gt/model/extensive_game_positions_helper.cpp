@@ -52,10 +52,10 @@ BOOST_AUTO_TEST_CASE( ExtensiveGamePositionsHelper_functional ) {
     GT::Model::ExtensiveDataNodePtr root(new GT::Model::ExtensiveDataNode());
 
     (*root)
-        .setPlayer( plRoot, player )
-        .setPlayer( pl11,   player ).setPlayer( pl12, player  )
-        .setValues( p11, payoff11  ).setValues( p12, payoff12 )
-        .setValues( p21, payoff21  ).setValues( p22, payoff22 );
+        .setPlayer(  plRoot, player )
+        .setPlayer(  pl11,   player ).setPlayer(  pl12, player  )
+        .setPayoffs( p11, payoff11  ).setPayoffs( p12, payoff12 )
+        .setPayoffs( p21, payoff21  ).setPayoffs( p22, payoff22 );
 
     GT::Identifier is1("1");
     GT::Identifier is2("2");

@@ -79,10 +79,10 @@ DataBuilder& ExtensiveDataBuilder::addNextPositions(
     return *this;
 }
 
-DataBuilder& ExtensiveDataBuilder::setParams(
+DataBuilder& ExtensiveDataBuilder::setPayoffs(
     const NumbersPtr params
 ) {
-    data->setValues(currentPositions, params);
+    data->setPayoffs(currentPositions, params);
     return *this;
 }
 

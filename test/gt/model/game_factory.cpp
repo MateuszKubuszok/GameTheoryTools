@@ -34,8 +34,8 @@ BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildStrategicGame();
     gameBuilder->setPlayers(players);
 
-    gameBuilder->clone()->addNextPositions(positions1).setParams(params1);
-    gameBuilder->clone()->addNextPositions(positions2).setParams(params2);
+    gameBuilder->clone()->addNextPositions(positions1).setPayoffs(params1);
+    gameBuilder->clone()->addNextPositions(positions2).setPayoffs(params2);
 
     GT::Model::DataPtr data =
         boost::dynamic_pointer_cast<GT::Model::StrategicDataBuilder>(
@@ -91,8 +91,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_buildExtensiveGame ) {
     GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildExtensiveGame();
     gameBuilder->setPlayers(players);
 
-    gameBuilder->clone()->addNextPositions(positions1).addNextPositions(positions2).setParams(params1);
-    gameBuilder->clone()->addNextPositions(positions2).addNextPositions(positions1).setParams(params2);
+    gameBuilder->clone()->addNextPositions(positions1).addNextPositions(positions2).setPayoffs(params1);
+    gameBuilder->clone()->addNextPositions(positions2).addNextPositions(positions1).setPayoffs(params2);
 
     GT::Model::DataPtr data =
         boost::dynamic_pointer_cast<GT::Model::ExtensiveDataBuilder>(

@@ -43,7 +43,7 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when Player name is not known
      */
-    virtual const NumberPtr& getValue(
+    virtual const NumberPtr& getPayoff(
         const Identifier& playerName
     ) const = 0;
 
@@ -54,7 +54,7 @@ public:
      * @return                  value of a payoff
      * @throw InvalidCoordinate thrown when Player name is not known
      */
-    const NumberPtr& getValue(
+    const NumberPtr& getPayoff(
         const IdentifierPtr playerName
     ) const;
 
@@ -107,7 +107,7 @@ public:
         nullNumber(NullFactory::getInstance().createNumber())
         {}
 
-    virtual const NumberPtr& getValue(
+    virtual const NumberPtr& getPayoff(
         const Identifier&
     ) const override {
         return nullNumber;

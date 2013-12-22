@@ -57,7 +57,7 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr positions
     ) const = 0;
 
@@ -68,7 +68,7 @@ public:
      * @return                  values of payoff
      * @throw InvalidCoordinate thrown when coordinates are invalid
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions& positions
     ) const = 0;
 
@@ -80,7 +80,7 @@ public:
      * @return                  reference to itself
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions& positions,
         const NumbersPtr numbers
     ) = 0;
@@ -93,7 +93,7 @@ public:
      * @return                  reference to itself
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr positions,
         const NumbersPtr   numbers
     ) = 0;
@@ -142,26 +142,26 @@ public:
         return NullFactory::getInstance().createPlayers();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions&
     )  const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions&,
         const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr,
         const NumbersPtr
     ) override {

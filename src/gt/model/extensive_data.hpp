@@ -131,7 +131,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr positions
     ) const override;
 
@@ -142,7 +142,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions& positions
     ) const override;
 
@@ -155,7 +155,7 @@ public:
      * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
      *                          or some strategies do not match assigned for each turn Players
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions& positions,
         const NumbersPtr numbers
     ) override;
@@ -169,7 +169,7 @@ public:
      * @throw InvalidCoordinate thrown when Positions does not specify all depths continously ("1", "2", ...)
      *                          or some strategies do not match assigned for each turn Players
      */
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr positions,
         const NumbersPtr   numbers
     ) override;
@@ -248,26 +248,26 @@ public:
         return *this;
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions&
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr
     ) const override {
         return NullFactory::getInstance().createDataPiece();
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const Positions&,
         const NumbersPtr
     ) override {
         return *this;
     }
 
-    virtual Data& setValues(
+    virtual Data& setPayoffs(
         const PositionsPtr,
         const NumbersPtr
     ) override {

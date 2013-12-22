@@ -4,7 +4,7 @@ BOOST_AUTO_TEST_SUITE( StrategicDataAccessor )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
+BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getPayoff ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
     GT::IdentifierPtr player1strategy1 = GT::createIdentifierPtr("p1s1");
@@ -53,26 +53,26 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_getValue ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
-    strategicData->setValues(position11, values11);
-    strategicData->setValues(position12, values12);
-    strategicData->setValues(position21, values21);
-    strategicData->setValues(position22, values22);
+    strategicData->setPayoffs(position11, values11);
+    strategicData->setPayoffs(position12, values12);
+    strategicData->setPayoffs(position21, values21);
+    strategicData->setPayoffs(position22, values22);
 
     // when
     GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);
 
     // then
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position11)->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position11)->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position11)->getPayoff(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position11)->getPayoff(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position12)->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position12)->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position12)->getPayoff(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position12)->getPayoff(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position21)->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position21)->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position21)->getPayoff(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position21)->getPayoff(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position22)->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor.getValues(position22)->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position22)->getPayoff(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor.getPayoffs(position22)->getPayoff(*player2name), (*values22)[1] );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
@@ -124,26 +124,26 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_operatorOverload ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
-    strategicData->setValues(position11, values11);
-    strategicData->setValues(position12, values12);
-    strategicData->setValues(position21, values21);
-    strategicData->setValues(position22, values22);
+    strategicData->setPayoffs(position11, values11);
+    strategicData->setPayoffs(position12, values12);
+    strategicData->setPayoffs(position21, values21);
+    strategicData->setPayoffs(position22, values22);
 
     // when
     GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);
 
     // then
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getValue(*player1name), (*values11)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getValue(*player2name), (*values11)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getPayoff(*player1name), (*values11)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position11]->getPayoff(*player2name), (*values11)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getValue(*player1name), (*values12)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getValue(*player2name), (*values12)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getPayoff(*player1name), (*values12)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position12]->getPayoff(*player2name), (*values12)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getValue(*player1name), (*values21)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getValue(*player2name), (*values21)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getPayoff(*player1name), (*values21)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position21]->getPayoff(*player2name), (*values21)[1] );
 
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getValue(*player1name), (*values22)[0] );
-    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getValue(*player2name), (*values22)[1] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getPayoff(*player1name), (*values22)[0] );
+    BOOST_CHECK_EQUAL( strategicDataAccessor[position22]->getPayoff(*player2name), (*values22)[1] );
 }
 
 BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
@@ -199,10 +199,10 @@ BOOST_AUTO_TEST_CASE( StrategicDataAccessor_toString ) {
     values22->push_back( GT::createNumberPtr(80) );
 
     GT::Model::StrategicDataPtr strategicData(new GT::Model::StrategicData(players));
-    strategicData->setValues(position11, values11);
-    strategicData->setValues(position12, values12);
-    strategicData->setValues(position21, values21);
-    strategicData->setValues(position22, values22);
+    strategicData->setPayoffs(position11, values11);
+    strategicData->setPayoffs(position12, values12);
+    strategicData->setPayoffs(position21, values21);
+    strategicData->setPayoffs(position22, values22);
 
     // when
     GT::Model::StrategicDataAccessor strategicDataAccessor(strategicData);

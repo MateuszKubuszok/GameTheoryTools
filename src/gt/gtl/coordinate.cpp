@@ -108,7 +108,7 @@ void Coordinate::fillDataBuilder(
         NumbersPtr values(new Numbers());
         for (ParamPtr& param : *params)
             values->push_back(param->getNumber(context));
-        dataBuilder->setParams(values);
+        dataBuilder->setPayoffs(values);
     }
 
     if (subCoordinates->size()){

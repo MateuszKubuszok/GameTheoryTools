@@ -120,26 +120,26 @@ BOOST_AUTO_TEST_CASE( ExtensiveData_functional ) {
     extensiveData.setPlayerInTurn(pl11, player2);
     extensiveData.setPlayerInTurn(pl12, player2);
 
-    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
-                 .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData.setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+                 .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
 
-    GT::Model::DataPiecePtr got11 = extensiveData.getValues(p11);
-    GT::Model::DataPiecePtr got12 = extensiveData.getValues(p12);
-    GT::Model::DataPiecePtr got21 = extensiveData.getValues(p21);
-    GT::Model::DataPiecePtr got22 = extensiveData.getValues(p22);
+    GT::Model::DataPiecePtr got11 = extensiveData.getPayoffs(p11);
+    GT::Model::DataPiecePtr got12 = extensiveData.getPayoffs(p12);
+    GT::Model::DataPiecePtr got21 = extensiveData.getPayoffs(p21);
+    GT::Model::DataPiecePtr got22 = extensiveData.getPayoffs(p22);
 
     // then
-    BOOST_CHECK_EQUAL(*got11->getValue(p1), *(*payoff11)[0]);
-    BOOST_CHECK_EQUAL(*got11->getValue(p2), *(*payoff11)[1]);
+    BOOST_CHECK_EQUAL(*got11->getPayoff(p1), *(*payoff11)[0]);
+    BOOST_CHECK_EQUAL(*got11->getPayoff(p2), *(*payoff11)[1]);
 
-    BOOST_CHECK_EQUAL(*got12->getValue(p1), *(*payoff12)[0]);
-    BOOST_CHECK_EQUAL(*got12->getValue(p2), *(*payoff12)[1]);
+    BOOST_CHECK_EQUAL(*got12->getPayoff(p1), *(*payoff12)[0]);
+    BOOST_CHECK_EQUAL(*got12->getPayoff(p2), *(*payoff12)[1]);
 
-    BOOST_CHECK_EQUAL(*got21->getValue(p1), *(*payoff21)[0]);
-    BOOST_CHECK_EQUAL(*got21->getValue(p2), *(*payoff21)[1]);
+    BOOST_CHECK_EQUAL(*got21->getPayoff(p1), *(*payoff21)[0]);
+    BOOST_CHECK_EQUAL(*got21->getPayoff(p2), *(*payoff21)[1]);
 
-    BOOST_CHECK_EQUAL(*got22->getValue(p1), *(*payoff22)[0]);
-    BOOST_CHECK_EQUAL(*got22->getValue(p2), *(*payoff22)[1]);
+    BOOST_CHECK_EQUAL(*got22->getPayoff(p1), *(*payoff22)[0]);
+    BOOST_CHECK_EQUAL(*got22->getPayoff(p2), *(*payoff22)[1]);
 }
 
 BOOST_AUTO_TEST_CASE( ExtensiveData_operatorOverload ) {
@@ -200,8 +200,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveData_operatorOverload ) {
     extensiveData.setPlayerInTurn(pl11, player2);
     extensiveData.setPlayerInTurn(pl12, player2);
 
-    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
-            .setValues( p21, payoff21 ).setValues( p22, payoff22 );
+    extensiveData.setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+            .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
     GT::Model::DataPiecePtr got11 = extensiveData[p11];
     GT::Model::DataPiecePtr got12 = extensiveData[p12];
     GT::Model::DataPiecePtr got21 = extensiveData[p21];
@@ -267,15 +267,15 @@ BOOST_AUTO_TEST_CASE( ExtensiveData_throwExceptionOnInvalidCoordinate ) {
 
     // then
     BOOST_CHECK_THROW(
-        extensiveData.setValues(pos1, payoff),
+        extensiveData.setPayoffs(pos1, payoff),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        extensiveData.setValues(pos2, payoff),
+        extensiveData.setPayoffs(pos2, payoff),
         GT::Model::InvalidCoordinate
     );
     BOOST_CHECK_THROW(
-        extensiveData.setValues(pos3, payoff),
+        extensiveData.setPayoffs(pos3, payoff),
         GT::Model::InvalidCoordinate
     );
 }
@@ -338,12 +338,12 @@ BOOST_AUTO_TEST_CASE( ExtensiveData_toString ) {
     extensiveData.setPlayerInTurn(pl11, player2);
     extensiveData.setPlayerInTurn(pl12, player2);
 
-    extensiveData.setValues( p11, payoff11 ).setValues( p12, payoff12 )
-            .setValues( p21, payoff21 ).setValues( p22, payoff22 );
-    GT::Model::DataPiecePtr got11 = extensiveData.getValues(p11);
-    GT::Model::DataPiecePtr got12 = extensiveData.getValues(p12);
-    GT::Model::DataPiecePtr got21 = extensiveData.getValues(p21);
-    GT::Model::DataPiecePtr got22 = extensiveData.getValues(p22);
+    extensiveData.setPayoffs( p11, payoff11 ).setPayoffs( p12, payoff12 )
+            .setPayoffs( p21, payoff21 ).setPayoffs( p22, payoff22 );
+    GT::Model::DataPiecePtr got11 = extensiveData.getPayoffs(p11);
+    GT::Model::DataPiecePtr got12 = extensiveData.getPayoffs(p12);
+    GT::Model::DataPiecePtr got21 = extensiveData.getPayoffs(p21);
+    GT::Model::DataPiecePtr got22 = extensiveData.getPayoffs(p22);
 
     // then
     BOOST_CHECK_EQUAL(

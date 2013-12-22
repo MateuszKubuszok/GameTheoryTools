@@ -54,10 +54,10 @@ DataBuilder& ExtensiveGameBuilder::addNextPositions(
     return *this;
 }
 
-DataBuilder& ExtensiveGameBuilder::setParams(
+DataBuilder& ExtensiveGameBuilder::setPayoffs(
     const NumbersPtr params
 ) {
-    extensiveDataBuilder->setParams(params);
+    extensiveDataBuilder->setPayoffs(params);
     return *this;
 }
 

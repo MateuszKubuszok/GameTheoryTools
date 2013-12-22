@@ -40,7 +40,7 @@ PlainDataPiece::PlainDataPiece(
     numbers(params)
     {}
 
-const NumberPtr& PlainDataPiece::getValue(
+const NumberPtr& PlainDataPiece::getPayoff(
     const Identifier& playerName
 ) const {
     if (!positionsHelper.checkPlayer(playerName))

@@ -42,16 +42,16 @@ const PlayersPtr ExtensiveDataAccessor::getPlayers() const {
     return data->getPlayers();
 }
 
-const DataPiecePtr ExtensiveDataAccessor::getValues(
+const DataPiecePtr ExtensiveDataAccessor::getPayoffs(
     const PositionsPtr positions
 ) const {
-    return data->getValues(positions);
+    return data->getPayoffs(positions);
 }
 
-const DataPiecePtr ExtensiveDataAccessor::getValues(
+const DataPiecePtr ExtensiveDataAccessor::getPayoffs(
     const Positions& positions
 ) const {
-    return data->getValues(positions);
+    return data->getPayoffs(positions);
 }
 
 Message ExtensiveDataAccessor::toString() const {

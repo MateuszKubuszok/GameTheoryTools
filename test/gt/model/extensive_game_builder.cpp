@@ -7,11 +7,11 @@ BOOST_AUTO_TEST_SUITE( ExtensiveGameBuilder )
 BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_cloneBuilder ) {
     // given
     // when
-    GT::Model::ExtensiveGameBuilder extensiveGameBuilder;
+    GT::Model::ExtensiveGameBuilder gameBuilder;
 
     // then
     BOOST_CHECK(
-        boost::dynamic_pointer_cast<GT::Model::ExtensiveGameBuilder>(extensiveGameBuilder.cloneBuilder())
+        boost::dynamic_pointer_cast<GT::Model::ExtensiveGameBuilder>(gameBuilder.cloneBuilder())
     );
 }
 
@@ -28,11 +28,11 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_setPlayers ) {
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
-    GT::Model::ExtensiveGameBuilder extensiveGameBuilder;
-    extensiveGameBuilder.setPlayers(players);
+    GT::Model::ExtensiveGameBuilder gameBuilder;
+    gameBuilder.setPlayers(players);
     GT::Model::PlayersPtr gotPlayers =
         boost::dynamic_pointer_cast<GT::Model::ExtensiveDataBuilder>(
-            extensiveGameBuilder.dataBuilder()
+            gameBuilder.dataBuilder()
         )->getPlayers();
 
     // then
@@ -69,17 +69,17 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_functional ) {
     positions2->insert( GT::Positions::value_type( *playerName, *strategy2 ) );
 
     // when
-    GT::Model::ExtensiveGameBuilder extensiveGameBuilder;
-    extensiveGameBuilder.setPlayers(players);
+    GT::Model::ExtensiveGameBuilder gameBuilder;
+    gameBuilder.setPlayers(players);
 
     GT::Model::DataBuilderPtr builder;
 
-    extensiveGameBuilder.clone()->addNextPositions(positions1).addNextPositions(positions2).setParams(params1);
-    extensiveGameBuilder.clone()->addNextPositions(positions2).addNextPositions(positions1).setParams(params2);
+    gameBuilder.clone()->addNextPositions(positions1).addNextPositions(positions2).setPayoffs(params1);
+    gameBuilder.clone()->addNextPositions(positions2).addNextPositions(positions1).setPayoffs(params2);
 
     GT::Model::DataPtr data =
         boost::dynamic_pointer_cast<GT::Model::ExtensiveDataBuilder>(
-            extensiveGameBuilder.dataBuilder()
+            gameBuilder.dataBuilder()
         )->build();
 
     // then

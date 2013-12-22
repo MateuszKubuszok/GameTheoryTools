@@ -132,7 +132,7 @@ public:
      * @param  positions Positions of a sought Payoff
      * @return           values of Payoffs
      */
-    virtual const NumbersPtr getValues(
+    virtual const NumbersPtr getPayoffs(
         const Positions& positions
     ) const;
 
@@ -143,7 +143,7 @@ public:
      * @param  values    Payoff value
      * @return           reference to itself for chaining
      */
-    virtual ExtensiveDataNode& setValues(
+    virtual ExtensiveDataNode& setPayoffs(
         const Positions& positions,
         const NumbersPtr values
     );
@@ -289,13 +289,13 @@ public:
         return *this;
     }
 
-    virtual const NumbersPtr getValues(
+    virtual const NumbersPtr getPayoffs(
         const Positions&
     ) const override {
         return Model::NullFactory::getInstance().createNumbers();
     }
 
-    virtual ExtensiveDataNode& setValues(
+    virtual ExtensiveDataNode& setPayoffs(
         const Positions&,
         const NumbersPtr
     ) override {

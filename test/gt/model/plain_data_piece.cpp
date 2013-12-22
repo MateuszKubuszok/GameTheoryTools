@@ -4,7 +4,7 @@ BOOST_AUTO_TEST_SUITE( PlainDataPiece )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
+BOOST_AUTO_TEST_CASE( PlainDataPiece_getPayoff ) {
     // given
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
@@ -21,8 +21,8 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_getValue ) {
 
     // when
     GT::Model::PlainDataPiece piece(playersMap, numbers);
-    GT::Message player1msg = GT::createMessage(piece.getValue(player1));
-    GT::Message player2msg = GT::createMessage(piece.getValue(player2));
+    GT::Message player1msg = GT::createMessage(piece.getPayoff(player1));
+    GT::Message player2msg = GT::createMessage(piece.getPayoff(player2));
 
     // then
     BOOST_CHECK_EQUAL(
@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
 
     // then
     BOOST_CHECK_THROW(
-        piece.getValue(player3),
+        piece.getPayoff(player3),
         GT::Model::InvalidCoordinate
     );
 }

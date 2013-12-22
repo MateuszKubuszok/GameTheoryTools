@@ -70,7 +70,7 @@ ExtensiveData& ExtensiveData::setPlayerInTurn(
     return setPlayerInTurn(*positions, player);
 }
 
-const DataPiecePtr ExtensiveData::getValues(
+const DataPiecePtr ExtensiveData::getPayoffs(
     const Positions& positions
 ) const {
     Positions checkedPositions;
@@ -85,17 +85,17 @@ const DataPiecePtr ExtensiveData::getValues(
         checkedPositions.insert( position );
     }
 
-    NumbersPtr payoff = root->getValues(positions);
+    NumbersPtr payoff = root->getPayoffs(positions);
     return DataPiecePtr(new PlainDataPiece(players, payoff));
 }
 
-const DataPiecePtr ExtensiveData::getValues(
+const DataPiecePtr ExtensiveData::getPayoffs(
     const PositionsPtr positions
 ) const {
-    return getValues(*positions);
+    return getPayoffs(*positions);
 }
 
-Data& ExtensiveData::setValues(
+Data& ExtensiveData::setPayoffs(
     const Positions& positions,
     const NumbersPtr numbers
 ) {
@@ -111,16 +111,16 @@ Data& ExtensiveData::setValues(
         checkedPositions.insert( position );
     }
 
-    root->setValues(positions, numbers);
+    root->setPayoffs(positions, numbers);
 
     return *this;
 }
 
-Data& ExtensiveData::setValues(
+Data& ExtensiveData::setPayoffs(
     const PositionsPtr positions,
     const NumbersPtr   numbers
 ) {
-    return setValues(*positions, numbers);
+    return setPayoffs(*positions, numbers);
 }
 
 Message ExtensiveData::toString() const {
@@ -132,13 +132,13 @@ Message ExtensiveData::toString() const {
 const DataPiecePtr ExtensiveData::operator[](
     const Positions& positions
 ) const {
-    return getValues(positions);
+    return getPayoffs(positions);
 }
 
 const DataPiecePtr ExtensiveData::operator[](
     const PositionsPtr positions
 ) const {
-    return getValues(positions);
+    return getPayoffs(positions);
 }
 
 // }; /* END class ExtensiveData */

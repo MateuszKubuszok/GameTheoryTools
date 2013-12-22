@@ -92,7 +92,7 @@ public:
      * @param params values of payoffs
      * @return       reference to itself for chanining
      */
-    virtual DataBuilder& setParams(
+    virtual DataBuilder& setPayoffs(
         const NumbersPtr params
     ) override;
 

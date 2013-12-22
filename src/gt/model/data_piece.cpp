@@ -28,22 +28,22 @@ namespace Model {
 // class DataPiece : public virtual Root {
 // public:
 
-const NumberPtr& DataPiece::getValue(
+const NumberPtr& DataPiece::getPayoff(
     const IdentifierPtr playerName
 ) const {
-    return getValue(*playerName);
+    return getPayoff(*playerName);
 }
 
 const NumberPtr& DataPiece::operator[](
     const Identifier& playerName
 ) const {
-    return getValue(playerName);
+    return getPayoff(playerName);
 }
 
 const NumberPtr& DataPiece::operator[](
     const IdentifierPtr playerName
 ) const {
-    return getValue(playerName);
+    return getPayoff(playerName);
 }
 
 // }; /* END class DataPiece */

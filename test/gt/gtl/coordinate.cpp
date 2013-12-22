@@ -121,11 +121,11 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
 
     // then
     BOOST_CHECK_EQUAL(
-        data->getValues(positions)->getValue(*player1Name),
+        data->getPayoffs(positions)->getPayoff(*player1Name),
         (*payoff)[0]->getNumber(context)
     );
     BOOST_CHECK_EQUAL(
-        data->getValues(positions)->getValue(*player2Name),
+        data->getPayoffs(positions)->getPayoff(*player2Name),
         (*payoff)[1]->getNumber(context)
     );
 }

@@ -77,7 +77,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Index positionInStorage
     ) const;
 
@@ -88,7 +88,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const PositionsPtr positions
     ) const override;
 
@@ -99,7 +99,7 @@ public:
      * @return                  DataPiece handling access to payoffs
      * @throw InvalidCoordinate thrown when no data is set under such position
      */
-    virtual const DataPiecePtr getValues(
+    virtual const DataPiecePtr getPayoffs(
         const Positions& positions
     ) const override;
 
