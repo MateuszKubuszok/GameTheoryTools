@@ -59,8 +59,8 @@ public:
      * @brief Create condition for Player choosing strategy.
      *
      * @param inputLocation input location of a created Condition
-     * @param player        Player's name
-     * @param strategy      chosen strategy
+     * @param playerPtr     Player's name
+     * @param strategyPtr   chosen strategy
      * @return              Condition
      */
     virtual ConditionPtr* playerChoosed(

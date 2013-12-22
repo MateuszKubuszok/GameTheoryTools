@@ -75,7 +75,7 @@ public:
      * @brief Creates Param by its value.
      *
      * @param inputLocation input location of created Param
-     * @param identifier    Param's value
+     * @param number        Param's value
      * @return              Param
      */
     virtual ParamPtr* get(

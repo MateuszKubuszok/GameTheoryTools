@@ -93,7 +93,7 @@ public:
      * @brief Create Details.
      *
      * @param inputLocation input location of created Details
-     * @param player        declared Players
+     * @param players       declared Players
      * @param data          declared Coordinates
      * @return              Details
      */

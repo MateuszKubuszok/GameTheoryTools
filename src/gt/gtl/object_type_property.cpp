@@ -1,5 +1,5 @@
 /**
- * @file      gt/gtl/object_type_properties.cpp
+ * @file      gt/gtl/object_type_property.cpp
  * @brief     Defines GT::Model::ObjectTypeProperty methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok

@@ -113,7 +113,7 @@ public:
      * @brief Returns list of available information sets.
      *
      * @param player            Player's name
-     * @param setNam            information set's name
+     * @param setName           information set's name
      * @return                  list of available information sets for a Player
      * @throw InvalidCoordinate thrown when no such Player or information set available
      */

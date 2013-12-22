@@ -39,7 +39,7 @@ namespace Model {
 class InnerNullFactory final {
 public:
     /**
-     * @brief Returns the instance of a InnerNullFactory.
+     * @brief Returns the instance of an InnerNullFactory.
      *
      * @return InnerNullFactory instance
      */
@@ -75,7 +75,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param innerNullFactory object to copy
      */
     InnerNullFactory(
         const InnerNullFactory& innerNullFactory

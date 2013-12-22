@@ -37,7 +37,7 @@ namespace Model {
 class ExceptionFactory final {
 public:
     /**
-     * @brief Returns the instance of a ExceptionFactory.
+     * @brief Returns the instance of an ExceptionFactory.
      *
      * @return ConditionFactory instance
      */
@@ -46,8 +46,8 @@ public:
     /**
      * @brief Thrown when values for given Positions are already set.
      *
-     * @param position invalid Positions
-     * @return         InvalidCoordinate exception to throw
+     * @param positions invalid Positions
+     * @return          InvalidCoordinate exception to throw
      */
     InvalidCoordinate coordinatesAlreadySet(
         const Positions& positions
@@ -150,7 +150,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param exceptionFactory object to copy
      */
     ExceptionFactory(
         const ExceptionFactory& exceptionFactory

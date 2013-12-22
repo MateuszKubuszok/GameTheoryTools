@@ -1,5 +1,5 @@
 /**
- * @file      gt/routines/strategic_pure_equlibrium_routine.cpp
+ * @file      gt/routines/strategic_pure_equilibrium_routine.cpp
  * @brief     Defines GT::Routines::StrategicPureEquilibriumRoutine methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok

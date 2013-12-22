@@ -170,7 +170,7 @@ public:
      *
      * @param strategy        choice to obtain
      * @return                node for choice
-     * @thors InvalidStrategy thrown if such strategy isn't available choice
+     * @throw InvalidStrategy thrown if such strategy isn't available choice
      */
     virtual const ExtensiveDataNode& getNodeForChoice(
         const Identifier& strategy

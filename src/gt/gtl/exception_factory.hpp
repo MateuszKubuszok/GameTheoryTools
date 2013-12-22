@@ -37,7 +37,7 @@ namespace GTL {
 class ExceptionFactory final {
 public:
     /**
-     * @brief Returns the instance of a ExceptionFactory.
+     * @brief Returns the instance of an ExceptionFactory.
      *
      * @return ExceptionFactory instance
      */
@@ -108,7 +108,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param exceptionFactory object to copy
      */
     ExceptionFactory(
         const ExceptionFactory& exceptionFactory

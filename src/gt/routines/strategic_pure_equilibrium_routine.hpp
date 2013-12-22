@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/strategic_pure_equlibrium_routine.hpp
+ * @file      gt/routines/strategic_pure_equilibrium_routine.hpp
  * @brief     Defines GT::Routines::StrategicPureEquilibriumRoutine class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok

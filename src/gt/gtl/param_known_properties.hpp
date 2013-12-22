@@ -46,7 +46,7 @@ public:
     /**
      * @brief Initiates Property with Param it's describing.
      *
-     * @param describedObject described Object
+     * @param describedParam described Param
      */
     explicit ParamKnownProperties(
         const Param* describedParam

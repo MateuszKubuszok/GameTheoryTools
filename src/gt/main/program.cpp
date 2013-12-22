@@ -1,5 +1,5 @@
 /**
- * @file      gt/main/program.hpp
+ * @file      gt/main/program.cpp
  * @brief     Defines main function for GTL program.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
@@ -97,9 +97,9 @@ void validate(
 /**
  * @brief Parses arguments and runs program accordingly.
  *
- * @param argumentNumber number of arguments passed into program
- * @param arguments      actual arguments passed into program (arguments[0] being the executable's name)
- * @return               program exit code
+ * @param argumentsNumber number of arguments passed into program
+ * @param arguments       actual arguments passed into program (arguments[0] being the executable's name)
+ * @return                program exit code
  */
 int main(
     const int   argumentsNumber,

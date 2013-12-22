@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/gtl/object_type_properties.hpp
+ * @file      gt/gtl/object_type_property.hpp
  * @brief     Defines GT::Model::ObjectTypeProperty class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok

@@ -48,7 +48,7 @@ public:
     /**
      * @brief Initiates Param with Object.
      *
-     * @param number Number
+     * @param object Object
      */
     explicit ObjectParam(
         const ObjectPtr object
@@ -69,10 +69,10 @@ public:
     /**
      * @brief Returns Number for context.
      *
-     * @param context                Context with values
-     * @param visitedIdentifiers     already visited Identifiers
-     * @return                       Number
-     * @thrown InvalidContentRequest thrown always for this implementation
+     * @param context               Context with values
+     * @param visitedIdentifiers    already visited Identifiers
+     * @return                      Number
+     * @throw InvalidContentRequest thrown always for this implementation
      */
     virtual const NumberPtr getNumber(
         const Context&      context,

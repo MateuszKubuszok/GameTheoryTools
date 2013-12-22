@@ -57,14 +57,14 @@ public:
     /**
      * @brief Returns Object for Context.
      *
-     * @param context                Context with values
-     * @param visitedIdentifiers     already visited Identifiers
-     * @return                       Object
-     * @thrown InvalidContentRequest thrown always for this implementation
+     * @param context               Context with values
+     * @param visitedIdentifiers    already visited Identifiers
+     * @return                      Object
+     * @throw InvalidContentRequest thrown always for this implementation
      */
     virtual const ObjectPtr getObject(
         const Context&      context,
-        VisitedIdentifiers& visitiedIdentifiers
+        VisitedIdentifiers& visitedIdentifiers
     ) const override;
 
     /**
@@ -76,7 +76,7 @@ public:
      */
     virtual const NumberPtr getNumber(
         const Context&      context,
-        VisitedIdentifiers& visitiedIdentifiers
+        VisitedIdentifiers& visitedIdentifiers
     ) const override;
 
     /**

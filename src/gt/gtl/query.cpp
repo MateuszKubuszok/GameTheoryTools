@@ -1,5 +1,5 @@
 /**
- * @file      gt/gtl/query.hcpp
+ * @file      gt/gtl/query.cpp
  * @brief     Defines GT::GTL::Query methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok

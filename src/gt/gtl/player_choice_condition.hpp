@@ -48,8 +48,8 @@ public:
     /**
      * @brief Initiates Condition with a Player's name and choice.
      *
-     * @param Param with Player's name
-     * @param Param with Player's choice
+     * @param player   Param with Player's name
+     * @param strategy Param with Player's choice
      */
     PlayerChoiceCondition(
         const ObjectPtr player,
@@ -59,7 +59,7 @@ public:
     /**
      * @brief Returns Condition applicable to Route.
      *
-     * @param             Context
+     * @param context     Context
      * @return            Condition applicable to Route
      * @throw InvalidType thrown when either player or strategy are not IdentifierParams
      */
