@@ -31,7 +31,7 @@ namespace Routines {
 using boost::container::map;
 
 using Model::ExtensiveDataNode;
-using Model::ExtensiveGamePositionsHelper
+using Model::ExtensiveGamePositionsHelper;
 using Model::StrategicGamePositionsHelper;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

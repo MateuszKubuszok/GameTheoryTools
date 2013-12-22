@@ -57,17 +57,17 @@ public:
     /**
      * @brief Pointer to template type.
      */
-    typedef typename shared_ptr<Content> ContentPtr;
+    typedef shared_ptr<Content> ContentPtr;
 
     /**
      * @brief Collection of pointers.
      */
-    typedef typename vector<ContentPtr> Collection;
+    typedef vector<ContentPtr> Collection;
 
     /**
      * @brief Poiter to collection.
      */
-    typedef typename shared_ptr<Collection> CollectionPtr;
+    typedef shared_ptr<Collection> CollectionPtr;
 
     /**
      * @brief Creates an empty collection.

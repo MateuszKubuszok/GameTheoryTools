@@ -80,7 +80,7 @@ ExtensiveGamePositionsHelper::ExtensiveGamePositionsHelper(
 IdentifiersPtr ExtensiveGamePositionsHelper::getPossiblePlayers() const {
     IdentifiersPtr players = createIdentifiersPtr();
 
-    for (Identifier playerName : playersInformationSets | map_values)
+    for (Identifier playerName : playersInformationSets | map_keys)
         players->push_back( createIdentifierPtr(playerName) );
 
     return players;
@@ -89,7 +89,7 @@ IdentifiersPtr ExtensiveGamePositionsHelper::getPossiblePlayers() const {
 bool ExtensiveGamePositionsHelper::isPlayerPossible(
     const Identifier& playerName
 ) const {
-    for (Identifier checkedPlayerName : playersInformationSets | map_values)
+    for (Identifier checkedPlayerName : playersInformationSets | map_keys)
         if (playerName == checkedPlayerName)
             return true;
     return false;
@@ -103,7 +103,7 @@ IdentifiersPtr ExtensiveGamePositionsHelper::getPossibleInformationSetsForPlayer
 
     IdentifiersPtr informationSets = createIdentifiersPtr();
 
-    for (Identifier setName : playersInformationSets.at(player).left | map_values)
+    for (Identifier setName : playersInformationSets.at(player).left | map_keys)
         informationSets->push_back( createIdentifierPtr(setName) );
 
     return informationSets;

@@ -30,7 +30,8 @@ using boost::dynamic_pointer_cast;
 using Model::ExtensiveDataAccessor;
 using Model::ExtensiveDataAccessorPtr;
 using Model::ExtensiveDataNode;
-using Model::ExtensiveGamePositionsHelper
+using Model::ExtensiveDataNodes;
+using Model::ExtensiveGamePositionsHelper;
 using Model::PlainDataPiece;
 using Model::StrategicGamePositionsHelper;
 
@@ -129,7 +130,7 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
 
         CalculatedPayoffs calculatedPayoffs;
         for (const ExtensiveDataNodes::value_type& child : checkedNode.getChildren()) {
-            const Identifier& strategy                = child.first;
+            const Identifier& strategy         = child.first;
             const ExtensiveDataNode& childNode = *child.second;
 
             const NumbersPtr& bestSubTreePayoff = getBestPayoffWhen(

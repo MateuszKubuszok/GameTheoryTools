@@ -29,8 +29,8 @@ namespace GTL {
 // public:
 
 ExecutionDriver::ExecutionDriver(
-    CutputStream* newOutputStream,
-    CutputStream* newErrorStream
+    OutputStream* newOutputStream,
+    OutputStream* newErrorStream
 ) :
     checkingDriver(newErrorStream),
     context(new Context()),

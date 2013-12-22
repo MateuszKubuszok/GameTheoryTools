@@ -26,7 +26,7 @@ namespace Program = GT::Program;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using std::cout;
-using std::err;
+using std::cerr;
 using std::endl;
 using std::istringstream;
 using std::string;
@@ -49,8 +49,8 @@ using GT::Model::ResultIndentationMode;
  * @param values values all values that match validator
  */
 void validate(
-    any&               value,
-    const any<string>& values,
+    any&                  value,
+    const vector<string>& values,
     ResultBuilderMode*,
     int
 ) {
@@ -74,8 +74,8 @@ void validate(
  * @param values values all values that match validator
  */
 void validate(
-    any&               value,
-    const any<string>& values,
+    any&                  value,
+    const vector<string>& values,
     ResultIndentationMode*,
     int
 ) {

@@ -27,7 +27,6 @@ namespace Model {
 
 using std::endl;
 using std::stringstream;
-using std::vector;
 
 using boost::is_any_of;
 using boost::split;
@@ -95,7 +94,7 @@ Message AbstractResultBuilder::addIndent(
     const Message content
 ) const {
     // do not use boost::container::vector here - it causes memory access violation with split function
-    vector<Message> lines;
+    std::vector<Message> lines;
     split(lines, content, is_any_of("\n"));
 
     stringstream result;

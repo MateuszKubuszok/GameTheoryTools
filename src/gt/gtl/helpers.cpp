@@ -27,7 +27,6 @@ namespace GTL {
 
 using std::endl;
 using std::stringstream;
-using std::vector;
 
 using boost::is_any_of;
 using boost::split;
@@ -42,7 +41,7 @@ Message suberrorMessage(
     result << parentMessage << ":" << endl;
 
     Message content = invalidSymbol.toString();
-    vector<Message> lines;
+    std::vector<Message> lines;
     split(lines, content, is_any_of("\n"));
 
     for (Message& line : lines)
