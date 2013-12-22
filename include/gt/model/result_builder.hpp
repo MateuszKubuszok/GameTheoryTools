@@ -44,10 +44,10 @@ public:
      *
      * Size of headers must match size of each record.
      *
-     * @param  newProperties headers' names that will be used in a Result
-     * @return               refernce to self for chaining
+     * @param  properties headers' names that will be used in a Result
+     * @return            reference to self for chaining
      *
-     * @see #addRecord(IdentifierPtr&,MessagesPtr&)
+     * @see #addRecord(const IdentifierPtr&, const MessagesPtr&)
      */
     virtual ResultBuilder& setHeaders(
         const IdentifiersPtr& properties
@@ -60,9 +60,9 @@ public:
      *
      * @param object  name of added record
      * @param results properties that should be displayed
-     * @return        refernce to self for chaining
+     * @return        reference to self for chaining
      *
-     * @see #setHeaders(IdentifiersPtr&)
+     * @see #setHeaders(const IdentifiersPtr&)
      */
     virtual ResultBuilder& addRecord(
         const IdentifierPtr& object,
@@ -72,7 +72,7 @@ public:
     /**
      * @brief Adds single named subresult.
      *
-     * @param name   name subresult is build
+     * @param name   name of subresult
      * @param result subresult
      * @result       reference for itself for chaining
      */

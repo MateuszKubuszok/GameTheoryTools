@@ -248,7 +248,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param nullFactory object to copy
      */
     NullFactory(
         const NullFactory& nullFactory

@@ -76,6 +76,7 @@ public:
      * @brief Sets values for given coordiantes.
      *
      * @param positions         coordinates in a Game
+     * @param numbers           payoff to set
      * @return                  reference to itself
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
@@ -88,6 +89,7 @@ public:
      * @brief Sets values for given coordiantes.
      *
      * @param positions         coordinates in a Game
+     * @param numbers           payoff to set
      * @return                  reference to itself
      * @throw InvalidCoordinate thrown when calculated coordinates are invalid
      */
@@ -104,7 +106,7 @@ public:
     virtual Message toString() const override = 0;
 
     /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     * @brief Overrides #operator[] allowing easy access to values via DataPiece interface.
      *
      * @param positions          coordinates
      * @return                   DataPiece object allowing access to concrete value
@@ -115,7 +117,7 @@ public:
     ) const = 0;
 
     /**
-     * @brief Overrides operator [] allowing easy access to values via DataPiece interface.
+     * @brief Overrides #operator[] allowing easy access to values via DataPiece interface.
      *
      * @param positions          coordinates
      * @return                   DataPiece object allowing access to concrete value

@@ -91,8 +91,8 @@ public:
     /**
      * @brief Whether Object responds to some property.
      *
-     * @param  property property's name
-     * @return          true if Object responds to such property
+     * @param  propertyName property's name
+     * @return              true if Object responds to such property
      */
     virtual bool respondsTo(
         const Identifier& propertyName
@@ -116,6 +116,7 @@ public:
      * @brief Finds Objects' property for giver Conditions and returns it as a Result.
      *
      * @param context           Context with values
+     * @param propertyName      property's name
      * @param conditions        Conditions to consider
      * @return                  Result for sought property
      * @throw CyclicIdentifiers thrown when there is Param with cyclic references

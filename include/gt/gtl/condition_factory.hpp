@@ -44,11 +44,11 @@ public:
     static ConditionFactory& getInstance();
 
     /**
-     * @brief Creates condition for a player choosing strategy beforehand.
+     * @brief Creates Condition for a Player choosing strategy beforehand.
      *
      * @param player   player Object
-     * @parma strategy strategy Object
-     * @result         Condition for a player
+     * @param strategy strategy Object
+     * @result         Condition for a Player
      */
     ConditionPtr createPlayerChoiceCondition(
         const ObjectPtr player,
@@ -64,7 +64,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param conditionFactory object to copy
      */
     ConditionFactory(
         const ConditionFactory& conditionFactory

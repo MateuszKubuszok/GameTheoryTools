@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/routines_factory.hpp
+ * @file      gt/routines/routine_factory.hpp
  * @brief     Defines GT::Routines::RoutinesFactory class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
@@ -82,10 +82,10 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param routineFactory object to copy
      */
     RoutineFactory(
-        const RoutineFactory& nullFactory
+        const RoutineFactory& routineFactory
     );
 
     /**

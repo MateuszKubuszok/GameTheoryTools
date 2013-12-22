@@ -28,6 +28,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::map;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @class Player
  * @brief Defines Player.
@@ -44,7 +48,7 @@ class Player : public virtual Root {
     /**
      * @brief Type storing strategy-to-ordinal mapping.
      */
-    typedef boost::container::map<Identifier, Index> StrategyMap;
+    typedef map<Identifier, Index> StrategyMap;
 
     /**
      * @brief Player's name.
@@ -65,8 +69,8 @@ public:
     /**
      * @brief Constructor of the Player.
      *
-     * @param playerName     name of the Player
-     * @param playerStrategy declared strategies
+     * @param playerName       name of the Player
+     * @param playerStrategies declared strategies
      */
     Player(
         const IdentifierPtr  playerName,
@@ -97,6 +101,7 @@ public:
      /**
      * @brief Returns ordinal of a strategy with given Identifier.
      *
+     * @param strategy           strategy name
      * @return                   ordinal of strategy with given Identifier
      * @throws InvalidCoordinate thrown if Player has no such strategy
      */
@@ -107,7 +112,8 @@ public:
      /**
      * @brief Returns whether strategy with such name exists.
      *
-     * @return true if Player has such strategy
+     * @param strategy strategy name
+     * @return         true if Player has such strategy
      */
     virtual bool hasStrategy(
         const Identifier& strategy

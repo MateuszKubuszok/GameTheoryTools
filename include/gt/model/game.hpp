@@ -68,7 +68,7 @@ public:
     virtual Message toString() const = 0;
 
     /**
-     * @brief Syntax sugar for Game#isEqual(const Root&) method.
+     * @brief Syntax sugar for #isEqual(const Root&) method.
      *
      * @param game1 first Game to compare
      * @param game2 second Game to compare
@@ -80,7 +80,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !Game#isEqual(const Root&) method.
+     * @brief Syntax sugar for !#isEqual(const Root&) method.
      *
      * @param game1 first Game to compare
      * @param game2 second Game to compare

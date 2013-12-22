@@ -142,7 +142,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param errorFactory object to copy
      */
     ErrorFactory(
         const ErrorFactory& errorFactory

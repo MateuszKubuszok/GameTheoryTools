@@ -95,7 +95,7 @@ public:
 
 private:
     /**
-     * @biref Private constructor.
+     * @brief Private constructor.
      */
     ParamFactory();
 

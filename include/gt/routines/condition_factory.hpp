@@ -46,6 +46,8 @@ public:
     /**
      * @brief Creates Condition of Player's choice.
      *
+     * @param player   Player's name
+     * @param strategy chosen strategy
      * @result Condition
      */
     ConditionPtr createPlayerChoiceCondition(
@@ -62,10 +64,10 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param conditionFactory object to copy
      */
     ConditionFactory(
-        const ConditionFactory& nullFactory
+        const ConditionFactory& conditionFactory
     );
 
     /**

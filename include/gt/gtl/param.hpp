@@ -76,6 +76,7 @@ public:
      * Returns Result for referred Object if there is any and it has required property.
      *
      * @param context           Context with values
+     * @param propertyName      property's name
      * @param conditions        Conditions to consider
      * @return                  Result for sought property
      * @throw CyclicIdentifiers thrown when there is Param with cyclic references

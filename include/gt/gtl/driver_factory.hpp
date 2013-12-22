@@ -74,7 +74,7 @@ private:
     /**
      * @brief Default copy constructor hidden from programmers.
      *
-     * @param object to copy
+     * @param driverFactory object to copy
      */
     DriverFactory(
         const DriverFactory& driverFactory

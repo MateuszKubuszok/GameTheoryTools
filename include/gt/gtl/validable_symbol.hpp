@@ -84,7 +84,7 @@ public:
     /**
      * @brief Sets input location.
      *
-     * @param inutLocation input location
+     * @param inputLocation input location
      */
     virtual void setInputLocation(
         const InputLocationPtr inputLocation

@@ -49,8 +49,8 @@ public:
     /**
      * @brief Constructor of the Player.
      *
-     * @param playerName     name of the Player
-     * @param playerStrategy declared strategies
+     * @param playerName       name of the Player
+     * @param playerStrategies declared strategies
      */
     Player(
         const IdentifierPtr  playerName,
