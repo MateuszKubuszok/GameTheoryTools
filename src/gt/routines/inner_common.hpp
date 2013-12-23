@@ -56,20 +56,24 @@ class ExceptionFactory;
 
 class NotYetImplementedRoutine;
 class PropertyUndefinedRoutine;
-class SelectableStrategiesRoutine;
+
+class InformationSetChoiceRoutineConfig;
 
 class ExtensivePureStrategyPath;
 
 class StrategicPureEquilibriumRoutine;
 class ExtensivePureEquilibriumRoutine;
+class ExtensivePureEquilibriumRoutineConfig;
 
 class PlayerChoiceCondition;
 
 /* Shortens commonly used names */
 
-typedef shared_ptr<SelectableStrategiesRoutine> SelectableStrategiesRoutinePtr;
+/** @brief Shared pointer to InformationSetChoiceRoutineConfig. */
+typedef shared_ptr<InformationSetChoiceRoutineConfig> InformationSetChoiceRoutineConfigPtr;
 
-typedef vector<ExtensivePureStrategyPath>       ExtensivePureStrategyPaths;
+/** @brief Vector of ExtensivePureStrategyPaths. */
+typedef vector<ExtensivePureStrategyPath>             ExtensivePureStrategyPaths;
 
 typedef Model::Player           Player;
 typedef Model::PlayerPtr        PlayerPtr;
@@ -88,15 +92,20 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/routines/exception_factory.hpp"
 
+#include "gt/routines/routine_config.hpp"
+
+#include "gt/routines/information_set_choice_routine_config.hpp"
+
 #include "gt/routines/not_yet_implemented_routine.hpp"
 #include "gt/routines/property_undefined_routine.hpp"
-#include "gt/routines/selectable_strategies_routine.hpp"
 
 #include "gt/routines/extensive_pure_strategy_path.hpp"
 
 #include "gt/routines/strategic_pure_equilibrium_routine.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine.hpp"
+#include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
 
+#include "gt/routines/information_set_choice_condition.hpp"
 #include "gt/routines/player_choice_condition.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

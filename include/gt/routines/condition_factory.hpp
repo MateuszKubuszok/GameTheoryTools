@@ -44,6 +44,20 @@ public:
     static ConditionFactory& getInstance();
 
     /**
+     * @brief Creates Condition of information set's choice.
+     *
+     * @param player   Player's name
+     * @param player   information set's name
+     * @param strategy chosen strategy
+     * @result Condition
+     */
+    ConditionPtr createInformationSetChoiceCondition(
+        const IdentifierPtr player,
+        const IdentifierPtr informationSet,
+        const IdentifierPtr strategy
+    ) const;
+
+    /**
      * @brief Creates Condition of Player's choice.
      *
      * @param player   Player's name

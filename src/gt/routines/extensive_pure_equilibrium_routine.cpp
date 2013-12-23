@@ -37,14 +37,8 @@ using Model::StrategicGamePositionsHelper;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ExtensivePureEquilibriumRoutine : public SelectableStrategiesRoutine {
+// class ExtensivePureEquilibriumRoutine : public Routine {
 // public:
-
-ExtensivePureEquilibriumRoutine::ExtensivePureEquilibriumRoutine(
-    const PlayersPtr players
-) :
-    SelectableStrategiesRoutine(players)
-    {}
 
 ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
     const GamePtr       game,

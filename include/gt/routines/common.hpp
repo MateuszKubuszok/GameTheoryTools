@@ -58,25 +58,27 @@ class RoutineFactory;
 
 /* Routines declarations */
 
-class Condition; class NullCondition;
-class Routine;   class NullRoutine;
+class Condition;     class NullCondition;
+class Routine;       class NullRoutine;
+class RoutineConfig; class NullRoutineConfig;
 
 /* Shortens commonly used names */
 
-typedef shared_ptr<Condition>  ConditionPtr;  /**< @brief Smart pointer to Condition. */
-typedef vector<ConditionPtr>   Conditions;    /**< @brief Vector of Conditions. */
-typedef shared_ptr<Conditions> ConditionsPtr; /**< @brief Smart pointer to Conditions. */
-typedef shared_ptr<Routine>    RoutinePtr;    /**< @brief Smart pointer to Routine. */
-typedef vector<RoutinePtr>     Routines;      /**< @brief Vector of Routines. */
-typedef shared_ptr<Routines>   RoutinesPtr;   /**< @brief Smart pointer to Routines. */
+typedef shared_ptr<Condition>     ConditionPtr;     /**< @brief Smart pointer to Condition. */
+typedef vector<ConditionPtr>      Conditions;       /**< @brief Vector of Conditions. */
+typedef shared_ptr<Conditions>    ConditionsPtr;    /**< @brief Smart pointer to Conditions. */
+typedef shared_ptr<Routine>       RoutinePtr;       /**< @brief Smart pointer to Routine. */
+typedef vector<RoutinePtr>        Routines;         /**< @brief Vector of Routines. */
+typedef shared_ptr<Routines>      RoutinesPtr;      /**< @brief Smart pointer to Routines. */
+typedef shared_ptr<RoutineConfig> RoutineConfigPtr; /**< @brief Smart pointer to RoutineConfig. */
 
-typedef Model::Root            Root;          /**< @brief Alias for Model::Root. */
-typedef Model::Game            Game;          /**< @brief Alias for Model::Game. */
-typedef Model::NullGame        NullGame;      /**< @brief Alias for Model::NullGame. */
-typedef Model::GamePtr         GamePtr;       /**< @brief Alias for Model::GamePtr. */
-typedef Model::Result          Result;        /**< @brief Alias for Model::Result. */
-typedef Model::NullResult      NullResult;    /**< @brief Alias for Model::NullResult. */
-typedef Model::ResultPtr       ResultPtr;     /**< @brief Alias for Model::ResultPtr. */
+typedef Model::Root               Root;             /**< @brief Alias for Model::Root. */
+typedef Model::Game               Game;             /**< @brief Alias for Model::Game. */
+typedef Model::NullGame           NullGame;         /**< @brief Alias for Model::NullGame. */
+typedef Model::GamePtr            GamePtr;          /**< @brief Alias for Model::GamePtr. */
+typedef Model::Result             Result;           /**< @brief Alias for Model::Result. */
+typedef Model::NullResult         NullResult;       /**< @brief Alias for Model::NullResult. */
+typedef Model::ResultPtr          ResultPtr;        /**< @brief Alias for Model::ResultPtr. */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

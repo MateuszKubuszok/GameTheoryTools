@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_CONDITION_HPP__
-#define __GT_ROUTINES_CONDITION_HPP__
+#ifndef __GT_ROUTINES_ROUTINE_CONFIG_HPP__
+#define __GT_ROUTINES_ROUTINE_CONFIG_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/condition.hpp
- * @brief     Defines GT::Routines::Condition interface.
+ * @file      gt/routines/routine_config.hpp
+ * @brief     Defines GT::Routines::RoutineConfig interface.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,58 +29,53 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class Condition
- * @brief Condition that sets up Routine before actual calculation.
+ * @class RoutineConfig
+ * @brief Parent of RoutineConfigs that will store configuration specific to a Routine.
  *
  * @author Mateusz Kubuszok
  *
  * @see Routine
+ * @see Condition
  */
-class Condition : public virtual Root {
+class RoutineConfig : public virtual Root {
 public:
     /**
-     * @brief Configureg given Routine.
+     * @brief Whether current configuration is valid.
      *
-     * @param routineConfig    RoutineConfig to set up
-     * @throw InvalidCondition thrown when Condition is invalid
+     * @return true if current configuration is valid
      */
-    virtual void configureRoutine(
-        RoutineConfigPtr routineConfig
-    ) const = 0;
+    virtual bool isValid() const = 0;
 
     /**
-     * @brief Returns Condition's Message.
+     * @brief Returns RoutineConfig's Message.
      *
-     * @return Condition's Message
+     * @return RoutineConfig's Message
      */
     virtual Message toString() const override = 0;
-}; /* END class Condition */
+}; /* END class RoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class NullCondition
- * @brief Null Condition for handling invalid situations.
+ * @class NullRoutineConfig
+ * @brief Null RoutineConfig for handling invalid situations.
  *
  * @author Mateusz Kubuszok
  */
-class NullCondition final : public Condition {
-    virtual void configureRoutine(
-        RoutineConfigPtr
-    ) const override {}
-
-    virtual bool isNotNull() const override {
-        return false;
+class NullRoutineConfig : public RoutineConfig {
+public:
+    virtual bool isValid() const override {
+        return true;
     }
 
     virtual Message toString() const override {
-        return Message("NullCondition");
+        return Message("NullRoutineConfig");
     }
-}; /* END class NullCondition */
+}; /* END class NullRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_CONDITION_HPP__ */
+#endif /* #ifndef __GT_ROUTINES_ROUTINE_CONFIG_HPP__ */

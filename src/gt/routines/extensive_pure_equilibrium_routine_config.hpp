@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_CONDITION_HPP__
-#define __GT_ROUTINES_CONDITION_HPP__
+#ifndef __GT_ROUTINES_EXTENSIVE_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__
+#define __GT_ROUTINES_EXTENSIVE_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/condition.hpp
- * @brief     Defines GT::Routines::Condition interface.
+ * @file      gt/routines/extensive_pure_equilibrium_routine_config.hpp
+ * @brief     Defines GT::Routines::ExtensivePureEquilibriumRoutineConfig class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -28,59 +28,45 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @class Condition
- * @brief Condition that sets up Routine before actual calculation.
- *
- * @author Mateusz Kubuszok
- *
- * @see Routine
- */
-class Condition : public virtual Root {
-public:
-    /**
-     * @brief Configureg given Routine.
-     *
-     * @param routineConfig    RoutineConfig to set up
-     * @throw InvalidCondition thrown when Condition is invalid
-     */
-    virtual void configureRoutine(
-        RoutineConfigPtr routineConfig
-    ) const = 0;
-
-    /**
-     * @brief Returns Condition's Message.
-     *
-     * @return Condition's Message
-     */
-    virtual Message toString() const override = 0;
-}; /* END class Condition */
+using Model::ExtensiveDataNodePtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class NullCondition
- * @brief Null Condition for handling invalid situations.
+ * @class ExtensivePureEquilibriumRoutineConfig
+ * @brief Contains information for ExtensivePureEquilibriumRoutine.
  *
  * @author Mateusz Kubuszok
  */
-class NullCondition final : public Condition {
-    virtual void configureRoutine(
-        RoutineConfigPtr
-    ) const override {}
+class ExtensivePureEquilibriumRoutineConfig final : public InformationSetChoiceRoutineConfig {
+public:
+    /**
+     * @brief Initiates config with ExtensiveData's tree root.
+     *
+     * @param extensiveGameRoot root of Data tree
+     */
+    explicit ExtensivePureEquilibriumRoutineConfig(
+        const ExtensiveDataNodePtr extensiveGameRoot
+    );
 
-    virtual bool isNotNull() const override {
-        return false;
-    }
+    /**
+     * @brief Whether current configuration is valid.
+     *
+     * @return true if current configuration is valid
+     */
+    virtual bool isValid() const override;
 
-    virtual Message toString() const override {
-        return Message("NullCondition");
-    }
-}; /* END class NullCondition */
+    /**
+     * @brief Returns RoutineConfig's Message.
+     *
+     * @return RoutineConfig's Message
+     */
+    virtual Message toString() const override;
+}; /* END class ExtensivePureEquilibriumRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_CONDITION_HPP__ */
+#endif /* #ifndef __GT_ROUTINES_EXTENSIVE_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__ */

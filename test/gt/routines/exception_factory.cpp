@@ -69,6 +69,23 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_strategyNotFound ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_informationSetNotFound ) {
+    // given
+    GT::Identifier identifier1 = GT::createIdentifier("identifier1");
+    GT::Identifier identifier2 = GT::createIdentifier("identifier2");
+
+    // when
+    GT::Routines::InvalidPlayerChoice exception = GT::Routines::ExceptionFactory::getInstance()
+                                                 .informationSetNotFound(identifier1, identifier2);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "There is no information set \"identifier2\" for player \"identifier1\""
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_incompletePayoffInformation ) {
     // given
     GT::Identifier identifier1 = GT::createIdentifier("identifier1");

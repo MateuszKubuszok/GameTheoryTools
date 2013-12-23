@@ -79,13 +79,25 @@ InvalidPlayerChoice ExceptionFactory::strategyNotFound(
     return InvalidPlayerChoice(result.str());
 }
 
+InvalidPlayerChoice ExceptionFactory::informationSetNotFound(
+    const Identifier& playerName,
+    const Identifier& informationSet
+) const {
+    stringstream result;
+
+    result << "There is no information set \"" << informationSet << "\" for player \"" <<  playerName << "\"";
+
+    return InvalidPlayerChoice(result.str());
+}
+
 IncompletePayoffInformation ExceptionFactory::incompletePayoffInformation(
     const Identifier& playerName,
     const Identifier& strategy
 ) const {
     stringstream result;
 
-    result << "There is no Payoff information about \"" << strategy << "\" for player \"" <<  playerName << "\"";
+    result << "There is no Payoff information about \"" << strategy
+           << "\" for player \"" <<  playerName << "\"";
 
     return IncompletePayoffInformation(result.str());
 }

@@ -74,6 +74,18 @@ public:
     ) const;
 
     /**
+     * @brief Thrown when non existing information set is chosen.
+     *
+     * @param playerName     name of Player
+     * @param informationSet name of sought information set
+     * @return               InvalidPlayerChoice exception to throw
+     */
+    InvalidPlayerChoice informationSetNotFound(
+        const Identifier& playerName,
+        const Identifier& informationSet
+    ) const;
+
+    /**
      * @brief Thrown when non existing strategy is chosen.
      *
      * @param playerName name of Player

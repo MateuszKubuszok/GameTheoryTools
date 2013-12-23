@@ -1,15 +1,30 @@
 #include "gt/routines/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( ExtensivePureEquilibriumRoutine )
+BOOST_AUTO_TEST_SUITE( InformationSetChoiceRoutineConfig )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
-    // given
-    GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
-        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+class InformationSetChoiceRoutineConfigImpl : public GT::Routines::InformationSetChoiceRoutineConfig {
+public:
+    explicit InformationSetChoiceRoutineConfigImpl(
+        const GT::Model::ExtensiveDataNodePtr extensiveGameRoot
+    ) :
+        GT::Routines::InformationSetChoiceRoutineConfig(extensiveGameRoot)
+        {}
 
+    virtual bool isValid() const override {
+        return GT::Routines::InformationSetChoiceRoutineConfig::isValid();
+    }
+
+    virtual GT::Message toString() const {
+        return GT::Message("InformationSetChoiceRoutineConfigImpl");
+    }
+}; /* END class InformationSetChoiceRoutineConfigImpl */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+BOOST_AUTO_TEST_CASE( InformationSetChoiceRoutineConfig_functional ) {
+    // given
     GT::IdentifierPtr  p1   = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  p1s1 = GT::createIdentifierPtr("p1s1");
     GT::IdentifierPtr  p1s2 = GT::createIdentifierPtr("p1s2");
@@ -40,10 +55,10 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
-    GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildExtensiveGame();
-    gameBuilder->setPlayers(players);
+    GT::Model::ExtensiveDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
     {
-        GT::Model::DataBuilderPtr s1_node = gameBuilder->clone();
+        GT::Model::DataBuilderPtr s1_node = dataBuilder.clone();
         s1_node->addNextPositions(p1s1Choice);
         {
             GT::Model::DataBuilderPtr s1_s1_node = s1_node->clone();
@@ -81,7 +96,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
         }
     }
     {
-        GT::Model::DataBuilderPtr s2_node = gameBuilder->clone();
+        GT::Model::DataBuilderPtr s2_node = dataBuilder.clone();
         s2_node->addNextPositions(p1s2Choice);
         {
             GT::NumbersPtr payoff = GT::createNumbersPtr();
@@ -91,49 +106,37 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
         }
     }
 
-    GT::Model::GamePtr          game       = gameBuilder->build();
-    GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
+    GT::Model::ExtensiveDataNodePtr extensiveGameRoot = dataBuilder.build()->getRoot();
+
+    GT::Identifier is1("1");
+    GT::Identifier is2("2");
+
+    GT::Identifier  choiceExactly(*p1s2);
+    GT::Identifiers choiceWithin;
+    choiceWithin.push_back(p2s2);
+    GT::Identifiers invalidChoice;
 
     // when
-    GT::Routines::ExtensivePureEquilibriumRoutine routine;
-    GT::Model::ResultPtr result;
+    InformationSetChoiceRoutineConfigImpl routineConfig(extensiveGameRoot);
 
     // then
-    BOOST_REQUIRE_NO_THROW( result = routine.findResultFor(game, conditions) );
-    BOOST_CHECK_EQUAL(
-        result->getResult(),
-        GT::Message() +
-        "Pure Strategies:\n"
-        "\tp1:\n"
-        "\t\t1:\n"
-        "\t\t\tp1s1\n"
-        "\t\t2:\n"
-        "\t\t\tp1s2\n"
-        "\tp2:\n"
-        "\t\t1:\n"
-        "\t\t\tp2s1\n"
-        "Payoff:\n"
-        "\t\t\tp1,\tp2\n"
-        "\tPayoff:\n"
-        "\t\t\t20,\t20\n"
-    );
-}
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is1).size(), 2 );
+    BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceExactly(  *p1, is1, choiceExactly) );
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is1) );
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is1).size(), 1 );
+    BOOST_CHECK(            routineConfig.isValid() );
 
-BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_toString ) {
-    // given
-    GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
-        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p2, is1).size(), 2 );
+    BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceWithin(   *p2, is1, choiceWithin) );
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p2, is1) );
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p2, is1).size(), 1 );
+    BOOST_CHECK(            routineConfig.isValid() );
 
-    // when
-    GT::Routines::ExtensivePureEquilibriumRoutine routine;
-
-    // then
-    BOOST_CHECK_EQUAL(
-        routine.toString(),
-        GT::Message() +
-        "ExtensivePureEquilibriumRoutine"
-    );
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is2).size(), 2 );
+    BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceWithin(   *p1, is2, invalidChoice) );
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is2) );
+    BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is2).size(), 0 );
+    BOOST_CHECK(           !routineConfig.isValid() );
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

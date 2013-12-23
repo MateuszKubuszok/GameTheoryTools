@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_ROUTINE_HPP__
-#define __GT_ROUTINES_PLAYER_CHOICE_CONDITION_ROUTINE_HPP__
+#ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__
+#define __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,11 +61,11 @@ public:
     /**
      * @brief Configureg given Routine.
      *
-     * @param routine          Routine to configure
+     * @param routineConfig    RoutineConfig to set up
      * @throw InvalidCondition thrown when Condition is invalid
      */
     virtual void configureRoutine(
-        RoutinePtr routine
+        RoutineConfigPtr routineConfig
     ) const override;
 
     /**
@@ -81,4 +81,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_ROUTINE_HPP__ */
+#endif /* END #ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__ */

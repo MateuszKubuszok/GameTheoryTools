@@ -34,13 +34,19 @@ ConditionFactory& ConditionFactory::getInstance() {
 
 // public:
 
+ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
+    const IdentifierPtr player,
+    const IdentifierPtr informationSet,
+    const IdentifierPtr strategy
+) const {
+    return ConditionPtr( new InformationSetChoiceCondition(player, informationSet, strategy) );
+}
+
 ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     const IdentifierPtr player,
     const IdentifierPtr strategy
 ) const {
-    return ConditionPtr(
-        new PlayerChoiceCondition(player, strategy)
-    );
+    return ConditionPtr( new PlayerChoiceCondition(player, strategy) );
 }
 
 // private:

@@ -44,17 +44,8 @@ using Model::StrategicGamePositionsHelper;
  *
  * @see Condition
  */
-class ExtensivePureEquilibriumRoutine final : public SelectableStrategiesRoutine {
+class ExtensivePureEquilibriumRoutine final : public Routine {
 public:
-    /**
-     * @brief Initiates Routine with available Players.
-     *
-     * @param players Players definitions
-     */
-    explicit ExtensivePureEquilibriumRoutine(
-        const PlayersPtr players
-    );
-
     /**
      * @brief Returns pure strategy equilibrium for Extensive Game.
      *

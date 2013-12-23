@@ -10,7 +10,4 @@
 /* Includes boost libraries */
 #include "boost/scoped_ptr.hpp"
 
-/* Includes test helpers */
-#include "gt/routines/test_routine_helpers.hpp"
-
 #endif /* END #ifndef __GT_ROUTINES_TEST_HPP__ */

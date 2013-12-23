@@ -1,15 +1,11 @@
 #include "gt/routines/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( ExtensivePureEquilibriumRoutine )
+BOOST_AUTO_TEST_SUITE( InformationSetChoiceCondition )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
+BOOST_AUTO_TEST_CASE( InformationSetChoiceCondition_configureRoutine ) {
     // given
-    GT::Model::ResultFactory::getInstance()
-        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
-        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
-
     GT::IdentifierPtr  p1   = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  p1s1 = GT::createIdentifierPtr("p1s1");
     GT::IdentifierPtr  p1s2 = GT::createIdentifierPtr("p1s2");
@@ -40,10 +36,10 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
-    GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildExtensiveGame();
-    gameBuilder->setPlayers(players);
+    GT::Model::ExtensiveDataBuilder dataBuilder;
+    dataBuilder.setPlayers(players);
     {
-        GT::Model::DataBuilderPtr s1_node = gameBuilder->clone();
+        GT::Model::DataBuilderPtr s1_node = dataBuilder.clone();
         s1_node->addNextPositions(p1s1Choice);
         {
             GT::Model::DataBuilderPtr s1_s1_node = s1_node->clone();
@@ -81,7 +77,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
         }
     }
     {
-        GT::Model::DataBuilderPtr s2_node = gameBuilder->clone();
+        GT::Model::DataBuilderPtr s2_node = dataBuilder.clone();
         s2_node->addNextPositions(p1s2Choice);
         {
             GT::NumbersPtr payoff = GT::createNumbersPtr();
@@ -91,48 +87,46 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
         }
     }
 
-    GT::Model::GamePtr          game       = gameBuilder->build();
-    GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
+    GT::Model::ExtensiveDataNodePtr extensiveGameRoot = dataBuilder.build()->getRoot();
+
+    GT::Routines::RoutineConfigPtr routineConfig(
+        new GT::Routines::ExtensivePureEquilibriumRoutineConfig(extensiveGameRoot)
+    );
+    boost::shared_ptr<GT::Routines::ExtensivePureEquilibriumRoutineConfig> specificRoutineConfig =
+        boost::dynamic_pointer_cast<GT::Routines::ExtensivePureEquilibriumRoutineConfig>(routineConfig);
+
+    GT::IdentifierPtr player         = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr informationSet = GT::createIdentifierPtr("1");
+    GT::IdentifierPtr strategy       = GT::createIdentifierPtr("p1s1");
 
     // when
-    GT::Routines::ExtensivePureEquilibriumRoutine routine;
-    GT::Model::ResultPtr result;
+    GT::Routines::InformationSetChoiceCondition condition(player, informationSet, strategy);
 
-    // then
-    BOOST_REQUIRE_NO_THROW( result = routine.findResultFor(game, conditions) );
-    BOOST_CHECK_EQUAL(
-        result->getResult(),
-        GT::Message() +
-        "Pure Strategies:\n"
-        "\tp1:\n"
-        "\t\t1:\n"
-        "\t\t\tp1s1\n"
-        "\t\t2:\n"
-        "\t\t\tp1s2\n"
-        "\tp2:\n"
-        "\t\t1:\n"
-        "\t\t\tp2s1\n"
-        "Payoff:\n"
-        "\t\t\tp1,\tp2\n"
-        "\tPayoff:\n"
-        "\t\t\t20,\t20\n"
-    );
+    BOOST_REQUIRE_EQUAL( specificRoutineConfig->getAvailableStrategies(*player, *informationSet).size(), 2 );
+    BOOST_REQUIRE_NO_THROW( condition.configureRoutine(routineConfig) );
+    BOOST_CHECK_EQUAL(   specificRoutineConfig->getAvailableStrategies(*player, *informationSet).size(), 1 );
 }
 
-BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_toString ) {
+BOOST_AUTO_TEST_CASE( InformationSetChoiceCondition_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
+    GT::IdentifierPtr player         = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifierPtr informationSet = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifierPtr strategy       = GT::Model::NullFactory::getInstance().createIdentifier();
+
     // when
-    GT::Routines::ExtensivePureEquilibriumRoutine routine;
+    GT::Routines::InformationSetChoiceCondition condition(player, informationSet, strategy);
 
     // then
     BOOST_CHECK_EQUAL(
-        routine.toString(),
+        condition.toString(),
         GT::Message() +
-        "ExtensivePureEquilibriumRoutine"
+        "NullIdentifier:\n"
+        "\tNullIdentifier:\n"
+        "\t\tNullIdentifier\n"
     );
 }
 

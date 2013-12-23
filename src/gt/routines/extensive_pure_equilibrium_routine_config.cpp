@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/strategic_pure_equilibrium_routine.cpp
- * @brief     Defines GT::Routines::StrategicPureEquilibriumRoutine methods.
+ * @file      gt/routines/extensive_pure_equilibrium_routine_config.cpp
+ * @brief     Defines GT::Routines::ExtensivePureEquilibriumRoutineConfig methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -25,21 +25,29 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class StrategicPureEquilibriumRoutine final : public Routine {
+using Model::ExtensiveDataNodePtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class ExtensivePureEquilibriumRoutineConfig : public InformationSetChoiceRoutineConfig {
 // public:
 
-ResultPtr StrategicPureEquilibriumRoutine::findResultFor(
-    const GamePtr,
-    const ConditionsPtr
-) const {
-    return ResultFactory::getInstance().constResult(Message("Not yet implemented"));
+ExtensivePureEquilibriumRoutineConfig::ExtensivePureEquilibriumRoutineConfig(
+    const ExtensiveDataNodePtr extensiveGameRoot
+) :
+    RoutineConfig(),
+    InformationSetChoiceRoutineConfig(extensiveGameRoot)
+    {}
+
+bool ExtensivePureEquilibriumRoutineConfig::isValid() const {
+    return InformationSetChoiceRoutineConfig::isValid();
 }
 
-Message StrategicPureEquilibriumRoutine::toString() const {
-    return Message("StrategicPureEquilibriumRoutine");
+Message ExtensivePureEquilibriumRoutineConfig::toString() const {
+    return Message("ExtensivePureEquilibriumRoutineConfig");
 }
 
-// }; /* END class StrategicPureEquilibriumRoutine */
+// }; // END class ExtensivePureEquilibriumRoutineConfig
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -47,20 +47,15 @@ RoutineFactory& RoutineFactory::getInstance() {
 RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
     const GamePtr game
 ) const {
-    DataAccessorPtr data    = game->getData();
-    PlayersPtr      players = game->getPlayers();
+    DataAccessorPtr data = game->getData();
 
-    shared_ptr<StrategicDataAccessor> strategicData(
-        dynamic_pointer_cast<StrategicDataAccessor>(data)
-    );
+    shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
     if (strategicData)
-        return RoutinePtr( new StrategicPureEquilibriumRoutine(players) );
+        return RoutinePtr( new StrategicPureEquilibriumRoutine() );
 
-    shared_ptr<ExtensiveDataAccessor> extensiveData(
-        dynamic_pointer_cast<ExtensiveDataAccessor>(data)
-    );
+    shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     if (extensiveData)
-        return RoutinePtr( new ExtensivePureEquilibriumRoutine(players) );
+        return RoutinePtr( new ExtensivePureEquilibriumRoutine() );
 
     return RoutinePtr(new NotYetImplementedRoutine());
 }
@@ -68,20 +63,15 @@ RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
     const GamePtr // game
 ) const {
-    // DataAccessorPtr data    = game->getData();
-    // PlayersPtr      players = game->getPlayers();
+    // DataAccessorPtr data = game->getData();
 
-    // shared_ptr<StrategicDataAccessor> strategicData(
-    //     dynamic_pointer_cast<StrategicDataAccessor>(data)
-    // );
+    // shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
     // if (strategicData)
-    //     return RoutinePtr( new StrategicMixedEquilibriumRoutine(players) );
+    //     return RoutinePtr( new StrategicMixedEquilibriumRoutine() );
 
-    // shared_ptr<ExtensiveDataAccessor> extensiveData(
-    //     dynamic_pointer_cast<ExtensiveDataAccessor>(data)
-    // );
+    // shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     // if (extensiveData)
-    //     return RoutinePtr( new ExtensiveMixedEquilibriumRoutine(players) );
+    //     return RoutinePtr( new ExtensiveMixedEquilibriumRoutine() );
 
     return RoutinePtr(new NotYetImplementedRoutine());
 }
@@ -89,18 +79,13 @@ RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
 RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
     const GamePtr game
 ) const {
-    DataAccessorPtr data    = game->getData();
-    PlayersPtr      players = game->getPlayers();
+    DataAccessorPtr data = game->getData();
 
-    shared_ptr<StrategicDataAccessor> strategicData(
-        dynamic_pointer_cast<StrategicDataAccessor>(data)
-    );
+    shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
     if (strategicData)
         return RoutinePtr( new PropertyUndefinedRoutine() );
 
-    // shared_ptr<ExtensiveDataAccessor> extensiveData(
-    //     dynamic_pointer_cast<ExtensiveDataAccessor>(data)
-    // );
+    // shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     // if (extensiveData)
     //     return RoutinePtr( new ExtensiveBehaviourEquilibriumRoutine(players) );
 

@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/player_choice_condition.cpp
- * @brief     Defines GT::Routines::PlayerChoiceCondition methods.
+ * @file      gt/routines/information_set_choice_condition.cpp
+ * @brief     Defines GT::Routines::InformationSetChoiceCondition methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -25,45 +25,53 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::find_if;
+using std::remove_if;
+
 using boost::dynamic_pointer_cast;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlayerChoiceCondition final : public Condition {
+// class InformationSetChoiceCondition final : public Condition {
 // public:
 
-PlayerChoiceCondition::PlayerChoiceCondition(
+InformationSetChoiceCondition::InformationSetChoiceCondition(
     const IdentifierPtr definedPlayer,
+    const IdentifierPtr definedInformationSet,
     const IdentifierPtr definedStrategy
 ) :
     player(definedPlayer),
+    informationSet(definedInformationSet),
     strategy(definedStrategy)
     {}
 
-void PlayerChoiceCondition::configureRoutine(
-    RoutineConfigPtr // routineConfig
+void InformationSetChoiceCondition::configureRoutine(
+    RoutineConfigPtr routineConfig
 ) const {
-    // InformationSetChoiceRoutineConfigPtr specificConfig =
-    //     dynamic_pointer_cast<InformationSetChoiceRoutineConfig>(routineConfig);
+    InformationSetChoiceRoutineConfigPtr specificConfig =
+        dynamic_pointer_cast<InformationSetChoiceRoutineConfig>(routineConfig);
 
-    // if (!specificConfig)
-    //     return;
+    if (!specificConfig)
+        return;
 
-    // try {
-    //     specificConfig->requireChoiceExactly(*player, *strategy);
-    // } catch (InvalidPlayerChoice& e) {
-    //     throw ExceptionFactory::getInstance().invalidCondition(e);
-    // }
+    try {
+        specificConfig->requireChoiceExactly(*player, *informationSet, *strategy);
+    } catch (InvalidPlayerChoice& e) {
+        throw ExceptionFactory::getInstance().invalidCondition(e);
+    }
 }
 
-Message PlayerChoiceCondition::toString() const {
+Message InformationSetChoiceCondition::toString() const {
     MessagePtr strategyName = createMessagePtr(strategy);
-
-    return ResultFactory::getInstance()
-        .buildResult()->addResult(player, strategyName).build()->getResult();
+    MessagePtr setValue     = createMessagePtr(
+        ResultFactory::getInstance()
+        .buildResult()->addResult(informationSet, strategyName)
+        .build()->getResult()
+    );
+    return ResultFactory::getInstance().buildResult()->addResult(player, setValue).build()->getResult();
 }
 
-// }; /* END class PlayerChoiceCondition */
+// }; /* END class InformationSetChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

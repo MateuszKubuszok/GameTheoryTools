@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_CONDITION_HPP__
-#define __GT_ROUTINES_CONDITION_HPP__
+#ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__
+#define __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/condition.hpp
- * @brief     Defines GT::Routines::Condition interface.
+ * @file      gt/routines/information_set_choice_condition.hpp
+ * @brief     Defines GT::Routines::InformationSetChoiceCondition class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,15 +29,41 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class Condition
- * @brief Condition that sets up Routine before actual calculation.
+ * @class InformationSetChoiceCondition
+ * @brief Condition that configures Routine to allow only one choice from some Player's information set.
  *
  * @author Mateusz Kubuszok
  *
- * @see Routine
+ * @see InformationSetChoiceRoutineConfig
  */
-class Condition : public virtual Root {
+class InformationSetChoiceCondition final : public Condition {
+    /**
+     * @brief Player's name.
+     */
+    IdentifierPtr player;
+    /**
+     * @brief Information set's name.
+     */
+    IdentifierPtr informationSet;
+    /**
+     * @brief Chosen strategy.
+     */
+    IdentifierPtr strategy;
+
 public:
+    /**
+     * @brief Initiates Condition with Player's and information set's names and chosen strategy.
+     *
+     * @param player         Player that chooses strategy
+     * @param informationSet information set
+     * @param strategy       chosen strategy
+     */
+    InformationSetChoiceCondition(
+        IdentifierPtr player,
+        IdentifierPtr informationSet,
+        IdentifierPtr strategy
+    );
+
     /**
      * @brief Configureg given Routine.
      *
@@ -46,41 +72,19 @@ public:
      */
     virtual void configureRoutine(
         RoutineConfigPtr routineConfig
-    ) const = 0;
+    ) const override;
 
     /**
      * @brief Returns Condition's Message.
      *
      * @return Condition's Message
      */
-    virtual Message toString() const override = 0;
-}; /* END class Condition */
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * @class NullCondition
- * @brief Null Condition for handling invalid situations.
- *
- * @author Mateusz Kubuszok
- */
-class NullCondition final : public Condition {
-    virtual void configureRoutine(
-        RoutineConfigPtr
-    ) const override {}
-
-    virtual bool isNotNull() const override {
-        return false;
-    }
-
-    virtual Message toString() const override {
-        return Message("NullCondition");
-    }
-}; /* END class NullCondition */
+    virtual Message toString() const override;
+}; /* END class InformationSetChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_CONDITION_HPP__ */
+#endif /* END #ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__ */

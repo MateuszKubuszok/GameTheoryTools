@@ -36,17 +36,8 @@ namespace Routines {
  *
  * @see Condition
  */
-class StrategicPureEquilibriumRoutine final : public SelectableStrategiesRoutine {
+class StrategicPureEquilibriumRoutine final : public Routine {
 public:
-    /**
-     * @brief Initiates Routine with available Players.
-     *
-     * @param players Players definitions
-     */
-    explicit StrategicPureEquilibriumRoutine(
-        const PlayersPtr players
-    );
-
     /**
      * @brief Returns pure strategy equilibrium for Strategic Game.
      *
