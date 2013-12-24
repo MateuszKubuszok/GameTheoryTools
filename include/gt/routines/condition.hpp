@@ -39,7 +39,7 @@ namespace Routines {
 class Condition : public virtual Root {
 public:
     /**
-     * @brief Configureg given Routine.
+     * @brief Configureg given RoutineConfig.
      *
      * @param routineConfig    RoutineConfig to set up
      * @throw InvalidCondition thrown when Condition is invalid

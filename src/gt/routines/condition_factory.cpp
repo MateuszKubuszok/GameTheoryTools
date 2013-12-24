@@ -42,6 +42,14 @@ ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
     return ConditionPtr( new InformationSetChoiceCondition(player, informationSet, strategy) );
 }
 
+ConditionPtr ConditionFactory::createInformationSetRangeCondition(
+    const IdentifierPtr  player,
+    const IdentifierPtr  informationSet,
+    const IdentifiersPtr strategies
+) const {
+    return ConditionPtr( new InformationSetRangeCondition(player, informationSet, strategies) );
+}
+
 ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     const IdentifierPtr player,
     const IdentifierPtr strategy

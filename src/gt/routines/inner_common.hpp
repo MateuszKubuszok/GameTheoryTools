@@ -66,6 +66,8 @@ class ExtensivePureEquilibriumRoutine;
 class ExtensivePureEquilibriumRoutineConfig;
 
 class PlayerChoiceCondition;
+class InformationSetChoiceCondition;
+class InformationSetRangeCondition;
 
 /* Shortens commonly used names */
 
@@ -105,8 +107,9 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/extensive_pure_equilibrium_routine.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
 
-#include "gt/routines/information_set_choice_condition.hpp"
 #include "gt/routines/player_choice_condition.hpp"
+#include "gt/routines/information_set_choice_condition.hpp"
+#include "gt/routines/information_set_range_condition.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

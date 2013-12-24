@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__
-#define __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__
+#ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
+#define __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/information_set_choice_condition.hpp
- * @brief     Defines GT::Routines::InformationSetChoiceCondition class.
+ * @file      gt/routines/information_set_range_condition.hpp
+ * @brief     Defines GT::Routines::InformationSetRangeCondition class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,14 +29,14 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class InformationSetChoiceCondition
+ * @class InformationSetRangeCondition
  * @brief Condition that configures Routine to allow only one choice from some Player's information set.
  *
  * @author Mateusz Kubuszok
  *
  * @see InformationSetChoiceRoutineConfig
  */
-class InformationSetChoiceCondition final : public Condition {
+class InformationSetRangeCondition final : public Condition {
     /**
      * @brief Player's name.
      */
@@ -48,20 +48,20 @@ class InformationSetChoiceCondition final : public Condition {
     /**
      * @brief Chosen strategy.
      */
-    const IdentifierPtr strategy;
+    const IdentifiersPtr strategies;
 
 public:
     /**
-     * @brief Initiates Condition with Player's and information set's names and chosen strategy.
+     * @brief Initiates Condition with Player's and information set's names and range of strategies.
      *
      * @param player         Player that chooses strategy
      * @param informationSet information set
-     * @param strategy       chosen strategy
+     * @param strategy       range of strategies
      */
-    InformationSetChoiceCondition(
-        const IdentifierPtr player,
-        const IdentifierPtr informationSet,
-        const IdentifierPtr strategy
+    InformationSetRangeCondition(
+        const IdentifierPtr  player,
+        const IdentifierPtr  informationSet,
+        const IdentifiersPtr strategy
     );
 
     /**
@@ -80,11 +80,11 @@ public:
      * @return Condition's Message
      */
     virtual Message toString() const override;
-}; /* END class InformationSetChoiceCondition */
+}; /* END class InformationSetRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_CONDITION_HPP__ */
+#endif /* END #ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__ */

@@ -19,6 +19,22 @@ BOOST_AUTO_TEST_CASE( ConditionFactory_createInformationSetChoiceCondition ) {
     BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::InformationSetChoiceCondition>(condition) );
 }
 
+BOOST_AUTO_TEST_CASE( ConditionFactory_createInformationSetRangeCondition ) {
+    // given
+    GT::IdentifierPtr  player         = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifierPtr  informationSet = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifiersPtr strategies     = GT::createIdentifiersPtr();
+    strategies->push_back( GT::Model::NullFactory::getInstance().createIdentifier() );
+
+    // when
+    GT::Routines::ConditionPtr condition = GT::Routines::ConditionFactory::getInstance()
+                                    .createInformationSetRangeCondition(player, informationSet, strategies);
+
+    // then
+    BOOST_REQUIRE( condition );
+    BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::InformationSetRangeCondition>(condition) );
+}
+
 BOOST_AUTO_TEST_CASE( ConditionFactory_createPlayerChoiceCondition ) {
     // given
     GT::IdentifierPtr player   = GT::Model::NullFactory::getInstance().createIdentifier();

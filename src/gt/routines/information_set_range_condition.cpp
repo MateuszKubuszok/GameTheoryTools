@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/information_set_choice_condition.cpp
- * @brief     Defines GT::Routines::InformationSetChoiceCondition methods.
+ * @file      gt/routines/information_set_range_condition.cpp
+ * @brief     Defines GT::Routines::InformationSetRangeCondition methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,20 +29,20 @@ using boost::dynamic_pointer_cast;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class InformationSetChoiceCondition final : public Condition {
+// class InformationSetRangeCondition final : public Condition {
 // public:
 
-InformationSetChoiceCondition::InformationSetChoiceCondition(
-    const IdentifierPtr definedPlayer,
-    const IdentifierPtr definedInformationSet,
-    const IdentifierPtr definedStrategy
+InformationSetRangeCondition::InformationSetRangeCondition(
+    const IdentifierPtr  definedPlayer,
+    const IdentifierPtr  definedInformationSet,
+    const IdentifiersPtr definedStrategies
 ) :
     player(definedPlayer),
     informationSet(definedInformationSet),
-    strategy(definedStrategy)
+    strategies(definedStrategies)
     {}
 
-void InformationSetChoiceCondition::configureRoutine(
+void InformationSetRangeCondition::configureRoutine(
     RoutineConfigPtr routineConfig
 ) const {
     InformationSetChoiceRoutineConfigPtr specificConfig =
@@ -52,14 +52,20 @@ void InformationSetChoiceCondition::configureRoutine(
         return;
 
     try {
-        specificConfig->requireChoiceExactly(*player, *informationSet, *strategy);
+        specificConfig->requireChoiceWithin(*player, *informationSet, *strategies);
     } catch (const InvalidPlayerChoice& e) {
         throw ExceptionFactory::getInstance().invalidCondition(e);
     }
 }
 
-Message InformationSetChoiceCondition::toString() const {
-    MessagePtr strategyName = createMessagePtr(strategy);
+Message InformationSetRangeCondition::toString() const {
+    ResultBuilderPtr strategiesBuilder = ResultFactory::getInstance().buildResult();
+    for (Index i = 0; i < strategies->size(); i++)
+        strategiesBuilder->addResult(
+            createIdentifierPtr(i+1),
+            createMessagePtr(strategies->at(i))
+        );
+    MessagePtr strategyName = createMessagePtr(strategiesBuilder->build()->getResult());
     MessagePtr setValue     = createMessagePtr(
         ResultFactory::getInstance()
         .buildResult()->addResult(informationSet, strategyName)
@@ -68,7 +74,7 @@ Message InformationSetChoiceCondition::toString() const {
     return ResultFactory::getInstance().buildResult()->addResult(player, setValue).build()->getResult();
 }
 
-// }; /* END class InformationSetChoiceCondition */
+// }; /* END class InformationSetRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

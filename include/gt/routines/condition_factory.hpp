@@ -46,15 +46,29 @@ public:
     /**
      * @brief Creates Condition of information set's choice.
      *
-     * @param player   Player's name
-     * @param player   information set's name
-     * @param strategy chosen strategy
+     * @param player         Player's name
+     * @param informationSet information set's name
+     * @param strategy       chosen strategy
      * @result Condition
      */
     ConditionPtr createInformationSetChoiceCondition(
         const IdentifierPtr player,
         const IdentifierPtr informationSet,
         const IdentifierPtr strategy
+    ) const;
+
+    /**
+     * @brief Creates Condition of information set's allowed range.
+     *
+     * @param player         Player's name
+     * @param informationSet information set's name
+     * @param strategies     allowed strategies
+     * @result Condition
+     */
+    ConditionPtr createInformationSetRangeCondition(
+        const IdentifierPtr  player,
+        const IdentifierPtr  informationSet,
+        const IdentifiersPtr strategies
     ) const;
 
     /**
