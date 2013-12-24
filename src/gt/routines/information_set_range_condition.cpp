@@ -65,10 +65,10 @@ Message InformationSetRangeCondition::toString() const {
             createIdentifierPtr(i+1),
             createMessagePtr(strategies->at(i))
         );
-    MessagePtr strategyName = createMessagePtr(strategiesBuilder->build()->getResult());
-    MessagePtr setValue     = createMessagePtr(
+    MessagePtr strategiesValue = createMessagePtr(strategiesBuilder->build()->getResult());
+    MessagePtr setValue        = createMessagePtr(
         ResultFactory::getInstance()
-        .buildResult()->addResult(informationSet, strategyName)
+        .buildResult()->addResult(informationSet, strategiesValue)
         .build()->getResult()
     );
     return ResultFactory::getInstance().buildResult()->addResult(player, setValue).build()->getResult();

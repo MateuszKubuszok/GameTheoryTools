@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/player_choice_condition.cpp
- * @brief     Defines GT::Routines::PlayerChoiceCondition methods.
+ * @file      gt/routines/player_range_condition.cpp
+ * @brief     Defines GT::Routines::PlayerRangeCondition methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,18 +29,18 @@ using boost::dynamic_pointer_cast;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlayerChoiceCondition final : public Condition {
+// class PlayerRangeCondition final : public Condition {
 // public:
 
-PlayerChoiceCondition::PlayerChoiceCondition(
-    const IdentifierPtr definedPlayer,
-    const IdentifierPtr definedStrategy
+PlayerRangeCondition::PlayerRangeCondition(
+    const IdentifierPtr  definedPlayer,
+    const IdentifiersPtr definedStrategies
 ) :
     player(definedPlayer),
-    strategy(definedStrategy)
+    strategies(definedStrategies)
     {}
 
-void PlayerChoiceCondition::configureRoutine(
+void PlayerRangeCondition::configureRoutine(
     RoutineConfigPtr routineConfig
 ) const {
     PlayerChoiceRoutineConfigPtr specificConfig =
@@ -50,18 +50,24 @@ void PlayerChoiceCondition::configureRoutine(
         return;
 
     try {
-        specificConfig->requireChoiceExactly(*player, *strategy);
+        specificConfig->requireChoiceWithin(*player, *strategies);
     } catch (InvalidPlayerChoice& e) {
         throw ExceptionFactory::getInstance().invalidCondition(e);
     }
 }
 
-Message PlayerChoiceCondition::toString() const {
-    MessagePtr strategyName = createMessagePtr(strategy);
-    return ResultFactory::getInstance().buildResult()->addResult(player, strategyName).build()->getResult();
+Message PlayerRangeCondition::toString() const {
+    ResultBuilderPtr strategiesBuilder = ResultFactory::getInstance().buildResult();
+    for (Index i = 0; i < strategies->size(); i++)
+        strategiesBuilder->addResult(
+            createIdentifierPtr(i+1),
+            createMessagePtr(strategies->at(i))
+        );
+    MessagePtr strategiesValue = createMessagePtr(strategiesBuilder->build()->getResult());
+    return ResultFactory::getInstance().buildResult()->addResult(player,strategiesValue).build()->getResult();
 }
 
-// }; /* END class PlayerChoiceCondition */
+// }; /* END class PlayerRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

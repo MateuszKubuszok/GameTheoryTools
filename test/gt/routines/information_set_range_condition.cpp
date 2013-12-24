@@ -95,10 +95,10 @@ BOOST_AUTO_TEST_CASE( InformationSetRangeCondition_configureRoutine ) {
     boost::shared_ptr<GT::Routines::ExtensivePureEquilibriumRoutineConfig> specificRoutineConfig =
         boost::dynamic_pointer_cast<GT::Routines::ExtensivePureEquilibriumRoutineConfig>(routineConfig);
 
-    GT::IdentifierPtr  player         = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  player         = p1;
     GT::IdentifierPtr  informationSet = GT::createIdentifierPtr("1");
     GT::IdentifiersPtr strategies     = GT::createIdentifiersPtr();
-    strategies->push_back( GT::createIdentifierPtr("p1s1") );
+    strategies->push_back( p1s1 );
 
     // when
     GT::Routines::InformationSetRangeCondition condition(player, informationSet, strategies);

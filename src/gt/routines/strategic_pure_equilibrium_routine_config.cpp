@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/player_choice_condition.cpp
- * @brief     Defines GT::Routines::PlayerChoiceCondition methods.
+ * @file      gt/routines/strategic_pure_equilibrium_routine_config.cpp
+ * @brief     Defines GT::Routines::StrategicPureEquilibriumRoutineConfig methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -25,43 +25,29 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using boost::dynamic_pointer_cast;
+using Model::PlayersPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlayerChoiceCondition final : public Condition {
+// class StrategicPureEquilibriumRoutineConfig : public PlayerChoiceRoutineConfig {
 // public:
 
-PlayerChoiceCondition::PlayerChoiceCondition(
-    const IdentifierPtr definedPlayer,
-    const IdentifierPtr definedStrategy
+StrategicPureEquilibriumRoutineConfig::StrategicPureEquilibriumRoutineConfig(
+    const PlayersPtr players
 ) :
-    player(definedPlayer),
-    strategy(definedStrategy)
+    RoutineConfig(),
+    PlayerChoiceRoutineConfig(players)
     {}
 
-void PlayerChoiceCondition::configureRoutine(
-    RoutineConfigPtr routineConfig
-) const {
-    PlayerChoiceRoutineConfigPtr specificConfig =
-        dynamic_pointer_cast<PlayerChoiceRoutineConfig>(routineConfig);
-
-    if (!specificConfig)
-        return;
-
-    try {
-        specificConfig->requireChoiceExactly(*player, *strategy);
-    } catch (InvalidPlayerChoice& e) {
-        throw ExceptionFactory::getInstance().invalidCondition(e);
-    }
+bool StrategicPureEquilibriumRoutineConfig::isValid() const {
+    return PlayerChoiceRoutineConfig::isValid();
 }
 
-Message PlayerChoiceCondition::toString() const {
-    MessagePtr strategyName = createMessagePtr(strategy);
-    return ResultFactory::getInstance().buildResult()->addResult(player, strategyName).build()->getResult();
+Message StrategicPureEquilibriumRoutineConfig::toString() const {
+    return Message("StrategicPureEquilibriumRoutineConfig");
 }
 
-// }; /* END class PlayerChoiceCondition */
+// }; // END class StrategicPureEquilibriumRoutineConfig
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

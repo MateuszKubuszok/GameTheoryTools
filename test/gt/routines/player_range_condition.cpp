@@ -1,10 +1,10 @@
 #include "gt/routines/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( PlayerChoiceCondition )
+BOOST_AUTO_TEST_SUITE( PlayerRangeCondition )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_configureRoutine ) {
+BOOST_AUTO_TEST_CASE( PlayerRangeCondition_configureRoutine ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
@@ -29,11 +29,11 @@ BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_configureRoutine ) {
     boost::shared_ptr<GT::Routines::StrategicPureEquilibriumRoutineConfig> specificRoutineConfig =
         boost::dynamic_pointer_cast<GT::Routines::StrategicPureEquilibriumRoutineConfig>(routineConfig);
 
-    GT::IdentifierPtr player   = p1;
-    GT::IdentifierPtr strategy = s1;
-
+    GT::IdentifierPtr  player         = p1;
+    GT::IdentifiersPtr usedStrategies = GT::createIdentifiersPtr();
+    usedStrategies->push_back( s1 );
     // when
-    GT::Routines::PlayerChoiceCondition condition(player, strategy);
+    GT::Routines::PlayerRangeCondition condition(player, usedStrategies);
 
     // then
     BOOST_REQUIRE_EQUAL( specificRoutineConfig->getAvailableStrategies(*player).size(), 2 );
@@ -41,24 +41,29 @@ BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_configureRoutine ) {
     BOOST_CHECK_EQUAL(   specificRoutineConfig->getAvailableStrategies(*player).size(), 1 );
 }
 
-BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_toString ) {
+BOOST_AUTO_TEST_CASE( PlayerRangeCondition_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    GT::IdentifierPtr player   = GT::Model::NullFactory::getInstance().createIdentifier();
-    GT::IdentifierPtr strategy = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifierPtr  player     = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back( GT::Model::NullFactory::getInstance().createIdentifier() );
+    strategies->push_back( GT::Model::NullFactory::getInstance().createIdentifier() );
 
     // when
-    GT::Routines::PlayerChoiceCondition condition(player, strategy);
+    GT::Routines::PlayerRangeCondition condition(player, strategies);
 
     // then
     BOOST_CHECK_EQUAL(
         condition.toString(),
         GT::Message() +
         "NullIdentifier:\n"
-        "\tNullIdentifier\n"
+        "\t1:\n"
+        "\t\tNullIdentifier\n"
+        "\t2:\n"
+        "\t\tNullIdentifier\n"
     );
 }
 

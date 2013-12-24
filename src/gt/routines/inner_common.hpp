@@ -57,20 +57,25 @@ class ExceptionFactory;
 class NotYetImplementedRoutine;
 class PropertyUndefinedRoutine;
 
+class PlayerChoiceRoutineConfig;
 class InformationSetChoiceRoutineConfig;
 
 class ExtensivePureStrategyPath;
 
 class StrategicPureEquilibriumRoutine;
+class StrategicPureEquilibriumRoutineConfig;
 class ExtensivePureEquilibriumRoutine;
 class ExtensivePureEquilibriumRoutineConfig;
 
 class PlayerChoiceCondition;
+class PlayerRangeCondition;
 class InformationSetChoiceCondition;
 class InformationSetRangeCondition;
 
 /* Shortens commonly used names */
 
+/** @brief Shared pointer to PlayerChoiceRoutineConfig. */
+typedef shared_ptr<PlayerChoiceRoutineConfig>         PlayerChoiceRoutineConfigPtr;
 /** @brief Shared pointer to InformationSetChoiceRoutineConfig. */
 typedef shared_ptr<InformationSetChoiceRoutineConfig> InformationSetChoiceRoutineConfigPtr;
 
@@ -96,6 +101,7 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 #include "gt/routines/routine_config.hpp"
 
+#include "gt/routines/player_choice_routine_config.hpp"
 #include "gt/routines/information_set_choice_routine_config.hpp"
 
 #include "gt/routines/not_yet_implemented_routine.hpp"
@@ -104,10 +110,12 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/extensive_pure_strategy_path.hpp"
 
 #include "gt/routines/strategic_pure_equilibrium_routine.hpp"
+#include "gt/routines/strategic_pure_equilibrium_routine_config.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
+#include "gt/routines/player_range_condition.hpp"
 #include "gt/routines/information_set_choice_condition.hpp"
 #include "gt/routines/information_set_range_condition.hpp"
 

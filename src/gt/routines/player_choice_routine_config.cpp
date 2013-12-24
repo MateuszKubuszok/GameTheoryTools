@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/information_set_choice_routine_config.cpp
- * @brief     Defines GT::Routines::InformationSetChoiceRoutineConfig methods.
+ * @file      gt/routines/player_choice_routine_config.cpp
+ * @brief     Defines GT::Routines::PlayerChoiceRoutineConfig methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -28,47 +28,30 @@ namespace Routines {
 using std::find_if;
 using std::remove_if;
 
+using boost::adaptors::map_keys;
 using boost::adaptors::map_values;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class InformationSetChoiceRoutineConfig : public virtual RoutineConfig {
+// class PlayerChoiceRoutineConfig : public virtual RoutineConfig {
 // public:
 
-InformationSetChoiceRoutineConfig::InformationSetChoiceRoutineConfig(
-    const ExtensiveDataNodePtr extensiveGameRoot
+PlayerChoiceRoutineConfig::PlayerChoiceRoutineConfig(
+    const PlayersPtr players
 ) :
-    availableForPlayersAndSets()
+    availableForPlayers()
 {
-    const ExtensiveGamePositionsHelper positionsHelper(extensiveGameRoot);
-
-    const IdentifiersPtr possiblePlayers = positionsHelper.getPossiblePlayers();
-    for (const IdentifierPtr& playerPtr : *possiblePlayers) {
-        const Identifier& player = *playerPtr;
-
-        AvailableForSets     availableForSets;
-        const IdentifiersPtr informationSets = positionsHelper.getPossibleInformationSetsForPlayer(player);
-        for (const IdentifierPtr& informationSetPtr : *informationSets) {
-            const Identifier& informationSet = *informationSetPtr;
-
-            Identifiers choicesForSet(
-                *positionsHelper.getInformationSetForPlayer(player, informationSet).getChoices()
-            );
-
-            availableForSets.insert( AvailableForSets::value_type(informationSet, choicesForSet) );
-        }
-
-        availableForPlayersAndSets.insert( AvailableForPlayersAndSets::value_type(player, availableForSets) );
-    }
+    for (const Identifier player : *players | map_keys)
+        availableForPlayers.insert(
+            AvailableForPlayers::value_type( player, Identifiers(*players->at(player)->getStrategies()) )
+        );
 }
 
-InformationSetChoiceRoutineConfig& InformationSetChoiceRoutineConfig::requireChoiceExactly(
+PlayerChoiceRoutineConfig& PlayerChoiceRoutineConfig::requireChoiceExactly(
     const Identifier& player,
-    const Identifier& informationSet,
     const Identifier& chosenStrategy
 ) {
-    Identifiers& availableStrategies =
-        const_cast<Identifiers&>(getAvailableStrategies(player, informationSet));
+    Identifiers& availableStrategies = const_cast<Identifiers&>(getAvailableStrategies(player));
 
     // removes all strategies not equal to the chosen
     availableStrategies.erase(
@@ -84,13 +67,11 @@ InformationSetChoiceRoutineConfig& InformationSetChoiceRoutineConfig::requireCho
     return *this;
 }
 
-InformationSetChoiceRoutineConfig& InformationSetChoiceRoutineConfig::requireChoiceWithin(
+PlayerChoiceRoutineConfig& PlayerChoiceRoutineConfig::requireChoiceWithin(
     const Identifier&  player,
-    const Identifier&  informationSet,
     const Identifiers& allowedStrategies
 ) {
-    Identifiers& availableStrategies =
-        const_cast<Identifiers&>(getAvailableStrategies(player, informationSet));
+    Identifiers& availableStrategies = const_cast<Identifiers&>(getAvailableStrategies(player));
 
     // removes all not allowed
     availableStrategies.erase(
@@ -115,29 +96,23 @@ InformationSetChoiceRoutineConfig& InformationSetChoiceRoutineConfig::requireCho
     return *this;
 }
 
-const Identifiers& InformationSetChoiceRoutineConfig::getAvailableStrategies(
-    const Identifier& player,
-    const Identifier& informationSet
+const Identifiers& PlayerChoiceRoutineConfig::getAvailableStrategies(
+    const Identifier& player
 ) const {
-    if (!availableForPlayersAndSets.count(player))
+    if (!availableForPlayers.count(player))
         throw ExceptionFactory::getInstance().playerNotFound(player);
 
-    const AvailableForSets& informationSets = availableForPlayersAndSets.at(player);
-    if (!informationSets.count(informationSet))
-        throw ExceptionFactory::getInstance().informationSetNotFound(player, informationSet);
-
-    return informationSets.at(informationSet);
+    return availableForPlayers.at(player);
 }
 
-bool InformationSetChoiceRoutineConfig::isValid() const {
-    for (const AvailableForSets availableForSets : availableForPlayersAndSets | map_values)
-        for (const Identifiers strategies : availableForSets | map_values)
+bool PlayerChoiceRoutineConfig::isValid() const {
+    for (const Identifiers strategies : availableForPlayers | map_values)
             if (strategies.empty())
                 return false;
     return true;
 }
 
-// }; /* END class InformationSetChoiceRoutineConfig */
+// }; /* END class PlayerChoiceRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

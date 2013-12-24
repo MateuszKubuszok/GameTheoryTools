@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_ROUTINE_CONFIG_HPP__
-#define __GT_ROUTINES_INFORMATION_SET_CHOICE_ROUTINE_CONFIG_HPP__
+#ifndef __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__
+#define __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/information_set_choice_routine_config.hpp
- * @brief     Defines GT::Routines::InformationSetChoiceRoutineConfig class.
+ * @file      gt/routines/player_choice_routine_config.hpp
+ * @brief     Defines GT::Routines::PlayerChoiceRoutineConfig class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -30,87 +30,74 @@ namespace Routines {
 
 using boost::container::map;
 
-using Model::ExtensiveDataNodePtr;
-using Model::ExtensiveGamePositionsHelper;
+using Model::PlayersPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class InformationSetChoiceRoutineConfig
- * @brief Contains information about available choices for each information set.
+ * @class PlayerChoiceRoutineConfig
+ * @brief Contains information about available choices for each Player.
  *
  * @author Mateusz Kubuszok
  *
- * @see InformationSetChoiceCondition
- * @see InformationSetRangeCondition
+ * @see PlayerChoiceCondition
  */
-class InformationSetChoiceRoutineConfig : public virtual RoutineConfig {
+class PlayerChoiceRoutineConfig : public virtual RoutineConfig {
     /**
-     * @brief Contains information about strategies available for each set.
+     * @brief Contains information about strategies available for each Player.
      */
-    typedef map<Identifier, Identifiers>      AvailableForSets;
+    typedef map<Identifier, Identifiers> AvailableForPlayers;
 
     /**
-     * @brief Contains information about strategies/information sets available for each Player.
+     * @brief Available strategies for each Player.
      */
-    typedef map<Identifier, AvailableForSets> AvailableForPlayersAndSets;
-
-    /**
-     * @brief Available strategies for information sets of each Player.
-     */
-    AvailableForPlayersAndSets                availableForPlayersAndSets;
+    AvailableForPlayers                  availableForPlayers;
 
 public:
     /**
-     * @brief Initiates config with ExtensiveData's tree root.
+     * @brief Initiates config with Players definitions.
      *
-     * @param extensiveGameRoot root of Data tree
+     * @param players Players definitions
      */
-    explicit InformationSetChoiceRoutineConfig(
-        const ExtensiveDataNodePtr extensiveGameRoot
+    explicit PlayerChoiceRoutineConfig(
+        const PlayersPtr players
     );
 
     /**
-     * @brief Trims availabe choices for information set for just one.
+     * @brief Trims availabe choices for Player for just one.
      *
      * @param  player             Player's name
-     * @param  informationSet     information set's name
      * @param  chosenStrategy     chosen strategy
      * @return                    reference to itself for chainging
      * @throw InvalidPlayerChoice thrown if Player's or information set's name is invalid
      */
-    InformationSetChoiceRoutineConfig& requireChoiceExactly(
+    PlayerChoiceRoutineConfig& requireChoiceExactly(
         const Identifier& player,
-        const Identifier& informationSet,
         const Identifier& chosenStrategy
     );
 
     /**
-     * @brief Trims availabe choices for information set to passed ones.
+     * @brief Trims availabe choices for Player to passed ones.
      *
      * @param  player             Player's name
-     * @param  informationSet     information set's name
      * @param  allowedStrategies  allowed strategies
      * @return                    reference to itself for chainging
      * @throw InvalidPlayerChoice thrown if Player's or information set's name is invalid
      */
-    InformationSetChoiceRoutineConfig& requireChoiceWithin(
+    PlayerChoiceRoutineConfig& requireChoiceWithin(
         const Identifier&  player,
-        const Identifier&  informationSet,
         const Identifiers& allowedStrategies
     );
 
     /**
-     * @brief Returns available choices for given Player and information set.
+     * @brief Returns available choices for given Player.
      *
      * @param player              Player's name
-     * @param informationSet      information set's name
      * @return                    available strategies
-     * @throw InvalidPlayerChoice thrown if Player's or information set's name is invalid
+     * @throw InvalidPlayerChoice thrown if Player's name is invalid
      */
     const Identifiers& getAvailableStrategies(
-        const Identifier& player,
-        const Identifier& informationSet
+        const Identifier& player
     ) const;
 
     /**
@@ -119,11 +106,11 @@ public:
      * @return true if current configuration is valid
      */
     virtual bool isValid() const override = 0;
-}; /* END class InformationSetChoiceRoutineConfig */
+}; /* END class PlayerChoiceRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_INFORMATION_SET_CHOICE_ROUTINE_CONFIG_HPP__ */
+#endif /* #ifndef __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__ */

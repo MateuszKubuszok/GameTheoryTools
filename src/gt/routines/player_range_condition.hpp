@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
-#define __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
+#ifndef __GT_ROUTINES_PLAYER_RANGE_CONDITION_HPP__
+#define __GT_ROUTINES_PLAYER_RANGE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/information_set_range_condition.hpp
- * @brief     Defines GT::Routines::InformationSetRangeCondition class.
+ * @file      gt/routines/player_range_condition.hpp
+ * @brief     Defines GT::Routines::PlayerRangeCondition class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,22 +29,18 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class InformationSetRangeCondition
- * @brief Condition that configures Routine to allow only allowed choices for some Player's information set.
+ * @class PlayerRangeCondition
+ * @brief Condition that configures Routine to allow only allowed choices for some Player.
  *
  * @author Mateusz Kubuszok
  *
- * @see InformationSetChoiceRoutineConfig
+ * @see SelectableStrategiesRoutine
  */
-class InformationSetRangeCondition final : public Condition {
+class PlayerRangeCondition final : public Condition {
     /**
      * @brief Player's name.
      */
     const IdentifierPtr player;
-    /**
-     * @brief Information set's name.
-     */
-    const IdentifierPtr informationSet;
     /**
      * @brief Allowed strategies.
      */
@@ -52,16 +48,14 @@ class InformationSetRangeCondition final : public Condition {
 
 public:
     /**
-     * @brief Initiates Condition with Player's and information set's names and range of strategies.
+     * @brief Initiates Condition with Player's name and range of strategies.
      *
-     * @param player         Player that chooses strategy
-     * @param informationSet information set
-     * @param strategy       range of strategies
+     * @param player     Player that chooses strategy
+     * @param strategies range of strategies
      */
-    InformationSetRangeCondition(
+    PlayerRangeCondition(
         const IdentifierPtr  player,
-        const IdentifierPtr  informationSet,
-        const IdentifiersPtr strategy
+        const IdentifiersPtr strategies
     );
 
     /**
@@ -80,11 +74,11 @@ public:
      * @return Condition's Message
      */
     virtual Message toString() const override;
-}; /* END class InformationSetRangeCondition */
+}; /* END class PlayerRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__ */
+#endif /* END #ifndef __GT_ROUTINES_PLAYER_RANGE_CONDITION_HPP__ */

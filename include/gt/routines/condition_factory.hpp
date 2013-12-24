@@ -83,6 +83,18 @@ public:
         const IdentifierPtr strategy
     ) const;
 
+    /**
+     * @brief Creates Condition of Player's allowed strategies.
+     *
+     * @param player     Player's name
+     * @param strategies allowed strategies
+     * @result Condition
+     */
+    ConditionPtr createPlayerRangeCondition(
+        const IdentifierPtr  player,
+        const IdentifiersPtr strategies
+    ) const;
+
 private:
     /**
      * @brief Default constructor hidden from programmers.

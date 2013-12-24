@@ -120,18 +120,21 @@ BOOST_AUTO_TEST_CASE( InformationSetChoiceRoutineConfig_functional ) {
     InformationSetChoiceRoutineConfigImpl routineConfig(extensiveGameRoot);
 
     // then
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is1) );
     BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is1).size(), 2 );
     BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceExactly(  *p1, is1, choiceExactly) );
     BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is1) );
     BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is1).size(), 1 );
     BOOST_CHECK(            routineConfig.isValid() );
 
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p2, is1) );
     BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p2, is1).size(), 2 );
     BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceWithin(   *p2, is1, choiceWithin) );
     BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p2, is1) );
     BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p2, is1).size(), 1 );
     BOOST_CHECK(            routineConfig.isValid() );
 
+    BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is2) );
     BOOST_CHECK_EQUAL(      routineConfig.getAvailableStrategies(*p1, is2).size(), 2 );
     BOOST_REQUIRE_NO_THROW( routineConfig.requireChoiceWithin(   *p1, is2, invalidChoice) );
     BOOST_REQUIRE_NO_THROW( routineConfig.getAvailableStrategies(*p1, is2) );

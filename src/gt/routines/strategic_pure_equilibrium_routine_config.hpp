@@ -1,11 +1,11 @@
-#ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__
-#define __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__
+#ifndef __GT_ROUTINES_STRATEGIC_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__
+#define __GT_ROUTINES_STRATEGIC_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/player_choice_condition.hpp
- * @brief     Defines GT::Routines::PlayerChoiceCondition class.
+ * @file      gt/routines/strategic_pure_equilibrium_routine_config.hpp
+ * @brief     Defines GT::Routines::StrategicPureEquilibriumRoutineConfig class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -28,57 +28,45 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Model::PlayersPtr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
- * @class PlayerChoiceCondition
- * @brief Condition that configures Routine to allow only one choice from some Player.
+ * @class StrategicPureEquilibriumRoutineConfig
+ * @brief Contains information for StrategicPureEquilibriumRoutine.
  *
  * @author Mateusz Kubuszok
- *
- * @see SelectableStrategiesRoutine
  */
-class PlayerChoiceCondition final : public Condition {
-    /**
-     * @brief Player's name.
-     */
-    const IdentifierPtr player;
-    /**
-     * @brief Chosen strategy.
-     */
-    const IdentifierPtr strategy;
-
+class StrategicPureEquilibriumRoutineConfig final : public PlayerChoiceRoutineConfig {
 public:
     /**
-     * @brief Initiates Condition with Player's name and chosen strategy.
+     * @brief Initiates config with ExtensiveData's tree root.
      *
-     * @param player   Player that chooses strategy
-     * @param strategy chosen strategy
+     * @param players Players' definitions
      */
-    PlayerChoiceCondition(
-        const IdentifierPtr player,
-        const IdentifierPtr strategy
+    explicit StrategicPureEquilibriumRoutineConfig(
+        const PlayersPtr players
     );
 
     /**
-     * @brief Configureg given RoutineConfig.
+     * @brief Whether current configuration is valid.
      *
-     * @param routineConfig    RoutineConfig to set up
-     * @throw InvalidCondition thrown when Condition is invalid
+     * @return true if current configuration is valid
      */
-    virtual void configureRoutine(
-        RoutineConfigPtr routineConfig
-    ) const override;
+    virtual bool isValid() const override;
 
     /**
-     * @brief Returns Condition's Message.
+     * @brief Returns RoutineConfig's Message.
      *
-     * @return Condition's Message
+     * @return RoutineConfig's Message
      */
     virtual Message toString() const override;
-}; /* END class PlayerChoiceCondition */
+}; /* END class StrategicPureEquilibriumRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_PLAYER_CHOICE_CONDITION_HPP__ */
+#endif /* #ifndef __GT_ROUTINES_STRATEGIC_PURE_EQUILIBRIUM_ROUTINE_CONFIG_HPP__ */

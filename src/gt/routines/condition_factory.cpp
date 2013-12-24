@@ -57,6 +57,13 @@ ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     return ConditionPtr( new PlayerChoiceCondition(player, strategy) );
 }
 
+ConditionPtr ConditionFactory::createPlayerRangeCondition(
+    const IdentifierPtr  player,
+    const IdentifiersPtr strategies
+) const {
+    return ConditionPtr( new PlayerRangeCondition(player, strategies) );
+}
+
 // private:
 
 ConditionFactory::ConditionFactory() {}
