@@ -45,13 +45,21 @@ using Model::StrategicGamePositionsHelper;
  * @see Condition
  */
 class ExtensivePureEquilibriumRoutine final : public Routine {
+    /**
+     * @brief Continas bottom-top best payoff partial results.
+     */
+    typedef map<Identifier, const NumbersPtr> CalculatedPayoffs;
+
 public:
     /**
      * @brief Returns pure strategy equilibrium for Extensive Game.
      *
-     * @param game       Game definition
-     * @param conditions Conditions for this Routine
-     * @return           Result for fiven Game and Conditions
+     * @param game             Game definition
+     * @param conditions       Conditions for this Routine
+     * @return                 Result for fiven Game and Conditions
+     * @throw InvalidCondition thrown when some Condition is invalid or when Conditions application leads to
+     *                         an invalid RoutineConfig or no result
+     * @throw InvalidGameType  thrown when Game's type doesn't match Routine's one
      */
     virtual ResultPtr findResultFor(
         const GamePtr       game,
@@ -67,13 +75,22 @@ public:
 
 private:
     /**
-     * @brief Continas bottom-top best payoff partial results.
+     * @brief Creates RoutineConfig basing on passes Conditions.
+     *
+     * @param extensiveGameRoot root of a Game's tree
+     * @param conditions        Conditions to apply
+     * @return                  conditioned RoutineConfig
+     * @throw InvalidCondition  thrown when some Condition is invalid
      */
-    typedef map<Identifier, const NumbersPtr> CalculatedPayoffs;
+    ExtensivePureEquilibriumRoutineConfig applyConditions(
+        const ExtensiveDataNodePtr extensiveGameRoot,
+        const Conditions&          conditions
+    ) const;
 
     /**
      * @brief Returns best payoff for Player in checkedNode and adds that choice to optimalChoices.
      *
+     * @param routineConfig            contains configureation for currently executed Routine
      * @param strategicPositionsHelper positions helper that calculates position of compared payoff
      * @param extensivePositionsHelper positions helper that calculates the information set of checkedNode
      * @param checkedNode              node that should its best payoff calculated
@@ -81,10 +98,11 @@ private:
      * @return                         value of optimal Payoff for current Player in checkedNode
      */
     NumbersPtr getBestPayoffWhen(
-        const StrategicGamePositionsHelper& strategicPositionsHelper,
-        const ExtensiveGamePositionsHelper& extensivePositionsHelper,
-        const ExtensiveDataNode&            checkedNode,
-        ExtensivePureStrategyPath&          optimalChoices
+        const ExtensivePureEquilibriumRoutineConfig& routineConfig,
+        const StrategicGamePositionsHelper&          strategicPositionsHelper,
+        const ExtensiveGamePositionsHelper&          extensivePositionsHelper,
+        const ExtensiveDataNode&                     checkedNode,
+        ExtensivePureStrategyPath&                   optimalChoices
     ) const;
 }; /* END class ExtensivePureEquilibriumRoutine */
 

@@ -20,6 +20,20 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidCondition ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_contradictoryConditions ) {
+    // given
+    // when
+    GT::Routines::InvalidCondition exception = GT::Routines::ExceptionFactory::getInstance()
+                                                 .contradictoryConditions();
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Contradictory conditions lead to an invalid configuration"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_invalidGameType ) {
     // given
     GT::Identifier type("SomeType");

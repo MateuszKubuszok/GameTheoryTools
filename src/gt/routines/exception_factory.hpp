@@ -54,6 +54,13 @@ public:
     ) const;
 
     /**
+     * @brief Thrown when Conditions create invalid RoutineConfig.
+     *
+     * @return InvalidCondition exception to throw
+     */
+    InvalidCondition contradictoryConditions() const;
+
+    /**
      * @brief Thrown when Condition is invalid for some Routine.
      *
      * @param expectedGame expected Game type

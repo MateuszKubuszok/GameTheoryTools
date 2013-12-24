@@ -41,9 +41,12 @@ public:
     /**
      * @brief Returns pure strategy equilibrium for Strategic Game.
      *
-     * @param game       Game definition
-     * @param conditions Conditions for this Routine
-     * @return           Result for fiven Game and Conditions
+     * @param game             Game definition
+     * @param conditions       Conditions for this Routine
+     * @return                 Result for fiven Game and Conditions
+     * @throw InvalidCondition thrown when some Condition is invalid or when Conditions application leads to
+     *                         an invalid RoutineConfig or no result
+     * @throw InvalidGameType  thrown when Game's type doesn't match Routine's one
      */
     virtual ResultPtr findResultFor(
         const GamePtr       game,

@@ -25,6 +25,8 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::find_if;
+
 using boost::dynamic_pointer_cast;
 
 using Model::ExtensiveDataAccessor;
@@ -42,7 +44,7 @@ using Model::StrategicGamePositionsHelper;
 
 ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
     const GamePtr       game,
-    const ConditionsPtr
+    const ConditionsPtr conditions
 ) const {
     const ExtensiveDataAccessorPtr data =
         dynamic_pointer_cast<ExtensiveDataAccessor>(game->getData());
@@ -52,12 +54,17 @@ ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
         throw ExceptionFactory::getInstance().invalidGameType(extensiveGameName);
     }
 
+    const ExtensivePureEquilibriumRoutineConfig routineConfig = applyConditions(data->getRoot(), *conditions);
+    if (!routineConfig.isValid())
+        throw ExceptionFactory::getInstance().contradictoryConditions();
+
     const StrategicGamePositionsHelper strategicPositionsHelper(data->getPlayers());
     const ExtensiveGamePositionsHelper extensivePositionsHelper(data->getRoot());
     const ExtensiveDataNode&           root = *data->getRoot();
     ExtensivePureStrategyPath          resultPath(game->getPlayers());
 
     NumbersPtr finalPayoff = getBestPayoffWhen(
+        routineConfig,
         strategicPositionsHelper,
         extensivePositionsHelper,
         root,
@@ -101,11 +108,22 @@ Message ExtensivePureEquilibriumRoutine::toString() const {
 
 // private:
 
+ExtensivePureEquilibriumRoutineConfig ExtensivePureEquilibriumRoutine::applyConditions(
+    const ExtensiveDataNodePtr extensiveGameRoot,
+    const Conditions&          conditions
+) const {
+    RoutineConfigPtr routineConfig(new ExtensivePureEquilibriumRoutineConfig(extensiveGameRoot));
+    for (const ConditionPtr& condition : conditions)
+        condition->configureRoutine(routineConfig);
+    return *dynamic_pointer_cast<ExtensivePureEquilibriumRoutineConfig>(routineConfig);
+}
+
 NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
-    const StrategicGamePositionsHelper& strategicPositionsHelper,
-    const ExtensiveGamePositionsHelper& extensivePositionsHelper,
-    const ExtensiveDataNode&            checkedNode,
-    ExtensivePureStrategyPath&          optimalChoices
+    const ExtensivePureEquilibriumRoutineConfig& routineConfig,
+    const StrategicGamePositionsHelper&          strategicPositionsHelper,
+    const ExtensiveGamePositionsHelper&          extensivePositionsHelper,
+    const ExtensiveDataNode&                     checkedNode,
+    ExtensivePureStrategyPath&                   optimalChoices
 ) const {
     NumbersPtr bestPayoff = createNumbersPtr();
 
@@ -122,12 +140,14 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
             .right.at( const_cast<ExtensiveDataNode* const>(&checkedNode) );
         const Index comparedPayoffIndex = strategicPositionsHelper.calculatePlayer( playerName );
 
+
         CalculatedPayoffs calculatedPayoffs;
         for (const ExtensiveDataNodes::value_type& child : checkedNode.getChildren()) {
             const Identifier& strategy         = child.first;
             const ExtensiveDataNode& childNode = *child.second;
 
             const NumbersPtr& bestSubTreePayoff = getBestPayoffWhen(
+                routineConfig,
                 strategicPositionsHelper,
                 extensivePositionsHelper,
                 childNode,
@@ -140,17 +160,35 @@ NumbersPtr ExtensivePureEquilibriumRoutine::getBestPayoffWhen(
             calculatedPayoffs.insert( CalculatedPayoffs::value_type(strategy, bestSubTreePayoff) );
         }
 
-        Identifier decision = calculatedPayoffs.begin()->first;
-        NumberPtr  payoff   = calculatedPayoffs.begin()->second->at(comparedPayoffIndex);
+
+        Identifier decision          = calculatedPayoffs.begin()->first;
+        NumberPtr  payoff            = calculatedPayoffs.begin()->second->at(comparedPayoffIndex);
+        bool       decisionIsAllowed = false;
+
+        const Identifiers& allowedStrategies =
+            routineConfig.getAvailableStrategies(playerName, informationSet);
+
         for (const CalculatedPayoffs::value_type& calculatedPayoff : calculatedPayoffs) {
             const Identifier& nextDecision = calculatedPayoff.first;
             const NumberPtr&  nextPayoff   = calculatedPayoff.second->at(comparedPayoffIndex);
 
-            if (*nextPayoff > *payoff) {
-                decision = nextDecision;
-                payoff   = nextPayoff;
+            if ((*nextPayoff > *payoff) || (!decisionIsAllowed && *nextPayoff == *payoff)) {
+                decision          = nextDecision;
+                payoff            = nextPayoff;
+                decisionIsAllowed = false;
             }
+
+            if (!decisionIsAllowed && (*nextPayoff == *payoff))
+                decisionIsAllowed = allowedStrategies.end() != find_if(
+                    allowedStrategies.begin(),
+                    allowedStrategies.end(),
+                    [decision](const IdentifierPtr& allowedDecision) {
+                        return decision == *allowedDecision;
+                    }
+                );
         }
+        if (!decisionIsAllowed)
+            throw ExceptionFactory::getInstance().contradictoryConditions();
 
         bestPayoff = calculatedPayoffs.at(decision);
         optimalChoices.addPlayerChoice(informationSet, playerName, decision);

@@ -48,6 +48,10 @@ InvalidCondition ExceptionFactory::invalidCondition(
     return InvalidCondition(result.str());
 }
 
+InvalidCondition ExceptionFactory::contradictoryConditions() const {
+    return InvalidCondition("Contradictory conditions lead to an invalid configuration");
+}
+
 InvalidGameType ExceptionFactory::invalidGameType(
     const Identifier& expectedGame
 ) const {
