@@ -92,6 +92,11 @@ To generate public API - the one actually intended to use by a programmer - run 
 To generate full documentation - the one documenting all classes, including those intended to be hidden from
 programmer - run command `doxygen doxygen/private_api` from main dicrectory.
 
+Documentation
+----
+
+Documentation itself can also be found [here](https://github.com/MateuszKubuszok/MasterThesis/wiki). 
+
 TODO
 ----
 
