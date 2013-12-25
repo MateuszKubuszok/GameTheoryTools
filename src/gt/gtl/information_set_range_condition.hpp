@@ -1,11 +1,11 @@
-#ifndef __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__
-#define __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__
+#ifndef __GT_GTL_INFORMTION_SET_RANGE_CONDITION_HPP__
+#define __GT_GTL_INFORMTION_SET_RANGE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/gtl/player_choice_condition.hpp
- * @brief     Defines GT::GTL::PlayerChoiceCondition class.
+ * @file      gt/gtl/information_set_range_condition.hpp
+ * @brief     Defines GT::GTL::InformationSetRangeCondition class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,31 +29,37 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class PlayerChoiceCondition
- * @brief Condition used for selecting strategy for a Player.
+ * @class InformationSetRangeCondition
+ * @brief Condition used for selecting strategiey for an information set.
  *
  * @author Mateusz Kubuszok
  */
-class PlayerChoiceCondition final : public Condition {
+class InformationSetRangeCondition final : public Condition {
     /**
      * @brief Param with Player's name.
      */
-    const ObjectPtr player;
+    const ObjectPtr  player;
     /**
-     * @brief Param with Player's choice.
+     * @brief Param with Player's information set.
      */
-    const ObjectPtr strategy;
+    const ObjectPtr  informationSet;
+    /**
+     * @brief Param with Player's strategies.
+     */
+    const ObjectsPtr strategies;
 
 public:
     /**
      * @brief Initiates Condition with a Player's name and choice.
      *
-     * @param player   Param with Player's name
-     * @param strategy Param with Player's choice
+     * @param player         Param with Player's name
+     * @param informationSet Param with Player's informationSet
+     * @param strategies     Param with Player's strategies
      */
-    PlayerChoiceCondition(
-        const ObjectPtr player,
-        const ObjectPtr strategy
+    InformationSetRangeCondition(
+        const ObjectPtr  player,
+        const ObjectPtr  informationSet,
+        const ObjectsPtr strategies
     );
 
     /**
@@ -73,11 +79,11 @@ public:
      * @return Condition's Message
      */
     virtual Message toString() const override;
-}; /* END class PlayerChoiceCondition */
+}; /* END class InformationSetRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__ */
+#endif /* END #ifndef __GT_GTL_INFORMTION_SET_RANGE_CONDITION_HPP__ */

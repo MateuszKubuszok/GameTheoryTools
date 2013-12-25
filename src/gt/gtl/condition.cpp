@@ -25,10 +25,44 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::dynamic_pointer_cast;
+using boost::shared_ptr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Condition : public virtual ValidableSymbol {
 // public:
 
 Condition::~Condition() {}
+
+// protected:
+
+Identifier Condition::getIdentifier(
+    const Context&   context,
+    const ObjectPtr& object
+) const {
+    const Param& param = *object;
+    if (!param) {
+        static const Identifier expectedType = createIdentifier("Param");
+        throw ExceptionFactory::getInstance().invalidObjectType(expectedType);
+    }
+
+    shared_ptr<IdentifierParam> identifierParam;
+    try {
+        identifierParam = dynamic_pointer_cast<IdentifierParam>( param.getObject(context) );
+    } catch (const InvalidContentRequest& e) {
+        identifierParam = dynamic_pointer_cast<IdentifierParam>( object );
+    } catch (const NotDefinedParam& e) {
+        identifierParam = dynamic_pointer_cast<IdentifierParam>( object );
+    }
+
+    if (!identifierParam) {
+        static const Identifier expectedType = createIdentifier("Identifier Param");
+        throw ExceptionFactory::getInstance().invalidObjectType(expectedType);
+    }
+
+    return identifierParam->getIdentifier();
+}
 
 // }; /* END class Condition */
 

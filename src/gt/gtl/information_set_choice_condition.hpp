@@ -1,11 +1,11 @@
-#ifndef __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__
-#define __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__
+#ifndef __GT_GTL_INFORMATION_SET_CHOICE_CONDITION_HPP__
+#define __GT_GTL_INFORMATION_SET_CHOICE_CONDITION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/gtl/player_choice_condition.hpp
- * @brief     Defines GT::GTL::PlayerChoiceCondition class.
+ * @file      gt/gtl/information_set_choice_condition.hpp
+ * @brief     Defines GT::GTL::InformationSetChoiceCondition class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,16 +29,20 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class PlayerChoiceCondition
- * @brief Condition used for selecting strategy for a Player.
+ * @class InformationSetChoiceCondition
+ * @brief Condition used for selecting strategy for an information set.
  *
  * @author Mateusz Kubuszok
  */
-class PlayerChoiceCondition final : public Condition {
+class InformationSetChoiceCondition final : public Condition {
     /**
      * @brief Param with Player's name.
      */
     const ObjectPtr player;
+    /**
+     * @brief Param with Player's information set.
+     */
+    const ObjectPtr informationSet;
     /**
      * @brief Param with Player's choice.
      */
@@ -48,11 +52,13 @@ public:
     /**
      * @brief Initiates Condition with a Player's name and choice.
      *
-     * @param player   Param with Player's name
-     * @param strategy Param with Player's choice
+     * @param player         Param with Player's name
+     * @param informationSet Param with Player's informationSet
+     * @param strategy       Param with Player's choice
      */
-    PlayerChoiceCondition(
+    InformationSetChoiceCondition(
         const ObjectPtr player,
+        const ObjectPtr informationSet,
         const ObjectPtr strategy
     );
 
@@ -61,7 +67,7 @@ public:
      *
      * @param context     Context
      * @return            Condition applicable to Routine
-     * @throw InvalidType thrown when either player or strategy are not IdentifierParams
+     * @throw InvalidType thrown when either player, informationSet or strategy are not IdentifierParams
      */
     virtual Routines::ConditionPtr getCondition(
         const Context& context
@@ -73,11 +79,11 @@ public:
      * @return Condition's Message
      */
     virtual Message toString() const override;
-}; /* END class PlayerChoiceCondition */
+}; /* END class InformationSetChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_PLAYER_CHOICE_CONDITION_HPP__ */
+#endif /* END #ifndef __GT_GTL_INFORMATION_SET_CHOICE_CONDITION_HPP__ */

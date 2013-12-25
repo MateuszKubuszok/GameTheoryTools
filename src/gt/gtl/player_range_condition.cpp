@@ -1,6 +1,6 @@
 /**
- * @file      gt/gtl/player_choice_condition.cpp
- * @brief     Defines GT::GTL::PlayerChoiceCondition methods.
+ * @file      gt/gtl/player_range_condition.cpp
+ * @brief     Defines GT::GTL::PlayerRangeCondition methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -32,33 +32,47 @@ using boost::shared_ptr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlayerChoiceCondition final : public Condition {
+// class PlayerRangeCondition final : public Condition {
 // public:
 
-PlayerChoiceCondition::PlayerChoiceCondition(
-    const ObjectPtr definedPlayer,
-    const ObjectPtr definedStrategy
+PlayerRangeCondition::PlayerRangeCondition(
+    const ObjectPtr  definedPlayer,
+    const ObjectsPtr definedStrategies
 ) :
     player(definedPlayer),
-    strategy(definedStrategy)
+    strategies(definedStrategies)
     {}
 
-Routines::ConditionPtr PlayerChoiceCondition::getCondition(
+Routines::ConditionPtr PlayerRangeCondition::getCondition(
     const Context& context
 ) const {
-    return Routines::ConditionFactory::getInstance().createPlayerChoiceCondition(
-        createIdentifierPtr(getIdentifier(context, player)),
-        createIdentifierPtr(getIdentifier(context, strategy))
+    const Identifier playerName = getIdentifier(context, player);
+
+    Identifiers strategiesNames;
+    for (const ObjectPtr& strategy : *strategies)
+        strategiesNames.push_back( createIdentifierPtr(getIdentifier(context, strategy)) );
+
+    return Routines::ConditionFactory::getInstance().createPlayerRangeCondition(
+        createIdentifierPtr(playerName),
+        createIdentifiersPtr(strategiesNames)
     );
 }
 
-Message PlayerChoiceCondition::toString() const {
-    static const IdentifierPtr playerName = createIdentifierPtr("Player");
-    static const IdentifierPtr chosenName = createIdentifierPtr("Chosen");
+Message PlayerRangeCondition::toString() const {
+    static const IdentifierPtr playerName  = createIdentifierPtr("Player");
+    static const IdentifierPtr allowedName = createIdentifierPtr("Allowed");
+
+    ResultBuilderPtr strategiesValue = ResultFactory::getInstance().buildResult();
+    for (Index i = 0; i < strategies->size(); i++) {
+        strategiesValue->addResult(
+            createIdentifierPtr(i+1),
+            createMessagePtr(strategies->at(i)->toString())
+        );
+    }
 
     Message result = ResultFactory::getInstance().buildResult()
-        ->addResult(playerName, createMessagePtr(player->toString()))
-         .addResult(chosenName, createMessagePtr(strategy->toString()))
+        ->addResult(playerName,  createMessagePtr(player->toString()))
+         .addResult(allowedName, createMessagePtr(strategiesValue->build()->getResult()))
          .build()->getResult();
 
     static const IdentifierPtr name  = createIdentifierPtr("Condition");
@@ -67,7 +81,7 @@ Message PlayerChoiceCondition::toString() const {
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build()->getResult();
 }
 
-// }; /* END class PlayerChoiceCondition */
+// }; /* END class PlayerRangeCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

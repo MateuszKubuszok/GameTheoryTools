@@ -57,10 +57,10 @@ public:
     virtual ~Condition();
 
     /**
-     * @brief Returns Condition applicable to Route.
+     * @brief Returns Condition applicable to Routine.
      *
      * @param context     Context
-     * @return            Condition applicable to Route
+     * @return            Condition applicable to Routine
      * @throw InvalidType thrown when condition make use of not accepted Objects
      */
     virtual Routines::ConditionPtr getCondition(
@@ -73,6 +73,20 @@ public:
      * @return Condition's Message
      */
     virtual Message toString() const override = 0;
+
+protected:
+    /**
+     * @brief Obtains Identifier from Object.
+     *
+     * @param context     Context
+     * @param object      Object that should contain Identifier
+     * @return            Identifier stored/rfered by that Object
+     * @throw InvalidType thrown when condition make use of not accepted Objects
+     */
+    Identifier getIdentifier(
+        const Context&   context,
+        const ObjectPtr& object
+    ) const;
 }; /* END class Condition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

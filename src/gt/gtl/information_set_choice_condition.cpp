@@ -1,6 +1,6 @@
 /**
- * @file      gt/gtl/player_choice_condition.cpp
- * @brief     Defines GT::GTL::PlayerChoiceCondition methods.
+ * @file      gt/gtl/information_set_choice_condition.cpp
+ * @brief     Defines GT::GTL::InformationSetChoiceCondition methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -32,33 +32,38 @@ using boost::shared_ptr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class PlayerChoiceCondition final : public Condition {
+// class InformationSetChoiceCondition final : public Condition {
 // public:
 
-PlayerChoiceCondition::PlayerChoiceCondition(
+InformationSetChoiceCondition::InformationSetChoiceCondition(
     const ObjectPtr definedPlayer,
+    const ObjectPtr definedInformationSet,
     const ObjectPtr definedStrategy
 ) :
     player(definedPlayer),
+    informationSet(definedInformationSet),
     strategy(definedStrategy)
     {}
 
-Routines::ConditionPtr PlayerChoiceCondition::getCondition(
+Routines::ConditionPtr InformationSetChoiceCondition::getCondition(
     const Context& context
 ) const {
-    return Routines::ConditionFactory::getInstance().createPlayerChoiceCondition(
+    return Routines::ConditionFactory::getInstance().createInformationSetChoiceCondition(
         createIdentifierPtr(getIdentifier(context, player)),
+        createIdentifierPtr(getIdentifier(context, informationSet)),
         createIdentifierPtr(getIdentifier(context, strategy))
     );
 }
 
-Message PlayerChoiceCondition::toString() const {
-    static const IdentifierPtr playerName = createIdentifierPtr("Player");
-    static const IdentifierPtr chosenName = createIdentifierPtr("Chosen");
+Message InformationSetChoiceCondition::toString() const {
+    static const IdentifierPtr playerName         = createIdentifierPtr("Player");
+    static const IdentifierPtr informationSetName = createIdentifierPtr("Information Set");
+    static const IdentifierPtr chosenName         = createIdentifierPtr("Chosen");
 
     Message result = ResultFactory::getInstance().buildResult()
-        ->addResult(playerName, createMessagePtr(player->toString()))
-         .addResult(chosenName, createMessagePtr(strategy->toString()))
+        ->addResult(playerName,         createMessagePtr(player->toString()))
+         .addResult(informationSetName, createMessagePtr(informationSet->toString()))
+         .addResult(chosenName,         createMessagePtr(strategy->toString()))
          .build()->getResult();
 
     static const IdentifierPtr name  = createIdentifierPtr("Condition");
@@ -67,7 +72,7 @@ Message PlayerChoiceCondition::toString() const {
     return ResultFactory::getInstance().buildResult()->addResult(name, value).build()->getResult();
 }
 
-// }; /* END class PlayerChoiceCondition */
+// }; /* END class InformationSetChoiceCondition */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
