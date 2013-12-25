@@ -190,6 +190,16 @@ public:
      */
     virtual Message toString() const override;
 
+    /**
+     * @brief ExtensiveDataNode's Message.
+     *
+     * @param positionsHelper ExtensiveGamePositionsHelper that will define information sets.
+     * @return                Message
+     */
+    virtual Message toString(
+        const ExtensiveGamePositionsHelper& positionsHelper
+    ) const;
+
 protected:
     /**
      * @brief Child Node constructor.

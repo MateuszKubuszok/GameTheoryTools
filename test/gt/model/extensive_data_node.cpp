@@ -180,7 +180,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     // when
-    GT::Model::ExtensiveDataNode root;
+    GT::Model::ExtensiveDataNodePtr rootPtr(new GT::Model::ExtensiveDataNode);
+    GT::Model::ExtensiveDataNode&   root = *rootPtr;
 
     root.setPlayer( plRoot, player )
         .setPlayer( pl11,   player ).setPlayer( pl12, player );
@@ -193,6 +194,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     GT::NumbersPtr got21 = root.getPayoffs(p21);
     GT::NumbersPtr got22 = root.getPayoffs(p22);
 
+    GT::Model::ExtensiveGamePositionsHelper positionsHelper(rootPtr);
+
     // then
     BOOST_CHECK_EQUAL(
         root.toString(),
@@ -200,17 +203,17 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
         "Player:\n"
         "\tName:\n"
         "\t\tp\n"
-        "\t0:\n"
-        "\t\ts1\n"
         "\t1:\n"
+        "\t\ts1\n"
+        "\t2:\n"
         "\t\ts2\n"
         "s1:\n"
         "\tPlayer:\n"
         "\t\tName:\n"
         "\t\t\tp\n"
-        "\t\t0:\n"
-        "\t\t\ts1\n"
         "\t\t1:\n"
+        "\t\t\ts1\n"
+        "\t\t2:\n"
         "\t\t\ts2\n"
         "\ts1:\n"
         "\t\tValue:\n"
@@ -226,10 +229,63 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
         "\tPlayer:\n"
         "\t\tName:\n"
         "\t\t\tp\n"
-        "\t\t0:\n"
-        "\t\t\ts1\n"
         "\t\t1:\n"
+        "\t\t\ts1\n"
+        "\t\t2:\n"
         "\t\t\ts2\n"
+        "\ts1:\n"
+        "\t\tValue:\n"
+        "\t\t\t50\n"
+        "\t\tValue:\n"
+        "\t\t\t60\n"
+        "\ts2:\n"
+        "\t\tValue:\n"
+        "\t\t\t70\n"
+        "\t\tValue:\n"
+        "\t\t\t80\n"
+    );
+    BOOST_CHECK_EQUAL(
+        root.toString(positionsHelper),
+        GT::Message() +
+        "Player:\n"
+        "\tName:\n"
+        "\t\tp\n"
+        "\t1:\n"
+        "\t\ts1\n"
+        "\t2:\n"
+        "\t\ts2\n"
+        "Information Set:\n"
+        "\t1\n"
+        "s1:\n"
+        "\tPlayer:\n"
+        "\t\tName:\n"
+        "\t\t\tp\n"
+        "\t\t1:\n"
+        "\t\t\ts1\n"
+        "\t\t2:\n"
+        "\t\t\ts2\n"
+        "\tInformation Set:\n"
+        "\t\t2\n"
+        "\ts1:\n"
+        "\t\tValue:\n"
+        "\t\t\t10\n"
+        "\t\tValue:\n"
+        "\t\t\t20\n"
+        "\ts2:\n"
+        "\t\tValue:\n"
+        "\t\t\t30\n"
+        "\t\tValue:\n"
+        "\t\t\t40\n"
+        "s2:\n"
+        "\tPlayer:\n"
+        "\t\tName:\n"
+        "\t\t\tp\n"
+        "\t\t1:\n"
+        "\t\t\ts1\n"
+        "\t\t2:\n"
+        "\t\t\ts2\n"
+        "\tInformation Set:\n"
+        "\t\t3\n"
         "\ts1:\n"
         "\t\tValue:\n"
         "\t\t\t50\n"

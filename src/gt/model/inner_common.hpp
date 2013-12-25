@@ -72,7 +72,7 @@ class StrategicDataAccessor;
 class StrategicGame;
 class StrategicGameBuilder;
 
-class ExtnsiveGamePositionsHelper;
+class ExtensiveGamePositionsHelper;
 
 class ExtensiveDataNode;        class NullExtensiveDataNode;
 class ExtensiveData;            class NullExtensiveData;
@@ -131,6 +131,8 @@ typedef shared_ptr<PlayersInTurns>            PlayersInTurnsPtr;
 #include "gt/model/strategic_game.hpp"
 #include "gt/model/strategic_game_builder.hpp"
 
+#include "gt/model/extensive_game_positions_helper.hpp"
+
 #include "gt/model/extensive_data_node.hpp"
 #include "gt/model/extensive_data.hpp"
 #include "gt/model/extensive_data_builder.hpp"
@@ -138,7 +140,6 @@ typedef shared_ptr<PlayersInTurns>            PlayersInTurnsPtr;
 #include "gt/model/extensive_game.hpp"
 #include "gt/model/extensive_game_builder.hpp"
 
-#include "gt/model/extensive_game_positions_helper.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -33,7 +33,8 @@ ExtensiveGame::ExtensiveGame(
     const ExtensiveDataPtr newData
 ) :
     players(newPlayers),
-    data(newData)
+    data(newData),
+    positionsHelper(newData->getRoot())
     {}
 
 const PlayersPtr ExtensiveGame::getPlayers() const {
@@ -46,7 +47,7 @@ const DataAccessorPtr ExtensiveGame::getData() const {
 
 Message ExtensiveGame::toString() const {
     static const IdentifierPtr name      = createIdentifierPtr("Extensive Game");
-    const MessagePtr           subresult = createMessagePtr(data->toString());
+    const MessagePtr           subresult = createMessagePtr(data->getRoot()->toString(positionsHelper));
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 

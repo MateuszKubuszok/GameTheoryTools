@@ -90,7 +90,7 @@ Message Player::toString() const {
     resultBuilder->addResult(playerName, playerNameValue);
 
     for (IdentifierPtr& strategy : *strategies) {
-        IdentifierPtr name  = createIdentifierPtr(getStrategyOrdinal(*strategy));
+        IdentifierPtr name  = createIdentifierPtr(getStrategyOrdinal(*strategy)+1);
         MessagePtr    value = createMessagePtr(strategy);
         resultBuilder->addResult(name, value);
     }

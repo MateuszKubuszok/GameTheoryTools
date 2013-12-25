@@ -203,6 +203,41 @@ Message ExtensiveDataNode::toString() const {
     return resultBuilder->build()->getResult();
 }
 
+Message ExtensiveDataNode::toString(
+    const ExtensiveGamePositionsHelper& positionsHelper
+) const {
+    static const IdentifierPtr valueName     = createIdentifierPtr("Value");
+    ResultBuilderPtr           resultBuilder = ResultFactory::getInstance().buildResult();
+
+    if (depthValue == 0)
+        for (NumberPtr& number : (*payoff)) {
+            MessagePtr result = createMessagePtr(number);
+            resultBuilder->addResult(valueName, result);
+        }
+    else {
+        static const IdentifierPtr playerName  = createIdentifierPtr("Player");
+        const MessagePtr           playerValue = createMessagePtr(player->toString());
+        resultBuilder->addResult(playerName, playerValue);
+
+        static const IdentifierPtr setName  = createIdentifierPtr("Information Set");
+        try {
+            const MessagePtr           setValue = createMessagePtr(
+                positionsHelper.getInformationSetsForPlayer(*player->getName())
+                               .right.at(const_cast<GT::Model::ExtensiveDataNode* const>(this))
+            );
+            resultBuilder->addResult(setName, setValue);
+        } catch (...) {}
+
+        for (ExtensiveDataNodes::value_type& node : (*nodes)) {
+            IdentifierPtr nodeName = createIdentifierPtr(node.first);
+            MessagePtr    result   = createMessagePtr(node.second->toString(positionsHelper));
+            resultBuilder->addResult(nodeName, result);
+        }
+    }
+
+    return resultBuilder->build()->getResult();
+}
+
 // protected:
 
 ExtensiveDataNode::ExtensiveDataNode(

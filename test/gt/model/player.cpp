@@ -117,9 +117,9 @@ BOOST_AUTO_TEST_CASE( Player_toString ) {
         GT::Message() +
         "Name:\n"
         "\ttest_name\n"
-        "0:\n"
-        "\tsome_strategy\n"
         "1:\n"
+        "\tsome_strategy\n"
+        "2:\n"
         "\tother_strategy\n"
     );
 }

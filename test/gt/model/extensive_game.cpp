@@ -58,7 +58,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveGame_toString ) {
         game.toString(),
         GT::Message() +
         "Extensive Game:\n"
-        "\tNullExtensiveData\n"
+        "\tPlayer:\n"
+        "\t\tNullPlayer\n"
     );
 }
 

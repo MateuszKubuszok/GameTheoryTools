@@ -48,6 +48,10 @@ class ExtensiveGame final : public Game {
      * @brief Game's data.
      */
     const ExtensiveDataPtr data;
+    /**
+     * @brief Positons helper used be printer.
+     */
+    const ExtensiveGamePositionsHelper positionsHelper;
 
 public:
     /**
