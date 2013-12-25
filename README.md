@@ -49,6 +49,7 @@ Builder can also run specified tasks:
 * `scons -Q buildRoutines` - builds Routines' classes,
 * `scons -Q buildRoutinesTests` - builds Routines' test classes with dependancies,
 * `scons -Q runRoutinesTests` - runs Routines' test classes building theirs dependancies,
+* `scons -Q buildLibraries` - build static and shared library with Models and Routines,
 * `scons -Q buildPsrserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),
 * `scons -Q buildGTL` - builds GTL classes,
 * `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
@@ -79,11 +80,22 @@ when run with `--help` argument: `./gtl_program --help`.
 
 Some examples of correct GTL syntax can be found in `examples` directory.
 
+Generating documentation
+----
+
+To generate documentation `Doxygen` version `1.8.5` is recommended. Versions prior to `1.8.2` did not have
+C++11 support, and will generate invalid documentation due to e.g. `final` specifier usage.
+
+To generate public API - the one actually intended to use by a programmer - run command
+`doxygen doxygen/public_api`.
+
+To generate full documentation - the one documenting all classes, including those intended to be hidden from
+programmer - run command `doxygen doxygen/private_api`.
+
 TODO
 ----
 
-* Implement actual logic of finding equilibria,
-* test it,
+* Implement 2-player matrix and 0-sum routines for strategic-from games,
 * add Condition to set calculations accuracy.
 
 License

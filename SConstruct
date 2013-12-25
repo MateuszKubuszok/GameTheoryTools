@@ -26,6 +26,9 @@ routines = 'gt/routines/'
 def targetForSource(file):
     return str(file).replace('.cpp', '.o').replace(source, objects)
 
+def targetForShared(file):
+    return str(file).replace('.cpp', '.os').replace(source, objects)
+
 def targetForExecutable(file):
     return str(file).replace('.o', '').replace(objects+main, programs+'gtl_')
 
@@ -179,6 +182,13 @@ Models = [
     )
     for Model_cpp in Glob(source+model+'*.cpp')
 ]
+SharedModels = [
+    env.SharedObject(
+        source=Model_cpp,
+        target=targetForShared(Model_cpp)
+    )
+    for Model_cpp in Glob(source+model+'*.cpp')
+]
 env.Alias('buildModels', Models)
 
 ##############################################################################################################
@@ -226,6 +236,13 @@ Routines = [
     env.Object(
         source=Routine_cpp,
         target=targetForSource(Routine_cpp)
+    )
+    for Routine_cpp in Glob(source+routines+'*.cpp')
+]
+SharedRoutines = [
+    env.SharedObject(
+        source=Routine_cpp,
+        target=targetForShared(Routine_cpp)
     )
     for Routine_cpp in Glob(source+routines+'*.cpp')
 ]
@@ -333,6 +350,23 @@ GTL = [
     if  GTL_cpp.name.endswith('scanner.cpp')
     or  GTL_cpp.name.endswith('parser.cpp')
 ]
+SharedGTL = [
+    env.SharedObject(
+        source=GTL_cpp,
+        target=targetForShared(GTL_cpp)
+    )
+    for GTL_cpp in Glob(source+gtl+'*.cpp')
+    if  not GTL_cpp.name.endswith('scanner.cpp')
+    and not GTL_cpp.name.endswith('parser.cpp')
+] + [
+    parserEnv.SharedObject(
+        source=GTL_cpp,
+        target=targetForShared(GTL_cpp)
+    )
+    for GTL_cpp in Glob(source+gtl+'*.cpp')
+    if  GTL_cpp.name.endswith('scanner.cpp')
+    or  GTL_cpp.name.endswith('parser.cpp')
+]
 Depends(
     GTL,
     [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation]
@@ -387,6 +421,13 @@ Programs = [
     )
     for Program_cpp in Glob(source+program+'*.cpp')
 ]
+SharedPrograms = [
+    env.SharedObject(
+        source=Program_cpp,
+        target=targetForShared(Program_cpp)
+    )
+    for Program_cpp in Glob(source+program+'*.cpp')
+]
 Depends(
     Programs,
     GTLTestsProgram_run
@@ -429,6 +470,26 @@ Depends(
 )
 AlwaysBuild(ProgramsTestsProgram_run)
 executablesTestEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
+
+##############################################################################################################
+
+# Build libraries
+
+GTTStaticLibrary_URI = programs+'GTT.a'
+GTTStaticLibrary_bin = env.Library(
+    source=Models + Routines + GTL + Programs,
+    target=GTTStaticLibrary_URI
+)
+GTTSharedLibrary_URI = programs+'GTT.so'
+GTTSharedLibrary_bin = env.SharedLibrary(
+    source=SharedModels + SharedRoutines + SharedGTL + SharedPrograms,
+    target=GTTSharedLibrary_URI
+)
+Depends(
+    [GTTStaticLibrary_bin, GTTSharedLibrary_bin],
+    ProgramsTestsProgram_run
+)
+env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 
 ##############################################################################################################
 
