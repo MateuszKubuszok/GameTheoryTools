@@ -153,7 +153,7 @@ testConf.env.Append(LIBS=['boost_unit_test_framework'])
 testConf.Finish()
 
 logLevel     = 'message'    # log level for Boost Test Framework
-randomOrder  = '0'          # whether tests should be run in random order
+randomOrder  = '1'          # whether tests should be run in random order
 showProgress = 'yes'        # should progress bar be displayed
 
 ##############################################################################################################

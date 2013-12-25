@@ -297,7 +297,7 @@ coordinate
 parser_error
  : error
  | lexer_error {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         std::string message = std::string() + "not recognized symbols: \"" + (**$1) + "\"";
         driver.showError(@1, message);
         CLEANUP($1);

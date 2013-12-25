@@ -47,7 +47,7 @@ Message StrategicPureEquilibriumRoutineConfig::toString() const {
     return Message("StrategicPureEquilibriumRoutineConfig");
 }
 
-// }; // END class StrategicPureEquilibriumRoutineConfig
+// }; /* END class StrategicPureEquilibriumRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

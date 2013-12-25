@@ -43,7 +43,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     const Object& strategyObject = **strategyPtr;
 
     if (!playerObject) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Object: " + playerObject.toString();
         return new ConditionPtr(
@@ -57,7 +57,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     const Player& player       = playerObject;
     const Param&  playerParam  = playerObject;
     if (!player && !playerParam) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() + "Object does not define a Player: " + player.toString();
         return new ConditionPtr(
             setupLocation<Condition>(
@@ -69,7 +69,7 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
 
     const Param& strategyParam = strategyObject;
     if (!strategyParam) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Object does not define a Param with strategy: " + strategyParam.toString();
         return new ConditionPtr(

@@ -56,7 +56,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
     const Coordinates& data       = **dataPtr;
 
     if (!coordinate) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Coordinate: " + coordinate.toString();
         return new CoordinatePtr(
@@ -70,7 +70,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
     for (CoordinatePtr subCoordinatePtr : data) {
         Coordinate& subCoordinate = *subCoordinatePtr;
         if (!subCoordinate) {
-            // TODO: create ErrorMessageFactory
+            // TODO: create MessageFactory
             Message errorMessage = Message() +
                 "Invalid Data: " + subCoordinate.toString();
             return new CoordinatePtr(
@@ -99,7 +99,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
     const Params&      data       = **dataPtr;
 
     if (!coordinate) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Coordinate: " + coordinate.toString();
         return new CoordinatePtr(
@@ -113,7 +113,7 @@ CoordinatePtr* CheckingCoordinateDriver::fillWithData(
     for (ParamPtr subDataPtr : data) {
         Param& subData = *subDataPtr;
         if (!subData) {
-            // TODO: create ErrorMessageFactory
+            // TODO: create MessageFactory
             Message errorMessage = Message() +
                 "Invalid Data: " + subData.toString();
             return new CoordinatePtr(
@@ -142,7 +142,7 @@ CoordinatePtr* CheckingCoordinateDriver::merge(
     const Coordinate&  coordinate2 = **coordinate2Ptr;
 
     if (!coordinate1) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Coordinate: " + coordinate1.toString();
         return new CoordinatePtr(
@@ -154,7 +154,7 @@ CoordinatePtr* CheckingCoordinateDriver::merge(
     }
 
     if (!coordinate2) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Coordinate: " + coordinate2.toString();
         return new CoordinatePtr(

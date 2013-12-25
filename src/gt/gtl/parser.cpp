@@ -867,7 +867,7 @@ namespace GT { namespace GTL {
 /* Line 690 of lalr1.cc  */
 #line 299 "f_n_b/parser.yy"
     {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         std::string message = std::string() + "not recognized symbols: \"" + (**(yysemantic_stack_[(1) - (1)].identifier)) + "\"";
         driver.showError((yylocation_stack_[(1) - (1)]), message);
         CLEANUP((yysemantic_stack_[(1) - (1)].identifier));

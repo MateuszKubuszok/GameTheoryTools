@@ -61,7 +61,7 @@ DefinitionPtr* CheckingStatementDriver::createDefinition(
     const Object&     object     = **objectPtr;
 
     if (!object) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Count not define parameter '" + identifier + "': " + object.toString();
         return new DefinitionPtr(
@@ -108,7 +108,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
                 const Param& param = object;
 
                 if (!param) {
-                    // TODO: create ErrorMessageFactory
+                    // TODO: create MessageFactory
                     Message errorMessage = Message() +
                         "Object: " + object.toString() + '\n' +
                         "has no property: " + property;
@@ -127,7 +127,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
         const Condition& condition = *conditionPtr;
 
         if (!condition) {
-            // TODO: create ErrorMessageFactory
+            // TODO: create MessageFactory
             Message errorMessage = Message() +
                 "Condition is not valid: " + condition.toString();
             return new QueryPtr(

@@ -46,9 +46,7 @@ ResultPtr ExtensivePureEquilibriumRoutine::findResultFor(
     const GamePtr       game,
     const ConditionsPtr conditions
 ) const {
-    const ExtensiveDataAccessorPtr data =
-        dynamic_pointer_cast<ExtensiveDataAccessor>(game->getData());
-
+    const ExtensiveDataAccessorPtr data = dynamic_pointer_cast<ExtensiveDataAccessor>(game->getData());
     if (!data) {
         static Identifier extensiveGameName("Extensive Game");
         throw ExceptionFactory::getInstance().invalidGameType(extensiveGameName);

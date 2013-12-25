@@ -28,6 +28,12 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::container::set;
+
+using Model::StrategicDataAccessor;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * @class StrategicPureEquilibriumRoutine
  * @brief Routune returning pure strategy equilibrium for Strategic Game.
@@ -59,6 +65,44 @@ public:
      * @return Routine's Message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Creates RoutineConfig basing on passes Conditions.
+     *
+     * @param players          Players definitions
+     * @param conditions       Conditions to apply
+     * @return                 conditioned RoutineConfig
+     * @throw InvalidCondition thrown when some Condition is invalid
+     */
+    StrategicPureEquilibriumRoutineConfig applyConditions(
+        const PlayersPtr  players,
+        const Conditions& conditions
+    ) const;
+
+    /**
+     * @brief Whether or not Positions are allowed to be used by configuration.
+     *
+     * @param routineConfig contains configureation for currently executed Routine
+     * @param positions     Positions to check
+     * @return              true if Positions are allowed to be used
+     */
+    bool arePositionsAllowed(
+        const StrategicPureEquilibriumRoutineConfig& routineConfig,
+        const Positions&                             positions
+    ) const;
+
+    /**
+     * @brief Whether or not passed Position points to a Nash equilibrium.
+     *
+     * @param data      data with payoffs
+     * @param positions Positions to check
+     * @return          true if Position point to Nash equilibrium
+     */
+    bool isNashEquilibrium(
+        const StrategicDataAccessor& data,
+        const Positions&             positions
+    ) const;
 }; /* END class StrategicPureEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

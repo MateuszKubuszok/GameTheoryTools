@@ -47,7 +47,7 @@ Message ExtensivePureEquilibriumRoutineConfig::toString() const {
     return Message("ExtensivePureEquilibriumRoutineConfig");
 }
 
-// }; // END class ExtensivePureEquilibriumRoutineConfig
+// }; /* END class ExtensivePureEquilibriumRoutineConfig */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

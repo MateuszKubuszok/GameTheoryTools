@@ -282,6 +282,10 @@ BOOST_AUTO_TEST_CASE( ExtensiveData_throwExceptionOnInvalidCoordinate ) {
 
 BOOST_AUTO_TEST_CASE( ExtensiveData_toString ) {
     // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr p2 = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr s1 = GT::createIdentifierPtr("s1");

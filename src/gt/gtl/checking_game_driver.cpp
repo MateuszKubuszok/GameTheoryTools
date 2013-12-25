@@ -41,7 +41,7 @@ GamePtr* CheckingGameDriver::createStrategic(
     const Details& details = **detailsPtr;
 
     if (!details) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Details: " + details.toString();
         return new GamePtr(
@@ -67,7 +67,7 @@ GamePtr* CheckingGameDriver::createExtensive(
     const Details& details = **detailsPtr;
 
     if (!details) {
-        // TODO: create ErrorMessageFactory
+        // TODO: create MessageFactory
         Message errorMessage = Message() +
             "Invalid Details: " + details.toString();
         return new GamePtr(
@@ -99,7 +99,7 @@ DetailsPtr* CheckingGameDriver::createDetails(
         const Player& player       = objectPlayer;
         const Param&  param        = objectPlayer;
         if (!player && !param) {
-            // TODO: create ErrorMessageFactory
+            // TODO: create MessageFactory
             Message errorMessage = Message() +
                 "Invalid Player: " + player.toString();
             return new DetailsPtr(
@@ -114,7 +114,7 @@ DetailsPtr* CheckingGameDriver::createDetails(
     for (const CoordinatePtr& coordinatePtr : coordinates) {
         const Coordinate& coordinate = *coordinatePtr;
         if (!coordinate) {
-            // TODO: create ErrorMessageFactory
+            // TODO: create MessageFactory
             Message errorMessage = Message() +
                 "Invalid Data: " + coordinate.toString();
             return new DetailsPtr(
