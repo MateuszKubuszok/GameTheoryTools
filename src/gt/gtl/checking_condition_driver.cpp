@@ -34,18 +34,19 @@ CheckingConditionDriver::CheckingConditionDriver(
     driver(parentDriver)
     {}
 
-ConditionPtr* CheckingConditionDriver::playerChoosed(
+ConditionPtr* CheckingConditionDriver::informationSetChoosed(
     const InputLocation& inputLocation,
     const ObjectPtr*     playerPtr,
+    const ObjectPtr*     informationSetPtr,
     const ObjectPtr*     strategyPtr
 ) const {
-    const Object& playerObject   = **playerPtr;
-    const Object& strategyObject = **strategyPtr;
+    const Object& playerObject         = **playerPtr;
+    const Object& informationSetObject = **informationSetPtr;
+    const Object& strategyObject       = **strategyPtr;
 
-    if (!playerObject) {
+    if (!isPlayerOrParam(playerObject)) {
         // TODO: create MessageFactory
-        Message errorMessage = Message() +
-            "Invalid Object: " + playerObject.toString();
+        Message errorMessage = Message() + "Object does not define a Player: " + playerObject.toString();
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
@@ -54,28 +55,26 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
         );
     }
 
-    const Player& player       = playerObject;
-    const Param&  playerParam  = playerObject;
-    if (!player && !playerParam) {
+    if (!hasIdentifier(informationSetObject)) {
         // TODO: create MessageFactory
-        Message errorMessage = Message() + "Object does not define a Player: " + player.toString();
+        Message errorMessage = Message() +
+            "Object does not define a Param with information set: " + informationSetObject.toString();
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
-                *player.getInputLocation()
+                *informationSetObject.getInputLocation()
             )
         );
     }
 
-    const Param& strategyParam = strategyObject;
-    if (!strategyParam) {
+    if (!hasIdentifier(strategyObject)) {
         // TODO: create MessageFactory
         Message errorMessage = Message() +
-            "Object does not define a Param with strategy: " + strategyParam.toString();
+            "Object does not define a Param with strategy: " + strategyObject.toString();
         return new ConditionPtr(
             setupLocation<Condition>(
                 ErrorFactory::getInstance().createCondition(errorMessage),
-                *strategyParam.getInputLocation()
+                *strategyObject.getInputLocation()
             )
         );
     }
@@ -88,8 +87,166 @@ ConditionPtr* CheckingConditionDriver::playerChoosed(
     );
 }
 
+ConditionPtr* CheckingConditionDriver::informationSetWithin(
+    const InputLocation& inputLocation,
+    const ObjectPtr*     playerPtr,
+    const ObjectPtr*     informationSetPtr,
+    const ObjectsPtr*    strategiesPtr
+) const {
+    const Object&  playerObject         = **playerPtr;
+    const Object&  informationSetObject = **informationSetPtr;
+    const Objects& strategiesObjects    = **strategiesPtr;
+
+    if (!isPlayerOrParam(playerObject)) {
+        // TODO: create MessageFactory
+        Message errorMessage = Message() + "Object does not define a Player: " + playerObject.toString();
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                ErrorFactory::getInstance().createCondition(errorMessage),
+                *playerObject.getInputLocation()
+            )
+        );
+    }
+
+    if (!hasIdentifier(informationSetObject)) {
+        // TODO: create MessageFactory
+        Message errorMessage = Message() +
+            "Object does not define a Param with information set: " + informationSetObject.toString();
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                ErrorFactory::getInstance().createCondition(errorMessage),
+                *informationSetObject.getInputLocation()
+            )
+        );
+    }
+
+    for (const ObjectPtr& strategy : strategiesObjects) {
+        const Object& strategyObject = *strategy;
+        if (!hasIdentifier(strategyObject)) {
+            // TODO: create MessageFactory
+            Message errorMessage = Message() +
+                "Object does not define a Param with strategy: " + strategyObject.toString();
+            return new ConditionPtr(
+                setupLocation<Condition>(
+                    ErrorFactory::getInstance().createCondition(errorMessage),
+                    *strategyObject.getInputLocation()
+                )
+            );
+        }
+    }
+
+    return new ConditionPtr(
+        setupLocation<Condition>(
+            NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
+ConditionPtr* CheckingConditionDriver::playerChoosed(
+    const InputLocation& inputLocation,
+    const ObjectPtr*     playerPtr,
+    const ObjectPtr*     strategyPtr
+) const {
+    const Object& playerObject   = **playerPtr;
+    const Object& strategyObject = **strategyPtr;
+
+    if (!isPlayerOrParam(playerObject)) {
+        // TODO: create MessageFactory
+        Message errorMessage = Message() + "Object does not define a Player: " + playerObject.toString();
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                ErrorFactory::getInstance().createCondition(errorMessage),
+                *playerObject.getInputLocation()
+            )
+        );
+    }
+
+    if (!hasIdentifier(strategyObject)) {
+        // TODO: create MessageFactory
+        Message errorMessage = Message() +
+            "Object does not define a Param with strategy: " + strategyObject.toString();
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                ErrorFactory::getInstance().createCondition(errorMessage),
+                *strategyObject.getInputLocation()
+            )
+        );
+    }
+
+    return new ConditionPtr(
+        setupLocation<Condition>(
+            NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
+ConditionPtr* CheckingConditionDriver::playerWithin(
+    const InputLocation& inputLocation,
+    const ObjectPtr*     playerPtr,
+    const ObjectsPtr*    strategiesPtr
+) const {
+    const Object&  playerObject      = **playerPtr;
+    const Objects& strategiesObjects = **strategiesPtr;
+
+    if (!isPlayerOrParam(playerObject)) {
+        // TODO: create MessageFactory
+        Message errorMessage = Message() + "Object does not define a Player: " + playerObject.toString();
+        return new ConditionPtr(
+            setupLocation<Condition>(
+                ErrorFactory::getInstance().createCondition(errorMessage),
+                *playerObject.getInputLocation()
+            )
+        );
+    }
+
+    for (const ObjectPtr& strategy : strategiesObjects) {
+        const Object& strategyObject = *strategy;
+        if (!hasIdentifier(strategyObject)) {
+            // TODO: create MessageFactory
+            Message errorMessage = Message() +
+                "Object does not define a Param with strategy: " + strategyObject.toString();
+            return new ConditionPtr(
+                setupLocation<Condition>(
+                    ErrorFactory::getInstance().createCondition(errorMessage),
+                    *strategyObject.getInputLocation()
+                )
+            );
+        }
+    }
+
+    return new ConditionPtr(
+        setupLocation<Condition>(
+            NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
 Message CheckingConditionDriver::toString() const {
     return Message("CheckingConditionDriver");
+}
+
+// private:
+
+bool CheckingConditionDriver::isPlayerOrParam(
+    const Object& object
+) const {
+    if (!object)
+        return false;
+
+    const Player& player = object;
+    const Param&  param  = object;
+
+    return (player || param);
+}
+
+bool CheckingConditionDriver::hasIdentifier(
+    const Object& object
+) const {
+    const Param& param = object;
+    return param;
 }
 
 // }; /* END class CheckingConditionDriver */

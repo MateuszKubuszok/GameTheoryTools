@@ -10,10 +10,54 @@ TestConditionDriverImpl::TestConditionDriverImpl() :
     createdConditions(0)
     {}
 
+GT::GTL::ConditionPtr* TestConditionDriverImpl::informationSetChoosed(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectPtr*
+) const {
+    createdConditions++;
+    return new GT::GTL::ConditionPtr(
+        GT::GTL::setupLocation<GT::GTL::Condition>(
+            GT::GTL::NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
+GT::GTL::ConditionPtr* TestConditionDriverImpl::informationSetWithin(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectsPtr*
+) const {
+    createdConditions++;
+    return new GT::GTL::ConditionPtr(
+        GT::GTL::setupLocation<GT::GTL::Condition>(
+            GT::GTL::NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
 GT::GTL::ConditionPtr* TestConditionDriverImpl::playerChoosed(
     const GT::GTL::InputLocation& inputLocation,
     const GT::GTL::ObjectPtr*,
     const GT::GTL::ObjectPtr*
+) const {
+    createdConditions++;
+    return new GT::GTL::ConditionPtr(
+        GT::GTL::setupLocation<GT::GTL::Condition>(
+            GT::GTL::NullFactory::getInstance().createCondition(),
+            inputLocation
+        )
+    );
+}
+
+GT::GTL::ConditionPtr* TestConditionDriverImpl::playerWithin(
+    const GT::GTL::InputLocation& inputLocation,
+    const GT::GTL::ObjectPtr*,
+    const GT::GTL::ObjectsPtr*
 ) const {
     createdConditions++;
     return new GT::GTL::ConditionPtr(

@@ -46,6 +46,34 @@ public:
     /**
      * @brief Creates Condition for a Player choosing strategy beforehand.
      *
+     * @param player         player Object
+     * @param informationSet information set Object
+     * @param strategy       strategy Object
+     * @result               Condition for a Player
+     */
+    ConditionPtr createInformationSetChoiceCondition(
+        const ObjectPtr player,
+        const ObjectPtr informationSet,
+        const ObjectPtr strategy
+    ) const;
+
+    /**
+     * @brief Creates Condition for a Player limiting strategies beforehand.
+     *
+     * @param player         player Object
+     * @param informationSet information set Object
+     * @param strategies     strategies Objects
+     * @result               Condition for a Player
+     */
+    ConditionPtr createInformationSetRangeCondition(
+        const ObjectPtr  player,
+        const ObjectPtr  informationSet,
+        const ObjectsPtr strategies
+    ) const;
+
+    /**
+     * @brief Creates Condition for a Player choosing strategy beforehand.
+     *
      * @param player   player Object
      * @param strategy strategy Object
      * @result         Condition for a Player
@@ -53,6 +81,18 @@ public:
     ConditionPtr createPlayerChoiceCondition(
         const ObjectPtr player,
         const ObjectPtr strategy
+    ) const;
+
+    /**
+     * @brief Creates Condition for a Player limiting strategies beforehand.
+     *
+     * @param player     player Object
+     * @param strategies strategies Objects
+     * @result           Condition for a Player
+     */
+    ConditionPtr createPlayerRangeCondition(
+        const ObjectPtr  player,
+        const ObjectsPtr strategies
     ) const;
 
 private:

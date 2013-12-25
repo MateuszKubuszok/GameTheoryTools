@@ -56,6 +56,38 @@ public:
     );
 
     /**
+     * @brief Create condition for Player choosing strategy in information set.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr         Player's name
+     * @param informationSetPtr Player's information set
+     * @param strategyPtr       chosen strategy
+     * @return                  Condition
+     */
+    virtual ConditionPtr* informationSetChoosed(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     informationSetPtr,
+        const ObjectPtr*     strategyPtr
+    ) const override;
+
+    /**
+     * @brief Create condition for Player limiting allowed strategies in information set.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr         Player's name
+     * @param informationSetPtr Player's information set
+     * @param strategiesPtr     allowed strategies
+     * @return                  Condition
+     */
+    virtual ConditionPtr* informationSetWithin(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     informationSetPtr,
+        const ObjectsPtr*    strategiesPtr
+    ) const override;
+
+    /**
      * @brief Create condition for Player choosing strategy.
      *
      * @param inputLocation input location of a created Condition
@@ -67,7 +99,21 @@ public:
         const InputLocation& inputLocation,
         const ObjectPtr*     playerPtr,
         const ObjectPtr*     strategyPtr
-    ) const;
+    ) const override;
+
+    /**
+     * @brief Create condition for Player limiting allowed strategies.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr     Player's name
+     * @param strategiesPtr allowed strategies
+     * @return              Condition
+     */
+    virtual ConditionPtr* playerWithin(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectsPtr*    strategiesPtr
+    ) const override;
 
     /**
      * @brief CheckingConditionDriver's Message.
@@ -75,6 +121,27 @@ public:
      * @return Message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Whether Object is Player or Param.
+     *
+     * @param object Object to check
+     * @return       true if Object is either Object or Param
+     */
+    bool isPlayerOrParam(
+        const Object& object
+    ) const;
+
+    /**
+     * @brief Whether Object stores Identifier.
+     *
+     * @param object Object to check
+     * @return       true if Object stores Identifier
+     */
+    bool hasIdentifier(
+        const Object& object
+    ) const;
 }; /* END class CheckingConditionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

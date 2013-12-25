@@ -37,10 +37,30 @@ class TestConditionDriverImpl final : public GT::GTL::ConditionDriver {
 public:
     TestConditionDriverImpl();
 
+    virtual GT::GTL::ConditionPtr* informationSetChoosed(
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::ObjectPtr*     player,
+        const GT::GTL::ObjectPtr*     informationSet,
+        const GT::GTL::ObjectPtr*     strategy
+    ) const override;
+
+    virtual GT::GTL::ConditionPtr* informationSetWithin(
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::ObjectPtr*     player,
+        const GT::GTL::ObjectPtr*     informationSet,
+        const GT::GTL::ObjectsPtr*    strategies
+    ) const override;
+
     virtual GT::GTL::ConditionPtr* playerChoosed(
         const GT::GTL::InputLocation& inputLocation,
         const GT::GTL::ObjectPtr*     player,
         const GT::GTL::ObjectPtr*     strategy
+    ) const override;
+
+    virtual GT::GTL::ConditionPtr* playerWithin(
+        const GT::GTL::InputLocation& inputLocation,
+        const GT::GTL::ObjectPtr*     player,
+        const GT::GTL::ObjectsPtr*    strategies
     ) const override;
 
     inline unsigned int getCreatedConditions() const;

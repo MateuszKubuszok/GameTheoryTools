@@ -34,12 +34,41 @@ ConditionFactory& ConditionFactory::getInstance() {
 
 // public:
 
+ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
+    const ObjectPtr player,
+    const ObjectPtr informationSet,
+    const ObjectPtr strategy
+) const {
+    return ConditionPtr(
+        new InformationSetChoiceCondition(player, informationSet, strategy)
+    );
+}
+
+ConditionPtr ConditionFactory::createInformationSetRangeCondition(
+    const ObjectPtr  player,
+    const ObjectPtr  informationSet,
+    const ObjectsPtr strategies
+) const {
+    return ConditionPtr(
+        new InformationSetRangeCondition(player, informationSet, strategies)
+    );
+}
+
 ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     const ObjectPtr player,
     const ObjectPtr strategy
 ) const {
     return ConditionPtr(
         new PlayerChoiceCondition(player, strategy)
+    );
+}
+
+ConditionPtr ConditionFactory::createPlayerRangeCondition(
+    const ObjectPtr  player,
+    const ObjectsPtr strategies
+) const {
+    return ConditionPtr(
+        new PlayerRangeCondition(player, strategies)
     );
 }
 

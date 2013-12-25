@@ -60,6 +60,38 @@ public:
     );
 
     /**
+     * @brief Create condition for Player choosing strategy in information set.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr         Player's name
+     * @param informationSetPtr Player's information set
+     * @param strategyPtr       chosen strategy
+     * @return                  Condition
+     */
+    virtual ConditionPtr* informationSetChoosed(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     informationSetPtr,
+        const ObjectPtr*     strategyPtr
+    ) const override;
+
+    /**
+     * @brief Create condition for Player limiting allowed strategies in information set.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr         Player's name
+     * @param informationSetPtr Player's information set
+     * @param strategiesPtr     allowed strategies
+     * @return                  Condition
+     */
+    virtual ConditionPtr* informationSetWithin(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectPtr*     informationSetPtr,
+        const ObjectsPtr*    strategiesPtr
+    ) const override;
+
+    /**
      * @brief Create Condition for Player choosing strategy.
      *
      * @param inputLocation input location of created Condition
@@ -71,6 +103,20 @@ public:
         const InputLocation& inputLocation,
         const ObjectPtr*     playerPtr,
         const ObjectPtr*     strategyPtr
+    ) const override;
+
+    /**
+     * @brief Create condition for Player limiting allowed strategies.
+     *
+     * @param inputLocation input location of a created Condition
+     * @param playerPtr     Player's name
+     * @param strategiesPtr allowed strategies
+     * @return              Condition
+     */
+    virtual ConditionPtr* playerWithin(
+        const InputLocation& inputLocation,
+        const ObjectPtr*     playerPtr,
+        const ObjectsPtr*    strategiesPtr
     ) const override;
 
     /**
