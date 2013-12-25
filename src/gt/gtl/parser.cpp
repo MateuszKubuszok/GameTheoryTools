@@ -1530,9 +1530,10 @@ void Parser::error(
 /**
  * @brief Include for scanner.yylex.
  *
- * @param lvalue  matched content
- * @param scanner scanner instance
- * @param driver  driver instance
+ * @param lvalue   matched content
+ * @param location location of matched token
+ * @param scanner  scanner instance (not used)
+ * @param driver   driver instance (not used)
  */
 static int yylex(
     Parser::semantic_type* lvalue,
