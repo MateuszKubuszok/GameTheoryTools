@@ -98,7 +98,10 @@ void CheckingDriver::showError(
     if (errorStream) {
         stringstream builder;
         builder << message << endl
-                << "\tat line \"" << location << "\"" << endl;
+                << "\tfrom line " << location.begin.line << " (column " << location.begin.column << ')'
+                << endl
+                << "\tto line " << location.end.line << " (column " << location.end.column << ')'
+                << endl;
         string errorMessage(builder.str());
 
         static const IdentifierPtr name   = createIdentifierPtr("Error");

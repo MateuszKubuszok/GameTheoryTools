@@ -3,6 +3,8 @@
 %debug
 %locations
 
+%error-verbose
+
 %defines
 %define namespace         "GT::GTL"
 %define parser_class_name "Parser"
@@ -98,6 +100,8 @@
 %token WITH      /* WITH keyword */
 %token SUCH      /* SUCH keyword */
 %token AS        /* AS keyword */
+%token AT        /* AT keyword */
+%token IN        /* IN keyword */
 %token END       /* END keyword */
 %token FIND      /* FIND keyword */
 %token FOR       /* FOR keyword */
@@ -262,6 +266,12 @@ condition_collection
 condition
  : PLAYER object CHOOSE object { $$ = driver.forCondition().playerChoosed(@1, $2, $4);
                                       CLEANUP($2); CLEANUP($4); }
+ | PLAYER object IN LCBR objects RCBR { $$ = driver.forCondition().playerWithin(@1, $2, $5);
+                                      CLEANUP($2); CLEANUP($5); }
+ | PLAYER object AT object CHOOSE object { $$ = driver.forCondition().informationSetChoosed(@1, $2, $4, $6);
+                                      CLEANUP($2); CLEANUP($4); CLEANUP($6); }
+ | PLAYER object AT object IN LCBR objects RCBR {$$ = driver.forCondition().informationSetWithin(@1,$2,$4,$7);
+                                      CLEANUP($2); CLEANUP($4); CLEANUP($7); }
  ;
 
 /* Data */
@@ -333,5 +343,5 @@ static int yylex(
     Scanner&               scanner,
     Driver&                driver
 ) {
-    return scanner.lex(lvalue);
+    return scanner.lex(lvalue, *location);
 }

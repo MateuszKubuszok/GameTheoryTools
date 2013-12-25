@@ -26,10 +26,12 @@ BOOST_AUTO_TEST_CASE( CheckingDriver_showError ) {
         GT::Message() +
         "Error:\n"
         "\tError Message\n"
-        "\t\tat line \"1.1\"\n"
+        "\t\tfrom line 1 (column 1)\n"
+        "\t\tto line 1 (column 1)\n"
         "Error:\n"
         "\tInvalid Object\n"
-        "\t\tat line \"1.1\"\n"
+        "\t\tfrom line 1 (column 1)\n"
+        "\t\tto line 1 (column 1)\n"
     );
 }
 

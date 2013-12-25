@@ -99,11 +99,13 @@ public:
     /**
      * @brief Scans for next token.
      *
-     * @param newlval initiates next scanning with value
-     * @return        returns number of next token
+     * @param newlval     initiates next scanning with value
+     * @param newlocation location to fill with positions
+     * @return            returns number of next token
      */
     virtual int lex(
-        Parser::semantic_type* newlval
+        Parser::semantic_type* newlval,
+        Parser::location_type& newlocation
     );
 
 private:

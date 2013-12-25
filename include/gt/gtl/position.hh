@@ -44,7 +44,7 @@
 
 
 /* Line 37 of location.cc  */
-#line 7 "f_n_b/parser.yy"
+#line 9 "f_n_b/parser.yy"
 namespace GT { namespace GTL {
 
 /* Line 37 of location.cc  */
@@ -157,7 +157,7 @@ namespace GT { namespace GTL {
 
 
 /* Line 144 of location.cc  */
-#line 7 "f_n_b/parser.yy"
+#line 9 "f_n_b/parser.yy"
 } } // GT::GTL
 
 /* Line 144 of location.cc  */

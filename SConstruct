@@ -334,14 +334,6 @@ env.Alias('buildParserClasses', CorrectBisonInstallation)
 # Build GTL objects
 
 GTL = [
-    env.Object(
-        source=GTL_cpp,
-        target=targetForSource(GTL_cpp)
-    )
-    for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if  not GTL_cpp.name.endswith('scanner.cpp')
-    and not GTL_cpp.name.endswith('parser.cpp')
-] + [
     parserEnv.Object(
         source=GTL_cpp,
         target=targetForSource(GTL_cpp)
@@ -349,16 +341,16 @@ GTL = [
     for GTL_cpp in Glob(source+gtl+'*.cpp')
     if  GTL_cpp.name.endswith('scanner.cpp')
     or  GTL_cpp.name.endswith('parser.cpp')
-]
-SharedGTL = [
-    env.SharedObject(
+] + [
+    env.Object(
         source=GTL_cpp,
-        target=targetForShared(GTL_cpp)
+        target=targetForSource(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
     if  not GTL_cpp.name.endswith('scanner.cpp')
     and not GTL_cpp.name.endswith('parser.cpp')
-] + [
+]
+SharedGTL = [
     parserEnv.SharedObject(
         source=GTL_cpp,
         target=targetForShared(GTL_cpp)
@@ -366,6 +358,14 @@ SharedGTL = [
     for GTL_cpp in Glob(source+gtl+'*.cpp')
     if  GTL_cpp.name.endswith('scanner.cpp')
     or  GTL_cpp.name.endswith('parser.cpp')
+] + [
+    env.SharedObject(
+        source=GTL_cpp,
+        target=targetForShared(GTL_cpp)
+    )
+    for GTL_cpp in Glob(source+gtl+'*.cpp')
+    if  not GTL_cpp.name.endswith('scanner.cpp')
+    and not GTL_cpp.name.endswith('parser.cpp')
 ]
 Depends(
     GTL,

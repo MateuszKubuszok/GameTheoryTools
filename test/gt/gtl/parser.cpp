@@ -279,6 +279,48 @@ BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedExtensiveGames(), 1 ); // created 1 extensive game
 }
 
+BOOST_AUTO_TEST_CASE( Parser_queryWithAllConditions ) {
+    // given
+    std::string content =
+        "FIND pure_equilibrium\n"
+        "FOR\n"
+        "  STRATEGIC GAME\n"
+        "  WITH\n"
+        "    PLAYER p1 { s },\n"
+        "    PLAYER p2 { s }\n"
+        "  SUCH AS\n"
+        "    { p1=s, p2=s : 10, 20 }\n"
+        "  END,\n"
+        "  EXTENSIVE GAME\n"
+        "  WITH\n"
+        "    PLAYER p1 { s },\n"
+        "    PLAYER p2 { s }\n"
+        "  SUCH AS\n"
+        "    { p1=s :\n"
+        "      { p2=s : 10, 20 }\n"
+        "    }\n"
+        "  END\n"
+        "WITH\n"
+        "  PLAYER p1 CHOOSE s,\n"
+        "  PLAYER p2 IN { s },\n"
+        "  PLAYER p1 AT \"1\" CHOOSE s,\n"
+        "  PLAYER p2 AT \"1\" IN { s };\n"
+    ;
+    std::istringstream   stream(content);
+    GT::GTL::Scanner     scanner(&stream);
+    TestDriverImpl driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.statement.getExecutedQueries(), 1 ); // parsed 1 query
+    BOOST_CHECK_EQUAL( driver.condition.getCreatedConditions(), 4 ); // created 1 extensive game
+}
+
 BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
     // given
     std::string content =

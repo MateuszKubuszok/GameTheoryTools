@@ -38,7 +38,7 @@
 /* "%code requires" blocks.  */
 
 /* Line 35 of lalr1.cc  */
-#line 50 "f_n_b/parser.yy"
+#line 52 "f_n_b/parser.yy"
 
     /* Declares classes used in Parser */
     namespace GT {
@@ -69,7 +69,7 @@
 # undef YYERROR_VERBOSE
 # define YYERROR_VERBOSE 1
 #else
-# define YYERROR_VERBOSE 0
+# define YYERROR_VERBOSE 1
 #endif
 
 /* Enabling the token table.  */
@@ -79,7 +79,7 @@
 
 
 /* Line 35 of lalr1.cc  */
-#line 7 "f_n_b/parser.yy"
+#line 9 "f_n_b/parser.yy"
 namespace GT { namespace GTL {
 
 /* Line 35 of lalr1.cc  */
@@ -95,7 +95,7 @@ namespace GT { namespace GTL {
     {
 
 /* Line 35 of lalr1.cc  */
-#line 67 "f_n_b/parser.yy"
+#line 69 "f_n_b/parser.yy"
 
     IdentifierPtr*  identifier;
     IdentifiersPtr* identifiers;
@@ -139,19 +139,21 @@ namespace GT { namespace GTL {
      WITH = 264,
      SUCH = 265,
      AS = 266,
-     END = 267,
-     FIND = 268,
-     FOR = 269,
-     CHOOSE = 270,
-     LCBR = 271,
-     RCBR = 272,
-     EQUAL = 273,
-     COLON = 274,
-     COMA = 275,
-     EOC = 276,
-     lexer_error = 277,
-     identifier = 278,
-     number = 279
+     AT = 267,
+     IN = 268,
+     END = 269,
+     FIND = 270,
+     FOR = 271,
+     CHOOSE = 272,
+     LCBR = 273,
+     RCBR = 274,
+     EQUAL = 275,
+     COLON = 276,
+     COMA = 277,
+     EOC = 278,
+     lexer_error = 279,
+     identifier = 280,
+     number = 281
    };
 
     };
@@ -271,6 +273,9 @@ namespace GT { namespace GTL {
     static const char* const yytname_[];
 #endif
 
+    /// Convert the symbol name \a n to a form suitable for a diagnostic.
+    static std::string yytnamerr_ (const char *n);
+
 #if YYDEBUG
     /// A type to store symbol numbers and -1.
     typedef signed char rhs_number_type;
@@ -327,11 +332,11 @@ namespace GT { namespace GTL {
   };
 
 /* Line 35 of lalr1.cc  */
-#line 7 "f_n_b/parser.yy"
+#line 9 "f_n_b/parser.yy"
 } } // GT::GTL
 
 /* Line 35 of lalr1.cc  */
-#line 335 "include/gt/gtl/parser.hpp"
+#line 340 "include/gt/gtl/parser.hpp"
 
 
 

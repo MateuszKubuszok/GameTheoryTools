@@ -48,6 +48,7 @@ typedef GT::GTL::Parser::token token;
 %option nounistd
 
  /* Defines states used for ommitnig comments */
+%x string
 %x block_comment
 %x inline_comment
 
@@ -72,6 +73,8 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 (?i:WITH)      { return (token::WITH); }
 (?i:SUCH)      { return (token::SUCH); }
 (?i:AS)        { return (token::AS); }
+(?i:AT)        { return (token::AT); }
+(?i:IN)        { return (token::IN); }
 (?i:END)       { return (token::END); }
 (?i:FIND)      { return (token::FIND); }
 (?i:FOR)       { return (token::FOR); }
@@ -94,6 +97,14 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
         lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::identifier);
     }
+
+ /* String (identifier) */
+"\""           { BEGIN(string); }
+<string>[^\"]* {
+        lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
+        return (token::identifier);
+    }
+<string>"\""   { BEGIN(0); }
 
  /* Block comments */
 "\/\*"                 { BEGIN(block_comment); }
@@ -120,6 +131,9 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 namespace GT {
 namespace GTL {
 
+// class Scanner : public GTLFlexLexer {
+// public:
+
 Scanner::Scanner(
     InputStream* inputStream
 ) :
@@ -137,12 +151,31 @@ void Scanner::setInteractive(
     yy_set_interactive(isNowInteractive);
 }
 
+// private:
+
 int Scanner::lex(
-    Parser::semantic_type* newlval
+    Parser::semantic_type* newlval,
+    Parser::location_type& newlocation
 ) {
     lval = newlval;
-    return lex();
+
+    Index firstLine   = yylineno;
+    Index firstColumn = 1; // TODO
+
+    int result = lex();
+
+    Index lastLine   = yylineno;
+    Index lastColumn = 1; // TODO
+
+    newlocation.begin.lines(firstLine-1);
+    newlocation.begin.columns(firstColumn-1);
+    newlocation.end.lines(lastLine-1);
+    newlocation.end.columns(lastColumn-1);
+
+    return result;
 }
+
+// }; /* END class Scanner */
 
 } /* END namespace GTL */
 } /* END namespace GT */
@@ -155,3 +188,4 @@ int Scanner::lex(
 int GTLFlexLexer::yylex() {
     return 0;
 }
+
