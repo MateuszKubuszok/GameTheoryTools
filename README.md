@@ -87,10 +87,10 @@ To generate documentation `Doxygen` version `1.8.5` is recommended. Versions pri
 C++11 support, and will generate invalid documentation due to e.g. `final` specifier usage.
 
 To generate public API - the one actually intended to use by a programmer - run command
-`doxygen doxygen/public_api`.
+`doxygen doxygen/public_api`from main dicrectory.
 
 To generate full documentation - the one documenting all classes, including those intended to be hidden from
-programmer - run command `doxygen doxygen/private_api`.
+programmer - run command `doxygen doxygen/private_api` from main dicrectory.
 
 TODO
 ----
@@ -114,4 +114,4 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
-Full license an be found [here](LICENSE.md) or on [gnu.org](http://www.gnu.org/licenses/).
+Full license can be found [here](LICENSE.md) or on [gnu.org](http://www.gnu.org/licenses/).
