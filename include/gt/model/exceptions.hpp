@@ -34,15 +34,17 @@ namespace Model {
  *
  * @author Mateusz Kubuszok
  */
-class IllegalInnerState final : public std::runtime_error {
+class IllegalInnerState final : public std::domain_error {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit IllegalInnerState(const Message& message) :
-        std::runtime_error(message)
+    explicit IllegalInnerState(
+        const Message& message
+    ) :
+        std::domain_error(message)
         {}
 }; /* END class IllegalInnerState */
 
@@ -61,7 +63,9 @@ public:
      *
      * @param message initializing Message
      */
-    explicit InvalidCoordinate(const Message& message) :
+    explicit InvalidCoordinate(
+        const Message& message
+    ) :
         std::invalid_argument(message)
         {}
 }; /* END class InvalidCoordinate */

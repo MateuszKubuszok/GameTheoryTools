@@ -34,15 +34,17 @@ namespace GTL {
  *
  * @author Mateusz Kubuszok
  */
-class CyclicIdentifiers final : public std::runtime_error {
+class CyclicIdentifiers final : public std::domain_error {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit CyclicIdentifiers(const Message& message) :
-        std::runtime_error(message)
+    explicit CyclicIdentifiers(
+        const Message& message
+    ) :
+        std::domain_error(message)
         {}
 }; /* END class CyclicIdentifiers */
 
@@ -56,15 +58,17 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class InvalidContentRequest final : public std::runtime_error {
+class InvalidContentRequest final : public std::domain_error {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit InvalidContentRequest(const Message& message) :
-        std::runtime_error(message)
+    explicit InvalidContentRequest(
+        const Message& message
+    ) :
+        std::domain_error(message)
         {}
 }; /* END class InvalidContentRequest */
 
@@ -72,7 +76,7 @@ public:
 
 /**
  * @class InvalidProperty
- * @brief Intened to be thrown when accessing non-existing Objects' property.
+ * @brief Intended to be thrown when accessing non-existing Objects' property.
  *
  * @author Mateusz Kubuszok
  */
@@ -83,7 +87,9 @@ public:
      *
      * @param message initializing Message
      */
-    explicit InvalidProperty(const Message& message) :
+    explicit InvalidProperty(
+        const Message& message
+    ) :
         std::invalid_argument(message)
         {}
 }; /* END class InvalidProperty */
@@ -96,15 +102,17 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class InvalidType final : public std::runtime_error {
+class InvalidType final : public std::domain_error {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit InvalidType(const Message& message) :
-        std::runtime_error(message)
+    explicit InvalidType(
+        const Message& message
+    ) :
+        std::domain_error(message)
         {}
 }; /* END class InvalidType */
 
@@ -125,7 +133,9 @@ public:
      *
      * @param message initializing Message
      */
-    explicit NotDefinedParam(const Message& message) :
+    explicit NotDefinedParam(
+        const Message& message
+    ) :
         std::invalid_argument(message)
         {}
 }; /* END class NotDefinedParam */

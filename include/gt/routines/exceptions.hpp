@@ -34,15 +34,17 @@ namespace Routines {
  *
  * @author Mateusz Kubuszok
  */
-class InvalidCondition final : public std::runtime_error {
+class InvalidCondition final : public std::invalid_argument {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit InvalidCondition(const Message& message) :
-        std::runtime_error(message)
+    explicit InvalidCondition(
+        const Message& message
+    ) :
+        std::invalid_argument(message)
         {}
 }; /* END class InvalidCondition */
 
@@ -54,15 +56,17 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class InvalidGameType final : public std::runtime_error {
+class InvalidGameType final : public std::invalid_argument {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit InvalidGameType(const Message& message) :
-        std::runtime_error(message)
+    explicit InvalidGameType(
+        const Message& message
+    ) :
+        std::invalid_argument(message)
         {}
 }; /* END class InvalidGameType */
 
@@ -74,15 +78,17 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class InvalidPlayerChoice final : public std::runtime_error {
+class InvalidPlayerChoice final : public std::invalid_argument {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit InvalidPlayerChoice(const Message& message) :
-        std::runtime_error(message)
+    explicit InvalidPlayerChoice(
+        const Message& message
+    ) :
+        std::invalid_argument(message)
         {}
 }; /* END class InvalidPlayerChoice */
 
@@ -94,15 +100,17 @@ public:
  *
  * @author Mateusz Kubuszok
  */
-class IncompletePayoffInformation final : public std::runtime_error {
+class IncompletePayoffInformation final : public std::domain_error {
 public:
     /**
      * @brief Constructor initialized with Message.
      *
      * @param message initializing Message
      */
-    explicit IncompletePayoffInformation(const Message& message) :
-        std::runtime_error(message)
+    explicit IncompletePayoffInformation(
+        const Message& message
+    ) :
+        std::domain_error(message)
         {}
 }; /* END class IncompletePayoffInformation */
 
