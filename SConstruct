@@ -23,17 +23,17 @@ routines = 'gt/routines/'
 
 # Helpers for building objects and programs
 
-def targetForSource(file):
-    return str(file).replace('.cpp', '.o').replace(source, objects)
+def targetForStatic(file):
+    return str(file).replace('.cpp', env['OBJSUFFIX']).replace(source, objects)
 
 def targetForShared(file):
-    return str(file).replace('.cpp', '.os').replace(source, objects)
+    return str(file).replace('.cpp', env['SHOBJSUFFIX']).replace(source, objects)
 
 def targetForExecutable(file):
-    return str(file).replace('.o', '').replace(objects+main, programs+'gtl_')
+    return str(file).replace(env['OBJSUFFIX'], env['PROGSUFFIX']).replace(objects+main, programs+'gtl_')
 
 def targetForTest(file):
-    return str(file).replace('.cpp', '_test.o').replace(test, objects)
+    return str(file).replace('.cpp', '_test'+env['OBJSUFFIX']).replace(test, objects)
 
 ##############################################################################################################
 
@@ -46,9 +46,10 @@ env["CC"]  = os.getenv("CC")  or env["CC"]
 env["CXX"] = os.getenv("CXX") or env["CXX"]
 env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
 
-conf = Configure(env)
-
+# Assuming that instalation is valid unless proved otherwise
 validInstallation = True
+
+conf = Configure(env)
 
 # C++ check
 if not conf.CheckCXX():
@@ -83,10 +84,17 @@ for header in [
         print('Your environment does not seem to have header <'+header+'>!!')
         validInstallation = False
 
-# Terminate build if installation is not valid
-if not validInstallation:
-    print('Invalid compiler/libraries installation - build terminated!!')
-    Exit(1)
+# Libraries
+libraries = [
+    # GNU Multiple Precision library
+    'gmp', 'gmpxx'
+]
+
+# Library check
+for library in libraries:
+    if not conf.CheckLib(library):
+        print('Your environment does not seem to have library <'+library+'>!!')
+        validInstallation = False
 
 # Sets C++11 standard to be used during compilation.
 # Makes executables contain debug information.
@@ -99,10 +107,8 @@ conf.env.Append(CPPFLAGS=['-std=c++11', '-g'])
 # - src/ - added for implemetnations headers.
 conf.env.Append(CPPPATH=[include, include+gtl, source])
 
-# Sets used libraries to:
-# - gmp - GNU Multiple Precision library,
-# - gmpxx - C++ wrappers for GMP.
-conf.env.Append(LIBS=['gmp', 'gmpxx'])
+# Sets used libraries.
+conf.env.Append(LIBS=libraries)
 
 conf.Finish()
 
@@ -119,8 +125,19 @@ env.Append(CPPFLAGS=['-Wall', '-Wextra', '-pedantic'])
 executablesEnv  = env.Clone()
 executablesConf = Configure(executablesEnv)
 
-# Makes executables compile with Boost Program Options library.
-executablesConf.env.Append(LIBS=['boost_program_options'])
+executablesLibraries = [
+    # boost libraries
+    'boost_program_options'
+]
+
+# Library check
+for library in executablesLibraries:
+    if not executablesConf.CheckLib(library):
+        print('Your environment does not seem to have library <'+library+'>!!')
+        validInstallation = False
+
+# Sets used libraries.
+executablesConf.env.Append(LIBS=executablesLibraries)
 
 executablesConf.Finish()
 
@@ -130,8 +147,6 @@ executablesConf.Finish()
 
 testEnv  = env.Clone()
 testConf = Configure(testEnv)
-
-validInstallation = True
 
 # Header check
 for header in [
@@ -143,15 +158,24 @@ for header in [
         print('Your environment does not seem to have header <'+header+'>!!')
         validInstallation = False
 
-# Terminate build if installation is not valid
-if not validInstallation:
-    print('Invalid compiler/libraries installation - build terminated!!')
-    Exit(1)
+# Libraries
+testLibraries = [
+    # boost libraries
+    'boost_unit_test_framework'
+]
+
+# Library check
+for library in testLibraries:
+    if not testConf.CheckLib(library):
+        print('Your environment does not seem to have library <'+library+'>!!')
+        validInstallation = False
 
 # Adds tests directories to the path:
 # - test
 testConf.env.Append(CPPPATH=[test])
-testConf.env.Append(LIBS=['boost_unit_test_framework'])
+
+# Sets used libraries.
+testConf.env.Append(LIBS=testLibraries)
 
 testConf.Finish()
 
@@ -166,19 +190,40 @@ showProgress = 'yes'        # should progress bar be displayed
 executablesTestEnv  = testEnv.Clone()
 executablesTestConf = Configure(executablesTestEnv)
 
-# Makes executables compile with Boost Program Options library.
-executablesTestConf.env.Append(LIBS=['boost_program_options'])
+# Libraries
+executablesTestLibraries = [
+    # boost libraries
+    'boost_program_options'
+]
+
+# Library check
+for library in list(set(executablesTestLibraries) - set(executablesLibraries) - set(testLibraries)):
+    if not executablesTestConf.CheckLib(library):
+        print('Your environment does not seem to have library <'+library+'>!!')
+        validInstallation = False
+
+# Sets used libraries.
+executablesTestConf.env.Append(LIBS=executablesTestLibraries)
 
 executablesTestConf.Finish()
+
+##############################################################################################################
+
+# Validate installation
+
+# Terminate build if installation is not valid
+if not validInstallation:
+    print('Invalid compiler/libraries installation - build terminated!!')
+    Exit(1)
 
 ##############################################################################################################
 
 # Build Model objects
 
 Models = [
-    env.Object(
+    env.StaticObject(
         source=Model_cpp,
-        target=targetForSource(Model_cpp)
+        target=targetForStatic(Model_cpp)
     )
     for Model_cpp in Glob(source+model+'*.cpp')
 ]
@@ -196,7 +241,7 @@ env.Alias('buildModels', Models)
 # Build Models' Tests objects
 
 ModelsTests = [
-    testEnv.Object(
+    testEnv.StaticObject(
         source=ModelTest_cpp,
         target=targetForTest(ModelTest_cpp)
     )
@@ -208,7 +253,7 @@ testEnv.Alias('buildModelsTests', ModelsTests)
 
 # Build and run Model tests
 
-ModelsTestsProgram_URI = programs+'ModelsTests'
+ModelsTestsProgram_URI = programs+'ModelsTests'+env['PROGSUFFIX']
 ModelsTestsProgram_bin = testEnv.Program(
     source=Models + ModelsTests,
     target=ModelsTestsProgram_URI
@@ -233,9 +278,9 @@ testEnv.Alias('runModelsTests', ModelsTestsProgram_run)
 # Build Routines objects
 
 Routines = [
-    env.Object(
+    env.StaticObject(
         source=Routine_cpp,
-        target=targetForSource(Routine_cpp)
+        target=targetForStatic(Routine_cpp)
     )
     for Routine_cpp in Glob(source+routines+'*.cpp')
 ]
@@ -247,7 +292,7 @@ SharedRoutines = [
     for Routine_cpp in Glob(source+routines+'*.cpp')
 ]
 Depends(
-    Routines,
+    [Routines, SharedRoutines],
     ModelsTestsProgram_run
 )
 env.Alias('buildRoutines', Routines)
@@ -257,7 +302,7 @@ env.Alias('buildRoutines', Routines)
 # Build Routines' Tests objects
 
 RoutinesTests = [
-    testEnv.Object(
+    testEnv.StaticObject(
         source=RoutineTest_cpp,
         target=targetForTest(RoutineTest_cpp)
     )
@@ -269,7 +314,7 @@ testEnv.Alias('buildRoutinesTests', RoutinesTests)
 
 # Build and run Routine tests
 
-RoutinesTestsProgram_URI = programs+'RoutinesTests'
+RoutinesTestsProgram_URI = programs+'RoutinesTests'+env['PROGSUFFIX']
 RoutinesTestsProgram_bin = testEnv.Program(
     source=Models + Routines + RoutinesTests,
     target=RoutinesTestsProgram_URI
@@ -334,17 +379,17 @@ env.Alias('buildParserClasses', CorrectBisonInstallation)
 # Build GTL objects
 
 GTL = [
-    parserEnv.Object(
+    parserEnv.StaticObject(
         source=GTL_cpp,
-        target=targetForSource(GTL_cpp)
+        target=targetForStatic(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
     if  GTL_cpp.name.endswith('scanner.cpp')
     or  GTL_cpp.name.endswith('parser.cpp')
 ] + [
-    env.Object(
+    env.StaticObject(
         source=GTL_cpp,
-        target=targetForSource(GTL_cpp)
+        target=targetForStatic(GTL_cpp)
     )
     for GTL_cpp in Glob(source+gtl+'*.cpp')
     if  not GTL_cpp.name.endswith('scanner.cpp')
@@ -368,7 +413,7 @@ SharedGTL = [
     and not GTL_cpp.name.endswith('parser.cpp')
 ]
 Depends(
-    GTL,
+    [GTL, SharedGTL],
     [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation]
 )
 env.Alias('buildGTL', GTL)
@@ -378,7 +423,7 @@ env.Alias('buildGTL', GTL)
 # Build GTL's Tests objects
 
 GTLTests = [
-    testEnv.Object(
+    testEnv.StaticObject(
         source=GTLTest_cpp,
         target=targetForTest(GTLTest_cpp)
     )
@@ -390,7 +435,7 @@ testEnv.Alias('buildGTLTests', GTLTests)
 
 # Build and run GTL tests
 
-GTLTestsProgram_URI = programs+'GTLTests'
+GTLTestsProgram_URI = programs+'GTLTests'+env['PROGSUFFIX']
 GTLTestsProgram_bin = testEnv.Program(
     source=Models + Routines + GTL + GTLTests,
     target=GTLTestsProgram_URI
@@ -415,9 +460,9 @@ testEnv.Alias('runGTLTests', GTLTestsProgram_run)
 # Build Program's objects
 
 Programs = [
-    env.Object(
+    env.StaticObject(
         source=Program_cpp,
-        target=targetForSource(Program_cpp)
+        target=targetForStatic(Program_cpp)
     )
     for Program_cpp in Glob(source+program+'*.cpp')
 ]
@@ -429,7 +474,7 @@ SharedPrograms = [
     for Program_cpp in Glob(source+program+'*.cpp')
 ]
 Depends(
-    Programs,
+    [Programs, SharedPrograms],
     GTLTestsProgram_run
 )
 env.Alias('buildPrograms', Programs)
@@ -439,7 +484,7 @@ env.Alias('buildPrograms', Programs)
 # Build Program's Tests objects
 
 ProgramsTests = [
-    testEnv.Object(
+    testEnv.StaticObject(
         source=ProgramTest_cpp,
         target=targetForTest(ProgramTest_cpp)
     )
@@ -451,7 +496,7 @@ testEnv.Alias('buildProgramsTests', ProgramsTests)
 
 # Build and run Program's tests
 
-ProgramsTestsProgram_URI = programs+'ProgramsTests'
+ProgramsTestsProgram_URI = programs+'ProgramsTests'+env['PROGSUFFIX']
 ProgramsTestsProgram_bin = executablesTestEnv.Program(
     source=Models + Routines + GTL + Programs + ProgramsTests,
     target=ProgramsTestsProgram_URI
@@ -475,19 +520,19 @@ executablesTestEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
 
 # Build libraries
 
-GTTStaticLibrary_URI = programs+'GTT.a'
+GTTStaticLibrary_URI = programs+'GTT'+env['LIBSUFFIX']
 GTTStaticLibrary_bin = env.Library(
     source=Models + Routines + GTL + Programs,
     target=GTTStaticLibrary_URI
 )
-GTTSharedLibrary_URI = programs+'GTT.so'
+GTTSharedLibrary_URI = programs+'GTT'+env['SHLIBSUFFIX']
 GTTSharedLibrary_bin = env.SharedLibrary(
     source=SharedModels + SharedRoutines + SharedGTL + SharedPrograms,
     target=GTTSharedLibrary_URI
 )
 Depends(
     [GTTStaticLibrary_bin, GTTSharedLibrary_bin],
-    ProgramsTestsProgram_run
+    [CorrectBisonInstallation, ProgramsTestsProgram_run]
 )
 env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 
@@ -496,9 +541,9 @@ env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 # Build main containing objects
 
 Mains = [
-    env.Object(
+    env.StaticObject(
         source=Main_cpp,
-        target=targetForSource(Main_cpp)
+        target=targetForStatic(Main_cpp)
     )
     for Main_cpp in Glob(source+main+'*.cpp')
 ]

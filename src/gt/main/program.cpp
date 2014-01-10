@@ -183,7 +183,7 @@ int main(
 
         if (variables.count("help") || variables.count("H")) {
             cout << description << endl;
-            return 0;
+            return EXIT_SUCCESS;
         }
 
         // Execute program otherwise
@@ -215,11 +215,11 @@ int main(
         // uknown option error
         cerr << "Uknown option, use one of listed instead." << endl;
         cout << endl << description << endl;
-        return -1;
+        return EXIT_FAILURE;
     } catch (const std::exception& exception) {
         // last resort error handling
         cerr << exception.what() << endl;
-        return -1;
+        return EXIT_FAILURE;
     }
 }
 

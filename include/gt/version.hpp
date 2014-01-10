@@ -1,11 +1,11 @@
-#ifndef __GT_HPP__
-#define __GT_HPP__
+#ifndef __GT_VERSION_HPP__
+#define __GT_VERSION_HPP__
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt.hpp
- * @brief     Includes common classes for all GT modules.
+ * @file      gt/version.hpp
+ * @brief     Declares library's version number.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -23,10 +23,29 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* Mock header for libraries  */
-#include "gt/version.hpp"
-#include "gt/common.hpp"
+/**
+ * @brief GT major version number.
+ */
+#define GT_VERSION_MAJOR   0
+/**
+ * @brief GT minor version number.
+ */
+#define GT_VERSION_MINOR   3
+/**
+ * @brief GT release version number.
+ */
+#define GT_VERSION_RELEASE 0
+/**
+ * @brief GT version number.
+ *
+ * @Code
+ * GT_VERSION_MAJOR   == GT_VERSION / 10000;
+ * GT_VERSION_MINOR   == GT_VERSION / 100 % 100;
+ * GT_VERSION_RELEASE == GT_VERSION % 1000;
+ * @EndCode
+ */
+#define GT_VERSION         GT_VERSION_MAJOR * 10000 + GT_VERSION_MINOR * 100 + GT_VERSION_RELEASE
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_HPP__ */
+#endif /* END #ifndef __GT_VERSION_HPP__ */
