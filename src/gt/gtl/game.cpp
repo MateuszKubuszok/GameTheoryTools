@@ -40,7 +40,27 @@ Game::Game(
     const Model::GamePtr gameImplementation
 ) :
     Object(createIdentifier("Game")),
-    game(gameImplementation)
+    game(gameImplementation),
+    gameType(createIdentifierPtr(""))
+{
+    registerProperty(
+        Identifier("pure_equilibrium"),     ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
+    );
+    registerProperty(
+        Identifier("mixed_equilibrium"),    ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
+    );
+    registerProperty(
+        Identifier("behavior_equilibrium"), ObjectPropertyPtr(new GameBehaviorEquilibriumProperty(this))
+    );
+}
+
+Game::Game(
+    const Model::GamePtr gameImplementation,
+    const IdentifierPtr  gameTypeName
+) :
+    Object(createIdentifier("Game")),
+    game(gameImplementation),
+    gameType(gameTypeName)
 {
     registerProperty(
         Identifier("pure_equilibrium"),     ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
@@ -95,28 +115,56 @@ ResultPtr Game::behaviorEquilibrium(
     return routine->findResultFor(game, routineConditions);
 }
 
+const IdentifierPtr Game::getGameType() const {
+    return gameType;
+}
+
 Message Game::serialize() const {
     stringstream result;
 
+    if (!gameType->empty())
+        result << *gameType << ' ';
+    result << "GAME WITH\n";
+
+    const Model::PlayersPtr players = game->getPlayers();
+    if (players->size()) {
+        stringstream subresult;
+
+        bool firstElement = true;
+        for (const Model::Players::value_type& player : *players) {
+            if (!firstElement)
+                subresult << ',' << endl;
+
+            const PlayerPtr gtlPlayer = dynamic_pointer_cast<Player>(player.second);
+            if (gtlPlayer)
+                subresult << gtlPlayer->serialize();
+            else
+                subresult << "!! CANNOT RECOVER PLAYER !!";
+            firstElement = false;
+        }
+
+        result << addIndent(subresult.str()) << endl;
+    }
+
+    result << "SUCH AS" << endl;
+
     const shared_ptr<LazyGameProxy> lazyGame = dynamic_pointer_cast<LazyGameProxy>(game);
+    if (lazyGame) {
+        stringstream subresult;
 
-    // result << "GAME WITH" << endl;
+        bool firstElement = true;
+        for (const CoordinatePtr& coordinate : *lazyGame->getCoordinates()) {
+            if (!firstElement)
+                subresult << ',' << endl;
+            subresult << coordinate->serialize();
+            firstElement = false;
+        }
 
-    // const Model::PlayersPtr players = lazyGame->getPlayers();
-    // if (players->size()) {
-    //     stringstream subresult;
+        result << addIndent(subresult.str()) << endl;
+    } else
+        result << addIndent("!! CANNOT RECOVER COORDINATES !!") << endl;
 
-    //     bool firstElement = true;
-    //     for (const Model::Players::value_type& player : *players) {
-    //         if (!firstElement)
-    //             subresult << ',' << endl;
-    //         subresult << player.second->serialize();
-    //     }
-
-    //     result << addIndent(subresult.str()) << endl;
-    // }
-
-    // if ()
+    result << "END";
 
     return result.str();
 }

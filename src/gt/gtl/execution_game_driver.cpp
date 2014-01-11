@@ -54,8 +54,9 @@ GamePtr* ExecutionGameDriver::createStrategic(
     const Details&       details        = **detailsPtr;
     const GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildStrategicGame();
     const GameBuilder&   gameBuilder    = *gameBuilderPtr;
+    const IdentifierPtr  gameType       = createIdentifierPtr("STRATEGIC");
 
-    return createGameWithBuilder(inputLocation, details, gameBuilder);
+    return createGameWithBuilder(inputLocation, details, gameBuilder, gameType);
 }
 
 GamePtr* ExecutionGameDriver::createExtensive(
@@ -70,8 +71,9 @@ GamePtr* ExecutionGameDriver::createExtensive(
     const Details&       details        = **detailsPtr;
     const GameBuilderPtr gameBuilderPtr = Model::GameFactory::getInstance().buildExtensiveGame();
     const GameBuilder&   gameBuilder    = *gameBuilderPtr;
+    const IdentifierPtr  gameType       = createIdentifierPtr("EXTENSIVE");
 
-    return createGameWithBuilder(inputLocation, details, gameBuilder);
+    return createGameWithBuilder(inputLocation, details, gameBuilder, gameType);
 }
 
 DetailsPtr* ExecutionGameDriver::createDetails(
@@ -123,9 +125,10 @@ Message ExecutionGameDriver::toString() const {
 // private:
 
 GamePtr* ExecutionGameDriver::createGameWithBuilder(
-    const InputLocation&      inputLocation,
-    const Details&            details,
-    const GameBuilder& gameBuilder
+    const InputLocation& inputLocation,
+    const Details&       details,
+    const GameBuilder&   gameBuilder,
+    const IdentifierPtr& gameType
 ) const {
     Model::GamePtr lazyGame(
         new LazyGameProxy(
@@ -138,7 +141,7 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
 
     return new GamePtr(
        setupLocation<Game>(
-            GamePtr(new Game(lazyGame)),
+            GamePtr(new Game(lazyGame, gameType)),
             inputLocation
         )
     );

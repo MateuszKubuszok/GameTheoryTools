@@ -79,6 +79,13 @@ public:
     );
 
     /**
+     * @brief Grants access to Coordinates used to build Game on request.
+     *
+     * @return Coordinates stored inside proxy
+     */
+    const CoordinatesPtr getCoordinates() const;
+
+    /**
      * @brief Returns Game's Players.
      *
      * @return Players

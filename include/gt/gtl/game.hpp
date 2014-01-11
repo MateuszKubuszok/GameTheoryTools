@@ -45,6 +45,11 @@ class Game : public Object {
      */
     const Model::GamePtr game;
 
+    /**
+     * @brief Game type
+     */
+    const IdentifierPtr gameType;
+
 public:
     /**
      * @brief Initiates Object with Game model.
@@ -53,6 +58,17 @@ public:
      */
     explicit Game(
         const Model::GamePtr game
+    );
+
+    /**
+     * @brief Initiates Object with Game model.
+     *
+     * @param game     Model Game implementation
+     * @param gameType type of Game: "STRATEGIC" or "EXTENSIVE"
+     */
+    Game(
+        const Model::GamePtr game,
+        const IdentifierPtr  gameType
     );
 
     /**
@@ -87,6 +103,15 @@ public:
         const Context&    context,
         const Conditions& conditions
     ) const;
+
+    /**
+     * @brief Returns game type name.
+     *
+     * Game type used during game definition: EXTENSIVE, STRATEGIC.
+     *
+     * @return game type Identifier
+     */
+    virtual const IdentifierPtr getGameType() const;
 
     /**
      * @brief Returns serialized Message for a Game.
@@ -145,6 +170,14 @@ public:
         return Model::NullFactory::getInstance().createResult();
     }
 
+    virtual const IdentifierPtr getGameType() const override {
+        return createIdentifierPtr("NULL");
+    }
+
+    virtual Message serialize() const override {
+        return createMessage("NULL GAME");
+    }
+
     virtual bool isNotNull() const override {
         return false;
     }
@@ -195,6 +228,14 @@ public:
         const Conditions&
     ) const override {
         return Model::NullFactory::getInstance().createResult();
+    }
+
+    virtual const IdentifierPtr getGameType() const override {
+        return createIdentifierPtr("ERROR");
+    }
+
+    virtual Message serialize() const override {
+        return createMessage("ERROR GAME");
     }
 
     virtual bool isValid() const override {

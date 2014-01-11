@@ -49,6 +49,10 @@ LazyGameProxy::LazyGameProxy(
     context(definedContext)
     {}
 
+const CoordinatesPtr LazyGameProxy::getCoordinates() const {
+    return coordinates;
+}
+
 const PlayersPtr LazyGameProxy::getPlayers() const {
     return accessGame()->getPlayers();
 }

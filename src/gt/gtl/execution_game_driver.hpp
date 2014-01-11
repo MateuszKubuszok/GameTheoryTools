@@ -129,14 +129,16 @@ private:
      * @brief Game building routine common for Strategic and Extensive form Games.
      *
      * @param inputLocation input location of created Game
-     * @param details       Details built game details
-     * @param gameBuilder   GameBuilder specific for given game
+     * @param details       Details built Game Details
+     * @param gameBuilder   GameBuilder specific for given Game
+     * @param gameType      Game type (STRATEGIC, EXTENSIVE)
      * @return              Game instance (valid or not)
      */
     GamePtr* createGameWithBuilder(
         const InputLocation&      inputLocation,
         const Details&            details,
-        const Model::GameBuilder& gameBuilder
+        const Model::GameBuilder& gameBuilder,
+        const IdentifierPtr&      gameType
     ) const;
 }; /* END class ExecutionGameDriver */
 

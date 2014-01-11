@@ -96,6 +96,82 @@ BOOST_AUTO_TEST_CASE( Game_respondsTo ) {
     BOOST_CHECK( !game.respondsTo(error) );
 }
 
+BOOST_AUTO_TEST_CASE( Game_getGameType ) {
+    // given
+    GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
+    GT::IdentifierPtr  gameType           = GT::createIdentifierPtr("TEST");
+
+    // when
+    GT::GTL::Game game(gameImplementation, gameType);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        *game.getGameType(),
+        *gameType
+    );
+}
+
+BOOST_AUTO_TEST_CASE( Game_serialize ) {
+    // given
+    GT::IdentifierPtr  player1Name = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  strategy1 = GT::createIdentifierPtr("p1s1");
+    GT::IdentifiersPtr strategies1(new GT::Identifiers());
+    strategies1->push_back( strategy1 );
+    GT::GTL::PlayerPtr player1(new GT::GTL::Player(player1Name, strategies1));
+
+    GT::IdentifierPtr  player2Name = GT::createIdentifierPtr("p2");
+    GT::IdentifierPtr  strategy2 = GT::createIdentifierPtr("p2s1");
+    GT::IdentifiersPtr strategies2(new GT::Identifiers());
+    strategies2->push_back( strategy2 );
+    GT::GTL::PlayerPtr player2(new GT::GTL::Player(player2Name, strategies2));
+
+    GT::GTL::ObjectsPtr players(new GT::GTL::Objects());
+    players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player1) );
+    players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player2) );
+
+    GT::GTL::ParamsPtr payoff(new GT::GTL::Params());
+    payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
+    payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(20)) );
+
+    GT::GTL::CoordinatePtr coordinate1(new GT::GTL::Coordinate(player1Name, strategy1));
+    GT::GTL::CoordinatePtr coordinate2(new GT::GTL::Coordinate(player2Name, strategy2));
+    coordinate2->addParams(payoff);
+    coordinate1->addSubCoordinate(coordinate2);
+
+    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
+    coordinates->push_back(coordinate1);
+
+    GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildStrategicGame();
+    GT::GTL::ContextPtr       context     = GT::GTL::NullFactory::getInstance().createContext();
+
+    GT::Model::GamePtr gameImplementation(new GT::GTL::LazyGameProxy(
+        gameBuilder,
+        players,
+        coordinates,
+        context.get()
+    ));
+
+    // when
+    GT::GTL::Game game(gameImplementation, GT::createIdentifierPtr("STRATEGIC"));
+
+    // then
+    BOOST_CHECK_EQUAL(
+        game.serialize(),
+        GT::Message() +
+        "STRATEGIC GAME WITH\n"
+        "  PLAYER p1 { p1s1 },\n"
+        "  PLAYER p2 { p2s1 }\n"
+        "SUCH AS\n"
+        "  { p1 = p1s1 :\n"
+        "    { p2 = p2s1 :\n"
+        "      10,\n"
+        "      20\n"
+        "    }\n"
+        "  }\n"
+        "END"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Game_toString ) {
     // given
     GT::Model::GamePtr gameImplementation = GT::Model::NullFactory::getInstance().createGame();
