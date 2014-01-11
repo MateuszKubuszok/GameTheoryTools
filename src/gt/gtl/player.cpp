@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Player : public Object, public Model::Player {
 // public:
 
@@ -37,6 +41,22 @@ Player::Player(
 {
     registerProperty(createIdentifier("name"),       ObjectPropertyPtr(new PlayerNameProperty(this)));
     registerProperty(createIdentifier("strategies"), ObjectPropertyPtr(new PlayerStrategiesProperty(this)));
+}
+
+Message Player::serialize() const {
+    stringstream result;
+    result << "PLAYER " << *getName() << " {";
+
+    bool firstElement = true;
+    for (const IdentifierPtr& strategy : *getStrategies()) {
+        if (!firstElement)
+            result << ',';
+        result << ' ' << *strategy;
+        firstElement = false;
+    }
+
+    result << " }";
+    return result.str();
 }
 
 Message Player::toString() const {

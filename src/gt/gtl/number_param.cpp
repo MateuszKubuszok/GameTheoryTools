@@ -49,6 +49,10 @@ const NumberPtr NumberParam::getNumber(
     return value;
 }
 
+Message NumberParam::serialize() const {
+    return createMessage(value);
+}
+
 Message NumberParam::toString() const {
     static const IdentifierPtr name  = createIdentifierPtr("NumberParam");
     MessagePtr                 val   = createMessagePtr(value);

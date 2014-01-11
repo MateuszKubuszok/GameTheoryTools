@@ -90,6 +90,13 @@ public:
     ) const override;
 
     /**
+     * @brief Returns serialized Message for an IdentifierParam.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const override;
+
+    /**
      * @brief IdentifierParam's Message.
      *
      * @return Message

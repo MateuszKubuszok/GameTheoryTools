@@ -25,6 +25,11 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::endl;
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Coordinate : public virtual ValidableSymbol {
 // public:
 
@@ -119,6 +124,48 @@ void Coordinate::fillDataBuilder(
     }
 }
 
+Message Coordinate::serialize() const {
+    stringstream result;
+    result << '{';
+
+    if (positions->size()) {
+        bool firstElement = true;
+        for (const Positions::value_type& position : *positions) {
+            if (!firstElement)
+                result << ',';
+            result << ' ' << position.first << " = " << position.second;
+            firstElement = false;
+        }
+    }
+
+    result << " :";
+
+    if (subCoordinates->size()) {
+        bool firstElement = true;
+        for (const CoordinatePtr& subCoordinate : *subCoordinates) {
+            if (!firstElement)
+                result << ',';
+            result << endl;
+            result << addIndent(subCoordinate->serialize());
+            firstElement = false;
+        }
+    } else if (params->size()) {
+        bool firstElement = true;
+        for (const ParamPtr& param : *params) {
+            if (!firstElement)
+                result << ',';
+            result << endl;
+            result << addIndent(param->serialize());
+            firstElement = false;
+        }
+    }
+
+    result << endl;
+
+    result << '}';
+    return result.str();
+}
+
 Message Coordinate::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
@@ -127,7 +174,7 @@ Message Coordinate::toString() const {
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
         static const IdentifierPtr name = createIdentifierPtr("Param");
-        for (ParamPtr& param : *params) {
+        for (const ParamPtr& param : *params) {
             MessagePtr value = createMessagePtr(param->toString());
             subResultBuilder->addResult(name, value);
         }
@@ -140,7 +187,7 @@ Message Coordinate::toString() const {
         static const IdentifierPtr positionsName = createIdentifierPtr("Positions");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-        for (Positions::value_type& position : *positions) {
+        for (const Positions::value_type& position : *positions) {
             IdentifierPtr name  = createIdentifierPtr(position.first);
             MessagePtr    value = createMessagePtr(position.second);
             subResultBuilder->addResult(name, value);
@@ -155,7 +202,7 @@ Message Coordinate::toString() const {
         static const IdentifierPtr name               = createIdentifierPtr("Coordinate");
 
         ResultBuilderPtr subResultBuilder = ResultFactory::getInstance().buildResult();
-        for (CoordinatePtr& subCoordinate : *subCoordinates) {
+        for (const CoordinatePtr& subCoordinate : *subCoordinates) {
             MessagePtr value = createMessagePtr(subCoordinate->toString());
             subResultBuilder->addResult(name, value);
         }

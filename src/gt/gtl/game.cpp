@@ -25,6 +25,14 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::endl;
+using std::stringstream;
+
+using boost::dynamic_pointer_cast;
+using boost::shared_ptr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Game : public Object {
 // public:
 
@@ -85,6 +93,32 @@ ResultPtr Game::behaviorEquilibrium(
         routineConditions->push_back(condition->getCondition(context));
 
     return routine->findResultFor(game, routineConditions);
+}
+
+Message Game::serialize() const {
+    stringstream result;
+
+    const shared_ptr<LazyGameProxy> lazyGame = dynamic_pointer_cast<LazyGameProxy>(game);
+
+    // result << "GAME WITH" << endl;
+
+    // const Model::PlayersPtr players = lazyGame->getPlayers();
+    // if (players->size()) {
+    //     stringstream subresult;
+
+    //     bool firstElement = true;
+    //     for (const Model::Players::value_type& player : *players) {
+    //         if (!firstElement)
+    //             subresult << ',' << endl;
+    //         subresult << player.second->serialize();
+    //     }
+
+    //     result << addIndent(subresult.str()) << endl;
+    // }
+
+    // if ()
+
+    return result.str();
 }
 
 Message Game::toString() const {

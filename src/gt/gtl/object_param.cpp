@@ -49,6 +49,10 @@ const NumberPtr ObjectParam::getNumber(
     throw ExceptionFactory::getInstance().requiredUnavailableNumberFromParam();
 }
 
+Message ObjectParam::serialize() const {
+    return value->serialize();
+}
+
 Message ObjectParam::toString() const {
     static const IdentifierPtr name  = createIdentifierPtr("ObjectParam");
     MessagePtr                 val   = createMessagePtr(value->toString());

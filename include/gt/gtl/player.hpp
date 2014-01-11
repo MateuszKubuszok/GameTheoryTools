@@ -58,6 +58,13 @@ public:
     );
 
     /**
+     * @brief Returns serialized Message for a Player.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const override;
+
+    /**
      * @brief Returns Message about Player.
      *
      * @return Player's Message

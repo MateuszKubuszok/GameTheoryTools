@@ -186,6 +186,13 @@ public:
     ) const;
 
     /**
+     * @brief Returns serialized Message for a Coordinate.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const override;
+
+    /**
      * @brief Returns Coordinate Message
      *
      * @return Message

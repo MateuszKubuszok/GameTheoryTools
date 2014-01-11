@@ -80,6 +80,13 @@ public:
     ) const override;
 
     /**
+     * @brief Returns serialized Message for a NumberParam.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const override;
+
+    /**
      * @brief NumberParam's Message.
      *
      * @return Message

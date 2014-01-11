@@ -32,7 +32,7 @@ namespace GTL {
  * @class Game
  * @brief Defines Game.
  *
- * Game Object can be later used to Query it or to store it into Contextfor later use.
+ * Game Object can be later used to Query it or to store it into Context for later use.
  *
  * @author Mateusz Kubuszok
  *
@@ -87,6 +87,13 @@ public:
         const Context&    context,
         const Conditions& conditions
     ) const;
+
+    /**
+     * @brief Returns serialized Message for a Game.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const override;
 
     /**
      * @brief Returns Message about Game.

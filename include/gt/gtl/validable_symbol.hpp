@@ -68,11 +68,18 @@ public:
     virtual ~ValidableSymbol();
 
     /**
-     * @brief Returns whether object is valid.
+     * @brief Returns whether Object is valid.
      *
-     * @return true if object is Valid
+     * @return true if Object is valid
      */
     virtual bool isValid() const;
+
+    /**
+     * @brief Returns serialized Message for a symbol.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const;
 
     /**
      * @brief Returns input location.
@@ -94,6 +101,19 @@ public:
      * @brief Safe Bool Idiom used to make checks without comparisons or algrbraic usage of bool.
      */
     operator SafeBoolIdiom() const;
+
+protected:
+    /**
+     * @brief Adds indent to the beginning of each line of passes content.
+     *
+     * Used during serialization.
+     *
+     * @param content content that should be indented
+     * @return        indented content
+     */
+    Message addIndent(
+        const Message content
+    ) const;
 
 private:
     /**

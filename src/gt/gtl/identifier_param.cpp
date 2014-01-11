@@ -57,6 +57,10 @@ const NumberPtr IdentifierParam::getNumber(
     return context.getParam(identifier)->getNumber(context, visitedIdentifiers);
 }
 
+Message IdentifierParam::serialize() const {
+    return createMessage(identifier);
+}
+
 Message IdentifierParam::toString() const {
     static const IdentifierPtr name  = createIdentifierPtr("IdentifierParam");
     MessagePtr                 value = createMessagePtr(identifier);

@@ -26,6 +26,24 @@ BOOST_AUTO_TEST_CASE( Player_respondsTo ) {
     BOOST_CHECK( !player.respondsTo(error) );
 }
 
+BOOST_AUTO_TEST_CASE( Player_serialize ) {
+    // given
+    GT::IdentifierPtr  playerName = GT::createIdentifierPtr("P");
+    GT::IdentifiersPtr playerStrategies(new GT::Identifiers());
+    playerStrategies->push_back( GT::createIdentifierPtr("1") );
+    playerStrategies->push_back( GT::createIdentifierPtr("2") );
+
+    // when
+    GT::GTL::Player player(playerName, playerStrategies);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        player.serialize(),
+        GT::Message() +
+        "PLAYER P { 1, 2 }"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Player_Player ) {
     // given
     GT::Identifier properties = GT::createIdentifier("properties");

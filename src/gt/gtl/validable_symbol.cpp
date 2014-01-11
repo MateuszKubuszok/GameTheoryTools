@@ -25,6 +25,14 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::endl;
+using std::stringstream;
+
+using boost::algorithm::is_any_of;
+using boost::algorithm::split;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ValidableSymbol : public virtual Root {
 
 void ValidableSymbol::comparisonsAreNotAllowed() const {}
@@ -41,6 +49,10 @@ bool ValidableSymbol::isValid() const {
     return true;
 }
 
+Message ValidableSymbol::serialize() const {
+    return Message();
+}
+
 const InputLocationPtr ValidableSymbol::getInputLocation() const {
     return inputLocation;
 }
@@ -53,6 +65,23 @@ void ValidableSymbol::setInputLocation(
 
 ValidableSymbol::operator SafeBoolIdiom() const {
     return isValid() ? &ValidableSymbol::comparisonsAreNotAllowed : 0;
+}
+
+// protected:
+
+Message ValidableSymbol::addIndent(
+    const Message content
+) const {
+    // do not use boost::container::vector here - it causes memory access violation with split function
+    std::vector<Message> lines;
+    split(lines, content, is_any_of("\n"));
+
+    stringstream result;
+    for (Message& line : lines)
+        if (!line.empty() && line != "\n")
+            result << "  " << line << endl;
+
+    return result.str();
 }
 
 // }; /* END class ValidableSymbol */
