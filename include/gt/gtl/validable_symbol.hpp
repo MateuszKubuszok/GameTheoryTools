@@ -102,7 +102,6 @@ public:
      */
     operator SafeBoolIdiom() const;
 
-protected:
     /**
      * @brief Adds indent to the beginning of each line of passes content.
      *
@@ -111,9 +110,9 @@ protected:
      * @param content content that should be indented
      * @return        indented content
      */
-    Message addIndent(
+    static Message addIndent(
         const Message content
-    ) const;
+    );
 
 private:
     /**

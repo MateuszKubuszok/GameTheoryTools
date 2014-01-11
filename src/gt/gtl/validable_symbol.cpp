@@ -67,11 +67,9 @@ ValidableSymbol::operator SafeBoolIdiom() const {
     return isValid() ? &ValidableSymbol::comparisonsAreNotAllowed : 0;
 }
 
-// protected:
-
 Message ValidableSymbol::addIndent(
     const Message content
-) const {
+) {
     // do not use boost::container::vector here - it causes memory access violation with split function
     std::vector<Message> lines;
     split(lines, content, is_any_of("\n"));

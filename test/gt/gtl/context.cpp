@@ -84,6 +84,45 @@ BOOST_AUTO_TEST_CASE( Context_functional ) {
     BOOST_REQUIRE_THROW( context.getParam(*invalidIdentifier),  GT::GTL::NotDefinedParam );
 }
 
+BOOST_AUTO_TEST_CASE( Context_serialize ) {
+    // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
+    GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
+    GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
+    GT::GTL::ParamPtr  numberParam               =
+        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+    GT::IdentifierPtr  numberParamIdentifierName = GT::createIdentifierPtr("numberParamIdentifier");
+    GT::GTL::ParamPtr  numberParamIdentifier     =
+        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*numberParamName));
+
+    GT::IdentifierPtr identifierParamName  = GT::createIdentifierPtr("identifierParam");
+    GT::IdentifierPtr identifierParamValue = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::GTL::ParamPtr identifierParam      = GT::GTL::ParamPtr(
+        new GT::GTL::IdentifierParam(*identifierParamValue)
+    );
+
+    // when
+    GT::GTL::Context context;
+    context.registerParam(numberParamName,           numberParam)
+           .registerParam(numberParamIdentifierName, numberParamIdentifier)
+           .registerParam(identifierParamName,       identifierParam);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        context.serialize(),
+        GT::Message() +
+        "LET identifierParam BE\n"
+        "  NullIdentifier;\n"
+        "LET numberParam BE\n"
+        "  0;\n"
+        "LET numberParamIdentifier BE\n"
+        "  numberParam;"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Context_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()

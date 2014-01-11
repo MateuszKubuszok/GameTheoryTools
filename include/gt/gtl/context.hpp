@@ -153,6 +153,13 @@ public:
     ) const;
 
     /**
+     * @brief Returns serialized Message for a Context.
+     *
+     * @return serialization result
+     */
+    virtual Message serialize() const;
+
+    /**
      * @brief Returns Message about Context.
      *
      * @return Context's Message
@@ -199,6 +206,10 @@ public:
         const Identifier&
     ) const override {
         return NullFactory::getInstance().createParam();
+    }
+
+    virtual Message serialize() const override {
+        return Message();
     }
 
     virtual bool isNotNull() const override {

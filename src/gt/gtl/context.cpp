@@ -25,6 +25,11 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::endl;
+using std::stringstream;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Context : public virtual Root {
 // public:
 
@@ -91,6 +96,29 @@ const ParamPtr Context::getParam(
     if (parentContext && parentContext->hasRegistered(identifier))
         return parentContext->getParam(identifier);
     throw ExceptionFactory::getInstance().notDefinedParam(identifier);
+}
+
+Message Context::serialize() const {
+    stringstream result;
+
+    bool firstElement = true;
+
+    if (parentContext) {
+        result << "// Ancestrial Context BEGIN"
+               << ValidableSymbol::addIndent(parentContext->serialize()) << endl
+               << "// Ancestrial Context END";
+        firstElement = false;
+    }
+
+    for (const KnownObjects::value_type& knownObject : knownObjects) {
+        if (!firstElement)
+            result << endl;
+        result << "LET " << knownObject.first << " BE" << endl
+               << ValidableSymbol::addIndent(knownObject.second->serialize()) << ';';
+        firstElement = false;
+    }
+
+    return result.str();
 }
 
 Message Context::toString() const {
