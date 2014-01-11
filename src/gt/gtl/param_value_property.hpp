@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/param_value_property.hpp
- * @brief     Defines GT::Model::ParamValueProperty class.
+ * @brief     Defines GT::GTL::ParamValueProperty class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

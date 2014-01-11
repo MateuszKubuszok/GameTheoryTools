@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/object_known_properties.hpp
- * @brief     Defines GT::Model::ObjectKnownProperties class.
+ * @brief     Defines GT::GTL::ObjectKnownProperties class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/program/program_controller.hpp
- * @brief     Defines GT::Program::ProgramControler class.
+ * @brief     Defines GT::Program::ProgramController class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

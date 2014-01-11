@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/player_strategies_property.hpp
- * @brief     Defines GT::Model::PlayerStrategiesProperty class.
+ * @brief     Defines GT::GTL::PlayerStrategiesProperty class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

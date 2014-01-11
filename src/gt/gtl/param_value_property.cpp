@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/param_value_property.cpp
- * @brief     Defines GT::Model::ParamValueProperty methods.
+ * @brief     Defines GT::GTL::ParamValueProperty methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

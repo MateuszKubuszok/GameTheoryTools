@@ -1,6 +1,6 @@
 /**
  * @file      gt/model/strategic_data_accessor.cpp
- * @brief     Defines GT::Model::StrategicDataAcessor methods.
+ * @brief     Defines GT::Model::StrategicDataAccessor methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

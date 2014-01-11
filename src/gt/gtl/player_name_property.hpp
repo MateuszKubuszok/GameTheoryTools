@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/player_name_property.hpp
- * @brief     Defines GT::Model::PlayerNameProperty class.
+ * @brief     Defines GT::GTL::PlayerNameProperty class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

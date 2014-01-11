@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/player_name_property.cpp
- * @brief     Defines GT::Model::PlayerNameProperty methods.
+ * @brief     Defines GT::GTL::PlayerNameProperty methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

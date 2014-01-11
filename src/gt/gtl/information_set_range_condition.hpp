@@ -30,7 +30,7 @@ namespace GTL {
 
 /**
  * @class InformationSetRangeCondition
- * @brief Condition used for selecting strategiey for an information set.
+ * @brief Condition used for selecting strategy for an information set.
  *
  * @author Mateusz Kubuszok
  */

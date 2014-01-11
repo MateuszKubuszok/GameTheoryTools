@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/param_known_properties.cpp
- * @brief     Defines GT::Model::ParamKnownProperties methods.
+ * @brief     Defines GT::GTL::ParamKnownProperties methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/model/strategic_data_accessor.hpp
- * @brief     Defines GT::Model::StrategicDataAcessor class.
+ * @brief     Defines GT::Model::StrategicDataAccessor class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

@@ -1,6 +1,6 @@
 /**
  * @file      gt/program/program_controller.cpp
- * @brief     Defines GT::Program::ProgramControler methods.
+ * @brief     Defines GT::Program::ProgramController methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

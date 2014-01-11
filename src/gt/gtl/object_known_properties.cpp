@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/object_known_properties.cpp
- * @brief     Defines GT::Model::ObjectKnownProperties methods.
+ * @brief     Defines GT::GTL::ObjectKnownProperties methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

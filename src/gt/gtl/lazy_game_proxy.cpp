@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/lazy_game_proxy.cpp
- * @brief     Defines GT::Model::LazyGameProxy methods.
+ * @brief     Defines GT::GTL::LazyGameProxy methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

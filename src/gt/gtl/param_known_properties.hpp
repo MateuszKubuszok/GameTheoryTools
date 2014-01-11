@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/param_known_properties.hpp
- * @brief     Defines GT::Model::ParamKnownProperties class.
+ * @brief     Defines GT::GTL::ParamKnownProperties class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

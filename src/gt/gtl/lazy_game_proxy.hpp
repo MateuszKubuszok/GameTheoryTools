@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/gtl/lazy_game_proxy.hpp
- * @brief     Defines GT::Model::LazyGameProxy class.
+ * @brief     Defines GT::GTL::LazyGameProxy class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

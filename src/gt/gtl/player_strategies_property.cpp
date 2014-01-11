@@ -1,6 +1,6 @@
 /**
  * @file      gt/gtl/player_strategies_property.cpp
- * @brief     Defines GT::Model::PlayerStrategiesProperty methods.
+ * @brief     Defines GT::GTL::PlayerStrategiesProperty methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *

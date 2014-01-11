@@ -5,7 +5,7 @@
 
 /**
  * @file      gt/routines/routine_factory.hpp
- * @brief     Defines GT::Routines::RoutinesFactory class.
+ * @brief     Defines GT::Routines::RoutineFactory class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
