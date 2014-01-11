@@ -130,6 +130,42 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( Coordinate_serialize ) {
+    // given
+    GT::GTL::ParamPtr  param1(new GT::GTL::NumberParam(GT::createNumberPtr(10)));
+    GT::GTL::ParamPtr  param2(new GT::GTL::NumberParam(GT::createNumberPtr(20)));
+    GT::GTL::ParamPtr  param3(new GT::GTL::NumberParam(GT::createNumberPtr(30)));
+    GT::GTL::ParamsPtr params = GT::GTL::NullFactory::getInstance().createParams();
+    params->push_back(param2);
+    params->push_back(param3);
+
+    GT::IdentifierPtr player   = GT::Model::NullFactory::getInstance().createIdentifier();
+    GT::IdentifierPtr strategy = GT::Model::NullFactory::getInstance().createIdentifier();
+
+    // when
+    GT::GTL::CoordinatePtr coordinatePtr(new GT::GTL::Coordinate());
+    GT::GTL::Coordinate&   coordinate = *coordinatePtr;
+    coordinate.addParam(param1)
+              .addParams(params)
+              .addPosition(player, strategy);
+    GT::GTL::Coordinate coordinate2;
+    coordinate2.addPosition(player, strategy)
+               .addSubCoordinate(coordinatePtr);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        coordinate2.serialize(),
+        GT::Message() +
+        "{ NullIdentifier = NullIdentifier :\n"
+        "  { NullIdentifier = NullIdentifier :\n"
+        "    10,\n"
+        "    20,\n"
+        "    30\n"
+        "  }\n"
+        "}"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Coordinate_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()

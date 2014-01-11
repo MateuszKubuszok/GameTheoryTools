@@ -18,6 +18,21 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_functional ) {
     BOOST_REQUIRE_NO_THROW(param->getObject(context));
 }
 
+BOOST_AUTO_TEST_CASE( IdentifierParam_serialize ) {
+    // given
+    GT::Identifier mockID = GT::createIdentifier("mockID");
+
+    // when
+    GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
+
+    // then
+    BOOST_CHECK_EQUAL(
+        param->serialize(),
+        GT::Message() +
+        "mockID"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( IdentifierParam_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()

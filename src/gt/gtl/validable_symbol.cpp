@@ -76,10 +76,16 @@ Message ValidableSymbol::addIndent(
     std::vector<Message> lines;
     split(lines, content, is_any_of("\n"));
 
+    bool firstElement = true;
     stringstream result;
-    for (Message& line : lines)
-        if (!line.empty() && line != "\n")
-            result << "  " << line << endl;
+    for (Message& line : lines) {
+        if (!line.empty() && line != "\n") {
+            if (!firstElement)
+                result << endl;
+            result << "  " << line;
+            firstElement = false;
+        }
+    }
 
     return result.str();
 }

@@ -25,6 +25,22 @@ BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ObjectParam_serialize ) {
+    // given
+    GT::NumberPtr      numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
+    GT::GTL::ObjectPtr objectPtr(new GT::GTL::NumberParam(numberPtr));
+
+    // when
+    GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
+
+    // then
+    BOOST_CHECK_EQUAL(
+        param->serialize(),
+        GT::Message() +
+        "0"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
