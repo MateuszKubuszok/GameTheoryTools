@@ -38,11 +38,11 @@
 /**
  * @brief GT version number.
  *
- * @Code
+ * @code
  * GT_VERSION_MAJOR   == GT_VERSION / 10000;
  * GT_VERSION_MINOR   == GT_VERSION / 100 % 100;
  * GT_VERSION_RELEASE == GT_VERSION % 1000;
- * @EndCode
+ * @endcode
  */
 #define GT_VERSION         GT_VERSION_MAJOR * 10000 + GT_VERSION_MINOR * 100 + GT_VERSION_RELEASE
 
