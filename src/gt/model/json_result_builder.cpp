@@ -43,7 +43,7 @@ ResultPtr JSONResultBuilder::build() const {
     stringstream result;
 
     result << '{' << endl;
-    result << addIndent( buildRaw()->getResult() );
+    result << addIndent( buildRaw()->getResult() ) << endl;
     result << '}' << endl;
 
     return ResultFactory::getInstance().constResult(Message(result.str()));

@@ -97,10 +97,15 @@ Message AbstractResultBuilder::addIndent(
     std::vector<Message> lines;
     split(lines, content, is_any_of("\n"));
 
+    bool firstElement = true;
     stringstream result;
     for (Message& line : lines)
-        if (!line.empty() && line != "\n")
-            result << indent << line << endl;
+        if (!line.empty() && line != "\n") {
+            if (!firstElement)
+                result  << endl;
+            result << indent << line;
+            firstElement = false;
+        }
 
     return result.str();
 }

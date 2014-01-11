@@ -85,7 +85,7 @@ ResultPtr PlainResultBuilder::buildRaw() const {
             Identifier resultName  = *subResult.first;
             Message    resultValue = *subResult.second;
 
-            result << resultName << ':' << endl << addIndent(resultValue);
+            result << resultName << ':' << endl << addIndent(resultValue) << endl;
         }
     }
 

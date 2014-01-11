@@ -76,7 +76,7 @@ ResultPtr XMLResultBuilder::buildRaw() const {
             Message    resultValue = *subResult.second;
 
             result << '<' << resultName << '>' << endl
-                   << addIndent( resultValue )
+                   << addIndent( resultValue ) << endl
                    << '<' << '/' << resultName << '>'
                    << endl;
         }
