@@ -25,6 +25,14 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::ifstream;
+using std::ofstream;
+using std::stringstream;
+
+using boost::scoped_ptr;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ExecutionDriver final : public Driver {
 // public:
 
@@ -39,7 +47,8 @@ ExecutionDriver::ExecutionDriver(
     game(this, context.get()),
     value(this),
     statement(this, context.get()),
-    outputStream(newOutputStream)
+    outputStream(newOutputStream),
+    errorStream(newErrorStream)
     {}
 
 ExecutionDriver::~ExecutionDriver() {}
@@ -104,9 +113,84 @@ void ExecutionDriver::showError(
     checkingDriver.showError(symbol);
 }
 
+void ExecutionDriver::execute(
+    const InputLocation& location,
+    const Identifier&    fileName
+) const {
+    scoped_ptr<ifstream> file(new ifstream(fileName));
+    if (!file->good()) {
+        stringstream builder;
+        builder << "Executed file <" << fileName << "> does not exists";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+        return;
+    }
+
+    ExecutionDriver driver(outputStream, errorStream, context);
+    Scanner         scanner(file.get());
+    Parser          parser(scanner, driver);
+
+    parser.parse();
+}
+
+void ExecutionDriver::load(
+    const InputLocation& location,
+    const Identifier&    fileName
+) {
+    scoped_ptr<ifstream> file(new ifstream(fileName));
+    if (!file->good()) {
+        stringstream builder;
+        builder << "Loaded file <" << fileName << "> does not exists";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+        return;
+    }
+
+    Scanner scanner(file.get());
+    Parser  parser(scanner, *this);
+
+    parser.parse();
+}
+
+void ExecutionDriver::save(
+    const InputLocation& location,
+    const Identifier&    fileName
+) const {
+    ofstream file(fileName);
+    if (!file.good()) {
+        stringstream builder;
+        builder << "Cannot save to file <" << fileName << ">";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+        return;
+    }
+
+    file << context->serialize();
+}
+
 Message ExecutionDriver::toString() const {
     return Message("ExecutionDriver");
 }
+
+// private:
+
+ExecutionDriver::ExecutionDriver(
+    OutputStream* newOutputStream,
+    OutputStream* newErrorStream,
+    ContextPtr    parentContext
+) :
+    checkingDriver(newErrorStream),
+    context(new Context(parentContext)),
+    coordinate(this),
+    condition(this),
+    game(this, context.get()),
+    value(this),
+    statement(this, context.get()),
+    outputStream(newOutputStream)
+    {}
 
 // }; /* END class ExecutionDriver */
 

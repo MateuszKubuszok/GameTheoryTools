@@ -53,6 +53,10 @@ const CoordinatesPtr LazyGameProxy::getCoordinates() const {
     return coordinates;
 }
 
+const ObjectsPtr LazyGameProxy::getPlayersParams() const {
+    return players;
+}
+
 const PlayersPtr LazyGameProxy::getPlayers() const {
     return accessGame()->getPlayers();
 }

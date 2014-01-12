@@ -32,6 +32,7 @@
 #include <boost/assign.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>
+#include <boost/scoped_ptr.hpp>
 
 /* Includes public interface */
 #include "gt/gtl/common.hpp"

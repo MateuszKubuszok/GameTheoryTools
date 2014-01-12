@@ -200,11 +200,67 @@ public:
     ) const override;
 
     /**
+     * @brief Executes file.
+     *
+     * It uses currently used output and error stream to display result but read input from file.
+     *
+     * Operations are perfored on spawned Context so after all operations parental Context is instact.
+     *
+     * @param location location of file load call
+     * @param fileName name of executed file
+     *
+     * @see #load(const Identifier&)
+     */
+    virtual void execute(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) const override;
+
+    /**
+     * @brief Loads file.
+     *
+     * It uses currently used output and error stream to display result but read input from file.
+     *
+     * Operations are performed in current Context so all changes will be persisted.
+     *
+     * @param location location of file load call
+     * @param fileName name of loaded file
+     *
+     * @see #execute(const Identifier&)
+     */
+    virtual void load(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) override;
+
+    /**
+     * @brief Saves all Params available in current Context (and it's parents) to file.
+     *
+     * @param location location of file load call
+     * @param fileName name of saved file
+     */
+    virtual void save(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) const override;
+
+    /**
      * @brief Driver's Message.
      *
      * @return message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Checks if file exists.
+     *
+     * @param  fileName name of checked file
+     * @return          true if file exists
+     */
+    bool fileExists(
+        const Identifier& fileName
+    ) const;
 }; /* END class CheckingDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -96,7 +96,7 @@ ProgramController& ProgramController::setInputStream(
     const string filename
 ) {
     ifstream* newInputStream = new ifstream();
-    newInputStream->open(filename);
+    newInputStream->open(filename); // TODO error checking
     return setInputStream(newInputStream, true, false);
 }
 
@@ -123,7 +123,7 @@ ProgramController& ProgramController::setOutputStream(
     const string filename
 ) {
     ofstream* newOutputStream = new ofstream();
-    newOutputStream->open(filename);
+    newOutputStream->open(filename); // TODO error checking
     return setOutputStream(newOutputStream, true);
 }
 
@@ -148,7 +148,7 @@ ProgramController& ProgramController::setErrorStream(
     const string filename
 ) {
     ofstream* newErrorStream = new ofstream();
-    newErrorStream->open(filename);
+    newErrorStream->open(filename); // TODO error checking
     return setErrorStream(newErrorStream, true);
 }
 

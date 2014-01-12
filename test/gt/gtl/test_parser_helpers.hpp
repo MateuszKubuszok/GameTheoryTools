@@ -232,6 +232,9 @@ public:
 class TestDriverImpl final : public GT::GTL::Driver {
     mutable unsigned int shownResults;
     mutable unsigned int shownErrors;
+    mutable unsigned int executed;
+    mutable unsigned int loaded;
+    mutable unsigned int saved;
 
 public:
     mutable TestCoordinateDriverImpl                       coordinate;
@@ -280,9 +283,30 @@ public:
         const GT::GTL::ValidableSymbol&
     ) const override;
 
+    virtual void execute(
+        const GT::GTL::InputLocation&,
+        const GT::Identifier&
+    ) const;
+
+    virtual void load(
+        const GT::GTL::InputLocation&,
+        const GT::Identifier&
+    );
+
+    virtual void save(
+        const GT::GTL::InputLocation&,
+        const GT::Identifier&
+    ) const;
+
     inline unsigned int getShownResults() const;
 
     inline unsigned int getShownErrors() const;
+
+    inline unsigned int getExecuted() const;
+
+    inline unsigned int getLoaded() const;
+
+    inline unsigned int getSaved() const;
 
     virtual GT::Message toString() const override;
 }; /* END class TestDriverImpl */

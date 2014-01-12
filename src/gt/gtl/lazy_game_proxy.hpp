@@ -86,6 +86,13 @@ public:
     const CoordinatesPtr getCoordinates() const;
 
     /**
+     * @brief Grants access to Players' Params used to build Game on request.
+     *
+     * @return Objects stored inside proxy
+     */
+    const ObjectsPtr getPlayersParams() const;
+
+    /**
      * @brief Returns Game's Players.
      *
      * @return Players

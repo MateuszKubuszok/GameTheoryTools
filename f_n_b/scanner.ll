@@ -64,6 +64,10 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
  /******************************************* Tokens definitions ********************************************/
 
  /* Keywords and symbols definitions */
+(?i:EXECUTE)   { return (token::EXECUTE); }
+(?i:LOAD)      { return (token::LOAD); }
+(?i:SAVE)      { return (token::SAVE); }
+(?i:TO)        { return (token::TO); }
 (?i:LET)       { return (token::LET); }
 (?i:BE)        { return (token::BE); }
 (?i:PLAYER)    { return (token::PLAYER); }

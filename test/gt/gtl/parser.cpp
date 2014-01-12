@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE( Parser_valueParamDefinition  ) {
         "LET value3 BE 3e1;\n"
         "LET value4 BE 4.0e1;\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -49,9 +49,9 @@ BOOST_AUTO_TEST_CASE( Parser_identifierParamDefinition  ) {
         "LET value1 BE id;\n"
         "LET value2 BE _id;\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -73,9 +73,9 @@ BOOST_AUTO_TEST_CASE( Parser_playerDefinition  ) {
         "  s2\n"
         "};\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -110,9 +110,9 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
         "     { p2=s2 : param4, 4.0e1 }\n"
         "  };\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -149,9 +149,9 @@ BOOST_AUTO_TEST_CASE( Parser_extensiveGameDefinition  ) {
         "     { p2=s2 : param4, 4.0e1 }\n"
         "  };\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -193,9 +193,9 @@ BOOST_AUTO_TEST_CASE( Parser_queryForType ) {
         "    }\n"
         "  END;\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -223,9 +223,9 @@ BOOST_AUTO_TEST_CASE( Parser_queryForValue ) {
         "  4.0e1,\n"
         "  identifier;\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -261,9 +261,9 @@ BOOST_AUTO_TEST_CASE( Parser_queryForEquilibrium ) {
         "    }\n"
         "  END;\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -306,9 +306,9 @@ BOOST_AUTO_TEST_CASE( Parser_queryWithAllConditions ) {
         "  PLAYER p1 AT \"1\" CHOOSE s,\n"
         "  PLAYER p2 AT \"1\" IN { s };\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -337,9 +337,9 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
         "  SUCH AS\n"
         "    { p1=s, p2=s : 10, 20 };\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);
@@ -356,6 +356,63 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
     BOOST_CHECK_EQUAL( driver.game.getCreatedStrategicGames(), 1 ); // created 1 strategy game
 }
 
+BOOST_AUTO_TEST_CASE( Parser_executeFile ) {
+    // given
+    std::string content =
+        "EXECUTE \"../some_file.gtl\";"
+    ;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getExecuted(), 1 ); // parsed 1 context loads
+}
+
+BOOST_AUTO_TEST_CASE( Parser_loadContext ) {
+    // given
+    std::string content =
+        "LOAD \"../some_file.gtl\";"
+    ;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getLoaded(), 1 ); // parsed 1 context loads
+}
+
+BOOST_AUTO_TEST_CASE( Parser_saveContext ) {
+    // given
+    std::string content =
+        "SAVE TO \"../some_file.gtl\";"
+    ;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
+
+    // when
+    GT::GTL::Parser parser(scanner, driver);
+    // parser.set_debug_level(1);
+
+    // then
+    BOOST_REQUIRE_EQUAL( parser.parse(), 0 ); // no errors occured
+    BOOST_CHECK_EQUAL( driver.getShownErrors(), 0 ); // no errors shown
+    BOOST_CHECK_EQUAL( driver.getSaved(), 1 ); // parsed 1 context loads
+}
+
 BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
     // given
     std::string content =
@@ -365,9 +422,9 @@ BOOST_AUTO_TEST_CASE( Parser_recoverFromErrorAtStatement ) {
         "LET player2 BE\n"
         "  PLAYER p2 { s };\n"
     ;
-    std::istringstream   stream(content);
-    GT::GTL::Scanner     scanner(&stream);
-    TestDriverImpl driver;
+    std::istringstream stream(content);
+    GT::GTL::Scanner   scanner(&stream);
+    TestDriverImpl     driver;
 
     // when
     GT::GTL::Parser parser(scanner, driver);

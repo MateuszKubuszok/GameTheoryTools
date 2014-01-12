@@ -91,6 +91,10 @@
 %token TERMINATE 0 /* End of File */
 
 /* Keywords and symbols */
+%token EXECUTE   /* EXECUTE keyword */
+%token LOAD      /* LOAD keyword */
+%token SAVE      /* SAVE keyword */
+%token TO        /* TO keyword */
 %token LET       /* LET keyword */
 %token BE        /* BE keyword */
 %token PLAYER    /* PLAYER keyword */
@@ -128,6 +132,9 @@
 %type <definition>   definition
 %type <details>      details
 %type <game>         game
+%type <identifier>   context_execute
+%type <identifier>   context_load
+%type <identifier>   context_save
 %type <query>        query
 %type <object>       object
 %type <param>        param
@@ -179,9 +186,24 @@ statements
  ;
 
 statement
- : definition EOC { driver.forStatement().executeDefinition($1); CLEANUP($1); }
- | query EOC      { driver.forStatement().executeQuery($1); CLEANUP($1); }
+ : context_execute EOC { driver.execute(@1, **$1); CLEANUP($1); }
+ | context_load EOC    { driver.load(@1, **$1); CLEANUP($1); }
+ | context_save EOC    { driver.save(@1, **$1); CLEANUP($1); }
+ | definition EOC      { driver.forStatement().executeDefinition($1); CLEANUP($1); }
+ | query EOC           { driver.forStatement().executeQuery($1); CLEANUP($1); }
  | parser_error
+ ;
+
+context_execute
+ : EXECUTE identifier { $$ = $2; }
+ ;
+
+context_load
+ : LOAD identifier { $$ = $2; }
+ ;
+
+context_save
+ : SAVE TO identifier { $$ = $3; }
  ;
 
 definition

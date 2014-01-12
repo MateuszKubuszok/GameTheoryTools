@@ -74,6 +74,11 @@
             "working_dir": "${project_path}"
         },
         {
+            "name":        "Executables",
+            "shell_cmd":   "scons -Q buildExecutables 2> errors.log",
+            "working_dir": "${project_path}"
+        },
+        {
             "name":        "Libraries",
             "shell_cmd":   "scons -Q buildLibraries 2> errors.log",
             "working_dir": "${project_path}"

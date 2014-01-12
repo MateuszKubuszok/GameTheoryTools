@@ -10,5 +10,6 @@
 /include/gt/gtl/stack.hh
 /include/gt/gtl/parser.hpp
 /src/gt/gtl/parser.cpp
+/src/gt/gtl/parser.output
 /src/gt/gtl/scanner.cpp
 .fuse_hidden*

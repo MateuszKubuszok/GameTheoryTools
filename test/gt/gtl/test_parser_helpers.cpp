@@ -361,7 +361,10 @@ GT::Message TestValueDriverImpl::toString() const {
 
 TestDriverImpl::TestDriverImpl() :
     shownResults(0),
-    shownErrors(0)
+    shownErrors(0),
+    executed(0),
+    loaded(0),
+    saved(0)
     {}
 
 GT::GTL::CoordinateDriver& TestDriverImpl::forCoordinate() const {
@@ -421,6 +424,27 @@ void TestDriverImpl::showError(
     const GT::GTL::ValidableSymbol&
 ) const {
     shownErrors++;
+}
+
+void TestDriverImpl::execute(
+    const GT::GTL::InputLocation&,
+    const GT::Identifier&
+) const {
+    executed++;
+}
+
+void TestDriverImpl::load(
+    const GT::GTL::InputLocation&,
+    const GT::Identifier&
+) {
+    loaded++;
+}
+
+void TestDriverImpl::save(
+    const GT::GTL::InputLocation&,
+    const GT::Identifier&
+) const {
+    saved++;
 }
 
 GT::Message TestDriverImpl::toString() const {

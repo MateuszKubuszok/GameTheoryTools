@@ -126,30 +126,24 @@ Message Game::serialize() const {
         result << *gameType << ' ';
     result << "GAME WITH\n";
 
-    const Model::PlayersPtr players = game->getPlayers();
-    if (players->size()) {
-        stringstream subresult;
-
-        bool firstElement = true;
-        for (const Model::Players::value_type& player : *players) {
-            if (!firstElement)
-                subresult << ',' << endl;
-
-            const PlayerPtr gtlPlayer = dynamic_pointer_cast<Player>(player.second);
-            if (gtlPlayer)
-                subresult << gtlPlayer->serialize();
-            else
-                subresult << "!! CANNOT RECOVER PLAYER !!";
-            firstElement = false;
-        }
-
-        result << addIndent(subresult.str()) << endl;
-    }
-
-    result << "SUCH AS" << endl;
-
     const shared_ptr<LazyGameProxy> lazyGame = dynamic_pointer_cast<LazyGameProxy>(game);
     if (lazyGame) {
+        const ObjectsPtr players = lazyGame->getPlayersParams();
+        if (players->size()) {
+            stringstream subresult;
+
+            bool firstElement = true;
+            for (const ObjectPtr& player : *players) {
+                if (!firstElement)
+                    subresult << ',' << endl;
+                subresult << player->serialize();
+                firstElement = false;
+            }
+
+            result << addIndent(subresult.str()) << endl;
+        }
+
+        result << "SUCH AS" << endl;
         stringstream subresult;
 
         bool firstElement = true;
@@ -162,7 +156,7 @@ Message Game::serialize() const {
 
         result << addIndent(subresult.str()) << endl;
     } else
-        result << addIndent("!! CANNOT RECOVER COORDINATES !!") << endl;
+        result << addIndent("!! CANNOT RECOVER DATA !!") << endl;
 
     result << "END";
 

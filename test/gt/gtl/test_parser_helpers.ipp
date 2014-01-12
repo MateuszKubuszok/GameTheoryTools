@@ -89,4 +89,16 @@ inline unsigned int TestDriverImpl::getShownErrors() const {
     return shownErrors;
 }
 
+inline unsigned int TestDriverImpl::getExecuted() const {
+    return executed;
+}
+
+inline unsigned int TestDriverImpl::getLoaded() const {
+    return loaded;
+}
+
+inline unsigned int TestDriverImpl::getSaved() const {
+    return saved;
+}
+
 // }; /* END class TestDriverImpl */

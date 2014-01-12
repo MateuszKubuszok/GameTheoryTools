@@ -26,6 +26,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using std::endl;
+using std::ifstream;
 using std::string;
 using std::stringstream;
 
@@ -118,8 +119,48 @@ void CheckingDriver::showError(
     showError(*symbol.getInputLocation(), symbol.toString());
 }
 
+void CheckingDriver::execute(
+    const InputLocation& location,
+    const Identifier&    fileName
+) const {
+    if (!fileExists(fileName)) {
+        stringstream builder;
+        builder << "Executed file <" << fileName << "> does not exists";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+    }
+}
+
+void CheckingDriver::load(
+    const InputLocation& location,
+    const Identifier&    fileName
+) {
+    if (!fileExists(fileName)) {
+        stringstream builder;
+        builder << "Loaded file <" << fileName << "> does not exists";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+    }
+}
+
+void CheckingDriver::save(
+    const InputLocation&,
+    const Identifier&
+) const {}
+
 Message CheckingDriver::toString() const {
     return Message("CheckingDriver");
+}
+
+// private:
+
+bool CheckingDriver::fileExists(
+    const Identifier& fileName
+) const {
+    ifstream f(fileName);
+    return f.good();
 }
 
 // }; /* END class CheckingDriver */

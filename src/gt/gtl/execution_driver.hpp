@@ -94,6 +94,10 @@ class ExecutionDriver final : public Driver {
      * @brief Output stream for displaying results.
      */
     mutable OutputStream* outputStream;
+    /**
+     * @brief Error stream for displaying informations about errors.
+     */
+    mutable OutputStream* errorStream;
 
 public:
     /**
@@ -212,11 +216,70 @@ public:
     ) const override;
 
     /**
+     * @brief Executes file.
+     *
+     * It uses currently used output and error stream to display result but read input from file.
+     *
+     * Operations are perfored on spawned Context so after all operations parental Context is instact.
+     *
+     * @param location location of file load call
+     * @param fileName name of executed file
+     *
+     * @see #load(const Identifier&)
+     */
+    virtual void execute(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) const override;
+
+    /**
+     * @brief Loads file.
+     *
+     * It uses currently used output and error stream to display result but read input from file.
+     *
+     * Operations are performed in current Context so all changes will be persisted.
+     *
+     * @param location location of file load call
+     * @param fileName name of loaded file
+     *
+     * @see #execute(const Identifier&)
+     */
+    virtual void load(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) override;
+
+    /**
+     * @brief Saves all Params available in current Context (and it's parents) to file.
+     *
+     * @param location location of file load call
+     * @param fileName name of saved file
+     */
+    virtual void save(
+        const InputLocation& location,
+        const Identifier&    fileName
+    ) const override;
+
+    /**
      * @brief Driver's Message.
      *
      * @return message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Initiates ExecutionDriver with a output stream.
+     *
+     * @param outputStream  output stream
+     * @param errorStream   error stream
+     * @param parentContext parent's Context
+     */
+    ExecutionDriver(
+        OutputStream* outputStream,
+        OutputStream* errorStream,
+        ContextPtr    parentContext
+    );
 }; /* END class ExecutionDriver */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
