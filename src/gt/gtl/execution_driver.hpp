@@ -225,7 +225,7 @@ public:
      * @param location location of file load call
      * @param fileName name of executed file
      *
-     * @see #load(const Identifier&)
+     * @see #load(const InputLocation&, const Identifier&)
      */
     virtual void execute(
         const InputLocation& location,
@@ -242,7 +242,7 @@ public:
      * @param location location of file load call
      * @param fileName name of loaded file
      *
-     * @see #execute(const Identifier&)
+     * @see #execute(const InputLocation&, const Identifier&)
      */
     virtual void load(
         const InputLocation& location,

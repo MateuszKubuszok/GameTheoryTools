@@ -38,15 +38,15 @@ namespace GTL {
  */
 class CurrentContextValuesProperty final : public ObjectProperty {
     /**
-     * @brief Described Object.
+     * @brief Described Context.
      */
     const Context* context;
 
 public:
     /**
-     * @brief Initiates ObjectProperty with Object it's describing.
+     * @brief Initiates ObjectProperty with Context it's describing.
      *
-     * @param describedObject described Object
+     * @param describedContext described Context
      */
     explicit CurrentContextValuesProperty(
         const Context* describedContext
