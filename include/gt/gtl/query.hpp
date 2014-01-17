@@ -35,10 +35,10 @@ namespace GTL {
  * Each Query is created within Parser with:
  *
  * @code
- * FIND [propertiesNames]
- * FOR  [objects]
- * [WITH condition1[, condition2[, ...]]]
- * @endcode
+   FIND [propertiesNames]
+   FOR  [objects]
+   [WITH condition1[, condition2[, ...]]]
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

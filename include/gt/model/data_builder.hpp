@@ -35,15 +35,15 @@ namespace Model {
  * Intended to be used recursively with #clone() method:
  *
  * @code{.cpp}
- * DataBuilderPtr builder1 = dataBuilder->clone();
- *     builder1->addNextPositions(position11);
- *     builder->clone()->addNextPositions(positions21).setPayoffs(param11_21); // payoff(p1=s1, p2=s1)
- *     builder->clone()->addNextPositions(positions22).setPayoffs(param11_22); // payoff(p1=s1, p2=s2)
- * DataBuilderPtr builder2 = dataBuilder->clone();
- *     builder2->addNextPositions(position12);
- *     builder->clone()->addNextPositions(positions21).setPayoffs(param12_21); // payoff(p1=s2, p2=s1)
- *     builder->clone()->addNextPositions(positions22).setPayoffs(param12_22); // payoff(p1=s2, p2=s2)
- * @endcode
+   DataBuilderPtr builder1 = dataBuilder->clone();
+       builder1->addNextPositions(position11);
+       builder->clone()->addNextPositions(positions21).setPayoffs(param11_21); // payoff(p1=s1, p2=s1)
+       builder->clone()->addNextPositions(positions22).setPayoffs(param11_22); // payoff(p1=s1, p2=s2)
+   DataBuilderPtr builder2 = dataBuilder->clone();
+       builder2->addNextPositions(position12);
+       builder->clone()->addNextPositions(positions21).setPayoffs(param12_21); // payoff(p1=s2, p2=s1)
+       builder->clone()->addNextPositions(positions22).setPayoffs(param12_22); // payoff(p1=s2, p2=s2)
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

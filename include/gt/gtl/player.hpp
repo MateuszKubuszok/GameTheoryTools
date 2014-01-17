@@ -35,8 +35,8 @@ namespace GTL {
  * Player is defined with:
  *
  * @code
- * PLAYER playerName { [strategies] }
- * @endcode
+   PLAYER playerName { [strategies] }
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

@@ -19,10 +19,10 @@ LET game1 BE
     player1,             // player passed by identifier
     PLAYER p2 { s1, s2 } // player passed explicitly
   SUCH AS
-    { p1=s1, p2=s1 : 10, 20 }, // setting up payoff by givin all coorinates at once
+    { p1=s1, p2=s1 : 10, 20 }, // setting up payoff by giving all coordinates at once
     { p1=s1, p2=s2 : 30, 40 },
     { p1=s2 :
-      { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coorinates at a time
+      { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coordinates at a time
       { p2=s2 : 70, 80 }
     }
   END; // END can be ommitted when obvious

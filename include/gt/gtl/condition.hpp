@@ -37,10 +37,10 @@ namespace GTL {
  * like that:
  *
  * @code
- * FIND pure_equilibrium
- * FOR  some_game
- * WITH [condition1](, [condition2](, ...));
- * @endcode
+   FIND pure_equilibrium
+   FOR  some_game
+   WITH [condition1](, [condition2](, ...));
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

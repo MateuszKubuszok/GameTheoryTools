@@ -43,8 +43,8 @@ using boost::shared_ptr;
  * Example of piece of code recognized by Parser:
  *
  * @code
- * identifier1, identifier2, identifier3
- * @endcode
+   identifier1, identifier2, identifier3
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

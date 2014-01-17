@@ -1,0 +1,326 @@
+/**
+ * @page parser_page GTL parser
+ *
+ * @section running_sec Running parser
+ *
+ * Parser can be run in a following ways:
+ * @code
+   ./gtl_parser                                        # reads from std input and writes results to std output
+   ./gtl_parser -I ../examples/extensive_form_game.gtl # reads from file ../exmples/extensive_form_game.gtl
+   ./gtl_parser -O ../examples/output.gtl              # writes output to ../exmples/output.gtl
+   ./gtl_parser -E ../examples/errors.gtl              # writes errors to ../exmples/errors.gtl
+   ./gtl_parser -R JSON                                # makes parser return results with JSON format
+   ./gtl_parser -R XML                                 # makes parser return results with XML format
+   @endcode
+ *
+ * @section context_sec Context and querying
+ *
+ * When we initaite program it creates context that stores all declared params (values). A param can be a
+ * game, a player or a number. There is also mock `context` param that allows us previewing all currently
+ * available params.
+ *
+ * When we declare new param:
+ * @code
+   LET chosen_identifer BE definition;
+   @endcode
+ * it is placed inside out context allowing us to perform a query on it:
+   @code
+   FIND some_property FOR chosen_identifier;
+   @endcode
+ *
+ * We are also available to perform several queries at once:
+   @code
+   FIND some_property, some_property2 FOR chosen_identifier, chosen_identifier2;
+   @endcode
+ * If some of params will not have sought property defined information about it will be returned.
+ *
+ * Context will be created when we run program and start reading either from standart input or file making all
+ * newly defined object go straight there. But if we'd like to read definitions from another file it is
+ * possible to do it in 2 ways:
+ *  - `LOAD identifier;` command will load all params from given file and place them in a current context, so
+ *    they will still be available after the file is processed. If a param appears with same name as existing
+ *    one old definition will be overriden by a new one,
+ *  - `EXECUTE identifier;` command will create child context - it will have access to all of out current
+ *    context's params as well as params defined just in it - of some param will be defined with the same name
+ *    as one's in parental context, name will be just overshaded, and once file is processed old value will be
+ *    availabe again.
+ *
+ * Values of a current context can be dumped into file with command `STORE identifier;`.
+ *
+ * When loading a file, make sure its name is placed inside double quotation marks:
+ * @code
+   LOAD "../examples/extensive_form_game.gtl";    // game will be available after the file is processed
+   EXECUTE "../examples/extensive_form_game.gtl"; // current context is left intact
+   STORE "../examples/result.gtl";                // store all available params to file
+   @endcode
+ *
+ * To preview all available params call:
+ * @code
+   FIND values FOR context;
+   @endcode
+ *
+ * @section params_sec Params and identifiers
+ *
+ * Identifiers that names params and their properties can be defined in a 2 ways:
+ *  - without double quotation marks: require identifier to be made of letters, digits and `_` charactes, but
+ *    it cannot start with a digit,
+ *  - with double quotation marks: no further restriction on identifier is made.
+ *
+ * All params have defined at least 2 properties:
+ *  - `properties` - it list all known properties for a given param,
+ *  - `type` - identifies type of a param.
+ *
+ * Some params will have additional ones e.g. Context will have `values` that displays all params known to it.
+ *
+ * 2 of commonly used params are identifeirs and numbers:
+ * @code
+   LET number1 BE 1;
+   LET number2 BE 2.3;
+   LET number3 BE 4e5;
+   LET number4 BE 6.7e8;
+   LET id1 BE number1;   // alias for whatever number1 is
+   LET id2 BE id1;       // alias for whatever id2 is, here number1
+   @endcode
+ *
+ * @section player_sec Players
+ *
+ * Players are required to define games. Each player has its own name (do not mistake with name of param that
+ * contains it) and a set of strategies.
+ *
+ * We can define it this way:
+ * @code
+   LET player1 BE
+   PLAYER p {
+     strategy1,
+     strategy2
+   };
+   @endcode
+
+ * Player has some additional properties:
+ * - `name` shows player's name,
+ * - `strategies` shows player's strategies,
+ *
+ * Once defined it can be used in games.
+ *
+ * @section game_sec Games
+ *
+ * The easiest way to explain is to use an example:
+ * @code
+   /* player p1 definition */
+   LET player1 BE
+     PLAYER p1 { s1, s2 };
+
+   /* game game1 definition */
+   LET game1 BE
+     STRATEGIC GAME
+     WITH
+       player1,             // player passed by identifier
+       PLAYER p2 { s1, s2 } // player passed explicitly
+     SUCH AS
+       { p1=s1, p2=s1 : 10, 20 }, // setting up payoff by givin all coorinates at once
+       { p1=s1, p2=s2 : 30, 40 },
+       { p1=s2 :
+         { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coorinates at a time
+         { p2=s2 : 70, 80 }
+       }
+     END; // END can be ommitted when obvious
+   @endcode
+ *
+ * We can see that strategic-form game can be deifined by payoffs of each of player's strategies combinations.
+ * We can group them by some `choice` (`p1=s1` meaning that its defined for player `p1` choosing strategy
+ * `s1`), or pass them by giveing all player's choices at once.
+ *
+ * Extensive-form games are defined in a similar way:
+ * @code
+   /* player p1 definition */
+   LET player1 BE
+     PLAYER p1 { s1, s2 };
+
+   /* game game2 definition */
+   LET game2 BE
+     EXTENSIVE GAME
+     WITH
+       player1,             // player passed by identifier
+       PLAYER p2 { s1, s2 } // player passed explicitly
+     SUCH AS
+       { p1=s1 :             // extensive-form games need to be defined as a trees
+         { p2=s1 : 10, 20 }, // where we pass only one choice at a time
+         { p2=s2 : 30, 40 }  // - notice that from each node we can pass choices of only one player
+       },
+       { p1=s2 :
+         { p2=s1 : 50, 60 },
+         { p2=s2 : 70, 80 }
+       }
+     END; // END can be ommitted when obvious
+   @endcode
+ * main difference being that extensive form games form a tree and the definition represents it - as such it
+ * have to pass one choice at a time and cannot group them.
+ *
+ * Games have following properties defined:
+ *  - `pure_equilibrium` - finds pure strategy Nash equilibria,
+ *  - `mixed_equilibrium` - finds mixed strategy Nash equilibria,
+ *  - `behaviour_equilibrium` - finds behaviour strategy Nash equilibria (possibly it won't be implemented
+      after all).
+ *
+ * @section example_sec Examples
+ *
+ * `examples/strategic_form_game.gtl`:
+ * @code
+   /**
+    * Example: shows some features of language.
+    */
+
+   // Players definition
+
+   LET player1 BE
+   PLAYER p1 { s1, s2 };
+
+   LET player2 BE
+   PLAYER p2 { s1, s2 };
+
+   /**
+    * Defines strategic-form game under 'game1' identifier.
+    */
+   LET game1 BE
+     STRATEGIC GAME
+     WITH
+       player1,             // player passed by identifier
+       PLAYER p2 { s1, s2 } // player passed explicitly
+     SUCH AS
+       { p1=s1, p2=s1 : 10, 20 }, // setting up payoff by giving all coordinates at once
+       { p1=s1, p2=s2 : 30, 40 },
+       { p1=s2 :
+         { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coordinates at a time
+         { p2=s2 : 70, 80 }
+       }
+     END; // END can be ommitted when obvious
+
+   /**
+    * Displays game definition.
+    */
+   FIND value FOR game1;
+
+   /**
+    * Searches for pure-strategy equlibrium.
+    */
+   FIND pure_equilibrium FOR game1;
+
+   /**
+    * Searches for mixed-strategy equlibrium.
+    */
+   FIND mixed_equilibrium FOR game1;
+
+   /**
+    * Searches for behavior-strategy equlibrium (non-existent for strategic-form games).
+    */
+   FIND behavior_equilibrium FOR game1;
+   @endcode
+ *
+ * `examples/extensive_form_game.gtl`:
+ * @code
+   /**
+    * Example: shows some features of language.
+    */
+
+   // Players definition
+
+   LET player1 BE
+   PLAYER p1 { s1, s2 };
+
+   LET player2 BE
+   PLAYER p2 { s1, s2 };
+
+   /**
+    * Defines strategic-form game under 'game2' identifier.
+    */
+   LET game2 BE
+     EXTENSIVE GAME
+     WITH
+       player1,             // player passed by identifier
+       PLAYER p2 { s1, s2 } // player passed explicitly
+     SUCH AS
+       { p1=s1 :             // extensive-form games need to be defined as a trees
+         { p2=s1 : 10, 20 }, // where we pass only one choice at a time
+         { p2=s2 : 30, 40 }  // - notice that from each node we can pass choices of only one player
+       },
+       { p1=s2 :
+         { p2=s1 : 50, 60 },
+         { p2=s2 : 70, 80 }
+       }
+     END; // END can be ommitted when obvious
+
+   /**
+    * Displays game definition.
+    */
+   FIND value FOR game2;
+
+   /**
+    * Searches for pure-strategy equlibrium.
+    */
+   FIND pure_equilibrium FOR game2;
+
+   /**
+    * Searches for mixed-strategy equlibrium.
+    */
+   FIND mixed_equilibrium FOR game2;
+
+   /**
+    * Searches for behavior-strategy equlibrium (non-existent for strategic-form games).
+    */
+   FIND behavior_equilibrium FOR game2;
+   @endcode
+ *
+ * `examples/properties_querying.gtl`:
+ * @code
+   /**
+    * Example: shows some features of language.
+    */
+
+
+   // Values definitions
+
+   LET a BE 1;
+   LET b BE -1;
+
+
+   // Players definitions
+
+   LET player1 BE
+   PLAYER p1 { s1, s2 };
+
+   LET player2 BE
+   PLAYER p2 { s1, s2 };
+
+
+   // Game definition
+
+   LET game3 BE
+     STRATEGIC GAME
+     WITH
+       player1,
+       player2
+     SUCH AS
+       { p1=s1 :
+         { p2=s1 : a, b },
+         { p2=s2 : b, a }
+       },
+       { p1=s2 :
+         { p2=s1 : b, a },
+         { p2=s2 : a, b }
+       };
+
+
+   // Querying for properties
+
+   FIND
+       properties,          // list of known properties
+       referred_properties, // list of known properties of referred object
+       type                 // type of object
+   FOR
+       a,
+       b,
+       player1,
+       player2,
+       game3;
+   @endcode
+ */

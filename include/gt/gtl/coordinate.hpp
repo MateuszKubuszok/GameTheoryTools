@@ -43,17 +43,17 @@ using Model::DataBuilderPtr;
  * Example of piece of code recognized by Parser:
  *
  * @code
- * {
- *    p1 = p1s1 :
- *    { p2 = p2s1 : 10, 20 },
- *    { p2 = p2s2 : 30, 40 }
- * },
- * {
- *    p1 = p1s2 :
- *    { p2 = p2s1 : 50, 60 },
- *    { p2 = p2s2 : 70, 80 }
- * }
- * @endcode
+   {
+      p1 = p1s1 :
+      { p2 = p2s1 : 10, 20 },
+      { p2 = p2s2 : 30, 40 }
+   },
+   {
+      p1 = p1s2 :
+      { p2 = p2s1 : 50, 60 },
+      { p2 = p2s2 : 70, 80 }
+   }
+   @endcode
  *
  * @author Mateusz Kubuszok
  *

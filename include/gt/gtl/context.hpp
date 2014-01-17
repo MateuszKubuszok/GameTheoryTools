@@ -43,9 +43,9 @@ using boost::container::map;
  * Example of code recognized by Parsr that would use Context undernath:
  *
  * @code
- * LET game1 BE [game definition];
- * FIND mixed_equilibrium FOR game1;
- * @endcode
+   LET game1 BE [game definition];
+   FIND mixed_equilibrium FOR game1;
+   @endcode
  *
  * @author Mateusz Kubuszok
  *
