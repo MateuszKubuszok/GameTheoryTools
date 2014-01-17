@@ -48,6 +48,9 @@ namespace GTL {
 
 class ExceptionFactory;
 
+class CurrentContext;
+class CurrentContextValuesProperty;
+
 class ObjectTypeProperty;
 class ObjectKnownProperties;
 
@@ -103,6 +106,9 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/gtl/object_property.hpp"
 
 #include "gt/gtl/exception_factory.hpp"
+
+#include "gt/gtl/current_context.hpp"
+#include "gt/gtl/current_context_values_property.hpp"
 
 #include "gt/gtl/object_type_property.hpp"
 #include "gt/gtl/object_known_properties.hpp"

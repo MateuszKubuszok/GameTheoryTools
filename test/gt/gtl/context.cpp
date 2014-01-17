@@ -6,6 +6,8 @@ BOOST_AUTO_TEST_SUITE( Context )
 
 BOOST_AUTO_TEST_CASE( Context_functional ) {
     // given
+    GT::IdentifierPtr  contextParamName          = GT::createIdentifierPtr("context");
+
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
     GT::GTL::ParamPtr  numberParam               =
@@ -41,6 +43,15 @@ BOOST_AUTO_TEST_CASE( Context_functional ) {
            .registerParam(cyclicParam2Name,          cyclicParam2);
 
     // then
+    BOOST_CHECK_EQUAL(
+        context.getKnownObjects().size(),
+        7
+    );
+
+    BOOST_REQUIRE_THROW( context.getNumber(*contextParamName), GT::GTL::InvalidContentRequest );
+    BOOST_REQUIRE_NO_THROW( context.getObject(*contextParamName) );
+    BOOST_REQUIRE_NO_THROW( context.getParam(*contextParamName) );
+
     BOOST_REQUIRE_NO_THROW( context.getNumber(*numberParamName) );
     BOOST_REQUIRE_THROW( context.getObject(*numberParamName), GT::GTL::InvalidContentRequest );
     BOOST_REQUIRE_NO_THROW( context.getParam(*numberParamName) );

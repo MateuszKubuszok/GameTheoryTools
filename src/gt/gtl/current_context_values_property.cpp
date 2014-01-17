@@ -1,6 +1,6 @@
 /**
- * @file      gt/gtl/object_known_properties.cpp
- * @brief     Defines GT::GTL::ObjectKnownProperties methods.
+ * @file      gt/gtl/current_context_values_property.cpp
+ * @brief     Defines GT::GTL::CurrentContextValuesProperty methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -25,45 +25,37 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class ObjectKnownProperties final : public ObjectProperty {
+// class CurrentContextValuesProperty final : public ObjectProperty {
 // public:
 
-ObjectKnownProperties::ObjectKnownProperties(
-    const Object* describedObject
+CurrentContextValuesProperty::CurrentContextValuesProperty(
+    const Context* describedContext
 ) :
-    object(describedObject)
+    context(describedContext)
     {}
 
-ResultPtr ObjectKnownProperties::getDescription() const {
+ResultPtr CurrentContextValuesProperty::getDescription() const {
     static Message description =
-        "Lists known properties for given Object";
+        "Lists all declared Params that can be used in queries";
     return ResultFactory::getInstance().constResult(description);
 }
 
-ResultPtr ObjectKnownProperties::findForConditions(
+ResultPtr CurrentContextValuesProperty::findForConditions(
     const Context&,
     const Conditions&
 ) const {
-    static const IdentifierPtr knownProperties = createIdentifierPtr("Known Properties");
-
-    IdentifiersPtr records = createIdentifiersPtr();
-    records->push_back(knownProperties);
-
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
-    resultBuilder->setHeaders(records);
 
-    IdentifiersPtr propertiesList = object->listProperties();
-    for (IdentifierPtr& propertyName : *propertiesList) {
-        IdentifierPtr property = createIdentifierPtr(propertyName);
-        MessagesPtr content = createMessagesPtr();
-        content->push_back( createMessagePtr(object->describeProperty(*propertyName)->getResult()) );
-        resultBuilder->addRecord(property, content);
+    for (const Context::KnownObjects::value_type& objectPair : context->getKnownObjects()) {
+        IdentifierPtr name  = createIdentifierPtr(objectPair.first);
+        MessagePtr    value = createMessagePtr(objectPair.second->toString());
+        resultBuilder->addResult(name, value);
     }
 
     return resultBuilder->build();
 }
 
-// }; /* END class ObjectKnownProperties */
+// }; /* END class CurrentContextValuesProperty */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

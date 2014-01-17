@@ -28,6 +28,41 @@ BOOST_AUTO_TEST_CASE( Object_respondsTo ) {
     BOOST_CHECK( !object.respondsTo(error) );
 }
 
+BOOST_AUTO_TEST_CASE( Object_describeProperty ) {
+    // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
+    GT::Identifier      properties = GT::createIdentifier("properties");
+    GT::Identifier      type       = GT::createIdentifier("type");
+    GT::Identifier      error      = GT::createIdentifier("error");
+    GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
+    GT::GTL::Context    context    = *contextPtr;
+
+    // when
+    GT::GTL::Object object;
+
+    // then
+    BOOST_REQUIRE_NO_THROW( object.describeProperty(properties) );
+    BOOST_REQUIRE_NO_THROW( object.describeProperty(type) );
+    BOOST_REQUIRE_THROW(
+        object.describeProperty(error),
+        GT::GTL::InvalidProperty
+    );
+
+    BOOST_CHECK_EQUAL(
+        object.describeProperty(properties)->getResult(),
+        GT::Message() +
+        "Lists known properties for given Object"
+    );
+    BOOST_CHECK_EQUAL(
+        object.describeProperty(type)->getResult(),
+        GT::Message() +
+        "Shows Object's type"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Object_findProperty ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -55,10 +90,10 @@ BOOST_AUTO_TEST_CASE( Object_findProperty ) {
         object.findProperty(context, properties)->getResult(),
         GT::Message() +
         "\t\tKnown Properties\n"
-        "Property:\n"
-        "\t\tproperties\n"
-        "Property:\n"
-        "\t\ttype\n"
+        "properties:\n"
+        "\t\tLists known properties for given Object\n"
+        "type:\n"
+        "\t\tShows Object's type\n"
     );
     BOOST_CHECK_EQUAL(
         object.findProperty(context, type)->getResult(),
@@ -97,10 +132,10 @@ BOOST_AUTO_TEST_CASE( Object_findPropertyWithConditions ) {
         object.findPropertyWithConditions(context, properties, conditions)->getResult(),
         GT::Message() +
         "\t\tKnown Properties\n"
-        "Property:\n"
-        "\t\tproperties\n"
-        "Property:\n"
-        "\t\ttype\n"
+        "properties:\n"
+        "\t\tLists known properties for given Object\n"
+        "type:\n"
+        "\t\tShows Object's type\n"
     );
     BOOST_CHECK_EQUAL(
         object.findPropertyWithConditions(context, type, conditions)->getResult(),

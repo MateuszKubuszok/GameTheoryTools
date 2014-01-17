@@ -67,6 +67,12 @@ bool Object::respondsTo(
     return isPropertyRegistered(propertyName);
 }
 
+ResultPtr Object::describeProperty(
+    const Identifier& propertyName
+) const {
+    return getProperty(propertyName)->getDescription();
+}
+
 ResultPtr Object::findProperty(
     const Context&    context,
     const Identifier& propertyName

@@ -55,11 +55,6 @@ using boost::container::map;
  */
 class Context : public virtual Root {
     /**
-     * @brief Known objects map.
-     */
-    typedef map<Identifier, ParamPtr> KnownObjects;
-
-    /**
      * @brief Possible parent Context.
      */
     ContextPtr parentContext;
@@ -67,9 +62,14 @@ class Context : public virtual Root {
     /**
      * @brief Registerd Objects.
      */
-    KnownObjects knownObjects;
+    map<Identifier, ParamPtr> knownObjects;
 
 public:
+    /**
+     * @brief Known objects map.
+     */
+    typedef map<Identifier, ParamPtr> KnownObjects;
+
     /**
      * @brief Default constructor.
      */
@@ -151,6 +151,13 @@ public:
     virtual const ParamPtr getParam(
         const Identifier& identifier
     ) const;
+
+    /**
+     * @brief Returns map of KnownObjects.
+     *
+     * @return KnownObjects map
+     */
+    virtual const KnownObjects getKnownObjects() const;
 
     /**
      * @brief Returns serialized Message for a Context.

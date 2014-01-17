@@ -36,14 +36,28 @@ using std::stringstream;
 Context::Context() :
     parentContext(),
     knownObjects()
-    {}
+{
+    registerParam(
+        createIdentifierPtr("context"),
+        ParamFactory::getInstance().createParam(
+            ObjectPtr(new CurrentContext(this))
+        )
+    );
+}
 
 Context::Context(
     const ContextPtr parentContext
 ) :
     parentContext(parentContext),
     knownObjects()
-    {}
+{
+    registerParam(
+        createIdentifierPtr("context"),
+        ParamFactory::getInstance().createParam(
+            ObjectPtr(new CurrentContext(this))
+        )
+    );
+}
 
 Context::~Context() {}
 
@@ -98,6 +112,18 @@ const ParamPtr Context::getParam(
     throw ExceptionFactory::getInstance().notDefinedParam(identifier);
 }
 
+const Context::KnownObjects Context::getKnownObjects() const {
+    KnownObjects allKnownObjects;
+
+    if (parentContext)
+        allKnownObjects = parentContext->getKnownObjects();
+
+    for (const KnownObjects::value_type& knownObject : knownObjects)
+        allKnownObjects[knownObject.first] = knownObject.second;
+
+    return allKnownObjects;
+}
+
 Message Context::serialize() const {
     stringstream result;
 
@@ -111,6 +137,10 @@ Message Context::serialize() const {
     }
 
     for (const KnownObjects::value_type& knownObject : knownObjects) {
+        static Identifier currentContext("context");
+        if (knownObject.first == currentContext)
+            continue;
+
         if (!firstElement)
             result << endl;
         result << "LET " << knownObject.first << " BE" << endl
@@ -124,9 +154,13 @@ Message Context::serialize() const {
 Message Context::toString() const {
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    for (const KnownObjects::value_type& objectPair : knownObjects) {
-        IdentifierPtr name  = createIdentifierPtr(objectPair.first);
-        MessagePtr    value = createMessagePtr(objectPair.second->toString());
+    for (const KnownObjects::value_type& knownObject : knownObjects) {
+        static Identifier currentContext("context");
+        if (knownObject.first == currentContext)
+            continue;
+
+        IdentifierPtr name  = createIdentifierPtr(knownObject.first);
+        MessagePtr    value = createMessagePtr(knownObject.second->toString());
         resultBuilder->addResult(name, value);
     }
 

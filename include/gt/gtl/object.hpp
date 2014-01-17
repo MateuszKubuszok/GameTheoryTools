@@ -99,6 +99,17 @@ public:
     ) const;
 
     /**
+     * @brief Returns property's description.
+     *
+     * @param  propertyName   property's name
+     * @return                property's description
+     * @throw InvalidProperty thrown when property is not available for an Object
+     */
+    virtual ResultPtr describeProperty(
+        const Identifier& propertyName
+    ) const;
+
+    /**
      * @brief Finds Objects' property and returns it as a Result.
      *
      * @param  context          Context with values
@@ -220,6 +231,12 @@ public:
         return false;
     }
 
+    virtual ResultPtr describeProperty(
+        const Identifier&
+    ) const override {
+        return NullFactory::getInstance().createResult();
+    }
+
     virtual ResultPtr findProperty(
         const Context&,
         const Identifier&
@@ -269,6 +286,12 @@ public:
         const Identifier&
     ) const override {
         return false;
+    }
+
+    virtual ResultPtr describeProperty(
+        const Identifier&
+    ) const override {
+        return NullFactory::getInstance().createResult();
     }
 
     virtual ResultPtr findProperty(

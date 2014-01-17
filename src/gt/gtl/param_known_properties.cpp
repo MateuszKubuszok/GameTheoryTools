@@ -36,7 +36,7 @@ ParamKnownProperties::ParamKnownProperties(
 
 ResultPtr ParamKnownProperties::getDescription() const {
     static Message description =
-        "Lists known properties for given Object";
+        "Lists known properties for given Param's referee";
     return ResultFactory::getInstance().constResult(description);
 }
 

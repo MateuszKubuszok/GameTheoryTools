@@ -25,10 +25,10 @@ BOOST_AUTO_TEST_CASE( ParamKnownProperties_findForConditions ) {
         property.findForConditions(context, conditions)->getResult(),
         GT::Message() +
         "\t\tKnown Properties\n"
-        "Property:\n"
-        "\t\tproperties\n"
-        "Property:\n"
-        "\t\ttype\n"
+        "properties:\n"
+        "\t\tLists known properties for given Object\n"
+        "type:\n"
+        "\t\tShows Object's type\n"
     );
 }
 
