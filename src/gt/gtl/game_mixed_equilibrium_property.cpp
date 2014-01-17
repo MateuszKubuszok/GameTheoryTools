@@ -34,6 +34,12 @@ GameMixedEquilibriumProperty::GameMixedEquilibriumProperty(
     game(describedGame)
     {}
 
+ResultPtr GameMixedEquilibriumProperty::getDescription() const {
+    static Message description =
+        "Finds mixed strategies' Nash equilibrium";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr GameMixedEquilibriumProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions

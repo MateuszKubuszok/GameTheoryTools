@@ -34,6 +34,12 @@ ParamValueProperty::ParamValueProperty(
     param(describedParam)
     {}
 
+ResultPtr ParamValueProperty::getDescription() const {
+    static Message description =
+        "Shows value of a given Param";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr ParamValueProperty::findForConditions(
     const Context& context,
     const Conditions&

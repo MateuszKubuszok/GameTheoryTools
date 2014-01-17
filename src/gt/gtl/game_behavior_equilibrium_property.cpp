@@ -34,6 +34,12 @@ GameBehaviorEquilibriumProperty::GameBehaviorEquilibriumProperty(
     game(describedGame)
     {}
 
+ResultPtr GameBehaviorEquilibriumProperty::getDescription() const {
+    static Message description =
+        "Finds behaviour strategies' Nash equilibrium";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr GameBehaviorEquilibriumProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions

@@ -34,6 +34,12 @@ ObjectTypeProperty::ObjectTypeProperty(
     object(describedObject)
     {}
 
+ResultPtr ObjectTypeProperty::getDescription() const {
+    static Message description =
+        "Shows Object's type";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr ObjectTypeProperty::findForConditions(
     const Context&,
     const Conditions&

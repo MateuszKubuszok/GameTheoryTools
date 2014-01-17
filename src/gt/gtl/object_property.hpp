@@ -37,6 +37,13 @@ namespace GTL {
 class ObjectProperty {
 public:
     /**
+     * @brief Returns property's description.
+     *
+     * @return description
+     */
+    virtual ResultPtr getDescription() const = 0;
+
+    /**
      * @brief Finds results for given Conditions.
      *
      * @param  context    Context with values

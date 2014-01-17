@@ -44,13 +44,20 @@ class ObjectTypeProperty final : public ObjectProperty {
 
 public:
     /**
-     * @brief Initiates Property with Object it's describing.
+     * @brief Initiates ObjectProperty with Object it's describing.
      *
      * @param describedObject described Object
      */
     explicit ObjectTypeProperty(
         const Object* describedObject
     );
+
+    /**
+     * @brief Returns ObjectProperty's description.
+     *
+     * @return description
+     */
+    virtual ResultPtr getDescription() const override;
 
     /**
      * @brief Finds Object's type.

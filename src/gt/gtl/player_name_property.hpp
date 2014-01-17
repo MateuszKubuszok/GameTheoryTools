@@ -44,13 +44,20 @@ class PlayerNameProperty final : public ObjectProperty {
 
 public:
     /**
-     * @brief Initiates Property with Player it's describing.
+     * @brief Initiates ObjectProperty with Player it's describing.
      *
      * @param describedPlayer described Player
      */
     explicit PlayerNameProperty(
         const Player* describedPlayer
     );
+
+    /**
+     * @brief Returns ObjectProperty's description.
+     *
+     * @return description
+     */
+    virtual ResultPtr getDescription() const override;
 
     /**
      * @brief Finds Player's strategies.

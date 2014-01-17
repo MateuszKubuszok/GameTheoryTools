@@ -34,6 +34,12 @@ ParamKnownProperties::ParamKnownProperties(
     param(describedParam)
     {}
 
+ResultPtr ParamKnownProperties::getDescription() const {
+    static Message description =
+        "Lists known properties for given Object";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr ParamKnownProperties::findForConditions(
     const Context&    context,
     const Conditions& conditions

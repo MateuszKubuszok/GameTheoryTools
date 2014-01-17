@@ -44,13 +44,20 @@ class ParamKnownProperties final : public ObjectProperty {
 
 public:
     /**
-     * @brief Initiates Property with Param it's describing.
+     * @brief Initiates ObjectProperty with Param it's describing.
      *
      * @param describedParam described Param
      */
     explicit ParamKnownProperties(
         const Param* describedParam
     );
+
+    /**
+     * @brief Returns ObjectProperty's description.
+     *
+     * @return description
+     */
+    virtual ResultPtr getDescription() const override;
 
     /**
      * @brief Finds Param's known propertes.

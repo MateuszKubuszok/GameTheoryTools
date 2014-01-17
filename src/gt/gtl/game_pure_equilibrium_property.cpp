@@ -34,6 +34,12 @@ GamePureEquilibriumProperty::GamePureEquilibriumProperty(
     game(describedGame)
     {}
 
+ResultPtr GamePureEquilibriumProperty::getDescription() const {
+    static Message description =
+        "Finds pure strategies' Nash equilibrium";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr GamePureEquilibriumProperty::findForConditions(
     const Context&    context,
     const Conditions& conditions

@@ -34,6 +34,12 @@ PlayerNameProperty::PlayerNameProperty(
     player(describedPlayer)
     {}
 
+ResultPtr PlayerNameProperty::getDescription() const {
+    static Message description =
+        "Shows name of a given Player";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr PlayerNameProperty::findForConditions(
     const Context&,
     const Conditions&

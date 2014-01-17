@@ -34,6 +34,12 @@ ObjectKnownProperties::ObjectKnownProperties(
     object(describedObject)
     {}
 
+ResultPtr ObjectKnownProperties::getDescription() const {
+    static Message description =
+        "Lists known properties for given Object";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr ObjectKnownProperties::findForConditions(
     const Context&,
     const Conditions&

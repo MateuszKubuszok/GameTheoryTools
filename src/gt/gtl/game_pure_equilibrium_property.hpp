@@ -44,13 +44,20 @@ class GamePureEquilibriumProperty final : public ObjectProperty {
 
 public:
     /**
-     * @brief Initiates Property with Game it's describing.
+     * @brief Initiates ObjectProperty with Game it's describing.
      *
      * @param describedGame described Game
      */
     explicit GamePureEquilibriumProperty(
         const Game* describedGame
     );
+
+    /**
+     * @brief Returns ObjectProperty's description.
+     *
+     * @return description
+     */
+    virtual ResultPtr getDescription() const override;
 
     /**
      * @brief Finds equilibrium for given Conditions.

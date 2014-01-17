@@ -34,6 +34,12 @@ PlayerStrategiesProperty::PlayerStrategiesProperty(
     player(describedPlayer)
     {}
 
+ResultPtr PlayerStrategiesProperty::getDescription() const {
+    static Message description =
+        "Shows strategies of a given Player";
+    return ResultFactory::getInstance().constResult(description);
+}
+
 ResultPtr PlayerStrategiesProperty::findForConditions(
     const Context&,
     const Conditions&
