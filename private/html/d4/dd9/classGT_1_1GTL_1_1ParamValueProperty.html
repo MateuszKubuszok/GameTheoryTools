@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -118,8 +118,11 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a95694013fdbc5ced190858453d4991fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a95694013fdbc5ced190858453d4991fd">ParamValueProperty</a> (const <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a> *describedParam)</td></tr>
-<tr class="memdesc:a95694013fdbc5ced190858453d4991fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates Property with <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> it's describing.  <a href="#a95694013fdbc5ced190858453d4991fd">More...</a><br/></td></tr>
+<tr class="memdesc:a95694013fdbc5ced190858453d4991fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a> with <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> it's describing.  <a href="#a95694013fdbc5ced190858453d4991fd">More...</a><br/></td></tr>
 <tr class="separator:a95694013fdbc5ced190858453d4991fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca8b5a67e266a0e88e674e782024284"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a4ca8b5a67e266a0e88e674e782024284">getDescription</a> () const override</td></tr>
+<tr class="memdesc:a4ca8b5a67e266a0e88e674e782024284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a>'s description.  <a href="#a4ca8b5a67e266a0e88e674e782024284">More...</a><br/></td></tr>
+<tr class="separator:a4ca8b5a67e266a0e88e674e782024284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8b132a5017624d7025800a1b2db8d1d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#ac8b132a5017624d7025800a1b2db8d1d">findForConditions</a> (const <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a> &amp;context, const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a> &amp;conditions) const override</td></tr>
 <tr class="memdesc:ac8b132a5017624d7025800a1b2db8d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds Params's value.  <a href="#ac8b132a5017624d7025800a1b2db8d1d">More...</a><br/></td></tr>
 <tr class="separator:ac8b132a5017624d7025800a1b2db8d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,7 +162,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initiates Property with <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> it's describing. </p>
+<p>Initiates <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a> with <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> it's describing. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">describedParam</td><td>described <a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> </td></tr>
@@ -220,30 +223,70 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a949c4a90d2bb465f5402538d771e0fb5">GT::GTL::ObjectProperty</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html">param_value_property.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html#l00043">43</a> of file <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html">param_value_property.cpp</a>.</p>
 
-<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00061">GT::Model::ResultFactory::constResult()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">GT::createMessage()</a>, <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00076">GT::GTL::Param::getNumber()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00069">GT::GTL::Param::getObject()</a>, <a class="el" href="../../d1/d20/param__value__property_8hpp_source.html#l00043">param</a>, and <a class="el" href="../../d3/d30/object_8cpp_source.html#l00099">GT::GTL::Object::toString()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> content;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        content = <a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a7194491e6676ed5cef7bd8aaa2222e1a">getObject</a>(context)-&gt;toString();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> InvalidContentRequest&amp;) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            content = <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(<a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a66ec7f7e50c6088f24cc3b6944529e08">getNumber</a>(context));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> InvalidContentRequest&amp;) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            content = <a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../d1/dde/classGT_1_1GTL_1_1Object.html#a2d68471a1f893ca64494920f8f6e3311">toString</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">constResult</a>(content);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00061">GT::Model::ResultFactory::constResult()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">GT::createMessage()</a>, <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00076">GT::GTL::Param::getNumber()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00069">GT::GTL::Param::getObject()</a>, <a class="el" href="../../d1/d20/param__value__property_8hpp_source.html#l00043">param</a>, and <a class="el" href="../../d3/d30/object_8cpp_source.html#l00105">GT::GTL::Object::toString()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> content;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        content = <a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a7194491e6676ed5cef7bd8aaa2222e1a">getObject</a>(context)-&gt;toString();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> InvalidContentRequest&amp;) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            content = <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(<a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a66ec7f7e50c6088f24cc3b6944529e08">getNumber</a>(context));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> InvalidContentRequest&amp;) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            content = <a class="code" href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">param</a>-&gt;<a class="code" href="../../d1/dde/classGT_1_1GTL_1_1Object.html#a2d68471a1f893ca64494920f8f6e3311">toString</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">constResult</a>(content);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_a68211b63deba723dbed223e9125eaa13"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">GT::createMessage</a></div><div class="ttdeci">Message createMessage(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">helpers.cpp:31</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ParamValueProperty_html_a1bef3bceafd0514d693e6f3ffc2989fe"><div class="ttname"><a href="../../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a1bef3bceafd0514d693e6f3ffc2989fe">GT::GTL::ParamValueProperty::param</a></div><div class="ttdeci">const Param * param</div><div class="ttdoc">Described Param. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d20/param__value__property_8hpp_source.html#l00043">param_value_property.hpp:43</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Param_html_a7194491e6676ed5cef7bd8aaa2222e1a"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html#a7194491e6676ed5cef7bd8aaa2222e1a">GT::GTL::Param::getObject</a></div><div class="ttdeci">virtual const ObjectPtr getObject(const Context &amp;context) const </div><div class="ttdoc">Returns Object for Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d30/param_8cpp_source.html#l00069">param.cpp:69</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab383695a48b38c4d374295ccd4a2045d"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">GT::Model::ResultFactory::constResult</a></div><div class="ttdeci">ResultPtr constResult(const Message &amp;content) const </div><div class="ttdoc">Returns Results with predefined const content. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00061">result_factory.cpp:61</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Object_html_a2d68471a1f893ca64494920f8f6e3311"><div class="ttname"><a href="../../d1/dde/classGT_1_1GTL_1_1Object.html#a2d68471a1f893ca64494920f8f6e3311">GT::GTL::Object::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns message about object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00099">object.cpp:99</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Object_html_a2d68471a1f893ca64494920f8f6e3311"><div class="ttname"><a href="../../d1/dde/classGT_1_1GTL_1_1Object.html#a2d68471a1f893ca64494920f8f6e3311">GT::GTL::Object::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns message about object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00105">object.cpp:105</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab5ac1c574cebc06904092c2760cf10cd"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">GT::Model::ResultFactory::getInstance</a></div><div class="ttdeci">static ResultFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00030">result_factory.cpp:30</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Param_html_a66ec7f7e50c6088f24cc3b6944529e08"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html#a66ec7f7e50c6088f24cc3b6944529e08">GT::GTL::Param::getNumber</a></div><div class="ttdeci">virtual const NumberPtr getNumber(const Context &amp;context) const </div><div class="ttdoc">Returns Number for context. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d30/param_8cpp_source.html#l00076">param.cpp:76</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4ca8b5a67e266a0e88e674e782024284"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> GT::GTL::ParamValueProperty::getDescription </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a>'s description. </p>
+<dl class="section return"><dt>Returns</dt><dd>description </dd></dl>
+
+<p>Implements <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a967f944cb4562e4f10ee5a0d6c0628f8">GT::GTL::ObjectProperty</a>.</p>
+
+<p>Definition at line <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html">param_value_property.cpp</a>.</p>
+
+<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00061">GT::Model::ResultFactory::constResult()</a>, and <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                                   {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> description =</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="stringliteral">&quot;Shows value of a given Param&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">constResult</a>(description);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab383695a48b38c4d374295ccd4a2045d"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">GT::Model::ResultFactory::constResult</a></div><div class="ttdeci">ResultPtr constResult(const Message &amp;content) const </div><div class="ttdoc">Returns Results with predefined const content. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00061">result_factory.cpp:61</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab5ac1c574cebc06904092c2760cf10cd"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">GT::Model::ResultFactory::getInstance</a></div><div class="ttdeci">static ResultFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00030">result_factory.cpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -270,7 +313,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d1/d20/param__value__property_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../d1/d20/param__value__property_8hpp_source.html">param_value_property.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html#l00037">findForConditions()</a>.</p>
+<p>Referenced by <a class="el" href="../../d9/d06/param__value__property_8cpp_source.html#l00043">findForConditions()</a>.</p>
 
 </div>
 </div>
@@ -286,7 +329,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

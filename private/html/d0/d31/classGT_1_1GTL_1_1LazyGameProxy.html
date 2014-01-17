@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -122,6 +122,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afbdf2d49060982f833114bda490dd406"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#afbdf2d49060982f833114bda490dd406">LazyGameProxy</a> (const GameBuilderPtr <a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a53312628ca921c4472a3742c903ec752">gameBuilder</a>, const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a3a16205b7ef19a12305746207ff56ff4">ObjectsPtr</a> <a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a5dc5da055f1835a38c41909a74963245">players</a>, const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#aff53b553c0b84fb2413c12978df2767d">CoordinatesPtr</a> <a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">coordinates</a>, const <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a> *<a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3300c40274c0ac084e8ee3d1955b83bd">context</a>)</td></tr>
 <tr class="memdesc:afbdf2d49060982f833114bda490dd406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates lazy proxy with data required to instantiate <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a>.  <a href="#afbdf2d49060982f833114bda490dd406">More...</a><br/></td></tr>
 <tr class="separator:afbdf2d49060982f833114bda490dd406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3562ced47cebf7524f49de96f7db50bf"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#aff53b553c0b84fb2413c12978df2767d">CoordinatesPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3562ced47cebf7524f49de96f7db50bf">getCoordinates</a> () const </td></tr>
+<tr class="memdesc:a3562ced47cebf7524f49de96f7db50bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grants access to Coordinates used to build <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> on request.  <a href="#a3562ced47cebf7524f49de96f7db50bf">More...</a><br/></td></tr>
+<tr class="separator:a3562ced47cebf7524f49de96f7db50bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c42217749a72f13829457d60670746b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a3a16205b7ef19a12305746207ff56ff4">ObjectsPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9c42217749a72f13829457d60670746b">getPlayersParams</a> () const </td></tr>
+<tr class="memdesc:a9c42217749a72f13829457d60670746b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grants access to Players' Params used to build <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> on request.  <a href="#a9c42217749a72f13829457d60670746b">More...</a><br/></td></tr>
+<tr class="separator:a9c42217749a72f13829457d60670746b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c5369bc0bce9cec3ea544c035b53ea"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">Model::PlayersPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a21c5369bc0bce9cec3ea544c035b53ea">getPlayers</a> () const override</td></tr>
 <tr class="memdesc:a21c5369bc0bce9cec3ea544c035b53ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a>'s Players.  <a href="#a21c5369bc0bce9cec3ea544c035b53ea">More...</a><br/></td></tr>
 <tr class="separator:a21c5369bc0bce9cec3ea544c035b53ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,61 +272,61 @@ Private Attributes</h2></td></tr>
 <p>Create temporary instance of <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Games instance </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">74</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00063">context</a>, <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00059">coordinates</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">GT::createIdentifier()</a>, <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00051">gameBuilder</a>, <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">GT::GTL::ExceptionFactory::getInstance()</a>, <a class="el" href="../../dd/d26/model_2player_8cpp_source.html#l00044">GT::Model::Player::getName()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00069">GT::GTL::Param::getObject()</a>, <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00063">GT::GTL::ExceptionFactory::invalidObjectType()</a>, and <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00055">players</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00056">getData()</a>, <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00052">getPlayers()</a>, and <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00060">toString()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                   {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#ac91b6ef75fd1687d2f0677a09c2e28ab">GameBuilderPtr</a> currentGameBuilder = <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a53312628ca921c4472a3742c903ec752">gameBuilder</a>-&gt;cloneBuilder();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">PlayersPtr</a> modelPlayers(<span class="keyword">new</span> <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#ae51987ab7ad717560f87ef9867a1a9eb">Players</a>());</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>&amp; objectPtr : *<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a5dc5da055f1835a38c41909a74963245">players</a>) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&amp; player = *objectPtr;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> Param&amp;  param  = *objectPtr;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (player) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a> playerPtr = dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&gt;(objectPtr);</div>
+<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00064">getData()</a>, <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00060">getPlayers()</a>, and <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00068">toString()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                   {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#ac91b6ef75fd1687d2f0677a09c2e28ab">GameBuilderPtr</a> currentGameBuilder = <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a53312628ca921c4472a3742c903ec752">gameBuilder</a>-&gt;cloneBuilder();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (playerPtr) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                modelPlayers-&gt;insert(</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    Players::value_type(</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        *player.getName(),</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Model::Player</a>&gt;(playerPtr)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    )</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                );</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> (param) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a> referredObject = param.getObject(*<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3300c40274c0ac084e8ee3d1955b83bd">context</a>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&amp;   referredPlayer = *referredObject;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (referredPlayer) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a> playerPtr = dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&gt;(objectPtr);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                modelPlayers-&gt;insert(</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    Players::value_type(</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        *referredPlayer.getName(),</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Model::Player</a>&gt;(referredObject)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    )</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                );</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> typeName = <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(<span class="stringliteral">&quot;Player&quot;</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">ExceptionFactory::getInstance</a>().<a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">invalidObjectType</a>(typeName);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    currentGameBuilder-&gt;dataBuilder()-&gt;setPlayers(modelPlayers);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>&amp; coordinate : *<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">coordinates</a>) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a07cd3152a339cb63bdda94fa4704a880">DataBuilderPtr</a> builderForCoordinate = currentGameBuilder-&gt;clone();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        coordinate-&gt;fillDataBuilder(*<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3300c40274c0ac084e8ee3d1955b83bd">context</a>, builderForCoordinate);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> currentGameBuilder-&gt;build();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">PlayersPtr</a> modelPlayers(<span class="keyword">new</span> <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#ae51987ab7ad717560f87ef9867a1a9eb">Players</a>());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>&amp; objectPtr : *<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a5dc5da055f1835a38c41909a74963245">players</a>) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&amp; player = *objectPtr;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">const</span> Param&amp;  param  = *objectPtr;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (player) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a> playerPtr = dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&gt;(objectPtr);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (playerPtr) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                modelPlayers-&gt;insert(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    Players::value_type(</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        *player.getName(),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Model::Player</a>&gt;(playerPtr)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (param) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a> referredObject = param.getObject(*<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3300c40274c0ac084e8ee3d1955b83bd">context</a>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&amp;   referredPlayer = *referredObject;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">if</span> (referredPlayer) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a> playerPtr = dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Player</a>&gt;(objectPtr);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                modelPlayers-&gt;insert(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    Players::value_type(</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        *referredPlayer.getName(),</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        dynamic_pointer_cast&lt;<a class="code" href="../../dd/d1f/namespaceGT_1_1Routines.html#a45477073e1cc47d70d82775d715237ce">Model::Player</a>&gt;(referredObject)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    )</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> typeName = <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(<span class="stringliteral">&quot;Player&quot;</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">ExceptionFactory::getInstance</a>().<a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">invalidObjectType</a>(typeName);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    currentGameBuilder-&gt;dataBuilder()-&gt;setPlayers(modelPlayers);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>&amp; coordinate : *<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">coordinates</a>) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a07cd3152a339cb63bdda94fa4704a880">DataBuilderPtr</a> builderForCoordinate = currentGameBuilder-&gt;clone();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        coordinate-&gt;fillDataBuilder(*<a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a3300c40274c0ac084e8ee3d1955b83bd">context</a>, builderForCoordinate);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> currentGameBuilder-&gt;build();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_a8f19b695ad22a8a8943299159cb0f13c"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">GT::Identifier</a></div><div class="ttdeci">string Identifier</div><div class="ttdoc">Alias for string used as identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00077">common.hpp:77</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_ac91b6ef75fd1687d2f0677a09c2e28ab"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#ac91b6ef75fd1687d2f0677a09c2e28ab">GT::Model::GameBuilderPtr</a></div><div class="ttdeci">shared_ptr&lt; GameBuilder &gt; GameBuilderPtr</div><div class="ttdoc">Smart pointer to GameBuilder. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d65/model_2common_8hpp_source.html#l00087">common.hpp:87</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExceptionFactory_html_a72f45fc8a7b151df1699d33ad980f35f"><div class="ttname"><a href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">GT::GTL::ExceptionFactory::invalidObjectType</a></div><div class="ttdeci">InvalidType invalidObjectType(const Identifier &amp;expectedType) const </div><div class="ttdoc">Thrown when attepting to obtain cast Object to invalid type. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00063">exception_factory.cpp:63</a></div></div>
@@ -337,6 +343,32 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classGT_1_1GTL_1_1ExceptionFactory_html_ac4e8d5d304821830d32fc0d5372a5b70"><div class="ttname"><a href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">GT::GTL::ExceptionFactory::getInstance</a></div><div class="ttdeci">static ExceptionFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of an ExceptionFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">exception_factory.cpp:30</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_af82bcd4897e8bbcff00701e09407b142"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">GT::GTL::LazyGameProxy::coordinates</a></div><div class="ttdeci">const CoordinatesPtr coordinates</div><div class="ttdoc">Coordinates to setup data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00059">lazy_game_proxy.hpp:59</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a7be0feae3194cf0b31fa5fff7fb9ff1b"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">GT::GTL::CoordinatePtr</a></div><div class="ttdeci">shared_ptr&lt; Coordinate &gt; CoordinatePtr</div><div class="ttdoc">Smart pointer to Coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00100">common.hpp:100</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3562ced47cebf7524f49de96f7db50bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#aff53b553c0b84fb2413c12978df2767d">CoordinatesPtr</a> GT::GTL::LazyGameProxy::getCoordinates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grants access to Coordinates used to build <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> on request. </p>
+<dl class="section return"><dt>Returns</dt><dd>Coordinates stored inside proxy </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00059">coordinates</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                         {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">coordinates</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_af82bcd4897e8bbcff00701e09407b142"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#af82bcd4897e8bbcff00701e09407b142">GT::GTL::LazyGameProxy::coordinates</a></div><div class="ttdeci">const CoordinatesPtr coordinates</div><div class="ttdoc">Coordinates to setup data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00059">lazy_game_proxy.hpp:59</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,13 +398,13 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../da/db2/classGT_1_1Model_1_1Game.html#a5c4644c96edcd0fd545886d750d34453">GT::Model::Game</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;getData();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">lazy_game_proxy.cpp:66</a></div></div>
+<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;getData();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">lazy_game_proxy.cpp:74</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -402,13 +434,41 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../da/db2/classGT_1_1Model_1_1Game.html#ae8c045dfd4a23a490979b82e8fe9be0d">GT::Model::Game</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                 {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;getPlayers();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">lazy_game_proxy.cpp:66</a></div></div>
+<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                 {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;getPlayers();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">lazy_game_proxy.cpp:74</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a9c42217749a72f13829457d60670746b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a3a16205b7ef19a12305746207ff56ff4">ObjectsPtr</a> GT::GTL::LazyGameProxy::getPlayersParams </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grants access to Players' Params used to build <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> on request. </p>
+<dl class="section return"><dt>Returns</dt><dd>Objects stored inside proxy </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00055">players</a>.</p>
+
+<p>Referenced by <a class="el" href="../../d3/d79/gtl_2game_8cpp_source.html#l00122">GT::GTL::Game::serialize()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                       {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a5dc5da055f1835a38c41909a74963245">players</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a5dc5da055f1835a38c41909a74963245"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a5dc5da055f1835a38c41909a74963245">GT::GTL::LazyGameProxy::players</a></div><div class="ttdeci">const ObjectsPtr players</div><div class="ttdoc">Players. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00055">lazy_game_proxy.hpp:55</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -438,13 +498,13 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../da/db2/classGT_1_1Model_1_1Game.html#acc9642aace8ccd862973b4c19d3dcea9">GT::Model::Game</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html">lazy_game_proxy.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                      {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;toString();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">lazy_game_proxy.cpp:66</a></div></div>
+<p>References <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                      {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">accessGame</a>()-&gt;toString();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1LazyGameProxy_html_a9d54b1d8138ec7eb83fe92543deca217"><div class="ttname"><a href="../../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a9d54b1d8138ec7eb83fe92543deca217">GT::GTL::LazyGameProxy::accessGame</a></div><div class="ttdeci">const Model::GamePtr accessGame() const </div><div class="ttdoc">Create temporary instance of Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">lazy_game_proxy.cpp:74</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -471,7 +531,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html">lazy_game_proxy.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
+<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>.</p>
 
 </div>
 </div>
@@ -497,7 +557,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html">lazy_game_proxy.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
+<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>, and <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00052">getCoordinates()</a>.</p>
 
 </div>
 </div>
@@ -523,7 +583,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html">lazy_game_proxy.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
+<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>.</p>
 
 </div>
 </div>
@@ -549,7 +609,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../d9/d78/lazy__game__proxy_8hpp_source.html">lazy_game_proxy.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00066">accessGame()</a>.</p>
+<p>Referenced by <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00074">accessGame()</a>, and <a class="el" href="../../d8/d23/lazy__game__proxy_8cpp_source.html#l00056">getPlayersParams()</a>.</p>
 
 </div>
 </div>
@@ -565,7 +625,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

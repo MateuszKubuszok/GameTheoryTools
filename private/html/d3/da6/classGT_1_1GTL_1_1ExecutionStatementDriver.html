@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -420,7 +420,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html">execution_statement_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00046">checkingStatementDriver</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00054">context</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00037">GT::GTL::CheckingStatementDriver::executeDefinition()</a>, and <a class="el" href="../../db/d12/context_8cpp_source.html#l00045">GT::GTL::Context::registerParam()</a>.</p>
+<p>References <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00046">checkingStatementDriver</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00054">context</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00037">GT::GTL::CheckingStatementDriver::executeDefinition()</a>, and <a class="el" href="../../db/d12/context_8cpp_source.html#l00064">GT::GTL::Context::registerParam()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d3/da6/classGT_1_1GTL_1_1ExecutionStatementDriver.html#a4ae5a69b4c7e9bc702fdd2d4d6c6645f">checkingStatementDriver</a>.<a class="code" href="../../db/d07/classGT_1_1GTL_1_1CheckingStatementDriver.html#afa557290ae13cf8497a9c231713d8b82">executeDefinition</a>(definitionPtr))</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -430,7 +430,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1CheckingStatementDriver_html_afa557290ae13cf8497a9c231713d8b82"><div class="ttname"><a href="../../db/d07/classGT_1_1GTL_1_1CheckingStatementDriver.html#afa557290ae13cf8497a9c231713d8b82">GT::GTL::CheckingStatementDriver::executeDefinition</a></div><div class="ttdeci">virtual bool executeDefinition(const DefinitionPtr *definition) override</div><div class="ttdoc">Executes Definition saving Object under defined name. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00037">checking_statement_driver.cpp:37</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Context_html_a1be617ececf0c3007f1d98bfa0f22176"><div class="ttname"><a href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a1be617ececf0c3007f1d98bfa0f22176">GT::GTL::Context::registerParam</a></div><div class="ttdeci">virtual Context &amp; registerParam(const IdentifierPtr identifier, const ParamPtr param)</div><div class="ttdoc">Adds/overrides identifier with value. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d12/context_8cpp_source.html#l00045">context.cpp:45</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Context_html_a1be617ececf0c3007f1d98bfa0f22176"><div class="ttname"><a href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a1be617ececf0c3007f1d98bfa0f22176">GT::GTL::Context::registerParam</a></div><div class="ttdeci">virtual Context &amp; registerParam(const IdentifierPtr identifier, const ParamPtr param)</div><div class="ttdoc">Adds/overrides identifier with value. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d12/context_8cpp_source.html#l00064">context.cpp:64</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionStatementDriver_html_a4ae5a69b4c7e9bc702fdd2d4d6c6645f"><div class="ttname"><a href="../../d3/da6/classGT_1_1GTL_1_1ExecutionStatementDriver.html#a4ae5a69b4c7e9bc702fdd2d4d6c6645f">GT::GTL::ExecutionStatementDriver::checkingStatementDriver</a></div><div class="ttdeci">CheckingStatementDriver checkingStatementDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00046">execution_statement_driver.hpp:46</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionStatementDriver_html_afd2ce1f3fac6a1db10b1e23c7749b3f2"><div class="ttname"><a href="../../d3/da6/classGT_1_1GTL_1_1ExecutionStatementDriver.html#afd2ce1f3fac6a1db10b1e23c7749b3f2">GT::GTL::ExecutionStatementDriver::context</a></div><div class="ttdeci">Context * context</div><div class="ttdoc">Contains Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00054">execution_statement_driver.hpp:54</a></div></div>
 </div><!-- fragment -->
@@ -470,7 +470,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html">execution_statement_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00046">checkingStatementDriver</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00054">context</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">GT::createMessage()</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00050">driver</a>, <a class="el" href="../../d9/d0c/query_8cpp_source.html#l00041">GT::GTL::Query::execute()</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00046">GT::GTL::CheckingStatementDriver::executeQuery()</a>, <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00044">GT::GTL::ValidableSymbol::getInputLocation()</a>, <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#abdd01af128e0ed34a0387fa8a730a15a">GT::GTL::Driver::showError()</a>, and <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a9453f27fdb213360f70db49fd934ab3f">GT::GTL::Driver::showResult()</a>.</p>
+<p>References <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00046">checkingStatementDriver</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00054">context</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">GT::createMessage()</a>, <a class="el" href="../../d3/d83/execution__statement__driver_8hpp_source.html#l00050">driver</a>, <a class="el" href="../../d9/d0c/query_8cpp_source.html#l00041">GT::GTL::Query::execute()</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00046">GT::GTL::CheckingStatementDriver::executeQuery()</a>, <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00056">GT::GTL::ValidableSymbol::getInputLocation()</a>, <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#abdd01af128e0ed34a0387fa8a730a15a">GT::GTL::Driver::showError()</a>, and <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a9453f27fdb213360f70db49fd934ab3f">GT::GTL::Driver::showResult()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d3/da6/classGT_1_1GTL_1_1ExecutionStatementDriver.html#a4ae5a69b4c7e9bc702fdd2d4d6c6645f">checkingStatementDriver</a>.<a class="code" href="../../db/d07/classGT_1_1GTL_1_1CheckingStatementDriver.html#a5a97cdace6a447fc95337fabbcc784de">executeQuery</a>(queryPtr))</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -620,7 +620,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

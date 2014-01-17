@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -119,51 +119,87 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// class ValidableSymbol : public virtual Root {</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a>()<span class="keyword"> const </span>{}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// public:</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">   34</a></span>&#160;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">ValidableSymbol::ValidableSymbol</a>() :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    inputLocation(new <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>())</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::endl;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::stringstream;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> boost::algorithm::is_any_of;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> boost::algorithm::split;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// class ValidableSymbol : public virtual Root {</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">   38</a></span>&#160;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">ValidableSymbol::~ValidableSymbol</a>() {}</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a>()<span class="keyword"> const </span>{}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">   40</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">ValidableSymbol::isValid</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">   44</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">ValidableSymbol::getInputLocation</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// public:</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">   42</a></span>&#160;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">ValidableSymbol::ValidableSymbol</a>() :</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    inputLocation(new <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>())</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">   46</a></span>&#160;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">ValidableSymbol::~ValidableSymbol</a>() {}</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">ValidableSymbol::setInputLocation</a>(</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> newInputLocation</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a> = newInputLocation;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa5eeefc4cd5808ed39673d61e357425e">   54</a></span>&#160;ValidableSymbol::operator SafeBoolIdiom()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> isValid() ? &amp;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a> : 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// }; /* END class ValidableSymbol */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">   48</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">ValidableSymbol::isValid</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a617debb8137356e6663864fda422d4b4">   52</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a617debb8137356e6663864fda422d4b4">ValidableSymbol::serialize</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">   56</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">ValidableSymbol::getInputLocation</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">ValidableSymbol::setInputLocation</a>(</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> newInputLocation</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a> = newInputLocation;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa5eeefc4cd5808ed39673d61e357425e">   66</a></span>&#160;ValidableSymbol::operator SafeBoolIdiom()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> isValid() ? &amp;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a> : 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a075857dd50157e46c1cc7a8bf3e32e33">   70</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a075857dd50157e46c1cc7a8bf3e32e33">ValidableSymbol::addIndent</a>(</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> content</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// do not use boost::container::vector here - it causes memory access violation with split function</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::vector&lt;Message&gt; lines;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    split(lines, content, is_any_of(<span class="stringliteral">&quot;\n&quot;</span>));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> firstElement = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; line : lines) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (!line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\n&quot;</span>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (!firstElement)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                result &lt;&lt; endl;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            result &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; line;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            firstElement = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// }; /* END class ValidableSymbol */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
 <div class="ttc" id="classGT_1_1GTL_1_1location_html"><div class="ttname"><a href="../../d5/de2/classGT_1_1GTL_1_1location.html">GT::GTL::location</a></div><div class="ttdoc">Abstract a location. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d46/location_8hh_source.html#l00054">location.hh:54</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ab2b87168eefadcf8dc73f349a7482ac7"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether object is valid. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00040">validable_symbol.cpp:40</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a96650962dae1fd63eb74410ed2f8ea85"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">GT::GTL::ValidableSymbol::getInputLocation</a></div><div class="ttdeci">virtual const InputLocationPtr getInputLocation() const </div><div class="ttdoc">Returns input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00044">validable_symbol.cpp:44</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ab2b87168eefadcf8dc73f349a7482ac7"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether Object is valid. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00048">validable_symbol.cpp:48</a></div></div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a96650962dae1fd63eb74410ed2f8ea85"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">GT::GTL::ValidableSymbol::getInputLocation</a></div><div class="ttdeci">virtual const InputLocationPtr getInputLocation() const </div><div class="ttdoc">Returns input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00056">validable_symbol.cpp:56</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_add9ad5a0518a638295f41916bf9000d7"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">GT::GTL::InputLocationPtr</a></div><div class="ttdeci">shared_ptr&lt; InputLocation &gt; InputLocationPtr</div><div class="ttdoc">Smart pointer to InputLocation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00131">common.hpp:131</a></div></div>
 <div class="ttc" id="gtl_2inner__common_8hpp_html"><div class="ttname"><a href="../../de/ddb/gtl_2inner__common_8hpp.html">inner_common.hpp</a></div><div class="ttdoc">Declares inner classes for GT::GTL module. </div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a8e766b0f89c1d4242570a0e156303967"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">GT::GTL::ValidableSymbol::setInputLocation</a></div><div class="ttdeci">virtual void setInputLocation(const InputLocationPtr inputLocation)</div><div class="ttdoc">Sets input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00048">validable_symbol.cpp:48</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ada4d506b1ddf69518eb50254adbc39f1"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">GT::GTL::ValidableSymbol::comparisonsAreNotAllowed</a></div><div class="ttdeci">void comparisonsAreNotAllowed() const </div><div class="ttdoc">Defines some method of SafeBoolIdiom type that will not be accessible. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00030">validable_symbol.cpp:30</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a5c069bf8310930eb6acdd7cbc28bb39b"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">GT::GTL::ValidableSymbol::~ValidableSymbol</a></div><div class="ttdeci">virtual ~ValidableSymbol()</div><div class="ttdoc">Default destructor. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00038">validable_symbol.cpp:38</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_aa7a24ed600155e345ad8e5ba6ec96fe5"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">GT::GTL::ValidableSymbol::ValidableSymbol</a></div><div class="ttdeci">ValidableSymbol()</div><div class="ttdoc">Default constructor initiating input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00034">validable_symbol.cpp:34</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a075857dd50157e46c1cc7a8bf3e32e33"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a075857dd50157e46c1cc7a8bf3e32e33">GT::GTL::ValidableSymbol::addIndent</a></div><div class="ttdeci">static Message addIndent(const Message content)</div><div class="ttdoc">Adds indent to the beginning of each line of passes content. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00070">validable_symbol.cpp:70</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a8e766b0f89c1d4242570a0e156303967"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a8e766b0f89c1d4242570a0e156303967">GT::GTL::ValidableSymbol::setInputLocation</a></div><div class="ttdeci">virtual void setInputLocation(const InputLocationPtr inputLocation)</div><div class="ttdoc">Sets input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00060">validable_symbol.cpp:60</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ada4d506b1ddf69518eb50254adbc39f1"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">GT::GTL::ValidableSymbol::comparisonsAreNotAllowed</a></div><div class="ttdeci">void comparisonsAreNotAllowed() const </div><div class="ttdoc">Defines some method of SafeBoolIdiom type that will not be accessible. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00038">validable_symbol.cpp:38</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a617debb8137356e6663864fda422d4b4"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a617debb8137356e6663864fda422d4b4">GT::GTL::ValidableSymbol::serialize</a></div><div class="ttdeci">virtual Message serialize() const </div><div class="ttdoc">Returns serialized Message for a symbol. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00052">validable_symbol.cpp:52</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a5c069bf8310930eb6acdd7cbc28bb39b"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5c069bf8310930eb6acdd7cbc28bb39b">GT::GTL::ValidableSymbol::~ValidableSymbol</a></div><div class="ttdeci">virtual ~ValidableSymbol()</div><div class="ttdoc">Default destructor. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00046">validable_symbol.cpp:46</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_aa7a24ed600155e345ad8e5ba6ec96fe5"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">GT::GTL::ValidableSymbol::ValidableSymbol</a></div><div class="ttdeci">ValidableSymbol()</div><div class="ttdoc">Default constructor initiating input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00042">validable_symbol.cpp:42</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_af34376befe7bcacb89414078c27f2c4a"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">GT::GTL::ValidableSymbol::inputLocation</a></div><div class="ttdeci">InputLocationPtr inputLocation</div><div class="ttdoc">Contains input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">validable_symbol.hpp:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -173,7 +209,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

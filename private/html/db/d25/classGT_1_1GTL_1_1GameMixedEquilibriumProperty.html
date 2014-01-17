@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -118,8 +118,11 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5448781009960df69db7be65b376e207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a5448781009960df69db7be65b376e207">GameMixedEquilibriumProperty</a> (const <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html">Game</a> *describedGame)</td></tr>
-<tr class="memdesc:a5448781009960df69db7be65b376e207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates Property with <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> it's describing.  <a href="#a5448781009960df69db7be65b376e207">More...</a><br/></td></tr>
+<tr class="memdesc:a5448781009960df69db7be65b376e207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a> with <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> it's describing.  <a href="#a5448781009960df69db7be65b376e207">More...</a><br/></td></tr>
 <tr class="separator:a5448781009960df69db7be65b376e207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c734df6d23d53d1ec3a31a1e177a6ff"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a1c734df6d23d53d1ec3a31a1e177a6ff">getDescription</a> () const override</td></tr>
+<tr class="memdesc:a1c734df6d23d53d1ec3a31a1e177a6ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a>'s description.  <a href="#a1c734df6d23d53d1ec3a31a1e177a6ff">More...</a><br/></td></tr>
+<tr class="separator:a1c734df6d23d53d1ec3a31a1e177a6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6acbc0e9d57a98db2e5d3818b5897ec"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#af6acbc0e9d57a98db2e5d3818b5897ec">findForConditions</a> (const <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a> &amp;context, const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a> &amp;conditions) const override</td></tr>
 <tr class="memdesc:af6acbc0e9d57a98db2e5d3818b5897ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds equilibrium for given Conditions.  <a href="#af6acbc0e9d57a98db2e5d3818b5897ec">More...</a><br/></td></tr>
 <tr class="separator:af6acbc0e9d57a98db2e5d3818b5897ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,7 +162,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initiates Property with <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> it's describing. </p>
+<p>Initiates <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a> with <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> it's describing. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">describedGame</td><td>described <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. ">Game</a> </td></tr>
@@ -220,14 +223,54 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a949c4a90d2bb465f5402538d771e0fb5">GT::GTL::ObjectProperty</a>.</p>
 
+<p>Definition at line <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html#l00043">43</a> of file <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html">game_mixed_equilibrium_property.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html#l00043">game</a>, and <a class="el" href="../../d3/d79/gtl_2game_8cpp_source.html#l00090">GT::GTL::Game::mixedEquilibrium()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a2067c7e829c16f3666056818c1c12460">game</a>-&gt;<a class="code" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#adb577cd1f0a9030ec73e80cfbee14d24">mixedEquilibrium</a>(context, conditions);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1GameMixedEquilibriumProperty_html_a2067c7e829c16f3666056818c1c12460"><div class="ttname"><a href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a2067c7e829c16f3666056818c1c12460">GT::GTL::GameMixedEquilibriumProperty::game</a></div><div class="ttdeci">const Game * game</div><div class="ttdoc">Described Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html#l00043">game_mixed_equilibrium_property.hpp:43</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Game_html_adb577cd1f0a9030ec73e80cfbee14d24"><div class="ttname"><a href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#adb577cd1f0a9030ec73e80cfbee14d24">GT::GTL::Game::mixedEquilibrium</a></div><div class="ttdeci">virtual ResultPtr mixedEquilibrium(const Context &amp;context, const Conditions &amp;conditions) const </div><div class="ttdoc">Search mixed Nash equilibrium for given conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d79/gtl_2game_8cpp_source.html#l00090">game.cpp:90</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1c734df6d23d53d1ec3a31a1e177a6ff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> GT::GTL::GameMixedEquilibriumProperty::getDescription </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html" title="Root of all Object&#39;s properties that can be registered. ">ObjectProperty</a>'s description. </p>
+<dl class="section return"><dt>Returns</dt><dd>description </dd></dl>
+
+<p>Implements <a class="el" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a967f944cb4562e4f10ee5a0d6c0628f8">GT::GTL::ObjectProperty</a>.</p>
+
 <p>Definition at line <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html">game_mixed_equilibrium_property.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html#l00043">game</a>, and <a class="el" href="../../d3/d79/gtl_2game_8cpp_source.html#l00062">GT::GTL::Game::mixedEquilibrium()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a2067c7e829c16f3666056818c1c12460">game</a>-&gt;<a class="code" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#adb577cd1f0a9030ec73e80cfbee14d24">mixedEquilibrium</a>(context, conditions);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1GameMixedEquilibriumProperty_html_a2067c7e829c16f3666056818c1c12460"><div class="ttname"><a href="../../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a2067c7e829c16f3666056818c1c12460">GT::GTL::GameMixedEquilibriumProperty::game</a></div><div class="ttdeci">const Game * game</div><div class="ttdoc">Described Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html#l00043">game_mixed_equilibrium_property.hpp:43</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Game_html_adb577cd1f0a9030ec73e80cfbee14d24"><div class="ttname"><a href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#adb577cd1f0a9030ec73e80cfbee14d24">GT::GTL::Game::mixedEquilibrium</a></div><div class="ttdeci">virtual ResultPtr mixedEquilibrium(const Context &amp;context, const Conditions &amp;conditions) const </div><div class="ttdoc">Search mixed Nash equilibrium for given conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d79/gtl_2game_8cpp_source.html#l00062">game.cpp:62</a></div></div>
+<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00061">GT::Model::ResultFactory::constResult()</a>, and <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                                             {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> description =</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="stringliteral">&quot;Finds mixed strategies&#39; Nash equilibrium&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">constResult</a>(description);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab383695a48b38c4d374295ccd4a2045d"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab383695a48b38c4d374295ccd4a2045d">GT::Model::ResultFactory::constResult</a></div><div class="ttdeci">ResultPtr constResult(const Message &amp;content) const </div><div class="ttdoc">Returns Results with predefined const content. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00061">result_factory.cpp:61</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab5ac1c574cebc06904092c2760cf10cd"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">GT::Model::ResultFactory::getInstance</a></div><div class="ttdeci">static ResultFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00030">result_factory.cpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,7 +297,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../d3/d6a/game__mixed__equilibrium__property_8hpp_source.html">game_mixed_equilibrium_property.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html#l00037">findForConditions()</a>.</p>
+<p>Referenced by <a class="el" href="../../dd/d5f/game__mixed__equilibrium__property_8cpp_source.html#l00043">findForConditions()</a>.</p>
 
 </div>
 </div>
@@ -270,7 +313,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,6 +92,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -122,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <area href="../../d0/dbf/classGT_1_1GTL_1_1Query.html" title="Defines Query. " alt="GT::GTL::Query" shape="rect" coords="2460,112,2696,136"/>
 <area href="../../de/dcd/classGT_1_1GTL_1_1ErrorCondition.html" title="Error Condition for handling invalid situations. " alt="GT::GTL::ErrorCondition" shape="rect" coords="246,168,482,192"/>
 <area href="../../db/da3/classGT_1_1GTL_1_1InformationSetChoiceCondition.html" title="Condition used for selecting strategy for an information set. " alt="GT::GTL::InformationSetChoiceCondition" shape="rect" coords="246,224,482,248"/>
-<area href="../../d5/d6f/classGT_1_1GTL_1_1InformationSetRangeCondition.html" title="Condition used for selecting strategiey for an information set. " alt="GT::GTL::InformationSetRangeCondition" shape="rect" coords="246,280,482,304"/>
+<area href="../../d5/d6f/classGT_1_1GTL_1_1InformationSetRangeCondition.html" title="Condition used for selecting strategy for an information set. " alt="GT::GTL::InformationSetRangeCondition" shape="rect" coords="246,280,482,304"/>
 <area href="../../d6/d54/classGT_1_1GTL_1_1NullCondition.html" title="Null Condition for handling invalid situations. " alt="GT::GTL::NullCondition" shape="rect" coords="246,336,482,360"/>
 <area href="../../d3/d93/classGT_1_1GTL_1_1PlayerChoiceCondition.html" title="Condition used for selecting strategy for a Player. " alt="GT::GTL::PlayerChoiceCondition" shape="rect" coords="246,392,482,416"/>
 <area href="../../de/db6/classGT_1_1GTL_1_1PlayerRangeCondition.html" title="Condition used for selecting strategies for a Player. " alt="GT::GTL::PlayerRangeCondition" shape="rect" coords="246,448,482,472"/>
@@ -132,11 +133,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <area href="../../d0/d35/classGT_1_1GTL_1_1NullDefinition.html" title="Null Definition for handling invalid situations. " alt="GT::GTL::NullDefinition" shape="rect" coords="1230,224,1466,248"/>
 <area href="../../df/d37/classGT_1_1GTL_1_1ErrorDetails.html" title="Error Details for handling invalid situations. " alt="GT::GTL::ErrorDetails" shape="rect" coords="1722,168,1958,192"/>
 <area href="../../d0/d3e/classGT_1_1GTL_1_1NullDetails.html" title="Null Details for handling invalid situations. " alt="GT::GTL::NullDetails" shape="rect" coords="1722,224,1958,248"/>
-<area href="../../da/d2d/classGT_1_1GTL_1_1ErrorObject.html" title="Error Object for handling invalid situations. " alt="GT::GTL::ErrorObject" shape="rect" coords="2214,168,2450,192"/>
-<area href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. " alt="GT::GTL::Game" shape="rect" coords="2214,224,2450,248"/>
-<area href="../../dc/df9/classGT_1_1GTL_1_1NullObject.html" title="Null Object for handling invalid situations. " alt="GT::GTL::NullObject" shape="rect" coords="2214,280,2450,304"/>
-<area href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. " alt="GT::GTL::Param" shape="rect" coords="2214,336,2450,360"/>
-<area href="../../d8/d9b/classGT_1_1GTL_1_1Player.html" title="Defines Player. " alt="GT::GTL::Player" shape="rect" coords="2214,392,2450,416"/>
+<area href="../../d4/d88/classGT_1_1GTL_1_1CurrentContext.html" title="Abstract class that defines interface for Params. " alt="GT::GTL::CurrentContext" shape="rect" coords="2214,168,2450,192"/>
+<area href="../../da/d2d/classGT_1_1GTL_1_1ErrorObject.html" title="Error Object for handling invalid situations. " alt="GT::GTL::ErrorObject" shape="rect" coords="2214,224,2450,248"/>
+<area href="../../dd/d9e/classGT_1_1GTL_1_1Game.html" title="Defines Game. " alt="GT::GTL::Game" shape="rect" coords="2214,280,2450,304"/>
+<area href="../../dc/df9/classGT_1_1GTL_1_1NullObject.html" title="Null Object for handling invalid situations. " alt="GT::GTL::NullObject" shape="rect" coords="2214,336,2450,360"/>
+<area href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. " alt="GT::GTL::Param" shape="rect" coords="2214,392,2450,416"/>
+<area href="../../d8/d9b/classGT_1_1GTL_1_1Player.html" title="Defines Player. " alt="GT::GTL::Player" shape="rect" coords="2214,448,2450,472"/>
 <area href="../../d2/d8b/classGT_1_1GTL_1_1ErrorQuery.html" title="Error Query for handling invalid situations. " alt="GT::GTL::ErrorQuery" shape="rect" coords="2706,168,2942,192"/>
 <area href="../../d9/dad/classGT_1_1GTL_1_1NullQuery.html" title="Null Query for handling invalid situations. " alt="GT::GTL::NullQuery" shape="rect" coords="2706,224,2942,248"/>
 </map>
@@ -151,8 +153,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5c069bf8310930eb6acdd7cbc28bb39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="#a5c069bf8310930eb6acdd7cbc28bb39b">More...</a><br/></td></tr>
 <tr class="separator:a5c069bf8310930eb6acdd7cbc28bb39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2b87168eefadcf8dc73f349a7482ac7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">isValid</a> () const </td></tr>
-<tr class="memdesc:ab2b87168eefadcf8dc73f349a7482ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether object is valid.  <a href="#ab2b87168eefadcf8dc73f349a7482ac7">More...</a><br/></td></tr>
+<tr class="memdesc:ab2b87168eefadcf8dc73f349a7482ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether <a class="el" href="../../d1/dde/classGT_1_1GTL_1_1Object.html" title="Root of all Objects used as a data in parsed by GTL. ">Object</a> is valid.  <a href="#ab2b87168eefadcf8dc73f349a7482ac7">More...</a><br/></td></tr>
 <tr class="separator:ab2b87168eefadcf8dc73f349a7482ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617debb8137356e6663864fda422d4b4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a617debb8137356e6663864fda422d4b4">serialize</a> () const </td></tr>
+<tr class="memdesc:a617debb8137356e6663864fda422d4b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns serialized Message for a symbol.  <a href="#a617debb8137356e6663864fda422d4b4">More...</a><br/></td></tr>
+<tr class="separator:a617debb8137356e6663864fda422d4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96650962dae1fd63eb74410ed2f8ea85"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a96650962dae1fd63eb74410ed2f8ea85">getInputLocation</a> () const </td></tr>
 <tr class="memdesc:a96650962dae1fd63eb74410ed2f8ea85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns input location.  <a href="#a96650962dae1fd63eb74410ed2f8ea85">More...</a><br/></td></tr>
 <tr class="separator:a96650962dae1fd63eb74410ed2f8ea85"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +183,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3cc6d812df0ea26d445d2d91bcafb987 inherit pub_methods_classGT_1_1Model_1_1Root"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d6e/classGT_1_1Model_1_1Root.html#a3cc6d812df0ea26d445d2d91bcafb987">toString</a> () const =0</td></tr>
 <tr class="memdesc:a3cc6d812df0ea26d445d2d91bcafb987 inherit pub_methods_classGT_1_1Model_1_1Root"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Message about an Object allowing its debuging.  <a href="#a3cc6d812df0ea26d445d2d91bcafb987">More...</a><br/></td></tr>
 <tr class="separator:a3cc6d812df0ea26d445d2d91bcafb987 inherit pub_methods_classGT_1_1Model_1_1Root"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a075857dd50157e46c1cc7a8bf3e32e33"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a075857dd50157e46c1cc7a8bf3e32e33">addIndent</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> content)</td></tr>
+<tr class="memdesc:a075857dd50157e46c1cc7a8bf3e32e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds indent to the beginning of each line of passes content.  <a href="#a075857dd50157e46c1cc7a8bf3e32e33">More...</a><br/></td></tr>
+<tr class="separator:a075857dd50157e46c1cc7a8bf3e32e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -262,10 +273,10 @@ Private Attributes</h2></td></tr>
 
 <p>Default constructor initiating input location. </p>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                 :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>(<span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a>())</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {}</div>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00042">42</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                 :</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>(<span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a>())</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {}</div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a2f044cb0946d536fc3213bd33c3a9b3e"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">GT::GTL::InputLocation</a></div><div class="ttdeci">location InputLocation</div><div class="ttdoc">Alias for Bison-generated class. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00130">common.hpp:130</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_af34376befe7bcacb89414078c27f2c4a"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">GT::GTL::ValidableSymbol::inputLocation</a></div><div class="ttdeci">InputLocationPtr inputLocation</div><div class="ttdoc">Contains input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">validable_symbol.hpp:57</a></div></div>
 </div><!-- fragment -->
@@ -294,12 +305,69 @@ Private Attributes</h2></td></tr>
 
 <p>Default destructor. </p>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{}</div>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00046">46</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a075857dd50157e46c1cc7a8bf3e32e33"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> GT::GTL::ValidableSymbol::addIndent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td>
+          <td class="paramname"><em>content</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds indent to the beginning of each line of passes content. </p>
+<p>Used during serialization.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">content</td><td>content that should be indented </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>indented content </dd></dl>
+
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="../../d3/d79/gtl_2game_8cpp_source.html#l00122">GT::GTL::Game::serialize()</a>, <a class="el" href="../../db/d12/context_8cpp_source.html#l00127">GT::GTL::Context::serialize()</a>, and <a class="el" href="../../db/dbc/coordinate_8cpp_source.html#l00127">GT::GTL::Coordinate::serialize()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// do not use boost::container::vector here - it causes memory access violation with split function</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::vector&lt;Message&gt; lines;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    split(lines, content, is_any_of(<span class="stringliteral">&quot;\n&quot;</span>));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> firstElement = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; line : lines) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (!line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\n&quot;</span>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (!firstElement)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                result &lt;&lt; endl;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            result &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; line;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            firstElement = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="ada4d506b1ddf69518eb50254adbc39f1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -323,10 +391,10 @@ Private Attributes</h2></td></tr>
 
 <p>Defines some method of SafeBoolIdiom type that will not be accessible. </p>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00030">30</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00054">operator SafeBoolIdiom()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{}</div>
+<p>Referenced by <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00066">operator SafeBoolIdiom()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -354,14 +422,14 @@ Private Attributes</h2></td></tr>
 <p>Returns input location. </p>
 <dl class="section return"><dt>Returns</dt><dd>input location </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">inputLocation</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00089">GT::GTL::CheckingGameDriver::createDetails()</a>, <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00063">GT::GTL::CheckingGameDriver::createExtensive()</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00083">GT::GTL::CheckingStatementDriver::createQuery()</a>, <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00037">GT::GTL::CheckingGameDriver::createStrategic()</a>, <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00055">GT::GTL::ExecutionStatementDriver::executeQuery()</a>, <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00037">GT::GTL::CheckingConditionDriver::informationSetChoosed()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00090">GT::GTL::CheckingConditionDriver::informationSetWithin()</a>, <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00136">GT::GTL::CheckingCoordinateDriver::merge()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00146">GT::GTL::CheckingConditionDriver::playerChoosed()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00185">GT::GTL::CheckingConditionDriver::playerWithin()</a>, <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00115">GT::GTL::CheckingDriver::showError()</a>, and <a class="el" href="../../d4/d45/gtl_2helpers_8cpp_source.html#l00036">GT::GTL::suberrorMessage()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                               {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<p>Referenced by <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00089">GT::GTL::CheckingGameDriver::createDetails()</a>, <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00063">GT::GTL::CheckingGameDriver::createExtensive()</a>, <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00083">GT::GTL::CheckingStatementDriver::createQuery()</a>, <a class="el" href="../../da/d4e/checking__game__driver_8cpp_source.html#l00037">GT::GTL::CheckingGameDriver::createStrategic()</a>, <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00055">GT::GTL::ExecutionStatementDriver::executeQuery()</a>, <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00037">GT::GTL::CheckingConditionDriver::informationSetChoosed()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00090">GT::GTL::CheckingConditionDriver::informationSetWithin()</a>, <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00136">GT::GTL::CheckingCoordinateDriver::merge()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00146">GT::GTL::CheckingConditionDriver::playerChoosed()</a>, <a class="el" href="../../dd/d95/checking__condition__driver_8cpp_source.html#l00185">GT::GTL::CheckingConditionDriver::playerWithin()</a>, <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00116">GT::GTL::CheckingDriver::showError()</a>, and <a class="el" href="../../d4/d45/gtl_2helpers_8cpp_source.html#l00036">GT::GTL::suberrorMessage()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                               {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_af34376befe7bcacb89414078c27f2c4a"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">GT::GTL::ValidableSymbol::inputLocation</a></div><div class="ttdeci">InputLocationPtr inputLocation</div><div class="ttdoc">Contains input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">validable_symbol.hpp:57</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -387,17 +455,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether object is valid. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if object is Valid </dd></dl>
+<p>Returns whether <a class="el" href="../../d1/dde/classGT_1_1GTL_1_1Object.html" title="Root of all Objects used as a data in parsed by GTL. ">Object</a> is valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if <a class="el" href="../../d1/dde/classGT_1_1GTL_1_1Object.html" title="Root of all Objects used as a data in parsed by GTL. ">Object</a> is valid </dd></dl>
 
 <p>Reimplemented in <a class="el" href="../../de/ddb/classGT_1_1GTL_1_1ErrorCoordinate.html#a0d9957459c389745a43316e472d703e9">GT::GTL::ErrorCoordinate</a>, <a class="el" href="../../da/d2d/classGT_1_1GTL_1_1ErrorObject.html#ac55a77aa3a3be246cea5fdf1bf78b538">GT::GTL::ErrorObject</a>, <a class="el" href="../../d3/d95/classGT_1_1GTL_1_1ErrorParam.html#a33e83a039811a01046d7454af7d166bf">GT::GTL::ErrorParam</a>, <a class="el" href="../../d0/d1e/classGT_1_1GTL_1_1ErrorGame.html#a5fad3f7b84d41931b676a2d61629f038">GT::GTL::ErrorGame</a>, <a class="el" href="../../d2/d8b/classGT_1_1GTL_1_1ErrorQuery.html#a289740213e3e5b33b5c1bdd10121540c">GT::GTL::ErrorQuery</a>, <a class="el" href="../../dd/dd1/classGT_1_1GTL_1_1ErrorDefinition.html#ad753140b9eee77c2427c09192bed24f0">GT::GTL::ErrorDefinition</a>, <a class="el" href="../../df/d37/classGT_1_1GTL_1_1ErrorDetails.html#aebd0065c88dfa4b8e29599f3ac0560f5">GT::GTL::ErrorDetails</a>, <a class="el" href="../../de/dcd/classGT_1_1GTL_1_1ErrorCondition.html#a4e427b31019f2b88756c17b0d2b29453">GT::GTL::ErrorCondition</a>, and <a class="el" href="../../dc/d55/classGT_1_1GTL_1_1ErrorPlayer.html#a531dfdb686e3d92014262be18df4ae4f">GT::GTL::ErrorPlayer</a>.</p>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
 
 <p>Referenced by <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00037">GT::GTL::CheckingStatementDriver::executeDefinition()</a>, and <a class="el" href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00046">GT::GTL::CheckingStatementDriver::executeQuery()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,14 +484,48 @@ Private Attributes</h2></td></tr>
 
 <p>Safe Bool Idiom used to make checks without comparisons or algrbraic usage of bool. </p>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
 
-<p>References <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00030">comparisonsAreNotAllowed()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                              {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">isValid</a>() ? &amp;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a> : 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ab2b87168eefadcf8dc73f349a7482ac7"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether object is valid. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00040">validable_symbol.cpp:40</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ada4d506b1ddf69518eb50254adbc39f1"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">GT::GTL::ValidableSymbol::comparisonsAreNotAllowed</a></div><div class="ttdeci">void comparisonsAreNotAllowed() const </div><div class="ttdoc">Defines some method of SafeBoolIdiom type that will not be accessible. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00030">validable_symbol.cpp:30</a></div></div>
+<p>References <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00038">comparisonsAreNotAllowed()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                              {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">isValid</a>() ? &amp;<a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">ValidableSymbol::comparisonsAreNotAllowed</a> : 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ab2b87168eefadcf8dc73f349a7482ac7"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ab2b87168eefadcf8dc73f349a7482ac7">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether Object is valid. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00048">validable_symbol.cpp:48</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ada4d506b1ddf69518eb50254adbc39f1"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">GT::GTL::ValidableSymbol::comparisonsAreNotAllowed</a></div><div class="ttdeci">void comparisonsAreNotAllowed() const </div><div class="ttdoc">Defines some method of SafeBoolIdiom type that will not be accessible. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d21/validable__symbol_8cpp_source.html#l00038">validable_symbol.cpp:38</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a617debb8137356e6663864fda422d4b4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> GT::GTL::ValidableSymbol::serialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns serialized Message for a symbol. </p>
+<dl class="section return"><dt>Returns</dt><dd>serialization result </dd></dl>
+
+<p>Reimplemented in <a class="el" href="../../d0/d1e/classGT_1_1GTL_1_1ErrorGame.html#a4d86bf6989e852b6867801211810d80d">GT::GTL::ErrorGame</a>, <a class="el" href="../../d7/ddd/classGT_1_1GTL_1_1Coordinate.html#aff8afbf158de4793f73436e95a9f1192">GT::GTL::Coordinate</a>, <a class="el" href="../../d1/d02/classGT_1_1GTL_1_1NullGame.html#a1e673531e8c3a0fd5510ec67b63bb0ee">GT::GTL::NullGame</a>, <a class="el" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#a0ffc93f9c7555ce885b016a0fda0ca7f">GT::GTL::Game</a>, <a class="el" href="../../d0/d74/classGT_1_1GTL_1_1IdentifierParam.html#a2580a70ccfa58888e42de8d80668ced1">GT::GTL::IdentifierParam</a>, <a class="el" href="../../d3/d81/classGT_1_1GTL_1_1NumberParam.html#ab06224d6c80866d7c6c4c4a757df1970">GT::GTL::NumberParam</a>, <a class="el" href="../../d4/d22/classGT_1_1GTL_1_1ObjectParam.html#aa4f4cc157758d8d6d44ea92b79678748">GT::GTL::ObjectParam</a>, and <a class="el" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a9a6ad600bc90eba11232dbe5189b66ba">GT::GTL::Player</a>.</p>
+
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                         {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -457,12 +559,12 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html">validable_symbol.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">inputLocation</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a> = newInputLocation;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a> = newInputLocation;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_af34376befe7bcacb89414078c27f2c4a"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">GT::GTL::ValidableSymbol::inputLocation</a></div><div class="ttdeci">InputLocationPtr inputLocation</div><div class="ttdoc">Contains input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">validable_symbol.hpp:57</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -490,7 +592,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../dc/d00/validable__symbol_8hpp_source.html">validable_symbol.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00044">getInputLocation()</a>, and <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00048">setInputLocation()</a>.</p>
+<p>Referenced by <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00056">getInputLocation()</a>, and <a class="el" href="../../db/d21/validable__symbol_8cpp_source.html#l00060">setInputLocation()</a>.</p>
 
 </div>
 </div>
@@ -506,7 +608,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

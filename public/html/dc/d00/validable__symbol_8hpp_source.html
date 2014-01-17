@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -162,54 +162,76 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a1c72e4f23fd81200a9a0c966db178d90">~ValidableSymbol</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief Returns whether object is valid.</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief Returns whether Object is valid.</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     * @return true if object is Valid</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     * @return true if Object is valid</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9334ea1e7f240348f16bcf5fe3b7e70b">isValid</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     * @brief Returns input location.</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     * @brief Returns serialized Message for a symbol.</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     * @return input location</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     * @return serialization result</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5f9c2fffc73b7160ba29045011cec2c4">getInputLocation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ac266c69ca5918bc5596015b7c9688428">serialize</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * @brief Sets input location.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * @brief Returns input location.</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * @param inputLocation input location</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * @return input location</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9c31a4fcf887e1f4b7c4422df8cc31ef">setInputLocation</a>(</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    );</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     * @brief Safe Bool Idiom used to make checks without comparisons or algrbraic usage of bool.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5f9c2fffc73b7160ba29045011cec2c4">getInputLocation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">     * @brief Sets input location.</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     * @param inputLocation input location</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">operator</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aea8a3b9b6e34f2d80cc76f31158285c5">SafeBoolIdiom</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * @brief Defines some method of SafeBoolIdiom type that will not be accessible.</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">comparisonsAreNotAllowed</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}; <span class="comment">/* END class ValidableSymbol */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9c31a4fcf887e1f4b7c4422df8cc31ef">setInputLocation</a>(</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">InputLocationPtr</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">inputLocation</a></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     * @brief Safe Bool Idiom used to make checks without comparisons or algrbraic usage of bool.</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">operator</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aea8a3b9b6e34f2d80cc76f31158285c5">SafeBoolIdiom</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_VALIDABLE_SYMBOL_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     * @brief Adds indent to the beginning of each line of passes content.</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     * Used during serialization.</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">     * @param content content that should be indented</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">     * @return        indented content</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a10e97bdd6faefaad1ccb8e757e258ea0">addIndent</a>(</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> content</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     * @brief Defines some method of SafeBoolIdiom type that will not be accessible.</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">comparisonsAreNotAllowed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}; <span class="comment">/* END class ValidableSymbol */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_VALIDABLE_SYMBOL_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ac266c69ca5918bc5596015b7c9688428"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ac266c69ca5918bc5596015b7c9688428">GT::GTL::ValidableSymbol::serialize</a></div><div class="ttdeci">virtual Message serialize() const </div><div class="ttdoc">Returns serialized Message for a symbol. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a1c72e4f23fd81200a9a0c966db178d90"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a1c72e4f23fd81200a9a0c966db178d90">GT::GTL::ValidableSymbol::~ValidableSymbol</a></div><div class="ttdeci">virtual ~ValidableSymbol()</div><div class="ttdoc">Default destructor. </div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a9334ea1e7f240348f16bcf5fe3b7e70b"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9334ea1e7f240348f16bcf5fe3b7e70b">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether object is valid. </div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a9334ea1e7f240348f16bcf5fe3b7e70b"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9334ea1e7f240348f16bcf5fe3b7e70b">GT::GTL::ValidableSymbol::isValid</a></div><div class="ttdeci">virtual bool isValid() const </div><div class="ttdoc">Returns whether Object is valid. </div></div>
+<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a9c31a4fcf887e1f4b7c4422df8cc31ef"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a9c31a4fcf887e1f4b7c4422df8cc31ef">GT::GTL::ValidableSymbol::setInputLocation</a></div><div class="ttdeci">virtual void setInputLocation(const InputLocationPtr inputLocation)</div><div class="ttdoc">Sets input location. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_add9ad5a0518a638295f41916bf9000d7"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7">GT::GTL::InputLocationPtr</a></div><div class="ttdeci">shared_ptr&lt; InputLocation &gt; InputLocationPtr</div><div class="ttdoc">Smart pointer to InputLocation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00131">common.hpp:131</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html">GT::GTL::ValidableSymbol</a></div><div class="ttdoc">Interface used for marking objects that are valid (or not) symbols in Parser. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00048">validable_symbol.hpp:48</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1Root_html"><div class="ttname"><a href="../../df/d6e/classGT_1_1Model_1_1Root.html">GT::Model::Root</a></div><div class="ttdoc">Basic interface of many classes used in the project. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d66/root_8hpp_source.html#l00037">root.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_aea8a3b9b6e34f2d80cc76f31158285c5"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aea8a3b9b6e34f2d80cc76f31158285c5">GT::GTL::ValidableSymbol::SafeBoolIdiom</a></div><div class="ttdeci">void(ValidableSymbol::* SafeBoolIdiom)() const </div><div class="ttdoc">Defines SafeBoolIdiom as pointer to the method with no argument and return. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00052">validable_symbol.hpp:52</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_ada4d506b1ddf69518eb50254adbc39f1"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ada4d506b1ddf69518eb50254adbc39f1">GT::GTL::ValidableSymbol::comparisonsAreNotAllowed</a></div><div class="ttdeci">void comparisonsAreNotAllowed() const </div><div class="ttdoc">Defines some method of SafeBoolIdiom type that will not be accessible. </div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a10e97bdd6faefaad1ccb8e757e258ea0"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a10e97bdd6faefaad1ccb8e757e258ea0">GT::GTL::ValidableSymbol::addIndent</a></div><div class="ttdeci">static Message addIndent(const Message content)</div><div class="ttdoc">Adds indent to the beginning of each line of passes content. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_a5f9c2fffc73b7160ba29045011cec2c4"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#a5f9c2fffc73b7160ba29045011cec2c4">GT::GTL::ValidableSymbol::getInputLocation</a></div><div class="ttdeci">virtual const InputLocationPtr getInputLocation() const </div><div class="ttdoc">Returns input location. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_aa7a24ed600155e345ad8e5ba6ec96fe5"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aa7a24ed600155e345ad8e5ba6ec96fe5">GT::GTL::ValidableSymbol::ValidableSymbol</a></div><div class="ttdeci">ValidableSymbol()</div><div class="ttdoc">Default constructor initiating input location. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ValidableSymbol_html_af34376befe7bcacb89414078c27f2c4a"><div class="ttname"><a href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#af34376befe7bcacb89414078c27f2c4a">GT::GTL::ValidableSymbol::inputLocation</a></div><div class="ttdeci">InputLocationPtr inputLocation</div><div class="ttdoc">Contains input location. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d00/validable__symbol_8hpp_source.html#l00057">validable_symbol.hpp:57</a></div></div>
@@ -221,7 +243,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

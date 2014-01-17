@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,6 +92,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d1/d97/classGT_1_1GTL_1_1ExecutionDriver-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -118,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae197aada505db8d1977b49c9c5251173"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae197aada505db8d1977b49c9c5251173">ExecutionDriver</a> (<a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *<a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>, <a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *errorStream)</td></tr>
+<tr class="memitem:ae197aada505db8d1977b49c9c5251173"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae197aada505db8d1977b49c9c5251173">ExecutionDriver</a> (<a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *<a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>, <a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *<a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">errorStream</a>)</td></tr>
 <tr class="memdesc:ae197aada505db8d1977b49c9c5251173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates <a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html" title="Implementation used for executing both checking and actual actions. ">ExecutionDriver</a> with a output stream.  <a href="#ae197aada505db8d1977b49c9c5251173">More...</a><br/></td></tr>
 <tr class="separator:ae197aada505db8d1977b49c9c5251173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aa9d5187d1e314c932e2a3e87ab22ea"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7aa9d5187d1e314c932e2a3e87ab22ea">~ExecutionDriver</a> ()</td></tr>
@@ -168,6 +169,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a466430634c837034c8acdec02b409e3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a466430634c837034c8acdec02b409e3f">showError</a> (const <a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html">ValidableSymbol</a> &amp;symbol) const override</td></tr>
 <tr class="memdesc:a466430634c837034c8acdec02b409e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays error.  <a href="#a466430634c837034c8acdec02b409e3f">More...</a><br/></td></tr>
 <tr class="separator:a466430634c837034c8acdec02b409e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a352844ae772574aa587ec7d37a1a26"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9a352844ae772574aa587ec7d37a1a26">execute</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName) const override</td></tr>
+<tr class="memdesc:a9a352844ae772574aa587ec7d37a1a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes file.  <a href="#a9a352844ae772574aa587ec7d37a1a26">More...</a><br/></td></tr>
+<tr class="separator:a9a352844ae772574aa587ec7d37a1a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f3e78b78489d1d2494512256f3d919"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#aa4f3e78b78489d1d2494512256f3d919">load</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName) override</td></tr>
+<tr class="memdesc:aa4f3e78b78489d1d2494512256f3d919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads file.  <a href="#aa4f3e78b78489d1d2494512256f3d919">More...</a><br/></td></tr>
+<tr class="separator:aa4f3e78b78489d1d2494512256f3d919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab47af1a483c9269bfeb97e4ecb1f802b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ab47af1a483c9269bfeb97e4ecb1f802b">save</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName) const override</td></tr>
+<tr class="memdesc:ab47af1a483c9269bfeb97e4ecb1f802b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves all Params available in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> (and it's parents) to file.  <a href="#ab47af1a483c9269bfeb97e4ecb1f802b">More...</a><br/></td></tr>
+<tr class="separator:ab47af1a483c9269bfeb97e4ecb1f802b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f5e0ddd3166c7483b06fdd359f23fac"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a3f5e0ddd3166c7483b06fdd359f23fac">toString</a> () const override</td></tr>
 <tr class="memdesc:a3f5e0ddd3166c7483b06fdd359f23fac"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a>'s Message.  <a href="#a3f5e0ddd3166c7483b06fdd359f23fac">More...</a><br/></td></tr>
 <tr class="separator:a3f5e0ddd3166c7483b06fdd359f23fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,6 +198,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afcc8438bd70ad34e7b8e2b67be0150cd inherit pub_methods_classGT_1_1Model_1_1Root"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d6e/classGT_1_1Model_1_1Root.html#afcc8438bd70ad34e7b8e2b67be0150cd">isNull</a> () const </td></tr>
 <tr class="memdesc:afcc8438bd70ad34e7b8e2b67be0150cd inherit pub_methods_classGT_1_1Model_1_1Root"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wheter <a class="el" href="../../df/d6e/classGT_1_1Model_1_1Root.html" title="Basic interface of many classes used in the project. ">Root</a> is a null Object (null guardian).  <a href="#afcc8438bd70ad34e7b8e2b67be0150cd">More...</a><br/></td></tr>
 <tr class="separator:afcc8438bd70ad34e7b8e2b67be0150cd inherit pub_methods_classGT_1_1Model_1_1Root"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a65c208a1069d349efeb4aebb9b95305c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a65c208a1069d349efeb4aebb9b95305c">ExecutionDriver</a> (<a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *<a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>, <a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *<a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">errorStream</a>, <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a1b8686c0a0aa60a3be21fe18adefafbe">ContextPtr</a> parentContext)</td></tr>
+<tr class="memdesc:a65c208a1069d349efeb4aebb9b95305c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates <a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html" title="Implementation used for executing both checking and actual actions. ">ExecutionDriver</a> with a output stream.  <a href="#a65c208a1069d349efeb4aebb9b95305c">More...</a><br/></td></tr>
+<tr class="separator:a65c208a1069d349efeb4aebb9b95305c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -233,6 +249,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7afe0cfc599b8977ec5597e4954e12f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a></td></tr>
 <tr class="memdesc:a7afe0cfc599b8977ec5597e4954e12f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output stream for displaying results.  <a href="#a7afe0cfc599b8977ec5597e4954e12f4">More...</a><br/></td></tr>
 <tr class="separator:a7afe0cfc599b8977ec5597e4954e12f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ee3928e90577a5642f1c94fe2367286"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">errorStream</a></td></tr>
+<tr class="memdesc:a8ee3928e90577a5642f1c94fe2367286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error stream for displaying informations about errors.  <a href="#a8ee3928e90577a5642f1c94fe2367286">More...</a><br/></td></tr>
+<tr class="separator:a8ee3928e90577a5642f1c94fe2367286"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation used for executing both checking and actual actions. </p>
@@ -275,19 +294,21 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>(newErrorStream),</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>(<span class="keyword">new</span> Context()),</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">coordinate</a>(<span class="keyword">this</span>),</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">condition</a>(<span class="keyword">this</span>),</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">game</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">value</a>(<span class="keyword">this</span>),</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">statement</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>(newOutputStream)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {}</div>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  :</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>(newErrorStream),</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>(<span class="keyword">new</span> Context()),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">coordinate</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">condition</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">game</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">value</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">statement</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>(newOutputStream),</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">errorStream</a>(newErrorStream)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7fa13d9dba9dcd85c40951b8ff68c08d"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">GT::GTL::ExecutionDriver::coordinate</a></div><div class="ttdeci">ExecutionCoordinateDriver coordinate</div><div class="ttdoc">Driver for Coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00055">execution_driver.hpp:55</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a9578f5711fc830804be23366263db6d5"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">GT::GTL::ExecutionDriver::context</a></div><div class="ttdeci">ContextPtr context</div><div class="ttdoc">Contains Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00050">execution_driver.hpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a8ee3928e90577a5642f1c94fe2367286"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">GT::GTL::ExecutionDriver::errorStream</a></div><div class="ttdeci">OutputStream * errorStream</div><div class="ttdoc">Error stream for displaying informations about errors. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00100">execution_driver.hpp:100</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a00254b889c2cddd2c5795592f5f95a63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">GT::GTL::ExecutionDriver::game</a></div><div class="ttdeci">ExecutionGameDriver game</div><div class="ttdoc">Driver for Games. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00071">execution_driver.hpp:71</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a13064ad77eac1001363188f217bb2280"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">GT::GTL::ExecutionDriver::checkingDriver</a></div><div class="ttdeci">CheckingDriver checkingDriver</div><div class="ttdoc">CheckingDriver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00045">execution_driver.hpp:45</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a46e5a2cf3750d8ae2db88acab11b2b63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">GT::GTL::ExecutionDriver::statement</a></div><div class="ttdeci">ExecutionStatementDriver statement</div><div class="ttdoc">Driver for statements. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00091">execution_driver.hpp:91</a></div></div>
@@ -320,12 +341,156 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{}</div>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a65c208a1069d349efeb4aebb9b95305c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GT::GTL::ExecutionDriver::ExecutionDriver </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>outputStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>errorStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a1b8686c0a0aa60a3be21fe18adefafbe">ContextPtr</a>&#160;</td>
+          <td class="paramname"><em>parentContext</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initiates <a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html" title="Implementation used for executing both checking and actual actions. ">ExecutionDriver</a> with a output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outputStream</td><td>output stream </td></tr>
+    <tr><td class="paramname">errorStream</td><td>error stream </td></tr>
+    <tr><td class="paramname">parentContext</td><td>parent's <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00180">180</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  :</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>(newErrorStream),</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>(<span class="keyword">new</span> Context(parentContext)),</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">coordinate</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">condition</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">game</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">value</a>(<span class="keyword">this</span>),</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">statement</a>(<span class="keyword">this</span>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>.get()),</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>(newOutputStream)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7fa13d9dba9dcd85c40951b8ff68c08d"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">GT::GTL::ExecutionDriver::coordinate</a></div><div class="ttdeci">ExecutionCoordinateDriver coordinate</div><div class="ttdoc">Driver for Coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00055">execution_driver.hpp:55</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a9578f5711fc830804be23366263db6d5"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">GT::GTL::ExecutionDriver::context</a></div><div class="ttdeci">ContextPtr context</div><div class="ttdoc">Contains Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00050">execution_driver.hpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a00254b889c2cddd2c5795592f5f95a63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">GT::GTL::ExecutionDriver::game</a></div><div class="ttdeci">ExecutionGameDriver game</div><div class="ttdoc">Driver for Games. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00071">execution_driver.hpp:71</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a13064ad77eac1001363188f217bb2280"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">GT::GTL::ExecutionDriver::checkingDriver</a></div><div class="ttdeci">CheckingDriver checkingDriver</div><div class="ttdoc">CheckingDriver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00045">execution_driver.hpp:45</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a46e5a2cf3750d8ae2db88acab11b2b63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">GT::GTL::ExecutionDriver::statement</a></div><div class="ttdeci">ExecutionStatementDriver statement</div><div class="ttdoc">Driver for statements. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00091">execution_driver.hpp:91</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7afe0cfc599b8977ec5597e4954e12f4"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">GT::GTL::ExecutionDriver::outputStream</a></div><div class="ttdeci">OutputStream * outputStream</div><div class="ttdoc">Output stream for displaying results. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00096">execution_driver.hpp:96</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a433520d2e1b97290096c4aa282561729"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">GT::GTL::ExecutionDriver::condition</a></div><div class="ttdeci">ExecutionConditionDriver condition</div><div class="ttdoc">Driver for Conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00063">execution_driver.hpp:63</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a53f428d041da7123dae584ef60286da3"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">GT::GTL::ExecutionDriver::value</a></div><div class="ttdeci">ExecutionValueDriver value</div><div class="ttdoc">Driver for values. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00087">execution_driver.hpp:87</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a9a352844ae772574aa587ec7d37a1a26"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GT::GTL::ExecutionDriver::execute </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Executes file. </p>
+<p>It uses currently used output and error stream to display result but read input from file.</p>
+<p>Operations are perfored on spawned <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> so after all operations parental <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> is instact.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of executed file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#aa4f3e78b78489d1d2494512256f3d919" title="Loads file. ">load(const InputLocation&amp;, const Identifier&amp;)</a> </dd></dl>
+
+<p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ae5d75034b4663be30ae631824fbeeb71">GT::GTL::Driver</a>.</p>
+
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+
+<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00050">context</a>, <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00100">errorStream</a>, <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00096">outputStream</a>, and <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00103">showError()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    scoped_ptr&lt;ifstream&gt; file(<span class="keyword">new</span> ifstream(fileName));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (!file-&gt;good()) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        stringstream builder;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        builder &lt;&lt; <span class="stringliteral">&quot;Executed file &lt;&quot;</span> &lt;&lt; fileName &lt;&lt; <span class="stringliteral">&quot;&gt; does not exists&quot;</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">string</span> errorMessage(builder.str());</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">showError</a>(location, errorMessage);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae197aada505db8d1977b49c9c5251173">ExecutionDriver</a> driver(<a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">errorStream</a>, <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    Scanner         scanner(file.get());</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    Parser          parser(scanner, driver);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    parser.parse();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a9578f5711fc830804be23366263db6d5"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">GT::GTL::ExecutionDriver::context</a></div><div class="ttdeci">ContextPtr context</div><div class="ttdoc">Contains Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00050">execution_driver.hpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a8ee3928e90577a5642f1c94fe2367286"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a8ee3928e90577a5642f1c94fe2367286">GT::GTL::ExecutionDriver::errorStream</a></div><div class="ttdeci">OutputStream * errorStream</div><div class="ttdoc">Error stream for displaying informations about errors. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00100">execution_driver.hpp:100</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_ae5c07438d0cb51563d0bbf7e07ddab19"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">GT::GTL::ExecutionDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d30/execution__driver_8cpp_source.html#l00103">execution_driver.cpp:103</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7afe0cfc599b8977ec5597e4954e12f4"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">GT::GTL::ExecutionDriver::outputStream</a></div><div class="ttdeci">OutputStream * outputStream</div><div class="ttdoc">Output stream for displaying results. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00096">execution_driver.hpp:96</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_ae197aada505db8d1977b49c9c5251173"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae197aada505db8d1977b49c9c5251173">GT::GTL::ExecutionDriver::ExecutionDriver</a></div><div class="ttdeci">ExecutionDriver(OutputStream *outputStream, OutputStream *errorStream)</div><div class="ttdoc">Initiates ExecutionDriver with a output stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d30/execution__driver_8cpp_source.html#l00039">execution_driver.cpp:39</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="aea82418a268f13ff709f07461aced277"></a>
 <div class="memitem">
 <div class="memproto">
@@ -352,12 +517,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a06e7d328a68d80f2c3495d26e9d4d34c">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00063">condition</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                     {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">condition</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                     {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">condition</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a433520d2e1b97290096c4aa282561729"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a433520d2e1b97290096c4aa282561729">GT::GTL::ExecutionDriver::condition</a></div><div class="ttdeci">ExecutionConditionDriver condition</div><div class="ttdoc">Driver for Conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00063">execution_driver.hpp:63</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -388,12 +553,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ae0839a1b717e3d47fcf3fe95e8dce3a2">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00067">conditions</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a47f1c7b466d2de7922669602aa04624d">conditions</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a47f1c7b466d2de7922669602aa04624d">conditions</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a47f1c7b466d2de7922669602aa04624d"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a47f1c7b466d2de7922669602aa04624d">GT::GTL::ExecutionDriver::conditions</a></div><div class="ttdeci">CollectionsDriver&lt; GT::GTL::Condition &gt; conditions</div><div class="ttdoc">Driver for Conditions&amp;#39; collections. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00067">execution_driver.hpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -424,12 +589,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a00cbd3d0d30199c6cbe0643fcdec2082">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00055">coordinate</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                       {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">coordinate</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                       {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">coordinate</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7fa13d9dba9dcd85c40951b8ff68c08d"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7fa13d9dba9dcd85c40951b8ff68c08d">GT::GTL::ExecutionDriver::coordinate</a></div><div class="ttdeci">ExecutionCoordinateDriver coordinate</div><div class="ttdoc">Driver for Coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00055">execution_driver.hpp:55</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -460,12 +625,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a123574c6f9466fc22f97da02c116dfa9">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00059">coordinates</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#aa8d1777c54134671769099b6cd41c793">coordinates</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#aa8d1777c54134671769099b6cd41c793">coordinates</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_aa8d1777c54134671769099b6cd41c793"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#aa8d1777c54134671769099b6cd41c793">GT::GTL::ExecutionDriver::coordinates</a></div><div class="ttdeci">CollectionsDriver&lt; GT::GTL::Coordinate &gt; coordinates</div><div class="ttdoc">Driver for Coordinates&amp;#39; collections. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00059">execution_driver.hpp:59</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -496,12 +661,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#af9d1bcf6021250c1137f4cba2c9d88ec">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00063">63</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00072">72</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00071">game</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                           {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">game</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                           {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">game</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a00254b889c2cddd2c5795592f5f95a63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63">GT::GTL::ExecutionDriver::game</a></div><div class="ttdeci">ExecutionGameDriver game</div><div class="ttdoc">Driver for Games. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00071">execution_driver.hpp:71</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -532,12 +697,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#aceec0915793d0657ea5982fd9c6b2bc7">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00067">67</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00075">identifiers</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ad8cfa5b9dd21ad2888ffd629be6ec6d8">identifiers</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ad8cfa5b9dd21ad2888ffd629be6ec6d8">identifiers</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_ad8cfa5b9dd21ad2888ffd629be6ec6d8"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ad8cfa5b9dd21ad2888ffd629be6ec6d8">GT::GTL::ExecutionDriver::identifiers</a></div><div class="ttdeci">CollectionsDriver&lt; GT::Identifier &gt; identifiers</div><div class="ttdoc">Driver for Identifiers&amp;#39; collections. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00075">execution_driver.hpp:75</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -568,12 +733,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a47d693e64120565f2d3ab00d6b9dc7bc">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00071">71</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00079">objects</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                             {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a6ce9e3fb021728de69dc4f32400c9a4d">objects</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                             {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a6ce9e3fb021728de69dc4f32400c9a4d">objects</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a6ce9e3fb021728de69dc4f32400c9a4d"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a6ce9e3fb021728de69dc4f32400c9a4d">GT::GTL::ExecutionDriver::objects</a></div><div class="ttdeci">CollectionsDriver&lt; GT::GTL::Object &gt; objects</div><div class="ttdoc">Driver for Objects&amp;#39; collections. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00079">execution_driver.hpp:79</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -604,12 +769,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a49e179c925b3b8321dae561deb977f67">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00075">75</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00083">params</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                           {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a675a3ea3c07ff70826368476c18baed6">params</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                           {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a675a3ea3c07ff70826368476c18baed6">params</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a675a3ea3c07ff70826368476c18baed6"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a675a3ea3c07ff70826368476c18baed6">GT::GTL::ExecutionDriver::params</a></div><div class="ttdeci">CollectionsDriver&lt; GT::GTL::Param &gt; params</div><div class="ttdoc">Driver for Params&amp;#39; collections. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00083">execution_driver.hpp:83</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -640,12 +805,12 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ae7205dae8b46a08b552382dfb831763b">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00083">83</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00092">92</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00091">statement</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                                     {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">statement</a>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                     {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">statement</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a46e5a2cf3750d8ae2db88acab11b2b63"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a46e5a2cf3750d8ae2db88acab11b2b63">GT::GTL::ExecutionDriver::statement</a></div><div class="ttdeci">ExecutionStatementDriver statement</div><div class="ttdoc">Driver for statements. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00091">execution_driver.hpp:91</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -676,13 +841,146 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a16797701d3ab33a6a9b10f4ce88e772c">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00088">88</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00087">value</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                             {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">value</a>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                             {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">value</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a53f428d041da7123dae584ef60286da3"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a53f428d041da7123dae584ef60286da3">GT::GTL::ExecutionDriver::value</a></div><div class="ttdeci">ExecutionValueDriver value</div><div class="ttdoc">Driver for values. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00087">execution_driver.hpp:87</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aa4f3e78b78489d1d2494512256f3d919"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GT::GTL::ExecutionDriver::load </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads file. </p>
+<p>It uses currently used output and error stream to display result but read input from file.</p>
+<p>Operations are performed in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> so all changes will be persisted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of loaded file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd>#execute(const InputLocation&amp;, const Identifier&amp;) </dd></dl>
+
+<p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ad6f3e0a2ee7e59ec25257718993a1361">GT::GTL::Driver</a>.</p>
+
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00137">137</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+
+<p>References <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00103">showError()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    scoped_ptr&lt;ifstream&gt; file(<span class="keyword">new</span> ifstream(fileName));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> (!file-&gt;good()) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        stringstream builder;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        builder &lt;&lt; <span class="stringliteral">&quot;Loaded file &lt;&quot;</span> &lt;&lt; fileName &lt;&lt; <span class="stringliteral">&quot;&gt; does not exists&quot;</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordtype">string</span> errorMessage(builder.str());</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">showError</a>(location, errorMessage);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    Scanner scanner(file.get());</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    Parser  parser(scanner, *<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    parser.parse();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_ae5c07438d0cb51563d0bbf7e07ddab19"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">GT::GTL::ExecutionDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d30/execution__driver_8cpp_source.html#l00103">execution_driver.cpp:103</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab47af1a483c9269bfeb97e4ecb1f802b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GT::GTL::ExecutionDriver::save </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves all Params available in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> (and it's parents) to file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of saved file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a6236a9043f52131d53a1fb6781bbdbde">GT::GTL::Driver</a>.</p>
+
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00157">157</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+
+<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00050">context</a>, and <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00103">showError()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    ofstream file(fileName);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (!file.good()) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        stringstream builder;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        builder &lt;&lt; <span class="stringliteral">&quot;Cannot save to file &lt;&quot;</span> &lt;&lt; fileName &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordtype">string</span> errorMessage(builder.str());</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">showError</a>(location, errorMessage);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    file &lt;&lt; <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">context</a>-&gt;serialize();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a9578f5711fc830804be23366263db6d5"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a9578f5711fc830804be23366263db6d5">GT::GTL::ExecutionDriver::context</a></div><div class="ttdeci">ContextPtr context</div><div class="ttdoc">Contains Context. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00050">execution_driver.hpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_ae5c07438d0cb51563d0bbf7e07ddab19"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#ae5c07438d0cb51563d0bbf7e07ddab19">GT::GTL::ExecutionDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d30/execution__driver_8cpp_source.html#l00103">execution_driver.cpp:103</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -729,14 +1027,16 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#abdd01af128e0ed34a0387fa8a730a15a">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00045">checkingDriver</a>, and <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00094">GT::GTL::CheckingDriver::showError()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>.<a class="code" href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">showError</a>(location, message);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00045">checkingDriver</a>, and <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00095">GT::GTL::CheckingDriver::showError()</a>.</p>
+
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00116">execute()</a>, <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00137">load()</a>, and <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00157">save()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>.<a class="code" href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">showError</a>(location, message);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a13064ad77eac1001363188f217bb2280"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">GT::GTL::ExecutionDriver::checkingDriver</a></div><div class="ttdeci">CheckingDriver checkingDriver</div><div class="ttdoc">CheckingDriver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00045">execution_driver.hpp:45</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingDriver_html_aef778a972dbf7e77fe92b6a8a6e9887a"><div class="ttname"><a href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">GT::GTL::CheckingDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dae/checking__driver_8cpp_source.html#l00094">checking_driver.cpp:94</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingDriver_html_aef778a972dbf7e77fe92b6a8a6e9887a"><div class="ttname"><a href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">GT::GTL::CheckingDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dae/checking__driver_8cpp_source.html#l00095">checking_driver.cpp:95</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -772,14 +1072,14 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a9e958096c1961b8a08259ceb0df2c929">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00045">checkingDriver</a>, and <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00094">GT::GTL::CheckingDriver::showError()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>.<a class="code" href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">showError</a>(symbol);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00045">checkingDriver</a>, and <a class="el" href="../../de/dae/checking__driver_8cpp_source.html#l00095">GT::GTL::CheckingDriver::showError()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">checkingDriver</a>.<a class="code" href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">showError</a>(symbol);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a13064ad77eac1001363188f217bb2280"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a13064ad77eac1001363188f217bb2280">GT::GTL::ExecutionDriver::checkingDriver</a></div><div class="ttdeci">CheckingDriver checkingDriver</div><div class="ttdoc">CheckingDriver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00045">execution_driver.hpp:45</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingDriver_html_aef778a972dbf7e77fe92b6a8a6e9887a"><div class="ttname"><a href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">GT::GTL::CheckingDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dae/checking__driver_8cpp_source.html#l00094">checking_driver.cpp:94</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingDriver_html_aef778a972dbf7e77fe92b6a8a6e9887a"><div class="ttname"><a href="../../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#aef778a972dbf7e77fe92b6a8a6e9887a">GT::GTL::CheckingDriver::showError</a></div><div class="ttdeci">virtual void showError(const InputLocation &amp;location, const Message &amp;message) const override</div><div class="ttdoc">Displays error. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dae/checking__driver_8cpp_source.html#l00095">checking_driver.cpp:95</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -815,13 +1115,13 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a9453f27fdb213360f70db49fd934ab3f">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00087">87</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00096">96</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
 
 <p>References <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00096">outputStream</a>.</p>
-<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        (*outputStream) &lt;&lt; result-&gt;getResult();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">outputStream</a>)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        (*outputStream) &lt;&lt; result-&gt;getResult();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionDriver_html_a7afe0cfc599b8977ec5597e4954e12f4"><div class="ttname"><a href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a7afe0cfc599b8977ec5597e4954e12f4">GT::GTL::ExecutionDriver::outputStream</a></div><div class="ttdeci">OutputStream * outputStream</div><div class="ttdoc">Output stream for displaying results. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d82/execution__driver_8hpp_source.html#l00096">execution_driver.hpp:96</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -852,10 +1152,10 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#aab42dfd1746fe844d45f21976afeb6c0">GT::GTL::Driver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                        {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;ExecutionDriver&quot;</span>);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00174">174</a> of file <a class="el" href="../../da/d30/execution__driver_8cpp_source.html">execution_driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;ExecutionDriver&quot;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -883,7 +1183,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00094">showError()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00103">showError()</a>.</p>
 
 </div>
 </div>
@@ -909,7 +1209,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00055">forCondition()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00064">forCondition()</a>.</p>
 
 </div>
 </div>
@@ -935,7 +1235,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00059">forConditions()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00068">forConditions()</a>.</p>
 
 </div>
 </div>
@@ -961,6 +1261,8 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00050">50</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00116">execute()</a>, and <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00157">save()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a7fa13d9dba9dcd85c40951b8ff68c08d"></a>
@@ -985,7 +1287,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00047">forCoordinate()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00056">forCoordinate()</a>.</p>
 
 </div>
 </div>
@@ -1011,7 +1313,33 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00051">forCoordinates()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00060">forCoordinates()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8ee3928e90577a5642f1c94fe2367286"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">OutputStream</a>* GT::GTL::ExecutionDriver::errorStream</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Error stream for displaying informations about errors. </p>
+
+<p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00116">execute()</a>.</p>
 
 </div>
 </div>
@@ -1037,7 +1365,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00063">forGame()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00072">forGame()</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1391,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00067">forIdentifiers()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00076">forIdentifiers()</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1417,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00071">forObjects()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00080">forObjects()</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1443,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00087">showResult()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00116">execute()</a>, and <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00096">showResult()</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1469,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00075">forParams()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00084">forParams()</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1495,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00083">forStatement()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00092">forStatement()</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1521,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../df/d82/execution__driver_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../df/d82/execution__driver_8hpp_source.html">execution_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00079">forValue()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d30/execution__driver_8cpp_source.html#l00088">forValue()</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1537,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

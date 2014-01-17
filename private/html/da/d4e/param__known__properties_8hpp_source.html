@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -99,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"></span><span class="comment"></span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * @file      gt/gtl/param_known_properties.hpp</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * @brief     Defines GT::Model::ParamKnownProperties class.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * @brief     Defines GT::GTL::ParamKnownProperties class.</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * @copyright (C) 2013-2014</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @author    Mateusz Kubuszok</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
@@ -138,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @brief Initiates Property with Param it&#39;s describing.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @brief Initiates ObjectProperty with Param it&#39;s describing.</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     * @param describedParam described Param</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     */</span></div>
@@ -147,33 +147,41 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    );</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     * @brief Finds Param&#39;s known propertes.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     * @brief Returns ObjectProperty&#39;s description.</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     * @param  context    Context with values</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     * @param  conditions Conditions to check</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     * @result            search Result</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a7b6160580d4fa56a9eea8fc5a64e7d10">findForConditions</a>(</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a>&amp;    context,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a>&amp; conditions</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    ) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}; <span class="comment">/* END class ParamKnownProperties */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* #ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     * @return description</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#aa0ca02f827e6901d417c9dec1fad309f">getDescription</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     * @brief Finds Param&#39;s known propertes.</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * @param  context    Context with values</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     * @param  conditions Conditions to check</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     * @result            search Result</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a7b6160580d4fa56a9eea8fc5a64e7d10">findForConditions</a>(</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a>&amp;    context,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a>&amp; conditions</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    ) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}; <span class="comment">/* END class ParamKnownProperties */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* #ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ObjectProperty_html"><div class="ttname"><a href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html">GT::GTL::ObjectProperty</a></div><div class="ttdoc">Root of all Object&amp;#39;s properties that can be registered. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d5f/object__property_8hpp_source.html#l00037">object_property.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_ac2086ef47ca42151cae05acbfecbb39a"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#ac2086ef47ca42151cae05acbfecbb39a">GT::GTL::ParamKnownProperties::param</a></div><div class="ttdeci">const Param * param</div><div class="ttdoc">Described Param. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4e/param__known__properties_8hpp_source.html#l00043">param_known_properties.hpp:43</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Context_html"><div class="ttname"><a href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">GT::GTL::Context</a></div><div class="ttdoc">Context containing identifiers and values befind then. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da3/context_8hpp_source.html#l00056">context.hpp:56</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_a24b1eceeade1b9433d51fb8b6653504c"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a24b1eceeade1b9433d51fb8b6653504c">GT::GTL::ParamKnownProperties::ParamKnownProperties</a></div><div class="ttdeci">ParamKnownProperties(const Param *describedParam)</div><div class="ttdoc">Initiates Property with Param it&amp;#39;s describing. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc4/param__known__properties_8cpp_source.html#l00031">param_known_properties.cpp:31</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_a24b1eceeade1b9433d51fb8b6653504c"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a24b1eceeade1b9433d51fb8b6653504c">GT::GTL::ParamKnownProperties::ParamKnownProperties</a></div><div class="ttdeci">ParamKnownProperties(const Param *describedParam)</div><div class="ttdoc">Initiates ObjectProperty with Param it&amp;#39;s describing. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc4/param__known__properties_8cpp_source.html#l00031">param_known_properties.cpp:31</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_ab2890d3d698ea888b94926488a606636"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">GT::GTL::ResultPtr</a></div><div class="ttdeci">Model::ResultPtr ResultPtr</div><div class="ttdoc">Alias for Model::ResultPtr. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00136">common.hpp:136</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Param_html"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html">GT::GTL::Param</a></div><div class="ttdoc">Abstract class that defines interface for Params. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d0b/param_8hpp_source.html#l00045">param.hpp:45</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_a7b6160580d4fa56a9eea8fc5a64e7d10"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a7b6160580d4fa56a9eea8fc5a64e7d10">GT::GTL::ParamKnownProperties::findForConditions</a></div><div class="ttdeci">virtual ResultPtr findForConditions(const Context &amp;context, const Conditions &amp;conditions) const override</div><div class="ttdoc">Finds Param&amp;#39;s known propertes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc4/param__known__properties_8cpp_source.html#l00037">param_known_properties.cpp:37</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_a7b6160580d4fa56a9eea8fc5a64e7d10"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a7b6160580d4fa56a9eea8fc5a64e7d10">GT::GTL::ParamKnownProperties::findForConditions</a></div><div class="ttdeci">virtual ResultPtr findForConditions(const Context &amp;context, const Conditions &amp;conditions) const override</div><div class="ttdoc">Finds Param&amp;#39;s known propertes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc4/param__known__properties_8cpp_source.html#l00043">param_known_properties.cpp:43</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html">GT::GTL::ParamKnownProperties</a></div><div class="ttdoc">Describes referred Object&amp;#39;s known properties. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4e/param__known__properties_8hpp_source.html#l00039">param_known_properties.hpp:39</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a13bf8afffceb8342a2f947c194c6285f"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">GT::GTL::Conditions</a></div><div class="ttdeci">vector&lt; ConditionPtr &gt; Conditions</div><div class="ttdoc">Vector of Conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00108">common.hpp:108</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ParamKnownProperties_html_aa0ca02f827e6901d417c9dec1fad309f"><div class="ttname"><a href="../../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#aa0ca02f827e6901d417c9dec1fad309f">GT::GTL::ParamKnownProperties::getDescription</a></div><div class="ttdeci">virtual ResultPtr getDescription() const override</div><div class="ttdoc">Returns ObjectProperty&amp;#39;s description. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc4/param__known__properties_8cpp_source.html#l00037">param_known_properties.cpp:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -182,7 +190,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

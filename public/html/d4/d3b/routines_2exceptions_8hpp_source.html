@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -128,93 +128,101 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html">InvalidCondition</a> final : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html">InvalidCondition</a> final : <span class="keyword">public</span> std::invalid_argument {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html#ac55187b89bb2846fbfeaa6d843919c28">   44</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html#ac55187b89bb2846fbfeaa6d843919c28">InvalidCondition</a>(<span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message) :</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::runtime_error(message)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}; <span class="comment">/* END class InvalidCondition */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span><span class="comment"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @class InvalidGameType</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @brief Intened to be thrown when passed Game is not allowed for such Routine.</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">   57</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">InvalidGameType</a> final : <span class="keyword">public</span> std::runtime_error {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">   64</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">InvalidGameType</a>(<span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message) :</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::runtime_error(message)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}; <span class="comment">/* END class InvalidGameType */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"></span><span class="comment"></span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * @class InvalidPlayerChoice</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @brief Intened to be thrown when non existing Player or strategy is chosen.</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">   77</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">InvalidPlayerChoice</a> final : <span class="keyword">public</span> std::runtime_error {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">   84</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">InvalidPlayerChoice</a>(<span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message) :</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::runtime_error(message)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}; <span class="comment">/* END class InvalidPlayerChoice */</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span><span class="comment"></span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * @class IncompletePayoffInformation</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * @brief Intened to be thrown when payoff for some player is not set.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">   97</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">IncompletePayoffInformation</a> final : <span class="keyword">public</span> std::runtime_error {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">  104</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">IncompletePayoffInformation</a>(<span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message) :</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        std::runtime_error(message)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}; <span class="comment">/* END class IncompletePayoffInformation */</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;} <span class="comment">/* END namespace Routines */</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_ROUTINES_EXCEPTIONS_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html#ac55187b89bb2846fbfeaa6d843919c28">   44</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html#ac55187b89bb2846fbfeaa6d843919c28">InvalidCondition</a>(</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    ) :</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::invalid_argument(message)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}; <span class="comment">/* END class InvalidCondition */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @class InvalidGameType</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @brief Intened to be thrown when passed Game is not allowed for such Routine.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">   59</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">InvalidGameType</a> final : <span class="keyword">public</span> std::invalid_argument {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">   66</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">InvalidGameType</a>(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    ) :</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::invalid_argument(message)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}; <span class="comment">/* END class InvalidGameType */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> * @class InvalidPlayerChoice</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * @brief Intened to be thrown when non existing Player or strategy is chosen.</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">   81</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">InvalidPlayerChoice</a> final : <span class="keyword">public</span> std::invalid_argument {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">   88</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">InvalidPlayerChoice</a>(</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    ) :</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::invalid_argument(message)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}; <span class="comment">/* END class InvalidPlayerChoice */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * @class IncompletePayoffInformation</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> * @brief Intened to be thrown when payoff for some player is not set.</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">  103</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">IncompletePayoffInformation</a> final : <span class="keyword">public</span> std::domain_error {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     * @brief Constructor initialized with Message.</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     * @param message initializing Message</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">  110</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">IncompletePayoffInformation</a>(</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&amp; message</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    ) :</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::domain_error(message)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}; <span class="comment">/* END class IncompletePayoffInformation */</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">/* END namespace Routines */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_ROUTINES_EXCEPTIONS_HPP__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_1_1Routines_html_aacaca6d1b5d945c3a4ab6781bcf1544d"><div class="ttname"><a href="../../dd/d1f/namespaceGT_1_1Routines.html#aacaca6d1b5d945c3a4ab6781bcf1544d">GT::Routines::Routines</a></div><div class="ttdeci">vector&lt; RoutinePtr &gt; Routines</div><div class="ttdoc">Vector of Routines. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/routines_2common_8hpp_source.html#l00071">common.hpp:71</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1InvalidPlayerChoice_html"><div class="ttname"><a href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">GT::Routines::InvalidPlayerChoice</a></div><div class="ttdoc">Intened to be thrown when non existing Player or strategy is chosen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00077">exceptions.hpp:77</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1InvalidPlayerChoice_html"><div class="ttname"><a href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html">GT::Routines::InvalidPlayerChoice</a></div><div class="ttdoc">Intened to be thrown when non existing Player or strategy is chosen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00081">exceptions.hpp:81</a></div></div>
 <div class="ttc" id="classGT_1_1Routines_1_1InvalidCondition_html"><div class="ttname"><a href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html">GT::Routines::InvalidCondition</a></div><div class="ttdoc">Intened to be thrown when Condition is in some way invalid. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00037">exceptions.hpp:37</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1InvalidPlayerChoice_html_a701250503fdd58ee4de87aca0c69dc11"><div class="ttname"><a href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">GT::Routines::InvalidPlayerChoice::InvalidPlayerChoice</a></div><div class="ttdeci">InvalidPlayerChoice(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00084">exceptions.hpp:84</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1IncompletePayoffInformation_html_a26210a0875272a1a1382d579c8a82f92"><div class="ttname"><a href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">GT::Routines::IncompletePayoffInformation::IncompletePayoffInformation</a></div><div class="ttdeci">IncompletePayoffInformation(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00104">exceptions.hpp:104</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1InvalidGameType_html"><div class="ttname"><a href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">GT::Routines::InvalidGameType</a></div><div class="ttdoc">Intened to be thrown when passed Game is not allowed for such Routine. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00057">exceptions.hpp:57</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1InvalidGameType_html_a226cf5281affb0224e20e4245d958471"><div class="ttname"><a href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">GT::Routines::InvalidGameType::InvalidGameType</a></div><div class="ttdeci">InvalidGameType(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00064">exceptions.hpp:64</a></div></div>
-<div class="ttc" id="classGT_1_1Routines_1_1IncompletePayoffInformation_html"><div class="ttname"><a href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">GT::Routines::IncompletePayoffInformation</a></div><div class="ttdoc">Intened to be thrown when payoff for some player is not set. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00097">exceptions.hpp:97</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1InvalidPlayerChoice_html_a701250503fdd58ee4de87aca0c69dc11"><div class="ttname"><a href="../../d4/ddd/classGT_1_1Routines_1_1InvalidPlayerChoice.html#a701250503fdd58ee4de87aca0c69dc11">GT::Routines::InvalidPlayerChoice::InvalidPlayerChoice</a></div><div class="ttdeci">InvalidPlayerChoice(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00088">exceptions.hpp:88</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1IncompletePayoffInformation_html_a26210a0875272a1a1382d579c8a82f92"><div class="ttname"><a href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html#a26210a0875272a1a1382d579c8a82f92">GT::Routines::IncompletePayoffInformation::IncompletePayoffInformation</a></div><div class="ttdeci">IncompletePayoffInformation(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00110">exceptions.hpp:110</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1InvalidGameType_html"><div class="ttname"><a href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html">GT::Routines::InvalidGameType</a></div><div class="ttdoc">Intened to be thrown when passed Game is not allowed for such Routine. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00059">exceptions.hpp:59</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1InvalidGameType_html_a226cf5281affb0224e20e4245d958471"><div class="ttname"><a href="../../d7/dd8/classGT_1_1Routines_1_1InvalidGameType.html#a226cf5281affb0224e20e4245d958471">GT::Routines::InvalidGameType::InvalidGameType</a></div><div class="ttdeci">InvalidGameType(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00066">exceptions.hpp:66</a></div></div>
+<div class="ttc" id="classGT_1_1Routines_1_1IncompletePayoffInformation_html"><div class="ttname"><a href="../../d6/dac/classGT_1_1Routines_1_1IncompletePayoffInformation.html">GT::Routines::IncompletePayoffInformation</a></div><div class="ttdoc">Intened to be thrown when payoff for some player is not set. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00103">exceptions.hpp:103</a></div></div>
 <div class="ttc" id="classGT_1_1Routines_1_1InvalidCondition_html_ac55187b89bb2846fbfeaa6d843919c28"><div class="ttname"><a href="../../d7/def/classGT_1_1Routines_1_1InvalidCondition.html#ac55187b89bb2846fbfeaa6d843919c28">GT::Routines::InvalidCondition::InvalidCondition</a></div><div class="ttdeci">InvalidCondition(const Message &amp;message)</div><div class="ttdoc">Constructor initialized with Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3b/routines_2exceptions_8hpp_source.html#l00044">exceptions.hpp:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -224,7 +232,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

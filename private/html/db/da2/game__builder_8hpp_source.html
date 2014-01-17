@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -131,15 +131,15 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * Intended to be used recursively with clone method:</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @code</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * DataBuilderPtr builder1 = gameBuilder-&gt;clone();</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> *     builder1-&gt;addNextPositions(position11);</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> *     builder-&gt;clone()-&gt;addNextPositions(positions21).setPayoffs(param11_21); // payoff(p1=s1, p2=s1)</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> *     builder-&gt;clone()-&gt;addNextPositions(positions22).setPayoffs(param11_22); // payoff(p1=s1, p2=s2)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * DataBuilderPtr builder2 = gameBuilder-&gt;clone();</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> *     builder2-&gt;addNextPositions(position12);</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> *     builder-&gt;clone()-&gt;addNextPositions(positions21).setPayoffs(param12_21); // payoff(p1=s2, p2=s1)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> *     builder-&gt;clone()-&gt;addNextPositions(positions22).setPayoffs(param12_22); // payoff(p1=s2, p2=s2)</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @endcode</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">   DataBuilderPtr builder1 = gameBuilder-&gt;clone();</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">       builder1-&gt;addNextPositions(position11);</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">       builder-&gt;clone()-&gt;addNextPositions(positions21).setPayoffs(param11_21); // payoff(p1=s1, p2=s1)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">       builder-&gt;clone()-&gt;addNextPositions(positions22).setPayoffs(param11_22); // payoff(p1=s1, p2=s2)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">   DataBuilderPtr builder2 = gameBuilder-&gt;clone();</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">       builder2-&gt;addNextPositions(position12);</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">       builder-&gt;clone()-&gt;addNextPositions(positions21).setPayoffs(param12_21); // payoff(p1=s2, p2=s1)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">       builder-&gt;clone()-&gt;addNextPositions(positions22).setPayoffs(param12_22); // payoff(p1=s2, p2=s2)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">   @endcode</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> *</span></div>
@@ -277,7 +277,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

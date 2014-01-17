@@ -21,5 +21,7 @@ var searchData=
   ['context',['Context',['../d5/dfe/classGT_1_1GTL_1_1Context.html',1,'GT::GTL']]],
   ['coordinate',['Coordinate',['../d7/ddd/classGT_1_1GTL_1_1Coordinate.html',1,'GT::GTL']]],
   ['coordinatedriver',['CoordinateDriver',['../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html',1,'GT::GTL']]],
+  ['currentcontext',['CurrentContext',['../d4/d88/classGT_1_1GTL_1_1CurrentContext.html',1,'GT::GTL']]],
+  ['currentcontextvaluesproperty',['CurrentContextValuesProperty',['../d0/d00/classGT_1_1GTL_1_1CurrentContextValuesProperty.html',1,'GT::GTL']]],
   ['cyclicidentifiers',['CyclicIdentifiers',['../d3/d09/classGT_1_1GTL_1_1CyclicIdentifiers.html',1,'GT::GTL']]]
 ];

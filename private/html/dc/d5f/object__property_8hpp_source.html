@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -131,27 +131,35 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html">ObjectProperty</a> {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     * @brief Finds results for given Conditions.</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     * @brief Returns property&#39;s description.</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @param  context    Context with values</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     * @param  conditions Conditions to check</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     * @result            search Result</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a949c4a90d2bb465f5402538d771e0fb5">findForConditions</a>(</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a>&amp;    context,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a>&amp; conditions</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    ) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}; <span class="comment">/* END class ObjectProperty */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_OBJECT_PROPERTY_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @return description</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a967f944cb4562e4f10ee5a0d6c0628f8">getDescription</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @brief Finds results for given Conditions.</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     * @param  context    Context with values</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     * @param  conditions Conditions to check</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     * @result            search Result</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">ResultPtr</a> <a class="code" href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a949c4a90d2bb465f5402538d771e0fb5">findForConditions</a>(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a>&amp;    context,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">Conditions</a>&amp; conditions</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    ) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}; <span class="comment">/* END class ObjectProperty */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_OBJECT_PROPERTY_HPP__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ObjectProperty_html"><div class="ttname"><a href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html">GT::GTL::ObjectProperty</a></div><div class="ttdoc">Root of all Object&amp;#39;s properties that can be registered. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d5f/object__property_8hpp_source.html#l00037">object_property.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Context_html"><div class="ttname"><a href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">GT::GTL::Context</a></div><div class="ttdoc">Context containing identifiers and values befind then. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da3/context_8hpp_source.html#l00056">context.hpp:56</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_ab2890d3d698ea888b94926488a606636"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636">GT::GTL::ResultPtr</a></div><div class="ttdeci">Model::ResultPtr ResultPtr</div><div class="ttdoc">Alias for Model::ResultPtr. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00136">common.hpp:136</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ObjectProperty_html_a967f944cb4562e4f10ee5a0d6c0628f8"><div class="ttname"><a href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a967f944cb4562e4f10ee5a0d6c0628f8">GT::GTL::ObjectProperty::getDescription</a></div><div class="ttdeci">virtual ResultPtr getDescription() const =0</div><div class="ttdoc">Returns property&amp;#39;s description. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a13bf8afffceb8342a2f947c194c6285f"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a13bf8afffceb8342a2f947c194c6285f">GT::GTL::Conditions</a></div><div class="ttdeci">vector&lt; ConditionPtr &gt; Conditions</div><div class="ttdoc">Vector of Conditions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00108">common.hpp:108</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ObjectProperty_html_a949c4a90d2bb465f5402538d771e0fb5"><div class="ttname"><a href="../../de/d9e/classGT_1_1GTL_1_1ObjectProperty.html#a949c4a90d2bb465f5402538d771e0fb5">GT::GTL::ObjectProperty::findForConditions</a></div><div class="ttdeci">virtual ResultPtr findForConditions(const Context &amp;context, const Conditions &amp;conditions) const =0</div><div class="ttdoc">Finds results for given Conditions. </div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -162,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

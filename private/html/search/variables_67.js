@@ -1,5 +1,6 @@
 var searchData=
 [
   ['game',['game',['../dd/d29/classGT_1_1GTL_1_1NullDriver.html#a54335b0481043ebf56eb8b75306d562c',1,'GT::GTL::NullDriver::game()'],['../dd/d9e/classGT_1_1GTL_1_1Game.html#a3b5d3e37dd715635c2a784920ac1fa7a',1,'GT::GTL::Game::game()'],['../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html#a7e96941188729f5c9483dccdcc164346',1,'GT::GTL::Parser::semantic_type::game()'],['../de/df1/classGT_1_1GTL_1_1CheckingDriver.html#a0c3c077b1f2ee9644a1b4c448f7d4ebf',1,'GT::GTL::CheckingDriver::game()'],['../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html#a00254b889c2cddd2c5795592f5f95a63',1,'GT::GTL::ExecutionDriver::game()'],['../d2/d36/classGT_1_1GTL_1_1GameBehaviorEquilibriumProperty.html#ac558225f67a690c1ab0c1f815c0dc064',1,'GT::GTL::GameBehaviorEquilibriumProperty::game()'],['../db/d25/classGT_1_1GTL_1_1GameMixedEquilibriumProperty.html#a2067c7e829c16f3666056818c1c12460',1,'GT::GTL::GameMixedEquilibriumProperty::game()'],['../d8/d66/classGT_1_1GTL_1_1GamePureEquilibriumProperty.html#a7a9009804a2cba4b0eccf0573fdc7f0e',1,'GT::GTL::GamePureEquilibriumProperty::game()']]],
-  ['gamebuilder',['gameBuilder',['../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a53312628ca921c4472a3742c903ec752',1,'GT::GTL::LazyGameProxy']]]
+  ['gamebuilder',['gameBuilder',['../d0/d31/classGT_1_1GTL_1_1LazyGameProxy.html#a53312628ca921c4472a3742c903ec752',1,'GT::GTL::LazyGameProxy']]],
+  ['gametype',['gameType',['../dd/d9e/classGT_1_1GTL_1_1Game.html#ab15e3297a94effdcd0c9e3e1b8388c0b',1,'GT::GTL::Game']]]
 ];

@@ -1,13 +1,15 @@
 var searchData=
 [
   ['safeboolidiom',['SafeBoolIdiom',['../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#aea8a3b9b6e34f2d80cc76f31158285c5',1,'GT::GTL::ValidableSymbol']]],
+  ['save',['SAVE',['../d6/d80/structGT_1_1GTL_1_1Parser_1_1token.html#a46f3f0d5caf43cbf22726f8dc98b5bdbae4b44fb41e66469ca041e3769a31f836',1,'GT::GTL::Parser::token::SAVE()'],['../d8/da7/classGT_1_1GTL_1_1Driver.html#a6236a9043f52131d53a1fb6781bbdbde',1,'GT::GTL::Driver::save()'],['../dd/d29/classGT_1_1GTL_1_1NullDriver.html#aaed9bae2dc0dabbd3f41ab5cea22c60f',1,'GT::GTL::NullDriver::save()']]],
   ['scanner',['Scanner',['../d4/d9d/classGT_1_1GTL_1_1Scanner.html',1,'GT::GTL']]],
-  ['scanner',['scanner',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a80f97e1c8ca1359c759f69e469259393',1,'GT::GTL::Parser::scanner()'],['../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a332a785ce62458219294ffde1fae9534',1,'GT::GTL::Scanner::Scanner()']]],
+  ['scanner',['Scanner',['../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a332a785ce62458219294ffde1fae9534',1,'GT::GTL::Scanner::Scanner()'],['../d1/d03/classGT_1_1GTL_1_1Parser.html#a80f97e1c8ca1359c759f69e469259393',1,'GT::GTL::Parser::scanner()']]],
   ['scanner_2ehpp',['scanner.hpp',['../dd/dbc/scanner_8hpp.html',1,'']]],
   ['scannerptr',['ScannerPtr',['../d0/dea/namespaceGT_1_1GTL.html#a43240e805680d0b8221bdc380280c7f6',1,'GT::GTL']]],
   ['semantic_5fstack_5ftype',['semantic_stack_type',['../d1/d03/classGT_1_1GTL_1_1Parser.html#ae99107137adbc1bff8084200302e753c',1,'GT::GTL::Parser']]],
   ['semantic_5ftype',['semantic_type',['../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html',1,'GT::GTL::Parser']]],
   ['seq_5f',['seq_',['../d8/d34/classGT_1_1GTL_1_1stack.html#ad89df280ec5a1838a78e2c793f95dad3',1,'GT::GTL::stack']]],
+  ['serialize',['serialize',['../d5/dfe/classGT_1_1GTL_1_1Context.html#a392f98509c6e44c1e8b0d64818372293',1,'GT::GTL::Context::serialize()'],['../de/d8f/classGT_1_1GTL_1_1NullContext.html#a8a545d44b57e7367245f658f1ac78fe9',1,'GT::GTL::NullContext::serialize()'],['../d7/ddd/classGT_1_1GTL_1_1Coordinate.html#a312471405690be9d1ebb5177d7f936fc',1,'GT::GTL::Coordinate::serialize()'],['../dd/d9e/classGT_1_1GTL_1_1Game.html#a689f6da8f386704f1dfbd37c56c2382c',1,'GT::GTL::Game::serialize()'],['../d1/d02/classGT_1_1GTL_1_1NullGame.html#a1e673531e8c3a0fd5510ec67b63bb0ee',1,'GT::GTL::NullGame::serialize()'],['../d0/d1e/classGT_1_1GTL_1_1ErrorGame.html#a4d86bf6989e852b6867801211810d80d',1,'GT::GTL::ErrorGame::serialize()'],['../d8/d9b/classGT_1_1GTL_1_1Player.html#a31341b5fd85d3693d93859491daf21e6',1,'GT::GTL::Player::serialize()'],['../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html#ac266c69ca5918bc5596015b7c9688428',1,'GT::GTL::ValidableSymbol::serialize()']]],
   ['set_5fdebug_5flevel',['set_debug_level',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a54e83298869c9db935aca6790ed42207',1,'GT::GTL::Parser']]],
   ['set_5fdebug_5fstream',['set_debug_stream',['../d1/d03/classGT_1_1GTL_1_1Parser.html#ae75bcba25cbb1e905cf87c361162ce5e',1,'GT::GTL::Parser']]],
   ['setbuildermode',['setBuilderMode',['../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#a976ec8c476246810797b684f071158fb',1,'GT::Model::ResultFactory']]],

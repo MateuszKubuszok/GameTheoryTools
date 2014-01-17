@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="contents">
 <a href="../../d6/d27/program__controller_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file      gt/program/program_controller.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @brief     Defines GT::Program::ProgramControler methods.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @brief     Defines GT::Program::ProgramController methods.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @copyright (C) 2013-2014</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @author    Mateusz Kubuszok</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
@@ -190,7 +190,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> filename</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ifstream* newInputStream = <span class="keyword">new</span> ifstream();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    newInputStream-&gt;open(filename);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    newInputStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#ae7a7f4c0a6a0fd0040fbf22e3e636a70">setInputStream</a>(newInputStream, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
@@ -217,7 +217,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> filename</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;) {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    ofstream* newOutputStream = <span class="keyword">new</span> ofstream();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    newOutputStream-&gt;open(filename);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    newOutputStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a5302a8ccf5ca406c6b3a8d691ee910b9">setOutputStream</a>(newOutputStream, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
@@ -242,7 +242,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> filename</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;) {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    ofstream* newErrorStream = <span class="keyword">new</span> ofstream();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    newErrorStream-&gt;open(filename);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    newErrorStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a3fd2c9b89aee75d9a5d1333aea81d618">setErrorStream</a>(newErrorStream, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
@@ -298,7 +298,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;} <span class="comment">/* END namespace Program */</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
 <div class="ttc" id="namespaceGT_html_a5b386782ae2fd0278a91f5ca55c14a90"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">GT::OutputStream</a></div><div class="ttdeci">ostream OutputStream</div><div class="ttdoc">Output stream alias. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00072">common.hpp:72</a></div></div>
-<div class="ttc" id="namespaceGT_1_1GTL_html_a6a16e0f7d51b3a6ae7cac90eb6746093"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a6a16e0f7d51b3a6ae7cac90eb6746093">GT::GTL::ResultFactory</a></div><div class="ttdeci">Model::ResultFactory ResultFactory</div><div class="ttdef"><b>Definition:</b> <a href="../../de/ddb/gtl_2inner__common_8hpp_source.html#l00086">inner_common.hpp:86</a></div></div>
+<div class="ttc" id="namespaceGT_1_1GTL_html_a6a16e0f7d51b3a6ae7cac90eb6746093"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a6a16e0f7d51b3a6ae7cac90eb6746093">GT::GTL::ResultFactory</a></div><div class="ttdeci">Model::ResultFactory ResultFactory</div><div class="ttdef"><b>Definition:</b> <a href="../../de/ddb/gtl_2inner__common_8hpp_source.html#l00090">inner_common.hpp:90</a></div></div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a251ec64f05a8f70328415cbde23ae18e"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a251ec64f05a8f70328415cbde23ae18e">GT::Program::ProgramController::setResultBuilderMode</a></div><div class="ttdeci">ProgramController &amp; setResultBuilderMode(const ResultBuilderMode resultBuilderMode)</div><div class="ttdoc">Defines type of returned result (output). </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d27/program__controller_8cpp_source.html#l00168">program_controller.cpp:168</a></div></div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html">GT::Program::ProgramController</a></div><div class="ttdoc">Sets up Parser and runs it. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de1/program__controller_8hpp_source.html#l00046">program_controller.hpp:46</a></div></div>
 <div class="ttc" id="namespaceGT_html_a6aefaddd6afab0b3a939cb03262d2f33"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33">GT::InputStream</a></div><div class="ttdeci">istream InputStream</div><div class="ttdoc">Input stream alias. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00071">common.hpp:71</a></div></div>
@@ -328,7 +328,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a8b99b9dee6bbd53609046dbeeb3812cb"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a8b99b9dee6bbd53609046dbeeb3812cb">GT::Program::ProgramController::outputStream</a></div><div class="ttdeci">OutputStream * outputStream</div><div class="ttdoc">Pointer to output stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de1/program__controller_8hpp_source.html#l00063">program_controller.hpp:63</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a855836454cdf6d9ea0990b37f27d05c9"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a855836454cdf6d9ea0990b37f27d05c9">GT::Model::ResultBuilderMode</a></div><div class="ttdeci">ResultBuilderMode</div><div class="ttdoc">Used for configuring what kind of builders should be returned by ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d19/result__factory_8hpp_source.html#l00037">result_factory.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a9fd83c6775d6386ff04959752ecd1166"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a9fd83c6775d6386ff04959752ecd1166">GT::Program::ProgramController::shouldFreeErrorStream</a></div><div class="ttdeci">bool shouldFreeErrorStream</div><div class="ttdoc">Whether error stream need to be released after usage. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de1/program__controller_8hpp_source.html#l00085">program_controller.hpp:85</a></div></div>
-<div class="ttc" id="scanner_8cpp_html_a25093e36e9fb377b246945a84745823f"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">string</a></div><div class="ttdeci">#define string</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00662">scanner.cpp:662</a></div></div>
+<div class="ttc" id="scanner_8cpp_html_a25093e36e9fb377b246945a84745823f"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">string</a></div><div class="ttdeci">#define string</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00674">scanner.cpp:674</a></div></div>
 <div class="ttc" id="program_2inner__common_8hpp_html"><div class="ttname"><a href="../../d5/de4/program_2inner__common_8hpp.html">inner_common.hpp</a></div><div class="ttdoc">Declares inner classes for GT::Program module. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_ac3d110150a6c469c98ff7e5f0c313263"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#ac3d110150a6c469c98ff7e5f0c313263">GT::GTL::DriverPtr</a></div><div class="ttdeci">shared_ptr&lt; Driver &gt; DriverPtr</div><div class="ttdoc">Smart pointer to Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00120">common.hpp:120</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -339,7 +339,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

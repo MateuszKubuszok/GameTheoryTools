@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -239,7 +239,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">if</span> (variables.count(<span class="stringliteral">&quot;help&quot;</span>) || variables.count(<span class="stringliteral">&quot;H&quot;</span>)) {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            cout &lt;&lt; description &lt;&lt; endl;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// Execute program otherwise</span></div>
@@ -271,11 +271,11 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="comment">// uknown option error</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Uknown option, use one of listed instead.&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        cout &lt;&lt; endl &lt;&lt; description &lt;&lt; endl;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; exception) {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">// last resort error handling</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        cerr &lt;&lt; exception.what() &lt;&lt; endl;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a251ec64f05a8f70328415cbde23ae18e"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a251ec64f05a8f70328415cbde23ae18e">GT::Program::ProgramController::setResultBuilderMode</a></div><div class="ttdeci">ProgramController &amp; setResultBuilderMode(const ResultBuilderMode resultBuilderMode)</div><div class="ttdoc">Defines type of returned result (output). </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d27/program__controller_8cpp_source.html#l00168">program_controller.cpp:168</a></div></div>
@@ -428,7 +428,7 @@ Functions</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

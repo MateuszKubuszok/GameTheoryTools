@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -164,6 +164,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e958096c1961b8a08259ceb0df2c929"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a9e958096c1961b8a08259ceb0df2c929">showError</a> (const <a class="el" href="../../df/d0a/classGT_1_1GTL_1_1ValidableSymbol.html">ValidableSymbol</a> &amp;symbol) const =0</td></tr>
 <tr class="memdesc:a9e958096c1961b8a08259ceb0df2c929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays error.  <a href="#a9e958096c1961b8a08259ceb0df2c929">More...</a><br/></td></tr>
 <tr class="separator:a9e958096c1961b8a08259ceb0df2c929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d75034b4663be30ae631824fbeeb71"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ae5d75034b4663be30ae631824fbeeb71">execute</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName) const =0</td></tr>
+<tr class="memdesc:ae5d75034b4663be30ae631824fbeeb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes file.  <a href="#ae5d75034b4663be30ae631824fbeeb71">More...</a><br/></td></tr>
+<tr class="separator:ae5d75034b4663be30ae631824fbeeb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6f3e0a2ee7e59ec25257718993a1361"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ad6f3e0a2ee7e59ec25257718993a1361">load</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName)=0</td></tr>
+<tr class="memdesc:ad6f3e0a2ee7e59ec25257718993a1361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads file.  <a href="#ad6f3e0a2ee7e59ec25257718993a1361">More...</a><br/></td></tr>
+<tr class="separator:ad6f3e0a2ee7e59ec25257718993a1361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6236a9043f52131d53a1fb6781bbdbde"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#a6236a9043f52131d53a1fb6781bbdbde">save</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;<a class="el" href="../../d5/de2/classGT_1_1GTL_1_1location.html">location</a>, const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;fileName) const =0</td></tr>
+<tr class="memdesc:a6236a9043f52131d53a1fb6781bbdbde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves all Params available in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> (and it's parents) to file.  <a href="#a6236a9043f52131d53a1fb6781bbdbde">More...</a><br/></td></tr>
+<tr class="separator:a6236a9043f52131d53a1fb6781bbdbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab42dfd1746fe844d45f21976afeb6c0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#aab42dfd1746fe844d45f21976afeb6c0">toString</a> () const override=0</td></tr>
 <tr class="memdesc:aab42dfd1746fe844d45f21976afeb6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a>'s Message.  <a href="#aab42dfd1746fe844d45f21976afeb6c0">More...</a><br/></td></tr>
 <tr class="separator:aab42dfd1746fe844d45f21976afeb6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +225,54 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae5d75034b4663be30ae631824fbeeb71"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GT::GTL::Driver::execute </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Executes file. </p>
+<p>It uses currently used output and error stream to display result but read input from file.</p>
+<p>Operations are perfored on spawned <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> so after all operations parental <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> is instact.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of executed file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html#ad6f3e0a2ee7e59ec25257718993a1361" title="Loads file. ">load(const InputLocation&amp;, const Identifier&amp;)</a> </dd></dl>
+
+<p>Implemented in <a class="el" href="../../dd/d29/classGT_1_1GTL_1_1NullDriver.html#ad022f3c5905c8627524039313d4efbe5">GT::GTL::NullDriver</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a06e7d328a68d80f2c3495d26e9d4d34c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -496,6 +553,99 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad6f3e0a2ee7e59ec25257718993a1361"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GT::GTL::Driver::load </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads file. </p>
+<p>It uses currently used output and error stream to display result but read input from file.</p>
+<p>Operations are performed in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> so all changes will be persisted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of loaded file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd>#execute(const InputLocation&amp;, const Identifier&amp;) </dd></dl>
+
+<p>Implemented in <a class="el" href="../../dd/d29/classGT_1_1GTL_1_1NullDriver.html#a0f08879479930c8cc0d2a0ad68cd5c9f">GT::GTL::NullDriver</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6236a9043f52131d53a1fb6781bbdbde"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GT::GTL::Driver::save </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves all Params available in current <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> (and it's parents) to file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>location of file load call </td></tr>
+    <tr><td class="paramname">fileName</td><td>name of saved file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="../../dd/d29/classGT_1_1GTL_1_1NullDriver.html#aaed9bae2dc0dabbd3f41ab5cea22c60f">GT::GTL::NullDriver</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="abdd01af128e0ed34a0387fa8a730a15a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -650,7 +800,7 @@ Public Member Functions</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.3</span>
+   &#160;<span id="projectnumber">v0.4</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -543,7 +543,7 @@ Private Attributes</h2></td></tr>
 <p>Referenced by <a class="el" href="../../d1/d14/program_8cpp_source.html#l00104">main()</a>, and <a class="el" href="../../d6/d27/program__controller_8cpp_source.html#l00143">setDefaultErrorStream()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    ofstream* newErrorStream = <span class="keyword">new</span> ofstream();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    newErrorStream-&gt;open(filename);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    newErrorStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a3fd2c9b89aee75d9a5d1333aea81d618">setErrorStream</a>(newErrorStream, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a3fd2c9b89aee75d9a5d1333aea81d618"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a3fd2c9b89aee75d9a5d1333aea81d618">GT::Program::ProgramController::setErrorStream</a></div><div class="ttdeci">ProgramController &amp; setErrorStream(const string filename)</div><div class="ttdoc">Sets used error stream to file output stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d27/program__controller_8cpp_source.html#l00147">program_controller.cpp:147</a></div></div>
@@ -629,7 +629,7 @@ Private Attributes</h2></td></tr>
 <p>Referenced by <a class="el" href="../../d1/d14/program_8cpp_source.html#l00104">main()</a>, and <a class="el" href="../../d6/d27/program__controller_8cpp_source.html#l00091">setDefaultInputStream()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ifstream* newInputStream = <span class="keyword">new</span> ifstream();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    newInputStream-&gt;open(filename);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    newInputStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#ae7a7f4c0a6a0fd0040fbf22e3e636a70">setInputStream</a>(newInputStream, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_ae7a7f4c0a6a0fd0040fbf22e3e636a70"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#ae7a7f4c0a6a0fd0040fbf22e3e636a70">GT::Program::ProgramController::setInputStream</a></div><div class="ttdeci">ProgramController &amp; setInputStream(const string filename)</div><div class="ttdoc">Sets used input stream to file input stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d27/program__controller_8cpp_source.html#l00095">program_controller.cpp:95</a></div></div>
@@ -724,7 +724,7 @@ Private Attributes</h2></td></tr>
 <p>Referenced by <a class="el" href="../../d1/d14/program_8cpp_source.html#l00104">main()</a>, and <a class="el" href="../../d6/d27/program__controller_8cpp_source.html#l00118">setDefaultOutputStream()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    ofstream* newOutputStream = <span class="keyword">new</span> ofstream();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    newOutputStream-&gt;open(filename);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    newOutputStream-&gt;open(filename); <span class="comment">// TODO error checking</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a5302a8ccf5ca406c6b3a8d691ee910b9">setOutputStream</a>(newOutputStream, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Program_1_1ProgramController_html_a5302a8ccf5ca406c6b3a8d691ee910b9"><div class="ttname"><a href="../../de/d44/classGT_1_1Program_1_1ProgramController.html#a5302a8ccf5ca406c6b3a8d691ee910b9">GT::Program::ProgramController::setOutputStream</a></div><div class="ttdeci">ProgramController &amp; setOutputStream(const string filename)</div><div class="ttdoc">Sets used output stream to file output stream. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d27/program__controller_8cpp_source.html#l00122">program_controller.cpp:122</a></div></div>
@@ -1153,7 +1153,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.3</b>
+Version <b>v0.4</b>
 </small></address>
 </body>
 </html>
