@@ -124,8 +124,8 @@ Windows systems</h1>
 <div class="line">./b2 install --prefix=[cygwin directory]                                   # <span class="keywordflow">for</span> x86 (32-bit)</div>
 <div class="line">./b2 install --prefix=[cygwin directory] architecture=x86 address-model=64 # <span class="keywordflow">for</span> x86_64 (64-bit)</div>
 </div><!-- fragment --><p> making sure that choosen architecture matches <code>Cygwin</code>'s one. Alternatively you might try any other tutorial explaining how to install Boost on Windows and make it visible to <code>Cygwin</code> environment.</p>
-<h1><a class="anchor" id="Building"></a>
-project</h1>
+<h1><a class="anchor" id="project_sec"></a>
+Building project</h1>
 <p>Once all dependencies are available project can be build with <code>scons</code> script. Navigate to the project directory with terminal and call chosen command to build respective target:</p>
 <ul>
 <li><code>scons -Q buildModels</code> - builds Models' classes,</li>
@@ -145,10 +145,12 @@ project</h1>
 <li><code>scons -Q buildLibraries</code> - build static and shared library with Models and Routines. Running it without argument will simply build all targets.</li>
 </ul>
 <p>Usually you'd want to build either execuitables or libraries depending on wheter you want to run GTL parser or use library in a C++ program.</p>
-<h1><a class="anchor" id="clang_sec"></a>
+<p>To build project with statically linked libraries use <code>static=1</code> argument e.g.: </p>
+<div class="fragment"><div class="line">scons -Q buildExecutables <span class="keyword">static</span>=1</div>
+</div><!-- fragment --><h1><a class="anchor" id="clang_sec"></a>
 Clang and other compilers</h1>
 <p>For now only <code>g++</code> is supported - other compilers while most likely should be able to build it, would require some configuration that I'm not able to test now.</p>
-<p><code>Clang</code> compiler (version <code>1:3.0-6.2</code>) was not able to build project, most likely beacause boost tempaltes required some functiality not yet implemented in it. </p>
+<p><code>Clang</code> compiler (version <code>1:3.0-6.2</code>) was not able to build project, most likely beacause boost templates required some functiality not yet implemented in it. </p>
 </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
