@@ -2,6 +2,10 @@ import os
 
 ##############################################################################################################
 
+useStaticLink = ARGUMENTS.get('static', 0)
+
+##############################################################################################################
+
 # Directories configuration
 
 # Main directories
@@ -138,6 +142,10 @@ for library in executablesLibraries:
 
 # Sets used libraries.
 executablesConf.env.Append(LIBS=executablesLibraries)
+
+# Sets up linking method
+if useStaticLink:
+    executablesConf.env.Append(LINKFLAGS='--static')
 
 executablesConf.Finish()
 
