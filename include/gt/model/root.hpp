@@ -75,7 +75,7 @@ public:
     virtual Message toString() const = 0;
 
     /**
-     * @brief Syntax sugar for Root#isEqual(const Root&) method.
+     * @brief Syntax sugar for #isEqual(const Root&)const method.
      *
      * @param root1 first Root to compare
      * @param root2 second Root to compare
@@ -87,7 +87,7 @@ public:
     );
 
      /**
-     * @brief Syntax sugar for !Root#isEqual(const Root&) method.
+     * @brief Syntax sugar for !#isEqual(const Root&)const method.
      *
      * @param root1 first Root to compare
      * @param root2 second Root to compare
@@ -99,7 +99,7 @@ public:
     );
 
      /**
-     * @brief Syntax sugar for #toString() method.
+     * @brief Syntax sugar for #toString()const method.
      *
      * @param stream stream to concatenate
      * @param root   Root to concatenate

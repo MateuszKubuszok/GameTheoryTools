@@ -86,8 +86,8 @@ Builder can also run specified tasks:
  * `scons -Q buildPrograms` - builds Program's Controllers classes,
  * `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependancies,
  * `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies,
- * `scons -Q buildExecutables` - build actual executables,
- * `scons -Q buildLibraries` - build static and shared library with Models and Routines.
+ * `scons -Q buildExecutables` - builds actual executables,
+ * `scons -Q buildLibraries` - builds static and shared library with Models and Routines.
 
 To build project using Clang you might try run builder like this: `CXX="scan-build clang++" scons`. As of now
 some files would not compile with Clang (*1:3.0-6.2*), but that might change in the future. Obviously it would

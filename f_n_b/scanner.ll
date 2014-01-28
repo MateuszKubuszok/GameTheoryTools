@@ -192,4 +192,3 @@ int Scanner::lex(
 int GTLFlexLexer::yylex() {
     return 0;
 }
-

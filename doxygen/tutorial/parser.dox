@@ -159,7 +159,7 @@
  * Games have following properties defined:
  *  - `pure_equilibrium` - finds pure strategy Nash equilibria,
  *  - `mixed_equilibrium` - finds mixed strategy Nash equilibria,
- *  - `behaviour_equilibrium` - finds behaviour strategy Nash equilibria (possibly it won't be implemented
+ *  - `behavior_equilibrium` - finds behaviour strategy Nash equilibria (possibly it won't be implemented
       after all).
  *
  * @section example_sec Examples

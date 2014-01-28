@@ -137,7 +137,7 @@ public:
     virtual Message toString() const override;
 
     /**
-     * @brief Syntax sugar for Player#isEqual(const Root&) method.
+     * @brief Syntax sugar for #isEqual(const Root&)const method.
      *
      * @param player1 first Player to compare
      * @param player2 second Player to compare
@@ -149,7 +149,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !Player#isEqual(const Root&) method.
+     * @brief Syntax sugar for !#isEqual(const Root&)const method.
      *
      * @param player1 first Player to compare
      * @param player2 second Player to compare
@@ -161,7 +161,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for #toString() method.
+     * @brief Syntax sugar for #toString()const method.
      *
      * @param stream stream to concatenate
      * @param player Player to concatenate

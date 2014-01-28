@@ -70,9 +70,9 @@
  *  - `scons -Q buildPrograms` - builds Program's Controllers classes,
  *  - `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependancies,
  *  - `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies,
- *  - `scons -Q buildExecutables` - build actual executables,
- *  - `scons -Q buildLibraries` - build static and shared library with Models and Routines.
- * Running it without argument will simply build all targets.
+ *  - `scons -Q buildExecutables` - builds actual executables,
+ *  - `scons -Q buildLibraries` - builds static and shared library with Models and Routines.
+ * Running it without any argument will simply build all targets.
  *
  * Usually you'd want to build either execuitables or libraries depending on wheter you want to run GTL parser
  * or use library in a C++ program.

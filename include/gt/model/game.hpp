@@ -68,7 +68,7 @@ public:
     virtual Message toString() const = 0;
 
     /**
-     * @brief Syntax sugar for #isEqual(const Root&) method.
+     * @brief Syntax sugar for #isEqual(const Root&)const method.
      *
      * @param game1 first Game to compare
      * @param game2 second Game to compare
@@ -80,7 +80,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for !#isEqual(const Root&) method.
+     * @brief Syntax sugar for !#isEqual(const Root&)const method.
      *
      * @param game1 first Game to compare
      * @param game2 second Game to compare
@@ -92,7 +92,7 @@ public:
     );
 
     /**
-     * @brief Syntax sugar for #toString() method.
+     * @brief Syntax sugar for #toString()const method.
      *
      * @param stream stream to concatenate
      * @param game   Game to concatenate
