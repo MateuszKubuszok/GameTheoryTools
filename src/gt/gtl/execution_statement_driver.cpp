@@ -49,6 +49,11 @@ bool ExecutionStatementDriver::executeDefinition(
 
     context->registerParam(*definitionPtr);
 
+    static IdentifierPtr name   = createIdentifierPtr("Result");
+    static MessagePtr    value  = createIdentifierPtr("Param defined successfully");
+    ResultPtr            result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    driver->showResult(result);
+
     return true;
 }
 

@@ -131,7 +131,18 @@ void ExecutionDriver::execute(
     Scanner         scanner(file.get());
     Parser          parser(scanner, driver);
 
-    parser.parse();
+    bool      success = parser.parse() == 0;
+    ResultPtr result;
+    if (success) {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("File executed without errors");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    } else {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("There were errors during execution of this file");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    }
+    showResult(result);
 }
 
 void ExecutionDriver::load(
@@ -151,7 +162,18 @@ void ExecutionDriver::load(
     Scanner scanner(file.get());
     Parser  parser(scanner, *this);
 
-    parser.parse();
+    bool      success = parser.parse() == 0;
+    ResultPtr result;
+    if (success) {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("File loaded without errors");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    } else {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("There were errors during loading of this file");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    }
+    showResult(result);
 }
 
 void ExecutionDriver::save(
@@ -169,6 +191,19 @@ void ExecutionDriver::save(
     }
 
     file << context->serialize();
+
+    bool      success = !file.fail();
+    ResultPtr result;
+    if (success) {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("Context saved without errors");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    } else {
+        static IdentifierPtr name  = createIdentifierPtr("Result");
+        static MessagePtr    value = createIdentifierPtr("There were errors during saving of this context");
+        result = ResultFactory::getInstance().buildResult()->addResult(name, value).build();
+    }
+    showResult(result);
 }
 
 Message ExecutionDriver::toString() const {
