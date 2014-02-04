@@ -48,14 +48,14 @@ ResultPtr Query::execute(
 
     ResultBuilderPtr queryResult = ResultFactory::getInstance().buildResult();
 
-    for (const IdentifierPtr& propertyPtr : *propertiesNames) {
-        Identifier& property = *propertyPtr;
-        ResultBuilderPtr propertyResult = ResultFactory::getInstance().buildResult();
+    Index objectNumber = 0;
+    for (ObjectPtr& objectPtr : *objects) {
+        const Object&       object     = *objectPtr;
+        const IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
 
-        Index objectNumber = 0;
-        for (ObjectPtr& objectPtr : *objects) {
-            const Object&       object     = *objectPtr;
-            const IdentifierPtr objectName = createIdentifierPtr(++objectNumber);
+        ResultBuilderPtr objectResult = ResultFactory::getInstance().buildResult();
+        for (const IdentifierPtr& propertyName : *propertiesNames) {
+            Identifier& property = *propertyName;
 
             if (object.respondsTo(property)) {
                 // Object has this property
@@ -64,10 +64,10 @@ ResultPtr Query::execute(
                     MessagePtr propertyValue = createMessagePtr(
                         object.findPropertyWithConditions(context, property, *conditions)->getResult()
                     );
-                    propertyResult->addResult(objectName, propertyValue);
+                    objectResult->addResult(propertyName, propertyValue);
                 } catch (const std::exception& e) {
                     MessagePtr errorMessage = createMessagePtr(e.what());
-                    propertyResult->addResult(objectName, errorMessage);
+                    objectResult->addResult(propertyName, errorMessage);
                 }
             } else {
                 const Param& param = object;
@@ -83,26 +83,26 @@ ResultPtr Query::execute(
                                 referredObject->findPropertyWithConditions(context, property, *conditions)
                                               ->getResult()
                             );
-                            propertyResult->addResult(objectName, propertyValue);
+                            objectResult->addResult(propertyName, propertyValue);
                         } else {
                             // Referred Object has no sought property
 
-                            propertyResult->addResult(objectName, paramPropertyNotFound);
+                            objectResult->addResult(propertyName, paramPropertyNotFound);
                         }
                     } catch (const std::exception& e) {
                         MessagePtr errorMessage = createMessagePtr(e.what());
-                        propertyResult->addResult(objectName, errorMessage);
+                        objectResult->addResult(propertyName, errorMessage);
                     }
                 } else {
                     // Object has no sought property whatsoever
 
-                    propertyResult->addResult(objectName, objectPropertyNotFound);
+                    objectResult->addResult(propertyName, objectPropertyNotFound);
                 }
             }
         }
 
-        MessagePtr identifierValue = createMessagePtr(propertyResult->build()->getResult());
-        queryResult->addResult(propertyPtr, identifierValue);
+        MessagePtr identifierValue = createMessagePtr(objectResult->build()->getResult());
+        queryResult->addResult(objectName, identifierValue);
     }
 
     return queryResult->build();
