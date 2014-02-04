@@ -65,6 +65,7 @@ for header in [
     # standard libraries
     'algorithm', 'cstdlib', 'iomanip',
     'iostream',  'fstream', 'sstream',
+    'memory',
     'stdexcept', 'string',  'utility',
     # boost libraries
     'boost/scoped_ptr.hpp',
@@ -82,7 +83,9 @@ for header in [
     # Flex library
     'FlexLexer.h',
     # GNU Multiple Precision library
-    'gmpxx.h'
+    'gmpxx.h',
+    # GNU Linear Package Kit
+    'glpk.h'
 ]:
     if not conf.CheckCXXHeader(header):
         print('Your environment does not seem to have header <'+header+'>!!')
@@ -91,7 +94,9 @@ for header in [
 # Libraries
 libraries = [
     # GNU Multiple Precision library
-    'gmp', 'gmpxx'
+    'gmp', 'gmpxx',
+    # GNU Linear Package Kit
+    'glpk'
 ]
 
 # Library check

@@ -25,12 +25,16 @@
 
 /* Include standard libraries */
 #include <algorithm>
+#include <memory>
 #include <sstream>
 
 /* Includes boost libraries */
 #include <boost/algorithm/string.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>
+
+/* GNU Linear Package Kit */
+#include <glpk.h>
 
 /* Includes public interface */
 #include "gt/routines/common.hpp"
@@ -113,6 +117,8 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/strategic_pure_equilibrium_routine_config.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
+
+#include "gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
 #include "gt/routines/player_range_condition.hpp"

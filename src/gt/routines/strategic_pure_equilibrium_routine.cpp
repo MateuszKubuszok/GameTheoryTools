@@ -46,8 +46,8 @@ ResultPtr StrategicPureEquilibriumRoutine::findResultFor(
 ) const {
     const StrategicDataAccessorPtr data = dynamic_pointer_cast<StrategicDataAccessor>(game->getData());
     if (!data) {
-        static Identifier extensiveGameName("Strategic Game");
-        throw ExceptionFactory::getInstance().invalidGameType(extensiveGameName);
+        static Identifier strategicGameName("Strategic Game");
+        throw ExceptionFactory::getInstance().invalidGameType(strategicGameName);
     }
 
     const StrategicPureEquilibriumRoutineConfig routineConfig =
