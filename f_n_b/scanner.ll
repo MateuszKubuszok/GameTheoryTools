@@ -19,11 +19,23 @@
 /* GTL prototypes */
 #include "gt/gtl/inner_common.hpp"
 
-/* Shorten token's type name */
+/** @brief Shorten token's type name */
 typedef GT::GTL::Parser::token token;
 
-/* Defines termination token */
+/** @brief Defines termination token */
 #define yyterminate() return (token::TERMINATE)
+
+/** @brief Updates inner buffer variable used for current column tracking. */
+#define UPDATE_COLUMNS ( YY_CURRENT_BUFFER != NULL ? YY_CURRENT_BUFFER->yy_bs_column += yyleng : 0 )
+
+/** @brief Resets inner buffer variable used for current column tracking. */
+#define RESET_COLUMNS  ( YY_CURRENT_BUFFER != NULL ? YY_CURRENT_BUFFER->yy_bs_column = 1 : 0 )
+
+/** @brief Obtains current column. */
+#define CURRENT_COLUMN ( YY_CURRENT_BUFFER != NULL ? YY_CURRENT_BUFFER->yy_bs_column : 1 )
+
+/** @brief Action called after each rule initialization - updates column tracking. */
+#define YY_USER_ACTION UPDATE_COLUMNS;
 
 %}
 
@@ -122,7 +134,8 @@ identifier[_a-zA-Z]([_a-zA-Z0-9]*)
 <inline_comment>.      { /* Remove inline comment content */ }
 
  /* White spaces and errors */
-[ \t\r\f\v\n]+         { /* Removes white chars */ }
+"\n"                   { RESET_COLUMNS; }
+[ \t\r\f\v]+           { /* Removes white chars */ }
 .                      {
         lval->identifier = new GT::IdentifierPtr(new GT::Identifier(yytext));
         return (token::lexer_error);
@@ -163,18 +176,13 @@ int Scanner::lex(
 ) {
     lval = newlval;
 
-    Index firstLine   = yylineno;
-    Index firstColumn = 1; // TODO
+    newlocation.begin.line   = yylineno;
+    newlocation.begin.column = CURRENT_COLUMN;
 
     int result = lex();
 
-    Index lastLine   = yylineno;
-    Index lastColumn = 1; // TODO
-
-    newlocation.begin.lines(firstLine-1);
-    newlocation.begin.columns(firstColumn-1);
-    newlocation.end.lines(lastLine-1);
-    newlocation.end.columns(lastColumn-1);
+    newlocation.end.line   = yylineno;
+    newlocation.end.column = CURRENT_COLUMN;
 
     return result;
 }
