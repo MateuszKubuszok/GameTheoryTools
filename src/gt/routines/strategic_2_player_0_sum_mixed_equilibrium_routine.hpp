@@ -59,6 +59,44 @@ public:
      * @return Routine's Message
      */
     virtual Message toString() const override;
+
+private:
+    /**
+     * @brief Initializes GLPK's problem (LPProblem structure) with variables declarations.
+     *
+     * @param  players Players used to initialize problem
+     * @return         initalized problem
+     */
+    LPProblemPtr initializeProblem(
+        const Players& players
+    ) const;
+
+    /**
+     * @brief Fills ProblemPtr instance with values.
+     *
+     * @param problem         instance of a LPProblem that needs to have its values filled
+     * @param data            contains data with Payoff values
+     * @param positionsHelper helper used to calculate positions in StrategicDataAccessor
+     */
+    void fillUpProblem(
+        LPProblem*                          problem,
+        const StrategicDataAccessor&        data,
+        const StrategicGamePositionsHelper& positionsHelper
+    ) const;
+
+    /**
+     * @brief Returns solution for the passed Problem.
+     *
+     * @param problem         instance of a LPProblem to solve
+     * @param data            contains data with Payoff values
+     * @param positionsHelper helper used to calculate positions in StrategicDataAccessor
+     * @return                resuls
+     */
+    ResultPtr solveProblem(
+        LPProblem*                          problem,
+        const StrategicDataAccessor&        data,
+        const StrategicGamePositionsHelper& positionsHelper
+    ) const;
 }; /* END class Strategic2Player0SumMixedEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -49,6 +49,8 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::unique_ptr;
+
 using boost::container::vector;
 using boost::shared_ptr;
 
@@ -77,6 +79,11 @@ class InformationSetChoiceCondition;
 class InformationSetRangeCondition;
 
 /* Shortens commonly used names */
+
+/** @brief Alias for GLPK's problem structure. */
+typedef glp_prob                                      LPProblem;
+/** @brief Defines wrapper with automatic deletion for GLPK's problem structure. */
+typedef unique_ptr<LPProblem, void(*)(LPProblem*)>    LPProblemPtr;
 
 /** @brief Shared pointer to PlayerChoiceRoutineConfig. */
 typedef shared_ptr<PlayerChoiceRoutineConfig>         PlayerChoiceRoutineConfigPtr;
