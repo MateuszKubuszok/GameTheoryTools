@@ -1,5 +1,7 @@
 # Game Theory Tools
 
+[![Build Status](https://travis-ci.org/MateuszKubuszok/MasterThesis.png)](https://travis-ci.org/MateuszKubuszok/MasterThesis)
+
 Project of a tool to finding Nash equilibria for given Games. Finding equilibria is a an actual goal of my
 master thesis, so adding other functions will not be considered until core functionality is implemented.
 
@@ -18,7 +20,10 @@ GTL parser uses Flex and Bison tools to build `.cpp` files.
 ### Linux pre-requirements installation
 
 On Debian (and Debian-based distributions) dependencies can be installed by calling
-`sudo apt-get install g++ bison flex libgmp-dev libboost-all-dev scons`.
+`sudo apt-get install g++ bison flex libgmp-dev glpk libboost-all-dev scons`.
+
+On Ubuntu Precise it is necessary to install `libboost1.48-all-dev` instead of `libboost-all-dev` and
+`g++-4.8` instead of `g++` to make it work. `scons` would be then called  `CXX=g++4.8 scons [arguments]`.
 
 During development program has been successfully building with:
 
@@ -26,6 +31,7 @@ During development program has been successfully building with:
  * **bison** version *2.5*,
  * **flex** version *2.5.35*,
  * **gmp** version *2.5.0.5+dfsg-2*,
+ * **glpk** version *4.45-1*,
  * **boost** version *1.49*,
  * **scons** version *2.1.0.r5357[MODIFIED]*,
 
@@ -45,7 +51,10 @@ On *Windows 7* the project was successfully built with *Cygwin* and following it
     * **gmp** version *5.1.3-1*,
     * **libgmp-devel** version *5.1.3-1*,
     * **libgmp10** version *5.1.3-1*,
-    * **libgmpxx4** version *5.1.3-1*
+    * **libgmpxx4** version *5.1.3-1*,
+	* **glpk** version *4.45-1*,
+    * **libglpk-devel** version *4.45-1*,
+    * **libglpk.35** version *4.45-1*
 
 as well as their required dependencies.
 
@@ -92,6 +101,9 @@ Builder can also run specified tasks:
 To build project using Clang you might try run builder like this: `CXX="scan-build clang++" scons`. As of now
 some files would not compile with Clang (*1:3.0-6.2*), but that might change in the future. Obviously it would
 require Clang installed.
+
+To make executables (`gtl_program`) statically linked run SCons with argument `static=1`. Note, that this
+would require having installed static versions of all required libraries.
 
 
 ## Running tests
