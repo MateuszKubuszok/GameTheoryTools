@@ -1,6 +1,10 @@
 language:       cpp
-before_install: sudo apt-get update
-install:        sudo apt-get install g++ flex bison libgmp-dev glpk libboost1.48-all-dev scons
+before_install:
+              - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+              - sudo apt-get update -qq
+install:
+              - sudo apt-get install g++-4.8 flex bison libgmp-dev glpk libboost1.48-all-dev scons
+              - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 compiler:       gcc
 script:         scons -Q runProgramsTests
 branches:
