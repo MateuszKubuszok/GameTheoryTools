@@ -367,18 +367,19 @@ GTL_Scanner_cpp = env.CXXFile(
     target=GTL_Scanner_cpp_URI
 )
 
+WronglyPlacedBisonHelpers = SideEffect([
+    source+gtl+'location.hh',
+    source+gtl+'position.hh',
+    source+gtl+'stack.hh'
+], GTL_Parser_cpp)
+
 CorrectBisonInstallation = [
     env.Command(
         include+gtl+WronglyPlacedBisonHelper_hh.name,
         WronglyPlacedBisonHelper_hh,
-        Move("$TARGET", "$SOURCE")
+        Copy("$TARGET", "$SOURCE")
     )
-    for WronglyPlacedBisonHelper_hh in Glob(source+gtl+'*.hh')
-    if  WronglyPlacedBisonHelper_hh.name in [
-        'location.hh',
-        'position.hh',
-        'stack.hh'
-    ]
+    for WronglyPlacedBisonHelper_hh in WronglyPlacedBisonHelpers
 ]
 Depends(
     CorrectBisonInstallation,

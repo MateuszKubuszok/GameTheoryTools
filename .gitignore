@@ -9,6 +9,9 @@
 /include/gt/gtl/position.hh
 /include/gt/gtl/stack.hh
 /include/gt/gtl/parser.hpp
+/src/gt/gtl/location.hh
+/src/gt/gtl/position.hh
+/src/gt/gtl/stack.hh
 /src/gt/gtl/parser.cpp
 /src/gt/gtl/parser.output
 /src/gt/gtl/scanner.cpp
