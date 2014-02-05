@@ -1,0 +1,11 @@
+language:       cpp
+before_install: sudo apt-get update
+install:        sudo apt-get install g++ flex bison libgmp-dev glpk libboost-all-dev scons
+compiler:       gcc
+script:         scons -Q runProgramsTests
+branches:
+  only:         master
+notifications:
+  email:
+    on_success: change
+    on_failure: always
