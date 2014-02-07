@@ -52,7 +52,7 @@ On *Windows 7* the project was successfully built with *Cygwin* and following it
     * **libgmp-devel** version *5.1.3-1*,
     * **libgmp10** version *5.1.3-1*,
     * **libgmpxx4** version *5.1.3-1*,
-	* **glpk** version *4.45-1*,
+    * **glpk** version *4.45-1*,
     * **libglpk-devel** version *4.45-1*,
     * **libglpk.35** version *4.45-1*
 
@@ -69,6 +69,18 @@ choice call commands under Cygwin terminal:
 
 making sure that choosen architecture matches Cygwin's one. Alternatively you might try any other tutorial
 explaining how to install Boost on Windows and make it visible to Cygwin environment.
+
+### Clang instead of GCC
+
+Project can be built with Clang compiler. It shoule be noted though that there is a bug in boost library
+(in version 1.48) that would fail building process:
+
+    ...
+    /usr/include/boost/container/allocator/allocator_traits.hpp:167:54: error: missing 'typename' prior to dependent type name 'boost::intrusive::detail::type_rebinder<Alloc, T>::type'
+         template <typename T> using rebind_alloc  = boost::intrusive::detail::type_rebinder<Alloc, T>::type;
+                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In version 1.54 there is no such error, but I'm not sure when it was actually removed.
 
 
 ## Building process
@@ -98,12 +110,14 @@ Builder can also run specified tasks:
  * `scons -Q buildExecutables` - builds actual executables,
  * `scons -Q buildLibraries` - builds static and shared library with Models and Routines.
 
-To build project using Clang you might try run builder like this: `CXX="scan-build clang++" scons`. As of now
-some files would not compile with Clang (*1:3.0-6.2*), but that might change in the future. Obviously it would
-require Clang installed.
+### Clang
+
+To build project using Clang you might try run builder like this: `CXX=clang++ CC=clang scons`.
+
+### Static linking
 
 To make executables (`gtl_program`) statically linked run SCons with argument `static=1`. Note, that this
-would require having installed static versions of all required libraries.
+would require having installed static versions of all required libraries, otherwise linker will fail.
 
 
 ## Running tests

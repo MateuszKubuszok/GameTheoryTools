@@ -39,7 +39,10 @@
  *    - `gmp`,
  *    - `libgmp-devel`,
  *    - `libgmp10`,
- *    - `libgmpxx4`.
+ *    - `libgmpxx4`,
+ *    - `glpk`,
+ *    - `libglpk-devel`,
+ *    - `libglpk.35`.
  *
  * `Boost` libraries need to be build manually separately since version provided with `Cygwin` doesn't contain
  * e.g. `Boost Unit Test Framework`. After downloading and extracting source to directory of choice call
@@ -52,6 +55,18 @@
    @endcode
  * making sure that choosen architecture matches `Cygwin`'s one. Alternatively you might try any other
  * tutorial explaining how to install Boost on Windows and make it visible to `Cygwin` environment.
+ *
+ * If you want to use Clang instead of GCC keep in mind that at least version `1.48` of boost generates errors
+ * in Clang that are not displayed by GCC. To avoid it use Clang version that fully supports C++11 and `Boost`
+ * version with this issue fixed e.g. `Clang 3.3` and `Boost 1.54`:
+ * @code
+   ...
+   /usr/include/boost/container/allocator/allocator_traits.hpp:167:54: error: missing 'typename' prior to dependent type name 'boost::intrusive::detail::type_rebinder<Alloc, T>::type'
+         template <typename T> using rebind_alloc  = boost::intrusive::detail::type_rebinder<Alloc, T>::type;
+                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   @endcode
+ * It is caused by lack of `typename` word that was fixed somwhere between `1.48` and `1.54`. GCC didn't
+ * treated it as error (mistakingly?) and so it ended up in a released version.
  *
  * @section project_sec Building project
  *
@@ -77,16 +92,15 @@
  * Usually you'd want to build either execuitables or libraries depending on wheter you want to run GTL parser
  * or use library in a C++ program.
  *
+ * To build project using Clang define environment variables `CXX` and `CC`:
+ * @code
+   CXX=clang++ CC=clang scons  # for 1 line only
+   export CXX=clang++ CC=clang
+   scons                       # for whole shell
+   @endcode
+ *
  * To build project with statically linked libraries use `static=1` argument e.g.:
  * @code
    scons -Q buildExecutables static=1
    @endcode
- *
- * @section clang_sec Clang and other compilers
- *
- * For now only `g++` is supported - other compilers while most likely should be able to build it, would
- * require some configuration that I'm not able to test now.
- *
- * `Clang` compiler (version `1:3.0-6.2`) was not able to build project, most likely beacause boost templates
- * required some functionality not yet implemented in it.
  */
