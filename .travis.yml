@@ -1,7 +1,6 @@
 language:       cpp
 before_install:
               - if [ "$CXX" = "clang++" ]; then sudo add-apt-repository "deb http://llvm.org/apt/precise/ llvm-toolchain-precise main" -y; fi
-              - if [ "$CXX" = "clang++" ]; then sudo add-apt-repository "deb-src http://llvm.org/apt/precise/ llvm-toolchain-precise main" -y; fi
               - if [ "$CXX" = "clang++" ]; then wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -; fi
               - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
               - sudo apt-get update -qq
