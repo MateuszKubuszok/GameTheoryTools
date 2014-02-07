@@ -15,7 +15,6 @@ install:
               - sudo apt-get install flex bison libgmp-dev glpk scons
 compiler:
               - gcc
-              - clang
 script:         scons -Q buildExecutables
 branches:
   except:       gh-pages

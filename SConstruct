@@ -46,9 +46,9 @@ def targetForTest(file):
 env = Environment()
 
 # Allows overridding default compiler with eg. Clang.
-env["CC"]  = os.getenv("CC")  or env["CC"]
-env["CXX"] = os.getenv("CXX") or env["CXX"]
-env["ENV"]["PATH"] = os.environ["PATH"]
+env["CC"]          = os.getenv("CC")   or env["CC"]
+env["CXX"]         = os.getenv("CXX")  or env["CXX"]
+env["ENV"]["PATH"] = os.getenv("PATH") or env["ENV"]["PATH"]
 env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
 
 # Assuming that instalation is valid unless proved otherwise
