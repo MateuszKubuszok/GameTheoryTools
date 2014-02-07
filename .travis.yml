@@ -5,12 +5,12 @@ before_install:
               - sudo apt-get update -qq
 install:
               - if [ "$CXX" = "g++" ]; then
-              -   sudo apt-get install gcc-4.8
+              -   sudo apt-get install gcc-4.8 g++-4.8
               -   export CXX="g++-4.8" CC="gcc-4.8"
               -   sudo apt-get install libboost1.48-dev libboost-program-options1.48-dev libboost-program-options1.48.0 libboost-test1.48-dev libboost-test1.48.0
               - fi
               - if [ "$CXX" = "clang++" ]; then
-              -   sudo apt-get install libboost1.54-all-dev
+              -   sudo apt-get install libboost1.54-dev libboost-program-options1.54-dev libboost-program-options1.54.0 libboost-test1.54-dev libboost-test1.54.0
               - fi
               - sudo apt-get install flex bison libgmp-dev glpk scons
 compiler:
