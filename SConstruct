@@ -102,7 +102,7 @@ libraries = [
 
 # Library check
 for library in libraries:
-    if not conf.CheckLib(library):
+    if not conf.CheckLib(library=library, language="C"):
         print('Your environment does not seem to have library <'+library+'>!!')
         validInstallation = False
 
@@ -142,7 +142,7 @@ executablesLibraries = [
 
 # Library check
 for library in executablesLibraries:
-    if not executablesConf.CheckLib(library):
+    if not executablesConf.CheckLib(library=library, language="C++"):
         print('Your environment does not seem to have library <'+library+'>!!')
         validInstallation = False
 
@@ -180,7 +180,7 @@ testLibraries = [
 
 # Library check
 for library in testLibraries:
-    if not testConf.CheckLib(library):
+    if not testConf.CheckLib(library=library, language="C++"):
         print('Your environment does not seem to have library <'+library+'>!!')
         validInstallation = False
 
@@ -212,7 +212,7 @@ executablesTestLibraries = [
 
 # Library check
 for library in list(set(executablesTestLibraries) - set(executablesLibraries) - set(testLibraries)):
-    if not executablesTestConf.CheckLib(library):
+    if not executablesTestConf.CheckLib(library=library, language="C++"):
         print('Your environment does not seem to have library <'+library+'>!!')
         validInstallation = False
 
