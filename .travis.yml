@@ -2,7 +2,7 @@ language:       cpp
 before_install:
               - if [ "$CXX" = "clang++" ]; then sudo add-apt-repository "deb http://llvm.org/apt/precise/ llvm-toolchain-precise main" -y; fi
               - if [ "$CXX" = "clang++" ]; then wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -; fi
-              - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+              - sudo add-apt-repository ppa:boost-latest/ppa -y
               - sudo apt-get update -qq
 install:
               - sudo apt-get install flex bison libgmp-dev glpk libboost1.54-dev libboost-program-options1.54-dev libboost-program-options1.54.0 libboost-test1.54-dev libboost-test1.54.0 scons
