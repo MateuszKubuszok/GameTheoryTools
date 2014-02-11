@@ -37,6 +37,14 @@ Message createMessage(
 }
 
 Message createMessage(
+    double message
+) {
+    stringstream result;
+    result << message;
+    return Message(result.str());
+}
+
+Message createMessage(
     Number number
 ) {
     stringstream result;
@@ -55,6 +63,14 @@ Message createMessage(
 
 MessagePtr createMessagePtr(
     Index message
+) {
+    stringstream result;
+    result << message;
+    return MessagePtr(new Message(result.str()));
+}
+
+MessagePtr createMessagePtr(
+    double message
 ) {
     stringstream result;
     result << message;

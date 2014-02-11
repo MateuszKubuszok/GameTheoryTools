@@ -48,6 +48,16 @@ Message createMessage(
  * @return        Message
  */
 Message createMessage(
+    double message
+);
+
+/**
+ * @brief Creates Message.
+ *
+ * @param message source to turn into Message
+ * @return        Message
+ */
+Message createMessage(
     const char* message
 );
 
@@ -99,6 +109,16 @@ Message createMessage(
  */
 MessagePtr createMessagePtr(
     Index message
+);
+
+/**
+ * @brief Creates Message.
+ *
+ * @param message source to turn into Message
+ * @return        Message
+ */
+MessagePtr createMessagePtr(
+    double message
 );
 
 /**

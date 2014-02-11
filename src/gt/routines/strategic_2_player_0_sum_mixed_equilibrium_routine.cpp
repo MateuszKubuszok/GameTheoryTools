@@ -81,21 +81,19 @@ LPProblemPtr Strategic2Player0SumMixedEquilibriumRoutine::initializeProblem(
     glp_set_obj_dir(   problem, GLP_MAX );
 
     glp_add_rows(problem, player1.getStrategiesNumber());
-    int i = 1;
     for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
+        int i = player1.getStrategyOrdinal(*player1Strategy) + 1;
         glp_set_row_name(problem, i, player1Strategy->c_str());
-        glp_set_row_bnds(problem, i, GLP_LO, 0.0, 0.0);
+        glp_set_row_bnds(problem, i, GLP_UP, 0.0, 1.0);
 
-        i++;
     }
 
     glp_add_cols(problem, player2.getStrategiesNumber());
-    int j = 1;
     for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
+        int j = player2.getStrategyOrdinal(*player2Strategy) + 1;
         glp_set_col_name(problem, j, player2Strategy->c_str());
-        glp_set_col_bnds(problem, j, GLP_UP, 0.0, 1.0);
-
-        j++;
+        glp_set_col_bnds(problem, j, GLP_LO, 0.0, 0.0);
+        glp_set_obj_coef(problem, j, 1.0);
     }
 
     return problemPtr;
@@ -112,9 +110,9 @@ void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
     const Identifier& player2Name = *( player2.getName() );
     const Index       upperBound  = positionsHelper.getUpperBound();
 
-    vector<int>     player1Strategies(upperBound);
-    vector<int>     player2Strategies(upperBound);
-    vector<double>  payoff(upperBound);
+    vector<int>     player1Strategies(upperBound+1);
+    vector<int>     player2Strategies(upperBound+1);
+    vector<double>  payoff(upperBound+1);
 
     for (Index k = 0; k < upperBound; k++) {
         const PositionsPtr positions       = positionsHelper.retrievePositions(k);
@@ -125,9 +123,10 @@ void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
         const Index        player2Ordinal  = player2.getStrategyOrdinal(player2Strategy) + 1;
         const double       player1Payoff   = data[positions]->getPayoff(player1Name)->get_d();
 
-        player1Strategies[k] = player1Ordinal;
-        player2Strategies[k] = player2Ordinal;
-        payoff[k]            = player1Payoff; // figure out GMP with GLPK
+        // GLPK uses 1 indeksing also in data arrays
+        player1Strategies[k+1] = player1Ordinal;
+        player2Strategies[k+1] = player2Ordinal;
+        payoff[k+1]            = player1Payoff; // figure out GMP with GLPK
     }
 
     // vectors uses contignous memory - &x[0] "transforms" it into a C-style array
@@ -146,8 +145,7 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
     parm.msg_lev = GLP_MSG_OFF;
 
     if (glp_simplex(problem, &parm) != 0 ||
-        glp_get_prim_stat(problem) != GLP_FEAS ||
-        glp_get_dual_stat(problem) != GLP_FEAS) {
+        glp_get_prim_stat(problem) != GLP_FEAS || glp_get_dual_stat(problem) != GLP_FEAS) {
         // TODO: create MessageFactory
         return ResultFactory::getInstance().constResult(Message("Failed to calculate the solution"));
     }
@@ -160,7 +158,7 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
     for (const IdentifierPtr& strategy : *player1.getStrategies()) {
         // change 0-indexing used in Model to 1-indexing used in GLPK
         Index strategyOrdinal = player1.getStrategyOrdinal(*strategy) + 1;
-        double probability    = glp_get_col_dual(problem, strategyOrdinal) / distributionFactor;
+        double probability    = glp_get_row_dual(problem, strategyOrdinal) / distributionFactor;
 
         player1Distribution.insert( DistributionMap::value_type(*strategy, probability) );
     }
@@ -171,7 +169,7 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
     for (const IdentifierPtr& strategy : *player2.getStrategies()) {
         // change 0-indexing used in Model to 1-indexing used in GLPK
         Index strategyOrdinal = player2.getStrategyOrdinal(*strategy) + 1;
-        double probability    = glp_get_col_dual(problem, strategyOrdinal) / distributionFactor;
+        double probability    = glp_get_col_prim(problem, strategyOrdinal) / distributionFactor;
 
         player2Distribution.insert( DistributionMap::value_type(*strategy, probability) );
     }
@@ -192,19 +190,46 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
-    // static const IdentifierPtr pureStrategiesName = createIdentifierPtr("Mixed Strategies");
-    // ResultBuilderPtr mixedStrategiesResult = ResultFactory::getInstance().buildResult();
-    // // for (const Positions::value_type& position : *positions) {
-    // //     const IdentifierPtr& playerName = createIdentifierPtr(position.first);
-    // //     const MessagePtr&    strategy   = createMessagePtr(position.second);
-    // //     mixedStrategiesResult->addResult( playerName, strategy );
-    // // }
-    // const MessagePtr pureStrategies = createMessagePtr(mixedStrategiesResult->build()->getResult());
-    // resultBuilder->addResult( pureStrategiesName, pureStrategies );
 
-    // static const IdentifierPtr finalPayoffName = createIdentifierPtr("Payoff");
-    // const MessagePtr finalPayoffResult = createMessagePtr();
-    // resultBuilder->addResult( finalPayoffName, finalPayoffResult );
+    ResultBuilderPtr player1DistributionResult = ResultFactory::getInstance().buildResult();
+    for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
+        const MessagePtr& probability  = createMessagePtr(player1Distribution[*player1Strategy]);
+        player1DistributionResult->addResult( player1Strategy, probability );
+    }
+    ResultBuilderPtr player2DistributionResult = ResultFactory::getInstance().buildResult();
+    for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
+        const MessagePtr& probability  = createMessagePtr(player2Distribution[*player2Strategy]);
+        player2DistributionResult->addResult( player2Strategy, probability );
+    }
+
+    ResultBuilderPtr mixedStrategiesResult = ResultFactory::getInstance().buildResult();
+    mixedStrategiesResult->addResult(
+        player1.getName(),
+        createMessagePtr( player1DistributionResult->build()->getResult() )
+    );
+    mixedStrategiesResult->addResult(
+        player2.getName(),
+        createMessagePtr( player2DistributionResult->build()->getResult() )
+    );
+    const MessagePtr mixedStrategies = createMessagePtr(mixedStrategiesResult->build()->getResult());
+
+    static const IdentifierPtr mixedStrategiesName = createIdentifierPtr("Mixed Strategies");
+    resultBuilder->addResult( mixedStrategiesName, mixedStrategies );
+
+    static const IdentifierPtr payoffName = createIdentifierPtr("Payoff");
+    ResultBuilderPtr payoffResult = ResultFactory::getInstance().buildResult();
+
+    IdentifiersPtr   headers      = createIdentifiersPtr();
+    headers->push_back( player1.getName() );
+    headers->push_back( player2.getName() );
+    payoffResult->setHeaders( headers );
+
+    MessagesPtr payoffs = createMessagesPtr();
+    payoffs->push_back( createMessagePtr(player1Payoff) );
+    payoffs->push_back( createMessagePtr(player2Payoff) );
+    payoffResult->addRecord( payoffName, payoffs );
+
+    resultBuilder->addResult( payoffName, createMessagePtr(payoffResult->build()->getResult()) );
 
     return resultBuilder->build();
 }
