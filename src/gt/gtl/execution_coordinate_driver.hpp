@@ -44,21 +44,8 @@ class ExecutionCoordinateDriver final : public CoordinateDriver {
      * @brief Driver for error handling.
      */
     CheckingCoordinateDriver checkingCoordinateDriver;
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver*                  driver;
 
 public:
-    /**
-     * @brief Initiates ExecutionCoordinateDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit ExecutionCoordinateDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Creates coordinate.
      *

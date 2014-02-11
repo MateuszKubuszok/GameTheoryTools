@@ -34,11 +34,9 @@ using Model::GameBuilderPtr;
 // public:
 
 ExecutionGameDriver::ExecutionGameDriver(
-    Driver*  parentDriver,
     Context* contextPtr
 ) :
-    checkingGameDriver(parentDriver),
-    driver(parentDriver),
+    checkingGameDriver(),
     context(contextPtr)
     {}
 

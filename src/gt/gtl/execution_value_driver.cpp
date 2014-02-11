@@ -32,13 +32,6 @@ using boost::dynamic_pointer_cast;
 // class ExecutionValueDriver final : public ValueDriver {
 // public:
 
-ExecutionValueDriver::ExecutionValueDriver(
-    Driver* parentDriver
-) :
-    checkingValueDriver(parentDriver),
-    driver(parentDriver)
-    {}
-
 ParamPtr* ExecutionValueDriver::get(
     const InputLocation& inputLocation,
     const IdentifierPtr* identifierPtr

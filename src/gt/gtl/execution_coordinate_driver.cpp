@@ -28,13 +28,6 @@ namespace GTL {
 // class ExecutionCoordinateDriver final : public CoordinateDriver {
 // public:
 
-ExecutionCoordinateDriver::ExecutionCoordinateDriver(
-    Driver* parentDriver
-) :
-    checkingCoordinateDriver(parentDriver),
-    driver(parentDriver)
-    {}
-
 CoordinatePtr* ExecutionCoordinateDriver::create(
     const InputLocation& inputLocation,
     const IdentifierPtr* playerPtr,

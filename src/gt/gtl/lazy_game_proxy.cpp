@@ -76,8 +76,8 @@ const Model::GamePtr LazyGameProxy::accessGame() const {
 
     PlayersPtr modelPlayers(new Players());
     for (const ObjectPtr& objectPtr : *players) {
-        const Player& player = *objectPtr;
-        const Param&  param  = *objectPtr;
+        const Player& player = objectPtr->toPlayer();
+        const Param&  param  = objectPtr->toParam();
 
         if (player) {
             const PlayerPtr playerPtr = dynamic_pointer_cast<Player>(objectPtr);
@@ -95,7 +95,7 @@ const Model::GamePtr LazyGameProxy::accessGame() const {
 
         if (param) {
             const ObjectPtr referredObject = param.getObject(*context);
-            const Player&   referredPlayer = *referredObject;
+            const Player&   referredPlayer = referredObject->toPlayer();
 
             if (referredPlayer) {
                 PlayerPtr playerPtr = dynamic_pointer_cast<Player>(objectPtr);

@@ -6,8 +6,6 @@ BOOST_AUTO_TEST_SUITE( ExecutionConditionDriver )
 
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetChoosed ) {
     // given
-    TestDriverImpl driver;
-
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  setName    = GT::createIdentifierPtr("1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
@@ -28,7 +26,7 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetChoosed ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> strategyPtr(new GT::GTL::ObjectPtr(objectStrategy));
 
     // when
-    GT::GTL::ExecutionConditionDriver conditionDriver(&driver);
+    GT::GTL::ExecutionConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(
     conditionDriver.informationSetChoosed(*inputLocation, playerPtr.get(), setPtr.get(), strategyPtr.get())
     );
@@ -40,8 +38,6 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetChoosed ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetWithin ) {
     // given
-    TestDriverImpl driver;
-
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  setName    = GT::createIdentifierPtr("1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
@@ -63,7 +59,7 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetWithin ) {
     boost::scoped_ptr<GT::GTL::ObjectsPtr> strategiesPtr(new GT::GTL::ObjectsPtr(objectStrategies));
 
     // when
-    GT::GTL::ExecutionConditionDriver conditionDriver(&driver);
+    GT::GTL::ExecutionConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(
     conditionDriver.informationSetWithin(*inputLocation, playerPtr.get(), setPtr.get(), strategiesPtr.get())
     );
@@ -75,8 +71,6 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetWithin ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
     // given
-    TestDriverImpl driver;
-
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
     GT::IdentifiersPtr strategies(new GT::Identifiers());
@@ -93,7 +87,7 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> strategyPtr(new GT::GTL::ObjectPtr(objectStrategy));
 
     // when
-    GT::GTL::ExecutionConditionDriver conditionDriver(&driver);
+    GT::GTL::ExecutionConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(
         conditionDriver.playerChoosed(*inputLocation, playerPtr.get(), strategyPtr.get()));
 
@@ -104,8 +98,6 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerWithin ) {
     // given
-    TestDriverImpl driver;
-
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
     GT::IdentifiersPtr strategies(new GT::Identifiers());
@@ -123,7 +115,7 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerWithin ) {
     boost::scoped_ptr<GT::GTL::ObjectsPtr> strategiesPtr(new GT::GTL::ObjectsPtr(objectStrategies));
 
     // when
-    GT::GTL::ExecutionConditionDriver conditionDriver(&driver);
+    GT::GTL::ExecutionConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> conditionPtr(
         conditionDriver.playerWithin(*inputLocation, playerPtr.get(), strategiesPtr.get()));
 

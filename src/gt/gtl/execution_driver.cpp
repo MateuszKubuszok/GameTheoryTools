@@ -42,10 +42,10 @@ ExecutionDriver::ExecutionDriver(
 ) :
     checkingDriver(newErrorStream),
     context(new Context()),
-    coordinate(this),
-    condition(this),
-    game(this, context.get()),
-    value(this),
+    coordinate(),
+    condition(),
+    game(context.get()),
+    value(),
     statement(this, context.get()),
     outputStream(newOutputStream),
     errorStream(newErrorStream)
@@ -219,10 +219,10 @@ ExecutionDriver::ExecutionDriver(
 ) :
     checkingDriver(newErrorStream),
     context(new Context(parentContext)),
-    coordinate(this),
-    condition(this),
-    game(this, context.get()),
-    value(this),
+    coordinate(),
+    condition(),
+    game(context.get()),
+    value(),
     statement(this, context.get()),
     outputStream(newOutputStream)
     {}

@@ -28,12 +28,6 @@ namespace GTL {
 // class CheckingConditionDriver final : public ConditionDriver {
 // public:
 
-CheckingConditionDriver::CheckingConditionDriver(
-    Driver* parentDriver
-) :
-    driver(parentDriver)
-    {}
-
 ConditionPtr* CheckingConditionDriver::informationSetChoosed(
     const InputLocation& inputLocation,
     const ObjectPtr*     playerPtr,
@@ -236,8 +230,8 @@ bool CheckingConditionDriver::isPlayerOrParam(
     if (!object)
         return false;
 
-    const Player& player = object;
-    const Param&  param  = object;
+    const Player& player = object.toPlayer();
+    const Param&  param  = object.toParam();
 
     return (player || param);
 }
@@ -245,7 +239,7 @@ bool CheckingConditionDriver::isPlayerOrParam(
 bool CheckingConditionDriver::hasIdentifier(
     const Object& object
 ) const {
-    const Param& param = object;
+    const Param& param = object.toParam();
     return param;
 }
 

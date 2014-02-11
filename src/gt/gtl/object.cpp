@@ -106,15 +106,15 @@ Message Object::toString() const {
     return createMessage(typeName);
 }
 
-Object::operator const Game&() const {
+const Game& Object::toGame() const {
     return *noGame;
 }
 
-Object::operator const Param&() const {
+const Param& Object::toParam() const {
     return *noParam;
 }
 
-Object::operator const Player&() const {
+const Player& Object::toPlayer() const {
     return *noPlayer;
 }
 

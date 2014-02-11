@@ -28,13 +28,6 @@ namespace GTL {
 // class ExecutionConditionDriver final : public ConditionDriver {
 // public:
 
-ExecutionConditionDriver::ExecutionConditionDriver(
-    Driver* parentDriver
-) :
-    checkingConditionDriver(parentDriver),
-    driver(parentDriver)
-    {}
-
 ConditionPtr* ExecutionConditionDriver::informationSetChoosed(
     const InputLocation& inputLocation,
     const ObjectPtr*     playerPtr,

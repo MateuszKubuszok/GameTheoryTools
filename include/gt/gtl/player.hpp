@@ -76,7 +76,7 @@ public:
      *
      * @return Player
      */
-    virtual operator const Player&() const override;
+    virtual const Player& toPlayer() const override;
 }; /* END class Player */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

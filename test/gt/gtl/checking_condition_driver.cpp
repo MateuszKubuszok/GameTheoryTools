@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( CheckingConditionDriver )
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetChoosed ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        invalidPlayer =boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
@@ -26,7 +25,7 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetChoosed ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> invalidObjectPtr(new GT::GTL::ObjectPtr(invalidObject));
 
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
+    GT::GTL::CheckingConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(
         conditionDriver.informationSetChoosed(
             *inputLocation, invalidPlayerPtr.get(), invalidParamPtr.get(), invalidParamPtr.get()));
@@ -78,7 +77,6 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetChoosed ) {
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetWithin ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        invalidPlayer =boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
@@ -103,7 +101,7 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetWithin ) {
     (*invalidParamsPtr)->push_back( invalidParam );
 
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
+    GT::GTL::CheckingConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(
         conditionDriver.informationSetWithin(
             *inputLocation, invalidPlayerPtr.get(), invalidParamPtr.get(), invalidParamsPtr.get()));
@@ -155,7 +153,6 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_informationSetWithin ) {
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        invalidPlayer =boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
@@ -180,7 +177,7 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
     (*invalidParamsPtr)->push_back( invalidParam );
 
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
+    GT::GTL::CheckingConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(
         conditionDriver.playerWithin(*inputLocation, invalidPlayerPtr.get(), invalidParamsPtr.get()));
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition2Ptr(
@@ -223,7 +220,6 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerChoosed ) {
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerWithin ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        invalidPlayer =boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player"));
@@ -243,7 +239,7 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerWithin ) {
     boost::scoped_ptr<GT::GTL::ObjectPtr> invalidObjectPtr(new GT::GTL::ObjectPtr(invalidObject));
 
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
+    GT::GTL::CheckingConditionDriver conditionDriver;
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition1Ptr(
         conditionDriver.playerChoosed(*inputLocation, invalidPlayerPtr.get(), invalidParamPtr.get()));
     boost::scoped_ptr<GT::GTL::ConditionPtr> condition2Ptr(
@@ -286,10 +282,8 @@ BOOST_AUTO_TEST_CASE( CheckingConditionDriver_playerWithin ) {
 
 BOOST_AUTO_TEST_CASE( CheckingConditionDriver_toString ) {
     // given
-    TestDriverImpl driver;
-
     // when
-    GT::GTL::CheckingConditionDriver conditionDriver(&driver);
+    GT::GTL::CheckingConditionDriver conditionDriver;
 
     // then
     BOOST_CHECK_EQUAL(

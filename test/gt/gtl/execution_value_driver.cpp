@@ -10,7 +10,6 @@ BOOST_AUTO_TEST_CASE( ExecutionValueDriver_get ) {
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    TestDriverImpl            driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         identifier    = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::NumberPtr             number        = GT::Model::NullFactory::getInstance().createNumber();
@@ -19,7 +18,7 @@ BOOST_AUTO_TEST_CASE( ExecutionValueDriver_get ) {
     boost::scoped_ptr<GT::NumberPtr>     numberPtr(new GT::NumberPtr(number));
 
     // when
-    GT::GTL::ExecutionValueDriver valueDriver(&driver);
+    GT::GTL::ExecutionValueDriver valueDriver;
     boost::scoped_ptr<GT::GTL::ParamPtr> param1Ptr(valueDriver.get(*inputLocation, identifierPtr.get()));
     boost::scoped_ptr<GT::GTL::ParamPtr> param2Ptr(valueDriver.get(*inputLocation, numberPtr.get()));
 
@@ -46,7 +45,6 @@ BOOST_AUTO_TEST_CASE( ExecutionValueDriver_toObject ) {
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    TestDriverImpl     driver;
     GT::GTL::GamePtr   game   = GT::GTL::NullFactory::getInstance().createGame();
     GT::GTL::ParamPtr  param  = GT::GTL::NullFactory::getInstance().createParam();
     GT::GTL::PlayerPtr player = GT::GTL::NullFactory::getInstance().createPlayer();
@@ -56,7 +54,7 @@ BOOST_AUTO_TEST_CASE( ExecutionValueDriver_toObject ) {
     boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(new GT::GTL::PlayerPtr(player));
 
     // when
-    GT::GTL::ExecutionValueDriver valueDriver(&driver);
+    GT::GTL::ExecutionValueDriver valueDriver;
     boost::scoped_ptr<GT::GTL::ObjectPtr> gameObjectPtr(valueDriver.toObject(gamePtr.get()));
     boost::scoped_ptr<GT::GTL::ObjectPtr> paramObjectPtr(valueDriver.toObject(paramPtr.get()));
     boost::scoped_ptr<GT::GTL::ObjectPtr> playerObjectPtr(valueDriver.toObject(playerPtr.get()));

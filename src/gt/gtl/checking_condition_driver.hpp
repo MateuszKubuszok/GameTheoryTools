@@ -40,21 +40,7 @@ namespace GTL {
  * @see ConditionDriver
  */
 class CheckingConditionDriver final : public ConditionDriver {
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver* driver;
-
 public:
-    /**
-     * @brief Initiates CheckingConditionDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit CheckingConditionDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Create condition for Player choosing strategy in information set.
      *

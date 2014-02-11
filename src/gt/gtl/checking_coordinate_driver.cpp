@@ -28,12 +28,6 @@ namespace GTL {
 // class CheckingCoordinateDriver final : public CoordinateDriver {
 // public:
 
-CheckingCoordinateDriver::CheckingCoordinateDriver(
-    Driver* parentDriver
-) :
-    driver(parentDriver)
-    {}
-
 CoordinatePtr* CheckingCoordinateDriver::create(
     const InputLocation& inputLocation,
     const IdentifierPtr*,

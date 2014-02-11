@@ -32,12 +32,6 @@ using boost::dynamic_pointer_cast;
 // class CheckingValueDriver final : ValueDriver {
 // public:
 
-CheckingValueDriver::CheckingValueDriver(
-    Driver* parentDriver
-) :
-    driver(parentDriver)
-    {}
-
 ParamPtr* CheckingValueDriver::get(
     const InputLocation& inputLocation,
     const IdentifierPtr*

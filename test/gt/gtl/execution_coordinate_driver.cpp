@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( ExecutionCoordinateDriver )
 
 BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         player        = GT::createIdentifierPtr("Player");
     GT::IdentifierPtr         strategy      = GT::createIdentifierPtr("Strategy");
@@ -15,7 +14,7 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
     boost::scoped_ptr<GT::IdentifierPtr> strategyPtr(new GT::IdentifierPtr(strategy));
 
     // when
-    GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::ExecutionCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinatePtr(
         coordinateDriver.create(*inputLocation, playerPtr.get(), strategyPtr.get()));
 
@@ -30,7 +29,6 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_fillWithData ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::ParamsPtr        params(new GT::GTL::Params());
@@ -60,7 +58,7 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_fillWithData ) {
     boost::scoped_ptr<GT::GTL::ParamsPtr>      paramsPtr(new GT::GTL::ParamsPtr(params));
 
     // when
-    GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::ExecutionCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(
         coordinateDriver.fillWithData(*inputLocation, coordinatePtr.get(), paramsPtr.get()));
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate4Ptr(
@@ -81,7 +79,6 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_fillWithData ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_merge ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::IdentifierPtr         player1       = GT::createIdentifierPtr("Player1");
@@ -96,7 +93,7 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_merge ) {
     boost::scoped_ptr<GT::GTL::CoordinatePtr>  coordinate2Ptr(new GT::GTL::CoordinatePtr(coordinate2));
 
     // when
-    GT::GTL::ExecutionCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::ExecutionCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate3Ptr(
         coordinateDriver.merge(*inputLocation, coordinate1Ptr.get(), coordinate2Ptr.get()));
 

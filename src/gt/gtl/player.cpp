@@ -63,7 +63,7 @@ Message Player::toString() const {
     return Model::Player::toString();
 }
 
-Player::operator const Player&() const {
+const Player& Player::toPlayer() const {
     return *this;
 }
 

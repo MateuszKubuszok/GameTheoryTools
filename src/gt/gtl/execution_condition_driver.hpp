@@ -44,21 +44,8 @@ class ExecutionConditionDriver final : public ConditionDriver {
      * @brief Driver for error handling.
      */
     CheckingConditionDriver checkingConditionDriver;
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver*                 driver;
 
 public:
-    /**
-     * @brief Initiates ExecutionConditionDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit ExecutionConditionDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Create condition for Player choosing strategy in information set.
      *

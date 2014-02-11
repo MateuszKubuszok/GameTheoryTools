@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( CheckingGameDriver )
 
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::DetailsPtr invalidDetails = GT::GTL::ErrorFactory::getInstance().createDetails("Error Details");
@@ -16,7 +15,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
     boost::scoped_ptr<GT::GTL::DetailsPtr> validDetailsPtr(new GT::GTL::DetailsPtr(validDetails));
 
     // when
-    GT::GTL::CheckingGameDriver gameDriver(&driver);
+    GT::GTL::CheckingGameDriver gameDriver;
     boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(
         gameDriver.createStrategic(*inputLocation, invalidDetailsPtr.get()));
     boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(
@@ -31,7 +30,6 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
 
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createExtensive ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::DetailsPtr invalidDetails = GT::GTL::ErrorFactory::getInstance().createDetails("Error Details");
@@ -41,7 +39,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createExtensive ) {
     boost::scoped_ptr<GT::GTL::DetailsPtr> validDetailsPtr(new GT::GTL::DetailsPtr(validDetails));
 
     // when
-    GT::GTL::CheckingGameDriver gameDriver(&driver);
+    GT::GTL::CheckingGameDriver gameDriver;
     boost::scoped_ptr<GT::GTL::GamePtr> game1Ptr(
         gameDriver.createExtensive(*inputLocation, invalidDetailsPtr.get()));
     boost::scoped_ptr<GT::GTL::GamePtr> game2Ptr(
@@ -56,7 +54,6 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createExtensive ) {
 
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createDetails ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::ObjectsPtr invalidPlayers(new GT::GTL::Objects());
@@ -84,7 +81,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createDetails ) {
         validCoordinatesPtr(new GT::GTL::CoordinatesPtr(validCoordinates));
 
     // when
-    GT::GTL::CheckingGameDriver gameDriver(&driver);
+    GT::GTL::CheckingGameDriver gameDriver;
     boost::scoped_ptr<GT::GTL::DetailsPtr> details1Ptr(
         gameDriver.createDetails(*inputLocation, invalidPlayersPtr.get(), invalidCoordinatesPtr.get()));
     boost::scoped_ptr<GT::GTL::DetailsPtr> details2Ptr(
@@ -107,7 +104,6 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createDetails ) {
 
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createPlayer ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::IdentifierPtr playerName   = GT::Model::NullFactory::getInstance().createIdentifier();
@@ -119,7 +115,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createPlayer ) {
     boost::scoped_ptr<GT::IdentifiersPtr> strategiesPtr(new GT::IdentifiersPtr(strategies));
 
     // when
-    GT::GTL::CheckingGameDriver gameDriver(&driver);
+    GT::GTL::CheckingGameDriver gameDriver;
     boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(
         gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
 

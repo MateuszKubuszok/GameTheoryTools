@@ -167,7 +167,7 @@ Message Game::toString() const {
     return game->toString();
 }
 
-Game::operator const Game&() const {
+const Game& Game::toGame() const {
     return *this;
 }
 

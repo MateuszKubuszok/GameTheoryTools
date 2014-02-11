@@ -149,7 +149,7 @@ public:
      *
      * @return Param
      */
-    virtual operator const Param&() const override;
+    virtual const Param& toParam() const override;
 
 protected:
     /**

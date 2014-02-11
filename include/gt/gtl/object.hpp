@@ -165,21 +165,21 @@ public:
      *
      * @return Game
      */
-    virtual operator const Game&() const;
+    virtual const Game& toGame() const;
 
     /**
      * @brief Explicit cast to Param type.
      *
      * @return Param
      */
-    virtual operator const Param&() const;
+    virtual const Param& toParam() const;
 
     /**
      * @brief Explicit cast to Player type.
      *
      * @return Player
      */
-    virtual operator const Player&() const;
+    virtual const Player& toPlayer() const;
 
 protected:
     /**

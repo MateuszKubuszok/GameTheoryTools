@@ -165,7 +165,12 @@ bool Scanner::isInteractive() const {
 void Scanner::setInteractive(
     bool isNowInteractive
 ) {
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wnull-conversion"
+
     yy_set_interactive(isNowInteractive);
+
+#   pragma clang diagnostic pop
 }
 
 // private:

@@ -105,7 +105,7 @@ QueryPtr* CheckingStatementDriver::createQuery(
             const Identifier& property = *propertyPtr;
 
             if (!object.respondsTo(property)) {
-                const Param& param = object;
+                const Param& param = object.toParam();
 
                 if (!param) {
                     // TODO: create MessageFactory

@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( ExecutionGameDriver )
 
 BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
     // given
-    TestDriverImpl            driver;
     GT::GTL::ContextPtr       context = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
@@ -43,7 +42,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
     boost::scoped_ptr<GT::GTL::DetailsPtr> detailsPtr(new GT::GTL::DetailsPtr(details));
 
     // when
-    GT::GTL::ExecutionGameDriver gameDriver(&driver, context.get());
+    GT::GTL::ExecutionGameDriver gameDriver(context.get());
     boost::scoped_ptr<GT::GTL::GamePtr> gamePtr(gameDriver.createStrategic(*inputLocation, detailsPtr.get()));
 
     // then
@@ -63,7 +62,6 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createExtensive ) {
     // given
-    TestDriverImpl            driver;
     GT::GTL::ContextPtr       context = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
@@ -100,7 +98,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createExtensive ) {
     boost::scoped_ptr<GT::GTL::DetailsPtr> detailsPtr(new GT::GTL::DetailsPtr(details));
 
     // when
-    GT::GTL::ExecutionGameDriver gameDriver(&driver, context.get());
+    GT::GTL::ExecutionGameDriver gameDriver(context.get());
     boost::scoped_ptr<GT::GTL::GamePtr> gamePtr(gameDriver.createExtensive(*inputLocation, detailsPtr.get()));
 
     // then
@@ -134,7 +132,6 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createExtensive ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createDetails ) {
     // given
-    TestDriverImpl            driver;
     GT::GTL::ContextPtr       context = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectsPtr       players(new GT::GTL::Objects());
@@ -149,7 +146,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createDetails ) {
     boost::scoped_ptr<GT::GTL::CoordinatesPtr> coordinatesPtr(new GT::GTL::CoordinatesPtr(coordinates));
 
     // when
-    GT::GTL::ExecutionGameDriver gameDriver(&driver, context.get());
+    GT::GTL::ExecutionGameDriver gameDriver(context.get());
     boost::scoped_ptr<GT::GTL::DetailsPtr> detailsPtr(
         gameDriver.createDetails(*inputLocation, playersPtr.get(), coordinatesPtr.get()));
 
@@ -167,7 +164,6 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createDetails ) {
 
 BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createPlayer ) {
     // given
-    TestDriverImpl            driver;
     GT::GTL::ContextPtr       context = GT::GTL::NullFactory::getInstance().createContext();
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         playerName    = GT::Model::NullFactory::getInstance().createIdentifier();
@@ -178,7 +174,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createPlayer ) {
     boost::scoped_ptr<GT::IdentifiersPtr> strategiesPtr(new GT::IdentifiersPtr(strategies));
 
     // when
-    GT::GTL::ExecutionGameDriver gameDriver(&driver, context.get());
+    GT::GTL::ExecutionGameDriver gameDriver(context.get());
     boost::scoped_ptr<GT::GTL::PlayerPtr> playerPtr(
         gameDriver.createPlayer(*inputLocation, playerNamePtr.get(), strategiesPtr.get()));
 

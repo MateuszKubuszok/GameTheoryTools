@@ -66,7 +66,7 @@ ParamPtr ParamFactory::createParam(
 ParamPtr ParamFactory::createParam(
     const ObjectPtr object
 ) const {
-    const Param& param = *object;
+    const Param& param = object->toParam();
     return param ? dynamic_pointer_cast<Param>(object) : ParamPtr(new ObjectParam(object));
 }
 

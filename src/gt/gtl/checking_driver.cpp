@@ -38,10 +38,10 @@ using std::stringstream;
 CheckingDriver::CheckingDriver(
     std::ostream* newErrorStream
 ) :
-    coordinate(this),
-    condition(this),
-    game(this),
-    value(this),
+    coordinate(),
+    condition(),
+    game(),
+    value(),
     statement(this),
     errorStream(newErrorStream)
     {}

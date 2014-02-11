@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( CheckingStatementDriver )
 
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_get ) {
     // given
-    TestDriverImpl            driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         identifier    = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::NumberPtr             number        = GT::Model::NullFactory::getInstance().createNumber();
@@ -15,7 +14,7 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_get ) {
     boost::scoped_ptr<GT::NumberPtr>     numberPtr(new GT::NumberPtr(number));
 
     // when
-    GT::GTL::CheckingValueDriver valueDriver(&driver);
+    GT::GTL::CheckingValueDriver valueDriver;
     boost::scoped_ptr<GT::GTL::ParamPtr> param1Ptr(valueDriver.get(*inputLocation, identifierPtr.get()));
     boost::scoped_ptr<GT::GTL::ParamPtr> param2Ptr(valueDriver.get(*inputLocation, numberPtr.get()));
 
@@ -28,7 +27,6 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_get ) {
 
 BOOST_AUTO_TEST_CASE( CheckingValueDriver_toObject ) {
     // given
-    TestDriverImpl     driver;
     GT::GTL::GamePtr   invalidGame   = GT::GTL::ErrorFactory::getInstance().createGame("Invalid Game");
     GT::GTL::GamePtr   validGame     = GT::GTL::NullFactory::getInstance().createGame();
     GT::GTL::PlayerPtr invalidPlayer = GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player");
@@ -44,7 +42,7 @@ BOOST_AUTO_TEST_CASE( CheckingValueDriver_toObject ) {
     boost::scoped_ptr<GT::GTL::ParamPtr>  validParamPtr(new GT::GTL::ParamPtr(validParam));
 
     // when
-    GT::GTL::CheckingValueDriver valueDriver(&driver);
+    GT::GTL::CheckingValueDriver valueDriver;
     boost::scoped_ptr<GT::GTL::ObjectPtr> object1Ptr(valueDriver.toObject(invalidGamePtr.get()));
     boost::scoped_ptr<GT::GTL::ObjectPtr> object2Ptr(valueDriver.toObject(validGamePtr.get()));
     boost::scoped_ptr<GT::GTL::ObjectPtr> object3Ptr(valueDriver.toObject(invalidPlayerPtr.get()));

@@ -132,7 +132,7 @@ public:
      *
      * @return Game
      */
-    virtual operator const Game&() const override;
+    virtual const Game& toGame() const override;
 }; /* END class Game */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

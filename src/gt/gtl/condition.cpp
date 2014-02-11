@@ -41,7 +41,7 @@ Identifier Condition::getIdentifier(
     const Context&   context,
     const ObjectPtr& object
 ) const {
-    const Param& param = *object;
+    const Param& param = object->toParam();
     if (!param) {
         static const Identifier expectedType = createIdentifier("Param");
         throw ExceptionFactory::getInstance().invalidObjectType(expectedType);

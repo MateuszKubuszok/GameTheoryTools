@@ -44,21 +44,8 @@ class ExecutionValueDriver final : public ValueDriver {
      * @brief Driver for error handling.
      */
     CheckingValueDriver checkingValueDriver;
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver*             driver;
 
 public:
-    /**
-     * @brief Initiates ExecutionValueDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit ExecutionValueDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Creates Param by its name.
      *

@@ -70,7 +70,7 @@ ResultPtr Query::execute(
                     objectResult->addResult(propertyName, errorMessage);
                 }
             } else {
-                const Param& param = object;
+                const Param& param = object.toParam();
                 if (param) {
                     // Object is a Param - property might belong to referred Object
 

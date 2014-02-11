@@ -6,7 +6,6 @@ BOOST_AUTO_TEST_SUITE( CheckingCoordinateDriver )
 
 BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_create ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::IdentifierPtr         player        = GT::Model::NullFactory::getInstance().createIdentifier();
     GT::IdentifierPtr         strategy      = GT::Model::NullFactory::getInstance().createIdentifier();
@@ -15,7 +14,7 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_create ) {
     boost::scoped_ptr<GT::IdentifierPtr> strategyPtr(new GT::IdentifierPtr(strategy));
 
     // when
-    GT::GTL::CheckingCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::CheckingCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinatePtr(
         coordinateDriver.create(*inputLocation, playerPtr.get(), strategyPtr.get()));
 
@@ -26,7 +25,6 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_create ) {
 
 BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_fillWithData ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::CoordinatePtr    invalidCoordinate =
@@ -61,7 +59,7 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_fillWithData ) {
         validParamsPtr(new GT::GTL::ParamsPtr(validParams));
 
     // when
-    GT::GTL::CheckingCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::CheckingCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate1Ptr(
     coordinateDriver.fillWithData(*inputLocation, invalidCoordinatePtr.get(), invalidCoordinatesPtr.get()));
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate2Ptr(
@@ -100,7 +98,6 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_fillWithData ) {
 
 BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_merge ) {
     // given
-    TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
     GT::GTL::CoordinatePtr    invalidCoordinate =
@@ -113,7 +110,7 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_merge ) {
         new GT::GTL::CoordinatePtr(validCoordinate));
 
     // when
-    GT::GTL::CheckingCoordinateDriver coordinateDriver(&driver);
+    GT::GTL::CheckingCoordinateDriver coordinateDriver;
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate1Ptr(
         coordinateDriver.merge(*inputLocation, invalidCoordinatePtr.get(), invalidCoordinatePtr.get()));
     boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate2Ptr(

@@ -45,10 +45,6 @@ class ExecutionGameDriver final : public GameDriver {
      */
     CheckingGameDriver checkingGameDriver;
     /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver*            driver;
-    /**
      * @brief Contains Context.
      */
     Context*           context;
@@ -57,11 +53,9 @@ public:
     /**
      * @brief Initiates ExecutionGameDriver with its parent.
      *
-     * @param parentDriver parent Driver
-     * @param context      Context data
+     * @param context Context data
      */
-    ExecutionGameDriver(
-        Driver*  parentDriver,
+    explicit ExecutionGameDriver(
         Context* context
     );
 

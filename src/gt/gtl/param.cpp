@@ -80,7 +80,7 @@ const NumberPtr Param::getNumber(
     return getNumber(context, visitedIdentifiers);
 }
 
-Param::operator const Param&() const {
+const Param& Param::toParam() const {
     return *this;
 }
 

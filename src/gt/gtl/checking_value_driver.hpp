@@ -40,21 +40,7 @@ namespace GTL {
  * @see ValueDriver
  */
 class CheckingValueDriver final : public ValueDriver {
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver* driver;
-
 public:
-    /**
-     * @brief Initiates CheckingValueDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit CheckingValueDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Creates Param by its name.
      *

@@ -40,21 +40,7 @@ namespace GTL {
  * @see CoordinateDriver
  */
 class CheckingCoordinateDriver final : public CoordinateDriver {
-    /**
-     * @brief Implementation of a main Driver.
-     */
-    Driver* driver;
-
 public:
-    /**
-     * @brief Initiates CheckingCoordinateDriver with its parent.
-     *
-     * @param parentDriver parent Driver
-     */
-    explicit CheckingCoordinateDriver(
-        Driver* parentDriver
-    );
-
     /**
      * @brief Creates coordinate.
      *

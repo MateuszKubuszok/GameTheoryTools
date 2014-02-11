@@ -28,12 +28,6 @@ namespace GTL {
 // class CheckingGameDriver final : public GameDriver {
 // public:
 
-CheckingGameDriver::CheckingGameDriver(
-    Driver* parentDriver
-) :
-    driver(parentDriver)
-    {}
-
 GamePtr* CheckingGameDriver::createStrategic(
     const InputLocation& inputLocation,
     const DetailsPtr*    detailsPtr
@@ -96,8 +90,8 @@ DetailsPtr* CheckingGameDriver::createDetails(
 
     for (const ObjectPtr& objectPlayerPtr : objectPlayers) {
         const Object& objectPlayer = *objectPlayerPtr;
-        const Player& player       = objectPlayer;
-        const Param&  param        = objectPlayer;
+        const Player& player       = objectPlayer.toPlayer();
+        const Param&  param        = objectPlayer.toParam();
         if (!player && !param) {
             // TODO: create MessageFactory
             Message errorMessage = Message() +

@@ -200,31 +200,31 @@ BOOST_AUTO_TEST_CASE( Object_toString ) {
     );
 }
 
-BOOST_AUTO_TEST_CASE( Object_Game ) {
+BOOST_AUTO_TEST_CASE( Object_toGame ) {
     // given
     // when
     GT::GTL::Object      object;
-    const GT::GTL::Game& game = object;
+    const GT::GTL::Game& game = object.toGame();
 
     // when
     BOOST_CHECK( !game );
 }
 
-BOOST_AUTO_TEST_CASE( Object_Param ) {
+BOOST_AUTO_TEST_CASE( Object_toParam ) {
     // given
     // when
     GT::GTL::Object       object;
-    const GT::GTL::Param& param = object;
+    const GT::GTL::Param& param = object.toParam();
 
     // when
     BOOST_CHECK( !param );
 }
 
-BOOST_AUTO_TEST_CASE( Object_Player ) {
+BOOST_AUTO_TEST_CASE( Object_toPlayer ) {
     // given
     // when
     GT::GTL::Object        object;
-    const GT::GTL::Player& player = object;
+    const GT::GTL::Player& player = object.toPlayer();
 
     // when
     BOOST_CHECK( !player );
