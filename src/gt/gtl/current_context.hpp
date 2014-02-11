@@ -39,11 +39,6 @@ namespace GTL {
  * @see ParamFactory
  */
 class CurrentContext : public Object {
-    /**
-     * @brief Described Context.
-     */
-    Context* describedContext;
-
 public:
     /**
      * @brief Initiates instance with a Context.
