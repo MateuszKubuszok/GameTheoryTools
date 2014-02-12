@@ -25,6 +25,7 @@
 
 /* Include standard libraries */
 #include <algorithm>
+#include <limits>
 #include <memory>
 #include <sstream>
 
@@ -126,6 +127,7 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 #include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
 
 #include "gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.hpp"
+#include "gt/routines/strategic_2_player_mixed_equilibrium_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
 #include "gt/routines/player_range_condition.hpp"
