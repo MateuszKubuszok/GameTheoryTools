@@ -80,20 +80,19 @@ LPProblemPtr Strategic2Player0SumMixedEquilibriumRoutine::initializeProblem(
     glp_set_prob_name( problem, "2 player 0-sum strategic form game" );
     glp_set_obj_dir(   problem, GLP_MAX );
 
-    glp_add_rows(problem, player1.getStrategiesNumber());
-    for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
-        int i = player1.getStrategyOrdinal(*player1Strategy) + 1;
-        glp_set_row_name(problem, i, player1Strategy->c_str());
-        glp_set_row_bnds(problem, i, GLP_UP, 0.0, 1.0);
-
-    }
-
     glp_add_cols(problem, player2.getStrategiesNumber());
     for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
         int j = player2.getStrategyOrdinal(*player2Strategy) + 1;
         glp_set_col_name(problem, j, player2Strategy->c_str());
         glp_set_col_bnds(problem, j, GLP_LO, 0.0, 0.0);
         glp_set_obj_coef(problem, j, 1.0);
+    }
+
+    glp_add_rows(problem, player1.getStrategiesNumber());
+    for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
+        int i = player1.getStrategyOrdinal(*player1Strategy) + 1;
+        glp_set_row_name(problem, i, player1Strategy->c_str());
+        glp_set_row_bnds(problem, i, GLP_UP, 0.0, 1.0);
     }
 
     return problemPtr;

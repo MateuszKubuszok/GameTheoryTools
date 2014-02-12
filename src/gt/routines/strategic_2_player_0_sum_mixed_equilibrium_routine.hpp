@@ -39,7 +39,11 @@ namespace Routines {
 class Strategic2Player0SumMixedEquilibriumRoutine final : public Routine {
 public:
     /**
-     * @brief Returns pure strategy equilibrium for Strategic Game.
+     * @brief Returns mixed strategy equilibrium for Strategic Game with 2 Players when game is 0-sum type.
+     *
+     * Routine uses linear programming to solve the problem. It's a typical 0-sum strategic game solution
+     * where primal solution is `(distribution of Player 2 strategies ) * cost function value` and
+     * dual solution is `(distribution of Player 1 strategies ) * cost function value`.
      *
      * @param game             Game definition
      * @param conditions       Conditions for this Routine
