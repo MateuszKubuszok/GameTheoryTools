@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     {
         GT::NumbersPtr payoff = GT::createNumbersPtr();
         payoff->push_back( GT::createNumberPtr( 0 ) );
-        payoff->push_back( GT::createNumberPtr( 1 ) );
+        payoff->push_back( GT::createNumberPtr( 6 ) );
         gameBuilder->clone()->addNextPositions(p1s1Choice).addNextPositions(p2s1Choice).setPayoffs(payoff);
     }
     {
@@ -95,7 +95,7 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     {
         GT::NumbersPtr payoff = GT::createNumbersPtr();
         payoff->push_back( GT::createNumberPtr( 4 ) );
-        payoff->push_back( GT::createNumberPtr( 4 ) );
+        payoff->push_back( GT::createNumberPtr( 5 ) );
         gameBuilder->clone()->addNextPositions(p1s2Choice).addNextPositions(p2s3Choice).setPayoffs(payoff);
     }
     {
@@ -146,24 +146,24 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
         "Mixed Strategies:\n"
         "\tp1:\n"
         "\t\tp1s1:\n"
-        "\t\t\t0\n"
+        "\t\t\t0.407407\n"
         "\t\tp1s2:\n"
-        "\t\t\t1\n"
+        "\t\t\t0.518519\n"
         "\t\tp1s3:\n"
-        "\t\t\t0\n"
+        "\t\t\t0.0740741\n"
         "\tp2:\n"
         "\t\tp2s1:\n"
         "\t\t\t0\n"
         "\t\tp2s2:\n"
-        "\t\t\t0\n"
+        "\t\t\t0.5\n"
         "\t\tp2s3:\n"
-        "\t\t\t1\n"
+        "\t\t\t1.00929e-17\n"
         "\t\tp2s4:\n"
-        "\t\t\t0\n"
+        "\t\t\t0.5\n"
         "Payoff:\n"
         "\t\t\tp1,\tp2\n"
         "\tPayoff:\n"
-        "\t\t\t4,\t-4\n"
+        "\t\t\t5.5,\t4\n"
     );
 }
 

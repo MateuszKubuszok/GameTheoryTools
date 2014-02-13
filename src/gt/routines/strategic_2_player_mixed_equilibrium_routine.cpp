@@ -107,43 +107,66 @@ LPProblemPtr Strategic2PlayerMixedEquilibriumRoutine::initializeProblem(
     glp_set_prob_name( problem, "2 player strategic form game" );
     glp_set_obj_dir(   problem, GLP_MIN );
 
+    glp_set_obj_name(problem, "AvarageRegret");
     glp_add_cols(problem, colsNumber);
-    glp_set_col_bnds(problem, u1Col, GLP_LO, 0.0, 0.0);
-    glp_set_col_bnds(problem, u2Col, GLP_LO, 0.0, 0.0);
+    glp_set_col_name(problem, u1Col,        "u1");
+    glp_set_col_bnds(problem, u1Col,        GLP_LO, 0.0, 0.0);
+    glp_set_col_name(problem, u2Col,        "u2");
+    glp_set_col_bnds(problem, u2Col,        GLP_LO, 0.0, 0.0);
     glp_add_rows(problem, rowsNumber);
-    glp_set_row_bnds(problem, p1Row, GLP_FX, 1.0, 1.0);
-    glp_set_row_bnds(problem, p2Row, GLP_FX, 1.0, 1.0);
+    glp_set_row_name(problem, p1Row,        "Probabilites1");
+    glp_set_row_bnds(problem, p1Row,        GLP_FX, 1.0, 1.0);
+    glp_set_row_name(problem, p2Row,        "Probabilites2");
+    glp_set_row_bnds(problem, p2Row,        GLP_FX, 1.0, 1.0);
     for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
         int i = player1.getStrategyOrdinal(*player1Strategy);
 
         glp_set_obj_coef(problem, r1ColStart   + i, 1.0);
 
+        glp_set_col_name(problem, b1ColStart   + i, "b1s");
         glp_set_col_kind(problem, b1ColStart   + i, GLP_BV);
+        glp_set_col_name(problem, p1ColStart   + i, "p1s");
         glp_set_col_bnds(problem, p1ColStart   + i, GLP_DB, 0.0, 1.0);
+        glp_set_col_name(problem, u1sColStart  + i, "u1s");
         glp_set_col_bnds(problem, u1sColStart  + i, GLP_LO, 0.0, 0.0);
+        glp_set_col_name(problem, r1ColStart   + i, "r1s");
         glp_set_col_bnds(problem, r1ColStart   + i, GLP_LO, 0.0, 0.0);
 
-        glp_set_row_bnds(problem, u1RowStart   + i, GLP_FX, 0.0, 0.0);
-        glp_set_row_bnds(problem, max1RowStart + i, GLP_LO, 0.0, 0.0);
-        glp_set_row_bnds(problem, r1RowStart   + i, GLP_FX, 0.0, 0.0);
+        glp_set_row_name(problem, u1RowStart   + i, "UtilitiesValue1");
+        glp_set_row_bnds(problem, u1RowStart   + i, GLP_FX, -0.0, -0.0);
+        glp_set_row_name(problem, max1RowStart + i, "MaxUtilities1");
+        glp_set_row_bnds(problem, max1RowStart + i, GLP_LO, -0.0, -0.0);
+        glp_set_row_name(problem, r1RowStart   + i, "Regret1");
+        glp_set_row_bnds(problem, r1RowStart   + i, GLP_FX, -0.0, -0.0);
+        glp_set_row_name(problem, pb1RowStart  + i, "Probability1");
         glp_set_row_bnds(problem, pb1RowStart  + i, GLP_UP, 1.0, 1.0);
-        glp_set_row_bnds(problem, rm1RowStart  + i, GLP_LO, 0.0, 0.0);
+        glp_set_row_name(problem, rm1RowStart  + i, "RegretAndMax1");
+        glp_set_row_bnds(problem, rm1RowStart  + i, GLP_UP, -0.0, -0.0);
     }
     for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
         int j = player2.getStrategyOrdinal(*player2Strategy);
 
         glp_set_obj_coef(problem, r2ColStart   + j, 1.0);
 
+        glp_set_col_name(problem, b2ColStart   + j, "b2s");
         glp_set_col_kind(problem, b2ColStart   + j, GLP_BV);
+        glp_set_col_name(problem, p2ColStart   + j, "p2s");
         glp_set_col_bnds(problem, p2ColStart   + j, GLP_DB, 0.0, 1.0);
+        glp_set_col_name(problem, u2sColStart  + j, "u2s");
         glp_set_col_bnds(problem, u2sColStart  + j, GLP_LO, 0.0, 0.0);
+        glp_set_col_name(problem, r2ColStart   + j, "r2s");
         glp_set_col_bnds(problem, r2ColStart   + j, GLP_LO, 0.0, 0.0);
 
-        glp_set_row_bnds(problem, u2RowStart   + j, GLP_FX, 0.0, 0.0);
-        glp_set_row_bnds(problem, max2RowStart + j, GLP_LO, 0.0, 0.0);
-        glp_set_row_bnds(problem, r2RowStart   + j, GLP_FX, 0.0, 0.0);
+        glp_set_row_name(problem, u2RowStart   + j, "UtilitiesValue2");
+        glp_set_row_bnds(problem, u2RowStart   + j, GLP_FX, -0.0, -0.0);
+        glp_set_row_name(problem, max2RowStart + j, "MaxUtilities2");
+        glp_set_row_bnds(problem, max2RowStart + j, GLP_LO, -0.0, -0.0);
+        glp_set_row_name(problem, r2RowStart   + j, "Regret2");
+        glp_set_row_bnds(problem, r2RowStart   + j, GLP_FX, -0.0, -0.0);
+        glp_set_row_name(problem, pb2RowStart  + j, "Probability2");
         glp_set_row_bnds(problem, pb2RowStart  + j, GLP_UP, 1.0, 1.0);
-        glp_set_row_bnds(problem, rm2RowStart  + j, GLP_LO, 0.0, 0.0);
+        glp_set_row_name(problem, rm2RowStart  + j, "RegretAndMax2");
+        glp_set_row_bnds(problem, rm2RowStart  + j, GLP_UP, -0.0, -0.0);
     }
 
     return problemPtr;
@@ -211,11 +234,11 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
 
         rows.push_back(u1RowStart + i);
         cols.push_back(p2ColStart + j);
-        values.push_back(player1Payoff);
+        values.push_back(-player1Payoff);
 
-        rows.push_back(u2RowStart + i);
-        cols.push_back(p1ColStart + j);
-        values.push_back(player2Payoff);
+        rows.push_back(u2RowStart + j);
+        cols.push_back(p1ColStart + i);
+        values.push_back(-player2Payoff);
     }
 
     double U1 = p1Max - p1Min;
@@ -230,7 +253,7 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
 
         rows.push_back(u1RowStart + i);
         cols.push_back(u1sColStart + i);
-        values.push_back(-1.0);
+        values.push_back(1.0);
 
         rows.push_back(max1RowStart + i);
         cols.push_back(u1sColStart + i);
@@ -242,75 +265,83 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
 
         rows.push_back(r1RowStart + i);
         cols.push_back(u1sColStart + i);
-        values.push_back(-1.0);
+        values.push_back(1.0);
 
         rows.push_back(r1RowStart + i);
         cols.push_back(u1Col);
-        values.push_back(1.0);
+        values.push_back(-1.0);
 
         rows.push_back(r1RowStart + i);
         cols.push_back(r1ColStart + i);
-        values.push_back(-1.0);
+        values.push_back(1.0);
 
         rows.push_back(pb1RowStart + i);
         cols.push_back(b1ColStart + i);
         values.push_back(1.0);
 
+        rows.push_back(pb1RowStart + i);
+        cols.push_back(p1ColStart + i);
+        values.push_back(1.0);
+
         rows.push_back(rm1RowStart + i);
         cols.push_back(b1ColStart + i);
-        values.push_back(U1);
+        values.push_back(-U1);
 
         rows.push_back(rm1RowStart + i);
         cols.push_back(r1ColStart + i);
-        values.push_back(-1.0);
+        values.push_back(1.0);
     }
 
     for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
-        int i = player2.getStrategyOrdinal(*player2Strategy);
+        int j = player2.getStrategyOrdinal(*player2Strategy);
 
         rows.push_back(p2Row);
-        cols.push_back(p2ColStart + i);
+        cols.push_back(p2ColStart + j);
         values.push_back(1.0);
 
-        rows.push_back(u2RowStart + i);
-        cols.push_back(u2sColStart + i);
+        rows.push_back(u2RowStart + j);
+        cols.push_back(u2sColStart + j);
+        values.push_back(1.0);
+
+        rows.push_back(max2RowStart + j);
+        cols.push_back(u2sColStart + j);
         values.push_back(-1.0);
 
-        rows.push_back(max2RowStart + i);
-        cols.push_back(u2sColStart + i);
-        values.push_back(-1.0);
-
-        rows.push_back(max2RowStart + i);
+        rows.push_back(max2RowStart + j);
         cols.push_back(u2Col);
         values.push_back(1.0);
 
-        rows.push_back(r2RowStart + i);
-        cols.push_back(u2sColStart + i);
-        values.push_back(-1.0);
+        rows.push_back(r2RowStart + j);
+        cols.push_back(u2sColStart + j);
+        values.push_back(1.0);
 
-        rows.push_back(r2RowStart + i);
+        rows.push_back(r2RowStart + j);
         cols.push_back(u2Col);
-        values.push_back(1.0);
-
-        rows.push_back(r2RowStart + i);
-        cols.push_back(r2ColStart + i);
         values.push_back(-1.0);
 
-        rows.push_back(pb2RowStart + i);
-        cols.push_back(b2ColStart + i);
+        rows.push_back(r2RowStart + j);
+        cols.push_back(r2ColStart + j);
         values.push_back(1.0);
 
-        rows.push_back(rm2RowStart + i);
-        cols.push_back(b2ColStart + i);
-        values.push_back(U2);
+        rows.push_back(pb2RowStart + j);
+        cols.push_back(b2ColStart + j);
+        values.push_back(1.0);
 
-        rows.push_back(rm2RowStart + i);
-        cols.push_back(r2ColStart + i);
-        values.push_back(-1.0);
+        rows.push_back(pb2RowStart + j);
+        cols.push_back(p2ColStart + j);
+        values.push_back(1.0);
+
+        rows.push_back(rm2RowStart + j);
+        cols.push_back(b2ColStart + j);
+        values.push_back(-U2);
+
+        rows.push_back(rm2RowStart + j);
+        cols.push_back(r2ColStart + j);
+        values.push_back(1.0);
     }
 
     // vectors uses contignous memory - &x[0] "transforms" it into a C-style array
-    glp_load_matrix(problem, upperBound, &rows[0], &cols[0], &values[0]);
+    glp_load_matrix(problem, rows.size()-1, &rows[0], &cols[0], &values[0]);
 }
 
 ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
@@ -322,10 +353,9 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
 
     glp_smcp parm;
     glp_init_smcp(&parm);
-    // parm.msg_lev = GLP_MSG_OFF;
+    parm.msg_lev = GLP_MSG_OFF;
 
     if (glp_simplex(problem, &parm) != 0 || glp_get_prim_stat(problem) != GLP_FEAS) {
-        // std::cout << glp_get_prim_stat(problem) << ',' << GLP_UNDEF << ','<< GLP_FEAS << ','<< GLP_INFEAS << ','<< GLP_NOFEAS << std::endl;
         // TODO: create MessageFactory
         return ResultFactory::getInstance().constResult(Message("Failed to calculate the solution"));
     }
@@ -343,7 +373,7 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
     DistributionMap player1Distribution;
     for (const IdentifierPtr& strategy : *player1.getStrategies()) {
         Index  i           = player1.getStrategyOrdinal(*strategy);
-        double probability = glp_get_row_dual(problem, p1ColStart + i);
+        double probability = glp_get_col_prim(problem, p1ColStart + i);
 
         player1Distribution.insert( DistributionMap::value_type(*strategy, probability) );
     }
@@ -351,12 +381,13 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
     DistributionMap player2Distribution;
     for (const IdentifierPtr& strategy : *player2.getStrategies()) {
         Index  i           = player2.getStrategyOrdinal(*strategy);
-        double probability = glp_get_row_dual(problem, p2ColStart + i);
+        double probability = glp_get_col_prim(problem, p2ColStart + i);
 
         player2Distribution.insert( DistributionMap::value_type(*strategy, probability) );
     }
 
     double player1Payoff = 0.0;
+    double player2Payoff = 0.0;
     for (const IdentifierPtr& player1Strategy : *player1.getStrategies()) {
         for (const IdentifierPtr& player2Strategy : *player2.getStrategies()) {
             Positions positions;
@@ -366,9 +397,11 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
             player1Payoff += data[positions]->getPayoff(player1Name)->get_d() *
                              player1Distribution[*player1Strategy] *
                              player2Distribution[*player2Strategy];
+            player2Payoff += data[positions]->getPayoff(player2Name)->get_d() *
+                             player1Distribution[*player1Strategy] *
+                             player2Distribution[*player2Strategy];
         }
     }
-    double player2Payoff = -player1Payoff;
 
     ResultBuilderPtr resultBuilder = ResultFactory::getInstance().buildResult();
 
