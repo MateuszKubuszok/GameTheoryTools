@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/MateuszKubuszok/MasterThesis.png)](https://travis-ci.org/MateuszKubuszok/MasterThesis)
 
-Project of a tool to finding Nash equilibria for given Games. Finding equilibria is a an actual goal of my
-master thesis, so adding other functions will not be considered until core functionality is implemented.
+Project of a tool to finding Nash equilibria for given Games. Currently should be able to find:
+
+* pure-strategy Nash equilibria for strategic-form games,
+* mixed-strategy equilibria for 2 player strategic-form games,
+* pure strategy equilibria for extensive form games without nature and with perfect information.
 
 
 ## Requirements
