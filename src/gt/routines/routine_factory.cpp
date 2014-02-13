@@ -25,6 +25,8 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::find_if;
+
 using boost::dynamic_pointer_cast;
 using boost::shared_ptr;
 
@@ -61,13 +63,25 @@ RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
 }
 
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
-    const GamePtr // game
+    const GamePtr game
 ) const {
-    // DataAccessorPtr data = game->getData();
+    DataAccessorPtr data = game->getData();
 
-    // shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
-    // if (strategicData)
-    //     return RoutinePtr( new StrategicMixedEquilibriumRoutine() );
+    shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
+    if (strategicData) {
+        if (game->getPlayers()->size() == 2) {
+            bool is0Sum = true;
+            for (Index i = 0; i < strategicData->getUpperBound(); i++)
+                if (!strategicData->getPayoffs(i)->is0Sum()) {
+                    is0Sum = false;
+                    break;
+                }
+
+            if (is0Sum)
+                return RoutinePtr( new Strategic2Player0SumMixedEquilibriumRoutine() );
+            return RoutinePtr( new Strategic2PlayerMixedEquilibriumRoutine() );
+        }
+    }
 
     // shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     // if (extensiveData)
