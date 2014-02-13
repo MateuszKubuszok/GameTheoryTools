@@ -59,6 +59,16 @@ public:
     ) const;
 
     /**
+     * @brief Returns whether this Data piece is 0-sum one.
+     *
+     * DataPiece is 0-sum if it's defined for 2 Players with 1 Payoff (first Player's one) or if sum of
+     * Payoffs is equal to 0.
+     *
+     * @return true if it is 0-sum data piece
+     */
+    virtual bool is0Sum() const = 0;
+
+    /**
      * @brief Returns Player's payoff by its name.
      *
      * @param playerName        name of Player for which payoff is required
@@ -111,6 +121,10 @@ public:
         const Identifier&
     ) const override {
         return nullNumber;
+    }
+
+    virtual bool is0Sum() const override {
+        return false;
     }
 
     virtual bool isNotNull() const override {

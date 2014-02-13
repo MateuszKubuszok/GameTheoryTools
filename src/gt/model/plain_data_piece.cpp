@@ -48,6 +48,17 @@ const NumberPtr& PlainDataPiece::getPayoff(
     return (*numbers)[positionsHelper.calculatePlayer(playerName)];
 }
 
+bool PlainDataPiece::is0Sum() const {
+    if (positionsHelper.getPlayers()->size() == 2 && numbers->size() == 1)
+        return true;
+
+    double sum = 0.0;
+    for (NumberPtr& number : *numbers)
+        sum += number->get_d();
+
+    return (sum*sum) < 10e-16;
+}
+
 Message PlainDataPiece::toString() const {
     static const IdentifierPtr  name = createIdentifierPtr("Payoff");
     const IdentifiersPtr        players(new Identifiers());

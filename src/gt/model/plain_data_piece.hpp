@@ -74,6 +74,16 @@ public:
     ) const override;
 
     /**
+     * @brief Returns whether this Data piece is 0-sum one.
+     *
+     * DataPiece is 0-sum if it's defined for 2 Players with 1 Payoff (first Player's one) or if sum of
+     * Payoffs is equal to 0.
+     *
+     * @return true if it is 0-sum data piece
+     */
+    virtual bool is0Sum() const override;
+
+    /**
      * @brief Returns PlainDataPiece's Message.
      *
      * @return Message
