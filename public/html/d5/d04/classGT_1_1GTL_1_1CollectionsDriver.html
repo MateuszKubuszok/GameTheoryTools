@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -259,13 +259,9 @@ template&lt;typename Content&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to collection </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html#l00033">33</a> of file <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html">collections_driver.tpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    CollectionsDriver&lt;Content&gt;::CollectionPtr* collection = <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a044fd60413dd1c7e785ada2ea4034842">empty</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    (*collection)-&gt;push_back(*element);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> collection;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_a044fd60413dd1c7e785ada2ea4034842"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a044fd60413dd1c7e785ada2ea4034842">GT::GTL::CollectionsDriver::empty</a></div><div class="ttdeci">virtual CollectionPtr * empty() const </div><div class="ttdoc">Creates an empty collection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/db2/collections__driver_8tpp_source.html#l00026">collections_driver.tpp:26</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html#l00034">34</a> of file <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html">collections_driver.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9">Root</a> {</div>
+<div class="ttc" id="namespaceGT_1_1GTL_html_a820e0b75d2a4a4ebdbe40869ebf573f9"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9">GT::GTL::Root</a></div><div class="ttdeci">Model::Root Root</div><div class="ttdoc">Alias for Model::Root. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00133">common.hpp:133</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -273,7 +269,7 @@ template&lt;typename Content&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Content&gt; </div>
+template&lt;typename Content &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -297,13 +293,12 @@ template&lt;typename Content&gt; </div>
 
 <p>Reimplemented in <a class="el" href="../../de/d20/classGT_1_1GTL_1_1NullCollectionsDriver.html#a8df1cdaaaf65b46cae59377270aef8cf">GT::GTL::NullCollectionsDriver&lt; Content &gt;</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html#l00026">26</a> of file <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html">collections_driver.tpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                                          {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>(</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">new</span> CollectionsDriver&lt;Content&gt;::Collection()</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    );</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_a5fdf44480ffc46be19eb3bca6071d1d0"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">GT::GTL::CollectionsDriver::CollectionPtr</a></div><div class="ttdeci">shared_ptr&lt; Collection &gt; CollectionPtr</div><div class="ttdoc">Poiter to collection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00070">collections_driver.hpp:70</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html#l00027">27</a> of file <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html">collections_driver.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;              {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> boost::container::vector;</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,14 +346,16 @@ template&lt;typename Content&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to collection </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html#l00042">42</a> of file <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html">collections_driver.tpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    (*collection)-&gt;push_back(*element);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        *collection</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    );</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_a5fdf44480ffc46be19eb3bca6071d1d0"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">GT::GTL::CollectionsDriver::CollectionPtr</a></div><div class="ttdeci">shared_ptr&lt; Collection &gt; CollectionPtr</div><div class="ttdoc">Poiter to collection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00070">collections_driver.hpp:70</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html">collections_driver.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                :</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; *</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; * @code</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   identifier1, identifier2, identifier3</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   <span class="keyword">@end</span>code</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; *</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; * @author Mateusz Kubuszok</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; *</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; * @see Driver</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,7 +363,7 @@ template&lt;typename Content&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Content&gt; </div>
+template&lt;typename Content &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -392,11 +389,10 @@ template&lt;typename Content&gt; </div>
 
 <p>Reimplemented in <a class="el" href="../../de/d20/classGT_1_1GTL_1_1NullCollectionsDriver.html#a8bc98cc2f960a7ecbf56904f4b8dc587">GT::GTL::NullCollectionsDriver&lt; Content &gt;</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html#l00053">53</a> of file <a class="el" href="../../d8/db2/collections__driver_8tpp_source.html">collections_driver.tpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                   {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;CollectionsDriver&quot;</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
-<div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html#l00054">54</a> of file <a class="el" href="../../d5/d1a/collections__driver_8hpp_source.html">collections_driver.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9">Root</a> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="ttc" id="namespaceGT_1_1GTL_html_a820e0b75d2a4a4ebdbe40869ebf573f9"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9">GT::GTL::Root</a></div><div class="ttdeci">Model::Root Root</div><div class="ttdoc">Alias for Model::Root. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00133">common.hpp:133</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -412,7 +408,7 @@ template&lt;typename Content&gt; </div>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

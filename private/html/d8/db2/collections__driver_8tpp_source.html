@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -117,43 +117,39 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// public:</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Content&gt;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a044fd60413dd1c7e785ada2ea4034842">   26</a></span>&#160;<span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>* <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html">CollectionsDriver&lt;Content&gt;::empty</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>(</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">new</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a6cf23c2a0a9d82b3cd0e082ff8813009">CollectionsDriver&lt;Content&gt;::Collection</a>()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::CollectionPtr* CollectionsDriver&lt;Content&gt;::empty()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionsDriver&lt;Content&gt;::CollectionPtr(</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">new</span> CollectionsDriver&lt;Content&gt;::Collection()</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    );</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Content&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a52157f5c9ced6b769e5973204647cc5d">   33</a></span>&#160;<span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>* <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html">CollectionsDriver&lt;Content&gt;::create</a>(</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#ade9a8041b12142074891118fb0cd319c">CollectionsDriver&lt;Content&gt;::ContentPtr</a>* element</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::CollectionPtr* CollectionsDriver&lt;Content&gt;::create(</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::ContentPtr* element</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>* collection = empty();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    CollectionsDriver&lt;Content&gt;::CollectionPtr* collection = empty();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    (*collection)-&gt;push_back(*element);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> collection;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Content&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#ad9603dd3b9d183d4337393ada9e00014">   42</a></span>&#160;<span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>* <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html">CollectionsDriver&lt;Content&gt;::insert</a>(</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#ade9a8041b12142074891118fb0cd319c">CollectionsDriver&lt;Content&gt;::ContentPtr</a>*    element,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>* collection</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::CollectionPtr* CollectionsDriver&lt;Content&gt;::insert(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::ContentPtr*    element,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> CollectionsDriver&lt;Content&gt;::CollectionPtr* collection</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    (*collection)-&gt;push_back(*element);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">CollectionsDriver&lt;Content&gt;::CollectionPtr</a>(</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionsDriver&lt;Content&gt;::CollectionPtr(</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        *collection</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    );</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Content&gt;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a2b8fffc04aab1bec174ce3ca191a9b7c">   53</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html">CollectionsDriver&lt;Content&gt;::toString</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> CollectionsDriver&lt;Content&gt;::toString()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;CollectionsDriver&quot;</span>);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">// }; /* END class CollectionsDriver */</span></div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_a5fdf44480ffc46be19eb3bca6071d1d0"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a5fdf44480ffc46be19eb3bca6071d1d0">GT::GTL::CollectionsDriver::CollectionPtr</a></div><div class="ttdeci">shared_ptr&lt; Collection &gt; CollectionPtr</div><div class="ttdoc">Poiter to collection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00070">collections_driver.hpp:70</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html">GT::GTL::CollectionsDriver</a></div><div class="ttdoc">Used for handling collections via Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00055">collections_driver.hpp:55</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_a6cf23c2a0a9d82b3cd0e082ff8813009"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#a6cf23c2a0a9d82b3cd0e082ff8813009">GT::GTL::CollectionsDriver::Collection</a></div><div class="ttdeci">vector&lt; ContentPtr &gt; Collection</div><div class="ttdoc">Collection of pointers. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00065">collections_driver.hpp:65</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CollectionsDriver_html_ade9a8041b12142074891118fb0cd319c"><div class="ttname"><a href="../../d5/d04/classGT_1_1GTL_1_1CollectionsDriver.html#ade9a8041b12142074891118fb0cd319c">GT::GTL::CollectionsDriver::ContentPtr</a></div><div class="ttdeci">shared_ptr&lt; Content &gt; ContentPtr</div><div class="ttdoc">Pointer to template type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1a/collections__driver_8hpp_source.html#l00060">collections_driver.hpp:60</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -162,7 +158,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

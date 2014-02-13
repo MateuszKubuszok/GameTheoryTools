@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -160,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#a2f67057ad2d6b0de02b12c2d2b2d9714">   66</a></span>&#160;<a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a> <a class="code" href="../../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#ab55d9a025fbf66d79bc7861ad9272e05">ParamFactory::createParam</a>(</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a> <span class="keywordtype">object</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = *object;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = <span class="keywordtype">object</span>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">toParam</a>();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> param ? dynamic_pointer_cast&lt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&gt;(object) : <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>(<span class="keyword">new</span> <a class="code" href="../../d4/d22/classGT_1_1GTL_1_1ObjectParam.html">ObjectParam</a>(<span class="keywordtype">object</span>));</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
@@ -191,6 +191,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="namespaceGT_html_a72ac25c350c624c43d44fd1faa6fc15f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">GT::NumberPtr</a></div><div class="ttdeci">shared_ptr&lt; Number &gt; NumberPtr</div><div class="ttdoc">Smart pointer to Number. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00082">common.hpp:82</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_acbd05d558ccbcda70405be3c1d1fd686"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">GT::GTL::ObjectPtr</a></div><div class="ttdeci">shared_ptr&lt; Object &gt; ObjectPtr</div><div class="ttdoc">Smart pointer to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00090">common.hpp:90</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ParamFactory_html_aaafa1b682ce4eba62937008249439021"><div class="ttname"><a href="../../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#aaafa1b682ce4eba62937008249439021">GT::GTL::ParamFactory::ParamFactory</a></div><div class="ttdeci">ParamFactory()</div><div class="ttdoc">Private constructor. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db2/param__factory_8cpp_source.html#l00075">param_factory.cpp:75</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Param_html_a6252c7a2527d7210313abe706836dc23"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">GT::GTL::Param::toParam</a></div><div class="ttdeci">virtual const Param &amp; toParam() const override</div><div class="ttdoc">Explicit cast to Param type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d30/param_8cpp_source.html#l00083">param.cpp:83</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ParamFactory_html_aeac9147181534994e5a4541adf5a5901"><div class="ttname"><a href="../../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#aeac9147181534994e5a4541adf5a5901">GT::GTL::ParamFactory::getInstance</a></div><div class="ttdeci">static ParamFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ParamFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db2/param__factory_8cpp_source.html#l00034">param_factory.cpp:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -200,7 +201,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

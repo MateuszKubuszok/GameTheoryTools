@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     * @return Player</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">operator</span> <span class="keyword">const</span> <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html">Player</a>&amp;() <span class="keyword">const</span> <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html">Player</a>&amp; <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#ab35c2ef4185b64a1051c4f3591a48af4">toPlayer</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}; <span class="comment">/* END class Player */</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
@@ -246,10 +246,11 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1GTL_1_1Player_html_a31341b5fd85d3693d93859491daf21e6"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a31341b5fd85d3693d93859491daf21e6">GT::GTL::Player::serialize</a></div><div class="ttdeci">virtual Message serialize() const override</div><div class="ttdoc">Returns serialized Message for a Player. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Player_html"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html">GT::GTL::Player</a></div><div class="ttdoc">Defines Player. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d82/gtl_2player_8hpp_source.html#l00047">player.hpp:47</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ErrorPlayer_html"><div class="ttname"><a href="../../dc/d55/classGT_1_1GTL_1_1ErrorPlayer.html">GT::GTL::ErrorPlayer</a></div><div class="ttdoc">Error Player for handling invalid situations. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d82/gtl_2player_8hpp_source.html#l00116">player.hpp:116</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Player_html_ab35c2ef4185b64a1051c4f3591a48af4"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#ab35c2ef4185b64a1051c4f3591a48af4">GT::GTL::Player::toPlayer</a></div><div class="ttdeci">virtual const Player &amp; toPlayer() const override</div><div class="ttdoc">Explicit cast to Player type. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Player_html_a47c5a2335d6bf5149977c6b79409b7ca"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a47c5a2335d6bf5149977c6b79409b7ca">GT::GTL::Player::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns Message about Player. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Object_html"><div class="ttname"><a href="../../d1/dde/classGT_1_1GTL_1_1Object.html">GT::GTL::Object</a></div><div class="ttdoc">Root of all Objects used as a data in parsed by GTL. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/de1/object_8hpp_source.html#l00043">object.hpp:43</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ErrorPlayer_html_a60c880ed6e6364a43358f7598aa80366"><div class="ttname"><a href="../../dc/d55/classGT_1_1GTL_1_1ErrorPlayer.html#a60c880ed6e6364a43358f7598aa80366">GT::GTL::ErrorPlayer::message</a></div><div class="ttdeci">const Message message</div><div class="ttdoc">Error message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d82/gtl_2player_8hpp_source.html#l00120">player.hpp:120</a></div></div>
-<div class="ttc" id="namespaceGT_html_a879f15b7d4377ef22e19dd91b984230f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a879f15b7d4377ef22e19dd91b984230f">GT::createIdentifiers</a></div><div class="ttdeci">Identifiers createIdentifiers()</div><div class="ttdoc">Creates Identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2e/helpers_8ipp_source.html#l00114">helpers.ipp:114</a></div></div>
+<div class="ttc" id="namespaceGT_html_a879f15b7d4377ef22e19dd91b984230f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a879f15b7d4377ef22e19dd91b984230f">GT::createIdentifiers</a></div><div class="ttdeci">Identifiers createIdentifiers()</div><div class="ttdoc">Creates Identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/df3/helpers_8hpp_source.html#l00115">helpers.hpp:115</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1NullPlayer_html"><div class="ttname"><a href="../../d4/d41/classGT_1_1GTL_1_1NullPlayer.html">GT::GTL::NullPlayer</a></div><div class="ttdoc">Null Player for handling invalid situations. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d82/gtl_2player_8hpp_source.html#l00090">player.hpp:90</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1NullFactory_html"><div class="ttname"><a href="../../d3/d7a/classGT_1_1GTL_1_1NullFactory.html">GT::GTL::NullFactory</a></div><div class="ttdoc">Used for creation of Null instances for GTL classes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d6a/gtl_2null__factory_8hpp_source.html#l00037">null_factory.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1NullPlayer_html_a64f03897cd59ec03243a39dec6a2c7cf"><div class="ttname"><a href="../../d4/d41/classGT_1_1GTL_1_1NullPlayer.html#a64f03897cd59ec03243a39dec6a2c7cf">GT::GTL::NullPlayer::NullPlayer</a></div><div class="ttdeci">NullPlayer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d82/gtl_2player_8hpp_source.html#l00092">player.hpp:92</a></div></div>
@@ -268,7 +269,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac7cd61670e535c864e961d14ff9c2f1a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#ac7cd61670e535c864e961d14ff9c2f1a">getPayoff</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> playerName) const </td></tr>
 <tr class="memdesc:ac7cd61670e535c864e961d14ff9c2f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../db/d5d/classGT_1_1Model_1_1Player.html" title="Defines Player. ">Player</a>'s payoff by its name.  <a href="#ac7cd61670e535c864e961d14ff9c2f1a">More...</a><br/></td></tr>
 <tr class="separator:ac7cd61670e535c864e961d14ff9c2f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77a7c992aa28662f7856fa605abeefc0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#a77a7c992aa28662f7856fa605abeefc0">is0Sum</a> () const =0</td></tr>
+<tr class="memdesc:a77a7c992aa28662f7856fa605abeefc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this <a class="el" href="../../dc/d2a/classGT_1_1Model_1_1Data.html" title="Custom interface for all Data containers for Games. ">Data</a> piece is 0-sum one.  <a href="#a77a7c992aa28662f7856fa605abeefc0">More...</a><br/></td></tr>
+<tr class="separator:a77a7c992aa28662f7856fa605abeefc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21eab03127984e786c7ab7a87067ff4b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#a21eab03127984e786c7ab7a87067ff4b">operator[]</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;playerName) const </td></tr>
 <tr class="memdesc:a21eab03127984e786c7ab7a87067ff4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../db/d5d/classGT_1_1Model_1_1Player.html" title="Defines Player. ">Player</a>'s payoff by its name.  <a href="#a21eab03127984e786c7ab7a87067ff4b">More...</a><br/></td></tr>
 <tr class="separator:a21eab03127984e786c7ab7a87067ff4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,6 +236,35 @@ Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Model_1_1DataPiece_html_a12a01aec026f0585135b410d4a407264"><div class="ttname"><a href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#a12a01aec026f0585135b410d4a407264">GT::Model::DataPiece::getPayoff</a></div><div class="ttdeci">virtual const NumberPtr &amp; getPayoff(const Identifier &amp;playerName) const =0</div><div class="ttdoc">Returns Player&amp;#39;s payoff by its name. </div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a77a7c992aa28662f7856fa605abeefc0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool GT::Model::DataPiece::is0Sum </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether this <a class="el" href="../../dc/d2a/classGT_1_1Model_1_1Data.html" title="Custom interface for all Data containers for Games. ">Data</a> piece is 0-sum one. </p>
+<p><a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html" title="Interface for accessing Data coordinates for better access to values. ">DataPiece</a> is 0-sum if it's defined for 2 Players with 1 Payoff (first <a class="el" href="../../db/d5d/classGT_1_1Model_1_1Player.html" title="Defines Player. ">Player</a>'s one) or if sum of Payoffs is equal to 0.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if it is 0-sum data piece </dd></dl>
+
+<p>Implemented in <a class="el" href="../../db/da7/classGT_1_1Model_1_1NullDataPiece.html#a19c44f94024e6908923df7708f96a5e2">GT::Model::NullDataPiece</a>, and <a class="el" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac477acf20dfb23203477e8666b12ac33">GT::Model::PlainDataPiece</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a21eab03127984e786c7ab7a87067ff4b"></a>
@@ -355,7 +387,7 @@ Public Member Functions</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

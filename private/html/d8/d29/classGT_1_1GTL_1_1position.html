@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -109,7 +109,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a404e94f3e63b1cb15381d7d9ff3ff46a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a404e94f3e63b1cb15381d7d9ff3ff46a">position</a> ()</td></tr>
 <tr class="memdesc:a404e94f3e63b1cb15381d7d9ff3ff46a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a position.  <a href="#a404e94f3e63b1cb15381d7d9ff3ff46a">More...</a><br/></td></tr>
 <tr class="separator:a404e94f3e63b1cb15381d7d9ff3ff46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88d42f1080a045fd8923f2e01b1b9b54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a88d42f1080a045fd8923f2e01b1b9b54">initialize</a> (<a class="el" href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">std::string</a> *fn)</td></tr>
+<tr class="memitem:a88d42f1080a045fd8923f2e01b1b9b54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a88d42f1080a045fd8923f2e01b1b9b54">initialize</a> (std::string *fn)</td></tr>
 <tr class="memdesc:a88d42f1080a045fd8923f2e01b1b9b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization.  <a href="#a88d42f1080a045fd8923f2e01b1b9b54">More...</a><br/></td></tr>
 <tr class="separator:a88d42f1080a045fd8923f2e01b1b9b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Line and Column related manipulators</div></td></tr>
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0500f3a227396c46bc46bee995ffe6da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">std::string</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a0500f3a227396c46bc46bee995ffe6da">filename</a></td></tr>
+<tr class="memitem:a0500f3a227396c46bc46bee995ffe6da"><td class="memItemLeft" align="right" valign="top">std::string *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a0500f3a227396c46bc46bee995ffe6da">filename</a></td></tr>
 <tr class="memdesc:a0500f3a227396c46bc46bee995ffe6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">File name to which this position refers.  <a href="#a0500f3a227396c46bc46bee995ffe6da">More...</a><br/></td></tr>
 <tr class="separator:a0500f3a227396c46bc46bee995ffe6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb180480774ec52b340d326082364a54"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d29/classGT_1_1GTL_1_1position.html#abb180480774ec52b340d326082364a54">line</a></td></tr>
@@ -199,7 +199,7 @@ Public Attributes</h2></td></tr>
 
 <p>References <a class="el" href="../../d2/d18/position_8hh_source.html#l00095">column</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02278">GT::GTL::Scanner::lex()</a>, and <a class="el" href="../../d2/d18/position_8hh_source.html#l00100">GT::GTL::operator+=()</a>.</p>
+<p>Referenced by <a class="el" href="../../d2/d18/position_8hh_source.html#l00100">GT::GTL::operator+=()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <a class="code" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a3e2c00ac1b4e7f1806447e0927163229">column</a> = std::max (1u, <a class="code" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a3e2c00ac1b4e7f1806447e0927163229">column</a> + count);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
@@ -217,7 +217,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void GT::GTL::position::initialize </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">std::string</a> *&#160;</td>
+          <td class="paramtype">std::string *&#160;</td>
           <td class="paramname"><em>fn</em></td><td>)</td>
           <td></td>
         </tr>
@@ -275,7 +275,7 @@ Public Attributes</h2></td></tr>
 
 <p>References <a class="el" href="../../d2/d18/position_8hh_source.html#l00095">column</a>, and <a class="el" href="../../d2/d18/position_8hh_source.html#l00093">line</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02278">GT::GTL::Scanner::lex()</a>, and <a class="el" href="../../d3/d46/location_8hh_source.html#l00088">GT::GTL::location::lines()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/d46/location_8hh_source.html#l00088">GT::GTL::location::lines()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <a class="code" href="../../d8/d29/classGT_1_1GTL_1_1position.html#a3e2c00ac1b4e7f1806447e0927163229">column</a> = 1;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <a class="code" href="../../d8/d29/classGT_1_1GTL_1_1position.html#abb180480774ec52b340d326082364a54">line</a> += count;</div>
@@ -309,7 +309,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">std::string</a>* GT::GTL::position::filename</td>
+          <td class="memname">std::string* GT::GTL::position::filename</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -351,7 +351,7 @@ Public Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

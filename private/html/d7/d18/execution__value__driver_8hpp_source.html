@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -137,90 +137,77 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     * @brief Driver for error handling.</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a2f345c3b1b7d42e335793b79b375c895">   46</a></span>&#160;    <a class="code" href="../../dc/da7/classGT_1_1GTL_1_1CheckingValueDriver.html">CheckingValueDriver</a> <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a2f345c3b1b7d42e335793b79b375c895">checkingValueDriver</a>;<span class="comment"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     * @brief Implementation of a main Driver.</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a8b0ae5a60cffaf41fae5674cfc21d5d5">   50</a></span>&#160;    <a class="code" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a>*             <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a8b0ae5a60cffaf41fae5674cfc21d5d5">driver</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     * @brief Initiates ExecutionValueDriver with its parent.</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     * @param parentDriver parent Driver</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#aab76d45be49ac8fe45c10c747f67d632">ExecutionValueDriver</a>(</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a>* parentDriver</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    );</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     * @brief Creates Param by its name.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * @param inputLocation input location of created Param</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     * @param identifier    Param&#39;s Identifier</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     * @return              Param</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* <span class="keyword">get</span>(</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>&amp; inputLocation,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>* identifier</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    ) <span class="keyword">const</span> <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     * @brief Creates Param by its value.</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     * @param inputLocation input location of created Param</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     * @param number        Param&#39;s value</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * @return              Param</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* <span class="keyword">get</span>(</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>&amp; inputLocation,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a>*     number</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ) <span class="keyword">const</span> <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * @brief Converts passed Game to Object.</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     * @param game Game to convert</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">     * @return     Object</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a4f0e0b0d707c40998c7275404d9c2497">GamePtr</a>* game</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">     * @brief Converts passed Player to Object.</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">     * @param player Player to convert</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * @return       Object</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a>* player</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    ) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     * @brief Converts passed Param to Object.</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     * @param param Param to convert</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">     * @return      Object</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* param</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    ) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     * @brief ExecutionValueDriver message.</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     * @return message</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a61f3daf721becedcedc7a92e7aae31b9">toString</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}; <span class="comment">/* END class ExecutionValueDriver */</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_EXECUTION_VALUE_DRIVER_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a2f345c3b1b7d42e335793b79b375c895">   46</a></span>&#160;    <a class="code" href="../../dc/da7/classGT_1_1GTL_1_1CheckingValueDriver.html">CheckingValueDriver</a> <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a2f345c3b1b7d42e335793b79b375c895">checkingValueDriver</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     * @brief Creates Param by its name.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     * @param inputLocation input location of created Param</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     * @param identifier    Param&#39;s Identifier</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     * @return              Param</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* <span class="keyword">get</span>(</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>&amp; inputLocation,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>* identifier</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    ) <span class="keyword">const</span> <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     * @brief Creates Param by its value.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     * @param inputLocation input location of created Param</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * @param number        Param&#39;s value</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     * @return              Param</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* <span class="keyword">get</span>(</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">InputLocation</a>&amp; inputLocation,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a>*     number</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    ) <span class="keyword">const</span> <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     * @brief Converts passed Game to Object.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     * @param game Game to convert</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     * @return     Object</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a4f0e0b0d707c40998c7275404d9c2497">GamePtr</a>* game</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * @brief Converts passed Player to Object.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * @param player Player to convert</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * @return       Object</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">PlayerPtr</a>* player</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     * @brief Converts passed Param to Object.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">     * @param param Param to convert</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">     * @return      Object</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>* <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">toObject</a>(</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>* param</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    ) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     * @brief ExecutionValueDriver message.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     * @return message</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a61f3daf721becedcedc7a92e7aae31b9">toString</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}; <span class="comment">/* END class ExecutionValueDriver */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_EXECUTION_VALUE_DRIVER_HPP__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_html_ad687b204bc355e085988c1c6e74d4eec"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">GT::IdentifierPtr</a></div><div class="ttdeci">shared_ptr&lt; Identifier &gt; IdentifierPtr</div><div class="ttdoc">Smart pointer to Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00078">common.hpp:78</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1location_html"><div class="ttname"><a href="../../d5/de2/classGT_1_1GTL_1_1location.html">GT::GTL::location</a></div><div class="ttdoc">Abstract a location. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d46/location_8hh_source.html#l00054">location.hh:54</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a4f0e0b0d707c40998c7275404d9c2497"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a4f0e0b0d707c40998c7275404d9c2497">GT::GTL::GamePtr</a></div><div class="ttdeci">shared_ptr&lt; Game &gt; GamePtr</div><div class="ttdoc">Smart pointer to Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00103">common.hpp:103</a></div></div>
@@ -229,15 +216,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1GTL_1_1ValueDriver_html"><div class="ttname"><a href="../../df/de6/classGT_1_1GTL_1_1ValueDriver.html">GT::GTL::ValueDriver</a></div><div class="ttdoc">Used for handling values via Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/db7/value__driver_8hpp_source.html#l00037">value_driver.hpp:37</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a81107f40aea2347ee017fa1c4c507c9e"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a81107f40aea2347ee017fa1c4c507c9e">GT::GTL::PlayerPtr</a></div><div class="ttdeci">shared_ptr&lt; Player &gt; PlayerPtr</div><div class="ttdoc">Smart pointer to Player. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00106">common.hpp:106</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a2f345c3b1b7d42e335793b79b375c895"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a2f345c3b1b7d42e335793b79b375c895">GT::GTL::ExecutionValueDriver::checkingValueDriver</a></div><div class="ttdeci">CheckingValueDriver checkingValueDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d18/execution__value__driver_8hpp_source.html#l00046">execution_value_driver.hpp:46</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a61f3daf721becedcedc7a92e7aae31b9"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a61f3daf721becedcedc7a92e7aae31b9">GT::GTL::ExecutionValueDriver::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">ExecutionValueDriver message. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dba/execution__value__driver_8cpp_source.html#l00088">execution_value_driver.cpp:88</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a17872fb2cce711bfd0f30777599ab5f8"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">GT::GTL::ExecutionValueDriver::toObject</a></div><div class="ttdeci">virtual ObjectPtr * toObject(const GamePtr *game) const override</div><div class="ttdoc">Converts passed Game to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dba/execution__value__driver_8cpp_source.html#l00070">execution_value_driver.cpp:70</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_aab76d45be49ac8fe45c10c747f67d632"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#aab76d45be49ac8fe45c10c747f67d632">GT::GTL::ExecutionValueDriver::ExecutionValueDriver</a></div><div class="ttdeci">ExecutionValueDriver(Driver *parentDriver)</div><div class="ttdoc">Initiates ExecutionValueDriver with its parent. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dba/execution__value__driver_8cpp_source.html#l00035">execution_value_driver.cpp:35</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a61f3daf721becedcedc7a92e7aae31b9"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a61f3daf721becedcedc7a92e7aae31b9">GT::GTL::ExecutionValueDriver::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">ExecutionValueDriver message. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dba/execution__value__driver_8cpp_source.html#l00081">execution_value_driver.cpp:81</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a17872fb2cce711bfd0f30777599ab5f8"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a17872fb2cce711bfd0f30777599ab5f8">GT::GTL::ExecutionValueDriver::toObject</a></div><div class="ttdeci">virtual ObjectPtr * toObject(const GamePtr *game) const override</div><div class="ttdoc">Converts passed Game to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dba/execution__value__driver_8cpp_source.html#l00063">execution_value_driver.cpp:63</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_aa66a02f216fa739d3c506949e4c2454c"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">GT::GTL::ParamPtr</a></div><div class="ttdeci">shared_ptr&lt; Param &gt; ParamPtr</div><div class="ttdoc">Smart pointer to Param. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00105">common.hpp:105</a></div></div>
 <div class="ttc" id="namespaceGT_html_a72ac25c350c624c43d44fd1faa6fc15f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">GT::NumberPtr</a></div><div class="ttdeci">shared_ptr&lt; Number &gt; NumberPtr</div><div class="ttdoc">Smart pointer to Number. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00082">common.hpp:82</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_acbd05d558ccbcda70405be3c1d1fd686"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">GT::GTL::ObjectPtr</a></div><div class="ttdeci">shared_ptr&lt; Object &gt; ObjectPtr</div><div class="ttdoc">Smart pointer to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00090">common.hpp:90</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html_a8b0ae5a60cffaf41fae5674cfc21d5d5"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html#a8b0ae5a60cffaf41fae5674cfc21d5d5">GT::GTL::ExecutionValueDriver::driver</a></div><div class="ttdeci">Driver * driver</div><div class="ttdoc">Implementation of a main Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d18/execution__value__driver_8hpp_source.html#l00050">execution_value_driver.hpp:50</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionValueDriver_html"><div class="ttname"><a href="../../d7/dc3/classGT_1_1GTL_1_1ExecutionValueDriver.html">GT::GTL::ExecutionValueDriver</a></div><div class="ttdoc">Implementation used for handling values via ExecutionDriver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d18/execution__value__driver_8hpp_source.html#l00042">execution_value_driver.hpp:42</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Driver_html"><div class="ttname"><a href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">GT::GTL::Driver</a></div><div class="ttdoc">Used for executing actions called by Parser. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/driver_8hpp_source.html#l00037">driver.hpp:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -246,7 +230,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

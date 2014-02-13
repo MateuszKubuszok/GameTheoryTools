@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a53f8621e8ede7fd81a25beb5c5a2b9bd"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a53f8621e8ede7fd81a25beb5c5a2b9bd">getPayoff</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;playerName) const override</td></tr>
 <tr class="memdesc:a53f8621e8ede7fd81a25beb5c5a2b9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../db/d5d/classGT_1_1Model_1_1Player.html" title="Defines Player. ">Player</a>'s payoff by its name.  <a href="#a53f8621e8ede7fd81a25beb5c5a2b9bd">More...</a><br/></td></tr>
 <tr class="separator:a53f8621e8ede7fd81a25beb5c5a2b9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac477acf20dfb23203477e8666b12ac33"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac477acf20dfb23203477e8666b12ac33">is0Sum</a> () const override</td></tr>
+<tr class="memdesc:ac477acf20dfb23203477e8666b12ac33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this <a class="el" href="../../dc/d2a/classGT_1_1Model_1_1Data.html" title="Custom interface for all Data containers for Games. ">Data</a> piece is 0-sum one.  <a href="#ac477acf20dfb23203477e8666b12ac33">More...</a><br/></td></tr>
+<tr class="separator:ac477acf20dfb23203477e8666b12ac33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e81335d1ce358f2faa21132ba200d2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ae1e81335d1ce358f2faa21132ba200d2">toString</a> () const override</td></tr>
 <tr class="memdesc:ae1e81335d1ce358f2faa21132ba200d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html" title="Used to store values at lowest level. ">PlainDataPiece</a>'s Message.  <a href="#ae1e81335d1ce358f2faa21132ba200d2">More...</a><br/></td></tr>
 <tr class="separator:ae1e81335d1ce358f2faa21132ba200d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,6 +275,53 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="ac477acf20dfb23203477e8666b12ac33"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GT::Model::PlainDataPiece::is0Sum </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether this <a class="el" href="../../dc/d2a/classGT_1_1Model_1_1Data.html" title="Custom interface for all Data containers for Games. ">Data</a> piece is 0-sum one. </p>
+<p><a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html" title="Interface for accessing Data coordinates for better access to values. ">DataPiece</a> is 0-sum if it's defined for 2 Players with 1 Payoff (first <a class="el" href="../../db/d5d/classGT_1_1Model_1_1Player.html" title="Defines Player. ">Player</a>'s one) or if sum of Payoffs is equal to 0.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if it is 0-sum data piece </dd></dl>
+
+<p>Implements <a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#a77a7c992aa28662f7856fa605abeefc0">GT::Model::DataPiece</a>.</p>
+
+<p>Definition at line <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html">plain_data_piece.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00067">GT::Model::StrategicGamePositionsHelper::getPlayers()</a>, <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">numbers</a>, and <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">positionsHelper</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                  {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">positionsHelper</a>.<a class="code" href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#a56cebc3388433458af28b9114a20a3ee">getPlayers</a>()-&gt;size() == 2 &amp;&amp; <a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">numbers</a>-&gt;size() == 1)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">double</span> sum = 0.0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a>&amp; number : *<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">numbers</a>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        sum += number-&gt;get_d();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> (sum*sum) &lt; 10e-16;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1Model_1_1PlainDataPiece_html_ac85914c4c5a6e7141181c704b2dc70f1"><div class="ttname"><a href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">GT::Model::PlainDataPiece::positionsHelper</a></div><div class="ttdeci">StrategicGamePositionsHelper positionsHelper</div><div class="ttdoc">StrategicGamePositionsHelper used to properly locate Index in storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">plain_data_piece.hpp:47</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1PlainDataPiece_html_a5c774d922babefcd24c1fe76368cd5f1"><div class="ttname"><a href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">GT::Model::PlainDataPiece::numbers</a></div><div class="ttdeci">NumbersPtr numbers</div><div class="ttdoc">Values of payoff. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">plain_data_piece.hpp:51</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1StrategicGamePositionsHelper_html_a56cebc3388433458af28b9114a20a3ee"><div class="ttname"><a href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#a56cebc3388433458af28b9114a20a3ee">GT::Model::StrategicGamePositionsHelper::getPlayers</a></div><div class="ttdeci">const PlayersPtr getPlayers() const </div><div class="ttdoc">Returns Players definitions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00067">strategic_game_positions_helper.cpp:67</a></div></div>
+<div class="ttc" id="namespaceGT_html_a72ac25c350c624c43d44fd1faa6fc15f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">GT::NumberPtr</a></div><div class="ttdeci">shared_ptr&lt; Number &gt; NumberPtr</div><div class="ttdoc">Smart pointer to Number. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00082">common.hpp:82</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="ae1e81335d1ce358f2faa21132ba200d2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -298,32 +348,32 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html#ad1d4cb54b4f2cb8db50bfc6c0d4818bf">GT::Model::DataPiece</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html">plain_data_piece.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html">plain_data_piece.cpp</a>.</p>
 
-<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00037">GT::Model::ResultFactory::buildResult()</a>, <a class="el" href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00075">GT::Model::StrategicGamePositionsHelper::calculatePlayer()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00090">GT::createIdentifierPtr()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00056">GT::createMessagePtr()</a>, <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>, <a class="el" href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00067">GT::Model::StrategicGamePositionsHelper::getPlayers()</a>, <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">numbers</a>, and <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">positionsHelper</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                       {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>  name = <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(<span class="stringliteral">&quot;Payoff&quot;</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a9fd54c019255c34e285e59184eb4830d">IdentifiersPtr</a>        players(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#abef22c861d0a2207b368c69ae7c30ad3">Identifiers</a>());</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a68979fee983c6bdce7b856383cf7f5bc">MessagesPtr</a>           values(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#a0be02cfc3eadba8b33d13a795c625fc2">Messages</a>());</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> playerName : (*<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">positionsHelper</a>.<a class="code" href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#a56cebc3388433458af28b9114a20a3ee">getPlayers</a>()) | map_keys) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        players-&gt;push_back( <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(playerName) );</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        values-&gt;push_back( <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>((*<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">numbers</a>)[<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">positionsHelper</a>.<a class="code" href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#acc27ea6e69c78dfd667ed02b72e4c072">calculatePlayer</a>(playerName)]) );</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a1938078a3f9402b657390a595eddfc01">ResultBuilderPtr</a> resultBuilder = <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#a4cb1acceda9aa781629aae4d4b7bf844">buildResult</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    resultBuilder-&gt;setHeaders(players).addRecord( name, values );</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> resultBuilder-&gt;build()-&gt;getResult();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00037">GT::Model::ResultFactory::buildResult()</a>, <a class="el" href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00075">GT::Model::StrategicGamePositionsHelper::calculatePlayer()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00106">GT::createIdentifierPtr()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00064">GT::createMessagePtr()</a>, <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>, <a class="el" href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00067">GT::Model::StrategicGamePositionsHelper::getPlayers()</a>, <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">numbers</a>, and <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">positionsHelper</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                       {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>  name = <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(<span class="stringliteral">&quot;Payoff&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a9fd54c019255c34e285e59184eb4830d">IdentifiersPtr</a>        players(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#abef22c861d0a2207b368c69ae7c30ad3">Identifiers</a>());</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a68979fee983c6bdce7b856383cf7f5bc">MessagesPtr</a>           values(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#a0be02cfc3eadba8b33d13a795c625fc2">Messages</a>());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> playerName : (*<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">positionsHelper</a>.<a class="code" href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#a56cebc3388433458af28b9114a20a3ee">getPlayers</a>()) | map_keys) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        players-&gt;push_back( <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(playerName) );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        values-&gt;push_back( <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>((*<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">numbers</a>)[<a class="code" href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">positionsHelper</a>.<a class="code" href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#acc27ea6e69c78dfd667ed02b72e4c072">calculatePlayer</a>(playerName)]) );</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a1938078a3f9402b657390a595eddfc01">ResultBuilderPtr</a> resultBuilder = <a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">ResultFactory::getInstance</a>().<a class="code" href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#a4cb1acceda9aa781629aae4d4b7bf844">buildResult</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    resultBuilder-&gt;setHeaders(players).addRecord( name, values );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> resultBuilder-&gt;build()-&gt;getResult();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_a8f19b695ad22a8a8943299159cb0f13c"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">GT::Identifier</a></div><div class="ttdeci">string Identifier</div><div class="ttdoc">Alias for string used as identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00077">common.hpp:77</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad687b204bc355e085988c1c6e74d4eec"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">GT::IdentifierPtr</a></div><div class="ttdeci">shared_ptr&lt; Identifier &gt; IdentifierPtr</div><div class="ttdoc">Smart pointer to Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00078">common.hpp:78</a></div></div>
-<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00090">helpers.cpp:90</a></div></div>
+<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00106">helpers.cpp:106</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_a4cb1acceda9aa781629aae4d4b7bf844"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#a4cb1acceda9aa781629aae4d4b7bf844">GT::Model::ResultFactory::buildResult</a></div><div class="ttdeci">ResultBuilderPtr buildResult() const </div><div class="ttdoc">Returns ResultBuilder. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00037">result_factory.cpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1PlainDataPiece_html_ac85914c4c5a6e7141181c704b2dc70f1"><div class="ttname"><a href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#ac85914c4c5a6e7141181c704b2dc70f1">GT::Model::PlainDataPiece::positionsHelper</a></div><div class="ttdeci">StrategicGamePositionsHelper positionsHelper</div><div class="ttdoc">StrategicGamePositionsHelper used to properly locate Index in storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">plain_data_piece.hpp:47</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1PlainDataPiece_html_a5c774d922babefcd24c1fe76368cd5f1"><div class="ttname"><a href="../../d8/db8/classGT_1_1Model_1_1PlainDataPiece.html#a5c774d922babefcd24c1fe76368cd5f1">GT::Model::PlainDataPiece::numbers</a></div><div class="ttdeci">NumbersPtr numbers</div><div class="ttdoc">Values of payoff. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">plain_data_piece.hpp:51</a></div></div>
 <div class="ttc" id="namespaceGT_html_abef22c861d0a2207b368c69ae7c30ad3"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#abef22c861d0a2207b368c69ae7c30ad3">GT::Identifiers</a></div><div class="ttdeci">vector&lt; IdentifierPtr &gt; Identifiers</div><div class="ttdoc">Vector of Identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00079">common.hpp:79</a></div></div>
 <div class="ttc" id="namespaceGT_html_a68979fee983c6bdce7b856383cf7f5bc"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a68979fee983c6bdce7b856383cf7f5bc">GT::MessagesPtr</a></div><div class="ttdeci">shared_ptr&lt; Messages &gt; MessagesPtr</div><div class="ttdoc">Smart pointer to Messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00076">common.hpp:76</a></div></div>
-<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00056">helpers.cpp:56</a></div></div>
+<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00064">helpers.cpp:64</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicGamePositionsHelper_html_acc27ea6e69c78dfd667ed02b72e4c072"><div class="ttname"><a href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#acc27ea6e69c78dfd667ed02b72e4c072">GT::Model::StrategicGamePositionsHelper::calculatePlayer</a></div><div class="ttdeci">Index calculatePlayer(const Identifier &amp;playerName) const </div><div class="ttdoc">Calculates Player&amp;#39;s position in Numbers collection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00075">strategic_game_positions_helper.cpp:75</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicGamePositionsHelper_html_a56cebc3388433458af28b9114a20a3ee"><div class="ttname"><a href="../../de/d90/classGT_1_1Model_1_1StrategicGamePositionsHelper.html#a56cebc3388433458af28b9114a20a3ee">GT::Model::StrategicGamePositionsHelper::getPlayers</a></div><div class="ttdeci">const PlayersPtr getPlayers() const </div><div class="ttdoc">Returns Players definitions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbf/strategic__game__positions__helper_8cpp_source.html#l00067">strategic_game_positions_helper.cpp:67</a></div></div>
 <div class="ttc" id="namespaceGT_html_a0be02cfc3eadba8b33d13a795c625fc2"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0be02cfc3eadba8b33d13a795c625fc2">GT::Messages</a></div><div class="ttdeci">vector&lt; MessagePtr &gt; Messages</div><div class="ttdoc">Vector of Messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00075">common.hpp:75</a></div></div>
@@ -356,7 +406,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html">plain_data_piece.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00043">getPayoff()</a>, and <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">toString()</a>.</p>
+<p>Referenced by <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00043">getPayoff()</a>, <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">is0Sum()</a>, and <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00062">toString()</a>.</p>
 
 </div>
 </div>
@@ -382,7 +432,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../de/da2/plain__data__piece_8hpp_source.html">plain_data_piece.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00043">getPayoff()</a>, and <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">toString()</a>.</p>
+<p>Referenced by <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00043">getPayoff()</a>, <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00051">is0Sum()</a>, and <a class="el" href="../../d6/d08/plain__data__piece_8cpp_source.html#l00062">toString()</a>.</p>
 
 </div>
 </div>
@@ -398,7 +448,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

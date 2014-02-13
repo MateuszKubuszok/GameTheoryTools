@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -99,10 +99,13 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <p>Declares inner classes for <a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html" title="Contains classes related to calculating Nash equilibria for given Models. ">GT::Routines</a> module.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;memory&gt;</code><br/>
 <code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;boost/algorithm/string.hpp&gt;</code><br/>
 <code>#include &lt;boost/bimap/bimap.hpp&gt;</code><br/>
 <code>#include &lt;boost/range/adaptor/map.hpp&gt;</code><br/>
+<code>#include &lt;glpk.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="../../df/d6a/routines_2common_8hpp_source.html">gt/routines/common.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d4/dce/model_2inner__common_8hpp_source.html">gt/model/inner_common.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d3/ded/routines_2exception__factory_8hpp_source.html">gt/routines/exception_factory.hpp</a>&quot;</code><br/>
@@ -116,6 +119,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <code>#include &quot;<a class="el" href="../../d9/da7/strategic__pure__equilibrium__routine__config_8hpp_source.html">gt/routines/strategic_pure_equilibrium_routine_config.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../da/d37/extensive__pure__equilibrium__routine_8hpp_source.html">gt/routines/extensive_pure_equilibrium_routine.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d8/d2c/extensive__pure__equilibrium__routine__config_8hpp_source.html">gt/routines/extensive_pure_equilibrium_routine_config.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/da1/strategic__2__player__0__sum__mixed__equilibrium__routine_8hpp_source.html">gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d4/da1/strategic__2__player__mixed__equilibrium__routine_8hpp_source.html">gt/routines/strategic_2_player_mixed_equilibrium_routine.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../da/daa/routines_2player__choice__condition_8hpp_source.html">gt/routines/player_choice_condition.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d7/d44/routines_2player__range__condition_8hpp_source.html">gt/routines/player_range_condition.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../dc/d7b/routines_2information__set__choice__condition_8hpp_source.html">gt/routines/information_set_choice_condition.hpp</a>&quot;</code><br/>
@@ -134,6 +139,13 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="memItemLeft" align="right" valign="top">typedef glp_prob&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">GT::Routines::LPProblem</a></td></tr>
+<tr class="memdesc:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for GLPK's problem structure.  <a href="#a4b9daa0ec52cd5ec557bb5c12085c6bc">More...</a><br/></td></tr>
+<tr class="separator:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7adc88841818e5718ad6bc68ea967ee3"><td class="memItemLeft" align="right" valign="top">typedef unique_ptr&lt; LPProblem, <br class="typebreak"/>
+void(*)(LPProblem *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a7adc88841818e5718ad6bc68ea967ee3">GT::Routines::LPProblemPtr</a></td></tr>
+<tr class="memdesc:a7adc88841818e5718ad6bc68ea967ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines wrapper with automatic deletion for GLPK's problem structure.  <a href="#a7adc88841818e5718ad6bc68ea967ee3">More...</a><br/></td></tr>
+<tr class="separator:a7adc88841818e5718ad6bc68ea967ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55cc144a61208e72c93d0b8ba6c2373b"><td class="memItemLeft" align="right" valign="top">typedef shared_ptr<br class="typebreak"/>
 &lt; PlayerChoiceRoutineConfig &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a55cc144a61208e72c93d0b8ba6c2373b">GT::Routines::PlayerChoiceRoutineConfigPtr</a></td></tr>
 <tr class="memdesc:a55cc144a61208e72c93d0b8ba6c2373b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to <a class="el" href="../../d0/dc8/classGT_1_1Routines_1_1PlayerChoiceRoutineConfig.html" title="Contains information about available choices for each Player. ">PlayerChoiceRoutineConfig</a>.  <a href="#a55cc144a61208e72c93d0b8ba6c2373b">More...</a><br/></td></tr>
@@ -176,7 +188,7 @@ Typedefs</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

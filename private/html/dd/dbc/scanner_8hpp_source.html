@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -117,118 +117,118 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span><span class="comment"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @brief Makes ::GTLFLexLexer visible to Scanner.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * Similar code is executed inside scanner.cpp generated with Flex - code in if instuction is repeated,</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * so that other classes (Scanner in particular) would see see ::GTLFlexLexer.</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#ifndef __GTL_FLEX_LEXER__</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../dd/dbc/scanner_8hpp.html#aefb542c8ddffd8e2493de126f2f3efed">   33</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  __GTL_FLEX_LEXER__</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    undef   yyFlexLexer</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../dd/dbc/scanner_8hpp.html#af699458ba5331ddec7e15a878f42f8f5">   35</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  yyFlexLexer GTLFlexLexer</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    include &lt;FlexLexer.h&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#    undef   yyFlexLexer</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GTL_FLEX_LEXER__ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * @brief Makes Scanner::lex() function signature of generated main scanning function.</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#undef  YY_DECL</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../dd/dbc/scanner_8hpp.html#ae5b01ac2fa5a6ad5fb97559638abe686">   44</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define YY_DECL int GT::GTL::Scanner::lex()</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">namespace </span>GT {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span>GTL {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span><span class="comment"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @class Scanner</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @brief Scans for tokens declared by Parser class in given InputStream.</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * Its content is generated by Flex (Lex?) from scanner.yy class. Acts as a more convinient wrapper for</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * GTLFlexLexer.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * @see Parser</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @see ::GTLFlexLexer</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html">   65</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html">Scanner</a> : <span class="keyword">public</span> GTLFlexLexer {<span class="comment"></span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     * @brief Field used during token scanning - contains actual value of parsed chain.</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">   69</a></span>&#160;    <a class="code" href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">Parser::semantic_type</a>* <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">lval</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     * @brief Initiates Scanner with input stream that serves as data source.</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     * @param inputStream input stream initiating Scanner</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a332a785ce62458219294ffde1fae9534">Scanner</a>(</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="../../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33">InputStream</a>* inputStream</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    );</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">     * @brief Whether scanner is currently interactive.</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * @return true if current buffer is set and it&#39;s interactive</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a91a9433c38fd02c1c0c2c1791014507a">isInteractive</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     * @brief Set whether scanner should be interactive or not.</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">     * Interactive scanner behaves better (?) in a console but is slower than non-interactive one.</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">     * @param isInteractive true if scanner should be interactive</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#afb062748414a25b7ed3091e1a88c5a90">setInteractive</a>(</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a91a9433c38fd02c1c0c2c1791014507a">isInteractive</a></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    );</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * @brief Scans for next token.</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">     * @param newlval     initiates next scanning with value</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     * @param newlocation location to fill with positions</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     * @return            returns number of next token</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">lex</a>(</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">Parser::semantic_type</a>* newlval,</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="../../d5/de2/classGT_1_1GTL_1_1location.html">Parser::location_type</a>&amp; newlocation</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    );</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">     * @brief Actual lexer/scanner function.</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">     * Uses source defined by the constructor. Its body is generated from scanner.yy file by Flex with</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">     * YY_DECL macroinstruction.</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">     * @return value used for communicating with Parser</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">lex</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}; <span class="comment">/* END class Scanner */</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_SCANNER_HPP__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="classGT_1_1GTL_1_1location_html"><div class="ttname"><a href="../../d5/de2/classGT_1_1GTL_1_1location.html">GT::GTL::location</a></div><div class="ttdoc">Abstract a location. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d46/location_8hh_source.html#l00054">location.hh:54</a></div></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/** @cond Doxygen_Suppress */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * @brief Makes ::GTLFLexLexer visible to Scanner.</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * Similar code is executed inside scanner.cpp generated with Flex - code in if instuction is repeated,</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * so that other classes (Scanner in particular) would see see ::GTLFlexLexer.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __GTL_FLEX_LEXER__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  __GTL_FLEX_LEXER__</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    undef   yyFlexLexer</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  yyFlexLexer GTLFlexLexer</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    include &lt;FlexLexer.h&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#    undef   yyFlexLexer</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GTL_FLEX_LEXER__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * @brief Makes Scanner::lex() function signature of generated main scanning function.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#undef  YY_DECL</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define YY_DECL int GT::GTL::Scanner::lex()</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">namespace </span>GT {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">namespace </span>GTL {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @class Scanner</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * @brief Scans for tokens declared by Parser class in given InputStream.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * Its content is generated by Flex (Lex?) from scanner.yy class. Acts as a more convinient wrapper for</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * GTLFlexLexer.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @author Mateusz Kubuszok</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> * @see Parser</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> * @see ::GTLFlexLexer</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">class </span>Scanner : <span class="keyword">public</span> GTLFlexLexer {<span class="comment"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief Field used during token scanning - contains actual value of parsed chain.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    Parser::semantic_type* lval;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     * @brief Initiates Scanner with input stream that serves as data source.</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * @param inputStream input stream initiating Scanner</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">explicit</span> Scanner(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="../../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33">InputStream</a>* inputStream</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * @brief Whether scanner is currently interactive.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     * @return true if current buffer is set and it&#39;s interactive</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> isInteractive() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">     * @brief Set whether scanner should be interactive or not.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     * Interactive scanner behaves better (?) in a console but is slower than non-interactive one.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">     * @param isInteractive true if scanner should be interactive</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> setInteractive(</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">bool</span> isInteractive</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     * @brief Scans for next token.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     * @param newlval     initiates next scanning with value</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     * @param newlocation location to fill with positions</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     * @return            returns number of next token</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> lex(</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        Parser::semantic_type* newlval,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../d1/d03/classGT_1_1GTL_1_1Parser.html#ab2f46fc8ffe16ebbf0db2a307189cf9c">Parser::location_type</a>&amp; newlocation</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     * @brief Actual lexer/scanner function.</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     * Uses source defined by the constructor. Its body is generated from scanner.yy file by Flex with</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">     * YY_DECL macroinstruction.</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     * @return value used for communicating with Parser</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">int</span> lex();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}; <span class="comment">/* END class Scanner */</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/** @endcond */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_SCANNER_HPP__ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_html_a6aefaddd6afab0b3a939cb03262d2f33"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33">GT::InputStream</a></div><div class="ttdeci">istream InputStream</div><div class="ttdoc">Input stream alias. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00071">common.hpp:71</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html">GT::GTL::Scanner</a></div><div class="ttdoc">Scans for tokens declared by Parser class in given InputStream. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbc/scanner_8hpp_source.html#l00065">scanner.hpp:65</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_a1d5f93efd5a2cc61cae82b75b65c494f"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">GT::GTL::Scanner::lval</a></div><div class="ttdeci">Parser::semantic_type * lval</div><div class="ttdoc">Field used during token scanning - contains actual value of parsed chain. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbc/scanner_8hpp_source.html#l00069">scanner.hpp:69</a></div></div>
-<div class="ttc" id="unionGT_1_1GTL_1_1Parser_1_1semantic__type_html"><div class="ttname"><a href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">GT::GTL::Parser::semantic_type</a></div><div class="ttdoc">Symbol semantic values. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/parser_8hpp_source.html#l00094">parser.hpp:94</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_a332a785ce62458219294ffde1fae9534"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a332a785ce62458219294ffde1fae9534">GT::GTL::Scanner::Scanner</a></div><div class="ttdeci">Scanner(InputStream *inputStream)</div><div class="ttdoc">Initiates Scanner with input stream that serves as data source. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l02259">scanner.cpp:2259</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_afb062748414a25b7ed3091e1a88c5a90"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#afb062748414a25b7ed3091e1a88c5a90">GT::GTL::Scanner::setInteractive</a></div><div class="ttdeci">void setInteractive(bool isInteractive)</div><div class="ttdoc">Set whether scanner should be interactive or not. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l02270">scanner.cpp:2270</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_a91a9433c38fd02c1c0c2c1791014507a"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a91a9433c38fd02c1c0c2c1791014507a">GT::GTL::Scanner::isInteractive</a></div><div class="ttdeci">bool isInteractive() const </div><div class="ttdoc">Whether scanner is currently interactive. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l02266">scanner.cpp:2266</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_aab3aae4a7fc1336394f09aca0da2e7ab"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">GT::GTL::Scanner::lex</a></div><div class="ttdeci">int lex()</div><div class="ttdoc">Actual lexer/scanner function. </div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Parser_html_ab2f46fc8ffe16ebbf0db2a307189cf9c"><div class="ttname"><a href="../../d1/d03/classGT_1_1GTL_1_1Parser.html#ab2f46fc8ffe16ebbf0db2a307189cf9c">GT::GTL::Parser::location_type</a></div><div class="ttdeci">location location_type</div><div class="ttdoc">Symbol locations. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/parser_8hpp_source.html#l00126">parser.hpp:126</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -237,7 +237,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

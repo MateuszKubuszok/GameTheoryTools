@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -319,11 +319,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../de/d2b/condition_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../de/d2b/condition_8cpp_source.html">condition.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">GT::createIdentifier()</a>, <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">GT::GTL::ExceptionFactory::getInstance()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00069">GT::GTL::Param::getObject()</a>, and <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00063">GT::GTL::ExceptionFactory::invalidObjectType()</a>.</p>
+<p>References <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00098">GT::createIdentifier()</a>, <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">GT::GTL::ExceptionFactory::getInstance()</a>, <a class="el" href="../../d9/d30/param_8cpp_source.html#l00069">GT::GTL::Param::getObject()</a>, <a class="el" href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00063">GT::GTL::ExceptionFactory::invalidObjectType()</a>, and <a class="el" href="../../d9/d30/param_8cpp_source.html#l00083">GT::GTL::Param::toParam()</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/dfe/gtl_2player__choice__condition_8cpp_source.html#l00046">GT::GTL::PlayerChoiceCondition::getCondition()</a>, <a class="el" href="../../dc/d5a/gtl_2player__range__condition_8cpp_source.html#l00046">GT::GTL::PlayerRangeCondition::getCondition()</a>, <a class="el" href="../../d8/d48/gtl_2information__set__choice__condition_8cpp_source.html#l00048">GT::GTL::InformationSetChoiceCondition::getCondition()</a>, and <a class="el" href="../../d7/d13/gtl_2information__set__range__condition_8cpp_source.html#l00049">GT::GTL::InformationSetRangeCondition::getCondition()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> Param&amp; param = *object;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> Param&amp; param = <span class="keywordtype">object</span>-&gt;toParam();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (!param) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> expectedType = <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(<span class="stringliteral">&quot;Param&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">ExceptionFactory::getInstance</a>().<a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">invalidObjectType</a>(expectedType);</div>
@@ -347,7 +347,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_a8f19b695ad22a8a8943299159cb0f13c"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">GT::Identifier</a></div><div class="ttdeci">string Identifier</div><div class="ttdoc">Alias for string used as identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00077">common.hpp:77</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExceptionFactory_html_a72f45fc8a7b151df1699d33ad980f35f"><div class="ttname"><a href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">GT::GTL::ExceptionFactory::invalidObjectType</a></div><div class="ttdeci">InvalidType invalidObjectType(const Identifier &amp;expectedType) const </div><div class="ttdoc">Thrown when attepting to obtain cast Object to invalid type. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00063">exception_factory.cpp:63</a></div></div>
-<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">helpers.cpp:82</a></div></div>
+<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00098">helpers.cpp:98</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExceptionFactory_html_ac4e8d5d304821830d32fc0d5372a5b70"><div class="ttname"><a href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">GT::GTL::ExceptionFactory::getInstance</a></div><div class="ttdeci">static ExceptionFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of an ExceptionFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">exception_factory.cpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -396,7 +396,7 @@ Additional Inherited Members</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

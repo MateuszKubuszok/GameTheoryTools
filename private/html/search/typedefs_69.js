@@ -10,5 +10,5 @@ var searchData=
   ['inputlocation',['InputLocation',['../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e',1,'GT::GTL']]],
   ['inputlocationptr',['InputLocationPtr',['../d0/dea/namespaceGT_1_1GTL.html#add9ad5a0518a638295f41916bf9000d7',1,'GT::GTL']]],
   ['inputstream',['InputStream',['../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33',1,'GT']]],
-  ['iterator',['iterator',['../d8/d34/classGT_1_1GTL_1_1stack.html#aa11736bdede2f044f65c30b89fbcc9e7',1,'GT::GTL::stack']]]
+  ['iterator',['iterator',['../d8/d34/classGT_1_1GTL_1_1stack.html#aa11736bdede2f044f65c30b89fbcc9e7',1,'GT::GTL::stack::iterator()'],['../d8/d34/classGT_1_1GTL_1_1stack.html#aa11736bdede2f044f65c30b89fbcc9e7',1,'GT::GTL::stack::iterator()']]]
 ];

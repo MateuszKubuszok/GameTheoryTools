@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -199,7 +199,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>&amp; <span class="keyword">property</span> = *propertyPtr;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">object</span>.respondsTo(property)) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = object;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = <span class="keywordtype">object</span>.<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">toParam</a>();</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">if</span> (!param) {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <span class="comment">// TODO: create MessageFactory</span></div>
@@ -284,6 +284,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="namespaceGT_1_1GTL_html_a3a16205b7ef19a12305746207ff56ff4"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a3a16205b7ef19a12305746207ff56ff4">GT::GTL::ObjectsPtr</a></div><div class="ttdeci">shared_ptr&lt; Objects &gt; ObjectsPtr</div><div class="ttdoc">Smart pointer to Objects. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00113">common.hpp:113</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Driver_html"><div class="ttname"><a href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">GT::GTL::Driver</a></div><div class="ttdoc">Used for executing actions called by Parser. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/driver_8hpp_source.html#l00037">driver.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1CheckingStatementDriver_html_a5f75334cf7685fed83507b256d722270"><div class="ttname"><a href="../../db/d07/classGT_1_1GTL_1_1CheckingStatementDriver.html#a5f75334cf7685fed83507b256d722270">GT::GTL::CheckingStatementDriver::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">CheckingStatementDriver&amp;#39;s Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d04/checking__statement__driver_8cpp_source.html#l00150">checking_statement_driver.cpp:150</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Param_html_a6252c7a2527d7210313abe706836dc23"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">GT::GTL::Param::toParam</a></div><div class="ttdeci">virtual const Param &amp; toParam() const override</div><div class="ttdoc">Explicit cast to Param type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d30/param_8cpp_source.html#l00083">param.cpp:83</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Query_html"><div class="ttname"><a href="../../d0/dbf/classGT_1_1GTL_1_1Query.html">GT::GTL::Query</a></div><div class="ttdoc">Defines Query. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/def/query_8hpp_source.html#l00049">query.hpp:49</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -293,7 +294,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

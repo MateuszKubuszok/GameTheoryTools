@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -162,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../da/db2/classGT_1_1Model_1_1Game.html#acc9642aace8ccd862973b4c19d3dcea9">toString</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief Syntax sugar for #isEqual(const Root&amp;) method.</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief Syntax sugar for #isEqual(const Root&amp;)const method.</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     * @param game1 first Game to compare</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     * @param game2 second Game to compare</span></div>
@@ -174,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    );</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     * @brief Syntax sugar for !#isEqual(const Root&amp;) method.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     * @brief Syntax sugar for !#isEqual(const Root&amp;)const method.</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * @param game1 first Game to compare</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * @param game2 second Game to compare</span></div>
@@ -186,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    );</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">    /**</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     * @brief Syntax sugar for #toString() method.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     * @brief Syntax sugar for #toString()const method.</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">     * @param stream stream to concatenate</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">     * @param game   Game to concatenate</span></div>
@@ -241,10 +241,10 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1Model_1_1NullFactory_html_a08a922ee05ed4e0bce3b2c14badf7edc"><div class="ttname"><a href="../../d5/da7/classGT_1_1Model_1_1NullFactory.html#a08a922ee05ed4e0bce3b2c14badf7edc">GT::Model::NullFactory::createDataAccessor</a></div><div class="ttdeci">DataAccessorPtr createDataAccessor() const </div><div class="ttdoc">Creates NullDataAccessor. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfb/model_2null__factory_8cpp_source.html#l00073">null_factory.cpp:73</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1Root_html"><div class="ttname"><a href="../../df/d6e/classGT_1_1Model_1_1Root.html">GT::Model::Root</a></div><div class="ttdoc">Basic interface of many classes used in the project. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d66/root_8hpp_source.html#l00037">root.hpp:37</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a7d7b964a45eac1afe434a6eb91d72895"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a7d7b964a45eac1afe434a6eb91d72895">GT::Model::GamePtr</a></div><div class="ttdeci">shared_ptr&lt; Game &gt; GamePtr</div><div class="ttdoc">Smart pointer to Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d65/model_2common_8hpp_source.html#l00086">common.hpp:86</a></div></div>
-<div class="ttc" id="classGT_1_1Model_1_1Game_html_a4fd930a5901a7512e27662a3e24e8757"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#a4fd930a5901a7512e27662a3e24e8757">GT::Model::Game::operator&lt;&lt;</a></div><div class="ttdeci">friend OutputStream &amp; operator&lt;&lt;(OutputStream &amp;stream, const GamePtr &amp;game)</div><div class="ttdoc">Syntax sugar for toString() method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00064">game.cpp:64</a></div></div>
-<div class="ttc" id="classGT_1_1Model_1_1Game_html_af42227d1af880fdb9756298d76cbce1e"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#af42227d1af880fdb9756298d76cbce1e">GT::Model::Game::operator!=</a></div><div class="ttdeci">friend bool operator!=(const GamePtr &amp;game1, const GamePtr &amp;game2)</div><div class="ttdoc">Syntax sugar for !#isEqual(const Root&amp;amp;) method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00057">game.cpp:57</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1Game_html_a4fd930a5901a7512e27662a3e24e8757"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#a4fd930a5901a7512e27662a3e24e8757">GT::Model::Game::operator&lt;&lt;</a></div><div class="ttdeci">friend OutputStream &amp; operator&lt;&lt;(OutputStream &amp;stream, const GamePtr &amp;game)</div><div class="ttdoc">Syntax sugar for toString()const method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00064">game.cpp:64</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1Game_html_af42227d1af880fdb9756298d76cbce1e"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#af42227d1af880fdb9756298d76cbce1e">GT::Model::Game::operator!=</a></div><div class="ttdeci">friend bool operator!=(const GamePtr &amp;game1, const GamePtr &amp;game2)</div><div class="ttdoc">Syntax sugar for !isEqual(const Root&amp;amp;)const method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00057">game.cpp:57</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1Game_html_a5c4644c96edcd0fd545886d750d34453"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#a5c4644c96edcd0fd545886d750d34453">GT::Model::Game::getData</a></div><div class="ttdeci">virtual const DataAccessorPtr getData() const =0</div><div class="ttdoc">Grants access to Data specific to a Game. </div></div>
-<div class="ttc" id="classGT_1_1Model_1_1Game_html_ace9bf901dd0b4364eb95ee760fed6083"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#ace9bf901dd0b4364eb95ee760fed6083">GT::Model::Game::operator==</a></div><div class="ttdeci">friend bool operator==(const GamePtr &amp;game1, const GamePtr &amp;game2)</div><div class="ttdoc">Syntax sugar for #isEqual(const Root&amp;amp;) method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00050">game.cpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1Model_1_1Game_html_ace9bf901dd0b4364eb95ee760fed6083"><div class="ttname"><a href="../../da/db2/classGT_1_1Model_1_1Game.html#ace9bf901dd0b4364eb95ee760fed6083">GT::Model::Game::operator==</a></div><div class="ttdeci">friend bool operator==(const GamePtr &amp;game1, const GamePtr &amp;game2)</div><div class="ttdoc">Syntax sugar for isEqual(const Root&amp;amp;)const method. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3b/model_2game_8cpp_source.html#l00050">game.cpp:50</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1NullGame_html_a78f7419793831a1cc82c2a3eba61a66c"><div class="ttname"><a href="../../da/daf/classGT_1_1Model_1_1NullGame.html#a78f7419793831a1cc82c2a3eba61a66c">GT::Model::NullGame::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Game&amp;#39;s Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da3/model_2game_8hpp_source.html#l00129">game.hpp:129</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a0b7284868bcb23a3c4005e56526d32b6"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a0b7284868bcb23a3c4005e56526d32b6">GT::Model::DataAccessorPtr</a></div><div class="ttdeci">shared_ptr&lt; DataAccessor &gt; DataAccessorPtr</div><div class="ttdoc">Smart pointer to DataAccessor. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d65/model_2common_8hpp_source.html#l00083">common.hpp:83</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1NullGame_html_af7206f73df32da34d04021f10b8bee4e"><div class="ttname"><a href="../../da/daf/classGT_1_1Model_1_1NullGame.html#af7206f73df32da34d04021f10b8bee4e">GT::Model::NullGame::getData</a></div><div class="ttdeci">virtual const DataAccessorPtr getData() const override</div><div class="ttdoc">Grants access to Data specific to a Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da3/model_2game_8hpp_source.html#l00121">game.hpp:121</a></div></div>
@@ -261,7 +261,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

@@ -23,7 +23,7 @@ var searchData=
   ['definitionptr',['DefinitionPtr',['../d0/dea/namespaceGT_1_1GTL.html#a635f98090b2beb73b0685837112f769a',1,'GT::GTL']]],
   ['describeproperty',['describeProperty',['../d1/dde/classGT_1_1GTL_1_1Object.html#a48166f448cda0caba2120e09db96745d',1,'GT::GTL::Object::describeProperty()'],['../dc/df9/classGT_1_1GTL_1_1NullObject.html#adf5b25e38b96072875d3928e60a686ae',1,'GT::GTL::NullObject::describeProperty()'],['../da/d2d/classGT_1_1GTL_1_1ErrorObject.html#a8297b0d02a138ba7b69ad710b96da62d',1,'GT::GTL::ErrorObject::describeProperty()']]],
   ['details',['Details',['../d0/d95/classGT_1_1GTL_1_1Details.html',1,'GT::GTL']]],
-  ['details',['details',['../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html#a38a0725084b64af4ffbc3a45b002f3f0',1,'GT::GTL::Parser::semantic_type::details()'],['../d0/d95/classGT_1_1GTL_1_1Details.html#a47692881b8b4f99e3520d6ffd231b8ee',1,'GT::GTL::Details::Details()']]],
+  ['details',['Details',['../d0/d95/classGT_1_1GTL_1_1Details.html#a47692881b8b4f99e3520d6ffd231b8ee',1,'GT::GTL::Details::Details()'],['../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html#a38a0725084b64af4ffbc3a45b002f3f0',1,'GT::GTL::Parser::semantic_type::details()']]],
   ['details_2ehpp',['details.hpp',['../df/d9a/details_8hpp.html',1,'']]],
   ['detailsptr',['DetailsPtr',['../d0/dea/namespaceGT_1_1GTL.html#ae92ff38d61ec8bf4f1e8fee40238ebbd',1,'GT::GTL']]],
   ['driver',['driver',['../d1/d03/classGT_1_1GTL_1_1Parser.html#adbaad9d04c0a70520c7fd22f3260ce55',1,'GT::GTL::Parser']]],

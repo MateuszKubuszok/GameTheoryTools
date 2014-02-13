@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -226,7 +226,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">     * @return Game</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">operator</span> <span class="keyword">const</span> <a class="code" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html">Game</a>&amp;() <span class="keyword">const</span> <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html">Game</a>&amp; <a class="code" href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#a68389331ad46e3025a7c446683e12469">toGame</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}; <span class="comment">/* END class Game */</span></div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
@@ -357,6 +357,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1GTL_1_1Game_html_af1533d1d9e3d5263063b3902e0bf7aca"><div class="ttname"><a href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#af1533d1d9e3d5263063b3902e0bf7aca">GT::GTL::Game::Game</a></div><div class="ttdeci">Game(const Model::GamePtr game)</div><div class="ttdoc">Initiates Object with Game model. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Game_html_ab15e3297a94effdcd0c9e3e1b8388c0b"><div class="ttname"><a href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#ab15e3297a94effdcd0c9e3e1b8388c0b">GT::GTL::Game::gameType</a></div><div class="ttdeci">const IdentifierPtr gameType</div><div class="ttdoc">Game type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db9/gtl_2game_8hpp_source.html#l00051">game.hpp:51</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Game_html_a68389331ad46e3025a7c446683e12469"><div class="ttname"><a href="../../dd/d9e/classGT_1_1GTL_1_1Game.html#a68389331ad46e3025a7c446683e12469">GT::GTL::Game::toGame</a></div><div class="ttdeci">virtual const Game &amp; toGame() const override</div><div class="ttdoc">Explicit cast to Game type. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ErrorGame_html_a7ec7e04373f5d5b782a9c197a3e1abbd"><div class="ttname"><a href="../../d0/d1e/classGT_1_1GTL_1_1ErrorGame.html#a7ec7e04373f5d5b782a9c197a3e1abbd">GT::GTL::ErrorGame::message</a></div><div class="ttdeci">const Message message</div><div class="ttdoc">Error message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db9/gtl_2game_8hpp_source.html#l00202">game.hpp:202</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1NullGame_html_aff2e6f3a78a267bafeb9de380b8f7326"><div class="ttname"><a href="../../d1/d02/classGT_1_1GTL_1_1NullGame.html#aff2e6f3a78a267bafeb9de380b8f7326">GT::GTL::NullGame::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns Message about Game. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db9/gtl_2game_8hpp_source.html#l00185">game.hpp:185</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Context_html"><div class="ttname"><a href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">GT::GTL::Context</a></div><div class="ttdoc">Context containing identifiers and values befind then. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da3/context_8hpp_source.html#l00056">context.hpp:56</a></div></div>
@@ -396,7 +397,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

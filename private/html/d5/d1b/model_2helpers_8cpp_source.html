@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -130,80 +130,96 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str());</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#af86edd366564b2f776a729a909cb5bca">   39</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#aab7303fd2625bd8f277ab43edb254a5e">Number</a> number</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a0483ce00d4f3139ab7709c5f80f03fa7">   39</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">double</span> message</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; number;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    result &lt;&lt; message;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str());</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#aa3485ad5ad1449102f83c39535f29a1e">   47</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> number</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#af86edd366564b2f776a729a909cb5bca">   47</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#aab7303fd2625bd8f277ab43edb254a5e">Number</a> number</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; (*number);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">   56</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> message</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; number;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#aa3485ad5ad1449102f83c39535f29a1e">   55</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a> <a class="code" href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">createMessage</a>(</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> number</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    result &lt;&lt; message;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str()));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; (*number);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a6266b8db576bdad54160d2676e4e881d">   64</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#aab7303fd2625bd8f277ab43edb254a5e">Number</a> number</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">   64</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> message</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; number;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    result &lt;&lt; message;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str()));</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#af334f6179a05d6059043944e5d72df57">   72</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> number</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a5432f9b510f36d0b632c317ceb25e9e1">   72</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">double</span> message</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; (*number);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    result &lt;&lt; message;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str()));</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">   82</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> identifier</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    result &lt;&lt; identifier;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>(result.str());</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">   90</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> identifier</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    stringstream result;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    result &lt;&lt; identifier;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>(result.str()));</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a6266b8db576bdad54160d2676e4e881d">   80</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#aab7303fd2625bd8f277ab43edb254a5e">Number</a> number</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; number;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str()));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#af334f6179a05d6059043944e5d72df57">   88</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a> number</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    result &lt;&lt; std::setprecision(5) &lt;&lt; (*number);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(result.str()));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">   98</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> identifier</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    result &lt;&lt; identifier;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>(result.str());</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">  106</a></span>&#160;<a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> identifier</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    stringstream result;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    result &lt;&lt; identifier;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a>(<span class="keyword">new</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>(result.str()));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
 <div class="ttc" id="namespaceGT_html_a8f19b695ad22a8a8943299159cb0f13c"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">GT::Identifier</a></div><div class="ttdeci">string Identifier</div><div class="ttdoc">Alias for string used as identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00077">common.hpp:77</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad687b204bc355e085988c1c6e74d4eec"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">GT::IdentifierPtr</a></div><div class="ttdeci">shared_ptr&lt; Identifier &gt; IdentifierPtr</div><div class="ttdoc">Smart pointer to Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00078">common.hpp:78</a></div></div>
 <div class="ttc" id="namespaceGT_html_a3b65386013f72aa72f574c2954b09b39"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">GT::MessagePtr</a></div><div class="ttdeci">shared_ptr&lt; Message &gt; MessagePtr</div><div class="ttdoc">Smart pointer to Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00074">common.hpp:74</a></div></div>
-<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00090">helpers.cpp:90</a></div></div>
+<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00106">helpers.cpp:106</a></div></div>
 <div class="ttc" id="namespaceGT_html_a68211b63deba723dbed223e9125eaa13"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a68211b63deba723dbed223e9125eaa13">GT::createMessage</a></div><div class="ttdeci">Message createMessage(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00031">helpers.cpp:31</a></div></div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 <div class="ttc" id="namespaceGT_html_aab7303fd2625bd8f277ab43edb254a5e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#aab7303fd2625bd8f277ab43edb254a5e">GT::Number</a></div><div class="ttdeci">mpf_class Number</div><div class="ttdoc">Alias for multiple precision float class. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00081">common.hpp:81</a></div></div>
 <div class="ttc" id="namespaceGT_html_a17f154b64ff7f40b1f64b58b96adeffd"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">GT::Index</a></div><div class="ttdeci">unsigned int Index</div><div class="ttdoc">Position in array or storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00067">common.hpp:67</a></div></div>
-<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00056">helpers.cpp:56</a></div></div>
+<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00064">helpers.cpp:64</a></div></div>
 <div class="ttc" id="model_2inner__common_8hpp_html"><div class="ttname"><a href="../../d4/dce/model_2inner__common_8hpp.html">inner_common.hpp</a></div><div class="ttdoc">Declares inner classes for GT::Model module. </div></div>
 <div class="ttc" id="namespaceGT_html_a72ac25c350c624c43d44fd1faa6fc15f"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">GT::NumberPtr</a></div><div class="ttdeci">shared_ptr&lt; Number &gt; NumberPtr</div><div class="ttdoc">Smart pointer to Number. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00082">common.hpp:82</a></div></div>
-<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">helpers.cpp:82</a></div></div>
+<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00098">helpers.cpp:98</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -212,7 +228,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

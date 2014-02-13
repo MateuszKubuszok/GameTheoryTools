@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">std::string</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::string;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> boost::iequals;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> boost::program_options::validation_error;</div>
@@ -159,8 +159,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">string</span> json  = <span class="stringliteral">&quot;JSON&quot;</span>;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">string</span> xml   = <span class="stringliteral">&quot;XML&quot;</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">string</span> <a class="code" href="../../d4/d77/scanner_8cpp.html#accee95cff80ab1f94ef4565538d6a710">token</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    inputStream &gt;&gt; <a class="code" href="../../d4/d77/scanner_8cpp.html#accee95cff80ab1f94ef4565538d6a710">token</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">string</span> token;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    inputStream &gt;&gt; token;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (iequals(token, plain))</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        resultBuilderMode = ResultBuilderMode::PLAIN;</div>
@@ -206,8 +206,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">string</span> spaces = <span class="stringliteral">&quot;SPACES&quot;</span>;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">string</span> none   = <span class="stringliteral">&quot;NONE&quot;</span>;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">string</span> <a class="code" href="../../d4/d77/scanner_8cpp.html#accee95cff80ab1f94ef4565538d6a710">token</a>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    inputStream &gt;&gt; <a class="code" href="../../d4/d77/scanner_8cpp.html#accee95cff80ab1f94ef4565538d6a710">token</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">string</span> token;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    inputStream &gt;&gt; token;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (iequals(token, tabs))</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        resultIndentationMode = ResultIndentationMode::TABS;</div>
@@ -233,8 +233,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="namespaceGT_1_1Model_html_ad429f8972313f49fde164c17a0b40fc3"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#ad429f8972313f49fde164c17a0b40fc3">GT::Model::ResultIndentationMode</a></div><div class="ttdeci">ResultIndentationMode</div><div class="ttdoc">Used for configuring whether builders returned by ResultFacotry should use indentation and how...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d19/result__factory_8hpp_source.html#l00045">result_factory.hpp:45</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a62c168446bcc4a912f5c5c869bd10158"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a62c168446bcc4a912f5c5c869bd10158">GT::GTL::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;ostr, const location &amp;loc)</div><div class="ttdoc">Intercept output stream redirection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d46/location_8hh_source.html#l00145">location.hh:145</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a855836454cdf6d9ea0990b37f27d05c9"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a855836454cdf6d9ea0990b37f27d05c9">GT::Model::ResultBuilderMode</a></div><div class="ttdeci">ResultBuilderMode</div><div class="ttdoc">Used for configuring what kind of builders should be returned by ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d19/result__factory_8hpp_source.html#l00037">result_factory.hpp:37</a></div></div>
-<div class="ttc" id="scanner_8cpp_html_accee95cff80ab1f94ef4565538d6a710"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#accee95cff80ab1f94ef4565538d6a710">token</a></div><div class="ttdeci">GT::GTL::Parser::token token</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00650">scanner.cpp:650</a></div></div>
-<div class="ttc" id="scanner_8cpp_html_a25093e36e9fb377b246945a84745823f"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#a25093e36e9fb377b246945a84745823f">string</a></div><div class="ttdeci">#define string</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00674">scanner.cpp:674</a></div></div>
 <div class="ttc" id="program_2inner__common_8hpp_html"><div class="ttname"><a href="../../d5/de4/program_2inner__common_8hpp.html">inner_common.hpp</a></div><div class="ttdoc">Declares inner classes for GT::Program module. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -244,7 +242,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

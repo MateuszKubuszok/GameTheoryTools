@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0791e2563c03d2a25373eacf45880015"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d8/df6/namespaceGT_1_1Model.html#aa40ccf1aa4c12edf51ef5bef8a0422e6">DataPiecePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#a0791e2563c03d2a25373eacf45880015">getPayoffs</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#ae07ab097d95bc38f56aa795bd94dc72c">Positions</a> &amp;positions) const override</td></tr>
 <tr class="memdesc:a0791e2563c03d2a25373eacf45880015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html" title="Interface for accessing Data coordinates for better access to values. ">DataPiece</a> that gives access to payoffs.  <a href="#a0791e2563c03d2a25373eacf45880015">More...</a><br/></td></tr>
 <tr class="separator:a0791e2563c03d2a25373eacf45880015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94bf063942b440ea306b97ed001bdb53"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#a94bf063942b440ea306b97ed001bdb53">getUpperBound</a> () const </td></tr>
+<tr class="memdesc:a94bf063942b440ea306b97ed001bdb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns upport bound of index for accessing data via position in storage.  <a href="#a94bf063942b440ea306b97ed001bdb53">More...</a><br/></td></tr>
+<tr class="separator:a94bf063942b440ea306b97ed001bdb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a290062c09d6ac2f6950e1aa2882cca"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d8/df6/namespaceGT_1_1Model.html#aa40ccf1aa4c12edf51ef5bef8a0422e6">DataPiecePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#a1a290062c09d6ac2f6950e1aa2882cca">operator[]</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> positionInStorage) const </td></tr>
 <tr class="memdesc:a1a290062c09d6ac2f6950e1aa2882cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="../../dc/df3/classGT_1_1Model_1_1DataPiece.html" title="Interface for accessing Data coordinates for better access to values. ">DataPiece</a> that gives access to payoffs.  <a href="#a1a290062c09d6ac2f6950e1aa2882cca">More...</a><br/></td></tr>
 <tr class="separator:a1a290062c09d6ac2f6950e1aa2882cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,6 +408,40 @@ StrategicDataPiece </dd>
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a94bf063942b440ea306b97ed001bdb53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> GT::Model::StrategicDataAccessor::getUpperBound </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns upport bound of index for accessing data via position in storage. </p>
+<dl class="section return"><dt>Returns</dt><dd>upper bound of positions in storage (highest available Index is upper bound - 1) </dd></dl>
+
+<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                 {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>-&gt;getUpperBound();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1Model_1_1StrategicDataAccessor_html_ae3fb21d17b88625acd556d8c60429968"><div class="ttname"><a href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">GT::Model::StrategicDataAccessor::data</a></div><div class="ttdeci">StrategicDataPtr data</div><div class="ttdoc">Actual data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">strategic_data_accessor.hpp:53</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a1a290062c09d6ac2f6950e1aa2882cca"></a>
 <div class="memitem">
 <div class="memproto">
@@ -442,12 +479,12 @@ StrategicDataPiece </dd>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positionInStorage];</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positionInStorage];</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicDataAccessor_html_ae3fb21d17b88625acd556d8c60429968"><div class="ttname"><a href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">GT::Model::StrategicDataAccessor::data</a></div><div class="ttdeci">StrategicDataPtr data</div><div class="ttdoc">Actual data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">strategic_data_accessor.hpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -491,12 +528,12 @@ StrategicDataPiece </dd>
 
 <p>Implements <a class="el" href="../../d1/d49/classGT_1_1Model_1_1DataAccessor.html#ad0503961cc21c04c3df9c3896029f207">GT::Model::DataAccessor</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00071">71</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00075">75</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positions];</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positions];</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicDataAccessor_html_ae3fb21d17b88625acd556d8c60429968"><div class="ttname"><a href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">GT::Model::StrategicDataAccessor::data</a></div><div class="ttdeci">StrategicDataPtr data</div><div class="ttdoc">Actual data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">strategic_data_accessor.hpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -540,12 +577,12 @@ StrategicDataPiece </dd>
 
 <p>Implements <a class="el" href="../../d1/d49/classGT_1_1Model_1_1DataAccessor.html#a98a99b8c5985f10aeb041416225bd4bf">GT::Model::DataAccessor</a>.</p>
 
-<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00077">77</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00081">81</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positions];</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> (*<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>)[positions];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicDataAccessor_html_ae3fb21d17b88625acd556d8c60429968"><div class="ttname"><a href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">GT::Model::StrategicDataAccessor::data</a></div><div class="ttdeci">StrategicDataPtr data</div><div class="ttdoc">Actual data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">strategic_data_accessor.hpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -578,7 +615,7 @@ StrategicDataPiece </dd>
 
 <p>Definition at line <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html">strategic_data_accessor.cpp</a>.</p>
 
-<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00037">GT::Model::ResultFactory::buildResult()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00090">GT::createIdentifierPtr()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00056">GT::createMessagePtr()</a>, <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>, and <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>.</p>
+<p>References <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00037">GT::Model::ResultFactory::buildResult()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00106">GT::createIdentifierPtr()</a>, <a class="el" href="../../d5/d1b/model_2helpers_8cpp_source.html#l00064">GT::createMessagePtr()</a>, <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">data</a>, and <a class="el" href="../../da/db3/result__factory_8cpp_source.html#l00030">GT::Model::ResultFactory::getInstance()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                              {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> name      = <a class="code" href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">createIdentifierPtr</a>(<span class="stringliteral">&quot;Strategic Data Accessor&quot;</span>);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">MessagePtr</a>           subresult = <a class="code" href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">createMessagePtr</a>(<a class="code" href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">data</a>-&gt;toString());</div>
@@ -586,9 +623,9 @@ StrategicDataPiece </dd>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_ad687b204bc355e085988c1c6e74d4eec"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">GT::IdentifierPtr</a></div><div class="ttdeci">shared_ptr&lt; Identifier &gt; IdentifierPtr</div><div class="ttdoc">Smart pointer to Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00078">common.hpp:78</a></div></div>
 <div class="ttc" id="namespaceGT_html_a3b65386013f72aa72f574c2954b09b39"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a3b65386013f72aa72f574c2954b09b39">GT::MessagePtr</a></div><div class="ttdeci">shared_ptr&lt; Message &gt; MessagePtr</div><div class="ttdoc">Smart pointer to Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00074">common.hpp:74</a></div></div>
-<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00090">helpers.cpp:90</a></div></div>
+<div class="ttc" id="namespaceGT_html_a0b8b306ee7d228aa83a016897b1c11a0"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a0b8b306ee7d228aa83a016897b1c11a0">GT::createIdentifierPtr</a></div><div class="ttdeci">IdentifierPtr createIdentifierPtr(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00106">helpers.cpp:106</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_a4cb1acceda9aa781629aae4d4b7bf844"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#a4cb1acceda9aa781629aae4d4b7bf844">GT::Model::ResultFactory::buildResult</a></div><div class="ttdeci">ResultBuilderPtr buildResult() const </div><div class="ttdoc">Returns ResultBuilder. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00037">result_factory.cpp:37</a></div></div>
-<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00056">helpers.cpp:56</a></div></div>
+<div class="ttc" id="namespaceGT_html_a9905368f2fe6eebdc31e65ae0cb2c0a7"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9905368f2fe6eebdc31e65ae0cb2c0a7">GT::createMessagePtr</a></div><div class="ttdeci">MessagePtr createMessagePtr(Index message)</div><div class="ttdoc">Creates Message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00064">helpers.cpp:64</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1StrategicDataAccessor_html_ae3fb21d17b88625acd556d8c60429968"><div class="ttname"><a href="../../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html#ae3fb21d17b88625acd556d8c60429968">GT::Model::StrategicDataAccessor::data</a></div><div class="ttdeci">StrategicDataPtr data</div><div class="ttdoc">Actual data. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">strategic_data_accessor.hpp:53</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1ResultFactory_html_ab5ac1c574cebc06904092c2760cf10cd"><div class="ttname"><a href="../../d1/d1f/classGT_1_1Model_1_1ResultFactory.html#ab5ac1c574cebc06904092c2760cf10cd">GT::Model::ResultFactory::getInstance</a></div><div class="ttdeci">static ResultFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ResultFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/db3/result__factory_8cpp_source.html#l00030">result_factory.cpp:30</a></div></div>
 </div><!-- fragment -->
@@ -617,7 +654,7 @@ StrategicDataPiece </dd>
 
 <p>Definition at line <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html#l00053">53</a> of file <a class="el" href="../../d7/d68/strategic__data__accessor_8hpp_source.html">strategic_data_accessor.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00041">getPayoffs()</a>, <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00037">getPlayers()</a>, <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00065">operator[]()</a>, and <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00059">toString()</a>.</p>
+<p>Referenced by <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00041">getPayoffs()</a>, <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00037">getPlayers()</a>, <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00065">getUpperBound()</a>, <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00069">operator[]()</a>, and <a class="el" href="../../da/d26/strategic__data__accessor_8cpp_source.html#l00059">toString()</a>.</p>
 
 </div>
 </div>
@@ -633,7 +670,7 @@ StrategicDataPiece </dd>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

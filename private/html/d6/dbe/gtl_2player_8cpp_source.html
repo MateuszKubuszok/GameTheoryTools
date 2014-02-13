@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -157,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../db/d5d/classGT_1_1Model_1_1Player.html#a8b6796c0380490a03f297696a40be8d4">Model::Player::toString</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a0cdad2bcb35f0e6fcf52455f5ef8be6e">   66</a></span>&#160;Player::operator <span class="keyword">const</span> <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html">Player</a>&amp;() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#ab7403eea7a304d2f279bb78078cc8d76">   66</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html">Player</a>&amp; <a class="code" href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#ab7403eea7a304d2f279bb78078cc8d76">Player::toPlayer</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
@@ -177,11 +177,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1Model_1_1Player_html_a8b6796c0380490a03f297696a40be8d4"><div class="ttname"><a href="../../db/d5d/classGT_1_1Model_1_1Player.html#a8b6796c0380490a03f297696a40be8d4">GT::Model::Player::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns Message with Player&amp;#39;s name and strategies. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d26/model_2player_8cpp_source.html#l00085">player.cpp:85</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Object_html"><div class="ttname"><a href="../../d1/dde/classGT_1_1GTL_1_1Object.html">GT::GTL::Object</a></div><div class="ttdoc">Root of all Objects used as a data in parsed by GTL. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/de1/object_8hpp_source.html#l00043">object.hpp:43</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Player_html_a773d0ec4aa182443fee383636ffa65e9"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a773d0ec4aa182443fee383636ffa65e9">GT::GTL::Player::Player</a></div><div class="ttdeci">Player(const IdentifierPtr playerName, const IdentifiersPtr playerStrategies)</div><div class="ttdoc">Constructor of the Player. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/gtl_2player_8cpp_source.html#l00035">player.cpp:35</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Player_html_ab7403eea7a304d2f279bb78078cc8d76"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#ab7403eea7a304d2f279bb78078cc8d76">GT::GTL::Player::toPlayer</a></div><div class="ttdeci">virtual const Player &amp; toPlayer() const override</div><div class="ttdoc">Explicit cast to Player type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/gtl_2player_8cpp_source.html#l00066">player.cpp:66</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a3512ed5e1f6164d89213d5c8dd4572af"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a3512ed5e1f6164d89213d5c8dd4572af">GT::GTL::ObjectPropertyPtr</a></div><div class="ttdeci">shared_ptr&lt; ObjectProperty &gt; ObjectPropertyPtr</div><div class="ttdoc">Smart pointer to ObjectProperty. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00097">common.hpp:97</a></div></div>
 <div class="ttc" id="namespaceGT_html_a9fd54c019255c34e285e59184eb4830d"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a9fd54c019255c34e285e59184eb4830d">GT::IdentifiersPtr</a></div><div class="ttdeci">shared_ptr&lt; Identifiers &gt; IdentifiersPtr</div><div class="ttdoc">Smart pointer to Identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00080">common.hpp:80</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Player_html_a7e7b4f870428bbbb2f9a9c15eac2a403"><div class="ttname"><a href="../../d8/d9b/classGT_1_1GTL_1_1Player.html#a7e7b4f870428bbbb2f9a9c15eac2a403">GT::GTL::Player::toString</a></div><div class="ttdeci">virtual Message toString() const override</div><div class="ttdoc">Returns Message about Player. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/gtl_2player_8cpp_source.html#l00062">player.cpp:62</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1PlayerStrategiesProperty_html"><div class="ttname"><a href="../../d5/d49/classGT_1_1GTL_1_1PlayerStrategiesProperty.html">GT::GTL::PlayerStrategiesProperty</a></div><div class="ttdoc">Describes Player&amp;#39;s strategies. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d85/player__strategies__property_8hpp_source.html#l00039">player_strategies_property.hpp:39</a></div></div>
-<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">helpers.cpp:82</a></div></div>
+<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00098">helpers.cpp:98</a></div></div>
 <div class="ttc" id="classGT_1_1Model_1_1Player_html_ad69c4494c661b806f7de8f51b5f080ea"><div class="ttname"><a href="../../db/d5d/classGT_1_1Model_1_1Player.html#ad69c4494c661b806f7de8f51b5f080ea">GT::Model::Player::getName</a></div><div class="ttdeci">virtual const IdentifierPtr getName() const </div><div class="ttdoc">Returns name ot the Player. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d26/model_2player_8cpp_source.html#l00044">player.cpp:44</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Object_html_a1c43342f36a237b86e4cecc7f0102140"><div class="ttname"><a href="../../d1/dde/classGT_1_1GTL_1_1Object.html#a1c43342f36a237b86e4cecc7f0102140">GT::GTL::Object::registerProperty</a></div><div class="ttdeci">void registerProperty(const Identifier propertyName, const ObjectPropertyPtr property)</div><div class="ttdoc">Registers property together with its name. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00137">object.cpp:137</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -192,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

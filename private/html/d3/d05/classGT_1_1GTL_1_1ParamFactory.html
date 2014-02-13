@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -381,8 +381,10 @@ Private Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../da/dac/classGT_1_1GTL_1_1Param.html" title="Abstract class that defines interface for Params. ">Param</a> instance </dd></dl>
 
 <p>Definition at line <a class="el" href="../../da/db2/param__factory_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../da/db2/param__factory_8cpp_source.html">param_factory.cpp</a>.</p>
+
+<p>References <a class="el" href="../../d9/d30/param_8cpp_source.html#l00083">GT::GTL::Param::toParam()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> Param&amp; param = *object;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> Param&amp; param = <span class="keywordtype">object</span>-&gt;toParam();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> param ? dynamic_pointer_cast&lt;Param&gt;(object) : <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a>(<span class="keyword">new</span> ObjectParam(<span class="keywordtype">object</span>));</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_aa66a02f216fa739d3c506949e4c2454c"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">GT::GTL::ParamPtr</a></div><div class="ttdeci">shared_ptr&lt; Param &gt; ParamPtr</div><div class="ttdoc">Smart pointer to Param. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00105">common.hpp:105</a></div></div>
@@ -415,7 +417,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../da/db2/param__factory_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../da/db2/param__factory_8cpp_source.html">param_factory.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../db/d12/context_8cpp_source.html#l00036">GT::GTL::Context::Context()</a>, <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00072">GT::GTL::ExecutionStatementDriver::createDefinition()</a>, and <a class="el" href="../../db/dba/execution__value__driver_8cpp_source.html#l00042">GT::GTL::ExecutionValueDriver::get()</a>.</p>
+<p>Referenced by <a class="el" href="../../db/d12/context_8cpp_source.html#l00036">GT::GTL::Context::Context()</a>, <a class="el" href="../../d1/d31/execution__statement__driver_8cpp_source.html#l00077">GT::GTL::ExecutionStatementDriver::createDefinition()</a>, and <a class="el" href="../../db/dba/execution__value__driver_8cpp_source.html#l00035">GT::GTL::ExecutionValueDriver::get()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                        {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#aaafa1b682ce4eba62937008249439021">ParamFactory</a> instance;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> instance;</div>
@@ -436,7 +438,7 @@ Private Member Functions</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['scanner',['Scanner',['../d4/d9d/classGT_1_1GTL_1_1Scanner.html',1,'GT::GTL']]],
   ['semantic_5ftype',['semantic_type',['../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html',1,'GT::GTL::Parser']]],
   ['slice',['slice',['../d1/df5/classGT_1_1GTL_1_1slice.html',1,'GT::GTL']]],
   ['stack',['stack',['../d8/d34/classGT_1_1GTL_1_1stack.html',1,'GT::GTL']]],

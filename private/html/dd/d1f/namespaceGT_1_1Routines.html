@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -176,6 +176,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd7/classGT_1_1Routines_1_1NullRoutineConfig.html">NullRoutineConfig</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null <a class="el" href="../../d7/d53/classGT_1_1Routines_1_1RoutineConfig.html" title="Parent of RoutineConfigs that will store configuration specific to a Routine. ">RoutineConfig</a> for handling invalid situations.  <a href="../../d0/dd7/classGT_1_1Routines_1_1NullRoutineConfig.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da6/classGT_1_1Routines_1_1Strategic2Player0SumMixedEquilibriumRoutine.html">Strategic2Player0SumMixedEquilibriumRoutine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routune returning mixed strategy equilibrium for 0-sum Strategic Game with 2 Players.  <a href="../../d2/da6/classGT_1_1Routines_1_1Strategic2Player0SumMixedEquilibriumRoutine.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/classGT_1_1Routines_1_1Strategic2PlayerMixedEquilibriumRoutine.html">Strategic2PlayerMixedEquilibriumRoutine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routune returning mixed strategy equilibrium for any sum Strategic Game with 2 Players.  <a href="../../d5/dca/classGT_1_1Routines_1_1Strategic2PlayerMixedEquilibriumRoutine.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d7b/classGT_1_1Routines_1_1StrategicPureEquilibriumRoutine.html">StrategicPureEquilibriumRoutine</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routune returning pure strategy equilibrium for Strategic Game.  <a href="../../d4/d7b/classGT_1_1Routines_1_1StrategicPureEquilibriumRoutine.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,6 +233,13 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a09c2ec4f719dd90fa83c865ddaf1b60c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d8/df6/namespaceGT_1_1Model.html#a81d7ed4004e272fb1fb03a4e6407f4ad">Model::ResultPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a09c2ec4f719dd90fa83c865ddaf1b60c">ResultPtr</a></td></tr>
 <tr class="memdesc:a09c2ec4f719dd90fa83c865ddaf1b60c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="../../d8/df6/namespaceGT_1_1Model.html#a81d7ed4004e272fb1fb03a4e6407f4ad" title="Smart pointer to Result. ">Model::ResultPtr</a>.  <a href="#a09c2ec4f719dd90fa83c865ddaf1b60c">More...</a><br/></td></tr>
 <tr class="separator:a09c2ec4f719dd90fa83c865ddaf1b60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="memItemLeft" align="right" valign="top">typedef glp_prob&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">LPProblem</a></td></tr>
+<tr class="memdesc:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for GLPK's problem structure.  <a href="#a4b9daa0ec52cd5ec557bb5c12085c6bc">More...</a><br/></td></tr>
+<tr class="separator:a4b9daa0ec52cd5ec557bb5c12085c6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7adc88841818e5718ad6bc68ea967ee3"><td class="memItemLeft" align="right" valign="top">typedef unique_ptr&lt; <a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">LPProblem</a>, <br class="typebreak"/>
+void(*)(<a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">LPProblem</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a7adc88841818e5718ad6bc68ea967ee3">LPProblemPtr</a></td></tr>
+<tr class="memdesc:a7adc88841818e5718ad6bc68ea967ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines wrapper with automatic deletion for GLPK's problem structure.  <a href="#a7adc88841818e5718ad6bc68ea967ee3">More...</a><br/></td></tr>
+<tr class="separator:a7adc88841818e5718ad6bc68ea967ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55cc144a61208e72c93d0b8ba6c2373b"><td class="memItemLeft" align="right" valign="top">typedef shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="../../d0/dc8/classGT_1_1Routines_1_1PlayerChoiceRoutineConfig.html">PlayerChoiceRoutineConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a55cc144a61208e72c93d0b8ba6c2373b">PlayerChoiceRoutineConfigPtr</a></td></tr>
 <tr class="memdesc:a55cc144a61208e72c93d0b8ba6c2373b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to <a class="el" href="../../d0/dc8/classGT_1_1Routines_1_1PlayerChoiceRoutineConfig.html" title="Contains information about available choices for each Player. ">PlayerChoiceRoutineConfig</a>.  <a href="#a55cc144a61208e72c93d0b8ba6c2373b">More...</a><br/></td></tr>
@@ -316,7 +329,7 @@ Typedefs</h2></td></tr>
 
 <p>Vector of ExtensivePureStrategyPaths. </p>
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -364,7 +377,39 @@ Typedefs</h2></td></tr>
 
 <p>Shared pointer to <a class="el" href="../../df/db4/classGT_1_1Routines_1_1InformationSetChoiceRoutineConfig.html" title="Contains information about available choices for each information set. ">InformationSetChoiceRoutineConfig</a>. </p>
 
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b9daa0ec52cd5ec557bb5c12085c6bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef glp_prob <a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">GT::Routines::LPProblem</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alias for GLPK's problem structure. </p>
+
 <p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7adc88841818e5718ad6bc68ea967ee3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unique_ptr&lt;<a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">LPProblem</a>, void(*)(<a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a4b9daa0ec52cd5ec557bb5c12085c6bc">LPProblem</a>*)&gt; <a class="el" href="../../dd/d1f/namespaceGT_1_1Routines.html#a7adc88841818e5718ad6bc68ea967ee3">GT::Routines::LPProblemPtr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines wrapper with automatic deletion for GLPK's problem structure. </p>
+
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +455,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00085">85</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00097">97</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -426,7 +471,7 @@ Typedefs</h2></td></tr>
 
 <p>Shared pointer to <a class="el" href="../../d0/dc8/classGT_1_1Routines_1_1PlayerChoiceRoutineConfig.html" title="Contains information about available choices for each Player. ">PlayerChoiceRoutineConfig</a>. </p>
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00073">73</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -440,7 +485,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00098">98</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -454,7 +499,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00099">99</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -468,7 +513,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -498,7 +543,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -512,7 +557,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d6/d68/routines_2inner__common_8hpp_source.html">inner_common.hpp</a>.</p>
 
 </div>
 </div>
@@ -620,7 +665,7 @@ Typedefs</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

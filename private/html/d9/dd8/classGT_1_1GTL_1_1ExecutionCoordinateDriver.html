@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -118,9 +118,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:add0270424b4a0e3a6bfe89b277a36d07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#add0270424b4a0e3a6bfe89b277a36d07">ExecutionCoordinateDriver</a> (<a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a> *parentDriver)</td></tr>
-<tr class="memdesc:add0270424b4a0e3a6bfe89b277a36d07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates <a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html" title="Implementation used for handling Coordinates via ExecutionDriver. ">ExecutionCoordinateDriver</a> with its parent.  <a href="#add0270424b4a0e3a6bfe89b277a36d07">More...</a><br/></td></tr>
-<tr class="separator:add0270424b4a0e3a6bfe89b277a36d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9504e807ab7adc63f09f00a087d2f266"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#a9504e807ab7adc63f09f00a087d2f266">create</a> (const <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a2f044cb0946d536fc3213bd33c3a9b3e">InputLocation</a> &amp;inputLocation, const <a class="el" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> *player, const <a class="el" href="../../d0/d65/namespaceGT.html#ad687b204bc355e085988c1c6e74d4eec">IdentifierPtr</a> *strategy) const override</td></tr>
 <tr class="memdesc:a9504e807ab7adc63f09f00a087d2f266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates coordinate.  <a href="#a9504e807ab7adc63f09f00a087d2f266">More...</a><br/></td></tr>
 <tr class="separator:a9504e807ab7adc63f09f00a087d2f266"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,9 +152,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aef15af6d59a60b4eabd23fbd75c3239f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html">CheckingCoordinateDriver</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a></td></tr>
 <tr class="memdesc:aef15af6d59a60b4eabd23fbd75c3239f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a> for error handling.  <a href="#aef15af6d59a60b4eabd23fbd75c3239f">More...</a><br/></td></tr>
 <tr class="separator:aef15af6d59a60b4eabd23fbd75c3239f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1981e676ec2ccaac8573e077a24a8ce1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#a1981e676ec2ccaac8573e077a24a8ce1">driver</a></td></tr>
-<tr class="memdesc:a1981e676ec2ccaac8573e077a24a8ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of a main <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a>.  <a href="#a1981e676ec2ccaac8573e077a24a8ce1">More...</a><br/></td></tr>
-<tr class="separator:a1981e676ec2ccaac8573e077a24a8ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation used for handling Coordinates via <a class="el" href="../../da/d66/classGT_1_1GTL_1_1ExecutionDriver.html" title="Implementation used for executing both checking and actual actions. ">ExecutionDriver</a>. </p>
@@ -168,48 +162,7 @@ Private Attributes</h2></td></tr>
 <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html" title="Used for handling Coordinates via Driver. ">CoordinateDriver</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00042">42</a> of file <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html">execution_coordinate_driver.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="add0270424b4a0e3a6bfe89b277a36d07"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GT::GTL::ExecutionCoordinateDriver::ExecutionCoordinateDriver </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a> *&#160;</td>
-          <td class="paramname"><em>parentDriver</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initiates <a class="el" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html" title="Implementation used for handling Coordinates via ExecutionDriver. ">ExecutionCoordinateDriver</a> with its parent. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parentDriver</td><td>parent <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  :</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>(parentDriver),</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#a1981e676ec2ccaac8573e077a24a8ce1">driver</a>(parentDriver)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_aef15af6d59a60b4eabd23fbd75c3239f"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">GT::GTL::ExecutionCoordinateDriver::checkingCoordinateDriver</a></div><div class="ttdeci">CheckingCoordinateDriver checkingCoordinateDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">execution_coordinate_driver.hpp:46</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_a1981e676ec2ccaac8573e077a24a8ce1"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#a1981e676ec2ccaac8573e077a24a8ce1">GT::GTL::ExecutionCoordinateDriver::driver</a></div><div class="ttdeci">Driver * driver</div><div class="ttdoc">Implementation of a main Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00050">execution_coordinate_driver.hpp:50</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a9504e807ab7adc63f09f00a087d2f266"></a>
 <div class="memitem">
 <div class="memproto">
@@ -261,24 +214,24 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html#adf087f55831ca82a9c70a39ae4dbba7b">GT::GTL::CoordinateDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00037">GT::GTL::CheckingCoordinateDriver::create()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a5ff4a3876032ad42be844f5f21818002">create</a>(inputLocation, playerPtr, strategyPtr);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(<span class="keyword">new</span> Coordinate(*playerPtr, *strategyPtr)),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            inputLocation</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        )</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    );</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00031">GT::GTL::CheckingCoordinateDriver::create()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a5ff4a3876032ad42be844f5f21818002">create</a>(inputLocation, playerPtr, strategyPtr);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(<span class="keyword">new</span> Coordinate(*playerPtr, *strategyPtr)),</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            inputLocation</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        )</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_aef15af6d59a60b4eabd23fbd75c3239f"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">GT::GTL::ExecutionCoordinateDriver::checkingCoordinateDriver</a></div><div class="ttdeci">CheckingCoordinateDriver checkingCoordinateDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">execution_coordinate_driver.hpp:46</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a5ff4a3876032ad42be844f5f21818002"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a5ff4a3876032ad42be844f5f21818002">GT::GTL::CheckingCoordinateDriver::create</a></div><div class="ttdeci">virtual CoordinatePtr * create(const InputLocation &amp;inputLocation, const IdentifierPtr *player, const IdentifierPtr *strategy) const override</div><div class="ttdoc">Creates coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00037">checking_coordinate_driver.cpp:37</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a5ff4a3876032ad42be844f5f21818002"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a5ff4a3876032ad42be844f5f21818002">GT::GTL::CheckingCoordinateDriver::create</a></div><div class="ttdeci">virtual CoordinatePtr * create(const InputLocation &amp;inputLocation, const IdentifierPtr *player, const IdentifierPtr *strategy) const override</div><div class="ttdoc">Creates coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00031">checking_coordinate_driver.cpp:31</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a7be0feae3194cf0b31fa5fff7fb9ff1b"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">GT::GTL::CoordinatePtr</a></div><div class="ttdeci">shared_ptr&lt; Coordinate &gt; CoordinatePtr</div><div class="ttdoc">Smart pointer to Coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00100">common.hpp:100</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -334,26 +287,26 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html#a0913bfec708e4272e6a8ee9398493d80">GT::GTL::CoordinateDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00049">49</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">fillWithData</a>(inputLocation, coordinatePtr, dataPtr);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    (*coordinatePtr)-&gt;addSubCoordinates(*dataPtr);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            (*coordinatePtr),</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            inputLocation</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        )</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    );</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00044">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">fillWithData</a>(inputLocation, coordinatePtr, dataPtr);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    (*coordinatePtr)-&gt;addSubCoordinates(*dataPtr);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            (*coordinatePtr),</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            inputLocation</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        )</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_aef15af6d59a60b4eabd23fbd75c3239f"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">GT::GTL::ExecutionCoordinateDriver::checkingCoordinateDriver</a></div><div class="ttdeci">CheckingCoordinateDriver checkingCoordinateDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">execution_coordinate_driver.hpp:46</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a69ad530689a4e7ed47dfd1e8dc61f13b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">GT::GTL::CheckingCoordinateDriver::fillWithData</a></div><div class="ttdeci">virtual CoordinatePtr * fillWithData(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate, const CoordinatesPtr *data) const override</div><div class="ttdoc">Fills Coordinate with subcoordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">checking_coordinate_driver.cpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a69ad530689a4e7ed47dfd1e8dc61f13b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">GT::GTL::CheckingCoordinateDriver::fillWithData</a></div><div class="ttdeci">virtual CoordinatePtr * fillWithData(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate, const CoordinatesPtr *data) const override</div><div class="ttdoc">Fills Coordinate with subcoordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00044">checking_coordinate_driver.cpp:44</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a7be0feae3194cf0b31fa5fff7fb9ff1b"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">GT::GTL::CoordinatePtr</a></div><div class="ttdeci">shared_ptr&lt; Coordinate &gt; CoordinatePtr</div><div class="ttdoc">Smart pointer to Coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00100">common.hpp:100</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -409,26 +362,26 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html#aa1a87b359305a672062f7b312a0ab7a8">GT::GTL::CoordinateDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">fillWithData</a>(inputLocation, coordinatePtr, dataPtr);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    (*coordinatePtr)-&gt;addParams(*dataPtr);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            (*coordinatePtr),</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            inputLocation</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        )</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    );</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00044">GT::GTL::CheckingCoordinateDriver::fillWithData()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">fillWithData</a>(inputLocation, coordinatePtr, dataPtr);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    (*coordinatePtr)-&gt;addParams(*dataPtr);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            (*coordinatePtr),</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            inputLocation</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_aef15af6d59a60b4eabd23fbd75c3239f"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">GT::GTL::ExecutionCoordinateDriver::checkingCoordinateDriver</a></div><div class="ttdeci">CheckingCoordinateDriver checkingCoordinateDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">execution_coordinate_driver.hpp:46</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a69ad530689a4e7ed47dfd1e8dc61f13b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">GT::GTL::CheckingCoordinateDriver::fillWithData</a></div><div class="ttdeci">virtual CoordinatePtr * fillWithData(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate, const CoordinatesPtr *data) const override</div><div class="ttdoc">Fills Coordinate with subcoordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00050">checking_coordinate_driver.cpp:50</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_a69ad530689a4e7ed47dfd1e8dc61f13b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#a69ad530689a4e7ed47dfd1e8dc61f13b">GT::GTL::CheckingCoordinateDriver::fillWithData</a></div><div class="ttdeci">virtual CoordinatePtr * fillWithData(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate, const CoordinatesPtr *data) const override</div><div class="ttdoc">Fills Coordinate with subcoordinates. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00044">checking_coordinate_driver.cpp:44</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a7be0feae3194cf0b31fa5fff7fb9ff1b"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">GT::GTL::CoordinatePtr</a></div><div class="ttdeci">shared_ptr&lt; Coordinate &gt; CoordinatePtr</div><div class="ttdoc">Smart pointer to Coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00100">common.hpp:100</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -484,26 +437,26 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html#aafd8cbd31591eba331833aa4e97d8407">GT::GTL::CoordinateDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00096">96</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00136">GT::GTL::CheckingCoordinateDriver::merge()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#adb063b89e4cb8550e1d14176d269016b">merge</a>(inputLocation, coordinate1Ptr, coordinate2Ptr);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">const</span> Coordinate&amp; coordinate1 = **coordinate1Ptr;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">const</span> Coordinate&amp; coordinate2 = **coordinate2Ptr;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(<span class="keyword">new</span> Coordinate(coordinate1 + coordinate2)),</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            inputLocation</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        )</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    );</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_adb063b89e4cb8550e1d14176d269016b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#adb063b89e4cb8550e1d14176d269016b">GT::GTL::CheckingCoordinateDriver::merge</a></div><div class="ttdeci">virtual CoordinatePtr * merge(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate1, const CoordinatePtr *coordinate2) const override</div><div class="ttdoc">Merge two coordinates into one. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00136">checking_coordinate_driver.cpp:136</a></div></div>
+<p>References <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">checkingCoordinateDriver</a>, and <a class="el" href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00130">GT::GTL::CheckingCoordinateDriver::merge()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>* errorCheck = <a class="code" href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">checkingCoordinateDriver</a>.<a class="code" href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#adb063b89e4cb8550e1d14176d269016b">merge</a>(inputLocation, coordinate1Ptr, coordinate2Ptr);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!(*errorCheck)-&gt;isValid())</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> errorCheck;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">delete</span> errorCheck;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">const</span> Coordinate&amp; coordinate1 = **coordinate1Ptr;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">const</span> Coordinate&amp; coordinate2 = **coordinate2Ptr;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        setupLocation&lt;Coordinate&gt;(</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">CoordinatePtr</a>(<span class="keyword">new</span> Coordinate(coordinate1 + coordinate2)),</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            inputLocation</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        )</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="ttc" id="classGT_1_1GTL_1_1CheckingCoordinateDriver_html_adb063b89e4cb8550e1d14176d269016b"><div class="ttname"><a href="../../d0/dd5/classGT_1_1GTL_1_1CheckingCoordinateDriver.html#adb063b89e4cb8550e1d14176d269016b">GT::GTL::CheckingCoordinateDriver::merge</a></div><div class="ttdeci">virtual CoordinatePtr * merge(const InputLocation &amp;inputLocation, const CoordinatePtr *coordinate1, const CoordinatePtr *coordinate2) const override</div><div class="ttdoc">Merge two coordinates into one. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3b/checking__coordinate__driver_8cpp_source.html#l00130">checking_coordinate_driver.cpp:130</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExecutionCoordinateDriver_html_aef15af6d59a60b4eabd23fbd75c3239f"><div class="ttname"><a href="../../d9/dd8/classGT_1_1GTL_1_1ExecutionCoordinateDriver.html#aef15af6d59a60b4eabd23fbd75c3239f">GT::GTL::ExecutionCoordinateDriver::checkingCoordinateDriver</a></div><div class="ttdeci">CheckingCoordinateDriver checkingCoordinateDriver</div><div class="ttdoc">Driver for error handling. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">execution_coordinate_driver.hpp:46</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a7be0feae3194cf0b31fa5fff7fb9ff1b"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a7be0feae3194cf0b31fa5fff7fb9ff1b">GT::GTL::CoordinatePtr</a></div><div class="ttdeci">shared_ptr&lt; Coordinate &gt; CoordinatePtr</div><div class="ttdoc">Smart pointer to Coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00100">common.hpp:100</a></div></div>
 </div><!-- fragment -->
@@ -535,10 +488,10 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d3/daf/classGT_1_1GTL_1_1CoordinateDriver.html#ad689bdd1e23adb47ce0c90708b3cd9ef">GT::GTL::CoordinateDriver</a>.</p>
 
-<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                  {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;ExecutionCoordinateDriver&quot;</span>);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html">execution_coordinate_driver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                                  {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">Message</a>(<span class="stringliteral">&quot;ExecutionCoordinateDriver&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 <div class="ttc" id="namespaceGT_html_ad83f9404a3ed72481697033dc6bbaa6e"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#ad83f9404a3ed72481697033dc6bbaa6e">GT::Message</a></div><div class="ttdeci">string Message</div><div class="ttdoc">Alias for string used as messages. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00073">common.hpp:73</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -566,31 +519,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00046">46</a> of file <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html">execution_coordinate_driver.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00038">create()</a>, <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00056">fillWithData()</a>, and <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00096">merge()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1981e676ec2ccaac8573e077a24a8ce1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html">Driver</a>* GT::GTL::ExecutionCoordinateDriver::driver</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implementation of a main <a class="el" href="../../d8/da7/classGT_1_1GTL_1_1Driver.html" title="Used for executing actions called by Parser. ">Driver</a>. </p>
-
-<p>Definition at line <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html#l00050">50</a> of file <a class="el" href="../../d8/d35/execution__coordinate__driver_8hpp_source.html">execution_coordinate_driver.hpp</a>.</p>
+<p>Referenced by <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00031">create()</a>, <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00049">fillWithData()</a>, and <a class="el" href="../../d8/d5a/execution__coordinate__driver_8cpp_source.html#l00089">merge()</a>.</p>
 
 </div>
 </div>
@@ -606,7 +535,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.4</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -135,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html">Context</a>&amp;   context,</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">ObjectPtr</a>&amp; <span class="keywordtype">object</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = *object;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html">Param</a>&amp; param = <span class="keywordtype">object</span>-&gt;<a class="code" href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">toParam</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (!param) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> expectedType = <a class="code" href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">createIdentifier</a>(<span class="stringliteral">&quot;Param&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">ExceptionFactory::getInstance</a>().<a class="code" href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#a72f45fc8a7b151df1699d33ad980f35f">invalidObjectType</a>(expectedType);</div>
@@ -175,9 +175,10 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="classGT_1_1GTL_1_1NotDefinedParam_html"><div class="ttname"><a href="../../dc/d73/classGT_1_1GTL_1_1NotDefinedParam.html">GT::GTL::NotDefinedParam</a></div><div class="ttdoc">Intened to be thrown when attempting to access not defined Param. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd2/gtl_2exceptions_8hpp_source.html#l00129">exceptions.hpp:129</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Param_html"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html">GT::GTL::Param</a></div><div class="ttdoc">Abstract class that defines interface for Params. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d0b/param_8hpp_source.html#l00045">param.hpp:45</a></div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_acbd05d558ccbcda70405be3c1d1fd686"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">GT::GTL::ObjectPtr</a></div><div class="ttdeci">shared_ptr&lt; Object &gt; ObjectPtr</div><div class="ttdoc">Smart pointer to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00090">common.hpp:90</a></div></div>
-<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00082">helpers.cpp:82</a></div></div>
+<div class="ttc" id="namespaceGT_html_afa6335f94f40784c8586f73039eb2cd4"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#afa6335f94f40784c8586f73039eb2cd4">GT::createIdentifier</a></div><div class="ttdeci">Identifier createIdentifier(Index identifier)</div><div class="ttdoc">Creates Identifier. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00098">helpers.cpp:98</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ExceptionFactory_html_ac4e8d5d304821830d32fc0d5372a5b70"><div class="ttname"><a href="../../d6/de8/classGT_1_1GTL_1_1ExceptionFactory.html#ac4e8d5d304821830d32fc0d5372a5b70">GT::GTL::ExceptionFactory::getInstance</a></div><div class="ttdeci">static ExceptionFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of an ExceptionFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d83/gtl_2exception__factory_8cpp_source.html#l00030">exception_factory.cpp:30</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Condition_html_aa75d94a6daad75395237ca355d0e3185"><div class="ttname"><a href="../../d5/db2/classGT_1_1GTL_1_1Condition.html#aa75d94a6daad75395237ca355d0e3185">GT::GTL::Condition::getIdentifier</a></div><div class="ttdeci">Identifier getIdentifier(const Context &amp;context, const ObjectPtr &amp;object) const </div><div class="ttdoc">Obtains Identifier from Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d2b/condition_8cpp_source.html#l00040">condition.cpp:40</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1Param_html_a6252c7a2527d7210313abe706836dc23"><div class="ttname"><a href="../../da/dac/classGT_1_1GTL_1_1Param.html#a6252c7a2527d7210313abe706836dc23">GT::GTL::Param::toParam</a></div><div class="ttdeci">virtual const Param &amp; toParam() const override</div><div class="ttdoc">Explicit cast to Param type. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d30/param_8cpp_source.html#l00083">param.cpp:83</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
@@ -186,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.4</b>
+Version <b>v0.5</b>
 </small></address>
 </body>
 </html>

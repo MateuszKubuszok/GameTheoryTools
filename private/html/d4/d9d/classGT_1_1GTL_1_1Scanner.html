@@ -126,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afb062748414a25b7ed3091e1a88c5a90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#afb062748414a25b7ed3091e1a88c5a90">setInteractive</a> (bool <a class="el" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a91a9433c38fd02c1c0c2c1791014507a">isInteractive</a>)</td></tr>
 <tr class="memdesc:afb062748414a25b7ed3091e1a88c5a90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether scanner should be interactive or not.  <a href="#afb062748414a25b7ed3091e1a88c5a90">More...</a><br/></td></tr>
 <tr class="separator:afb062748414a25b7ed3091e1a88c5a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cae35ae0d51fd022425bc78b5a0c930"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a0cae35ae0d51fd022425bc78b5a0c930">lex</a> (<a class="el" href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">Parser::semantic_type</a> *newlval, <a class="el" href="../../d1/d03/classGT_1_1GTL_1_1Parser.html#ab2f46fc8ffe16ebbf0db2a307189cf9c">Parser::location_type</a> &amp;newlocation)</td></tr>
-<tr class="memdesc:a0cae35ae0d51fd022425bc78b5a0c930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans for next token.  <a href="#a0cae35ae0d51fd022425bc78b5a0c930">More...</a><br/></td></tr>
-<tr class="separator:a0cae35ae0d51fd022425bc78b5a0c930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28cc756053a2a1e80e4dba63c1a4c04a"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a28cc756053a2a1e80e4dba63c1a4c04a">lex</a> (<a class="el" href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">Parser::semantic_type</a> *newlval, <a class="el" href="../../d1/d03/classGT_1_1GTL_1_1Parser.html#ab2f46fc8ffe16ebbf0db2a307189cf9c">Parser::location_type</a> &amp;newlocation)</td></tr>
+<tr class="memdesc:a28cc756053a2a1e80e4dba63c1a4c04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans for next token.  <a href="#a28cc756053a2a1e80e4dba63c1a4c04a">More...</a><br/></td></tr>
+<tr class="separator:a28cc756053a2a1e80e4dba63c1a4c04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -182,13 +182,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02259">2259</a> of file <a class="el" href="../../d4/d77/scanner_8cpp_source.html">scanner.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02261"></a><span class="lineno"> 2261</span>&#160;  :</div>
-<div class="line"><a name="l02262"></a><span class="lineno"> 2262</span>&#160;    GTLFlexLexer(inputStream),</div>
-<div class="line"><a name="l02263"></a><span class="lineno"> 2263</span>&#160;    <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">lval</a>(<span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l02264"></a><span class="lineno"> 2264</span>&#160;    {}</div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_a1d5f93efd5a2cc61cae82b75b65c494f"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">GT::GTL::Scanner::lval</a></div><div class="ttdeci">Parser::semantic_type * lval</div><div class="ttdoc">Field used during token scanning - contains actual value of parsed chain. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbc/scanner_8hpp_source.html#l00069">scanner.hpp:69</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -208,17 +201,9 @@ Private Attributes</h2></td></tr>
 <p>Whether scanner is currently interactive. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if current buffer is set and it's interactive </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02266">2266</a> of file <a class="el" href="../../d4/d77/scanner_8cpp_source.html">scanner.cpp</a>.</p>
-
-<p>References <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l00349">YY_CURRENT_BUFFER</a>.</p>
-<div class="fragment"><div class="line"><a name="l02266"></a><span class="lineno"> 2266</span>&#160;                                  {</div>
-<div class="line"><a name="l02267"></a><span class="lineno"> 2267</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d4/d77/scanner_8cpp.html#aa093d500a6330d06d8e4760c494fac33">YY_CURRENT_BUFFER</a> &amp;&amp; <a class="code" href="../../d4/d77/scanner_8cpp.html#aa093d500a6330d06d8e4760c494fac33">YY_CURRENT_BUFFER</a>-&gt;yy_is_interactive;</div>
-<div class="line"><a name="l02268"></a><span class="lineno"> 2268</span>&#160;}</div>
-<div class="ttc" id="scanner_8cpp_html_aa093d500a6330d06d8e4760c494fac33"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#aa093d500a6330d06d8e4760c494fac33">YY_CURRENT_BUFFER</a></div><div class="ttdeci">#define YY_CURRENT_BUFFER</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00349">scanner.cpp:349</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a0cae35ae0d51fd022425bc78b5a0c930"></a>
+<a class="anchor" id="a28cc756053a2a1e80e4dba63c1a4c04a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -226,7 +211,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int GT::GTL::Scanner::lex </td>
+          <td class="memname">virtual int GT::GTL::Scanner::lex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/ddc/unionGT_1_1GTL_1_1Parser_1_1semantic__type.html">Parser::semantic_type</a> *&#160;</td>
           <td class="paramname"><em>newlval</em>, </td>
@@ -260,33 +245,8 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>returns number of next token </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02278">2278</a> of file <a class="el" href="../../d4/d77/scanner_8cpp_source.html">scanner.cpp</a>.</p>
-
-<p>References <a class="el" href="../../d3/d46/location_8hh_source.html#l00097">GT::GTL::location::begin</a>, <a class="el" href="../../d2/d18/position_8hh_source.html#l00083">GT::GTL::position::columns()</a>, <a class="el" href="../../d3/d46/location_8hh_source.html#l00099">GT::GTL::location::end</a>, <a class="el" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">lex()</a>, <a class="el" href="../../d2/d18/position_8hh_source.html#l00076">GT::GTL::position::lines()</a>, and <a class="el" href="../../dd/dbc/scanner_8hpp_source.html#l00069">lval</a>.</p>
-
 <p>Referenced by <a class="el" href="../../dc/ddd/parser_8cpp_source.html#l01620">yylex()</a>.</p>
-<div class="fragment"><div class="line"><a name="l02281"></a><span class="lineno"> 2281</span>&#160;  {</div>
-<div class="line"><a name="l02282"></a><span class="lineno"> 2282</span>&#160;    <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">lval</a> = newlval;</div>
-<div class="line"><a name="l02283"></a><span class="lineno"> 2283</span>&#160;</div>
-<div class="line"><a name="l02284"></a><span class="lineno"> 2284</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> firstLine   = yylineno;</div>
-<div class="line"><a name="l02285"></a><span class="lineno"> 2285</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> firstColumn = 1; <span class="comment">// TODO</span></div>
-<div class="line"><a name="l02286"></a><span class="lineno"> 2286</span>&#160;</div>
-<div class="line"><a name="l02287"></a><span class="lineno"> 2287</span>&#160;    <span class="keywordtype">int</span> result = <a class="code" href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">lex</a>();</div>
-<div class="line"><a name="l02288"></a><span class="lineno"> 2288</span>&#160;</div>
-<div class="line"><a name="l02289"></a><span class="lineno"> 2289</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> lastLine   = yylineno;</div>
-<div class="line"><a name="l02290"></a><span class="lineno"> 2290</span>&#160;    <a class="code" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> lastColumn = 1; <span class="comment">// TODO</span></div>
-<div class="line"><a name="l02291"></a><span class="lineno"> 2291</span>&#160;</div>
-<div class="line"><a name="l02292"></a><span class="lineno"> 2292</span>&#160;    newlocation.begin.lines(firstLine-1);</div>
-<div class="line"><a name="l02293"></a><span class="lineno"> 2293</span>&#160;    newlocation.begin.columns(firstColumn-1);</div>
-<div class="line"><a name="l02294"></a><span class="lineno"> 2294</span>&#160;    newlocation.end.lines(lastLine-1);</div>
-<div class="line"><a name="l02295"></a><span class="lineno"> 2295</span>&#160;    newlocation.end.columns(lastColumn-1);</div>
-<div class="line"><a name="l02296"></a><span class="lineno"> 2296</span>&#160;</div>
-<div class="line"><a name="l02297"></a><span class="lineno"> 2297</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l02298"></a><span class="lineno"> 2298</span>&#160;}</div>
-<div class="ttc" id="namespaceGT_html_a17f154b64ff7f40b1f64b58b96adeffd"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">GT::Index</a></div><div class="ttdeci">unsigned int Index</div><div class="ttdoc">Position in array or storage. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00067">common.hpp:67</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_a1d5f93efd5a2cc61cae82b75b65c494f"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#a1d5f93efd5a2cc61cae82b75b65c494f">GT::GTL::Scanner::lval</a></div><div class="ttdeci">Parser::semantic_type * lval</div><div class="ttdoc">Field used during token scanning - contains actual value of parsed chain. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbc/scanner_8hpp_source.html#l00069">scanner.hpp:69</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1Scanner_html_aab3aae4a7fc1336394f09aca0da2e7ab"><div class="ttname"><a href="../../d4/d9d/classGT_1_1GTL_1_1Scanner.html#aab3aae4a7fc1336394f09aca0da2e7ab">GT::GTL::Scanner::lex</a></div><div class="ttdeci">int lex()</div><div class="ttdoc">Actual lexer/scanner function. </div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="aab3aae4a7fc1336394f09aca0da2e7ab"></a>
@@ -314,8 +274,6 @@ Private Attributes</h2></td></tr>
 <p>Uses source defined by the constructor. Its body is generated from scanner.yy file by Flex with YY_DECL macroinstruction.</p>
 <dl class="section return"><dt>Returns</dt><dd>value used for communicating with <a class="el" href="../../d1/d03/classGT_1_1GTL_1_1Parser.html" title="A Bison parser. ">Parser</a> </dd></dl>
 
-<p>Referenced by <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02278">lex()</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afb062748414a25b7ed3091e1a88c5a90"></a>
@@ -341,14 +299,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02270">2270</a> of file <a class="el" href="../../d4/d77/scanner_8cpp_source.html">scanner.cpp</a>.</p>
-
-<p>References <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l00373">yy_set_interactive</a>.</p>
-<div class="fragment"><div class="line"><a name="l02272"></a><span class="lineno"> 2272</span>&#160;  {</div>
-<div class="line"><a name="l02273"></a><span class="lineno"> 2273</span>&#160;    <a class="code" href="../../d4/d77/scanner_8cpp.html#ac56eb96366c08862bf0efe5d83d1fc4c">yy_set_interactive</a>(isNowInteractive);</div>
-<div class="line"><a name="l02274"></a><span class="lineno"> 2274</span>&#160;}</div>
-<div class="ttc" id="scanner_8cpp_html_ac56eb96366c08862bf0efe5d83d1fc4c"><div class="ttname"><a href="../../d4/d77/scanner_8cpp.html#ac56eb96366c08862bf0efe5d83d1fc4c">yy_set_interactive</a></div><div class="ttdeci">#define yy_set_interactive(is_interactive)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d77/scanner_8cpp_source.html#l00373">scanner.cpp:373</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -374,13 +324,10 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../dd/dbc/scanner_8hpp_source.html#l00069">69</a> of file <a class="el" href="../../dd/dbc/scanner_8hpp_source.html">scanner.hpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d4/d77/scanner_8cpp_source.html#l02278">lex()</a>.</p>
-
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/gt/gtl/<a class="el" href="../../dd/dbc/scanner_8hpp_source.html">scanner.hpp</a></li>
-<li>src/gt/gtl/<a class="el" href="../../d4/d77/scanner_8cpp_source.html">scanner.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
