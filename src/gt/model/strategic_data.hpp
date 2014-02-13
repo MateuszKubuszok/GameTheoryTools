@@ -155,6 +155,13 @@ public:
     ) override;
 
     /**
+     * @brief Returns upport bound of index for accessing data via position in storage.
+     *
+     * @return upper bound of positions in storage (highest available Index is upper bound - 1)
+     */
+    virtual Index getUpperBound() const;
+
+    /**
      * @brief Returns DataPiece that gives access to payoffs.
      *
      * @param positionInStorage Index of positon in payoff storage
@@ -251,6 +258,10 @@ public:
         const NumbersPtr
     ) override {
         return *this;
+    }
+
+    virtual Index getUpperBound() const override {
+        return 0;
     }
 
     virtual bool isNotNull() const override {

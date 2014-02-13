@@ -104,6 +104,13 @@ public:
     ) const override;
 
     /**
+     * @brief Returns upport bound of index for accessing data via position in storage.
+     *
+     * @return upper bound of positions in storage (highest available Index is upper bound - 1)
+     */
+    virtual Index getUpperBound() const;
+
+    /**
      * @brief Returns DataPiece that gives access to payoffs.
      *
      * @param positionInStorage Index of positon in payoff storage

@@ -62,6 +62,10 @@ Message StrategicDataAccessor::toString() const {
     return ResultFactory::getInstance().buildResult()->addResult(name, subresult).build()->getResult();
 }
 
+Index StrategicDataAccessor::getUpperBound() const {
+    return data->getUpperBound();
+}
+
 const DataPiecePtr StrategicDataAccessor::operator[](
     const Index positionInStorage
 ) const {

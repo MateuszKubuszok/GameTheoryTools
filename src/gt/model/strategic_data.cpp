@@ -111,6 +111,10 @@ Data& StrategicData::setPayoffs(
     return setPayoffs(*positions, numbers);
 }
 
+Index StrategicData::getUpperBound() const {
+    return positionsHelper.getUpperBound();
+}
+
 const DataPiecePtr StrategicData::operator[](
     const Index positionInStorage
 ) const {
