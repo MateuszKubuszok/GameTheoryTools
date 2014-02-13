@@ -30,7 +30,7 @@ namespace Routines {
 
 /**
  * @class Strategic2PlayerMixedEquilibriumRoutine
- * @brief Routune returning mixed strategy equilibrium for 0-sum Strategic Game with 2 Players.
+ * @brief Routune returning mixed strategy equilibrium for any sum Strategic Game with 2 Players.
  *
  * @author Mateusz Kubuszok
  *

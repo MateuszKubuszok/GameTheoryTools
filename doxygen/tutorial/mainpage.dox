@@ -6,8 +6,8 @@
  * Game Theory Tools is aimed to allow calculation of some Nash equilibria. Data could be instered via .gtl
  * input format as well as inserted manually using C++ interface.
  *
- * Scope of a project is not large but since it's an open source software anyone interested would be able to
- * extend it's abilities.
+ * Main goal of a project is delivery of some basic functionality and creation of a stable API, allowing for
+ * future improvements of both functionality and efficiency.
  *
  * @section content_sec Content
  *  - @ref build_page
