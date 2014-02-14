@@ -25,6 +25,7 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::atexit;
 using std::numeric_limits;
 using std::unique_ptr;
 
@@ -101,7 +102,7 @@ LPProblemPtr Strategic2PlayerMixedEquilibriumRoutine::initializeProblem(
     const int rm2RowStart  = rm1RowStart  + player1.getStrategiesNumber();
     const int rowsNumber   = rm2RowStart  + player2.getStrategiesNumber() - 1;
 
-    LPProblemPtr problemPtr(glp_create_prob(), glp_delete_prob);
+    LPProblemPtr problemPtr = createLPProblem();
     LPProblem*   problem(problemPtr.get());
 
     glp_set_prob_name( problem, "2 player strategic form game" );

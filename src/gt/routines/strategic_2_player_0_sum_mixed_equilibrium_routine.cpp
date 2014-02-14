@@ -74,7 +74,7 @@ LPProblemPtr Strategic2Player0SumMixedEquilibriumRoutine::initializeProblem(
     const Player& player1 = *( players.begin()->second );
     const Player& player2 = *( (++players.begin())->second );
 
-    LPProblemPtr problemPtr(glp_create_prob(), glp_delete_prob);
+    LPProblemPtr problemPtr = createLPProblem();
     LPProblem*   problem(problemPtr.get());
 
     glp_set_prob_name( problem, "2 player 0-sum strategic form game" );

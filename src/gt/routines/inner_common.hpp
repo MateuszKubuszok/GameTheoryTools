@@ -24,6 +24,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Include standard libraries */
+#include <cstdlib>
 #include <algorithm>
 #include <limits>
 #include <memory>
@@ -101,6 +102,9 @@ typedef Model::PlayersPtr       PlayersPtr;
 
 typedef Model::ResultFactory    ResultFactory;
 typedef Model::ResultBuilderPtr ResultBuilderPtr;
+
+/** @brief Creates LPProblem instance. */
+LPProblemPtr createLPProblem();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
