@@ -34,7 +34,7 @@
 /**
  * @brief GT release version number.
  */
-#define GT_VERSION_RELEASE 0
+#define GT_VERSION_RELEASE 1
 /**
  * @brief GT version number.
  *
