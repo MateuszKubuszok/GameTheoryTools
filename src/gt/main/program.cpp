@@ -108,44 +108,44 @@ int main(
 ) {
     // Options declaration section
 
-    const char helpOption[]         = "help,H";
+    const char helpOption[]         = "help,h";
     const char helpDescription[]    = "produce this message";
 
-    const char versionOption[]      = "version,V";
+    const char versionOption[]      = "version,v";
     const char versionDescription[] = "display vesion number";
 
     int  debugValue                 = 0;
     const int  debugDefault         = 0;
-    const char debugOption[]        = "debug-level,D";
+    const char debugOption[]        = "debug-level,d";
     const char debugDescription[]   = "0 if no parser debugging, non 0 for debug allowed";
 
     string inputValue               = "";
     const string inputDefault       = "";
-    const char inputOption[]        = "input-file,I";
+    const char inputOption[]        = "input-file,i";
     const char inputDescription[]   = "input file to be parsed - if no one given reads from standard input";
 
     string outputValue              = "";
     const string outputDefault      = "";
-    const char outputOption[]       = "output-file,O";
+    const char outputOption[]       = "output-file,o";
     const char outputDescription[]  = "output target - if no one given reads from standard output";
 
     string errorValue               = "";
     const string errorDefault       = "";
-    const char errorOption[]        = "error-file,E";
+    const char errorOption[]        = "error-file,e";
     const char errorDescription[]   = "error target - if no one given reads from standard error";
 
     ResultBuilderMode
                resultValue             = ResultBuilderMode::PLAIN;
     const ResultBuilderMode
                resultDefault           = ResultBuilderMode::PLAIN;
-    const char resultOption[]          = "result,R";
+    const char resultOption[]          = "result,r";
     const char resultDescription[]     = "result type - PLAIN, JSON and XML allowed";
 
     ResultIndentationMode
                indentationValue            = ResultIndentationMode::TABS;
     const ResultIndentationMode
                indentationDefault          = ResultIndentationMode::TABS;
-    const char indentationOption[]         = "indent,T";
+    const char indentationOption[]         = "indent,t";
     const char indentationDescription[]    = "indentation used - TABS, SPACES and NONE allowed";
 
     // Options setup

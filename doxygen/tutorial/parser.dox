@@ -6,11 +6,13 @@
  * Parser can be run in a following ways:
  * @code
    ./gtl_parser                                        # reads from std input and writes results to std output
-   ./gtl_parser -I ../examples/extensive_form_game.gtl # reads from file ../exmples/extensive_form_game.gtl
-   ./gtl_parser -O ../examples/output.gtl              # writes output to ../exmples/output.gtl
-   ./gtl_parser -E ../examples/errors.gtl              # writes errors to ../exmples/errors.gtl
-   ./gtl_parser -R JSON                                # makes parser return results with JSON format
-   ./gtl_parser -R XML                                 # makes parser return results with XML format
+   ./gtl_parser -i ../examples/extensive_form_game.gtl # reads from file ../exmples/extensive_form_game.gtl
+   ./gtl_parser -o ../examples/output.gtl              # writes output to ../exmples/output.gtl
+   ./gtl_parser -e ../examples/errors.gtl              # writes errors to ../exmples/errors.gtl
+   ./gtl_parser -r JSON                                # makes parser return results with JSON format
+   ./gtl_parser -r XML                                 # makes parser return results with XML format
+   ./gtl_parser -h                                     # displays help
+   ./gtl_parser -v                                     # displays version number
    @endcode
  *
  * @section context_sec Context and querying
