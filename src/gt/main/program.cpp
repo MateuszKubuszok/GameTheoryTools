@@ -18,6 +18,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include "gt/version.hpp"
 #include "gt/program/inner_common.hpp"
 
 namespace Options = boost::program_options;
@@ -110,6 +111,9 @@ int main(
     const char helpOption[]         = "help,H";
     const char helpDescription[]    = "produce this message";
 
+    const char versionOption[]      = "version,V";
+    const char versionDescription[] = "display vesion number";
+
     int  debugValue                 = 0;
     const int  debugDefault         = 0;
     const char debugOption[]        = "debug-level,D";
@@ -149,6 +153,7 @@ int main(
     Options::options_description description("Available options");
     description.add_options()
     (helpOption,                                                helpDescription)
+    (versionOption,                                             versionDescription)
     (debugOption,       Options::value<int>(
                             &debugValue
                         )->default_value(debugDefault),         debugDescription)
@@ -183,6 +188,15 @@ int main(
 
         if (variables.count("help") || variables.count("H")) {
             cout << description << endl;
+            return EXIT_SUCCESS;
+        }
+
+        if (variables.count("version") || variables.count("V")) {
+            cout << "GTL parser, GTT version "
+                 << GT_VERSION_MAJOR << '.'<< GT_VERSION_MINOR << '.'<< GT_VERSION_RELEASE << endl
+                 << "This program is distributed in the hope that it will be useful," << endl
+                 << "but WITHOUT ANY WARRANTY; without even the implied warranty" << endl
+                 << "of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE." << endl;
             return EXIT_SUCCESS;
         }
 
