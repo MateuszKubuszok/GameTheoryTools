@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools - tutorial
-   &#160;<span id="projectnumber">v0.5</span>
+   &#160;<span id="projectnumber">v0.5.1</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -84,11 +84,13 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 Running parser</h1>
 <p>Parser can be run in a following ways: </p>
 <div class="fragment"><div class="line">./gtl_parser                                        # reads from std input and writes results to std output</div>
-<div class="line">./gtl_parser -I ../examples/extensive_form_game.gtl # reads from file ../exmples/extensive_form_game.gtl</div>
-<div class="line">./gtl_parser -O ../examples/output.gtl              # writes output to ../exmples/output.gtl</div>
-<div class="line">./gtl_parser -E ../examples/errors.gtl              # writes errors to ../exmples/errors.gtl</div>
-<div class="line">./gtl_parser -R JSON                                # makes parser <span class="keywordflow">return</span> results with JSON format</div>
-<div class="line">./gtl_parser -R XML                                 # makes parser <span class="keywordflow">return</span> results with XML format</div>
+<div class="line">./gtl_parser -i ../examples/extensive_form_game.gtl # reads from file ../exmples/extensive_form_game.gtl</div>
+<div class="line">./gtl_parser -o ../examples/output.gtl              # writes output to ../exmples/output.gtl</div>
+<div class="line">./gtl_parser -e ../examples/errors.gtl              # writes errors to ../exmples/errors.gtl</div>
+<div class="line">./gtl_parser -r JSON                                # makes parser <span class="keywordflow">return</span> results with JSON format</div>
+<div class="line">./gtl_parser -r XML                                 # makes parser <span class="keywordflow">return</span> results with XML format</div>
+<div class="line">./gtl_parser -h                                     # displays help</div>
+<div class="line">./gtl_parser -v                                     # displays version number</div>
 </div><!-- fragment --><h1><a class="anchor" id="context_sec"></a>
 Context and querying</h1>
 <p>When we initaite program it creates context that stores all declared params (values). A param can be a game, a player or a number. There is also mock <code>context</code> param that allows us previewing all currently available params.</p>
@@ -166,7 +168,7 @@ Games</h1>
 <div class="line">      { p2=s1 : 50, 60 }, <span class="comment">// setting up payoff by givine ony part of coorinates at a time</span></div>
 <div class="line">      { p2=s2 : 70, 80 }</div>
 <div class="line">    }</div>
-<div class="line">  END; <span class="comment">// END can be ommitted when obvious</span></div>
+<div class="line">  END;</div>
 </div><!-- fragment --><p>We can see that strategic-form game can be deifined by payoffs of each of player's strategies combinations. We can group them by some <code>choice</code> (<code>p1=s1</code> meaning that its defined for player <code>p1</code> choosing strategy <code>s1</code>), or pass them by giveing all player's choices at once.</p>
 <p>Extensive-form games are defined in a similar way: </p>
 <div class="fragment"><div class="line"><span class="comment">/* player p1 definition */</span></div>
@@ -188,7 +190,7 @@ Games</h1>
 <div class="line">      { p2=s1 : 50, 60 },</div>
 <div class="line">      { p2=s2 : 70, 80 }</div>
 <div class="line">    }</div>
-<div class="line">  END; <span class="comment">// END can be ommitted when obvious</span></div>
+<div class="line">  END;</div>
 </div><!-- fragment --><p> main difference being that extensive form games form a tree and the definition represents it - as such it have to pass one choice at a time and cannot group them.</p>
 <p>Games have following properties defined:</p>
 <ul>
@@ -226,7 +228,7 @@ Examples</h1>
 <div class="line">      { p2=s1 : 50, 60 }, <span class="comment">// setting up payoff by givine ony part of coordinates at a time</span></div>
 <div class="line">      { p2=s2 : 70, 80 }</div>
 <div class="line">    }</div>
-<div class="line">  END; <span class="comment">// END can be ommitted when obvious</span></div>
+<div class="line">  END;</div>
 <div class="line"><span class="comment"></span></div>
 <div class="line"><span class="comment">/**</span></div>
 <div class="line"><span class="comment"> * Displays game definition.</span></div>
@@ -277,7 +279,7 @@ Examples</h1>
 <div class="line">      { p2=s1 : 50, 60 },</div>
 <div class="line">      { p2=s2 : 70, 80 }</div>
 <div class="line">    }</div>
-<div class="line">  END; <span class="comment">// END can be ommitted when obvious</span></div>
+<div class="line">  END;</div>
 <div class="line"><span class="comment"></span></div>
 <div class="line"><span class="comment">/**</span></div>
 <div class="line"><span class="comment"> * Displays game definition.</span></div>
@@ -334,7 +336,8 @@ Examples</h1>
 <div class="line">    { p1=s2 :</div>
 <div class="line">      { p2=s1 : b, a },</div>
 <div class="line">      { p2=s2 : a, b }</div>
-<div class="line">    };</div>
+<div class="line">    }</div>
+<div class="line">  END;</div>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Querying for properties</span></div>
@@ -357,7 +360,7 @@ Examples</h1>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5</b>
+Version <b>v0.5.1</b>
 </small></address>
 </body>
 </html>
