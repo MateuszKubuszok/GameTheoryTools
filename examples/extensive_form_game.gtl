@@ -27,7 +27,7 @@ LET game2 BE
       { p2=s1 : 50, 60 },
       { p2=s2 : 70, 80 }
     }
-  END; // END can be ommitted when obvious
+  END;
 
 /**
  * Displays game definition.

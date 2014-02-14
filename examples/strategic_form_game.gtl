@@ -25,7 +25,7 @@ LET game1 BE
       { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coordinates at a time
       { p2=s2 : 70, 80 }
     }
-  END; // END can be ommitted when obvious
+  END;
 
 /**
  * Displays game definition.

@@ -33,7 +33,8 @@ LET game3 BE
     { p1=s2 :
       { p2=s1 : b, a },
       { p2=s2 : a, b }
-    };
+    }
+  END;
 
 
 // Querying for properties

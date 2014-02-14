@@ -175,14 +175,13 @@
 
 program
  : statements TERMINATE
- | TERMINATE
  ;
 
 /* Statements */
 
 statements
  : statements statement
- | statement
+ |
  ;
 
 statement
@@ -191,7 +190,7 @@ statement
  | context_save EOC    { driver.save(@1, **$1); CLEANUP($1); }
  | definition EOC      { driver.forStatement().executeDefinition($1); CLEANUP($1); }
  | query EOC           { driver.forStatement().executeQuery($1); CLEANUP($1); }
- | parser_error
+ | parser_error EOC
  ;
 
 context_execute
@@ -232,13 +231,8 @@ object
 /* Games */
 
 game
- : STRATEGIC GAME details game_end { $$ = driver.forGame().createStrategic(@1, $3); CLEANUP($3); }
- | EXTENSIVE GAME details game_end { $$ = driver.forGame().createExtensive(@1, $3); CLEANUP($3); }
- ;
-
-game_end
- :
- | END
+ : STRATEGIC GAME details END { $$ = driver.forGame().createStrategic(@1, $3); CLEANUP($3); }
+ | EXTENSIVE GAME details END { $$ = driver.forGame().createExtensive(@1, $3); CLEANUP($3); }
  ;
 
 details
@@ -281,8 +275,7 @@ conditions
 condition_collection
  : condition_collection COMA condition { $$ = driver.forConditions().insert($3, $1);
                                               CLEANUP($3); CLEANUP($1); }
- | WITH condition                      { $$ = driver.forConditions().create($2);
-                                              CLEANUP($2); }
+ | WITH condition                      { $$ = driver.forConditions().create($2); CLEANUP($2); }
  ;
 
 condition

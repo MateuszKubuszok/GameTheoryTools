@@ -123,7 +123,7 @@
          { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coorinates at a time
          { p2=s2 : 70, 80 }
        }
-     END; // END can be ommitted when obvious
+     END;
    @endcode
  *
  * We can see that strategic-form game can be deifined by payoffs of each of player's strategies combinations.
@@ -151,7 +151,7 @@
          { p2=s1 : 50, 60 },
          { p2=s2 : 70, 80 }
        }
-     END; // END can be ommitted when obvious
+     END;
    @endcode
  * main difference being that extensive form games form a tree and the definition represents it - as such it
  * have to pass one choice at a time and cannot group them.
@@ -193,7 +193,7 @@
          { p2=s1 : 50, 60 }, // setting up payoff by givine ony part of coordinates at a time
          { p2=s2 : 70, 80 }
        }
-     END; // END can be ommitted when obvious
+     END;
 
    /**
     * Displays game definition.
@@ -247,7 +247,7 @@
          { p2=s1 : 50, 60 },
          { p2=s2 : 70, 80 }
        }
-     END; // END can be ommitted when obvious
+     END;
 
    /**
     * Displays game definition.
@@ -307,7 +307,8 @@
        { p1=s2 :
          { p2=s1 : b, a },
          { p2=s2 : a, b }
-       };
+       }
+     END;
 
 
    // Querying for properties

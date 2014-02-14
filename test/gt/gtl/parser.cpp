@@ -108,7 +108,8 @@ BOOST_AUTO_TEST_CASE( Parser_strategicGameDefinition  ) {
         "  { p1=s2 :\n"
         "     { p2=s1 : 3e1, param3 },\n"
         "     { p2=s2 : param4, 4.0e1 }\n"
-        "  };\n"
+        "  }\n"
+        "END;\n"
     ;
     std::istringstream stream(content);
     GT::GTL::Scanner   scanner(&stream);
@@ -147,7 +148,8 @@ BOOST_AUTO_TEST_CASE( Parser_extensiveGameDefinition  ) {
         "  { p1=s2 :\n"
         "     { p2=s1 : 3e1, param3 },\n"
         "     { p2=s2 : param4, 4.0e1 }\n"
-        "  };\n"
+        "  }\n"
+        "END;\n"
     ;
     std::istringstream stream(content);
     GT::GTL::Scanner   scanner(&stream);
@@ -335,7 +337,8 @@ BOOST_AUTO_TEST_CASE( Parser_defineThenQuery ) {
         "    player1,\n"
         "    player2\n"
         "  SUCH AS\n"
-        "    { p1=s, p2=s : 10, 20 };\n"
+        "    { p1=s, p2=s : 10, 20 }\n"
+        "  END;\n"
     ;
     std::istringstream stream(content);
     GT::GTL::Scanner   scanner(&stream);
