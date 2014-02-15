@@ -1,0 +1,42 @@
+\ProvidesPackage{thesis}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{algorithm}
+\usepackage{algorithmic} 
+\usepackage{listings} 
+\usepackage{color}
+
+\usepackage{theorem}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{makeidx}
+
+\selectlanguage{polish}
+
+%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\TAB}{\hspace{0.50cm}}
+\newcommand{\IFF}{\leftrightarrow}
+\newcommand{\IMP}{\rightarrow}
+
+\newtheorem{theorem}{Twierdzenie}[section]
+\newtheorem{lemma}{Lemat}[section]
+\newtheorem{example}{Przykład}[section]
+\newtheorem{corollary}{Wniosek}[section]
+\newtheorem{definition}{Definicja}[section]
+
+\newenvironment{proof}{\par\noindent {\bf Dow�d.}}
+{\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
+\newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
+                       {\vspace*{4mm}\end{small}}

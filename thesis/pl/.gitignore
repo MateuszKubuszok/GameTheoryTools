@@ -1,0 +1,9 @@
+00_definitions.tex
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.gz
+*.idx
+*.log
+*.pdf
