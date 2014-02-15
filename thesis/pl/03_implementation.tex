@@ -1,26 +1,94 @@
-\documentclass[00_main.tex]{subfiles}
-%\usepackage{thesis}
+\documentclass{standalone}
+\usepackage{thesis}
 
 \begin{document}
 \pagestyle{headings}
 
 \chapter{Implementacja}
 
-TODO
-
 \section{Wprowadzenie}
 
-TODO
+W rozdziale tym zostaną opisane szczegóły implementacji projektu. Opisane zostaną zarówno wykorzystane
+narzędzia, sposób organizacji kodu jak i informacje na temat zastosowanych rozwiązań. Rozdział ten nie będzie
+się koncentrował na przeglądzie kodu źródłowego (jego przykłady dostępne będą w Dodatku A), ale raczej na
+wykorzystanych algorytmach i strukturach danych. Na koniec omówione zostaną praktyki przyjęte w projekcie aby
+umożliwić stworzenie wysokiej jakości kodu.
+
+\subsection{Użyte narzędzia}
+
+Biblioteka \LIB{GLPK} wykorzystana w tym projekcie napisana została w języku \LANG{C}. Z tego powodu język,
+w których docelowo miał zostać zrealizowany projekt powinien udostępniać możliwość wykorzystywania bibliotek
+języka \LANG{C} za pośrednictwem adapterów bądź bezpośrednio. Po uwzględnieniu narzędzi istniejących dla
+poszczególnych języków zdecydowano się na wybór języka \LANG{C++} - adaptacja bibliotek z \LANG{C} jest
+naturalna, a przy tym sam język udostępnia możliwość programowania obiektowego, jak i dużą elastyczność przy
+zachowaniu szybkości działania.
+
+Kolejnym istotnym argumentem za \LANG{C++} było dostępność bibliotek i pakietów do tworzenia parserów gramatyk
+bezkontekstowych - w projekcie do stworzenia parsera wczytującego dane wykorzystane zostały \PROG{flex} oraz
+\PROG{bison}. Umożliwiają one utworzenie bardzo wydajnego parsera \CODE{LALR(1)}, zdolnego do uruchamiania
+zdefiniowanego kodu \LANG{C}/\LANG{C++}.
+
+Projekt wykorzystuje również bibliotekę \LIB{Boost} - z wyjątkiem kilku miejsc \LIB{Boost.Container} całkowicie
+zastąpiła w nim bibliotekę \LIB{STL}, pozostałe komponenty biblioteki \LIB{Boost} zostały użyte do uzupełnienia
+biblioteki \LIB{STL}.
+
+\subsection{Wewnętrzna struktura projektu}
+
+Ostatecznie całość programu została napisana w języku \LANG{C++}. (Niemal) wszystkie komponenty umieszczono we
+wspólnej przestrzeni nazw \CODE{GT}, przy czym klasy zostały pogrupowane w kolejne 4 podprzestrzenie nazw:
+\begin{itemize}
+\item \CODE{Model} - zawiera klasy implementujące model danych bądź powiązane,
+\item \CODE{Routines} - zawiera procedury obliczające równowagi Nasha dla poszczególnych rodzajów gier,
+\item \CODE{GTL} - zawiera klasy parsera danych wejściowych,
+\item \CODE{Program} - zawiera klasy powiązane z utworzeniem pliku wykonywalnego parsera.
+\end{itemize}
 
 \section{Model danych}
 
-TODO
+Ze względu na odmienne założenia odnośnie danych dla gier w formie strategicznej oraz gier w formie
+ekstensywnej, dla każdego rodzaju gry zdefiniowano osobny model danych (jednak tam gdzie to możliwe
+uwspólniono ich interfejs).
+
+Przyjęto założenie, że raz utworzonego modelu danych nie modyfikuje się - z tego powodu wszystkie gotowe
+instancje przechowuje się przy pomocy inteligentnych wskaźników na stałe obiekty - zmniejsza to narzut
+związany z kopiowaniem obiektów, a także umożliwia zastosowanie co bardzie kosztownych operacji jako
+jednorazowy narzut związany z utworzeniem obiektu.
+
+\subsection{Gracz}
+
+Wspólnym elementem interfejsu są przede wszystkim instancje graczy. Każda z nich przechowuje informację na
+temat nazwy identyfikującej gracza, a także tablicę zawierającą strategię i mapę jego indeksów strategii -
+dzięki temu znalezienie nazwy strategii na podstawie nr jest możliwe w czasie $O(1)$, zaś nr indeksu na
+podstawie nazwy w czasie $O(log\;\ABS{S})$ (gdzie $\ABS{S}$ to liczba strategii gracza) - obie te informacje
+są bardzo często wykorzystywane, więc szybkie ich przeliczanie warte jest jednorazowego narzutu związanego
+z wypełnieniem dwóch osobnych struktur danych.
+
+\subsection{Wartości funkcji wypłaty dla podanych strategii}
+
+Wartości wypłaty wszystkich graczy dla danej kombinacji strategii czystych zamknięto w osobnym obiekcie
+danych - jest on kolejnym wspólnym elementem interfejsu. Obiekt ten zwraca wypłatę dla danego gracza -
+wewnętrzna reprezentacja danych zrealizowana jest przy pomocy mapy, aby zminimalizować czas dostępu do
+żądanej wartości ($O(log\;n)$ dla $n$ graczy).
+
+\subsection{Gry w formie strategicznej}
+
+Ponieważ nie przyjęto odgórnego założenia na temat liczby graczy oraz ich strategi czystych, nie można było
+stworzyć modelu danych opartego na wielowymiarowej tablicy danych. Zamiast tego zdecydowano się wewnętrznie
+przechowywać dane w tablicy jednowymiarowej przy pomocy funkcji mieszającej: 
+
+TODO: f mieszająca
+
+\subsection{Gry w formie ekstensywnej}
 
 \section{Procedury obliczające równowagi}
 
-TODO
+\subsection{Gry w formie strategicznej}
 
 \section{Parser danych wejściowych}
+
+TODO
+
+\section{Praktyki przyjęte w projekcie}
 
 TODO
 

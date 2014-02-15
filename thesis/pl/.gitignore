@@ -6,4 +6,6 @@
 *.gz
 *.idx
 *.log
+*.out
 *.pdf
+*.toc

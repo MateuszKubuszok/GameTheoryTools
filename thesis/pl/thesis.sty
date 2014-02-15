@@ -1,21 +1,24 @@
 \ProvidesPackage{thesis}
 
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
+\usepackage{amsmath}        % math package's formulas
+\usepackage{amsfonts}       % math package's fonts
+\usepackage{amssymb}        % math package's symbols
 
-\usepackage{algorithm}
-\usepackage{algorithmic} 
-\usepackage{listings} 
-\usepackage{color}
+\usepackage{algorithm}      % pseudocode package
+\usepackage{algorithmic}    % pseudocode package
+\usepackage{listings}       % actual code package
+\usepackage{color}          % color adjustment
 
-\usepackage{theorem}
-\usepackage{graphicx}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{polski}
-\usepackage[polish]{babel}
-\usepackage{makeidx}
+\usepackage{url}            % links to URLs
+\usepackage{hyperref}       % inner links in generated document
+
+\usepackage{theorem}        % 
+\usepackage{graphicx}       % 
+\usepackage[utf8]{inputenc} % input encoding
+\usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
+\usepackage{polski}         % i18n package
+\usepackage[polish]{babel}  % i18n package
+\usepackage{makeidx}        % indexing package
 
 \selectlanguage{polish}
 
@@ -29,6 +32,12 @@
 \newcommand{\TAB}{\hspace{0.50cm}}
 \newcommand{\IFF}{\leftrightarrow}
 \newcommand{\IMP}{\rightarrow}
+\newcommand{\ABS}[1]{|#1|}
+
+\newcommand{\LANG}[1]{\textbf{#1}}
+\newcommand{\PROG}[1]{\textbf{#1}}
+\newcommand{\LIB}[1]{\textbf{#1}}
+\newcommand{\CODE}[1]{\texttt{#1}}
 
 \newtheorem{theorem}{Twierdzenie}[section]
 \newtheorem{lemma}{Lemat}[section]
@@ -36,7 +45,8 @@
 \newtheorem{corollary}{Wniosek}[section]
 \newtheorem{definition}{Definicja}[section]
 
-\newenvironment{proof}{\par\noindent {\bf Dow�d.}}
+\newenvironment{proof}{\par\noindent {\bf Dowód.}}
 {\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
 \newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
                        {\vspace*{4mm}\end{small}}
+
