@@ -84,7 +84,7 @@ Project can be built with Clang compiler. It shoule be noted though that there i
                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In version 1.53 there is no such error, as it was removed in a commit
-[between 1.52 and 1.53 release](https://github.com/boostorg/container/commit/7f1456c30fa5ed58af912d67352f55bc961be55e).
+[between 1.49 and 1.50.0-beta1 release](https://github.com/boostorg/container/commit/7f1456c30fa5ed58af912d67352f55bc961be55e).
 
 
 ## Building process
