@@ -83,7 +83,8 @@ Project can be built with Clang compiler. It shoule be noted though that there i
          template <typename T> using rebind_alloc  = boost::intrusive::detail::type_rebinder<Alloc, T>::type;
                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In version 1.54 there is no such error, but I'm not sure when it was actually removed.
+In version 1.53 there is no such error, as it was removed in a commit
+[between 1.52 and 1.53 release](https://github.com/boostorg/container/commit/7f1456c30fa5ed58af912d67352f55bc961be55e).
 
 
 ## Building process
