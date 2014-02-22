@@ -16,7 +16,7 @@ install:
 compiler:
               - gcc
               - clang
-script:         scons -Q buildExecutables
+script:         scons -Q buildExecutables --implicit-deps-unchanged --jobs 2
 branches:
   except:       gh-pages
 notifications:
