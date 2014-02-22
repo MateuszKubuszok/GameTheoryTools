@@ -50,37 +50,37 @@
         {
             "name":        "Build All",
             "selector":    "source.c++, source.bison",
-            "shell_cmd":   "scons --implicit-deps-unchanged --jobs 4",
+            "shell_cmd":   "scons --implicit-deps-unchanged --jobs 12",
             "working_dir": "${project_path}"
         },
         {
             "name":        "Model Development",
-            "shell_cmd":   "scons -Q runModelsTests --implicit-cache --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q runModelsTests --implicit-cache --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
             "name":        "Routines Development",
-            "shell_cmd":   "scons -Q runRoutinesTests --implicit-cache --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q runRoutinesTests --implicit-cache --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
             "name":        "GTL Development",
-            "shell_cmd":   "scons -Q runGTLTests --implicit-cache --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q runGTLTests --implicit-cache --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
             "name":        "Program Controllers Development",
-            "shell_cmd":   "scons -Q runProgramsTests --implicit-cache --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q runProgramsTests --implicit-cache --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
             "name":        "Executables",
-            "shell_cmd":   "scons -Q buildExecutables --implicit-deps-unchanged --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q buildExecutables --implicit-deps-unchanged --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
             "name":        "Libraries",
-            "shell_cmd":   "scons -Q buildLibraries --implicit-deps-unchanged --jobs 4 2> errors.log",
+            "shell_cmd":   "scons -Q buildLibraries --implicit-deps-unchanged --jobs 12 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
