@@ -5,7 +5,7 @@ before_install:
               - sudo apt-get -qq update
 install:
               - if [ "$CXX" = "g++" ]; then
-              -   sudo apt-get install gcc-4.8 g++-4.8
+              -   sudo apt-get -qq install gcc-4.8 g++-4.8
               -   export CXX="g++-4.8" CC="gcc-4.8"
               -   sudo apt-get -qq install libboost1.48-dev libboost-program-options1.48-dev libboost-program-options1.48.0 libboost-test1.48-dev libboost-test1.48.0
               - fi
@@ -13,12 +13,17 @@ install:
               -   sudo apt-get -qq install libboost1.54-dev libboost-program-options1.54-dev libboost-program-options1.54.0 libboost-test1.54-dev libboost-test1.54.0
               - fi
               - sudo apt-get -qq install flex bison libgmp-dev glpk scons
+              - $CXX  --version
+              - flex  --version
+              - bison --version
+              - scons --version
 compiler:
               - gcc
               - clang
 script:         scons -Q buildExecutables --implicit-deps-unchanged --jobs 4
 after_success:
               - sudo apt-get -qq install valgrind
+              - valgrind --version
               - valgrind --leak-check=full --error-exitcode=1 bin/ModelsTests
               - valgrind --leak-check=full --error-exitcode=1 bin/RoutinesTests
               - valgrind --leak-check=full --error-exitcode=1 bin/GTLTests
