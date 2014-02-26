@@ -39,7 +39,7 @@ public:
     /**
      * @brief Default destructor.
      */
-    virtual ~Root();
+    virtual ~Root() {}
 
     /**
      * @brief Defines equality relation.

@@ -28,8 +28,6 @@ namespace Model {
 // class Root {
 // public:
 
-Root::~Root() {}
-
 bool Root::isEqual(
     const Root& root
 ) const {
