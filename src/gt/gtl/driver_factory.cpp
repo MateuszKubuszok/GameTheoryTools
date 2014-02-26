@@ -26,13 +26,12 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class DriverFactory {
+// public:
 
 DriverFactory& DriverFactory::getInstance() {
     static DriverFactory instance;
     return instance;
 }
-
-// public:
 
 DriverPtr DriverFactory::createCheckingDriver(
     OutputStream* errorStream
@@ -46,12 +45,6 @@ DriverPtr DriverFactory::createExecutionDriver(
 ) const {
     return DriverPtr(new ExecutionDriver(outputStream, errorStream));
 }
-
-// private:
-
-DriverFactory::DriverFactory() {}
-
-DriverFactory::~DriverFactory() {}
 
 // }; /* END class DriverFactory */
 

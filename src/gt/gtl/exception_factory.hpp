@@ -103,7 +103,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    ExceptionFactory();
+    ExceptionFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -112,12 +112,12 @@ private:
      */
     ExceptionFactory(
         const ExceptionFactory& exceptionFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~ExceptionFactory();
+    ~ExceptionFactory() = default;
 }; /* END class ExceptionFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

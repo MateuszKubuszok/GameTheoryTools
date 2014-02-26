@@ -70,7 +70,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    InnerNullFactory();
+    InnerNullFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -79,12 +79,12 @@ private:
      */
     InnerNullFactory(
         const InnerNullFactory& innerNullFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~InnerNullFactory();
+    ~InnerNullFactory() = default;
 }; /* END class InnerNullFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -30,13 +30,12 @@ using std::stringstream;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ExceptionFactory final {
+// public:
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     static ExceptionFactory instance;
     return instance;
 }
-
-// public:
 
 InvalidCondition ExceptionFactory::invalidCondition(
     const std::exception& exception
@@ -105,12 +104,6 @@ IncompletePayoffInformation ExceptionFactory::incompletePayoffInformation(
 
     return IncompletePayoffInformation(result.str());
 }
-
-// private:
-
-ExceptionFactory::ExceptionFactory() {}
-
-ExceptionFactory::~ExceptionFactory() {}
 
 // }; /* END class ExceptionFactory */
 

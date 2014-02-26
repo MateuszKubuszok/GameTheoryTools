@@ -99,7 +99,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    ConditionFactory();
+    ConditionFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -108,12 +108,12 @@ private:
      */
     ConditionFactory(
         const ConditionFactory& conditionFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~ConditionFactory();
+    ~ConditionFactory() = default;
 }; /* END class ConditionFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

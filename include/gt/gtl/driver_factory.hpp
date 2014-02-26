@@ -69,7 +69,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    DriverFactory();
+    DriverFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -78,12 +78,12 @@ private:
      */
     DriverFactory(
         const DriverFactory& driverFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~DriverFactory();
+    ~DriverFactory() = default;
 }; /* END class DriverFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

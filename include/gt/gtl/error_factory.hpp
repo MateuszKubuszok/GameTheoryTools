@@ -137,7 +137,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    ErrorFactory();
+    ErrorFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -146,12 +146,12 @@ private:
      */
     ErrorFactory(
         const ErrorFactory& errorFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~ErrorFactory();
+    ~ErrorFactory() = default;
 }; /* END class ErrorFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -25,13 +25,12 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class GameFactory final {
+// public:
 
 GameFactory& GameFactory::getInstance() {
     static GameFactory instance;
     return instance;
 }
-
-// public:
 
 GameBuilderPtr GameFactory::buildStrategicGame() const {
     return GameBuilderPtr(new StrategicGameBuilder());
@@ -40,12 +39,6 @@ GameBuilderPtr GameFactory::buildStrategicGame() const {
 GameBuilderPtr GameFactory::buildExtensiveGame() const {
     return GameBuilderPtr(new ExtensiveGameBuilder());
 }
-
-// private:
-
-GameFactory::GameFactory() {}
-
-GameFactory::~GameFactory() {}
 
 // }; /* END class GameFactory */
 

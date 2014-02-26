@@ -30,13 +30,12 @@ using std::stringstream;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ExceptionFactory final {
+// public:
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     static ExceptionFactory instance;
     return instance;
 }
-
-// public:
 
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     const Positions& positions
@@ -154,12 +153,6 @@ IllegalInnerState ExceptionFactory::propertiesAndResultsDontMatchInSize(
 
     return IllegalInnerState(result.str());
 }
-
-// private:
-
-ExceptionFactory::ExceptionFactory() {}
-
-ExceptionFactory::~ExceptionFactory() {}
 
 // }; /* END class ExceptionFactory */
 

@@ -26,13 +26,12 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ConditionFactory final {
+// public:
 
 ConditionFactory& ConditionFactory::getInstance() {
     static ConditionFactory instance;
     return instance;
 }
-
-// public:
 
 ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
     const IdentifierPtr player,
@@ -63,12 +62,6 @@ ConditionPtr ConditionFactory::createPlayerRangeCondition(
 ) const {
     return ConditionPtr( new PlayerRangeCondition(player, strategies) );
 }
-
-// private:
-
-ConditionFactory::ConditionFactory() {}
-
-ConditionFactory::~ConditionFactory() {}
 
 // }; /* END class ConditionFactory */
 

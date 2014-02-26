@@ -38,13 +38,12 @@ using Model::StrategicDataAccessor;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class RoutineFactory final {
+// public:
 
 RoutineFactory& RoutineFactory::getInstance() {
     static RoutineFactory instance;
     return instance;
 }
-
-// public:
 
 RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
     const GamePtr game
@@ -105,12 +104,6 @@ RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
 
     return RoutinePtr(new NotYetImplementedRoutine());
 }
-
-// private:
-
-RoutineFactory::RoutineFactory() {}
-
-RoutineFactory::~RoutineFactory() {}
 
 // }; /* END class RoutineFactory */
 

@@ -26,13 +26,12 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ErrorFactory {
+// public:
 
 ErrorFactory& ErrorFactory::getInstance() {
     static ErrorFactory instance;
     return instance;
 }
-
-// public:
 
 ConditionPtr ErrorFactory::createCondition(
     const Message errorMessage
@@ -87,12 +86,6 @@ QueryPtr ErrorFactory::createQuery(
 ) const {
     return QueryPtr(new ErrorQuery(errorMessage));
 }
-
-// private:
-
-ErrorFactory::ErrorFactory() {}
-
-ErrorFactory::~ErrorFactory() {}
 
 // }; /* END class ErrorFactory */
 

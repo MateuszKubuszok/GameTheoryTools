@@ -26,13 +26,12 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class NullFactory final {
+// public:
 
 NullFactory& NullFactory::getInstance() {
     static NullFactory instance;
     return instance;
 }
-
-// public:
 
 ConditionPtr NullFactory::createCondition() const {
     return ConditionPtr(new NullCondition());
@@ -49,12 +48,6 @@ RoutinePtr NullFactory::createRoutine() const {
 RoutinesPtr NullFactory::createRoutines() const {
     return RoutinesPtr(new Routines());
 }
-
-// private:
-
-NullFactory::NullFactory() {}
-
-NullFactory::~NullFactory() {}
 
 // }; /* END class NullFactory */
 

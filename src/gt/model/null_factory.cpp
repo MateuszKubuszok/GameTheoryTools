@@ -26,13 +26,12 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class NullFactory final {
+// public:
 
 NullFactory& NullFactory::getInstance() {
     static NullFactory instance;
     return instance;
 }
-
-// public:
 
 IdentifierPtr NullFactory::createIdentifier() const {
     return IdentifierPtr(new Identifier("NullIdentifier"));
@@ -97,12 +96,6 @@ ResultPtr NullFactory::createResult() const {
 ResultBuilderPtr NullFactory::createResultBuilder() const {
     return ResultBuilderPtr(new NullResultBuilder());
 }
-
-// private:
-
-NullFactory::NullFactory() {}
-
-NullFactory::~NullFactory() {}
 
 // }; /* END class NullFactory */
 

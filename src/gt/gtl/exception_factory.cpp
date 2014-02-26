@@ -26,13 +26,12 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ExceptionFactory final {
+// public:
 
 ExceptionFactory& ExceptionFactory::getInstance() {
     static ExceptionFactory instance;
     return instance;
 }
-
-// public:
 
 CyclicIdentifiers ExceptionFactory::cyclicIdentifiersFound(
     const Param::VisitedIdentifiers& visitedIdentifiers,
@@ -87,12 +86,6 @@ InvalidContentRequest ExceptionFactory::requiredUnavailableNumberFromParam() con
 InvalidContentRequest ExceptionFactory::requiredUnavailableObjectFromParam() const {
     return InvalidContentRequest("Cannot obtain Object from this Param");
 }
-
-// private:
-
-ExceptionFactory::ExceptionFactory() {}
-
-ExceptionFactory::~ExceptionFactory() {}
 
 // }; /* END class ExceptionFactory */
 

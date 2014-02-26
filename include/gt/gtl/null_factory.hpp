@@ -243,7 +243,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    NullFactory();
+    NullFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -252,12 +252,12 @@ private:
      */
     NullFactory(
         const NullFactory& nullFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~NullFactory();
+    ~NullFactory() = default;
 }; /* END class NullFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -97,19 +97,19 @@ private:
     /**
      * @brief Private constructor.
      */
-    ParamFactory();
+    ParamFactory() = default;
 
     /**
      * @brief Private copy constructor.
      */
     ParamFactory(
         const ParamFactory& paramFactory
-    );
+    ) = delete;
 
     /**
      * @brief Private destructor.
      */
-    ~ParamFactory();
+    ~ParamFactory() = default;
 }; /* END class ParamFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -26,13 +26,12 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class InnerNullFactory final {
+// public:
 
 InnerNullFactory& InnerNullFactory::getInstance() {
     static InnerNullFactory instance;
     return instance;
 }
-
-// public:
 
 StrategicDataPtr InnerNullFactory::createStrategicData() {
     return StrategicDataPtr(new NullStrategicData());
@@ -45,12 +44,6 @@ ExtensiveDataPtr InnerNullFactory::createExtensiveData() {
 ExtensiveDataNodePtr InnerNullFactory::createExtensiveDataNode() {
     return ExtensiveDataNodePtr(new NullExtensiveDataNode());
 }
-
-// private:
-
-InnerNullFactory::InnerNullFactory() {}
-
-InnerNullFactory::~InnerNullFactory() {}
 
 // }; /* END class InnerNullFactory */
 

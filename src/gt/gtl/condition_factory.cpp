@@ -26,13 +26,12 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ConditionFactory {
+// public:
 
 ConditionFactory& ConditionFactory::getInstance() {
     static ConditionFactory instance;
     return instance;
 }
-
-// public:
 
 ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
     const ObjectPtr player,
@@ -71,12 +70,6 @@ ConditionPtr ConditionFactory::createPlayerRangeCondition(
         new PlayerRangeCondition(player, strategies)
     );
 }
-
-// private:
-
-ConditionFactory::ConditionFactory() {}
-
-ConditionFactory::~ConditionFactory() {}
 
 // }; /* END class ConditionFactory */
 

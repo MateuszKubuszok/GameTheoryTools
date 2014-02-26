@@ -26,13 +26,12 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class NullFactory final {
+// public:
 
 NullFactory& NullFactory::getInstance() {
     static NullFactory instance;
     return instance;
 }
-
-// public:
 
 ConditionPtr NullFactory::createCondition() const {
     return ConditionPtr(new NullCondition());
@@ -145,12 +144,6 @@ CollectionsDriverPtr<Param> NullFactory::createParamsDriver() const {
 InputLocationPtr NullFactory::createInputLocation() const {
     return InputLocationPtr(new InputLocation());
 }
-
-// private:
-
-NullFactory::NullFactory() {}
-
-NullFactory::~NullFactory() {}
 
 // }; /* END class NullFactory */
 

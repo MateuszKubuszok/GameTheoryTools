@@ -26,13 +26,12 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ResultFactory {
+// public:
 
 ResultFactory& ResultFactory::getInstance() {
     static ResultFactory instance;
     return instance;
 }
-
-// public:
 
 ResultBuilderPtr ResultFactory::buildResult() const {
     Message indent;
@@ -96,8 +95,6 @@ ResultFactory::ResultFactory() {
     builderMode     = ResultBuilderMode::PLAIN;
     indentationMode = ResultIndentationMode::TABS;
 }
-
-ResultFactory::~ResultFactory() {}
 
 // }; /* END class ResultFactory */
 

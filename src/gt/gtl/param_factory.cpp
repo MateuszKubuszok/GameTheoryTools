@@ -30,13 +30,12 @@ using boost::dynamic_pointer_cast;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ParamFactory final {
+// public:
 
 ParamFactory& ParamFactory::getInstance() {
     static ParamFactory instance;
     return instance;
 }
-
-// public:
 
 ParamPtr ParamFactory::createParam(
     const Identifier& identifier
@@ -69,12 +68,6 @@ ParamPtr ParamFactory::createParam(
     const Param& param = object->toParam();
     return param ? dynamic_pointer_cast<Param>(object) : ParamPtr(new ObjectParam(object));
 }
-
-// private:
-
-ParamFactory::ParamFactory() {}
-
-ParamFactory::~ParamFactory() {}
 
 // }; /* END class ParamFactory */
 

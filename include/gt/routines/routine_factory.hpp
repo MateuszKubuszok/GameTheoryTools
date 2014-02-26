@@ -77,7 +77,7 @@ private:
     /**
      * @brief Default constructor hidden from programmers.
      */
-    RoutineFactory();
+    RoutineFactory() = default;
 
     /**
      * @brief Default copy constructor hidden from programmers.
@@ -86,12 +86,12 @@ private:
      */
     RoutineFactory(
         const RoutineFactory& routineFactory
-    );
+    ) = delete;
 
     /**
      * @brief Default destructor hidden from programmers.
      */
-    ~RoutineFactory();
+    ~RoutineFactory() = default;
 }; /* END class RoutineFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -145,12 +145,12 @@ private:
      */
     ResultFactory(
         const ResultFactory& resultFactory
-    );
+    ) = delete;
 
     /**
      * @brief Private destructor.
      */
-    ~ResultFactory();
+    ~ResultFactory() = default;
 }; /* END class ResultFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -69,19 +69,19 @@ private:
     /**
      * @brief Private constructor.
      */
-    GameFactory();
+    GameFactory() = default;
 
     /**
      * @brief Private copy constructor.
      */
     GameFactory(
         const GameFactory& gameFactory
-    );
+    ) = delete;
 
     /**
      * @brief Private destructor.
      */
-    ~GameFactory();
+    ~GameFactory() = default;
 }; /* END class GameFactory */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
