@@ -74,9 +74,25 @@ wewnętrzna reprezentacja danych zrealizowana jest przy pomocy mapy, aby zminima
 
 Ponieważ nie przyjęto odgórnego założenia na temat liczby graczy oraz ich strategi czystych, nie można było
 stworzyć modelu danych opartego na wielowymiarowej tablicy danych. Zamiast tego zdecydowano się wewnętrznie
-przechowywać dane w tablicy jednowymiarowej przy pomocy funkcji mieszającej: 
+przechowywać dane w tablicy jednowymiarowej przy pomocy funkcji mieszającej.
 
-TODO: f mieszająca
+Oznaczmy przez $\ABS{S_i}$ liczbę strategii gracza $i$ (gdzie $i = 1, 2, ..., n$).
+
+Oznaczmy przez $H_1 = 1$ oraz $H_i = H_{i-1} * \ABS{S_i}$.
+
+Oznaczmy przez $s \in S$ krotkę zawierająca po 1 strategii czystej każdego gracza, zaś $s_i$ ową strategię
+dla gracza $i$.
+
+Przypiszmy wszystkim strategiom $s_i$ gracza $i$ unikalną liczbę porządkową $O_i(s_i) = 0, 1, ..., \ABS{S_i}-1$.
+
+Wówczas funkcję mieszającą można zdefiniować jako:
+$$h(s) = \sum\limits_{i=0}^{n-1} H_i O_i(s_i)$$
+
+\begin{theorem}
+Funkcja hashująca jest bijekcią ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i=1}^{n} \ABS{S_i}] $.
+\end{theorem}
+
+
 
 \subsection{Gry w formie ekstensywnej}
 

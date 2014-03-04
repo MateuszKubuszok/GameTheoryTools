@@ -1,0 +1,173 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc} % input encoding
+\usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
+\usepackage{polski}         % i18n package
+\usepackage[polish]{babel}  % i18n package
+\usepackage{makeidx}        % indexing package
+
+\usepackage{listings}       % actual code package
+
+\usetheme{Median}
+
+\lstset{
+  language={[Sharp]C},
+  basicstyle=\tiny
+}
+
+\title[Narzędzia do równowag Nasha]{Narzędzia do obliczania równowag Nasha}
+\author[M. Kubuszok]{Mateusz Kubuszok}
+\institute[Politechnika Wrocławska]{
+  Promotor\\
+  Dr inż. Piotr Więcek\\[1ex]
+}
+\date[Marzec 2014]{4.3.2014}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Cel}
+Narzędzia do obliczania pewnych równowag Nasha:
+\begin{itemize}
+\item otwarte oprogramowanie,
+\item projekt zorientowany obiektowo,
+\item szybki w działaniu,
+\item łatwy w utrzymaniu i rozbudowie,
+\item dobrze udokumentowany.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Istniejące rozwiązania}
+\begin{itemize}
+
+\item pakiet Gambit
+\begin{itemize}
+\item duże możliwości,
+\item mało przyjazny interfejs CLI,
+\item słabo udokumentowany.
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Implementacja}
+Zaimplementowano algorytmy szukania równowag:
+\begin{itemize}
+\item dla strategii czystych w grach strategicznych,
+\item dla strategii mieszanych w jednomacierzowych (LP),
+\item dla strategii mieszanych w dwumacierzowych (MIP),
+\item dla strategii czystych w grach ekstensywnych.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Narzędzia}
+Wykorzystane narzędzia:
+\begin{itemize}
+\item język C++11,
+\item biblioteka Boost,
+\item biblioteka GLPK,
+\item programy Flex oraz Bison.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Przykład: gra dwumacierzowa}
+\begin{lstlisting}
+LET player1 BE
+  PLAYER p1 { s1, s2 };
+
+LET game1 BE
+  STRATEGIC GAME
+  WITH
+    player1,
+    PLAYER p2 { s1, s2 }
+  SUCH AS
+    { p1=s1, p2=s1 : 10, 20 },
+    { p1=s1, p2=s2 : 30, 40 },
+    { p1=s2 :
+      { p2=s1 : 50, 60 },
+      { p2=s2 : 70, 80 }
+    }
+  END;
+
+FIND pure_equilibrium, mixed_equilibrium FOR game1;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Przykład: gra dwumacierzowa}
+\begin{lstlisting}
+1:
+    pure_equilibrium:
+        Pure Strategies:
+            p1:
+                s2
+            p2:
+                s2
+        Payoff:
+                    p1, p2
+            Payoff:
+                    70, 80
+    mixed_equilibrium:
+        Mixed Strategies:
+            p1:
+                s1:
+                    0.333333
+                s2:
+                    0.666667
+            p2:
+                s1:
+                    0.666667
+                s2:
+                    0.333333
+        Payoff:
+                    p1, p2
+            Payoff:
+                    43.3333, 53.3333
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Przykład: gra w postaci ekstensywnej}
+\begin{lstlisting}
+LET game2 BE
+  EXTENSIVE GAME
+  WITH
+    player1,
+    PLAYER p2 { s1, s2 }
+  SUCH AS
+    { p1=s1 :
+      { p2=s1 : 10, 20 },
+      { p2=s2 : 30, 40 }
+    },
+    { p1=s2 :
+      { p2=s1 : 50, 60 },
+      { p2=s2 : 70, 80 }
+    }
+  END;
+
+FIND pure_equilibrium FOR game2;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Przykład: gra w postaci ekstensywnej}
+\begin{lstlisting}
+1:
+    pure_equilibrium:
+        Pure Strategies:
+            p1:
+                1:
+                    s2
+            p2:
+                1:
+                    s2
+                2:
+                    s2
+        Payoff:
+                    p1, p2
+            Payoff:
+                    70, 80
+\end{lstlisting}
+\end{frame}
+
+\end{document}
