@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/MateuszKubuszok/MasterThesis.png)](https://travis-ci.org/MateuszKubuszok/MasterThesis)
 
-Project of a tool to finding Nash equilibria for given Games. Currently should be able to find:
+Project of a tool for finding Nash equilibria for given Games. Currently should be able to find:
 
 * pure-strategy Nash equilibria for strategic-form games,
 * mixed-strategy equilibria for 2 player strategic-form games,
@@ -11,9 +11,9 @@ Project of a tool to finding Nash equilibria for given Games. Currently should b
 
 ## Requirements
 
-Project is written with a C++ language, and so it require some C++ compiler to be present. It also makes use
-of GNU Multiple Precision library, and several of Boost libraries. These tools should be available in an
-user's environment for program to compile.
+Project is written with a C++ language, and so it requires some C++ compiler to be present. It also makes
+use of GNU Multiple Precision library, and several of Boost libraries. These tools should be available in
+the user's environment for a program to compile.
 
 Compilations and dependencies are manged by a SCons tool. As such Python and SCons installations are also
 required.
@@ -75,8 +75,8 @@ explaining how to install Boost on Windows and make it visible to Cygwin environ
 
 ### Clang instead of GCC
 
-Project can be built with Clang compiler. It shoule be noted though that there is a bug in boost library
-(in version 1.48) that would fail building process:
+Project can be built with Clang compiler. It should be noted though that there is a "bug" in a Boost library
+(in version prior to 1.50.0-beta1) that would fail building process:
 
     ...
     /usr/include/boost/container/allocator/allocator_traits.hpp:167:54: error: missing 'typename' prior to dependent type name 'boost::intrusive::detail::type_rebinder<Alloc, T>::type'
@@ -116,7 +116,8 @@ Builder can also run specified tasks:
 
 ### Clang
 
-To build project using Clang you might try run builder like this: `CXX=clang++ CC=clang scons`.
+To build project using Clang you should run builder like this: `CXX=clang++ CC=clang scons` provided
+that you have Boost version at least `1.50.0-beta1`.
 
 ### Static linking
 
@@ -144,8 +145,8 @@ Some examples of correct GTL syntax can be found in `examples` directory.
 
 ## Generating documentation
 
-To generate documentation `Doxygen` version `1.8.5` is recommended. Versions prior to `1.8.2` did not have
-C++11 support, and will generate invalid documentation due to e.g. `final` specifier usage.
+To generate documentation `Doxygen` at least version `1.8.5` is required. Versions prior to `1.8.2` did not
+have C++11 support, and will generate invalid documentation due to e.g. `final` specifier usage.
 
 Before running Doxygen execute `scone -Q buildParserClasses` task to make sure that flex-and-bison generated
 files are present during the generation of documentation.
@@ -160,12 +161,6 @@ programmer - run command `doxygen doxygen/private_api` from main dicrectory.
 ## Documentation
 
 Documentation itself can also be found [here](https://github.com/MateuszKubuszok/MasterThesis/wiki).
-
-
-## To do
-
- * Implement 2-player matrix and 0-sum routines for strategic-from games,
- * add Condition to set calculations accuracy.
 
 
 ## License
