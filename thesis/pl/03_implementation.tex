@@ -96,16 +96,62 @@ Funkcja hashująca jest bijekcią ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i
 
 \subsection{Gry w formie ekstensywnej}
 
+Gry w postaci ekstensywnej opisują struktury w formie drzewa i tak też są implementowane w programie. Każdemu
+wierzchołkowi w grafie opowiada obiekt wierzchołka przechowujący mapę potomków - rozwiązane uznano za mniej problematyczne
+niż tablica hashująca ze względu na brak wymogu obecności każdej zadeklarowanej strategii gracza podejmującego decyzję w danym
+wierzchołku w zbiorze potomków tego wierzchołka.
+
+Funkcja wypłaty przeszukuje drzewo i zwraca wartości przechowywane w odnalezionym węźle.
+
 \section{Procedury obliczające równowagi}
 
 \subsection{Gry w formie strategicznej}
 
+Ponieważ nie jest znany żaden wydajny algorytm odnajdywania równowagi w strategiach czystych w grach strategicznych konieczne
+jest przeszukanie całej przestrzeni rozwiązań - testowania każdej kombinacji strategii jako potencjalnej równowagi Nasha.
+Jedyną możliwą do zastosowania optymalizacją jest eliminacja strategii zdominowanych, nie gwarantuje ona jednak, że wyeliminowane
+zostanie jakaś znacząca ilość strategii (w najgorszym przypadku żadna).
+
+Program korzysta z odwracalności przyjętej funkcji hashującej iterować po wszystkich wartościach hasha, odzyskiwać z nich krotkę
+strategii i testować ją pod względem wyznaczania równowagi Nasha.
+
+Strategie mieszane w grach jedno- i dwumacierzowych jako obliczane przy pomocy algorytmu Simpleks są obliczane przez proste wypełnienie
+modeli biblioteki GLPK i oddelegowanie obliczenia wartości problemu liniowego/całkowitoliczbowego na jej procedury.
+
+\subsection{Gry w formie ekstensywnej}
+
+Rozważane są wyłącznie gry z informacją doskonałą - mają one tą przyjemną własność, że w każdym wierzchołku jeśli
+tylko obliczymy optymalny wybór dla synów danego wierzchołka możemy wybrać strategię dla samego wierzchołka - wybieramy
+zawsze tą, która posiada największą wypłatę dla gracza decydującego w danych wierzchołku. Możliwe jest więc obliczenie
+równowagi Nasha rekurencyjnie - dla każdego wierzchołka obliczamy wypłaty oraz decyzje jego synów, po czym wybieramy najbardziej
+korzystny wariant i zwracamy (zarówno wypłatę jak i decyzje podjęte w wierzchołkach potomnych). Na samym końcu będziemy posiadali
+wartości wypłaty w punkcie równowagi oraz decyzje podjęte przez graczy w każdym z wierzchołków.
+
 \section{Parser danych wejściowych}
 
-TODO
+Za przetwarzanie danych wejściowych odpowiada parser napisany przy pomocy pakietów \LIB{Flex} oraz \LIB{Bison}. Ponieważ przy ich
+pomocy tworzy się parsery typu LALR możliwe jest pisane przejrzystej łatwej w łatwej w rozwijaniu gramatyki, zaś wyjściowy kod jest
+wydajny i bezpieczny.
 
 \section{Praktyki przyjęte w projekcie}
 
-TODO
+W projekcie przyjęto pewne zasady pozwalające na lepszą organizację oraz łatwiejsze poruszanie się po kodzie. Przede wszystkim
+projekt podzielony został na moduły:
+\begin{itemize}
+\item \textbf{model} - zawiera definicje modeli, oraz metod dostępowych do przechowywanych w nich danych,
+\item \textbf{routines} - zawiera definicje algorytmów obliczających równowagi w poszczególnych rodzajach gier,
+\item \textbf{gtl} - zawiera definicje parsera oraz klas reprezentujących poszczególne wierzchołki drzewa składniowego,
+\item \textbf{program} - zawiera definicje oraz funkcje używane przy uruchamianiu programu.
+\end{itemize}
+
+Projekt został również podzielony na 2 nadrzędne katalogi:
+\begin{itemize}
+\item \textbf{include} - zawiera publiczne nagłówki, które powinny być widoczne dla programistów chcących korzystać wyłącznie z biblioteki
+ale nie z programu wykonywalnego. Większość deklaracji stanowią interfejsy oraz fabryki pozwalające uzyskać dostęp do implementacji,
+zadeklarowanych klas,
+\item \textbf{src} - zawiera wewnętrzne nagłówki oraz implementacje publicznych interfejsów.
+\end{itemize}
+Ponieważ większość klas jest udostępniana wyłączne jako interfejsy, użytkownicy nie są zależni od większości zmian w wewnętrznym uporządkowaniu
+programu, wykorzystanych algorytmach oraz innych szczegółach implementacji podatnych na zmiany.
 
 \end{document}

@@ -1,0 +1,6 @@
+[submodule "thesis/median_theme/median_theme"]
+	path = thesis/median_theme/median_theme
+	url = https://bitbucket.org/marczellm/beamerports.git
+[submodule "thesis/beamerports"]
+	path = thesis/beamerports
+	url = https://bitbucket.org/marczellm/beamerports.git
