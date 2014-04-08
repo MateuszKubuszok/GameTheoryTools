@@ -54,10 +54,151 @@ pliki binarne (dostępne w katalogu \CODE{\\bin}):
 
 \chapter{Instrukcja obsługi biblioteki}
 
-TODO
+Po zbudowaniu biblioteka jest typową biblioteką języka \LANG{C++}. Oznacza to, że można ją dowolnie linkować
+do każdego programu pisanego w języku \LANG{C++} tak długo jak zapewniona będzie binarna kompatybilność między
+kompilatorem użytym do zbudowania biblioteki, a tym użytym do kompilacji programu. W przypadku \PROG{g++}
+zgodność taka zachodzi między większością wersji (złamano ją tylko w 2 przypadkach w ciągu ostatnich 10 lat),
+zaś kompilator \PROG{Clang} stara się zachować zgodność z \PROG{GCC} na poziomie zarówno binarnym jak i API. 
+
+W oby wyżej wymienionych przypadkach wystarczy podczas linkowania dodać parametr \textit{-lścieżka\_do\_biblioteki}
+aby linker mógł dołączyć bibliotekę do programu wykonywalnego.
+
+Aby korzystać z wszystkich obiektów i metod biblioteki konieczne jest również dołączenie nagłówków definiujących
+dane obiekty. Należy je dołączyć do ścieżki przeszukiwania poprzez parametr \textit{-iścieżka\_do\_katalogu\_include}
+wskazujący na katalog \CODE{include}. Wówczas wystarczy użyć makra \CODE{\#incude} wskazującego na jeden z poniższych
+plików:
+\begin{itemize}
+\item \textit{"gt.hpp"} - zawiera wyłącznie definicje wspólne dla wszystkich modułów oraz numer wersji biblioteki,
+\item \textit{"gt/version.hpp"} - zawiera wyłącznie numer wersji biblioteki,
+\item \textit{"gt/model.hpp"} - zawiera definicje interfejsów wykorzystywanych przez moduł \textbf{modelu}, a także 
+fabryk pozwalających uzyskać do stęp do ich implementacji,
+\item \textit{"gt/routines.hpp"} - zawiera definicje interfejsów wykorzystanych przez moduł \textbf{routines}, fabryk
+udostępniających ich implementacje. Odnosi się również do definicji wykorzystanych w module \textbf{model},
+\item \textit{"gt/gtl.hpp"} - definiuje interfejsy oraz fabryki modułu \textbf{GTL}, oraz odniesienia do dwóch poprzednich
+modułów,
+\item \textit{"gt/program.hpp"} - deklaracje modułu \textbf{program} oraz pozostałych modułów.
+\end{itemize}
+
+Przykładowo aby używać definicji modułu \textbf{GTL} należy użyć dyrektywy \CODE{\#include "gt/gtl.hpp"}.
+
+Szczegóły wykorzystania poszczególnych klas dostępne są przy użyciu dokumentacji wygenerowanej przy pomocy programu
+\PROG{Doxygen}. Przygotowano 3 jej konfiguracje do uruchomienia z katalogu głównego projektu, umieszczone w katalogu
+\CODE{doxygen}. Uruchamiając poszczególne konfiguracje uzyskamy:
+\begin{itemize}
+\item \CODE{doxygen doxygen/tutorial\_} - instrukcje kompilacji i uruchamiania projektu,
+\item \CODE{doxygen doxygen/public\_api} - dokumentacja publicznego API projektu, z której należy korzystać przy normalnym
+użytkowaniu biblioteki,
+\item \CODE{doxygen doxygen/private\_api} - pełna dokumentacja projektu, zawierająca opisy wewnętrznych klas i interfejsów
+projektu. Użyteczna głównie w celu rozwijania i ulepszania biblioteki.
+\end{itemize}
+
+Użyteczne w zrozumieniu działania poszczególnych metod mogą być ich testy jednostkowe - dostarczają one minimalny wzgląd
+w przypadki użycia poszczególnych klas oraz ich metod, a na podstawie ich kodu użytkownik biblioteki powinien być w stanie
+użyć ich własnoręcznie w swoim programie.
 
 \chapter{Instrukcja obsługi parsera}
 
-TODO
+\section{Uruchamianie}
+
+Parser zdefiniowany jest w module \textbf{GTL}, a sterowany za pośrednictwem modułu \textbf{program}. Aby z niego skorzystać
+powinniśmy uruchomić plik \PROG{gtl\_program}. Jako domyślne strumienie przyjmuje on standardowe wejście, standardowe wyjście
+oraz wyjście błędów. Możliwe jednak jest wczytanie z/pisanie do pliku zamiast tego:
+\begin{itemize}
+\item \CODE{gtl\_program -i plik} - wczytuje wejście z podanego pliku,
+\item \CODE{gtl\_program -o plik} - wypisuje wyjście do podanego pliku,
+\item \CODE{gtl\_program -e plik} - wypisuje wyjście błędów do podanego pliku.
+\end{itemize}
+
+Parser potrafi wyświetlać dane w jednym z 3 formatów: zwykły tekst (format domyślny), \CODE{XML} oraz \CODE{JSON}.
+Aby zmienić tryb wyświetlania należy uruchomić program z odpowiednim parametrem:
+\begin{itemize}
+\item \CODE{gtl\_program -r PLAIN} - zwykły tekst (domyślny format),
+\item \CODE{gtl\_program -r XML} - format \CODE{XML},
+\item \CODE{gtl\_program -r JSON} - format \CODE{JSON}.
+\end{itemize}
+
+Dodatkowo program można uruchomić z parametrami:
+\begin{itemize}
+\item \CODE{gtl\_program --version} - wyświetla numer wersji,
+\item \CODE{gtl\_program --help} - wyświetla pomoc odnośnie uruchomienia programu.
+\end{itemize}
+
+\section{Format danych wejściowych}
+
+Język \textbf{GTL} operuje na prostych obiektach, które można zapytać o jakąś ich własność. Można się do nich odnosić przez wartość jak również
+przez zdefiniowaną nazwę. Po wpisaniu polecenia:
+
+\CODE{LET name BE value;}
+
+Pod nazwą \CODE{name} dostępna będzie wartość \CODE{value}. Zapytania wyglądają następująco:
+
+\CODE{FIND property[, property2[, ...]] FOR value[, value2[, ...]];}
+
+dzięki czemu uzyskamy właściwości \CODE{property}, \CODE{propert2}, ... dla obiektów \CODE{value}, \CODE{value2}, ...
+
+Zdefiniowane imiennie dane dostępne są w ramach pewnego kontekstu. Gdy uruchamiany program inicjalizujemy pewien najwyższy kontekst i wszystkie
+zmienne jakie zdefiniujemy w konsoli będą do niego trafiać. Może on jednak posiadać konteksty potomne - uruchamiając polecenie:
+
+\CODE{EXECUTE "file";}
+
+tworzymy nowy kontekst dla pliku \CODE{file}, do niego trafią wszystkie definiowane zmienne i gdy wczytywanie pliku dobiegnie końca, zostanie on
+zniszczony wraz ze wszystkimi zmiennymi jakie w nim zdefiniowano. Posiadać on będzie dostęp do wszystkich zmiennych zdefiniowanych w kontekście
+z którego uruchomiono plik, a w przypadku konfliktu nazw, zmienna oryginalna zostanie przesłonięta jedynie w kontekście potomnym. Dla odmiany
+polecenie:
+
+\CODE{LOAD "file";}
+
+wczyta i wykona plik w bieżącym kontekście.
+
+Na chwilę obecną format GTL pozwala wyłącznie na samodzielne wykonywanie tych 4 poleceń - tworzenie obiektów może następować wyłącznie w ramach
+polecenie \CODE{LET ... BE ...;} lub \CODE{FIND ... FOR ...;}.
+
+\section{Gracze}
+
+Składnia tworzenia obiektu gracza wygląda następująco:
+
+\CODE{PLAYER name \{ strategy1[, strategy2[, ...]] \}}
+
+definiuje one gracza \CODE{name}, o strategiach czystych \CODE{strategy1}, \CODE{strategy2},
+... W praktyce występuje ona wyłącznie w połączeniu z poleceniem \CODE{LET ... BE ...;}:
+
+\CODE{LET player1 BE PLAYER \{ strategy1, strategy2 \};}
+
+lub z \CODE{FIND ... FOR ...;}:
+
+\CODE{FIND name, strategies FOR PLAYER name1 \{ strategy1, strategy2 \};}
+
+\section{Gry w postaci strategicznej}
+
+Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategi czystych poszczególnych
+graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
+
+\CODE{
+LET game1 BE
+  STRATEGIC GAME
+  WITH
+    player1, // gracz zdefiniowani wcześniej
+  	PLAYER player2 { strategy1, strategy2 } // gracz zdefiniowany ad hoc
+  SUCH AS
+    { player1=strategy1: // częściowo definiuje kombinacje strategii
+  	  { player2=strategy1: 10, 20 }, // uzupełnia kombinację o drugiego gracza
+  	  { player2=strategy2: 30, 40 }
+    },
+    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna kombinacja strategii graczy
+    { player1=strategy2, player2=strategy2: 70, 80 }
+  END;
+}
+
+Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Kombinacje strategii z kolei mogą być podawane
+od razu w komplecie jak również rozbite na etapy. Każda definicja strategii ma postać \CODE{\{ gracz=strategia[, gracz2=strategia2[, ...]] : [kolejne definicje lub wypłaty graczy] \}}. Wymagane jest podanie wszystkich wypłat jak również nie definiowane dwukrotnie wypłaty dla tej samej kombinacji strategii.
+
+Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mieszanych:
+
+\CODE{FIND pure\_equilibrium FOR game1;}
+
+Dla gier jednomacierzowych (tutaj: gier 2 graczy dla których każda kombinacja ma zdefiniowane 2 przeciwne wypłaty albo wręcz tylko jedną) oraz
+dwumacierzowych (gier 2 graczy gdzie każda kombinacja ma zdefiniowane 2 wypłaty) można dodatkowo próbować obliczyć równowagę w strategiach mieszanych:
+
+\CODE{FIND mixed\_equilibrium FOR game1;}
 
 \end{document}
