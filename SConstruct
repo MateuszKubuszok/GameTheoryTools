@@ -43,7 +43,7 @@ def targetForTest(file):
 def allFiles(file):
     return true
 
-def buildModule(env, module, filter=allFiles):
+def buildModule(env, module, filter=allFiles, shared=True):
     sources = Glob(source+module+'*.cpp')
     staticObjects = [
         env.StaticObject(
@@ -52,6 +52,8 @@ def buildModule(env, module, filter=allFiles):
         )
         for Source_cpp in sources
     ]
+    if not shared:
+        return staticObjects
     sharedObjects = [
         env.SharedObject(
             source=Source_cpp,
@@ -474,7 +476,7 @@ env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 
 # Build main containing objects
 
-Mains = buildModule(env, main)
+Mains = buildModule(env, main, shared=False)
 
 ##############################################################################################################
 
