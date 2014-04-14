@@ -1,4 +1,5 @@
 import os
+import SCons.Tool
 
 ##############################################################################################################
 
@@ -27,6 +28,21 @@ routines = 'gt/routines/'
 
 # Helpers for building objects and programs
 
+def precompiledStaticHeader(env, module, origin=source, name='inner_common'):
+    header     = origin+module+name
+    src_suffix = '.hpp'
+    suffix     = src_suffix + ('.pch' if (env['CXX'] is 'clang++') else '.gch')
+    return env.Object(
+        source     = header + src_suffix,
+        src_suffix = src_suffix,
+        target     = header + suffix,
+        suffix     = suffix,
+        CPPFLAGS   = env['CPPFLAGS'] + ['-x', 'c++']
+    )
+
+def precompiledStaticTestHeader(testEnv, module):
+    return precompiledStaticHeader(testEnv, module, origin=test, name='test_common')
+
 def targetForStatic(file):
     return str(file).replace('.cpp', env['OBJSUFFIX']).replace(source, objects)
 
@@ -39,41 +55,51 @@ def targetForExecutable(file):
 def targetForTest(file):
     return str(file).replace('.cpp', '_test'+env['OBJSUFFIX']).replace(test, objects)
 
-
 def allFiles(file):
     return True
 
-def buildModule(env, module, filter=allFiles, shared=True):
-    sources = Glob(source+module+'*.cpp')
+def buildModuleFrom(env, sources, module=None, shared=True, PCH=True, returnPCH=False):
+    header  = None
     staticObjects = [
         env.StaticObject(
             source=source_cpp,
             target=targetForStatic(source_cpp)
         )
         for source_cpp in sources
-        if  filter(source_cpp)
     ]
+    if PCH:
+        header = precompiledStaticHeader(env, module)
+        Depends(staticObjects, header)
     if not shared:
-        return staticObjects
+        return (staticObjects, header) if returnPCH else (staticObjects)
     sharedObjects = [
         env.SharedObject(
             source=source_cpp,
             target=targetForShared(source_cpp)
         )
         for source_cpp in sources
-        if  filter(source_cpp)
     ]
-    return staticObjects, sharedObjects
+    return (staticObjects, sharedObjects, header) if returnPCH else (staticObjects, sharedObjects)
 
-def buildModuleTest(testEnv, module, filter=allFiles):
-    return [
+def buildModule(env, module, filter=allFiles, shared=True, PCH=True, returnPCH=False):
+    sources = [source_cpp for source_cpp in Glob(source+module+'*.cpp') if filter(source_cpp)]
+    return buildModuleFrom(env, sources, module, shared, PCH, returnPCH)
+
+def buildModuleTest(testEnv, module, filter=allFiles, PCH=True, returnPCH=False):
+    sources = Glob(test+module+'*.cpp')
+    header  = None
+    tests = [
         testEnv.StaticObject(
             source=test_cpp,
             target=targetForTest(test_cpp)
         )
-        for test_cpp in Glob(test+module+'*.cpp')
+        for test_cpp in sources
         if  filter(test_cpp)
     ]
+    if PCH:
+        header = precompiledStaticTestHeader(testEnv, module)
+        Depends(tests, header)
+    return (tests, header) if returnPCH else (tests)
 
 def buildTestExecutable(testEnv, name, sources, logLevel, randomOrder, showProgress):
     testProgram_URI = programs+name+env['PROGSUFFIX']
@@ -100,10 +126,16 @@ def buildTestExecutable(testEnv, name, sources, logLevel, randomOrder, showProgr
 env = Environment()
 
 # Allows overridding default compiler with eg. Clang.
-env["CC"]          = os.getenv("CC")   or env["CC"]
-env["CXX"]         = os.getenv("CXX")  or env["CXX"]
-env["ENV"]["PATH"] = os.getenv("PATH") or env["ENV"]["PATH"]
-env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
+env['CC']          = os.getenv('CC')   or env['CC']
+env['CXX']         = os.getenv('CXX')  or env['CXX']
+env['ENV']['PATH'] = os.getenv('PATH') or env['ENV']['PATH']
+env['ENV'].update(x for x in os.environ.items() if x[0].startswith('CCC_'))
+
+# Adding precompiled headers handling
+
+staticPCHBuilding, sharedPCHBuilding = SCons.Tool.createObjBuilders(env)
+staticPCHBuilding.add_action('.hpp',  SCons.Defaults.CXXAction)
+staticPCHBuilding.add_emitter('.hpp', SCons.Defaults.StaticObjectEmitter)
 
 # Assuming that instalation is valid unless proved otherwise
 validInstallation = True
@@ -353,7 +385,7 @@ GTL_Parser_hpp_URI  = include+gtl+'parser.hpp'
 FnB_Scanner_ll_URI  = fnb        +'scanner.ll'
 GTL_Scanner_cpp_URI = source +gtl+'scanner.cpp'
 
-GTL_Parser_cpp = env.CXXFile(
+GTL_Parser_cpp, GTL_Parser_hpp = env.CXXFile(
     source=FnB_Parser_yy_URI,
     target=GTL_Parser_cpp_URI,
     YACCFLAGS=['--defines='+GTL_Parser_hpp_URI, '--verbose']
@@ -363,23 +395,24 @@ GTL_Scanner_cpp = env.CXXFile(
     target=GTL_Scanner_cpp_URI
 )
 
-WronglyPlacedBisonHelpers = SideEffect([
-    source+gtl+'location.hh',
-    source+gtl+'position.hh',
-    source+gtl+'stack.hh'
-], GTL_Parser_cpp)
+# We cant use SideEffect here because due to a bug it makes build fail
+WronglyPlacedBisonHelpers = [
+    'location.hh',
+    'position.hh',
+    'stack.hh'
+]
 
 CorrectBisonInstallation = [
     env.Command(
-        include+gtl+WronglyPlacedBisonHelper_hh.name,
-        WronglyPlacedBisonHelper_hh,
+        include+gtl+WronglyPlacedBisonHelper_hh,
+        source +gtl+WronglyPlacedBisonHelper_hh,
         Copy("$TARGET", "$SOURCE")
     )
     for WronglyPlacedBisonHelper_hh in WronglyPlacedBisonHelpers
 ]
 Depends(
     CorrectBisonInstallation,
-    [GTL_Parser_cpp, GTL_Scanner_cpp]
+    GTL_Parser_hpp
 )
 
 env.Alias('buildParserClasses', CorrectBisonInstallation)
@@ -388,16 +421,19 @@ env.Alias('buildParserClasses', CorrectBisonInstallation)
 
 # Build GTL objects
 
-def parserFile(file):
-    return file.name.endswith('scanner.cpp') or file.name.endswith('parser.cpp')
-def notParserFile(file):
-    return not parserFile(file)
+def notGenFile(file):
+    return not file.name.endswith('scanner.cpp') and not file.name.endswith('parser.cpp')
 
-GTLParserObjects,    SharedGTLParserObjects    = buildModule(parserEnv, gtl, filter=parserFile)
-GTLNotParserObjects, SharedGTLNotParserObjects = buildModule(env,       gtl, filter=notParserFile)
+GTLGenObjects, SharedGTLGenObjects = buildModuleFrom(
+    env     = parserEnv,
+    sources = [GTL_Parser_cpp, GTL_Scanner_cpp[0]],
+    PCH     = False
+)
+GTLNotGenObjects, SharedGTLNotGenObjects = buildModule(env, gtl, filter=notGenFile, PCH=False)
+Depends(precompiledStaticHeader(env, gtl), CorrectBisonInstallation)
 
-GTL       = GTLParserObjects       + GTLNotParserObjects
-SharedGTL = SharedGTLParserObjects + SharedGTLNotParserObjects
+GTL       = GTLGenObjects       + GTLNotGenObjects
+SharedGTL = SharedGTLGenObjects + SharedGTLNotGenObjects
 Depends(
     [GTL, SharedGTL],
     [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation]
@@ -408,7 +444,8 @@ env.Alias('buildGTL', GTL)
 
 # Build GTL's Tests objects
 
-GTLTests = buildModuleTest(testEnv, gtl)
+GTLTests, GTLTestsPCH = buildModuleTest(testEnv, gtl, returnPCH=True)
+Depends(GTLTestsPCH, CorrectBisonInstallation)
 testEnv.Alias('buildGTLTests', GTLTests)
 
 ##############################################################################################################
@@ -428,7 +465,8 @@ testEnv.Alias('runGTLTests', GTLTestsProgram_run)
 
 # Build Program's objects
 
-Programs, SharedPrograms = buildModule(env, program)
+Programs, SharedPrograms, ProgramsPCH = buildModule(env, program, returnPCH=True)
+Depends(ProgramsPCH, CorrectBisonInstallation)
 Depends(
     [Programs, SharedPrograms],
     [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation, GTLTestsProgram_run]
@@ -439,14 +477,15 @@ env.Alias('buildPrograms', Programs)
 
 # Build Program's Tests objects
 
-ProgramsTests = buildModuleTest(testEnv, program)
+ProgramsTests, ProgramsTestsPCH = buildModuleTest(testEnv, program, returnPCH=True)
+Depends(ProgramsTestsPCH, CorrectBisonInstallation)
 testEnv.Alias('buildProgramsTests', ProgramsTests)
 
 ##############################################################################################################
 
 # Build and run Program's tests
 
-ProgramsTestsProgram_bin, ProgramsTestsProgram_run = buildTestExecutable(testEnv,
+ProgramsTestsProgram_bin, ProgramsTestsProgram_run = buildTestExecutable(executablesTestEnv,
     name         = 'ProgramsTests',
     sources      = Models + Routines + GTL + Programs + ProgramsTests,
     logLevel     = logLevel,
@@ -479,7 +518,7 @@ env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 
 # Build main containing objects
 
-Mains = buildModule(env, main, shared=False)
+Mains = buildModule(env, main, shared=False, PCH=False)
 
 ##############################################################################################################
 

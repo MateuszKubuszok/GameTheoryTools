@@ -16,3 +16,5 @@
 /src/gt/gtl/parser.output
 /src/gt/gtl/scanner.cpp
 .fuse_hidden*
+*.gch
+*.pch
