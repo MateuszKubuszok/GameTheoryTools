@@ -9,3 +9,6 @@
 *.out
 *.pdf
 *.toc
+*.vrb
+*.snm
+*.nav

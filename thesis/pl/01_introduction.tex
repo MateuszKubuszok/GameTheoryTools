@@ -6,6 +6,47 @@
 
 \section*{Wstęp}
 
-TODO
+Celem pracy było stworzenie zestawu narzędzi do obliczania równowag Nasha w pewnych rodzajach gier skończonych. Narzędzia te miałyby umożliwić
+obliczenie ich po wprowadzeniu danych w jakimś przyjętym formacie, np. przy pomocy parsera, a następnie zwróceniu wyników użytkownikowi.
+Jedynymi obecnie dostępnymi narzędziami służącymi do tego celu jest pakiet Gambit, posiada on jednak dość trudną ograniczoną dokumentację, a jego
+kod źródłowy choć otwarty, nie jest w opinii autora łatwy w dalszym rozwijaniu, przez co użytkownicy są uzależnieni od dobrej woli twórców pod
+względem otrzymywania wsparcia dla projektu. Dodatkowo pakiet ten jest rozbity na moduły, przez co każdy problem jest rozwiązywany przy pomocy
+osobnego narzędzia - może to stanowić problem dla użytkowników oczekujących jednego narzędzia, którego sposób użycia określają w trakcie jego
+uruchomienia.
+
+W takiej sytuacji dobrym pomysłem wydaje się stworzenie alternatywy, nastawionej na możliwość łatwego rozwijania projektu oraz przyjaznego
+interfejsu umożliwiającego wykorzystanie go nawet mniej zaawansowanym użytkownikom. Aby projekt taki miał rację bytu powinien oczywiście
+implementować pewną minimalną funkcjonalność obrazującą jego potencjalne możliwości. Stworzenie prototypu pozwoliłoby stwierdzić czy taka
+filozofia projektu przyniosłaby jakąkolwiek korzyść użytkownikom - w przypadku odpowiedzi twierdzącej mogłoby to stanowić impuls do zmiany
+filozofii rozwoju innych narzędzi, chociażby wspomnianego już pakietu Gambit.
+
+W trakcie pisania pracy stworzony został prototyp demonstrujący opisywaną ideę. Zdecydowano się na język \LANG{C++}, który zapewnia wysoką
+wydajność przy dużej czytelności w przypadku programowania zorientowanego obiektowo. W przypadku algorytmów wykorzystujących Simplex, skorzystano
+z funkcji biblioteki \LIB{GLPK}. Prototyp umożliwia wczytanie danych przy pomocy parsera, obliczenie rozwiązania zadanego problemu i wyświetlenie wyniku.
+Posiada zaimplementowane algorytmu obliczające równowagi Nasha:
+\begin{itemize}
+\item w grach w postaci strategicznej dla strategii czystych,
+\item w grach jednomacierzowych dla strategii mieszanych,
+\item w grach dwumacierzowych dla strategii mieszanych,
+\item w grach ekstensywnych z informacją doskonałą.
+\end{itemize}
+
+Przy pisaniu pracy wykorzystano książki \textbf{DOPISZ KSIĄŻKI} oraz pracę \textbf{DOPISZ PRACĘ} jako źródła wiedzy teoretycznej na temat rozważanych
+problemów oraz dokumentację języka \LANG{C++} oraz bibliotek \LIB{Boost}, \LIB{GLPK}, \LIB{Bison} i \LIB{Flex} jako materiały pomocnicze przy faktycznej
+implementacji wspomnianych procedur.
+
+W poszczególnych rozdziałach opisano szczegóły na temat podstaw teoretycznych oraz realizacji projektu:
+\begin{enumerate}
+\item w dziale \textbf{Teoria} opisano podstawy teoretyczne stojące za projektem. Wprowadzają one pojęcia \textit{gier}, \textit{równowag Nasha},
+\textit{strategii czystych i mieszanych} oraz postaci \textit{strategicznej} oraz \textit{ekstensywnej} gier. Opisuje również algorytmu służące do
+obliczenia równowag w rozpatrywanych przypadkach gier,
+\item w dziale \textbf{Implementacja} opisano szczegóły realizacji programu, strukturę wewnętrzną oraz przyjęty model danych, jak również algorytmy
+nie związane bezpośrednio z teorią gier ale wymagane do poprawnego działania programu,
+\item w dziale \textbf{Wnioski} opisano wnioski wyciągnięte podczas rozwoju projektu oraz możliwości dalszego jego rozwoju,
+\item załączniki zawierają co ciekawsze fragmenty programu jak również informacje na temat jego kompilacji i użytkowania.
+\end{enumerate}
+
+W ogólności cele pracy można uznać za zrealizowane. Jej wynikiem jest działający program, który posiada wymaganą funkcjonalność co dowodzi realizowalności
+przyjętych założeń. Szczegóły zostały uważniej omówione w poszczególnych działach.
 
 \end{document}
