@@ -61,7 +61,7 @@ On *Windows 7* the project was successfully built with *Cygwin* and following it
 
 as well as their required dependencies.
 
-Boost libraries need to be build manually separately since version provided with Cygwin doesn't contain e.g.
+Boost libraries need to be build separately and manually since version provided with Cygwin doesn't contain e.g.
 *Boost Unit Test Framework* - version *1.54* is known to work well. After extracting source to directory of
 choice call commands under Cygwin terminal:
 
@@ -71,7 +71,9 @@ choice call commands under Cygwin terminal:
     ./b2 install --prefix=[cygwin directory] architecture=x86 address-model=64 # for x86_64 (64-bit)
 
 making sure that choosen architecture matches Cygwin's one. Alternatively you might try any other tutorial
-explaining how to install Boost on Windows and make it visible to Cygwin environment.
+explaining how to install Boost on Windows and make it visible to Cygwin environment. Also make sure that
+`--prefix` points to the root directory of Cygwin installation - this way `[prefix]/lib` will match
+`[Cygwin]/lib` and so on.
 
 ### Clang instead of GCC
 
@@ -161,6 +163,8 @@ programmer - run command `doxygen doxygen/private_api` from main dicrectory.
 ## Documentation
 
 Documentation itself can also be found [here](https://github.com/MateuszKubuszok/MasterThesis/wiki).
+
+Additional information about SCons builder can be found on a [project's site](http://www.scons.org/).
 
 
 ## License
