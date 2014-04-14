@@ -108,7 +108,8 @@ for library in libraries:
 
 # Sets C++11 standard to be used during compilation.
 # Makes executables contain debug information.
-conf.env.Append(CPPFLAGS=['-std=c++11', '-g'])
+# Turns on optimization.
+conf.env.Append(CPPFLAGS=['-std=c++11', '-g', '-O3'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
