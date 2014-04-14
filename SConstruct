@@ -39,6 +39,55 @@ def targetForExecutable(file):
 def targetForTest(file):
     return str(file).replace('.cpp', '_test'+env['OBJSUFFIX']).replace(test, objects)
 
+
+def allFiles(file):
+    return true
+
+def buildModule(env, module, filter=allFiles):
+    sources = Glob(source+module+'*.cpp')
+    staticObjects = [
+        env.StaticObject(
+            source=Source_cpp,
+            target=targetForStatic(Source_cpp)
+        )
+        for Source_cpp in sources
+    ]
+    sharedObjects = [
+        env.SharedObject(
+            source=Source_cpp,
+            target=targetForShared(Source_cpp)
+        )
+        for Source_cpp in sources
+    ]
+    return staticObjects, sharedObjects
+
+def buildModuleTest(testEnv, module, filter=allFiles):
+    return [
+        testEnv.StaticObject(
+            source=test_cpp,
+            target=targetForTest(test_cpp)
+        )
+        for test_cpp in Glob(test+module+'*.cpp')
+    ]
+
+def buildTestExecutable(testEnv, name, sources, logLevel, randomOrder, showProgress):
+    testProgram_URI = programs+name+env['PROGSUFFIX']
+    testProgram_bin = testEnv.Program(
+        source=sources,
+        target=testProgram_URI
+    )
+    testProgram_run = Command(
+        source=testProgram_bin,
+        target=name+'-mock-content',
+        action=testProgram_URI+
+            ' --log_level='+logLevel+
+            ' --random='+randomOrder+
+            ' --show_progress='+showProgress
+    )
+    Depends(testProgram_run, testProgram_bin)
+    AlwaysBuild(testProgram_run)
+    return testProgram_bin, testProgram_run
+
 ##############################################################################################################
 
 # Production environment configuration
@@ -235,77 +284,34 @@ if not validInstallation:
 
 # Build Model objects
 
-Models = [
-    env.StaticObject(
-        source=Model_cpp,
-        target=targetForStatic(Model_cpp)
-    )
-    for Model_cpp in Glob(source+model+'*.cpp')
-]
-SharedModels = [
-    env.SharedObject(
-        source=Model_cpp,
-        target=targetForShared(Model_cpp)
-    )
-    for Model_cpp in Glob(source+model+'*.cpp')
-]
+Models, SharedModels = buildModule(env, model)
 env.Alias('buildModels', Models)
 
 ##############################################################################################################
 
 # Build Models' Tests objects
 
-ModelsTests = [
-    testEnv.StaticObject(
-        source=ModelTest_cpp,
-        target=targetForTest(ModelTest_cpp)
-    )
-    for ModelTest_cpp in Glob(test+model+'*.cpp')
-]
+ModelsTests = buildModuleTest(testEnv, model)
 testEnv.Alias('buildModelsTests', ModelsTests)
 
 ##############################################################################################################
 
 # Build and run Model tests
 
-ModelsTestsProgram_URI = programs+'ModelsTests'+env['PROGSUFFIX']
-ModelsTestsProgram_bin = testEnv.Program(
-    source=Models + ModelsTests,
-    target=ModelsTestsProgram_URI
+ModelsTestsProgram_bin, ModelsTestsProgram_run = buildTestExecutable(testEnv,
+    name         = 'ModelsTests',
+    sources      = Models + ModelsTests,
+    logLevel     = logLevel,
+    randomOrder  = randomOrder,
+    showProgress = showProgress
 )
-ModelsTestsProgram_run = Command(
-    source=ModelsTestsProgram_bin,
-    target='model-mock-content',
-    action=ModelsTestsProgram_URI+
-        ' --log_level='+logLevel+
-        ' --random='+randomOrder+
-        ' --show_progress='+showProgress
-)
-Depends(
-    ModelsTestsProgram_run,
-    ModelsTestsProgram_bin
-)
-AlwaysBuild(ModelsTestsProgram_run)
 testEnv.Alias('runModelsTests', ModelsTestsProgram_run)
 
 ##############################################################################################################
 
 # Build Routines objects
 
-Routines = [
-    env.StaticObject(
-        source=Routine_cpp,
-        target=targetForStatic(Routine_cpp)
-    )
-    for Routine_cpp in Glob(source+routines+'*.cpp')
-]
-SharedRoutines = [
-    env.SharedObject(
-        source=Routine_cpp,
-        target=targetForShared(Routine_cpp)
-    )
-    for Routine_cpp in Glob(source+routines+'*.cpp')
-]
+Routines, SharedRoutines = buildModule(env, routines)
 Depends(
     [Routines, SharedRoutines],
     ModelsTestsProgram_run
@@ -316,37 +322,20 @@ env.Alias('buildRoutines', Routines)
 
 # Build Routines' Tests objects
 
-RoutinesTests = [
-    testEnv.StaticObject(
-        source=RoutineTest_cpp,
-        target=targetForTest(RoutineTest_cpp)
-    )
-    for RoutineTest_cpp in Glob(test+routines+'*.cpp')
-]
+RoutinesTests = buildModuleTest(testEnv, routines)
 testEnv.Alias('buildRoutinesTests', RoutinesTests)
 
 ##############################################################################################################
 
 # Build and run Routine tests
 
-RoutinesTestsProgram_URI = programs+'RoutinesTests'+env['PROGSUFFIX']
-RoutinesTestsProgram_bin = testEnv.Program(
-    source=Models + Routines + RoutinesTests,
-    target=RoutinesTestsProgram_URI
+RoutinesTestsProgram_bin, RoutinesTestsProgram_run = buildTestExecutable(testEnv,
+    name         = 'RoutinesTests',
+    sources      = Models + Routines + RoutinesTests,
+    logLevel     = logLevel,
+    randomOrder  = randomOrder,
+    showProgress = showProgress
 )
-RoutinesTestsProgram_run = Command(
-    source=RoutinesTestsProgram_bin,
-    target='routines-mock-content',
-    action=RoutinesTestsProgram_URI+
-        ' --log_level='+logLevel+
-        ' --random='+randomOrder+
-        ' --show_progress='+showProgress
-)
-Depends(
-    RoutinesTestsProgram_run,
-    RoutinesTestsProgram_bin
-)
-AlwaysBuild(RoutinesTestsProgram_run)
 testEnv.Alias('runRoutinesTests', RoutinesTestsProgram_run)
 
 ##############################################################################################################
@@ -394,40 +383,16 @@ env.Alias('buildParserClasses', CorrectBisonInstallation)
 
 # Build GTL objects
 
-GTL = [
-    parserEnv.StaticObject(
-        source=GTL_cpp,
-        target=targetForStatic(GTL_cpp)
-    )
-    for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if  GTL_cpp.name.endswith('scanner.cpp')
-    or  GTL_cpp.name.endswith('parser.cpp')
-] + [
-    env.StaticObject(
-        source=GTL_cpp,
-        target=targetForStatic(GTL_cpp)
-    )
-    for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if  not GTL_cpp.name.endswith('scanner.cpp')
-    and not GTL_cpp.name.endswith('parser.cpp')
-]
-SharedGTL = [
-    parserEnv.SharedObject(
-        source=GTL_cpp,
-        target=targetForShared(GTL_cpp)
-    )
-    for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if  GTL_cpp.name.endswith('scanner.cpp')
-    or  GTL_cpp.name.endswith('parser.cpp')
-] + [
-    env.SharedObject(
-        source=GTL_cpp,
-        target=targetForShared(GTL_cpp)
-    )
-    for GTL_cpp in Glob(source+gtl+'*.cpp')
-    if  not GTL_cpp.name.endswith('scanner.cpp')
-    and not GTL_cpp.name.endswith('parser.cpp')
-]
+def parserFile(file):
+    return file.name.endswith('scanner.cpp') or file.name.endswith('parser.cpp')
+def notParserFile(file):
+    return not parserFile(file)
+
+GTLParserObjects,    SharedGTLParserObjects    = buildModule(parserEnv, gtl, parserFile)
+GTLNotParserObjects, SharedGTLNotParserObjects = buildModule(parserEnv, gtl, notParserFile)
+
+GTL       = GTLParserObjects       + GTLNotParserObjects
+SharedGTL = SharedGTLParserObjects + SharedGTLNotParserObjects
 Depends(
     [GTL, SharedGTL],
     [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation]
@@ -438,60 +403,30 @@ env.Alias('buildGTL', GTL)
 
 # Build GTL's Tests objects
 
-GTLTests = [
-    testEnv.StaticObject(
-        source=GTLTest_cpp,
-        target=targetForTest(GTLTest_cpp)
-    )
-    for GTLTest_cpp in Glob(test+gtl+'*.cpp')
-]
+GTLTests = buildModuleTest(testEnv, gtl)
 testEnv.Alias('buildGTLTests', GTLTests)
 
 ##############################################################################################################
 
 # Build and run GTL tests
 
-GTLTestsProgram_URI = programs+'GTLTests'+env['PROGSUFFIX']
-GTLTestsProgram_bin = testEnv.Program(
-    source=Models + Routines + GTL + GTLTests,
-    target=GTLTestsProgram_URI
+GTLTestsProgram_bin, GTLTestsProgram_run = buildTestExecutable(testEnv,
+    name         = 'GTLTests',
+    sources      = Models + Routines + GTL + GTLTests,
+    logLevel     = logLevel,
+    randomOrder  = randomOrder,
+    showProgress = showProgress
 )
-GTLTestsProgram_run = Command(
-    source=GTLTestsProgram_bin,
-    target='gtl-mock-content',
-    action=GTLTestsProgram_URI+
-        ' --log_level='+logLevel+
-        ' --random='+randomOrder+
-        ' --show_progress='+showProgress
-)
-Depends(
-    GTLTestsProgram_run,
-    GTLTestsProgram_bin
-)
-AlwaysBuild(GTLTestsProgram_run)
 testEnv.Alias('runGTLTests', GTLTestsProgram_run)
 
 ##############################################################################################################
 
 # Build Program's objects
 
-Programs = [
-    env.StaticObject(
-        source=Program_cpp,
-        target=targetForStatic(Program_cpp)
-    )
-    for Program_cpp in Glob(source+program+'*.cpp')
-]
-SharedPrograms = [
-    env.SharedObject(
-        source=Program_cpp,
-        target=targetForShared(Program_cpp)
-    )
-    for Program_cpp in Glob(source+program+'*.cpp')
-]
+Programs, SharedPrograms = buildModule(env, program)
 Depends(
     [Programs, SharedPrograms],
-    GTLTestsProgram_run
+    [ModelsTestsProgram_run, RoutinesTestsProgram_run, CorrectBisonInstallation, GTLTestsProgram_run]
 )
 env.Alias('buildPrograms', Programs)
 
@@ -499,37 +434,20 @@ env.Alias('buildPrograms', Programs)
 
 # Build Program's Tests objects
 
-ProgramsTests = [
-    testEnv.StaticObject(
-        source=ProgramTest_cpp,
-        target=targetForTest(ProgramTest_cpp)
-    )
-    for ProgramTest_cpp in Glob(test+program+'*.cpp')
-]
+ProgramsTests = buildModuleTest(testEnv, program)
 testEnv.Alias('buildProgramsTests', ProgramsTests)
 
 ##############################################################################################################
 
 # Build and run Program's tests
 
-ProgramsTestsProgram_URI = programs+'ProgramsTests'+env['PROGSUFFIX']
-ProgramsTestsProgram_bin = executablesTestEnv.Program(
-    source=Models + Routines + GTL + Programs + ProgramsTests,
-    target=ProgramsTestsProgram_URI
+ProgramsTestsProgram_bin, ProgramsTestsProgram_run = buildTestExecutable(testEnv,
+    name         = 'ProgramsTests',
+    sources      = Models + Routines + GTL + Programs + ProgramsTests,
+    logLevel     = logLevel,
+    randomOrder  = randomOrder,
+    showProgress = showProgress
 )
-ProgramsTestsProgram_run = Command(
-    source=ProgramsTestsProgram_bin,
-    target='programs-mock-content',
-    action=ProgramsTestsProgram_URI+
-        ' --log_level='+logLevel+
-        ' --random='+randomOrder+
-        ' --show_progress='+showProgress
-)
-Depends(
-    ProgramsTestsProgram_run,
-    ProgramsTestsProgram_bin
-)
-AlwaysBuild(ProgramsTestsProgram_run)
 executablesTestEnv.Alias('runProgramsTests', ProgramsTestsProgram_run)
 
 ##############################################################################################################
@@ -556,13 +474,7 @@ env.Alias('buildLibraries', [GTTStaticLibrary_bin, GTTSharedLibrary_bin])
 
 # Build main containing objects
 
-Mains = [
-    env.StaticObject(
-        source=Main_cpp,
-        target=targetForStatic(Main_cpp)
-    )
-    for Main_cpp in Glob(source+main+'*.cpp')
-]
+Mains = buildModule(env, main)
 
 ##############################################################################################################
 
