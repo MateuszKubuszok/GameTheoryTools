@@ -41,25 +41,27 @@ def targetForTest(file):
 
 
 def allFiles(file):
-    return true
+    return True
 
 def buildModule(env, module, filter=allFiles, shared=True):
     sources = Glob(source+module+'*.cpp')
     staticObjects = [
         env.StaticObject(
-            source=Source_cpp,
-            target=targetForStatic(Source_cpp)
+            source=source_cpp,
+            target=targetForStatic(source_cpp)
         )
-        for Source_cpp in sources
+        for source_cpp in sources
+        if  filter(source_cpp)
     ]
     if not shared:
         return staticObjects
     sharedObjects = [
         env.SharedObject(
-            source=Source_cpp,
-            target=targetForShared(Source_cpp)
+            source=source_cpp,
+            target=targetForShared(source_cpp)
         )
-        for Source_cpp in sources
+        for source_cpp in sources
+        if  filter(source_cpp)
     ]
     return staticObjects, sharedObjects
 
@@ -70,6 +72,7 @@ def buildModuleTest(testEnv, module, filter=allFiles):
             target=targetForTest(test_cpp)
         )
         for test_cpp in Glob(test+module+'*.cpp')
+        if  filter(test_cpp)
     ]
 
 def buildTestExecutable(testEnv, name, sources, logLevel, randomOrder, showProgress):
@@ -390,8 +393,8 @@ def parserFile(file):
 def notParserFile(file):
     return not parserFile(file)
 
-GTLParserObjects,    SharedGTLParserObjects    = buildModule(parserEnv, gtl, parserFile)
-GTLNotParserObjects, SharedGTLNotParserObjects = buildModule(parserEnv, gtl, notParserFile)
+GTLParserObjects,    SharedGTLParserObjects    = buildModule(parserEnv, gtl, filter=parserFile)
+GTLNotParserObjects, SharedGTLNotParserObjects = buildModule(env,       gtl, filter=notParserFile)
 
 GTL       = GTLParserObjects       + GTLNotParserObjects
 SharedGTL = SharedGTLParserObjects + SharedGTLNotParserObjects
