@@ -126,7 +126,7 @@ conf.Finish()
 parserEnv = env.Clone()
 
 # Sets warning informations in main conf.
-env.Append(CPPFLAGS=['-Wall', '-Wextra', '-pedantic'])
+env.Append(CPPFLAGS=['-Wall', '-Wextra', '-Werror', '-pedantic-errors'])
 
 ##############################################################################################################
 
