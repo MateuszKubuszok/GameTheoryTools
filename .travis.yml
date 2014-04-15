@@ -3,8 +3,8 @@ compiler:
               - gcc
               - clang
 env:
-              - CONFIG=debug=1
-              - CONFIG=optimize=1
+              - TARGET=release DEBUG=0 OPTIMIZE=1
+              - TARGET=debug   DEBUG=1 OPTIMIZE=0
 before_install:
               - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
               - sudo add-apt-repository ppa:boost-latest/ppa -y
@@ -23,9 +23,9 @@ install:
               - flex  --version
               - bison --version
               - scons --version
-script:         scons -Q buildExecutables --implicit-deps-unchanged --jobs 4 $CONFIG
+script:         scons --implicit-deps-unchanged --jobs 4 --debug=$DEBUG --optimize=$OPTIMIZE
 after_success:
-              - ls -la bin/
+              - ls -la bin/$TARGET
               - sudo apt-get -qq install valgrind
               - valgrind --version
               - valgrind --leak-check=full --error-exitcode=1 bin/ModelsTests

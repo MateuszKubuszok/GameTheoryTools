@@ -3,9 +3,9 @@ import SCons.Tool
 
 ##############################################################################################################
 
-useStaticLink = ARGUMENTS.get('static', 0)
-optimization  = ARGUMENTS.get('optimize', 0)
-debugSymbols  = ARGUMENTS.get('debug', 0)
+useStaticLink = ARGUMENTS.get('--static',   0)
+debugSymbols  = ARGUMENTS.get('--debug',    0)
+optimization  = ARGUMENTS.get('--optimize', 1-debugSymbols)
 
 ##############################################################################################################
 
@@ -16,8 +16,8 @@ fnb      = 'f_n_b/'
 include  = 'include/'
 source   = 'src/'
 test     = 'test/'
-objects  = 'objects/'
-programs = 'bin/'
+objects  = 'objects/' + ('debug/' if debugSymbols else 'release/')
+programs = 'bin/'     + ('debug/' if debugSymbols else 'release/')
 
 # Packages directories
 gtl      = 'gt/gtl/'
@@ -25,6 +25,22 @@ main     = 'gt/main/'
 model    = 'gt/model/'
 program  = 'gt/program/'
 routines = 'gt/routines/'
+
+##############################################################################################################
+
+# Used flags
+
+GccFlags = {
+    'COMMON'       : [ '-std=c++11' ],
+    'WARNINGS'     : ['-Wall', '-Wextra', '-Werror', '-pedantic-errors'],
+    'DEBUG'        : [ 'g' ],
+    'OPTIMIZATION' : [ '-O3' ],
+    'STATIC'       : [ '--static' ],
+    'PCH'          : [ '-x', 'c++' ]
+}
+
+# Select used flags
+Flags = GccFlags
 
 ##############################################################################################################
 
@@ -39,7 +55,7 @@ def precompiledStaticHeader(env, module, origin=source, name='inner_common'):
         src_suffix = src_suffix,
         target     = header + suffix,
         suffix     = suffix,
-        CPPFLAGS   = env['CPPFLAGS'] + ['-x', 'c++']
+        CPPFLAGS   = env['CPPFLAGS'] + Flags['PCH']
     )
 
 def precompiledStaticTestHeader(testEnv, module):
@@ -195,13 +211,13 @@ for library in libraries:
         validInstallation = False
 
 # Sets C++11 standard to be used during compilation.
-conf.env.Append(CPPFLAGS=['-std=c++11'])
+conf.env.Append(CPPFLAGS=Flags['COMMON'])
 # Makes executables contain debug information.
 if debugSymbols:
-    conf.env.Append(CPPFLAGS=['-g'])
+    conf.env.Append(CPPFLAGS=Flags['DEBUG'])
 # Turns on optimization.
 if optimization:
-    conf.env.Append(CPPFLAGS=['-O3'])
+    conf.env.Append(CPPFLAGS=Flags['OPTIMIZATION'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
@@ -219,7 +235,7 @@ conf.Finish()
 parserEnv = env.Clone()
 
 # Sets warning informations in main conf.
-env.Append(CPPFLAGS=['-Wall', '-Wextra', '-Werror', '-pedantic-errors'])
+env.Append(CPPFLAGS=Flags['WARNINGS'])
 
 ##############################################################################################################
 
@@ -244,7 +260,7 @@ executablesConf.env.Append(LIBS=executablesLibraries)
 
 # Sets up linking method
 if useStaticLink:
-    executablesConf.env.Append(LINKFLAGS='--static')
+    executablesConf.env.Append(LINKFLAGS=Flags['STATIC'])
 
 executablesConf.Finish()
 
