@@ -123,15 +123,15 @@ that you have Boost version at least `1.50.0-beta1`.
 
 ### Debug symbols
 
-To build with debug symbols run builder with argument `--debug=1`.
+To build with debug symbols run builder with argument `--Debug=1`.
 
 ### Optimizarion
 
-To turn on optimization run with builder argument `--optimize=1`.
+To turn on optimization run with builder argument `--Optimize=1`.
 
 ### Static linking
 
-To make executables (`gtl_program`) statically linked run SCons with argument `--static=1`. Note, that this
+To make executables (`gtl_program`) statically linked run SCons with argument `--Static=1`. Note, that this
 would require having installed static versions of all required libraries, otherwise linker will fail.
 
 
