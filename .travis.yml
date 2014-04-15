@@ -37,9 +37,11 @@ after_success:
               - valgrind --leak-check=full --error-exitcode=1 bin/RoutinesTests
               - valgrind --leak-check=full --error-exitcode=1 bin/GTLTests
               - valgrind --leak-check=full --error-exitcode=1 bin/ProgramsTests
-              - valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/strategic_form_game.gtl
-              - valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/extensive_form_game.gtl
-              - valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/properties_querying.gtl
+              - if [ "$TASK" = "buildExecutables" ]; then
+              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/strategic_form_game.gtl
+              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/extensive_form_game.gtl
+              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/properties_querying.gtl
+              - fi
 branches:
   except:       gh-pages
 notifications:
