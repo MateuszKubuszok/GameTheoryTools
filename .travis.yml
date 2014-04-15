@@ -3,7 +3,7 @@ compiler:
               - gcc
               - clang
 env:
-              - TARGET=release CONFIG=optimiye=1
+              - TARGET=release CONFIG=optimize=1
               - TARGET=debug   CONFIG=debug=1
 before_install:
               - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
