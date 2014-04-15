@@ -107,7 +107,7 @@
  *
  * To build project in debug mode use `Debug=1` argument e.g.:
  * @code
-   scons -Q buildExecutables debug=1
+   scons -Q buildExecutables DebugMode=1
    @endcode
  * By default it is turend off (release mode).
  *

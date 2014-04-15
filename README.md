@@ -123,7 +123,7 @@ that you have Boost version at least `1.50.0-beta1`.
 
 ### Debug symbols
 
-To build with debug symbols run builder with argument `Debug=1`.
+To build with debug symbols run builder with argument `DebugMode=1`.
 
 ### Optimizarion
 
