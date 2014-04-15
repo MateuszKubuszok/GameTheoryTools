@@ -33,7 +33,7 @@ routines = 'gt/routines/'
 GccFlags = {
     'COMMON'       : [ '-std=c++11' ],
     'WARNINGS'     : ['-Wall', '-Wextra', '-Werror', '-pedantic-errors'],
-    'DEBUG'        : [ 'g' ],
+    'DEBUG'        : [ '-g' ],
     'OPTIMIZATION' : [ '-O3' ],
     'STATIC'       : [ '--static' ],
     'PCH'          : [ '-x', 'c++' ]
