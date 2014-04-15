@@ -15,7 +15,7 @@ Project is written with a C++ language, and so it requires some C++ compiler to 
 use of GNU Multiple Precision library, and several of Boost libraries. These tools should be available in
 the user's environment for a program to compile.
 
-Compilations and dependencies are manged by a SCons tool. As such Python and SCons installations are also
+Compilations and dependencies are managed by a SCons tool. As such Python and SCons installations are also
 required.
 
 GTL parser uses Flex and Bison tools to build `.cpp` files.
@@ -70,7 +70,7 @@ choice call commands under Cygwin terminal:
     ./b2 install --prefix=[cygwin directory]                                   # for x86 (32-bit)
     ./b2 install --prefix=[cygwin directory] architecture=x86 address-model=64 # for x86_64 (64-bit)
 
-making sure that choosen architecture matches Cygwin's one. Alternatively you might try any other tutorial
+making sure that chosen architecture matches Cygwin's one. Alternatively you might try any other tutorial
 explaining how to install Boost on Windows and make it visible to Cygwin environment. Also make sure that
 `--prefix` points to the root directory of Cygwin installation - this way `[prefix]/lib` will match
 `[Cygwin]/lib` and so on.
@@ -101,18 +101,18 @@ Executables  will be placed in `bin/` directory.
 Builder can also run specified tasks:
 
  * `scons -Q buildModels` - builds Models' classes,
- * `scons -Q buildModelsTests` - builds Models' test classes with dependancies,
- * `scons -Q runModelsTests` - runs Models' test classes building theirs dependancies,
+ * `scons -Q buildModelsTests` - builds Models' test classes with dependencies,
+ * `scons -Q runModelsTests` - runs Models' test classes building theirs dependencies,
  * `scons -Q buildRoutines` - builds Routines' classes,
- * `scons -Q buildRoutinesTests` - builds Routines' test classes with dependancies,
- * `scons -Q runRoutinesTests` - runs Routines' test classes building theirs dependancies,
+ * `scons -Q buildRoutinesTests` - builds Routines' test classes with dependencies,
+ * `scons -Q runRoutinesTests` - runs Routines' test classes building theirs dependencies,
  * `scons -Q buildParserClasses` - builds Parser and Scanner with yacc (bison) and lex (flex),
  * `scons -Q buildGTL` - builds GTL classes,
- * `scons -Q buildGTLTests` - builds GTL test classes with dependancies,
- * `scons -Q runGTLTests` - runs GTL test classes building theirs dependancies,
+ * `scons -Q buildGTLTests` - builds GTL test classes with dependencies,
+ * `scons -Q runGTLTests` - runs GTL test classes building theirs dependencies,
  * `scons -Q buildPrograms` - builds Program's Controllers classes,
- * `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependancies,
- * `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependancies,
+ * `scons -Q buildProgramsTests` - builds Program's Controllers test classes with dependencies,
+ * `scons -Q runProgramsTests` - runs Program's Controllers test classes building theirs dependencies,
  * `scons -Q buildExecutables` - builds actual executables,
  * `scons -Q buildLibraries` - builds static and shared library with Models and Routines.
 
@@ -123,15 +123,15 @@ that you have Boost version at least `1.50.0-beta1`.
 
 ### Debug symbols
 
-To build with debug symbols run builder with argument `DebugMode=1`.
+To build with debug symbols run builder with argument `debug=1`.
 
-### Optimizarion
+### Optimization
 
-To turn on optimization run with builder argument `Optimize=1`.
+To turn on optimization run with builder argument `optimize=1`.
 
 ### Static linking
 
-To make executables (`gtl_program`) statically linked run SCons with argument `Static=1`. Note, that this
+To make executables (`gtl_program`) statically linked run SCons with argument `static=1`. Note, that this
 would require having installed static versions of all required libraries, otherwise linker will fail.
 
 
@@ -146,7 +146,7 @@ For more information you can run each of them with `--log_level=test_suite` para
 
 ## Running program
 
-To run program you need to execute `./gtl_program` command. If not set otherise it will read from standard
+To run program you need to execute `./gtl_program` command. If not set otherwise it will read from standard
 input and write to standard output and standard error. More information can be found when run with `--help`
 argument: `./gtl_program --help`.
 
