@@ -123,15 +123,15 @@ that you have Boost version at least `1.50.0-beta1`.
 
 ### Debug symbols
 
-To build with debug symbols run builder with argument `--Debug=1`.
+To build with debug symbols run builder with argument `Debug=1`.
 
 ### Optimizarion
 
-To turn on optimization run with builder argument `--Optimize=1`.
+To turn on optimization run with builder argument `Optimize=1`.
 
 ### Static linking
 
-To make executables (`gtl_program`) statically linked run SCons with argument `--Static=1`. Note, that this
+To make executables (`gtl_program`) statically linked run SCons with argument `Static=1`. Note, that this
 would require having installed static versions of all required libraries, otherwise linker will fail.
 
 
@@ -162,10 +162,10 @@ Before running Doxygen execute `scone -Q buildParserClasses` task to make sure t
 files are present during the generation of documentation.
 
 To generate public API - the one actually intended to use by a programmer - run command
-`doxygen doxygen/public_api`from main dicrectory.
+`doxygen doxygen/public_api`from main directory.
 
 To generate full documentation - the one documenting all classes, including those intended to be hidden from
-programmer - run command `doxygen doxygen/private_api` from main dicrectory.
+programmer - run command `doxygen doxygen/private_api` from main directory.
 
 
 ## Documentation

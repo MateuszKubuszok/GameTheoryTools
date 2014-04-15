@@ -3,9 +3,9 @@ import SCons.Tool
 
 ##############################################################################################################
 
-useStaticLink = ARGUMENTS.get('--Static',   0)
-debugSymbols  = ARGUMENTS.get('--Debug',    0)
-optimization  = ARGUMENTS.get('--Optimize', 1-debugSymbols)
+useStaticLink = ARGUMENTS.get('Static',   0)
+debugSymbols  = ARGUMENTS.get('Debug',    0)
+optimization  = ARGUMENTS.get('Optimize', 1-debugSymbols)
 
 ##############################################################################################################
 

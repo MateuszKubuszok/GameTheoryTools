@@ -100,20 +100,20 @@
    scons                       # for whole shell
    @endcode
  *
- * To build project with statically linked libraries use `--Static=1` argument e.g.:
+ * To build project with statically linked libraries use `Static=1` argument e.g.:
  * @code
-   scons -Q buildExecutables --Static=1
+   scons -Q buildExecutables Static=1
    @endcode
  *
- * To build project in debug mode use `--Debug=1` argument e.g.:
+ * To build project in debug mode use `Debug=1` argument e.g.:
  * @code
-   scons -Q buildExecutables --debug=1
+   scons -Q buildExecutables debug=1
    @endcode
  * By default it is turend off (release mode).
  *
- * To build project with optimized binaries use `--Optimize=1` argument e.g.:
+ * To build project with optimized binaries use `Optimize=1` argument e.g.:
  * @code
-   scons -Q buildExecutables --Optimize=1
+   scons -Q buildExecutables Optimize=1
    @endcode
  * It's by default turned on on release and turned off on debug mode.
  */
