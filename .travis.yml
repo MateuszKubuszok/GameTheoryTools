@@ -23,7 +23,7 @@ install:
               - flex  --version
               - bison --version
               - scons --version
-script:         scons --implicit-deps-unchanged --jobs 4 Debug=$DEBUG Optimize=$OPTIMIZE
+script:         scons -Q buildExecutables --implicit-deps-unchanged --jobs 4 Debug=$DEBUG Optimize=$OPTIMIZE
 after_success:
               - ls -la bin/$TARGET
               - sudo apt-get -qq install valgrind
