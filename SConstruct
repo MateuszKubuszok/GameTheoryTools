@@ -4,6 +4,8 @@ import SCons.Tool
 ##############################################################################################################
 
 useStaticLink = ARGUMENTS.get('static', 0)
+optimization  = ARGUMENTS.get('optimize', 0)
+debugSymbols  = ARGUMENTS.get('debug', 0)
 
 ##############################################################################################################
 
@@ -193,9 +195,13 @@ for library in libraries:
         validInstallation = False
 
 # Sets C++11 standard to be used during compilation.
+conf.env.Append(CPPFLAGS=['-std=c++11'])
 # Makes executables contain debug information.
+if debugSymbols:
+    conf.env.Append(CPPFLAGS=['-g'])
 # Turns on optimization.
-conf.env.Append(CPPFLAGS=['-std=c++11', '-g', '-O3'])
+if optimization:
+    conf.env.Append(CPPFLAGS=['-O3'])
 
 # Adds headers dirs:
 # - include/ - public include directory,
