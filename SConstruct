@@ -3,21 +3,24 @@ import SCons.Tool
 
 ##############################################################################################################
 
-useStaticLink = ARGUMENTS.get('static',   0)
-debugSymbols  = ARGUMENTS.get('debug',    0)
-optimization  = ARGUMENTS.get('optimize', 0 if debugSymbols else 1)
+useStaticLink = int(ARGUMENTS.get('static',   0))
+debugSymbols  = int(ARGUMENTS.get('debug',    0))
+optimization  = int(ARGUMENTS.get('optimize', 0 if debugSymbols else 1))
 
 ##############################################################################################################
 
 # Directories configuration
 
+target   = 'debug/' if debugSymbols else 'release/'
+
 # Main directories
 fnb      = 'f_n_b/'
 include  = 'include/'
+pch      = 'pch/'     + target
 source   = 'src/'
 test     = 'test/'
-objects  = 'objects/' + ('debug/' if debugSymbols else 'release/')
-programs = 'bin/'     + ('debug/' if debugSymbols else 'release/')
+objects  = 'objects/' + target
+programs = 'bin/'     + target
 
 # Packages directories
 gtl      = 'gt/gtl/'
@@ -51,9 +54,9 @@ def precompiledStaticHeader(env, module, origin=source, name='inner_common'):
     src_suffix = '.hpp'
     suffix     = src_suffix + ('.pch' if (env['CXX'] is 'clang++') else '.gch')
     return env.Object(
-        source     = header + src_suffix,
+        source     = origin + module + name + src_suffix,
         src_suffix = src_suffix,
-        target     = header + suffix,
+        target     = pch    + module + name + suffix,
         suffix     = suffix,
         CPPFLAGS   = env['CPPFLAGS'] + Flags['PCH']
     )
@@ -207,7 +210,7 @@ libraries = [
 # Library check
 for library in libraries:
     if not conf.CheckLib(library=library, language="C"):
-        print('Your environment does not seem to have library <'+library+'>!!')
+        print('Your environment does not seem to have library ['+library+']!!')
         validInstallation = False
 
 # Sets C++11 standard to be used during compilation.
@@ -222,12 +225,10 @@ if optimization:
 # Adds headers dirs:
 # - include/ - public include directory,
 # - include/gt/gtl - added for using parser.hpp in GT::GTL::Scanner (poor custom path definitions), as well
-#   as for location.hh, position.hh and stack.hh
-# - src/ - added for implemetnations headers.
-conf.env.Append(CPPPATH=[include, include+gtl, source])
-
-# Sets used libraries.
-conf.env.Append(LIBS=libraries)
+#   as for location.hh, position.hh and stack.hh,
+# - pch/[target] - precompiled headers,
+# - src/ - added for implementations headers.
+conf.env.Append(CPPPATH=[include, include+gtl, pch, source])
 
 conf.Finish()
 
@@ -252,11 +253,8 @@ executablesLibraries = [
 # Library check
 for library in executablesLibraries:
     if not executablesConf.CheckLib(library=library, language="C++"):
-        print('Your environment does not seem to have library <'+library+'>!!')
+        print('Your environment does not seem to have library ['+library+'}!!')
         validInstallation = False
-
-# Sets used libraries.
-executablesConf.env.Append(LIBS=executablesLibraries)
 
 # Sets up linking method
 if useStaticLink:
@@ -290,15 +288,12 @@ testLibraries = [
 # Library check
 for library in testLibraries:
     if not testConf.CheckLib(library=library, language="C++"):
-        print('Your environment does not seem to have library <'+library+'>!!')
+        print('Your environment does not seem to have library ['+library+']!!')
         validInstallation = False
 
 # Adds tests directories to the path:
 # - test
 testConf.env.Append(CPPPATH=[test])
-
-# Sets used libraries.
-testConf.env.Append(LIBS=testLibraries)
 
 testConf.Finish()
 
@@ -322,7 +317,7 @@ executablesTestLibraries = [
 # Library check
 for library in list(set(executablesTestLibraries) - set(executablesLibraries) - set(testLibraries)):
     if not executablesTestConf.CheckLib(library=library, language="C++"):
-        print('Your environment does not seem to have library <'+library+'>!!')
+        print('Your environment does not seem to have library ['+library+']!!')
         validInstallation = False
 
 # Sets used libraries.
