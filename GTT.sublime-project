@@ -6,8 +6,8 @@
             "name":                    "Configuration",
             "file_exclude_patterns":   [ ".sconsign.dblite" ],
             "folder_exclude_patterns": [
-                "bin", "docs", "doxygen", "examples", "f_n_b", "include", "objects", "src", "test",
-                ".sconf_temp"
+                "bin", "docs", "doxygen", "examples", "f_n_b", "include", "objects", "pch", "src", "test",
+                "thesis", ".sconf_temp"
             ]
         },
         {
