@@ -33,14 +33,14 @@ after_success:
               - ls -la bin/$TARGET
               - sudo apt-get -qq install valgrind
               - valgrind --version
-              - valgrind --leak-check=full --error-exitcode=1 bin/ModelsTests
-              - valgrind --leak-check=full --error-exitcode=1 bin/RoutinesTests
-              - valgrind --leak-check=full --error-exitcode=1 bin/GTLTests
-              - valgrind --leak-check=full --error-exitcode=1 bin/ProgramsTests
+              - valgrind --leak-check=full bin/$TARGET/ModelsTests
+              - valgrind --leak-check=full bin/$TARGET/RoutinesTests
+              - valgrind --leak-check=full bin/$TARGET/GTLTests
+              - valgrind --leak-check=full bin/$TARGET/ProgramsTests
               - if [ "$TASK" = "buildExecutables" ]; then
-              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/strategic_form_game.gtl
-              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/extensive_form_game.gtl
-              -   valgrind --leak-check=full --error-exitcode=1 bin/gtl_program -i examples/properties_querying.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/strategic_form_game.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/extensive_form_game.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/properties_querying.gtl
               - fi
 branches:
   except:       gh-pages
