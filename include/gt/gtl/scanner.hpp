@@ -33,13 +33,13 @@
  * Similar code is executed inside scanner.cpp generated with Flex - code in if instuction is repeated,
  * so that other classes (Scanner in particular) would see see ::GTLFlexLexer.
  */
-#ifndef GTL_FLEX_LEXER_DEFINED
-#    define  GTL_FLEX_LEXER_DEFINED
+#ifndef GT_GTL_FLEX_LEXER_DEFINED
+#    define  GT_GTL_FLEX_LEXER_DEFINED
 #    undef   yyFlexLexer
 #    define  yyFlexLexer GTLFlexLexer
 #    include <FlexLexer.h>
 #    undef   yyFlexLexer
-#endif /* END #ifndef GTL_FLEX_LEXER_DEFINED */
+#endif /* END #ifndef GT_GTL_FLEX_LEXER_DEFINED */
 
 /**
  * @brief Makes Scanner::lex() function signature of generated main scanning function.

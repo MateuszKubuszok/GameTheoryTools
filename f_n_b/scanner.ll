@@ -9,9 +9,9 @@
  */
 
 /* Make GTLFlexLexer be defined only once */
-#ifndef __GTL_FLEX_LEXER__
-#define __GTL_FLEX_LEXER__
-#endif /* END #ifndef __GTL_FLEX_LEXER__ */
+#ifndef GT_GTL_FLEX_LEXER_DEFINED
+#define GT_GTL_FLEX_LEXER_DEFINED
+#endif /* END #ifndef GT_GTL_FLEX_LEXER_DEFINED */
 
 /* Standard library */
 #include <cstdlib>
