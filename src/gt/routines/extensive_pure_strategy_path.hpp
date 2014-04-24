@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP__
-#define __GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP__
+#ifndef GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP_INCLUDED
+#define GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -123,4 +123,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP__ */
+#endif /* #ifndef GT_ROUTINES_EXTENSIVE_PURE_STRATEGY_PATH_HPP_INCLUDED */

@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_IDENTIFIER_PARAM_HPP__
-#define __GT_GTL_IDENTIFIER_PARAM_HPP__
+#ifndef GT_GTL_IDENTIFIER_PARAM_HPP_INCLUDED
+#define GT_GTL_IDENTIFIER_PARAM_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,4 +109,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_IDENTIFIER_PARAM_HPP__ */
+#endif /* #ifndef GT_GTL_IDENTIFIER_PARAM_HPP_INCLUDED */

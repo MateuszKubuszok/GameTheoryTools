@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_VALIDABLE_SYMBOL_HPP__
-#define __GT_GTL_VALIDABLE_SYMBOL_HPP__
+#ifndef GT_GTL_VALIDABLE_SYMBOL_HPP_INCLUDED
+#define GT_GTL_VALIDABLE_SYMBOL_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -126,4 +126,4 @@ private:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_VALIDABLE_SYMBOL_HPP__ */
+#endif /* END #ifndef GT_GTL_VALIDABLE_SYMBOL_HPP_INCLUDED */

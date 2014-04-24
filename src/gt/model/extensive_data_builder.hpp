@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__
-#define __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__
+#ifndef GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP_INCLUDED
+#define GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -134,4 +134,4 @@ public:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP__ */
+#endif /* #ifndef GT_MODEL_EXTENSIVE_DATA_BUILDER_HPP_INCLUDED */

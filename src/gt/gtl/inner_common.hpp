@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_INNER_COMMON_HPP__
-#define __GT_GTL_INNER_COMMON_HPP__
+#ifndef GT_GTL_INNER_COMMON_HPP_INCLUDED
+#define GT_GTL_INNER_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -150,4 +150,4 @@ typedef Model::ResultBuilderPtr ResultBuilderPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* #define __GT_GTL_INNER_COMMON_HPP__ */
+#endif /* #define GT_GTL_INNER_COMMON_HPP_INCLUDED */

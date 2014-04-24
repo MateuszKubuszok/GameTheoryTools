@@ -1,5 +1,5 @@
-#ifndef __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
-#define __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__
+#ifndef GT_PROGRAM_PROGRAM_CONTROLLER_HPP_INCLUDED
+#define GT_PROGRAM_PROGRAM_CONTROLLER_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -254,4 +254,4 @@ public:
 } /* END namespace Program */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_PROGRAM_PROGRAM_CONTROLLER_HPP__ */
+#endif /* #ifndef GT_PROGRAM_PROGRAM_CONTROLLER_HPP_INCLUDED */

@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_INNER_NULL_FACTORY_HPP__
-#define __GT_MODEL_INNER_NULL_FACTORY_HPP__
+#ifndef GT_MODEL_INNER_NULL_FACTORY_HPP_INCLUDED
+#define GT_MODEL_INNER_NULL_FACTORY_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,4 +92,4 @@ private:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_MODEL_INNER_NULL_FACTORY_HPP__ */
+#endif /* END #ifndef GT_MODEL_INNER_NULL_FACTORY_HPP_INCLUDED */

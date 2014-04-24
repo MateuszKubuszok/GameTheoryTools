@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_CONDITION_HPP__
-#define __GT_ROUTINES_CONDITION_HPP__
+#ifndef GT_ROUTINES_CONDITION_HPP_INCLUDED
+#define GT_ROUTINES_CONDITION_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -83,4 +83,4 @@ class NullCondition final : public Condition {
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_CONDITION_HPP__ */
+#endif /* #ifndef GT_ROUTINES_CONDITION_HPP_INCLUDED */

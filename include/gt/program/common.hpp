@@ -1,5 +1,5 @@
-#ifndef __GT_PROGRAM_COMMON_HPP__
-#define __GT_PROGRAM_COMMON_HPP__
+#ifndef GT_PROGRAM_COMMON_HPP_INCLUDED
+#define GT_PROGRAM_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,4 +57,4 @@ class ProgramController;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_PROGRAM_COMMON_HPP__ */
+#endif /* END #ifndef GT_PROGRAM_COMMON_HPP_INCLUDED */

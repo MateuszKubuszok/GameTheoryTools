@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_STRATEGIC_GAME_HPP__
-#define __GT_MODEL_STRATEGIC_GAME_HPP__
+#ifndef GT_MODEL_STRATEGIC_GAME_HPP_INCLUDED
+#define GT_MODEL_STRATEGIC_GAME_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -89,4 +89,4 @@ public:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_STRATEGIC_GAME_HPP__ */
+#endif /* #ifndef GT_MODEL_STRATEGIC_GAME_HPP_INCLUDED */

@@ -1,5 +1,5 @@
-#ifndef __GT_PROGRAM_HELPERS_HPP__
-#define __GT_PROGRAM_HELPERS_HPP__
+#ifndef GT_PROGRAM_HELPERS_HPP_INCLUDED
+#define GT_PROGRAM_HELPERS_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -89,4 +89,4 @@ InputStream& operator>>(
 
 } /* END namespace std */
 
-#endif /* END #ifndef __GT_PROGRAM_HELPERS_HPP__ */
+#endif /* END #ifndef GT_PROGRAM_HELPERS_HPP_INCLUDED */

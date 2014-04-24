@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP__
-#define __GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP__
+#ifndef GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP_INCLUDED
+#define GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,4 +77,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP__ */
+#endif /* #ifndef GT_GTL_CURRENT_CONTEXT_VALUE_PROPERTY_HPP_INCLUDED */

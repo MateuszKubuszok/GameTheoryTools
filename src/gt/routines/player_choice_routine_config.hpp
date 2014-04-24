@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__
-#define __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__
+#ifndef GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP_INCLUDED
+#define GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,4 +113,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP__ */
+#endif /* #ifndef GT_ROUTINES_PLAYER_CHOICE_ROUTINE_CONFIG_HPP_INCLUDED */

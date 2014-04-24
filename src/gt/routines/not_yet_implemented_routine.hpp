@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP__
-#define __GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP__
+#ifndef GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP_INCLUDED
+#define GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,4 +63,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP__ */
+#endif /* #ifndef GT_ROUTINES_NOT_YET_IMPLEMENTED_ROUTINE_HPP_INCLUDED */

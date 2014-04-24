@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_COMMON_HPP__
-#define __GT_MODEL_COMMON_HPP__
+#ifndef GT_MODEL_COMMON_HPP_INCLUDED
+#define GT_MODEL_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -135,4 +135,4 @@ bool operator!=(Players& players1, Players& players2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_MODEL_COMMON_HPP__ */
+#endif /* END #ifndef GT_MODEL_COMMON_HPP_INCLUDED */

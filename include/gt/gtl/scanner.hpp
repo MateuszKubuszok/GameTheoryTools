@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_SCANNER_HPP__
-#define __GT_GTL_SCANNER_HPP__
+#ifndef GT_GTL_SCANNER_HPP_INCLUDED
+#define GT_GTL_SCANNER_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,13 +33,13 @@
  * Similar code is executed inside scanner.cpp generated with Flex - code in if instuction is repeated,
  * so that other classes (Scanner in particular) would see see ::GTLFlexLexer.
  */
-#ifndef __GTL_FLEX_LEXER__
-#    define  __GTL_FLEX_LEXER__
+#ifndef GTL_FLEX_LEXER_DEFINED
+#    define  GTL_FLEX_LEXER_DEFINED
 #    undef   yyFlexLexer
 #    define  yyFlexLexer GTLFlexLexer
 #    include <FlexLexer.h>
 #    undef   yyFlexLexer
-#endif /* END #ifndef __GTL_FLEX_LEXER__ */
+#endif /* END #ifndef GTL_FLEX_LEXER_DEFINED */
 
 /**
  * @brief Makes Scanner::lex() function signature of generated main scanning function.
@@ -132,4 +132,4 @@ private:
 /** @endcond */
 
 
-#endif /* END #ifndef __GT_GTL_SCANNER_HPP__ */
+#endif /* END #ifndef GT_GTL_SCANNER_HPP_INCLUDED */

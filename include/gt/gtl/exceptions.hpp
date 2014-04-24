@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_EXCEPTIONS_HPP__
-#define __GT_GTL_EXCEPTIONS_HPP__
+#ifndef GT_GTL_EXCEPTIONS_HPP_INCLUDED
+#define GT_GTL_EXCEPTIONS_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -145,4 +145,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_EXCEPTIONS_HPP__ */
+#endif /* END #ifndef GT_GTL_EXCEPTIONS_HPP_INCLUDED */

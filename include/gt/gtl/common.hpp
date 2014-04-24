@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_COMMON_HPP__
-#define __GT_GTL_COMMON_HPP__
+#ifndef GT_GTL_COMMON_HPP_INCLUDED
+#define GT_GTL_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -250,4 +250,4 @@ bool operator!=(const Params&      params1,      const Params&      params2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_GTL_COMMON_HPP__ */
+#endif /* END #ifndef GT_GTL_COMMON_HPP_INCLUDED */

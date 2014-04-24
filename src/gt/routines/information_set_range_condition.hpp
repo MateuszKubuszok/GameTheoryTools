@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
-#define __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__
+#ifndef GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP_INCLUDED
+#define GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -87,4 +87,4 @@ public:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP__ */
+#endif /* END #ifndef GT_ROUTINES_INFORMATION_SET_RANGE_CONDITION_HPP_INCLUDED */

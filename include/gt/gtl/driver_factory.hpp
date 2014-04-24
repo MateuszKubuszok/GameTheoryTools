@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_DRIVER_FACTORY_HPP__
-#define __GT_GTL_DRIVER_FACTORY_HPP__
+#ifndef GT_GTL_DRIVER_FACTORY_HPP_INCLUDED
+#define GT_GTL_DRIVER_FACTORY_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,4 +91,4 @@ private:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_GTL_DRIVER_FACTORY_HPP__ */
+#endif /* END #ifndef GT_GTL_DRIVER_FACTORY_HPP_INCLUDED */

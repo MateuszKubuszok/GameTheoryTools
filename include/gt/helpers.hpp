@@ -1,5 +1,5 @@
-#ifndef __GT_HELPERS_HPP__
-#define __GT_HELPERS_HPP__
+#ifndef GT_HELPERS_HPP_INCLUDED
+#define GT_HELPERS_HPP_INCLUDED
 
 namespace GT {
 
@@ -491,4 +491,4 @@ PositionsPtr createPositionsPtr();
 
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_HELPERS_HPP__ */
+#endif /* END #ifndef GT_HELPERS_HPP_INCLUDED */

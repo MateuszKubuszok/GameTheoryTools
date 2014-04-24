@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_COMMON_HPP__
-#define __GT_ROUTINES_COMMON_HPP__
+#ifndef GT_ROUTINES_COMMON_HPP_INCLUDED
+#define GT_ROUTINES_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,4 +98,4 @@ typedef Model::ResultPtr          ResultPtr;        /**< @brief Alias for Model:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_ROUTINES_COMMON_HPP__ */
+#endif /* END #ifndef GT_ROUTINES_COMMON_HPP_INCLUDED */

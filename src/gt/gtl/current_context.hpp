@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_CURRENT_CONTEXT_HPP__
-#define __GT_GTL_CURRENT_CONTEXT_HPP__
+#ifndef GT_GTL_CURRENT_CONTEXT_HPP_INCLUDED
+#define GT_GTL_CURRENT_CONTEXT_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,4 +53,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* __GT_GTL_CURRENT_CONTEXT_HPP__ */
+#endif /* GT_GTL_CURRENT_CONTEXT_HPP_INCLUDED */

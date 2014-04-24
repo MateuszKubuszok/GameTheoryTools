@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_EXCEPTION_FACTORY_HPP__
-#define __GT_ROUTINES_EXCEPTION_FACTORY_HPP__
+#ifndef GT_ROUTINES_EXCEPTION_FACTORY_HPP_INCLUDED
+#define GT_ROUTINES_EXCEPTION_FACTORY_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,4 +142,4 @@ private:
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_ROUTINES_EXCEPTION_FACTORY_HPP__ */
+#endif /* END #ifndef GT_ROUTINES_EXCEPTION_FACTORY_HPP_INCLUDED */

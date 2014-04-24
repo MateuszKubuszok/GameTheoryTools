@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP__
-#define __GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP__
+#ifndef GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP_INCLUDED
+#define GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -178,4 +178,4 @@ protected:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP__ */
+#endif /* #ifndef GT_MODEL_ABSTRACT_RESULT_BUILDER_HPP_INCLUDED */

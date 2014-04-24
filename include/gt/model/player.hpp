@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_PLAYER_HPP__
-#define __GT_MODEL_PLAYER_HPP__
+#ifndef GT_MODEL_PLAYER_HPP_INCLUDED
+#define GT_MODEL_PLAYER_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -222,4 +222,4 @@ public:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* END #ifndef __GT_MODEL_PLAYER_HPP__ */
+#endif /* END #ifndef GT_MODEL_PLAYER_HPP_INCLUDED */

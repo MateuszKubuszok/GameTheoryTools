@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_EXCEPTION_FACTORY_HPP__
-#define __GT_MODEL_EXCEPTION_FACTORY_HPP__
+#ifndef GT_MODEL_EXCEPTION_FACTORY_HPP_INCLUDED
+#define GT_MODEL_EXCEPTION_FACTORY_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -167,4 +167,4 @@ private:
 } /* END namespace Model */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_MODEL_EXCEPTION_FACTORY_HPP__ */
+#endif /* #ifndef GT_MODEL_EXCEPTION_FACTORY_HPP_INCLUDED */

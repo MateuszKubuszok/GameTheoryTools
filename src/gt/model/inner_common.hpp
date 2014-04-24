@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_INNER_COMMON_HPP__
-#define __GT_MODEL_INNER_COMMON_HPP__
+#ifndef GT_MODEL_INNER_COMMON_HPP_INCLUDED
+#define GT_MODEL_INNER_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -143,4 +143,4 @@ typedef shared_ptr<PlayersInTurns>            PlayersInTurnsPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* #define __GT_MODEL_INNER_COMMON_HPP__ */
+#endif /* #define GT_MODEL_INNER_COMMON_HPP_INCLUDED */

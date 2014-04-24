@@ -1,5 +1,5 @@
-#ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__
-#define __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__
+#ifndef GT_GTL_PARAM_KNOWN_PROPERTIES_HPP_INCLUDED
+#define GT_GTL_PARAM_KNOWN_PROPERTIES_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,4 +77,4 @@ public:
 } /* END namespace GTL */
 } /* END namespace GT */
 
-#endif /* #ifndef __GT_GTL_PARAM_KNOWN_PROPERTIES_HPP__ */
+#endif /* #ifndef GT_GTL_PARAM_KNOWN_PROPERTIES_HPP_INCLUDED */

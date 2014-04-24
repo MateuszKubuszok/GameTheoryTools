@@ -1,5 +1,5 @@
-#ifndef __GT_ROUTINES_INNER_COMMON_HPP__
-#define __GT_ROUTINES_INNER_COMMON_HPP__
+#ifndef GT_ROUTINES_INNER_COMMON_HPP_INCLUDED
+#define GT_ROUTINES_INNER_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -140,4 +140,4 @@ LPProblemPtr createLPProblem();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* #define __GT_ROUTINES_INNER_COMMON_HPP__ */
+#endif /* #define GT_ROUTINES_INNER_COMMON_HPP_INCLUDED */

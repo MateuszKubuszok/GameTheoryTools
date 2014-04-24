@@ -1,5 +1,5 @@
-#ifndef __GT_PROGRAM_INNER_COMMON_HPP__
-#define __GT_PROGRAM_INNER_COMMON_HPP__
+#ifndef GT_PROGRAM_INNER_COMMON_HPP_INCLUDED
+#define GT_PROGRAM_INNER_COMMON_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,4 +48,4 @@ namespace Program {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* #define __GT_PROGRAM_INNER_COMMON_HPP__ */
+#endif /* #define GT_PROGRAM_INNER_COMMON_HPP_INCLUDED */

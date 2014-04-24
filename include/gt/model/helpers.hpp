@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_HELPERS_HPP__
-#define __GT_MODEL_HELPERS_HPP__
+#ifndef GT_MODEL_HELPERS_HPP_INCLUDED
+#define GT_MODEL_HELPERS_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,4 +53,4 @@ PlayersPtr createPlayersPtr();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#endif /* END #ifndef __GT_MODEL_HELPERS_HPP__ */
+#endif /* END #ifndef GT_MODEL_HELPERS_HPP_INCLUDED */

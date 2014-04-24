@@ -1,5 +1,5 @@
-#ifndef __GT_MODEL_ROOT_HPP__
-#define __GT_MODEL_ROOT_HPP__
+#ifndef GT_MODEL_ROOT_HPP_INCLUDED
+#define GT_MODEL_ROOT_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -116,4 +116,4 @@ public:
 } /* END namepsace Model */
 } /* END namspace GT */
 
-#endif /* END #ifndef __GT_MODEL_ROOT_HPP__ */
+#endif /* END #ifndef GT_MODEL_ROOT_HPP_INCLUDED */
