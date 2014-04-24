@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
         "Payoff:\n"
         "\t\t\tp1,\tp2\n"
         "\tPayoff:\n"
-        "\t\t\t20,\t20\n"
+        "\t\t\t20.00000,\t20.00000\n"
     );
 }
 

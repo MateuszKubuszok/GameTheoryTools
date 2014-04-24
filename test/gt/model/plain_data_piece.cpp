@@ -27,11 +27,11 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_getPayoff ) {
     // then
     BOOST_CHECK_EQUAL(
         player1msg,
-        GT::Message("10")
+        GT::Message("10.00000")
     );
     BOOST_CHECK_EQUAL(
         player2msg,
-        GT::Message("100")
+        GT::Message("100.00000")
     );
 }
 
@@ -120,7 +120,7 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
         GT::Message() +
         "\t\tplayer1,\tplayer2\n"
         "Payoff:\n"
-        "\t\t10,\t100\n"
+        "\t\t10.00000,\t100.00000\n"
     );
 }
 

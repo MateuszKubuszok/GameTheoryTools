@@ -93,13 +93,13 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_toString ) {
         "\t\tPosition:\n"
         "\t\t\t\tp1s1\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t10\n"
+        "\t\t\t\t10.00000\n"
         "\tValue:\n"
         "\t\t\t\tp1\n"
         "\t\tPosition:\n"
         "\t\t\t\tp1s2\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t20\n"
+        "\t\t\t\t20.00000\n"
     );
 }
 
@@ -147,13 +147,13 @@ BOOST_AUTO_TEST_CASE( StrategicDataBuilder_functional ) {
         "\tPosition:\n"
         "\t\t\tp1s1\n"
         "\tPayoff:\n"
-        "\t\t\t10\n"
+        "\t\t\t10.00000\n"
         "Value:\n"
         "\t\t\tp1\n"
         "\tPosition:\n"
         "\t\t\tp1s2\n"
         "\tPayoff:\n"
-        "\t\t\t20\n"
+        "\t\t\t20.00000\n"
     );
 }
 

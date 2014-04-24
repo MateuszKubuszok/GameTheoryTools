@@ -24,6 +24,8 @@ namespace GT {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using std::fixed;
+using std::setprecision;
 using std::stringstream;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +42,7 @@ Message createMessage(
     double message
 ) {
     stringstream result;
-    result << message;
+    result << setprecision(5) << fixed << message;
     return Message(result.str());
 }
 
@@ -48,7 +50,7 @@ Message createMessage(
     Number number
 ) {
     stringstream result;
-    result << std::setprecision(5) << number;
+    result << setprecision(5) << fixed << number;
     return result.str();
 }
 
@@ -57,7 +59,7 @@ Message createMessage(
 ) {
 
     stringstream result;
-    result << std::setprecision(5) << (*number);
+    result << setprecision(5) << fixed << (*number);
     return result.str();
 }
 
@@ -73,7 +75,7 @@ MessagePtr createMessagePtr(
     double message
 ) {
     stringstream result;
-    result << message;
+    result << setprecision(5) << fixed << message;
     return MessagePtr(new Message(result.str()));
 }
 
@@ -81,7 +83,7 @@ MessagePtr createMessagePtr(
     Number number
 ) {
     stringstream result;
-    result << std::setprecision(5) << number;
+    result << setprecision(5) << fixed << number;
     return MessagePtr(new Message(result.str()));
 }
 
@@ -89,7 +91,7 @@ MessagePtr createMessagePtr(
     NumberPtr number
 ) {
     stringstream result;
-    result << std::setprecision(5) << (*number);
+    result << setprecision(5) << fixed << (*number);
     return MessagePtr(new Message(result.str()));
 }
 

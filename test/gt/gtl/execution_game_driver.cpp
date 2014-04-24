@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createStrategic ) {
         "\t\tPosition:\n"
         "\t\t\t\tp1s1,\tp2s1\n"
         "\t\tPayoff:\n"
-        "\t\t\t\t10,\t20\n"
+        "\t\t\t\t10.00000,\t20.00000\n"
     );
 }
 
@@ -124,9 +124,9 @@ BOOST_AUTO_TEST_CASE( ExecutionGameDriver_createExtensive ) {
         "\t\t\t1\n"
         "\t\tp2s1:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t10\n"
+        "\t\t\t\t10.00000\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t20\n"
+        "\t\t\t\t20.00000\n"
     );
 }
 

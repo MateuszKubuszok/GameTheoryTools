@@ -158,9 +158,9 @@ BOOST_AUTO_TEST_CASE( Coordinate_serialize ) {
         GT::Message() +
         "{ NullIdentifier = NullIdentifier :\n"
         "  { NullIdentifier = NullIdentifier :\n"
-        "    10,\n"
-        "    20,\n"
-        "    30\n"
+        "    10.00000,\n"
+        "    20.00000,\n"
+        "    30.00000\n"
         "  }\n"
         "}"
     );

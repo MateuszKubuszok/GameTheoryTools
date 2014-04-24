@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_serialize ) {
     BOOST_CHECK_EQUAL(
         param->serialize(),
         GT::Message() +
-        "0"
+        "0.00000"
     );
 }
 

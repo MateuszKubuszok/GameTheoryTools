@@ -58,7 +58,6 @@ inline MessagePtr createMessagePtr(
     return message;
 }
 
-
 inline Messages createMessages() {
     return Messages();
 }

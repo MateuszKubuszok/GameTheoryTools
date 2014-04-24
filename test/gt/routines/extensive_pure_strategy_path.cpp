@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
         "Payoffs:\n"
         "\t\t\tp1,\tp2\n"
         "\tPayoff:\n"
-        "\t\t\t10,\t20\n"
+        "\t\t\t10.00000,\t20.00000\n"
     );
 }
 

@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_serialize ) {
     BOOST_CHECK_EQUAL(
         param->serialize(),
         GT::Message() +
-        "0"
+        "0.00000"
     );
 }
 
@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
         param->toString(),
         GT::Message() +
         "NumberParam:\n"
-        "\t0\n"
+        "\t0.00000\n"
     );
 }
 

@@ -253,9 +253,9 @@ BOOST_AUTO_TEST_CASE( LazyGameBuilder_toString ) {
         "\t\t\t1\n"
         "\t\tp2s1:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t10\n"
+        "\t\t\t\t10.00000\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t20\n"
+        "\t\t\t\t20.00000\n"
     );
 }
 

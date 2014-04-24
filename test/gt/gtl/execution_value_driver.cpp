@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_CASE( ExecutionValueDriver_get ) {
         (*param2Ptr)->toString(),
         GT::Message() +
         "NumberParam:\n"
-        "\t0\n"
+        "\t0.00000\n"
     );
 }
 

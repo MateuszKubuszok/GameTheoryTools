@@ -89,13 +89,13 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
         "\tPosition:\n"
         "\t\t\tp1s1\n"
         "\tPayoff:\n"
-        "\t\t\t10\n"
+        "\t\t\t10.00000\n"
         "Value:\n"
         "\t\t\tp1\n"
         "\tPosition:\n"
         "\t\t\tp1s2\n"
         "\tPayoff:\n"
-        "\t\t\t20\n"
+        "\t\t\t20.00000\n"
     );
 }
 

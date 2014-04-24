@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_CASE( StrategicPureEquilibriumRoutine_findResultsFor ) {
         "Payoff:\n"
         "\t\t\tp1,\tp2\n"
         "\tPayoff:\n"
-        "\t\t\t10,\t10\n"
+        "\t\t\t10.00000,\t10.00000\n"
     );
 }
 

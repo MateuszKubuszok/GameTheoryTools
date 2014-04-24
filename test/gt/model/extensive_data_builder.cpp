@@ -98,10 +98,10 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_toString ) {
         "\t\t\t\tp1s2\n"
         "\t\tp1s1:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t10\n"
+        "\t\t\t\t10.00000\n"
         "\t\tp1s2:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t20\n"
+        "\t\t\t\t20.00000\n"
     );
 }
 
@@ -166,7 +166,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_functional ) {
         "\t\t\t\tp1s2\n"
         "\t\tp1s2:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t10\n"
+        "\t\t\t\t10.00000\n"
         "\tp1s2:\n"
         "\t\tPlayer:\n"
         "\t\t\tName:\n"
@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_functional ) {
         "\t\t\t\tp1s2\n"
         "\t\tp1s1:\n"
         "\t\t\tValue:\n"
-        "\t\t\t\t20\n"
+        "\t\t\t\t20.00000\n"
     );
 }
 

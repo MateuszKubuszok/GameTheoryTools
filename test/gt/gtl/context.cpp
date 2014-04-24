@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE( Context_serialize ) {
         "LET identifierParam BE\n"
         "  NullIdentifier;\n"
         "LET numberParam BE\n"
-        "  0;\n"
+        "  0.00000;\n"
         "LET numberParamIdentifier BE\n"
         "  numberParam;"
     );
@@ -169,7 +169,7 @@ BOOST_AUTO_TEST_CASE( Context_toString ) {
         GT::Message() +
         "numberParam:\n"
         "\tNumberParam:\n"
-        "\t\t0\n"
+        "\t\t0.00000\n"
         "numberParamIdentifier:\n"
         "\tIdentifierParam:\n"
         "\t\tnumberParam\n"
