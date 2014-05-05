@@ -89,10 +89,10 @@ Wówczas funkcję mieszającą można zdefiniować jako:
 $$h(s) = \sum\limits_{i=0}^{n-1} H_i O_i(s_i)$$
 
 \begin{theorem}
-Funkcja hashująca jest bijekcią ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i=1}^{n} \ABS{S_i}] $.
+Tak zdefiniowana funkcja hashująca jest bijekcją ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i=1}^{n} \ABS{S_i}] $.
 \end{theorem}
 
-
+TODO
 
 \subsection{Gry w formie ekstensywnej}
 
@@ -116,7 +116,7 @@ Program korzysta z odwracalności przyjętej funkcji hashującej iterować po ws
 strategii i testować ją pod względem wyznaczania równowagi Nasha.
 
 Strategie mieszane w grach jedno- i dwumacierzowych jako obliczane przy pomocy algorytmu Simpleks są obliczane przez proste wypełnienie
-modeli biblioteki GLPK i oddelegowanie obliczenia wartości problemu liniowego/całkowitoliczbowego na jej procedury.
+modeli biblioteki \LIB{GLPK} i oddelegowanie obliczenia wartości problemu liniowego/całkowitoliczbowego na jej procedury.
 
 \subsection{Gry w formie ekstensywnej}
 
@@ -138,18 +138,18 @@ wydajny i bezpieczny.
 W projekcie przyjęto pewne zasady pozwalające na lepszą organizację oraz łatwiejsze poruszanie się po kodzie. Przede wszystkim
 projekt podzielony został na moduły:
 \begin{itemize}
-\item \textbf{model} - zawiera definicje modeli, oraz metod dostępowych do przechowywanych w nich danych,
-\item \textbf{routines} - zawiera definicje algorytmów obliczających równowagi w poszczególnych rodzajach gier,
-\item \textbf{gtl} - zawiera definicje parsera oraz klas reprezentujących poszczególne wierzchołki drzewa składniowego,
-\item \textbf{program} - zawiera definicje oraz funkcje używane przy uruchamianiu programu.
+\item \MODULE{model} - zawiera definicje modeli, oraz metod dostępowych do przechowywanych w nich danych,
+\item \MODULE{routines} - zawiera definicje algorytmów obliczających równowagi w poszczególnych rodzajach gier,
+\item \MODULE{gtl} - zawiera definicje parsera oraz klas reprezentujących poszczególne wierzchołki drzewa składniowego,
+\item \MODULE{program} - zawiera definicje oraz funkcje używane przy uruchamianiu programu.
 \end{itemize}
 
 Projekt został również podzielony na 2 nadrzędne katalogi:
 \begin{itemize}
-\item \textbf{include} - zawiera publiczne nagłówki, które powinny być widoczne dla programistów chcących korzystać wyłącznie z biblioteki
+\item \MODULE{include} - zawiera publiczne nagłówki, które powinny być widoczne dla programistów chcących korzystać wyłącznie z biblioteki
 ale nie z programu wykonywalnego. Większość deklaracji stanowią interfejsy oraz fabryki pozwalające uzyskać dostęp do implementacji,
 zadeklarowanych klas,
-\item \textbf{src} - zawiera wewnętrzne nagłówki oraz implementacje publicznych interfejsów.
+\item \MODULE{src} - zawiera wewnętrzne nagłówki oraz implementacje publicznych interfejsów.
 \end{itemize}
 Ponieważ większość klas jest udostępniana wyłączne jako interfejsy, użytkownicy nie są zależni od większości zmian w wewnętrznym uporządkowaniu
 programu, wykorzystanych algorytmach oraz innych szczegółach implementacji podatnych na zmiany.

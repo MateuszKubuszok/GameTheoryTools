@@ -4,22 +4,18 @@
 \begin{document}
 \appendix
 
-\chapter{Wybrane fragmenty programu}
-
-TODO
-
 \chapter{Kompilacja programów}
 
 \section{Wymagania}
 
 Program został napisany z wykorzystaniem:
 \begin{itemize}
-\item kompilatora \PROG{g++} w wersji \textit{4.8} do kompilacji źródeł, możliwego do zastąpienia przez
-\PROG{Clang++} \textit{3.3},
-\item pakietu \LIB{Bison} w wersji 2.5,
+\item kompilatora \PROG{g++} w wersji \VER{4.8} do kompilacji źródeł, możliwego do zastąpienia przez
+\PROG{Clang++} \VER{3.3},
+\item pakietu \LIB{Bison} w wersji \VER{2.5},
 \item pakietu \LIB{flex},
 \item biblioteki \LIB{GLPK},
-\item biblioteki \LIB{Boost} w wersji co najmniej \textit{1.48} (\LIB{g++}) lub \textit{1.50.0-beta1}
+\item biblioteki \LIB{Boost} w wersji co najmniej \VER{1.48} (\LIB{g++}) lub \VER{1.50.0-beta1}
 (\LIB{Clang++}),
 \item biblioteki \LIB{GMP},
 \item środowiska do budowania projektów \PROG{Scons}
@@ -41,7 +37,7 @@ instalowanie plików binarnych.
 
 Mając zainstalowane wszystkie wymagane biblioteki należy uruchomić linię komend oraz przejść do katalogu w którym
 przechowujemy kod źródłowy projektu. Następnie należy uruchomić polecenie \CODE{scons} aby zbudować wszystkie
-pliki binarne (dostępne w katalogu \CODE{\\bin}):
+pliki binarne (dostępne w katalogu \CODE{bin\\release} lub \CODE{bin\\debug}):
 \begin{itemize}
 \item \PROG{gtl\_program} - plik wykonywalny parsera danych,
 \item \PROG{ModelTests} - testy jednostkowe modułu \textbf{model},
@@ -60,23 +56,23 @@ kompilatorem użytym do zbudowania biblioteki, a tym użytym do kompilacji progr
 zgodność taka zachodzi między większością wersji (złamano ją tylko w 2 przypadkach w ciągu ostatnich 10 lat),
 zaś kompilator \PROG{Clang} stara się zachować zgodność z \PROG{GCC} na poziomie zarówno binarnym jak i API. 
 
-W oby wyżej wymienionych przypadkach wystarczy podczas linkowania dodać parametr \textit{-lścieżka\_do\_biblioteki}
+W oby wyżej wymienionych przypadkach wystarczy podczas linkowania dodać parametr \CODE{-lścieżka\_do\_biblioteki}
 aby linker mógł dołączyć bibliotekę do programu wykonywalnego.
 
 Aby korzystać z wszystkich obiektów i metod biblioteki konieczne jest również dołączenie nagłówków definiujących
-dane obiekty. Należy je dołączyć do ścieżki przeszukiwania poprzez parametr \textit{-iścieżka\_do\_katalogu\_include}
+dane obiekty. Należy je dołączyć do ścieżki przeszukiwania poprzez parametr \CODE{-iścieżka\_do\_katalogu\_include}
 wskazujący na katalog \CODE{include}. Wówczas wystarczy użyć makra \CODE{\#incude} wskazującego na jeden z poniższych
 plików:
 \begin{itemize}
-\item \textit{"gt.hpp"} - zawiera wyłącznie definicje wspólne dla wszystkich modułów oraz numer wersji biblioteki,
-\item \textit{"gt/version.hpp"} - zawiera wyłącznie numer wersji biblioteki,
-\item \textit{"gt/model.hpp"} - zawiera definicje interfejsów wykorzystywanych przez moduł \textbf{modelu}, a także 
+\item \CODE{"gt.hpp"} - zawiera wyłącznie definicje wspólne dla wszystkich modułów oraz numer wersji biblioteki,
+\item \CODE{"gt/version.hpp"} - zawiera wyłącznie numer wersji biblioteki,
+\item \CODE{"gt/model.hpp"} - zawiera definicje interfejsów wykorzystywanych przez moduł \MODULE{modelu}, a także 
 fabryk pozwalających uzyskać do stęp do ich implementacji,
-\item \textit{"gt/routines.hpp"} - zawiera definicje interfejsów wykorzystanych przez moduł \textbf{routines}, fabryk
-udostępniających ich implementacje. Odnosi się również do definicji wykorzystanych w module \textbf{model},
-\item \textit{"gt/gtl.hpp"} - definiuje interfejsy oraz fabryki modułu \textbf{GTL}, oraz odniesienia do dwóch poprzednich
+\item \CODE{"gt/routines.hpp"} - zawiera definicje interfejsów wykorzystanych przez moduł \MODULE{routines}, fabryk
+udostępniających ich implementacje. Odnosi się również do definicji wykorzystanych w module \MODULE{model},
+\item \CODE{"gt/gtl.hpp"} - definiuje interfejsy oraz fabryki modułu \MODULE{GTL}, oraz odniesienia do dwóch poprzednich
 modułów,
-\item \textit{"gt/program.hpp"} - deklaracje modułu \textbf{program} oraz pozostałych modułów.
+\item \CODE{"gt/program.hpp"} - deklaracje modułu \MODULE{program} oraz pozostałych modułów.
 \end{itemize}
 
 Przykładowo aby używać definicji modułu \textbf{GTL} należy użyć dyrektywy \CODE{\#include "gt/gtl.hpp"}.
@@ -100,7 +96,7 @@ użyć ich własnoręcznie w swoim programie.
 
 \section{Uruchamianie}
 
-Parser zdefiniowany jest w module \textbf{GTL}, a sterowany za pośrednictwem modułu \textbf{program}. Aby z niego skorzystać
+Parser zdefiniowany jest w module \CODE{GTL}, a sterowany za pośrednictwem modułu \CODE{program}. Aby z niego skorzystać
 powinniśmy uruchomić plik \PROG{gtl\_program}. Jako domyślne strumienie przyjmuje on standardowe wejście, standardowe wyjście
 oraz wyjście błędów. Możliwe jednak jest wczytanie z/pisanie do pliku zamiast tego:
 \begin{itemize}
@@ -125,30 +121,47 @@ Dodatkowo program można uruchomić z parametrami:
 
 \section{Format danych wejściowych}
 
-Język \textbf{GTL} operuje na prostych obiektach, które można zapytać o jakąś ich własność. Można się do nich odnosić przez wartość jak również
+Język \LIB{GTL} operuje na prostych obiektach, które można zapytać o jakąś ich własność. Można się do nich odnosić przez wartość jak również
 przez zdefiniowaną nazwę. Po wpisaniu polecenia:
 
-\CODE{LET name BE value;}
+
+\begin{code}
+LET name BE value;
+\end{code}
 
 Pod nazwą \CODE{name} dostępna będzie wartość \CODE{value}. Zapytania wyglądają następująco:
 
-\CODE{FIND property[, property2[, ...]] FOR value[, value2[, ...]];}
+\begin{code}
+FIND property[, property2[, ...]] FOR value[, value2[, ...]];
+\end{code}
 
 dzięki czemu uzyskamy właściwości \CODE{property}, \CODE{propert2}, ... dla obiektów \CODE{value}, \CODE{value2}, ...
 
 Zdefiniowane imiennie dane dostępne są w ramach pewnego kontekstu. Gdy uruchamiany program inicjalizujemy pewien najwyższy kontekst i wszystkie
 zmienne jakie zdefiniujemy w konsoli będą do niego trafiać. Może on jednak posiadać konteksty potomne - uruchamiając polecenie:
 
-\CODE{EXECUTE "file";}
+\begin{code}
+EXECUTE "plik.gtl";
+\end{code}
 
 tworzymy nowy kontekst dla pliku \CODE{file}, do niego trafią wszystkie definiowane zmienne i gdy wczytywanie pliku dobiegnie końca, zostanie on
 zniszczony wraz ze wszystkimi zmiennymi jakie w nim zdefiniowano. Posiadać on będzie dostęp do wszystkich zmiennych zdefiniowanych w kontekście
 z którego uruchomiono plik, a w przypadku konfliktu nazw, zmienna oryginalna zostanie przesłonięta jedynie w kontekście potomnym. Dla odmiany
 polecenie:
 
-\CODE{LOAD "file";}
+\begin{code}
+LOAD "plik.gtl";
+\end{code}
 
 wczyta i wykona plik w bieżącym kontekście.
+
+Ostatnim poleceniem jest:
+
+\begin{code}
+STORE "plik.gtl";
+\end{code}
+
+zapisujące wszystkie widziane w danym kontekście zmienne do pliku.
 
 Na chwilę obecną format GTL pozwala wyłącznie na samodzielne wykonywanie tych 4 poleceń - tworzenie obiektów może następować wyłącznie w ramach
 polecenie \CODE{LET ... BE ...;} lub \CODE{FIND ... FOR ...;}.
@@ -157,48 +170,86 @@ polecenie \CODE{LET ... BE ...;} lub \CODE{FIND ... FOR ...;}.
 
 Składnia tworzenia obiektu gracza wygląda następująco:
 
-\CODE{PLAYER name \{ strategy1[, strategy2[, ...]] \}}
+\begin{code}
+PLAYER name { strategy1[, strategy2[, ...]] }
+\end{code}
 
 definiuje one gracza \CODE{name}, o strategiach czystych \CODE{strategy1}, \CODE{strategy2},
 ... W praktyce występuje ona wyłącznie w połączeniu z poleceniem \CODE{LET ... BE ...;}:
 
-\CODE{LET player1 BE PLAYER \{ strategy1, strategy2 \};}
+\begin{code}
+LET player1 BE PLAYER { strategy1, strategy2 };
+\end{code}
 
 lub z \CODE{FIND ... FOR ...;}:
 
-\CODE{FIND name, strategies FOR PLAYER name1 \{ strategy1, strategy2 \};}
+\begin{code}
+FIND name, strategies FOR PLAYER name1 { strategy1, strategy2 };
+\end{code}
 
 \section{Gry w postaci strategicznej}
 
 Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategi czystych poszczególnych
 graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
 
-\CODE{
+\begin{code}
 LET game1 BE
   STRATEGIC GAME
   WITH
-    player1, // gracz zdefiniowani wcześniej
+    player1, // gracz zdefiniowany wcześniej
   	PLAYER player2 { strategy1, strategy2 } // gracz zdefiniowany ad hoc
   SUCH AS
-    { player1=strategy1: // częściowo definiuje kombinacje strategii
-  	  { player2=strategy1: 10, 20 }, // uzupełnia kombinację o drugiego gracza
+    { player1=strategy1: // częściowa definicja
+  	  { player2=strategy1: 10, 20 }, // uzupełnienie definicji
   	  { player2=strategy2: 30, 40 }
     },
-    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna kombinacja strategii graczy
+    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna definicja
     { player1=strategy2, player2=strategy2: 70, 80 }
   END;
-}
+\end{code}
 
 Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Kombinacje strategii z kolei mogą być podawane
 od razu w komplecie jak również rozbite na etapy. Każda definicja strategii ma postać \CODE{\{ gracz=strategia[, gracz2=strategia2[, ...]] : [kolejne definicje lub wypłaty graczy] \}}. Wymagane jest podanie wszystkich wypłat jak również nie definiowane dwukrotnie wypłaty dla tej samej kombinacji strategii.
 
 Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mieszanych:
 
-\CODE{FIND pure\_equilibrium FOR game1;}
+\begin{code}
+FIND pure_equilibrium FOR game1;
+\end{code}
 
 Dla gier jednomacierzowych (tutaj: gier 2 graczy dla których każda kombinacja ma zdefiniowane 2 przeciwne wypłaty albo wręcz tylko jedną) oraz
 dwumacierzowych (gier 2 graczy gdzie każda kombinacja ma zdefiniowane 2 wypłaty) można dodatkowo próbować obliczyć równowagę w strategiach mieszanych:
 
-\CODE{FIND mixed\_equilibrium FOR game1;}
+\begin{code}
+FIND mixed_equilibrium FOR game1;
+\end{code}
+
+\section{Gry w postaci ekstensywnej}
+
+Gry w postaci ekstensywnej definiuje się niemal identycznie jak gry w postaci strategicznej. Jedyną różnicą jest ograniczenie, że struktura definicji musi odpowiadać strukturze drzewa gry:
+
+\begin{code}
+LET game2 BE
+  EXTENSIVE GAME
+  WITH
+    player1, // gracz zdefiniowany wcześniej
+    PLAYER p2 { s1, s2 } // gracz zdefiniowany ad hoc
+  SUCH AS
+    { p1=s1 :             // struktura odpowiada drzewu
+      { p2=s1 : 10, 20 }, // w każdym wierzchołku, decyzję podejmuje dokładnie jeden gracz
+      { p2=s2 : 30, 40 }  // liście drzewa zawierają wypłaty
+    },
+    { p1=s2 :
+      { p2=s1 : 50, 60 },
+      { p2=s2 : 70, 80 }
+    }
+  END;
+\end{code}
+
+Dla tak zdefiniowanego drzewa możemy poszukać równowagi w strategiach czystych:
+
+\begin{code}
+FIND pure_equilibrium FOR game2;
+\end{code}
 
 \end{document}

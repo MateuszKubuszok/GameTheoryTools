@@ -14,6 +14,7 @@
 
 \usepackage{theorem}        % 
 \usepackage{graphicx}       % 
+\usepackage{verbatim}       %
 \usepackage[utf8]{inputenc} % input encoding
 \usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
 \usepackage{polski}         % i18n package
@@ -37,6 +38,8 @@
 \newcommand{\LANG}[1]{\textbf{#1}}
 \newcommand{\PROG}[1]{\textbf{#1}}
 \newcommand{\LIB}[1]{\textbf{#1}}
+\newcommand{\MODULE}[1]{\textbf{#1}}
+\newcommand{\VER}[1]{\textit{#1}}
 \newcommand{\CODE}[1]{\texttt{#1}}
 
 \newtheorem{theorem}{Twierdzenie}[section]
@@ -45,8 +48,10 @@
 \newtheorem{corollary}{Wniosek}[section]
 \newtheorem{definition}{Definicja}[section]
 
+\newenvironment{code}{\verbatim}
+                     {\endverbatim}
 \newenvironment{proof}{\par\noindent {\bf Dowód.}}
-{\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
+                      {\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
 \newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
                        {\vspace*{4mm}\end{small}}
 
