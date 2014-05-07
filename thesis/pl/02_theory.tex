@@ -8,15 +8,67 @@
 
 \section{Wprowadzenie}
 
-TODO
+Przez \textit{grę} rozumiemy matematyczny opis pewnej sytuacji konfliktowej, w której biorą udział określone strony,
+nazywane \textit{graczami}. Każdej stronie przypisujemy pewien zbiór \textit{strategii}, z których w danym momencie
+wykorzystuje jedną. Każdemu z graczy przypisujemy również \textit{funkcję wypłaty}, której wartość uzależniona jest
+od wszystkich strategii granych przez graczy w określonej chwili.
+
+W zależności od rozpatrywanego rodzaju gry formalna definicja wymienionych pojęć jest nieco inna. W tej pracy rozważane
+będą 2 rodzaje gier: \textit{gry w postaci strategicznej} oraz \textit{gry w postaci ekstensywnej}. Dla obu z nich możliwe
+jest zdefiniowanie tzw. \textit{równowagi Nasha} tj. takiej kombinacji wyborów strategii przez graczy, aby dla każdego z nich
+nieopłacalne było odstąpienie od obecnie granej strategii.
+
+Szczególną uwagę poświęcono grom dla których możliwe jest obliczenie równowagi Nasha przy pomocy programowania
+liniowego/całkowitoliczbowego lub rekurencyjnego przeszukania danych.
 
 \section{Gra w postaci strategicznej}
 
-TODO
+\begin{definition}
+\textbf{Grą w postaci strategicznej (normalnej)} nazywamy trójkę:
+\begin{enumerate}
+\item skończony zbiór graczy $I = 1, 2, 3, ..., n$,
+\item przestrzeń strategii czystych gracza $S_i$ zdefiniowaną dla każdego gracza $i \in I$,
+\item funkcję wypłaty $u_i(s)$ określającą wypłatę gracza $i \in I$ dla każdego profilu $s \in S$.
+\end{enumerate}
+\end{definition}
+
+Przy tak zdefiniowanej grze zakładamy, że każdy z graczy decyduje się na jedną ze swoich strategii, a następnie
+na podstawie wyborów podjętych przez wszystkich graczy przypisujemy każdemu z nich wypłatę.
+
+Możemy przyjąć, że dla tak przyjętych oznaczeń $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, zaś $s_{-i}$ profil
+wszystkich wyborów oprócz profilu gracza $i$. Analogicznie $S_{-i}$ oznacza zbiór wszystkich możliwych odpowiedzi na granie
+strategii $s_i$ przez gracza $i$.
+
+\begin{definition}
+\textbf{Strategią mieszaną} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi $S_i$. Wówczas funkcja wypłaty
+ma postać $u_i(\sigma_i, \sigma^{*})$ i jest wartością oczekiwaną funkcji wypłaty dla strategii mieszanych wszystkich graczy.
+\end{definition}
 
 \subsection{Równowagi w strategiach czystych}
 
-TODO
+\begin{definition}
+\textbf{Równowagą Nasha w strategiach czystych} w grze w postaci strategicznej nazywamy profil strategii $s \in S$ taki, że:
+$$\forall_{i \in I} \forall_{s_{-i} \in S_{-i}} u_i(s) \geq u_i(s_i, s_{-i})$$
+\end{definition}
+
+Oznacza to, że równowagą jest profil strategii, dla którego pojedyncza zmiana granej strategii nie jest w stanie poprawić wypłaty
+żadnego z graczy.
+
+Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień-nożyce:
+
+\begin{tabular}[t]{| c | c | c | c |}
+\hline
+$p_1 \downarrow$, $p_2 \rightarrow$  & papier & kamień & nożyce \\
+\hline
+papier                               & 0,0    & 1,-1   & -1,1   \\
+\hline
+kamień                               & -1,1   & 0,0    & 1,-1   \\
+\hline
+nożyce                               & 1,-1   & -1,1   & 0,0    \\
+\hline
+\end{tabular}
+
+W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
 \subsection{Równowagi w strategiach mieszanych w grach jednomacierzowych}
 
