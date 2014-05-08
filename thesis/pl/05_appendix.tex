@@ -197,14 +197,14 @@ LET game1 BE
   STRATEGIC GAME
   WITH
     player1, // gracz zdefiniowany wcześniej
-  	PLAYER player2 { strategy1, strategy2 } // gracz zdefiniowany ad hoc
+  	PLAYER player2 { strategy1, strategy2 } // ...oraz ad hoc
   SUCH AS
     { player1=strategy1: // częściowa definicja
   	  { player2=strategy1: 10, 20 }, // uzupełnienie definicji
   	  { player2=strategy2: 30, 40 }
     },
-    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna definicja
-    { player1=strategy2, player2=strategy2: 70, 80 }
+    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna
+    { player1=strategy2, player2=strategy2: 70, 80 }  // definicja
   END;
 \end{code}
 
@@ -234,9 +234,9 @@ LET game2 BE
   WITH
     player1, // gracz zdefiniowany wcześniej
     PLAYER p2 { s1, s2 } // gracz zdefiniowany ad hoc
-  SUCH AS
-    { p1=s1 :             // struktura odpowiada drzewu
-      { p2=s1 : 10, 20 }, // w każdym wierzchołku, decyzję podejmuje dokładnie jeden gracz
+  SUCH AS                 // struktura odpowiada drzewu
+    { p1=s1 :             // w każdym wierzchołku, decyzję podejmuje
+      { p2=s1 : 10, 20 }, // dokładnie jeden gracz
       { p2=s2 : 30, 40 }  // liście drzewa zawierają wypłaty
     },
     { p1=s2 :

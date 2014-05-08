@@ -36,7 +36,7 @@ Przy tak zdefiniowanej grze zakładamy, że każdy z graczy decyduje się na jed
 na podstawie wyborów podjętych przez wszystkich graczy przypisujemy każdemu z nich wypłatę.
 
 Możemy przyjąć, że dla tak przyjętych oznaczeń $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, zaś $s_{-i}$ profil
-wszystkich wyborów oprócz profilu gracza $i$. Analogicznie $S_{-i}$ oznacza zbiór wszystkich możliwych odpowiedzi na granie
+wszystkich wyborów oprócz wyboru gracza $i$. Analogicznie $S_{-i}$ oznacza zbiór wszystkich możliwych odpowiedzi na granie
 strategii $s_i$ przez gracza $i$.
 
 \begin{definition}
@@ -134,13 +134,13 @@ $$\forall_{i \in I} \sigma_1(i) \geq 0$$
 
 $$\downarrow$$
 
-$$min_x \sum_{i \in I} x_i$$
+$$\min_x \sum_{i \in I} x_i$$
 $$A^Tx \geq 1$$
 $$x \geq 0$$
 
 Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
 
-$$max_y \sum_{j \in J} y_i$$
+$$\max_y \sum_{j \in J} y_i$$
 $$Ay \leq 1$$
 $$y \geq 0$$
 
