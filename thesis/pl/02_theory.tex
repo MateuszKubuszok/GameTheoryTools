@@ -70,11 +70,85 @@ nożyce                               & 1,-1   & -1,1   & 0,0    \\
 
 W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
-\subsection{Równowagi w strategiach mieszanych w grach jednomacierzowych}
+Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania. Wszystko co możemy zrobić to zoptymalizować
+metodę \textit{brute force}, poprzez eliminację strategii zdominowanych.
 
-TODO
+\begin{definition}
+\textbf{Strategia zdominowana} to taka strategia $s_i \in S_i$, że:
+$$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
+\end{definition}
 
-\subsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
+Strategia taka zawsze może zostać zastąpiona przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy ją
+pominąć w rozważaniach - z definicji nie może ona wchodzić w skład szukanego profilu.
+
+\textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania z naszych rozważań strategii zdominowanych
+tak długo jak to tylko możliwe. Zdarza się, że prowadzi to do sytuacji gdzie równowaga jest oczywista, ale często konieczne jest
+jednak przeszukiwanie pozostałej przestrzeni rozwiązań aż do jej znalezienia lub stwierdzenia jej braku.
+
+\subsection{Równowagi w strategiach mieszanych}
+
+\begin{theorem}
+\textbf{Twierdzenie Nasha o istnieniu równowagi} - każda skończona gra $(I, S_i, u_i)$ ma równowagę w strategiach mieszanych.
+\end{theorem}
+
+Dowodzone jest to przy pomocy \textbf{twierdzenia o punkcie stałym Kakutaniego}.
+
+Gwarantuje nam to możliwość znalezienia równowagi (w strategiach mieszanych) w każdej grze skończonej, nie mówi nam jednak jak
+je znaleźć.
+
+\subsubsection{Równowagi w strategiach mieszanych w grach jednomacierzowych}
+
+\begin{definition}
+\textbf{Gra o sumie zerowej} to taka gra, że:
+$$\forall_{s \in S} \sum_{i \in I} u_i(s) = 0$$
+\end{definition}
+
+Gdy w grze bierze udział 2 graczy wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać przy pomocy
+macierzy $A_{ij}$, gdzie $i$ oznacza wybór strategii pierwszego gracza, a $j$ wybór gracza drugiego. Wartość stanowi wypłatę
+pierwszego z graczy.
+
+W takiej sytuacji pierwszy z graczy będzie dążył do maksymalizacji wypłaty, zaś gracz drugi do jej minimalizacji:
+
+$$\max_{\sigma_1} \{ \min_{j \in J} u_1(\sigma_1, j) \}$$
+$$\min_{\sigma_2} \{ \max_{i \in I} u_2(i, \sigma_2) \}$$
+
+Tak zdefiniowany problem po pewnych modyfikacjach możemy przekształcić do programowania liniowego:
+
+$$\max_{\sigma_1} \{ \min_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \}$$
+$$\sum_{i \in I} \sigma_1(i) = 1$$
+$$\forall_{i \in I} \sigma_1(i) \geq 0$$
+
+$$\downarrow$$
+
+$$\max_{\sigma_1,v} v$$
+$$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
+$$\sum_{i \in I} \sigma_1(i) = 1$$
+$$\forall_{i \in I} \sigma_1(i) \geq 0$$
+
+$$\downarrow x_i = \frac{\sigma_1(i)}{v}$$
+
+$$\max_{\sigma_1,v} v$$
+$$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq 1$$
+$$\sum_{i \in I} \sigma_1(i) = \frac{1}{v}$$
+$$\forall_{i \in I} \sigma_1(i) \geq 0$$
+
+$$\downarrow$$
+
+$$min_x \sum_{i \in I} x_i$$
+$$A^Tx \geq 1$$
+$$x \geq 0$$
+
+Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
+
+$$max_y \sum_{j \in J} y_i$$
+$$Ay \leq 1$$
+$$y \geq 0$$
+
+Okazuje się więc, że są to problemy dualne - odpowiednia implementacja algorytmu simpleks jest w stanie otrzymać oba rozwiązania
+przy jednym uruchomieniu procedury. Należy jedynie pamiętać aby otrzymane wartości pomnożyć przez wartość funkcji celu, aby wrócić
+do ich oryginalnej postaci.
+
+\subsubsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
 
 TODO
 
