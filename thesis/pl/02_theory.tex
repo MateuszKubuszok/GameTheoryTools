@@ -30,6 +30,7 @@ liniowego/całkowitoliczbowego lub rekurencyjnego przeszukania danych.
 \item przestrzeń strategii czystych gracza $S_i$ zdefiniowaną dla każdego gracza $i \in I$,
 \item funkcję wypłaty $u_i(s)$ określającą wypłatę gracza $i \in I$ dla każdego profilu $s \in S$.
 \end{enumerate}
+\cite[str.~4]{FT-GT}
 \end{definition}
 
 Przy tak zdefiniowanej grze zakładamy, że każdy z graczy decyduje się na jedną ze swoich strategii, a następnie
@@ -43,6 +44,7 @@ na granie strategii $s_i$ przez gracza $i$.
 \textbf{Strategią mieszaną} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi $S_i$. Wówczas funkcja
 wypłaty ma postać $u_i(\sigma_i, \sigma^{*})$ i jest wartością oczekiwaną funkcji wypłaty dla strategii mieszanych
 wszystkich graczy.
+\cite[str.~5]{FT-GT}
 \end{definition}
 
 \subsection{Równowagi w strategiach czystych}
@@ -51,6 +53,7 @@ wszystkich graczy.
 \textbf{Równowagą Nasha w strategiach czystych} w grze w postaci strategicznej nazywamy profil strategii $s \in S$ taki,
 że:
 $$\forall_{i \in I} \forall_{s_{-i} \in S_{-i}} u_i(s) \geq u_i(s_i, s_{-i})$$
+\cite[str.~11]{FT-GT}
 \end{definition}
 
 Oznacza to, że równowagą jest profil strategii, dla którego pojedyncza zmiana granej strategii nie jest w stanie 
@@ -72,12 +75,14 @@ nożyce                               & 1,-1   & -1,1   & 0,0    \\
 
 W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
-Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania. Wszystko co możemy zrobić to
-zoptymalizować metodę \textit{brute force}, poprzez eliminację strategii zdominowanych.
+Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania \cite[str.~16]{FT-GT}. Wszystko co
+możemy zrobić to zoptymalizować metodę \textit{brute force}, poprzez eliminację strategii zdominowanych
+\cite[str.~9--11]{FT-GT}.
 
 \begin{definition}
 \textbf{Strategia zdominowana} to taka strategia $s_i \in S_i$, że:
 $$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
+\cite[str.~6--7]{FT-GT}
 \end{definition}
 
 Strategia taka zawsze może zostać zastąpiona przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy ją
@@ -93,9 +98,10 @@ braku.
 \begin{theorem}
 \textbf{Twierdzenie Nasha o istnieniu równowagi} - każda skończona gra $(I, S_i, u_i)$ ma równowagę w strategiach
 mieszanych.
+\cite[str.~29]{FT-GT}
 \end{theorem}
 
-Dowodzone jest to przy pomocy \textbf{twierdzenia o punkcie stałym Kakutaniego}.
+Dowodzone jest to przy pomocy \textbf{twierdzenia o punkcie stałym Kakutaniego} \cite[str.~29]{FT-GT}.
 
 Gwarantuje nam to możliwość znalezienia równowagi (w strategiach mieszanych) w każdej grze skończonej, nie mówi nam
 jednak jak je znaleźć.
@@ -159,8 +165,8 @@ pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych s
 \begin{itemize}
 \item algorytm \textbf{Lemke-Howsona} - wykorzystujący podprocedury algorytmu simplex,
 \item algorytm \textbf{Porter-Nudelman-Shoham (PNS)} - korzysta z programowanie liniowego (wersja dla liczby graczy
-$n > 2$ jest nieliniowa),
-\item algorytm \textbf{Sandholm-Gilpin-Conitzer} - wykorzystuje programowanie całkowitoliczbowe.
+$n > 2$ jest nieliniowa) \cite{PNS-NE},
+\item algorytm \textbf{Sandholm-Gilpin-Conitzer} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{itemize}
 
 Spośród wyżej wymienionych zdecydowano się na przetestowanie działania trzeciego rozwiązania. Jest ono relatywnie nowe,
@@ -175,7 +181,21 @@ TODO Scarf, PNS i reszta, dlaczego się nie udało.
 
 \section{Gra w postaci ekstensywnej}
 
-TODO
+\begin{definition}
+\textbf{Grą w postaci ekstensywnej} nazywamy szóstkę:
+\begin{enumerate}
+\item zbiór graczy,
+\item porządek ruchów graczy,
+\item funkcję wypłaty gracza od ciągu poczynionych ruchów,
+\item wybory graczy dostępne w danym ruchu,
+\item wiedza gracza w chwili podejmowania decyzji,
+\item rozkład prawdopodobieństwa nad zdarzeniami zewnętrznymi (\textit{naturą}).
+\end{enumerate}
+\cite[str.~77--78]{FT-GT}
+\end{definition}
+
+Taką grę można przedstawić jako drzewo, którego liście zawierają wypłaty, krawędzie odpowiadają określonym decyzjom,
+a węzły chwile ich podejmowania przez określonego gracza. 
 
 \subsection{Równowagi w strategiach czystych w grach z informacją doskonałą}
 
