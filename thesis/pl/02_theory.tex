@@ -173,7 +173,58 @@ Spośród wyżej wymienionych zdecydowano się na przetestowanie działania trze
 a więc nie posiada wielu praktycznych implementacji - stworzenie i udostępnienie takowej może być istotniejszym wkładem
 badawczym niż tworzenie kolejnej wersji powszechnie stosowanego algorytmu.
 
-TODO opis działania
+Algorytm \textbf{Sandholm-Gilpin-Conitzer} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
+otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha) - nie definiuje on jednak funkcji celu,
+pozwalając jego użytkownikom na samodzielne ich zdefiniowanie. Każda liniowa funkcja celu może zostać wykorzystana.
+
+Wykorzystane są: 
+\begin{itemize}
+\item zmienna $p_{s_i}$ - prawdopodobieństwo grania strategii $s_i$,
+\item zmienna pomocnicza $U_i$. Dla gracza $i$ zmienna ta oznacza różnicę między maksymalnym i minimalnym zyskiem jaki
+może on osiągnąć:
+$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{1-i}^h, s_{1-i}^l \in S_{1-i}} u_i(s_i^h, s_{1-i}^h) - u_i(s_i^l, s_{1-i}^l)$$
+\item zmienna $u_{s_i}$ - oznacza ono oczekiwaną wypłatę gracza grającego $s_i$ dla obecnej strategii mieszanej drugiego
+gracza,
+\item zmienną $r_{s_i}$ - ,,żal''. Wartość określającą różnicę między maksymalnym oczekiwanym zyskiem dla pewnej
+strategii czystej, a wartością oczekiwaną dla $s_i$,
+\item zmienna binarna $b_{s_i}$ - dla wartości równej $1$, prawdopodobieństwo użycia strategii $s_i$ jest zerowe,
+dla $0$, może ona się pojawić o ile żal wyniesie $0$.
+\end{itemize}
+
+Wówczas ograniczenia możemy zdefiniować następująco $\forall_{i \in I}$:
+\begin{enumerate}
+\item $$\sum_{{s_i} \in S_i} p_{s_i} = 1$$
+\item $$\forall_{s_i \in S_i} u_{s_i} = \sum_{s_{1-i} \in S_{1-i}} p_{s_{1-i}} u_i(s_i, s_{1-i})$$
+\item $$\forall_{s_i \in S_i} u_i \geq u_{s_i}$$
+\item $$\forall_{s_i \in S_i} r_{s_i} = u_i - u_{s_i}$$
+\item $$\forall_{s_i \in S_i} p_{s_i} \leq 1-b_{s_i}$$
+\item $$\forall_{s_i \in S_i} r_{s_i} \leq U_i b_{s_i}$$
+\end{enumerate}
+
+Tak po dodaniu do tak zdefiniowanego problemu całokowitoliczbowego funkcji celu, każde osiągalne rozwiązanie będzie
+stanowić poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
+
+Autorzy dalej omawiają dalej 3 kolejne specjalizacje tego problemu, aby osiągnąć kolejno:
+\begin{enumerate}
+\item wprowadzać karę za żal, oraz dążyć do jego minimalizacji - ograniczenia $1$, $2$, $3$, $4$, $5$ oraz:
+$$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} - U_i b_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq r_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq U_i b_{s_i}$$
+\cite[str.~2]{SCG-NE}
+\item wprowadzić karę za prawdopodobieństwo wykorzystania strategii z niezerowym żalem - ograniczenia $1$, $2$, $3$,
+$4$, $6$ oraz:
+$$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} g_{s_i} - (1 - b_{s_i})$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq p_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
+\cite[str.~2]{SCG-NE}
+\item karać zarówno żal jak i prawdopodobieństwo strategii z niezerowym żalem - ograniczenia $1$, $2$, $3$, $4$ oraz:
+$$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} + g_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq \frac{r_{s_i}}{U_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq b_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq p_{s_i}$$
+$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
+\cite[str.~2--3]{SCG-NE}
+\end{enumerate}
 
 \subsubsection{Gry o większej liczbie graczy}
 
