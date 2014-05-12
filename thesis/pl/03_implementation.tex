@@ -88,8 +88,10 @@ $$h(s) = \sum\limits_{i=0}^{n-1} H_i O_i(s_i)$$
 Tak zdefiniowana funkcja hashująca jest bijekcją ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i=1}^{n} \ABS{S_i}] $.
 \end{theorem}
 
+\begin{proof}
 Dla $n = 1$ jest to oczywiste. Dla $n > 1$ wystarczy zauważyć, że z definicji jeśli tylko byłaby to bijekcja dla $n-1$
 to na pewno będzie nią dla $n$.
+\end{proof}
 
 W ogólności funkcje hashujące nie są wykorzystywane w ten sposób i wymaga się od nich zazwyczaj szybkości oraz bycia
 trudnymi do odwrócenia. Tutaj jednak używane są do indeksowania tablicy asocjacyjnej i ich odwracalność jest przydatną
@@ -122,10 +124,9 @@ liniowego/całkowitoliczbowego na jej procedury.
 
 \subsubsection{Gry jednomacierzowe}
 
-Problem zapisano w języku LANG{MathProg} następująco:
-\begin{itemize}
-\item przykładowe dane:
-\begin{code}
+Problem zapisano w języku \LANG{MathProg} następująco:
+
+\begin{code}[caption=Przykładowe dane]
 data;
  
 set P1S := a b c;
@@ -139,8 +140,8 @@ param Payoff
  
 end;
 \end{code}
-\item rozwiązanie dla gracza pierwszego:
-\begin{code}
+
+\begin{code}[caption=Rozwiązanie dla gracza pierwszego]
 set P1S;
 set P2S;
  
@@ -164,8 +165,8 @@ for{i in P1S}
  
 end;
 \end{code}
-\item rozwiązanie dla gracza drugiego:
-\begin{code}
+
+\begin{code}[caption=Rozwiązanie dla gracza drugiego]
 set P1S;
 set P2S;
  
@@ -189,14 +190,12 @@ for{j in P2S}
  
 end;
 \end{code}
-\end{itemize}
 
 \subsubsection{Gra dwumacierzowa}
 
 Problem zapisano w jeżyku \LANG{MathProg} następująco:
-\begin{itemize}
-\item przykładowe dane:
-\begin{code}
+
+\begin{code}[caption=Przykładowe dane]
 data;
  
 set P1S := a b c;
@@ -216,8 +215,8 @@ param Payoff2
  
 end;
 \end{code}
-\item szukanie rozwiązania:
-\begin{code}
+
+\begin{code}[caption=Szukanie rozwiązania]
 set P1S;
 set P2S;
  
@@ -291,7 +290,6 @@ for{j in P2S}
 printf "Sum = %s, \n", sum{j in P2S} p2s[j] * u2s[j];
 printf "Max = %s, \n", U2;
 \end{code}
-\end{itemize}
 
 Dla testów wybrano następującą funkcję celu:
 $$\textbf{minimalizuj} \frac{\sum_{s_1 \in S_1} r_{s_1} + \sum_{s_2 \in S_2} r_{s_2}}{2}$$

@@ -23,8 +23,31 @@
 
 \selectlanguage{polish}
 
-%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
-%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\lstset{frame=lines,
+        numberstyle=\tiny,
+        stepnumber=5,
+        texcl=true,
+        inputencoding=utf8,
+        extendedchars=\true,
+        literate={ą}{{\k{a}}}1
+                 {Ą}{{\k{A}}}1
+                 {ć}{{\'c}}1
+                 {Ć}{{\'C}}1
+                 {ę}{{\k{e}}}1
+                 {Ę}{{\k{E}}}1
+                 {ł}{{\l{}}}1
+                 {Ł}{{\L{}}}1
+                 {ó}{{\'o}}1
+                 {Ó}{{\'O}}1
+                 {ń}{{\'n}}1
+                 {Ń}{{\'N}}1
+                 {ś}{{\'s}}1
+                 {Ś}{{\'S}}1
+                 {ż}{{\.z}}1
+                 {Ż}{{\.Z}}1
+                 {ź}{{\'z}}1
+                 {Ź}{{\'Z}}1
+}
 
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\NN}{\mathbb{N}}
@@ -48,8 +71,10 @@
 \newtheorem{corollary}{Wniosek}[section]
 \newtheorem{definition}{Definicja}[section]
 
-\newenvironment{code}{\verbatim}
-                     {\endverbatim}
+
+
+\lstnewenvironment{code}{}
+                        {}
 \newenvironment{proof}{\par\noindent {\bf Dowód.}}
                       {\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
 \newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
