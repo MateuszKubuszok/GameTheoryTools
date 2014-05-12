@@ -88,7 +88,12 @@ $$h(s) = \sum\limits_{i=0}^{n-1} H_i O_i(s_i)$$
 Tak zdefiniowana funkcja hashująca jest bijekcją ze zbioru $S$ w $ \ZZ \cap [0, \prod\limits_{i=1}^{n} \ABS{S_i}] $.
 \end{theorem}
 
-TODO
+Dla $n = 1$ jest to oczywiste. Dla $n > 1$ wystarczy zauważyć, że z definicji jeśli tylko byłaby to bijekcja dla $n-1$
+to na pewno będzie nią dla $n$.
+
+W ogólności funkcje hashujące nie są wykorzystywane w ten sposób i wymaga się od nich zazwyczaj szybkości oraz bycia
+trudnymi do odwrócenia. Tutaj jednak używane są do indeksowania tablicy asocjacyjnej i ich odwracalność jest przydatną
+właściwością - pozwala łatwo odzyskać profil na podstawie przydzielonego mu indeksu tablicy.
 
 \subsection{Gry w formie ekstensywnej}
 
@@ -114,6 +119,184 @@ z nich krotkę strategii i testować ją pod względem wyznaczania równowagi Na
 Strategie mieszane w grach jedno- i dwumacierzowych jako obliczane przy pomocy algorytmu Simpleks są otrzymywane przez
 proste wypełnienie modeli biblioteki \LIB{GLPK} i oddelegowanie obliczenia wartości problemu
 liniowego/całkowitoliczbowego na jej procedury.
+
+\subsubsection{Gry jednomacierzowe}
+
+Problem zapisano w języku LANG{MathProg} następująco:
+\begin{itemize}
+\item przykładowe dane:
+\begin{code}
+data;
+ 
+set P1S := a b c;
+set P2S := 1 2 3 4;
+ 
+param Payoff
+    :  1  2  3  4 :=
+    a  -5 3  1  8
+    b  5  5  4  6
+    c  -4 6  0  5;
+ 
+end;
+\end{code}
+\item rozwiązanie dla gracza pierwszego:
+\begin{code}
+set P1S;
+set P2S;
+ 
+param Payoff{P1S, P2S};
+ 
+var y{P1S} >= 0;
+ 
+minimize GameValue: sum{i in P1S} y[i];
+ 
+s.t. Condition2{j in P2S}:
+    sum{i in P1S} Payoff[i,j] * y[i] >= 1;
+ 
+solve;
+ 
+printf "Value: %s\n", GameValue;
+ 
+printf "Player 1 strategies:\n";
+ 
+for{i in P1S}
+    printf "Found %s, actual %s\n", y[i], y[i]/GameValue; 
+ 
+end;
+\end{code}
+\item rozwiązanie dla gracza drugiego:
+\begin{code}
+set P1S;
+set P2S;
+ 
+param Payoff{P1S, P2S};
+ 
+var x{P2S} >= 0;
+ 
+maximize GameValue: sum{j in P2S} x[j];
+ 
+s.t. Condition1{i in P1S}:
+    sum{j in P2S} Payoff[i,j] * x[j] <= 1;
+ 
+solve;
+ 
+printf "Value: %s\n", GameValue;
+ 
+printf "Player 2 strategies:\n";
+ 
+for{j in P2S}
+    printf "Found %s, actual %s\n", x[j], x[j]/GameValue;
+ 
+end;
+\end{code}
+\end{itemize}
+
+\subsubsection{Gra dwumacierzowa}
+
+Problem zapisano w jeżyku \LANG{MathProg} następująco:
+\begin{itemize}
+\item przykładowe dane:
+\begin{code}
+data;
+ 
+set P1S := a b c;
+set P2S := 1 2 3 4;
+ 
+param Payoff1
+    :  1  2  3  4 :=
+    a  0  3  1  8
+    b  5  5  4  6
+    c  2  6  0  5;
+ 
+param Payoff2
+    :  1  2  3  4 :=
+    a  6  6  2  2
+    b  3  2  5  6
+    c  0  7  0  1;
+ 
+end;
+\end{code}
+\item szukanie rozwiązania:
+\begin{code}
+set P1S;
+set P2S;
+ 
+param Payoff1{P1S, P2S};
+param Payoff2{P1S, P2S};
+ 
+param U1 := max{i in P1S, j in P2S}
+  Payoff1[i,j] - min{i in P1S, j in P2S} Payoff1[i,j];
+param U2 := max{i in P1S, j in P2S}
+  Payoff2[i,j] - min{i in P1S, j in P2S} Payoff2[i,j];
+ 
+var b1s{P1S}, binary;
+var b2s{P2S}, binary;
+ 
+var p1s{P1S}, >= 0, <=1;
+var p2s{P2S}, >= 0, <=1;
+ 
+var u1s{P1S};
+var u2s{P2S};
+ 
+var r1s{P1S};
+var r2s{P2S};
+ 
+var u1;
+var u2;
+ 
+minimize AvarageRegret:
+  ( sum{i in P1S} r1s[i] + sum{j in P2S} r2s[j] ) / 2;
+ 
+s.t. Probabilities1:
+	sum{i in P1S} p1s[i] = 1;
+s.t. Probabilities2:
+	sum{j in P2S} p2s[j] = 1;
+ 
+s.t. UtilitiesValue1{i in P1S}:
+	u1s[i] = sum{j in P2S} p2s[j] * Payoff1[i,j];
+s.t. UtilitiesValue2{j in P2S}:
+	u2s[j] = sum{i in P1S} p1s[i] * Payoff2[i,j];
+ 
+s.t. MaxUtilities1{i in P1S}:
+	u1 >= u1s[i];
+s.t. MaxUtilities2{j in P2S}:
+	u2 >= u2s[j];
+ 
+s.t. Regret1{i in P1S}:
+	r1s[i] = u1 - u1s[i];
+s.t. Regret2{j in P2S}:
+	r2s[j] = u2 - u2s[j];
+ 
+s.t. Probability1{i in P1S}:
+	p1s[i] <= 1 - b1s[i];
+s.t. Probability2{j in P2S}:
+	p2s[j] <= 1 - b2s[j];
+ 
+s.t. RegretAndMax1{i in P1S}:
+	r1s[i] <= U1 * b1s[i];
+s.t. RegretAndMax2{j in P2S}:
+	r2s[j] <= U2 * b2s[j];
+ 
+solve;
+ 
+printf "Player 1 strategies:\n";
+for{i in P1S}
+	printf "%s -> %s\n", i, p1s[i];
+printf "Sum = %s, \n", sum{i in P1S} p1s[i] * u1s[i];
+printf "Max = %s, \n", U1;
+ 
+printf "Player 2 strategies:\n";
+for{j in P2S}
+	printf "%s -> %s\n", j, p2s[j];
+printf "Sum = %s, \n", sum{j in P2S} p2s[j] * u2s[j];
+printf "Max = %s, \n", U2;
+\end{code}
+\end{itemize}
+
+Dla testów wybrano następującą funkcję celu:
+$$\textbf{minimalizuj} \frac{\sum_{s_1 \in S_1} r_{s_1} + \sum_{s_2 \in S_2} r_{s_2}}{2}$$
+minimalizującą średnią wartość żalu przy założeniu rozkładu jednostajnego. Możliwym usprawnieniem jest zmiana na któreś
+z rozwiązań zaproponowanym przez autorów oryginalnej pracy.
 
 \subsection{Gry w formie ekstensywnej}
 
