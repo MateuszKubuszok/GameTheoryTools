@@ -282,10 +282,6 @@ dokładnie znajdujemy się w drzewie gry zawsze możemy wybrać optymalną strat
 ostatecznie otrzymalibyśmy dla każdej z możliwości. Ponieważ mamy do czynienia z graczami racjonalnymi możemy spodziewać
 się, że również oni wybraliby optymalne dla siebie strategie.
 
-\begin{definition}
-\textbf{Gra z informacją zupełną} to gra, w której każdy z graczy posiada wiedzę na temat ruchów i wypłat innych graczy,
-\end{definition}
-
 Dysponując kompletną informacją możemy schodzić w głąb drzewa gry, aby ostatecznie dojść do liści zawierających wypłaty.
 Na tym poziomie bieżący gracz posiada już wszystkie informacje potrzebne do podjęcia najkorzystniejszej dla siebie
 decyzji. Gracz rozgrywający w poprzedzającym kroku jest z kolei w stanie ją przewidzieć. W ten sposób wychodząc od liści
@@ -304,10 +300,7 @@ wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdeg
 optymalnym. Proste przejrzenie drzewa od liści do korzenia nie pozwoli nam w oczywisty sposób wybrać najlepszych
 strategii.
 
-Podobnie w grach bez informacji zupełnej. Nawet znając wszystkie kroki prowadzące do danej sytuacji nie wiemy, jakie
-decyzje mogą podjąć inni gracze. Nie wiemy też, jakie mogą otrzymać wypłaty, a tym samym przewidywać ich ruchów.
-
-W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiach mieszanych} lub \textbf{zachowawczych}.
+W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiach mieszanych} lub \textbf{behawioralnych}.
 
 \begin{definition}
 \textbf{Strategie mieszane} definiuje się analogicznie jak w grach w postaci strategicznej - istotny jest jednak fakt,
@@ -317,11 +310,11 @@ i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
 
 Tymczasem
 \begin{definition}
-\textbf{strategie zachowawcze} określają rozkład nad wyborem w określonym wierzchołku.
+\textbf{strategie behawioralne} określają rozkład nad wyborem w określonym wierzchołku.
 \end{definition}
 
 Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji
-projektu, zaś poszukiwanie równowag w strategiach mieszanych i zachowawczych przeznaczono do zaimplementowania
+projektu, zaś poszukiwanie równowag w strategiach mieszanych i behawioralnych przeznaczono do zaimplementowania
 w przyszłości.
 
 \end{document}

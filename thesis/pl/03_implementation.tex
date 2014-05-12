@@ -300,12 +300,10 @@ z rozwiązań zaproponowanym przez autorów oryginalnej pracy.
 
 \subsection{Gry w formie ekstensywnej}
 
-Rozważane są wyłącznie gry z informacją doskonałą - mają one tą przyjemną własność, że w każdym wierzchołku jeśli
-tylko obliczymy optymalny wybór dla synów danego wierzchołka możemy wybrać dla niego strategię - wybieramy zawsze tą,
-która posiada największą wypłatę dla gracza decydującego w danych wierzchołku. Możliwe jest więc obliczenie równowagi
-Nasha rekurencyjnie - dla każdego wierzchołka obliczamy wypłaty oraz decyzje jego synów, po czym wybieramy najbardziej
-korzystny wariant i zwracamy (zarówno wypłatę jak i decyzje podjęte w wierzchołkach potomnych). Na samym końcu będziemy
-posiadali wartości wypłaty w punkcie równowagi oraz decyzje podjęte przez graczy w każdym z wierzchołków.
+Rozważane są wyłącznie gry z informacją doskonałą. Aby zaleźć w nich równowagę Nasha rekurencyjnie obliczamy wartości
+podgier dla każdego z wierzchołków. W wywołaniach przekazujemy listę na którą dopisujemy optymalny wybór dla danego
+gracza. Po obliczeniu wartości dla wszystkich strategii, wybieramy najlepszą, dopisujemy ją do listy i zwracamy wartość
+gry. Po zakończeniu otrzymujemy listę wybranych strategii (równowagę Nasha) oraz wypłaty graczy.
 
 \section{Parser danych wejściowych}
 
