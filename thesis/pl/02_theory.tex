@@ -135,7 +135,9 @@ $$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$\forall_{i \in I} \sigma_1(i) \geq 0$$
 
-$$\downarrow x_i = \frac{\sigma_1(i)}{v}$$
+$$\downarrow$$
+podstawiając $$x_i = \frac{\sigma_1(i)}{v}$$
+$$\downarrow$$
 
 $$\max_{\sigma_1,v} v$$
 $$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq 1$$
@@ -228,7 +230,17 @@ $$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
 
 \subsubsection{Gry o większej liczbie graczy}
 
-TODO Scarf, PNS i reszta, dlaczego się nie udało.
+Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednym z częściej
+wymienianych jest algorytm \textbf{Herberta Scarfa} \cite{SCARF-NR}.
+
+TODO
+
+Inną możliwością jest zastosowanie algorytmu \textbf{Porter-Nudelman-Shoham (PNS)} dla $n > 2$ graczy. \cite{PNS-NE}
+
+TODO
+
+Z braku czasu nie udało się jednak wdrożyć żadnego z tych algorytmów do ostatecznej wersji projektu. Implementacja
+została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej wymienionych algorytmów w przyszłości.
 
 \section{Gra w postaci ekstensywnej}
 
@@ -236,7 +248,7 @@ TODO Scarf, PNS i reszta, dlaczego się nie udało.
 \textbf{Grą w postaci ekstensywnej} nazywamy szóstkę:
 \begin{enumerate}
 \item zbiór graczy,
-\item porządek ruchów graczy,
+\item porządek ruchów,
 \item funkcję wypłaty gracza od ciągu poczynionych ruchów,
 \item wybory graczy dostępne w danym ruchu,
 \item wiedza gracza w chwili podejmowania decyzji,
@@ -248,14 +260,68 @@ TODO Scarf, PNS i reszta, dlaczego się nie udało.
 Taką grę można przedstawić jako drzewo, którego liście zawierają wypłaty, krawędzie odpowiadają określonym decyzjom,
 a węzły chwile ich podejmowania przez określonego gracza. 
 
-\subsection{Równowagi w strategiach czystych w grach z informacją doskonałą}
+\begin{definition}
+\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga Nasha, że dla każdej podgry dalej gry jest ona
+poprawnym rozwiązaniem.
+\end{definition}
 
-TODO
+\begin{theorem}
+Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w podgrach.
+\end{theorem}
+
+\subsection{Równowagi w strategiach czystych w grach z informacją doskonałą i zupełną}
+
+\begin{definition}
+\textbf{Gra z informacją doskonałą} to gra, w której każdy z graczy w dowolnym momencie jest poinformowany o wszystkich
+wiodących do danej chwili ruchach.
+\end{definition}
+
+Dla przypadku gry w postaci ekstensywnej oznacza to, że możemy ją poprawnie sprowadzić do postaci, gdzie każdy węzeł
+znajduje się w jednoelementowym zbiorze informacyjnym. Z kolei taka gra posiada interesującą właściwość - wiedząc gdzie
+dokładnie znajdujemy się w drzewie gry zawsze możemy wybrać optymalną strategię, jeśli tylko wiemy jakie wypłaty
+ostatecznie otrzymalibyśmy dla każdej z możliwości. Ponieważ mamy do czynienia z graczami racjonalnymi możemy spodziewać
+się, że również oni wybraliby optymalne dla siebie strategie.
+
+\begin{definition}
+\textbf{Gra z informacją zupełną} to gra, w której każdy z graczy posiada wiedzę na temat ruchów i wypłat innych graczy,
+\end{definition}
+
+Dysponując kompletną informacją możemy schodzić w głąb drzewa gry, aby ostatecznie dojść do liści zawierających wypłaty.
+Na tym poziomie bieżący gracz posiada już wszystkie informacje potrzebne do podjęcia najkorzystniejszej dla siebie
+decyzji. Gracz rozgrywający w poprzedzającym kroku jest z kolei w stanie ją przewidzieć. W ten sposób wychodząc od liści
+i przesuwając się ,,w górę'' drzewa gry dochodzimy w końcu do punktu wyjściowego - w tym momencie znamy już wszystkie
+decyzje jakie podjęliby gracze, a tym samym ich wypłaty. Jest to optymalna wartość wypłaty dla każdego z nich i żaden
+nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy w ten sposób równowagę Nasha w tej grze.
+
+Algorytm ten opiera się na spostrzeżeniu, że do podjęcia decyzji konieczna jest znajomość rozwiązania w każdym poddrzewie
+gry i dla każdego poddrzewa również jest to rozwiązanie poprawne. Odnajduje więc on doskonałą równowagę Nasha w podgrach
+gier z informacją doskonałą.
 
 \subsection{Inne gry w postaci ekstensywnej}
 
-TODO
+W grach bez informacji doskonalej sytuacja komplikuje się. Z zbiorze informacyjnym może znajdować się kilka węzłów -
+wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdego z nich inny wybór strategii może być tym
+optymalnym. Proste przejrzenie drzewa od liści do korzenia nie pozwoli nam w oczywisty sposób wybrać najlepszych
+strategii.
 
-\section{Inne rodzaje gier}
+Podobnie w grach bez informacji zupełnej. Nawet znając wszystkie kroki prowadzące do danej sytuacji nie wiemy, jakie
+decyzje mogą podjąć inni gracze. Nie wiemy też, jakie mogą otrzymać wypłaty, a tym samym przewidywać ich ruchów.
+
+W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiach mieszanych} lub \textbf{zachowawczych}.
+
+\begin{definition}
+\textbf{Strategie mieszane} definiuje się analogicznie jak w grach w postaci strategicznej - istotny jest jednak fakt,
+że strategią czystą jest zdefiniowana decyzja we wszystkich wierzchołkach drzewa, w których ruch należy do danego gracza
+i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
+\end{definition}
+
+Tymczasem
+\begin{definition}
+\textbf{strategie zachowawcze} określają rozkład nad wyborem w określonym wierzchołku.
+\end{definition}
+
+Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji
+projektu, zaś poszukiwanie równowag w strategiach mieszanych i zachowawczych przeznaczono do zaimplementowania
+w przyszłości.
 
 \end{document}
