@@ -130,7 +130,8 @@ LET name BE value;
 Pod nazwą \CODE{name} dostępna będzie wartość \CODE{value}. Zapytania wyglądają następująco:
 
 \begin{code}
-FIND property[, property2[, ...]] FOR value[, value2[, ...]];
+FIND property[, property2[, ...]]
+ FOR value[, value2[, ...]];
 \end{code}
 
 dzięki czemu uzyskamy właściwości \CODE{property}, \CODE{propert2}, ... dla obiektów \CODE{value}, \CODE{value2}, ...
@@ -183,27 +184,29 @@ LET player1 BE PLAYER { strategy1, strategy2 };
 lub z \CODE{FIND ... FOR ...;}:
 
 \begin{code}
-FIND name, strategies FOR PLAYER name1 { strategy1, strategy2 };
+FIND name, strategies
+ FOR PLAYER name1 { strategy1, strategy2 };
 \end{code}
 
 \section{Gry w postaci strategicznej}
 
-Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategi
+Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategii
 czystych poszczególnych graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
 
 \begin{code}
 LET game1 BE
   STRATEGIC GAME
   WITH
-    player1, // gracz zdefiniowany wcześniej
-  	PLAYER player2 { strategy1, strategy2 } // ...oraz ad hoc
+    player1, // gracz zdefiniowany wcześniej oraz
+    PLAYER player2 { strategy1, strategy2 } // ad hoc
   SUCH AS
     { player1=strategy1: // częściowa definicja
-  	  { player2=strategy1: 10, 20 }, // uzupełnienie definicji
-  	  { player2=strategy2: 30, 40 }
+     { player2=strategy1: 10, 20 }, // uzupełnienie
+     { player2=strategy2: 30, 40 }
     },
-    { player1=strategy2, player2=strategy1: 50, 60 }, // pełna
-    { player1=strategy2, player2=strategy2: 70, 80 }  // definicja
+    // pełna definicja
+    { player1=strategy2, player2=strategy1: 50, 60 },
+    { player1=strategy2, player2=strategy2: 70, 80 }
   END;
 \end{code}
 
@@ -235,12 +238,12 @@ ograniczenie, że struktura definicji musi odpowiadać strukturze drzewa gry:
 LET game2 BE
   EXTENSIVE GAME
   WITH
-    player1, // gracz zdefiniowany wcześniej
-    PLAYER p2 { s1, s2 } // gracz zdefiniowany ad hoc
-  SUCH AS                 // struktura odpowiada drzewu
-    { p1=s1 :             // w każdym wierzchołku, decyzję podejmuje
-      { p2=s1 : 10, 20 }, // dokładnie jeden gracz
-      { p2=s2 : 30, 40 }  // liście drzewa zawierają wypłaty
+    player1, // gracz zdefiniowany wcześniej oraz
+    PLAYER p2 { s1, s2 } // zdefiniowany ad hoc
+  SUCH AS      // struktura odpowiada drzewu:
+    { p1=s1 :  // w każdym wierzchołku, decyzję podejmuje
+      { p2=s1 : 10, 20 }, // jeden gracz,
+      { p2=s2 : 30, 40 }  // liście zawierają wypłaty
     },
     { p1=s2 :
       { p2=s1 : 50, 60 },

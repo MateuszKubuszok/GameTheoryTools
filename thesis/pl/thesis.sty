@@ -26,9 +26,10 @@
 \lstset{frame=lines,
         numberstyle=\tiny,
         stepnumber=5,
+        columns=fixed,
+        keepspaces=true,
         texcl=true,
         inputencoding=utf8,
-        extendedchars=\true,
         literate={ą}{{\k{a}}}1
                  {Ą}{{\k{A}}}1
                  {ć}{{\'c}}1
@@ -73,8 +74,8 @@
 
 
 
-\lstnewenvironment{code}{}
-                        {}
+\lstnewenvironment{code}[1][]{\lstset{#1}}
+                             {}
 \newenvironment{proof}{\par\noindent {\bf Dowód.}}
                       {\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
 \newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
