@@ -6,6 +6,9 @@
 
 \chapter{Teoria}
 
+W tym rozdziale zajmiemy się podstawowymi pojęciami z zakresu teorii gier wykorzystanymi w pracy, jak również opisem
+algorytmów rozpatrywanych jako kandydaci do wykorzystania w projekcie. Wyjaśnimy też pokrótce ich sposób działania.
+
 \section{Wprowadzenie}
 
 Przez \textit{grę} rozumiemy matematyczny opis pewnej sytuacji konfliktowej, w której biorą udział określone strony,
@@ -165,17 +168,17 @@ funkcji celu, aby wrócić do ich oryginalnej postaci.
 Dla gier dwumacierzowych (gier o sumie dowolnej) sytuacja się komplikuje. Istnieje kilka opisanych algorytmów, które
 pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych są to:
 \begin{itemize}
-\item algorytm \textbf{Lemke-Howsona} - wykorzystujący podprocedury algorytmu simplex,
-\item algorytm \textbf{Porter-Nudelman-Shoham (PNS)} - korzysta z programowanie liniowego (wersja dla liczby graczy
+\item algorytm \textbf{Lemkego-Howsona} - wykorzystujący podprocedury algorytmu simplex \cite{LH-NE},
+\item algorytm \textbf{Portera-Nudelmana-Shohama (PNS)} - korzysta z programowanie liniowego (wersja dla liczby graczy
 $n > 2$ jest nieliniowa) \cite{PNS-NE},
-\item algorytm \textbf{Sandholm-Gilpin-Conitzer} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
+\item algorytm \textbf{Sandholma-Gilpina-Conitzera} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{itemize}
 
 Spośród wyżej wymienionych zdecydowano się na przetestowanie działania trzeciego rozwiązania. Jest ono relatywnie nowe,
 a więc nie posiada wielu praktycznych implementacji - stworzenie i udostępnienie takowej może być istotniejszym wkładem
 badawczym niż tworzenie kolejnej wersji powszechnie stosowanego algorytmu.
 
-Algorytm \textbf{Sandholm-Gilpin-Conitzer} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
+Algorytm \textbf{Sandholma-Gilpina-Conitzera} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
 otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha) - nie definiuje on jednak funkcji celu,
 pozwalając jego użytkownikom na samodzielne ich zdefiniowanie. Każda liniowa funkcja celu może zostać wykorzystana.
 
@@ -203,23 +206,25 @@ Wówczas ograniczenia możemy zdefiniować następująco $\forall_{i \in I}$:
 \item $$\forall_{s_i \in S_i} r_{s_i} \leq U_i b_{s_i}$$
 \end{enumerate}
 
-Tak po dodaniu do tak zdefiniowanego problemu całokowitoliczbowego funkcji celu, każde osiągalne rozwiązanie będzie
-stanowić poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
+Po dodaniu do tak zdefiniowanego problemu całokowitoliczbowego funkcji celu, każde osiągalne rozwiązanie będzie stanowić
+poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
 
-Autorzy dalej omawiają dalej 3 kolejne specjalizacje tego problemu, aby osiągnąć kolejno:
+Autorzy dalej omawiają 3 kolejne specjalizacje tego problemu:
 \begin{enumerate}
-\item wprowadzać karę za żal, oraz dążyć do jego minimalizacji - ograniczenia $1$, $2$, $3$, $4$, $5$ oraz:
+\item wprowadzić ,,karę'' za żal, a następnie dążyć do jego minimalizacji - ograniczenia $1$, $2$, $3$, $4$, $5$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} - U_i b_{s_i}$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq r_{s_i}$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq U_i b_{s_i}$$
 \cite[str.~2]{SCG-NE}
-\item wprowadzić karę za prawdopodobieństwo wykorzystania strategii z niezerowym żalem - ograniczenia $1$, $2$, $3$,
+\item uzależnić minimalizowaną ,,karę'' od prawdopodobieństwa wykorzystania strategii z niezerowym żalem - ograniczenia
+$1$, $2$, $3$,
 $4$, $6$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} g_{s_i} - (1 - b_{s_i})$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq p_{s_i}$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
 \cite[str.~2]{SCG-NE}
-\item karać zarówno żal jak i prawdopodobieństwo strategii z niezerowym żalem - ograniczenia $1$, $2$, $3$, $4$ oraz:
+\item uzależnić minimalizowaną ,,karę'' zarówno od wartości żalu danej strategi jak i prawdopodobieństwo jej wystąpienia
+- ograniczenia $1$, $2$, $3$, $4$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} + g_{s_i}$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq \frac{r_{s_i}}{U_i}$$
 $$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq b_{s_i}$$
@@ -261,8 +266,8 @@ Taką grę można przedstawić jako drzewo, którego liście zawierają wypłaty
 a węzły chwile ich podejmowania przez określonego gracza. 
 
 \begin{definition}
-\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga Nasha, że dla każdej podgry dalej gry jest ona
-poprawnym rozwiązaniem.
+\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga, że dla każdej podgry dalej gry stanowi ona
+poprawne rozwiązanie.
 \end{definition}
 
 \begin{theorem}
@@ -300,7 +305,7 @@ wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdeg
 optymalnym. Proste przejrzenie drzewa od liści do korzenia nie pozwoli nam w oczywisty sposób wybrać najlepszych
 strategii.
 
-W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiach mieszanych} lub \textbf{behawioralnych}.
+W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiach mieszanych} lub \textbf{postępowania}.
 
 \begin{definition}
 \textbf{Strategie mieszane} definiuje się analogicznie jak w grach w postaci strategicznej - istotny jest jednak fakt,
@@ -310,11 +315,11 @@ i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
 
 Tymczasem
 \begin{definition}
-\textbf{strategie behawioralne} określają rozkład nad wyborem w określonym wierzchołku.
+\textbf{strategie postępowania} określają rozkład nad wyborem w określonym wierzchołku.
 \end{definition}
 
 Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji
-projektu, zaś poszukiwanie równowag w strategiach mieszanych i behawioralnych przeznaczono do zaimplementowania
+projektu, zaś poszukiwanie równowag w strategiach mieszanych i postępowania przeznaczono do zaimplementowania
 w przyszłości.
 
 \end{document}
