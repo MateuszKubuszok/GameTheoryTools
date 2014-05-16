@@ -12,6 +12,8 @@
 \usepackage{url}            % links to URLs
 \usepackage{hyperref}       % inner links in generated document
 
+\usepackage{marginnote}
+
 \usepackage{theorem}        % 
 \usepackage{graphicx}       % 
 \usepackage{verbatim}       %
@@ -50,6 +52,9 @@
                  {Ź}{{\'Z}}1
 }
 
+\renewcommand{\algorithmicrequire}{\textbf{Wejście:}}
+\renewcommand{\algorithmicensure}{\textbf{Wyjście:}}
+
 \newcommand{\TPUNI}[1]{\makebox(0,0)[l]{\large\bf\textsc{#1}}}
 \newcommand{\TPTITLE}[1]{\makebox(0,0)[l]{\Huge\bf\textsc{#1}}}
 \newcommand{\TPNAME}[1]{\makebox(0,0)[l]{\large\textsc{#1}}}
@@ -65,6 +70,8 @@
 \newcommand{\IMP}{\rightarrow}
 \newcommand{\ABS}[1]{|#1|}
 
+\newcommand{\INENG}[1]{\footnote{ang. \textit{#1}}}
+
 \newcommand{\LANG}[1]{\textbf{#1}}
 \newcommand{\PROG}[1]{\textbf{#1}}
 \newcommand{\LIB}[1]{\textbf{#1}}
@@ -77,8 +84,6 @@
 \newtheorem{example}{Przykład}[section]
 \newtheorem{corollary}{Wniosek}[section]
 \newtheorem{definition}{Definicja}[section]
-
-
 
 \lstnewenvironment{code}[1][]{\lstset{#1}}
                              {}

@@ -63,7 +63,7 @@ Oznacza to, że równowagą jest profil strategii, dla którego pojedyncza zmian
 poprawić wypłaty żadnego z graczy.
 
 Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień-nożyce:
-
+\begin{center}
 \begin{tabular}[t]{| c | c | c | c |}
 \hline
 $p_1 \downarrow$, $p_2 \rightarrow$  & papier & kamień & nożyce \\
@@ -75,6 +75,7 @@ kamień                               & -1,1   & 0,0    & 1,-1   \\
 nożyce                               & 1,-1   & -1,1   & 0,0    \\
 \hline
 \end{tabular}
+\end{center}
 
 W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
@@ -104,10 +105,11 @@ mieszanych.
 \cite[str.~29]{FT-GT}
 \end{theorem}
 
-Dowodzone jest to przy pomocy \textbf{twierdzenia o punkcie stałym Kakutaniego} \cite[str.~29]{FT-GT}.
+Dowodzone jest to przy pomocy \textbf{twierdzenia Kakutaniego o punkcie stałym} \cite[str.~29]{FT-GT}.
 
 Gwarantuje nam to możliwość znalezienia równowagi (w strategiach mieszanych) w każdej grze skończonej, nie mówi nam
-jednak jak je znaleźć.
+jednak jak je znaleźć. Szukanie równowag wydaje się być problemem trudnym, nie ma jednak dokładnych oszacowań złożoności
+tego problemu \cite{P-AGI}.
 
 \subsubsection{Równowagi w strategiach mieszanych w grach jednomacierzowych}
 
@@ -125,22 +127,22 @@ W takiej sytuacji pierwszy z graczy będzie dążył do maksymalizacji wypłaty,
 $$\max_{\sigma_1} \{ \min_{j \in J} u_1(\sigma_1, j) \}$$
 $$\min_{\sigma_2} \{ \max_{i \in I} u_2(i, \sigma_2) \}$$
 
-Tak zdefiniowany problem po pewnych modyfikacjach możemy przekształcić do programowania liniowego:
+Dla pierwszego gracza przyjmuje to postać problemu optymalizacyjnego:
 
 $$\max_{\sigma_1} \{ \min_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \}$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$\forall_{i \in I} \sigma_1(i) \geq 0$$
 
-$$\downarrow$$
+Tak zdefiniowany problem po pewnych modyfikacjach możemy przekształcić do programowania liniowego:
 
 $$\max_{\sigma_1,v} v$$
 $$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$\forall_{i \in I} \sigma_1(i) \geq 0$$
 
-$$\downarrow$$
-podstawiając $$x_i = \frac{\sigma_1(i)}{v}$$
-$$\downarrow$$
+Dla każdej strategii czystej gracza $i$ obliczamy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi mieszanej
+gracza $1-i$. Następnie wybieramy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej wypłaty jaką
+możemy dostać przy obecnej strategii mieszanej przeciwnika. Tak zapisany problem przekształćmy jednak do nieco innej postaci, w której można zaobserwować jego ciekawą właściwość. Podstawmy najpierw $x_i = \frac{\sigma_1(i)}{v}$:
 
 $$\max_{\sigma_1,v} v$$
 \begin{enumerate}
@@ -149,7 +151,8 @@ $$\max_{\sigma_1,v} v$$
 \item $$\forall_{i \in I} x_1(i) \geq 0$$
 \end{enumerate}
 
-co możemy przekształcić na:
+Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskamy równanie sumujące się do $1$ co jest dla nas bardzo
+istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu:
 
 $$\min_x \sum_{i \in I} x_i$$
 \begin{enumerate}
@@ -160,15 +163,18 @@ $$\min_x \sum_{i \in I} x_i$$
 W pierwszym warunku sumę zamienia się na wynik mnożenia macierzy przez wektor. W drugim warunku zauważamy, że $v$ stało
 się dzielnikiem, a więc maksymalizując go, minimalizujemy sumę - możemy więc usunąć ten warunek przez zmianę funkcji
 celu. W ostatnim warunku przeskalowanie zmiennej nie zmienia ograniczenia $\geq 0$ i jej podmiana wystarczy do
-zakończenia przekształcenia. Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
+zakończenia przekształcenia. Należy jedynie pamiętać, że od tego momentu funkcja celu oblicza $\frac{1}{v}$.
+Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
 
 $$\max_y \sum_{j \in J} y_i$$
-$$Ay \leq 1$$
-$$y \geq 0$$
+\begin{enumerate}
+\item $$Ay \leq 1$$
+\item $$y \geq 0$$
+\end{enumerate}
 
 Okazuje się więc, że są to problemy dualne - odpowiednia implementacja algorytmu simpleks jest w stanie otrzymać oba
-rozwiązania przy jednym uruchomieniu procedury. Należy jedynie pamiętać aby otrzymane wartości pomnożyć przez wartość
-funkcji celu, aby wrócić do ich oryginalnej postaci.
+rozwiązania przy jednym uruchomieniu procedury. Należy jedynie pamiętać, aby otrzymane wartości podzielić przez wartość
+funkcji celu (a więc pomnożyć przez odwrotność $v$), aby wrócić do ich oryginalnej postaci.
 
 \subsubsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
 
@@ -178,12 +184,44 @@ pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych s
 \item algorytm \textbf{Lemkego-Howsona} - wykorzystujący podprocedury algorytmu simplex \cite{LH-NE},
 \item algorytm \textbf{Portera-Nudelmana-Shohama (PNS)} - korzysta z programowanie liniowego (wersja dla liczby graczy
 $n > 2$ jest nieliniowa) \cite{PNS-NE},
+\item algorytm \textbf{Govindana-Wilsona} TODO \cite{GR-NE},
 \item algorytm \textbf{Sandholma-Gilpina-Conitzera} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{itemize}
 
-Spośród wyżej wymienionych zdecydowano się na przetestowanie działania trzeciego rozwiązania. Jest ono relatywnie nowe,
-a więc nie posiada wielu praktycznych implementacji - stworzenie i udostępnienie takowej może być istotniejszym wkładem
-badawczym niż tworzenie kolejnej wersji powszechnie stosowanego algorytmu.
+TODO: Lemke-Howson
+
+Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia czy istnieje
+równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym prawdopodobieństwem (w pracy
+nazywanym \textit{określonym wsparciem} \INENG{particular support}) jest względnie prostym problemem
+spełnialności. Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania zdefiniowanych ograniczeń.
+
+W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na używanie profilu strategii wspierających strategię
+mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i) > 0$.
+Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako $v_i$.
+
+Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera strategii czystej). Ze względu na
+wykorzystane w rozwiązaniu ograniczenie $\sigma_{1-i}(s_{1-i}) = \prod_{j \ne i} \sigma_j(s_j)$ problem jest liniowy
+dla $n = 2$ oraz nieliniowy dla $n > 2$.
+
+Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha używany jest następujący program:
+\begin{algorithm}
+\caption{Spełnialność równowagi Nasha dla profilu wspierającego}
+\label{FEAS1}
+\begin{algorithmic}
+\REQUIRE{$S = (S_1, ..., S_n)$, profil wspierający}
+\ENSURE{równowaga Nasha $s^{*}$ jeśli istnieje zarówno profil strategii $s$ jak i wartość $v = (v_1, ..., v_n)$,
+takie, że:}
+$$\forall_{i \in I, s_i \in S_i} \sum_{s_{1-i} \in S_{1-i}} \sigma_{1-i}(s_{1-i}) u_i(s_i, s_{1-i}) = v_i$$
+$$\forall_{i \in I, s_i \not\in S_i} \sum_{s_{1-i} \in S_{1-i}} \sigma_{1-i}(s_{1-i}) u_i(s_i, s_{1-i}) \leq v_i$$
+$$\forall_{i \in I} \sum_{s_i \in S_i} \sigma_i(s_i) = 1$$
+$$\forall_{i \in I, s_i \in S_i} \sigma_i(s_i) \geq 0$$
+$$\forall_{i \in I, s_i \not\in S_i} \sigma_i(s_i) = 0$$
+\end{algorithmic}
+\end{algorithm}
+
+TODO: reszta PNS
+
+TODO: Govindan-Wilson
 
 Algorytm \textbf{Sandholma-Gilpina-Conitzera} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
 otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha) - nie definiuje on jednak funkcji celu,
@@ -259,16 +297,19 @@ Jest to przekształcenie dwóch pierwszych warunków do postaci, w której może
 prawdopodobnych strategii jak i prawdopodobieństwa strategii o niezerowym żalu.
 \end{enumerate}
 
+Spośród wyżej wymienionych algorytmów zdecydowano się na przetestowanie działania ostatniego rozwiązania. Jest ono
+relatywnie nowe, a więc nie posiada wielu praktycznych implementacji - stworzenie i udostępnienie takowej może być
+istotniejszym wkładem badawczym niż tworzenie kolejnej wersji powszechnie stosowanego algorytmu.
+
 \subsubsection{Gry o większej liczbie graczy}
 
 Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednym z częściej
-wymienianych jest algorytm \textbf{Herberta Scarfa} \cite{SCARF-NR}.
-
-TODO
-
-Inną możliwością jest zastosowanie algorytmu \textbf{Porter-Nudelman-Shoham (PNS)} dla $n > 2$ graczy. \cite{PNS-NE}
-
-TODO
+wymienianych są
+\begin{enumerate}
+\item algorytm \textbf{podziału symplicjalnego}\INENG{Simplicial Subdivision} TODO,
+\item algorytm \textbf{Scarfa} \cite{SCARF-NR},
+\item algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy. \cite{PNS-NE}.
+\end{enumerate}
 
 Z braku czasu nie udało się jednak wdrożyć żadnego z tych algorytmów do ostatecznej wersji projektu. Implementacja
 została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej wymienionych algorytmów w przyszłości.
