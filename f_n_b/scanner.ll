@@ -13,6 +13,10 @@
 #define GT_GTL_FLEX_LEXER_DEFINED
 #endif /* END #ifndef GT_GTL_FLEX_LEXER_DEFINED */
 
+/* `register` storage class specifier is maref as deprecated by Clang - since we cannot edit parser's skeleton
+ * we will use macro to get rid of warnings */
+#define register
+
 /* Standard library */
 #include <cstdlib>
 
