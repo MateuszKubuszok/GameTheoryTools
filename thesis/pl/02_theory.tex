@@ -201,12 +201,30 @@ $n > 2$ jest nieliniowa) \cite{PNS-NE},
 \item algorytm \textbf{Sandholma-Gilpina-Conitzera} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{itemize}
 
-TODO: Lemke-Howson
+Prawdopodobnie najbardziej rozpowszechnioną metodą szukania rozwiązań gier dwumacierzowych jest algorytm
+\textbf{Lemkego-Howsona}. Korzysta on z pewnych podprocedur programowania liniowego co upodabnia go do algorytmu
+simpleks. Pierwotnie pojawił się jako dowód konstrukcyjny istnienia równowag w grach 2-osobowych o sumie niezerowej.
+
+Na początku zanotujmy, że wartości oczekiwane wypłat graczy $i$ oraz $j$, przy strategiach mieszanych zapisanych jako wektory prawdopodobieństw, odpowiednio $x$ oraz $y$, wynoszą:
+
+$$u_i = \sum_{s_i in S_i}\sum_{s_j \in S_j} x_{s_i}^{T} A_{i,j} y_{s_j}$$
+$$u_j = \sum_{s_i in S_i}\sum_{s_j \in S_j} x_{s_i}^{T} B_{i,j} y_{s_j}$$
+
+Możemy to przepisać na równoważne formy macierzowe:
+
+$$u_i = x^{T} A y$$
+$$u_j = x^{T} B y$$
+
+W dowodzie wykorzystuje się ten fakt, aby pokazać że nie jest możliwe ogólne rozwiązanie gier dwumacierzowych przy
+pomocy programowania liniowego przyjmując taki opis problemu (nie wyklucza to jednak istnienia inaczej zapisanego np.
+rozwiązania całkowitoliczbowego, co pokazuje algorytm SGC).
+
+TODO: Lemke-Howson reszta
 
 Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia czy istnieje
 równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym prawdopodobieństwem (w pracy
-nazywanym \textit{określonym wsparciem} \INENG{particular support}) jest względnie prostym problemem
-spełnialności. Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania zdefiniowanych ograniczeń.
+nazywanym \textit{określonym wsparciem} \INENG{particular support}) jest względnie prostym problemem spełnialności.
+Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania zdefiniowanych ograniczeń.
 
 W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na używanie profilu strategii wspierających strategię
 mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i) > 0$.
