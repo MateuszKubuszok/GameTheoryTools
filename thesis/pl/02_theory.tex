@@ -380,6 +380,9 @@ został przynajmniej jeden z zbiorów strategii. (Algorytm \ref*{IRSDS}.)
     \IF{$\forall_{s_{-1} \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-1})$}
      \STATE $D_i \ASSIGN D_i - \{ d_i \in D_i: s_i \in d_i \}$
      \STATE $\textrm{zmieniono} \ASSIGN \textrm{true}$
+     \IF{$D_i = \emptyset$}
+      \RETURN{\textit{failure}}
+     \ENDIF
     \ENDIF
    \ENDFOR 
   \ENDFOR
@@ -400,10 +403,49 @@ W przeciwnym wypadku iteruj dalej, aż do wyczerpania możliwości - jeśli rów
 \caption{Przeszukiwanie z nawrotami}
 \label{RBT}
 \begin{algorithmic}
-\REQUIRE{}
-\ENSURE{}
+\REQUIRE{$S = (S_1, ..., S_n)$ - profil wsparć, $D = {D_1, ..., D_n}$ - profil dziedzin, $i$ - indeks następnego
+wsparcia do wybrania}
+\ENSURE{Równowaga Nasha $p$ lub \textit{failure}}
+\IF{$i = n+1$}
+ \IF{Spełnialność zachodzi (\textbf{Algorytm \ref{FEASNE}}) dla $S$}
+  \RETURN{Równowaga Nasha $p$}
+ \ELSE
+  \RETURN{\textit{failure}}
+ \ENDIF
+\ELSE
+ \FORALL{$d_i \in D_i$}
+  \STATE $S_i \ASSIGN d_i$
+  \STATE $D_i \ASSIGN D_1 - \{ d_i \}$
+  \IF{$IRSDS(S,D,i+1)$ (\textbf{Algorytm \ref{IRSDS})}) znajdzie równowagę Nasha $p$}
+   \RETURN{$p$} 
+  \ENDIF
+ \ENDFOR 
+ \RETURN{\textit{failure}}
+\ENDIF
 \end{algorithmic}
 \end{algorithm}
+
+Dysponując tymi procedurami wystarczy jedynie zainicjować wszystkie zmienne przy pierwszym wywołaniu procedury:
+
+\begin{algorithm}
+\caption{PNS dla $n > 2$ graczy}
+\label{PNSN}
+\begin{algorithmic}
+\FORALL{$x = (x_1, ..., x_n)$ posortowane rosnąco wg. najpierw $\sum_{i \in I} x_i$, a następnie $\max_{i,j \in I}
+(x_i - x_j$)}
+ \STATE $\forall_{i \in I} S_i \ASSIGN NULL$
+ \STATE $\forall_{i \in I} D_i \ASSIGN \{ S_i' \subseteq S_i : \ABS{S_i'} = x_i \}$
+ \IF{Przeglądanie z nawracaniem znajdzie równowagę $p$}
+  \RETURN{$p$}
+ \ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+Tak zdefiniowany algorytm będzie się zachowywał jak uogólniona wersja algorytmy PNS dla 2 graczy. W istocie,
+przyglądając się jego działaniu możemy zauważyć, że ciało wersji 2 osobowej powstało przez zastąpienie wywołań
+rozwinięciem funkcji, a usuwanie strategi zdominowanych realizowane jest na bieżąco nie zaś przed rozpoczęciem
+przeszukiwania ostatecznej przestrzeni rozwiązań. 
 
 Z braku czasu nie udało się jednak wdrożyć żadnego z tych algorytmów do ostatecznej wersji projektu. Implementacja
 została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej wymienionych algorytmów w przyszłości.
