@@ -6,47 +6,57 @@
 
 \chapter{Teoria}
 
-W tym rozdziale zajmiemy się podstawowymi pojęciami z zakresu teorii gier wykorzystanymi w pracy, jak również opisem
-algorytmów rozpatrywanych jako kandydaci do wykorzystania w projekcie. Wyjaśnimy też pokrótce ich sposób działania.
+W tym rozdziale zajmiemy się podstawowymi pojęciami z zakresu teorii gier wykorzystanymi w niniejszej pracy, jak również
+opisem algorytmów kandydujących do wykorzystania w projekcie. Wyjaśnimy też pokrótce ich sposób działania.
 
 \section{Wprowadzenie}
 
 Przez \textit{grę} rozumiemy matematyczny opis pewnej sytuacji konfliktowej, w której biorą udział określone strony,
-nazywane \textit{graczami}. Każdej stronie przypisujemy pewien zbiór \textit{strategii}, z których w danym momencie
-wykorzystuje jedną. Każdemu z graczy przypisujemy również \textit{funkcję wypłaty}, której wartość uzależniona jest
-od wszystkich strategii granych przez graczy w określonej chwili.
+nazywane \textit{graczami}. Każdej stronie przypisujemy pewien zbiór \textit{strategii}, z którego w danej chwili dana
+strona w danym momencie wykorzystuje jedną. Każdemu z graczy przypisujemy również \textit{funkcję wypłaty}, której
+wartość uzależniona jest od wszystkich strategii granych przez graczy w określonej chwili.
 
 W zależności od rozpatrywanego rodzaju gry formalna definicja wymienionych pojęć jest nieco inna. W tej pracy rozważane
-będą 2 rodzaje gier: \textit{gry w postaci strategicznej} oraz \textit{gry w postaci ekstensywnej}. Dla obu z nich
+będą dwa rodzaje gier: \textit{gry w postaci strategicznej} oraz \textit{gry w postaci ekstensywnej}. Dla obu z nich
 możliwe jest zdefiniowanie tzw. \textit{równowagi Nasha} tj. takiej kombinacji wyborów strategii przez graczy, aby dla
 każdego z nich nieopłacalne było odstąpienie od obecnie granej strategii.
 
-Szczególną uwagę poświęcono grom dla których możliwe jest obliczenie równowagi Nasha przy pomocy programowania 
-liniowego/całkowitoliczbowego lub rekurencyjnego przeszukania danych.
+Szczególną uwagę poświęcono grom, dla których możliwe jest obliczenie równowagi Nasha przy pomocy programowania 
+liniowego/całkowitoliczbowego lub rekurencyjnego przeszukiwania przestrzeni rozwiązań.
 
 \section{Gra w postaci strategicznej}
 
 \begin{definition}
-\textbf{Grą w postaci strategicznej (normalnej)} nazywamy trójkę:
+\textbf{Grą w postaci strategicznej (normalnej)} nazywamy trójkę $(I, S_i, u_i)$, gdzie:
 \begin{enumerate}
-\item skończony zbiór graczy $I = 1, 2, 3, ..., n$,
-\item przestrzeń strategii czystych gracza $S_i$ zdefiniowaną dla każdego gracza $i \in I$,
-\item funkcję wypłaty $u_i(s)$ określającą wypłatę gracza $i \in I$ dla każdego profilu $s \in S$.
+\item $I = 1, 2, 3, ..., n$ - skończony zbiór $n$ graczy,
+\item $S_i$ - przestrzeń strategii czystych zdefiniowana dla każdego gracza $i \in I$,
+\item $u_i(s)$ - funkcja wypłaty określająca wypłatę gracza $i \in I$ dla każdego profilu $s \in S$.
 \end{enumerate}
 \cite[str.~4]{FT-GT}
 \end{definition}
 
-Przy tak zdefiniowanej grze zakładamy, że każdy z graczy decyduje się na jedną ze swoich strategii, a następnie
+Przez strategię czystą rozumiemy wybór na jaki może zdecydować się dana strona - w danej chwili może ona grać tylko
+jedną strategię. Kombinację strategii wybranych przez graczy w danej chwili nazywamy profilem i zapisujemy:
+$$s = (s_1, s_2, ..., s_n)$$
+Oznacza to, że gracz $1$ gra $s_1$, gracz $2$ gra $s_2$, itd. Podobnie
+$$S = S_1 \times S_2 \times ... \times S_n$$
+jest zapisem zbioru wszystkich możliwych profili $s$.
+
+Możemy przyjąć, że dla tak przyjętych oznaczeń $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, $s_{-i}$ opisywać
+będzie profil wszystkich wyborów oprócz wyboru gracza $i$:
+$$s_{-i} = (s_1, s_2, ..., s_{i-1}, s_{s+1}, ..., s_n)$$
+Analogicznie
+$$S_{-i} = S_1 \times ... S_{i-1} \times S_{i+1} \times ... \times S_n$$
+oznaczać będzie profil wszystkich możliwych odpowiedzi na decyzję gracza $i$.
+
+Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy decyduje się na jedną ze swoich strategii, a następnie
 na podstawie wyborów podjętych przez wszystkich graczy przypisujemy każdemu z nich wypłatę.
 
-Możemy przyjąć, że dla tak przyjętych oznaczeń $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, zaś $s_{-i}$ profil
-wszystkich wyborów oprócz wyboru gracza $i$. Analogicznie $S_{-i}$ oznacza zbiór wszystkich możliwych odpowiedzi
-na granie strategii $s_i$ przez gracza $i$.
-
 \begin{definition}
-\textbf{Strategią mieszaną} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi $S_i$. Wówczas funkcja
-wypłaty ma postać $u_i(\sigma_i, \sigma^{*})$ i jest wartością oczekiwaną funkcji wypłaty dla strategii mieszanych
-wszystkich graczy.
+\textbf{Strategią mieszaną} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi $S_i$. Przez $\sigma^{*}$
+oznaczymy, profil strategii mieszanych pozostałych graczy. Wówczas funkcja wypłaty ma postać
+$u_i(\sigma_i, \sigma^{*})$ i jest równa wartości oczekiwanej funkcji wypłat dla strategii mieszanych wszystkich graczy.
 \cite[str.~5]{FT-GT}
 \end{definition}
 
@@ -55,7 +65,7 @@ wszystkich graczy.
 \begin{definition}
 \textbf{Równowagą Nasha w strategiach czystych} w grze w postaci strategicznej nazywamy profil strategii $s \in S$ taki,
 że:
-$$\forall_{i \in I} \forall_{s_{-i} \in S_{-i}} u_i(s) \geq u_i(s_i, s_{-i})$$
+$$(\forall_{i \in I}) (\forall_{s_{-i} \in S_{-i}}) u_i(s) \geq u_i(s_i, s_{-i})$$
 \cite[str.~11]{FT-GT}
 \end{definition}
 
@@ -79,26 +89,26 @@ nożyce                               & 1,-1   & -1,1   & 0,0    \\
 
 W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
-Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania \cite[str.~16]{FT-GT}. Wszystko co
-możemy zrobić to zoptymalizować metodę \textit{brute force}, poprzez eliminację strategii zdominowanych
+Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania \cite[str.~16]{FT-GT}. Wszystko, co
+możemy zrobić, to zoptymalizować metodę \textit{brute force} poprzez eliminację strategii zdominowanych
 \cite[str.~9--11]{FT-GT}.
 
 \begin{definition}
 \textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że:
-$$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
+$$(\exists_{s'_i}) (\forall_{s_{-1} \in S}) u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
 \textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że:
-$$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+$$(\exists_{s'_i}) (\forall_{s_{-1} \in S}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
 \textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że dla danego podzbioru $S_{-1}'
 \subseteq S_{-1}$ zachodzi:
-$$\exists_{s'_i} \forall_{s_{-1} \in S_{-1}'} u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+$$(\exists_{s'_i}) (\forall_{s_{-1} \in S_{-1}'}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~2]{PNS-NE}
 \end{definition}
 
@@ -128,7 +138,7 @@ tego problemu \cite{P-AGI}.
 
 \begin{definition}
 \textbf{Gra o sumie zerowej} to taka gra, że:
-$$\forall_{s \in S} \sum_{i \in I} u_i(s) = 0$$
+$$(\forall_{s \in S}) \sum_{i \in I} u_i(s) = 0$$
 \end{definition}
 
 Gdy w grze bierze udział 2 graczy wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać przy
@@ -144,14 +154,14 @@ Dla pierwszego gracza przyjmuje to postać problemu optymalizacyjnego:
 
 $$\max_{\sigma_1} \{ \min_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \}$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
-$$\forall_{i \in I} \sigma_1(i) \geq 0$$
+$$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
 
 Tak zdefiniowany problem po pewnych modyfikacjach możemy przekształcić do programowania liniowego:
 
 $$\max_{\sigma_1,v} v$$
-$$\forall_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
+$$(\forall_{j \in J}) \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
-$$\forall_{i \in I} \sigma_1(i) \geq 0$$
+$$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
 
 Dla każdej strategii czystej gracza $i$ obliczamy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi mieszanej
 gracza $-1$. Następnie wybieramy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej wypłaty jaką
@@ -159,9 +169,9 @@ możemy dostać przy obecnej strategii mieszanej przeciwnika. Tak zapisany probl
 
 $$\max_{\sigma_1,v} v$$
 \begin{enumerate}
-\item $$\forall_{j \in J} \sum_{i \in I} A_{ij} x_1(i) \geq 1$$
+\item $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} x_1(i) \geq 1$$
 \item $$\sum_{i \in I} x_1(i) = \frac{1}{v}$$
-\item $$\forall_{i \in I} x_1(i) \geq 0$$
+\item $$(\forall_{i \in I}) x_1(i) \geq 0$$
 \end{enumerate}
 
 Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskamy równanie sumujące się do $1$ co jest dla nas bardzo
@@ -243,11 +253,11 @@ Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha uży
 \REQUIRE{$S = (S_1, ..., S_n)$, profil wspierający}
 \ENSURE{równowaga Nasha $s^{*}$ jeśli istnieje zarówno profil strategii $s$ jak i wartość $v = (v_1, ..., v_n)$,
 takie, że:}
-$$\forall_{i \in I, s_i \in S_i} \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) = v_i$$
-$$\forall_{i \in I, s_i \not\in S_i} \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) \leq v_i$$
-$$\forall_{i \in I} \sum_{s_i \in S_i} \sigma_i(s_i) = 1$$
-$$\forall_{i \in I, s_i \in S_i} \sigma_i(s_i) \geq 0$$
-$$\forall_{i \in I, s_i \not\in S_i} \sigma_i(s_i) = 0$$
+$$(\forall_{i \in I, s_i \in S_i}) \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) = v_i$$
+$$(\forall_{i \in I, s_i \not\in S_i}) \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) \leq v_i$$
+$$(\forall_{i \in I} \sum_{s_i \in S_i}) \sigma_i(s_i) = 1$$
+$$(\forall_{i \in I, s_i \in S_i}) \sigma_i(s_i) \geq 0$$
+$$(\forall_{i \in I, s_i \not\in S_i}) \sigma_i(s_i) = 0$$
 \end{algorithmic}
 \end{algorithm}
 
@@ -265,9 +275,9 @@ algorytmów z zakresu teorii gier.
 następnie $x_1 + x_2$}
  \FORALL{$S_1^{*} \subseteq S_1$ takich, że $\ABS{S_1^{*}} = x_1$}
   \STATE $S_2' \ASSIGN \{ s_2 \in S_2: s_2 \textrm{ nie warunkowo zdominowane wzgl. } S_1 \}$
-  \IF{$\not\exists_{s_1 \in S_1} \textrm{ nie warunkowo zdominowana wzg. } S_2'$}
+  \IF{$(\not\exists_{s_1 \in S_1}) \textrm{ nie warunkowo zdominowana wzg. } S_2'$}
    \FORALL{$S_2^{*} \subseteq S_2$ takich, że $\ABS{S_2^{*} = x_2}$}
-    \IF{$\not\exists_{s_1 \in S_1} \textrm{ nie warunkowo zdominowana wzg. } S_2^{*}$}
+    \IF{$(\not\exists_{s_1 \in S_1}) \textrm{ nie warunkowo zdominowana wzg. } S_2^{*}$}
       \IF{Zachodzi spełnialność równowagi Nasha dla profilu wspierającego}
        \RETURN{równowaga Nasha $p$}
       \ENDIF
@@ -279,7 +289,7 @@ następnie $x_1 + x_2$}
 \end{algorithmic}
 \end{algorithm}
 
-Wedle badań dokonanych przez autorów testy dokonane na pakiecie testów GAMUT algorytm ten zachowuje się dużo lepiej niż
+Wedle badań dokonanych przez autorów testy dokonane na pakiecie GAMUT algorytm ten zachowuje się dużo lepiej niż
 najczęściej opisywany algorytm Lemkego-Howsona.
 
 TODO: Govindan-Wilson
@@ -302,14 +312,14 @@ strategii czystej, a wartością oczekiwaną dla $s_i$,
 dla $0$, może ona się pojawić o ile żal wyniesie $0$.
 \end{itemize}
 
-Wówczas ograniczenia możemy zdefiniować następująco $\forall_{i \in I}$:
+Wówczas ograniczenia możemy zdefiniować następująco $(\forall_{i \in I})$:
 \begin{enumerate}
 \item $$\sum_{{s_i} \in S_i} p_{s_i} = 1$$
-\item $$\forall_{s_i \in S_i} u_{s_i} = \sum_{s_{-1} \in S_{-1}} p_{s_{-1}} u_i(s_i, s_{-1})$$
-\item $$\forall_{s_i \in S_i} u_i \geq u_{s_i}$$
-\item $$\forall_{s_i \in S_i} r_{s_i} = u_i - u_{s_i}$$
-\item $$\forall_{s_i \in S_i} p_{s_i} \leq 1-b_{s_i}$$
-\item $$\forall_{s_i \in S_i} r_{s_i} \leq U_i b_{s_i}$$
+\item $$(\forall_{s_i \in S_i}) u_{s_i} = \sum_{s_{-1} \in S_{-1}} p_{s_{-1}} u_i(s_i, s_{-1})$$
+\item $$(\forall_{s_i \in S_i}) u_i \geq u_{s_i}$$
+\item $$(\forall_{s_i \in S_i}) r_{s_i} = u_i - u_{s_i}$$
+\item $$(\forall_{s_i \in S_i}) p_{s_i} \leq 1-b_{s_i}$$
+\item $$(\forall_{s_i \in S_i}) r_{s_i} \leq U_i b_{s_i}$$
 \end{enumerate}
 
 Pierwsze ograniczenie gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$ gracza $i$.
@@ -328,8 +338,8 @@ Autorzy dalej omawiają 3 kolejne specjalizacje tego problemu:
 \begin{enumerate}
 \item wprowadzić ,,karę'' za żal, a następnie dążyć do jego minimalizacji - ograniczenia $1$, $2$, $3$, $4$, $5$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} - U_i b_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq r_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq U_i b_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq r_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq U_i b_{s_i}$$
 \cite[str.~2]{SCG-NE}
 
 Tutaj $f_{s_i}$ stanowi ,,karę'' za żal - dla danej strategii jest to $\max \{ r_{s_i}, U_i b_{s_i} \}$. Funkcja celu
@@ -339,8 +349,8 @@ usuwane z sumy, a prawdopodobne pozostają. Ostatecznie wartość stanowi suma w
 $1$, $2$, $3$,
 $4$, $6$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} g_{s_i} - (1 - b_{s_i})$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq p_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq p_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq 1 - b_{s_i}$$
 \cite[str.~2]{SCG-NE}
 
 Działa w analogiczny sposób do poprzedniego ograniczenia. W efekcie funkcja celu stanowi sumę wszystkich
@@ -348,10 +358,10 @@ prawdopodobieństw strategii z niezerowym żalem.
 \item uzależnić minimalizowaną ,,karę'' zarówno od wartości żalu danej strategi jak i prawdopodobieństwo jej wystąpienia
 - ograniczenia $1$, $2$, $3$, $4$ oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} + g_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq \frac{r_{s_i}}{U_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} f_{s_i} \geq b_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq p_{s_i}$$
-$$\forall_{i \in I} \forall_{s_i \in S_i} g_{s_i} \geq 1 - b_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq \frac{r_{s_i}}{U_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq b_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq p_{s_i}$$
+$$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq 1 - b_{s_i}$$
 \cite[str.~2--3]{SCG-NE}
 
 Jest to przekształcenie dwóch pierwszych warunków do postaci, w której możemy sumować zarówno wartości żalu
@@ -395,7 +405,7 @@ został przynajmniej jeden z zbiorów strategii. (Algorytm \ref*{IRSDS}.)
  \FORALL{$i \in I$}
   \FORALL{$s_i \in d_i \in D_i$}
    \FORALL{$s_i' \in S_i$}
-    \IF{$\forall_{s_{-1} \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-1})$}
+    \IF{$(\forall_{s_{-1}) \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-1})$}
      \STATE $D_i \ASSIGN D_i - \{ d_i \in D_i: s_i \in d_i \}$
      \STATE $\textrm{zmieniono} \ASSIGN \textrm{true}$
      \IF{$D_i = \emptyset$}
@@ -451,8 +461,8 @@ Dysponując tymi procedurami wystarczy jedynie zainicjować wszystkie zmienne pr
 \begin{algorithmic}
 \FORALL{$x = (x_1, ..., x_n)$ posortowane rosnąco wg. najpierw $\sum_{i \in I} x_i$, a następnie $\max_{i,j \in I}
 (x_i - x_j$)}
- \STATE $\forall_{i \in I} S_i \ASSIGN NULL$
- \STATE $\forall_{i \in I} D_i \ASSIGN \{ S_i' \subseteq S_i : \ABS{S_i'} = x_i \}$
+ \STATE $(\forall_{i \in I}) S_i \ASSIGN NULL$
+ \STATE $(\forall_{i \in I}) D_i \ASSIGN \{ S_i' \subseteq S_i : \ABS{S_i'} = x_i \}$
  \IF{Przeglądanie z nawracaniem znajdzie równowagę $p$}
   \RETURN{$p$}
  \ENDIF
