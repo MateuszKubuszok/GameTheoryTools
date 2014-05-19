@@ -84,9 +84,22 @@ możemy zrobić to zoptymalizować metodę \textit{brute force}, poprzez elimina
 \cite[str.~9--11]{FT-GT}.
 
 \begin{definition}
-\textbf{Strategia zdominowana} to taka strategia $s_i \in S_i$, że:
+\textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że:
 $$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
+\end{definition}
+
+\begin{definition}
+\textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że:
+$$\exists_{s'_i} \forall_{s_{-1} \in S} u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+\cite[str.~6--7]{FT-GT}
+\end{definition}
+
+\begin{definition}
+\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że dla danego podzbioru $S_{-1}'
+\subseteq S_{-1}$ zachodzi:
+$$\exists_{s'_i} \forall_{s_{-1} \in S_{-1}'} u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+\cite[str.~2]{PNS-NE}
 \end{definition}
 
 Strategia taka zawsze może zostać zastąpiona przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy ją
@@ -141,7 +154,7 @@ $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$\forall_{i \in I} \sigma_1(i) \geq 0$$
 
 Dla każdej strategii czystej gracza $i$ obliczamy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi mieszanej
-gracza $1-i$. Następnie wybieramy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej wypłaty jaką
+gracza $-1$. Następnie wybieramy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej wypłaty jaką
 możemy dostać przy obecnej strategii mieszanej przeciwnika. Tak zapisany problem przekształćmy jednak do nieco innej postaci, w której można zaobserwować jego ciekawą właściwość. Podstawmy najpierw $x_i = \frac{\sigma_1(i)}{v}$:
 
 $$\max_{\sigma_1,v} v$$
@@ -200,26 +213,56 @@ mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których
 Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako $v_i$.
 
 Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera strategii czystej). Ze względu na
-wykorzystane w rozwiązaniu ograniczenie $\sigma_{1-i}(s_{1-i}) = \prod_{j \ne i} \sigma_j(s_j)$ problem jest liniowy
+wykorzystane w rozwiązaniu ograniczenie $\sigma_{-1}(s_{-1}) = \prod_{j \ne i} \sigma_j(s_j)$ problem jest liniowy
 dla $n = 2$ oraz nieliniowy dla $n > 2$.
 
-Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha używany jest następujący program:
+Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha używany jest następujący \textbf{Algorytm
+\ref{FEASNE}}.
 \begin{algorithm}
 \caption{Spełnialność równowagi Nasha dla profilu wspierającego}
-\label{FEAS1}
+\label{FEASNE}
 \begin{algorithmic}
 \REQUIRE{$S = (S_1, ..., S_n)$, profil wspierający}
 \ENSURE{równowaga Nasha $s^{*}$ jeśli istnieje zarówno profil strategii $s$ jak i wartość $v = (v_1, ..., v_n)$,
 takie, że:}
-$$\forall_{i \in I, s_i \in S_i} \sum_{s_{1-i} \in S_{1-i}} \sigma_{1-i}(s_{1-i}) u_i(s_i, s_{1-i}) = v_i$$
-$$\forall_{i \in I, s_i \not\in S_i} \sum_{s_{1-i} \in S_{1-i}} \sigma_{1-i}(s_{1-i}) u_i(s_i, s_{1-i}) \leq v_i$$
+$$\forall_{i \in I, s_i \in S_i} \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) = v_i$$
+$$\forall_{i \in I, s_i \not\in S_i} \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) \leq v_i$$
 $$\forall_{i \in I} \sum_{s_i \in S_i} \sigma_i(s_i) = 1$$
 $$\forall_{i \in I, s_i \in S_i} \sigma_i(s_i) \geq 0$$
 $$\forall_{i \in I, s_i \not\in S_i} \sigma_i(s_i) = 0$$
 \end{algorithmic}
 \end{algorithm}
 
-TODO: reszta PNS
+Dysponując tym programem autorzy definiują pewien sposób wybierania profili, które mogą być testowane pod kątem bycia
+równowagą Nasha. Ich algorytm rozpatruje z osobna przypadki dla wsparć o różnych rozmiarach preferując mniejsze oraz
+zbalansowane. Usuwane są też strategie ściśle zdominowane. Pełna definicja programu jest przedstawiona jako
+\textbf{Algorytm \ref{PNS2}}. Zestaw ten jest powszechnie używany do testowania poprawności i wydajności różnych
+algorytmów z zakresu teorii gier.
+
+\begin{algorithm}
+\caption{PNS dla 2 graczy}
+\label{PNS2}
+\begin{algorithmic}
+\FORALL{możliwe rozmiary wsparcia profili $x = (x_1, x_2)$ posortowane rosnąco wg. najpierw $\ABS{x_1 - x_2}$, a
+następnie $x_1 + x_2$}
+ \FORALL{$S_1^{*} \subseteq S_1$ takich, że $\ABS{S_1^{*}} = x_1$}
+  \STATE $S_2' \ASSIGN \{ s_2 \in S_2: s_2 \textrm{ nie warunkowo zdominowane wzgl. } S_1 \}$
+  \IF{$\not\exists_{s_1 \in S_1} \textrm{ nie warunkowo zdominowana wzg. } S_2'$}
+   \FORALL{$S_2^{*} \subseteq S_2$ takich, że $\ABS{S_2^{*} = x_2}$}
+    \IF{$\not\exists_{s_1 \in S_1} \textrm{ nie warunkowo zdominowana wzg. } S_2^{*}$}
+      \IF{Zachodzi spełnialność równowagi Nasha dla profilu wspierającego}
+       \RETURN{równowaga Nasha $p$}
+      \ENDIF
+    \ENDIF
+   \ENDFOR
+  \ENDIF
+ \ENDFOR
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+Wedle badań dokonanych przez autorów testy dokonane na pakiecie testów GAMUT algorytm ten zachowuje się dużo lepiej niż
+najczęściej opisywany algorytm Lemkego-Howsona.
 
 TODO: Govindan-Wilson
 
@@ -232,7 +275,7 @@ Wykorzystane są:
 \item zmienna $p_{s_i}$ - prawdopodobieństwo grania strategii $s_i$,
 \item zmienna pomocnicza $U_i$. Dla gracza $i$ zmienna ta oznacza różnicę między maksymalnym i minimalnym zyskiem jaki
 może on osiągnąć:
-$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{1-i}^h, s_{1-i}^l \in S_{1-i}} u_i(s_i^h, s_{1-i}^h) - u_i(s_i^l, s_{1-i}^l)$$
+$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{-1}^h, s_{-1}^l \in S_{-1}} u_i(s_i^h, s_{-1}^h) - u_i(s_i^l, s_{-1}^l)$$
 \item zmienna $u_{s_i}$ - oznacza ono oczekiwaną wypłatę gracza grającego $s_i$ dla obecnej strategii mieszanej drugiego
 gracza,
 \item zmienną $r_{s_i}$ - ,,żal''. Wartość określającą różnicę między maksymalnym oczekiwanym zyskiem dla pewnej
@@ -244,7 +287,7 @@ dla $0$, może ona się pojawić o ile żal wyniesie $0$.
 Wówczas ograniczenia możemy zdefiniować następująco $\forall_{i \in I}$:
 \begin{enumerate}
 \item $$\sum_{{s_i} \in S_i} p_{s_i} = 1$$
-\item $$\forall_{s_i \in S_i} u_{s_i} = \sum_{s_{1-i} \in S_{1-i}} p_{s_{1-i}} u_i(s_i, s_{1-i})$$
+\item $$\forall_{s_i \in S_i} u_{s_i} = \sum_{s_{-1} \in S_{-1}} p_{s_{-1}} u_i(s_i, s_{-1})$$
 \item $$\forall_{s_i \in S_i} u_i \geq u_{s_i}$$
 \item $$\forall_{s_i \in S_i} r_{s_i} = u_i - u_{s_i}$$
 \item $$\forall_{s_i \in S_i} p_{s_i} \leq 1-b_{s_i}$$
@@ -253,9 +296,9 @@ Wówczas ograniczenia możemy zdefiniować następująco $\forall_{i \in I}$:
 
 Pierwsze ograniczenie gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$ gracza $i$.
 Drugi oblicz nam wartość oczekiwaną wypłaty dla strategii czystej $s_i$ gracza $i$ dla obecnej strategii mieszanej
-gracza $1-i$. Warunek trzeci sprawia, że $u_i$ zawiera najmniejszą możliwą wartość oczekiwaną wypłaty dla strategii
+gracza $-1$. Warunek trzeci sprawia, że $u_i$ zawiera najmniejszą możliwą wartość oczekiwaną wypłaty dla strategii
 czystych gracza $i$ (tym samym stanowi ograniczenie dolne wypłaty dla strategii mieszanej jaką otrzyma przy obecnej
-strategii mieszanej gracza $1-i$). Czwarte ograniczenie oblicza żal dla każdej ze strategii. Piąte gwarantuje, że
+strategii mieszanej gracza $-1$). Czwarte ograniczenie oblicza żal dla każdej ze strategii. Piąte gwarantuje, że
 $b_{s_i}$ będzie zmienną binarną określającą czy strategia jest używana (jej prawdopodobieństwo jest niezerowe). Szóste,
 upewnia nas, że żal nigdy nie przekroczy wartości maksymalnej dla strategii w użyciu, oraz będzie równy 0 dla strategii,
 dla których prawdopodobieństwo wynosi 0.
@@ -304,12 +347,63 @@ istotniejszym wkładem badawczym niż tworzenie kolejnej wersji powszechnie stos
 \subsubsection{Gry o większej liczbie graczy}
 
 Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednym z częściej
-wymienianych są
+wymienianych są:
 \begin{enumerate}
 \item algorytm \textbf{podziału symplicjalnego}\INENG{Simplicial Subdivision} TODO \cite{LTH-NE},
 \item algorytm \textbf{Scarfa} \cite{SCARF-NR},
 \item algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy. \cite{PNS-NE}.
 \end{enumerate}
+
+TODO podział symplicjalny
+
+TODO Scarf
+
+Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2 osobowa.
+Wykorzystuje on 2 kolejne procedury - rekurencyjne przeglądanie profili z nawrotami \INENG{Recursive Backgracking} oraz
+iteracyjne usuwanie strategii zdominowanych \INENG{Iterated Removal of Strictly Dominated Strategies} (IRSDS).
+
+Procedura IRSDS przegląda przekazane jej profil dziedzin wszystkich graczy i dla każdego kolejnego gracza usuwa
+wszystkie zdominowane strategie czyste, tak długo jak po przejrzeniu wszystkich graczy w danej iteracji zmieniony 
+został przynajmniej jeden z zbiorów strategii. (Algorytm \ref*{IRSDS}.)
+
+\begin{algorithm}
+\caption{IRSDS}
+\label{IRSDS}
+\begin{algorithmic}
+\REQUIRE{$D = (D_1, ..., D_n)$ - profil dziedzin}
+\ENSURE{Zaktualizowane zbiory lub \textit{failure}}
+\REPEAT
+ \STATE $\textrm{zmieniono} \ASSIGN \textrm{false}$
+ \FORALL{$i \in I$}
+  \FORALL{$s_i \in d_i \in D_i$}
+   \FORALL{$s_i' \in S_i$}
+    \IF{$\forall_{s_{-1} \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-1})$}
+     \STATE $D_i \ASSIGN D_i - \{ d_i \in D_i: s_i \in d_i \}$
+     \STATE $\textrm{zmieniono} \ASSIGN \textrm{true}$
+    \ENDIF
+   \ENDFOR 
+  \ENDFOR
+ \ENDFOR
+\UNTIL{$\textrm{zmieniono} = \textrm{false}$}
+\RETURN{$D$}
+\end{algorithmic}
+\end{algorithm}
+
+Jest to wykorzystywane w rekurencyjnym przeszukiwaniu z nawrotami w następujący sposób: jeśli przekazane procedurze
+wejście stanowi pełny profil dziedzin, uruchom program spełnialności \ref{FEASNE}. W przeciwnym wypadku dodaj kolejną
+dziedzinę strategii do profilu (o wyborze gracza decyduje poziom zagłębienia wskazywany przez przekazywaną procedurze
+zmienną), a następnie wywołaj rekurencyjnie procedurę i sprawdź czy odnaleziono równowagę Nasha. Jeśli tak, zwróć ją.
+W przeciwnym wypadku iteruj dalej, aż do wyczerpania możliwości - jeśli równowaga nie zostanie odnaleziona zwróć
+\textit{failure}. (Algorytm (\ref{RBT}).)
+
+\begin{algorithm}
+\caption{Przeszukiwanie z nawrotami}
+\label{RBT}
+\begin{algorithmic}
+\REQUIRE{}
+\ENSURE{}
+\end{algorithmic}
+\end{algorithm}
 
 Z braku czasu nie udało się jednak wdrożyć żadnego z tych algorytmów do ostatecznej wersji projektu. Implementacja
 została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej wymienionych algorytmów w przyszłości.
