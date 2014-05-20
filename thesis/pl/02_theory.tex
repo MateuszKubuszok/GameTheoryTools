@@ -23,7 +23,9 @@ będą dwa rodzaje gier: \textit{gry w postaci strategicznej} oraz \textit{gry w
 możliwe jest zdefiniowanie tzw. \textit{równowagi Nasha} tj. takiej kombinacji wyborów strategii przez graczy, aby dla
 każdego z nich nieopłacalne było odstąpienie od obecnie granej strategii.
 
-Teoria gier nie ogranicza się do szukania równowag Nasha, my jednak skupimy się na odnajdywaniu ich w grach, dla których możliwe jest znalezienie rozwiązania przy pomocy programowania liniowego/całkowitoliczbowego lub rekurencyjnego przeszukiwania przestrzeni rozwiązań.
+Teoria gier nie ogranicza się do szukania równowag Nasha, my jednak skupimy się na odnajdywaniu ich w grach, dla
+których możliwe jest znalezienie rozwiązania przy pomocy programowania liniowego/całkowitoliczbowego lub rekurencyjnego
+przeszukiwania przestrzeni rozwiązań.
 
 \section{Gra w postaci strategicznej}
 
@@ -391,7 +393,7 @@ wymienianych są:
 \marginnote{TODO: podział symplicjalny \newline TODO: Scarf}
 
 Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2 osobowa.
-Wykorzystuje on 2 kolejne procedury - rekurencyjne przeglądanie profili z nawrotami \INENG{Recursive Backgracking} oraz
+Wykorzystuje on 2 kolejne procedury - rekurencyjne przeglądanie profili z nawrotami \INENG{Recursive Backtracking} oraz
 iteracyjne usuwanie strategii zdominowanych \INENG{Iterated Removal of Strictly Dominated Strategies} (IRSDS).
 
 Procedura IRSDS przegląda przekazane jej profil dziedzin wszystkich graczy i dla każdego kolejnego gracza usuwa
@@ -534,9 +536,9 @@ i przesuwając się ,,w górę'' drzewa gry dochodzimy w końcu do punktu wyjśc
 decyzje jakie podjęliby gracze, a tym samym ich wypłaty. Jest to optymalna wartość wypłaty dla każdego z nich i żaden
 nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy w ten sposób równowagę Nasha w tej grze.
 
-Algorytm ten opiera się na spostrzeżeniu, że do podjęcia decyzji konieczna jest znajomość rozwiązania w każdym poddrzewie
-gry i dla każdego poddrzewa również jest to rozwiązanie poprawne. Odnajduje więc on doskonałą równowagę Nasha w podgrach
-gier z informacją doskonałą.
+Algorytm ten opiera się na spostrzeżeniu, że do podjęcia decyzji konieczna jest znajomość rozwiązania w każdym
+poddrzewie gry i dla każdego poddrzewa również jest to rozwiązanie poprawne. Odnajduje więc on doskonałą równowagę
+Nasha w podgrach gier z informacją doskonałą.
 
 \subsection{Inne gry w postaci ekstensywnej}
 
