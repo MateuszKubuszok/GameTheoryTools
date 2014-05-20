@@ -7,54 +7,65 @@
 \section*{Wstęp}
 
 Celem pracy było stworzenie zestawu narzędzi do obliczania równowag Nasha w pewnych rodzajach gier skończonych.
-Narzędzia te miałyby umożliwić obliczenie ich po wprowadzeniu danych w jakimś przyjętym formacie, np. przy pomocy 
-parsera, a następnie zwróceniu wyników użytkownikowi. Jedynymi obecnie dostępnymi narzędziami służącymi do tego celu
-jest pakiet \PROG{Gambit}, posiada on jednak dość trudną ograniczoną dokumentację, a jego kod źródłowy choć otwarty,
-nie jest w opinii autora łatwy w dalszym rozwijaniu, przez co użytkownicy są uzależnieni od dobrej woli twórców pod
-względem otrzymywania wsparcia dla projektu. Dodatkowo pakiet ten jest rozbity na moduły, przez co każdy problem jest
-rozwiązywany przy pomocy osobnego narzędzia - może to stanowić problem dla użytkowników oczekujących jednego programu,
-którego sposób użycia określają w trakcie jego uruchomienia.
+Narzędzia te miałyby umożliwić obliczenie ich po wprowadzeniu danych w zdefiniowanym na ich potrzeby formacie,
+a następnie zwróceniu wyników użytkownikowi. Jedynymi obecnie dostępnymi narzędziami służącymi do tego celu jest pakiet
+\PROG{Gambit}, posiada on jednak dość ograniczoną dokumentację, a jego kod źródłowy, choć otwarty, nie wydaje się łatwy
+w rozwijaniu. Dodatkowo pakiet ten jest rozbity na moduły, przez co każdy problem jest rozwiązywany przy pomocy osobnego
+narzędzia - może to stanowić problem dla użytkowników oczekujących jednego programu, którego sposób użycia określają
+w trakcie jego uruchomienia.
 
-W takiej sytuacji dobrym pomysłem wydaje się stworzenie alternatywy, nastawionej na możliwość łatwego rozwijania
-projektu oraz przyjaznego interfejsu umożliwiającego wykorzystanie go nawet mniej zaawansowanym użytkownikom. Aby
-projekt taki miał rację bytu powinien oczywiście implementować pewną minimalną funkcjonalność obrazującą jego
-potencjalne możliwości. Stworzenie prototypu pozwoliłoby stwierdzić czy taka filozofia projektu przyniosłaby jakąkolwiek
-korzyść użytkownikom - w przypadku odpowiedzi twierdzącej mogłoby to stanowić impuls do zmiany filozofii rozwoju innych
-narzędzi, chociażby wspomnianego już pakietu Gambit.
+W takiej sytuacji dobrym pomysłem wydawało się stworzenie alternatywy, nastawionej na możliwość łatwego rozwijania
+projektu oraz przyjaznego interfejsu umożliwiającego wykorzystanie programu nawet mniej zaawansowanym użytkownikom. Aby
+projekt taki miał rację bytu, powinien implementować pewną minimalną funkcjonalność obrazującą jego potencjalne
+możliwości. Stworzenie prototypu pozwoliłoby stwierdzić czy taka filozofia projektu przyniosłaby jakąkolwiek korzyść
+użytkownikom.
 
-W trakcie pisania pracy stworzony został prototyp demonstrujący opisywaną ideę. Zdecydowano się na język \LANG{C++},
-który zapewnia wysoką wydajność przy dużej czytelności podczas programowania zorientowanego obiektowo. W przypadku
-algorytmów wykorzystujących Simplex, skorzystano z funkcji biblioteki \LIB{GLPK}. Prototyp umożliwia wczytanie danych
-przy pomocy parsera, obliczenie rozwiązania zadanego problemu i wyświetlenie wyniku. Posiada zaimplementowane algorytmu
-obliczające równowagi Nasha:
+Projekt ten stanowił także okazję do przyjrzenia się istniejącym algorytmom i zaobserwowaniu różnych sposobów na
+rozwiązanie problemu szukania równowag Nasha. Kolejni autorzy próbowali odmiennych podjeść - nie są to kolejne ulepszenia
+jednego algorytmu.
+
+\marginnote{TODO: dopisać pozostałych jeśli użyję ich prac}
+Przy pisaniu pracy wykorzystano książki \textbf{Game Theory} (\textit{Fudenberg, Tirole}) \cite{FT-GT},
+\textbf{Teoria Gier} (\textit{Owen}) \cite{O-GT} oraz artykuły:
+\begin{enumerate}
+\item \textbf{Equilibrium Points of Bimatrix Games} (\textit{Lemke, Howson})
+\cite{LH-NE}
+\item \textbf{Simple Search Methods for Finding a Nash Equilibrium} (\textit{Porter, Nudelman, Shoham})
+\cite{PNS-NE}
+\item \textbf{Mixed-Integer Programming Methods for Finding Nash Equilibria} (\textit{Sandholm, Gilpin, Conitzer})
+\cite{SCG-NE}
+\item \textbf{The Computation of Equilibrium Prices: An Exposition} (\textit{Scarf})
+\cite{SCARF-NR}
+\end{enumerate}
+jako źródła wiedzy teoretycznej na temat rozważanych problemów.
+
+W kolejnych rozdziałach opisałem szczegóły na temat podstaw teoretycznych oraz realizacji projektu:
+\begin{enumerate}
+\item w dziale \textbf{Teoria} opisano podstawy teoretyczne stojące za projektem. Wprowadzają one pojęcia \textit{gier},
+\textit{równowag Nasha}, \textit{strategii czystych i mieszanych}, postaci \textit{strategicznej}
+oraz \textit{ekstensywnej} gier. Opisuje również algorytmy służące do obliczenia równowag w rozpatrywanych przypadkach
+gier,
+\item w dziale \textbf{Implementacja} opisano szczegóły realizacji programu, strukturę wewnętrzną oraz przyjęty model
+danych, jak również algorytmy nie związane bezpośrednio z teorią gier ale wymagane do poprawnego działania programu,
+\item w dziale \textbf{Wnioski} opisano rezultaty otrzymane podczas wdrażania projektu oraz możliwości dalszego
+rozwoju powstałego programu,
+\item załączniki zawierają informacje na temat kompilacji i użytkowania projektu.
+\end{enumerate}
+
+W trakcie pisania pracy stworzony został prototyp demonstrujący opisywaną ideę. Zdecydowałem się na użycie języka
+\LANG{C++}, który umożliwia programowanie z wysoką wydajnością, jak również utrzymanie czytelności kodu. W przypadku
+algorytmów wykorzystujących programowanie liniowe, skorzystano z funkcji biblioteki \LIB{GLPK}. Prototyp umożliwia
+wczytanie danych przy pomocy parsera, obliczenie rozwiązania zadanego problemu i wyświetlenie wyniku. Posiada
+zaimplementowane algorytmy obliczające równowagi Nasha:
 \begin{itemize}
 \item w grach w postaci strategicznej dla strategii czystych,
 \item w grach jednomacierzowych dla strategii mieszanych,
 \item w grach dwumacierzowych dla strategii mieszanych,
 \item w grach ekstensywnych z informacją doskonałą.
-\end{itemize}
-
-Przy pisaniu pracy wykorzystano książki \textbf{Game Theory} (\textit{Fudenberg, Tirole}) \cite{FT-GT},
-\textbf{Teoria Gier} (\textit{Owen}) \cite{O-GT} oraz pracę \textbf{Mixed-Integer Programming Methods for Finding Nash
-Equilibria} (\textit{Sandholm, Gilpin, Conitzer}) \cite{SCG-NE} jako źródła wiedzy teoretycznej na temat rozważanych
-problemów oraz dokumentację języka \LANG{C++} oraz bibliotek \LIB{Boost}, \LIB{GLPK}, \LIB{Bison} i \LIB{Flex} jako
-materiały pomocnicze przy faktycznej implementacji wspomnianych procedur.
-
-W poszczególnych rozdziałach opisano szczegóły na temat podstaw teoretycznych oraz realizacji projektu:
-\begin{enumerate}
-\item w dziale \textbf{Teoria} opisano podstawy teoretyczne stojące za projektem. Wprowadzają one pojęcia \textit{gier},
-\textit{równowag Nasha},
-\textit{strategii czystych i mieszanych} oraz postaci \textit{strategicznej} oraz \textit{ekstensywnej} gier. Opisuje
-również algorytmy służące do obliczenia równowag w rozpatrywanych przypadkach gier,
-\item w dziale \textbf{Implementacja} opisano szczegóły realizacji programu, strukturę wewnętrzną oraz przyjęty model
-danych, jak również algorytmy nie związane bezpośrednio z teorią gier ale wymagane do poprawnego działania programu,
-\item w dziale \textbf{Wnioski} opisano rezultaty otrzymane podczas wdrażania projektu oraz możliwości dalszego jego
-rozwoju,
-\item załączniki zawierają informacje na temat jego kompilacji i użytkowania.
-\end{enumerate}
+\end{itemize} 
 
 W ogólności cele pracy można uznać za zrealizowane. Jej wynikiem jest działający program, który posiada wymaganą
 funkcjonalność co dowodzi realizowalności przyjętych założeń. Ograniczenia czasowe sprawiły jednak, że nie wszystkie
-procedury udało się zaimplementować. Szczegóły zostały uważniej omówione w poszczególnych działach.
+rozpatrywane rozwiązania udało się zaimplementować. Szczegóły zostały uważniej omówione w poszczególnych działach.
 
 \end{document}
