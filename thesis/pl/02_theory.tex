@@ -531,8 +531,11 @@ kolejnych graczy prowadzący do zakończenia gry i ustalenia wypłaty. Natura ob
 czynniki, mające wpływ na losy gry, od których nie możemy jednak oczekiwać racjonalnego wybierania najkorzystniejszej
 dla siebie strategii (nie przypisujemy im wypłaty). Z tego powodu wypłaty ścieżek przechodzących przez węzeł, w którym
 decyduje natura, są wartościami oczekiwanymi po wypłatach w poszczególnych wychodzących z węzła poddrzewach (podgrach)
-względem przypisanego danemu węzłowi natury rozkładowi prawdopodobieństwa.
-\marginnote{TODO: co to jest zbiór informacyjny}
+względem przypisanego danemu węzłowi natury rozkładowi prawdopodobieństwa. Zbiór informacyjny stanowi opis wiedzy
+gracza o jego położeniu w chwili podejmowania decyzji. Jeśli kilka wierzchołków należy do tego samego zbioru
+informacyjnego, gracz nie jest w stanie stwierdzić w którym z nich się znajduje - we wszystkich ma takie same
+możliwości do wyboru. Pozwala to opisywać np. stan gracza po zdarzeniu losowym lub brak informacji o ruchach
+przeciwników.
 
 \begin{definition}
 \textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga, że dla każdej podgry danej gry stanowi ona
@@ -547,7 +550,7 @@ Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w 
 
 \begin{definition}
 \textbf{Gra z informacją doskonałą} to gra, w której każdy z graczy w dowolnym momencie jest poinformowany o wszystkich
-wiodących do danej chwili ruchach.
+wiodących do danej chwili ruchach - każdy wierzchołek należy do jednoelementowego zbioru informacyjnego.
 \end{definition}
 
 W przypadku gry w postaci ekstensywnej oznacza to, że możemy ją poprawnie sprowadzić do postaci, gdzie każdy węzeł
