@@ -7,7 +7,7 @@
 \chapter{Teoria}
 
 W tym rozdziale zajmiemy się podstawowymi pojęciami i problemami z zakresu teorii gier, jak również przedstawieniem
-operujących na nich algorytmach, których wykorzystanie było rozważane. Wyjaśnimy też pokrótce sposób działania tych
+rozwiązującymi je algorytmami, których wykorzystanie było rozważane. Wyjaśnimy też pokrótce sposób działania tych
 algorytmów.
 
 \section{Wprowadzenie}
@@ -15,67 +15,68 @@ algorytmów.
 Przez \textit{grę} rozumiemy matematyczny opis pewnej sytuacji konfliktowej, w której biorą udział określone strony,
 nazywane \textit{graczami}. Każdej stronie przypisujemy pewien zbiór \textit{strategii}, z którego w danej chwili dana
 strona w danym momencie wykorzystuje jedną. Każdemu z graczy przypisujemy również \textit{funkcję wypłaty}, której
-wartość uzależniona jest od wszystkich strategii granych przez graczy w określonej chwili. \textit{Teoria gier} zajmuje
-się badaniem właściwości różnych wariantów tak rozumianych gier.
+wartość uzależniona jest od wszystkich strategii granych przez graczy w określonej chwili. Gracze, ich strategie oraz
+funkcje wypłat są definiowane przez nas w ramach danego problemu. \textit{Teoria gier} zajmuje się badaniem właściwości
+różnych wariantów tak rozumianych gier.
 
-W zależności od rozpatrywanego rodzaju gry formalna definicja wymienionych pojęć jest nieco inna. W tej pracy rozważane
+W zależności od rodzaju rozpatrywanej gry, formalna definicja wymienionych pojęć jest nieco inna. W tej pracy rozważane
 będą dwa rodzaje gier: \textit{gry w postaci strategicznej} oraz \textit{gry w postaci ekstensywnej}. Dla obu z nich
-możliwe jest zdefiniowanie tzw. \textit{równowagi Nasha} tj. takiej kombinacji wyborów strategii przez graczy, aby dla
-każdego z nich nieopłacalne było odstąpienie od obecnie granej strategii.
+możliwe jest zdefiniowanie tzw. \textit{równowagi Nasha}, tj. takiej kombinacji wyborów strategii przez graczy, aby dla
+każdego z nich nieopłacalne było odstąpienie od obecnie granej strategii. Pojęcia te wytłumaczymy dokładniej za chwilę.
 
-Teoria gier nie ogranicza się do szukania równowag Nasha, my jednak skupimy się na odnajdywaniu ich w grach, dla
+Teoria gier nie ogranicza się do szukania równowag Nasha. My jednak skupimy się na odnajdywaniu ich w grach, dla
 których możliwe jest znalezienie rozwiązania przy pomocy programowania liniowego/całkowitoliczbowego lub rekurencyjnego
 przeszukiwania przestrzeni rozwiązań.
 
 \section{Gra w postaci strategicznej}
 
 \begin{definition}
-\textbf{Grą w postaci strategicznej (normalnej)} \INENG{strategic-form (normal-form) game} nazywamy trójkę
+\textbf{Grą w postaci strategicznej (normalnej)}\INENG{strategic-form (normal-form) game} nazywamy trójkę
 $(I, S_i, u_i)$, gdzie:
 \begin{enumerate}
-\item $I = 1, 2, 3, ..., n$ - skończony zbiór $n$ graczy,
-\item $S_i$ - przestrzeń strategii czystych \INENG{pure strategy} zdefiniowana dla każdego gracza $i \in I$,
-\item $u_i(s)$ - funkcja wypłaty \INENG{payoff function} określająca wypłatę gracza $i \in I$ dla każdego profilu
+\item $I = \{ 1, 2, 3, ..., n \}$ - skończony zbiór $n$-graczy,
+\item $S_i$ - przestrzeń strategii czystych\INENG{pure strategy} zdefiniowana dla każdego gracza $i \in I$,
+\item $u_i(s)$ - funkcja wypłaty\INENG{payoff function} określająca wypłatę gracza $i \in I$ dla każdego profilu
 $s \in S$.
 \end{enumerate}
 \cite[str.~4]{FT-GT}
 \end{definition}
 
 Przez strategię czystą rozumiemy wybór na jaki może zdecydować się dana strona - w danej chwili może ona grać tylko
-jedną strategię. Kombinację strategii wybranych przez graczy w danej chwili nazywamy profilem i zapisujemy:
+jedną strategią. Kombinację strategii wybranych przez graczy w danej chwili nazywamy \textit{profilem} i zapisujemy:
 $$s = (s_1, s_2, ..., s_n)$$
 Oznacza to, że gracz $1$ gra $s_1$, gracz $2$ gra $s_2$, itd. Podobnie
 $$S = S_1 \times S_2 \times ... \times S_n$$
 jest zapisem zbioru wszystkich możliwych profili $s$.
 
-Możemy przyjąć, że dla tak przyjętych oznaczeń $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, $s_{-i}$ opisywać
+Możemy przyjąć, że dla tak przyjętych oznaczeń, $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, a $s_{-i}$ opisywać
 będzie profil wszystkich wyborów oprócz wyboru gracza $i$:
 $$s_{-i} = (s_1, s_2, ..., s_{i-1}, s_{s+1}, ..., s_n)$$
 Analogicznie
 $$S_{-i} = S_1 \times ... S_{i-1} \times S_{i+1} \times ... \times S_n$$
 oznaczać będzie profil wszystkich możliwych odpowiedzi na decyzję gracza $i$.
 
-Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy decyduje się na jedną ze swoich strategii, a następnie
-na podstawie wyborów podjętych przez wszystkich graczy przypisujemy każdemu z nich wypłatę.
+Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy równocześnie decyduje się na jedną ze swoich strategii, a następnie na podstawie wyborów podjętych przez wszystkich graczy określamy wypłatę każdego z nich.
 
 \begin{definition}
-\textbf{Strategią mieszaną} \INENG{mixed strategy} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi
-$S_i$. Przez $\sigma^{*}$ oznaczymy, profil strategii mieszanych pozostałych graczy. Wówczas funkcja wypłaty ma postać
-$u_i(\sigma_i, \sigma^{*})$ i jest równa wartości oczekiwanej funkcji wypłat dla strategii mieszanych wszystkich graczy.
+\textbf{Strategią mieszaną}\INENG{mixed strategy} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi
+$S_i$. Za pomocą $\sigma^{*}$ oznaczymy profil strategii mieszanych pozostałych graczy. Wówczas funkcja wypłaty ma
+postać $u_i(\sigma_i, \sigma^{*})$ i jest równa wartości oczekiwanej funkcji wypłat dla strategii mieszanych wszystkich
+graczy.
 \cite[str.~5]{FT-GT}
 \end{definition}
 
 \subsection{Równowagi w strategiach czystych}
 
 \begin{definition}
-\textbf{Równowagą Nasha \INENG{Nash equilibrium} w strategiach czystych} w grze w postaci strategicznej nazywamy profil
+\textbf{Równowagą Nasha\INENG{Nash equilibrium} w strategiach czystych} w grze w postaci strategicznej nazywamy profil
 strategii $s \in S$ taki, że:
 $$(\forall_{i \in I}) (\forall_{s_{-i} \in S_{-i}}) u_i(s) \geq u_i(s_i, s_{-i})$$
 \cite[str.~11]{FT-GT}
 \end{definition}
 
-Oznacza to, że równowagą jest profil strategii, dla którego pojedyncza zmiana granej strategii nie jest w stanie 
-poprawić wypłaty żadnego z graczy.
+Oznacza to, że równowagą jest profil strategii, dla którego żaden z graczy nie jest w stanie poprawić swojej wypłaty,
+jeśli pozostali gracze przystaną przy swoich strategiach.
 
 Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień-nożyce:
 \begin{center}
@@ -95,35 +96,37 @@ Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień
 W takiej sytuacji każdy z graczy zawsze może zmienić swoją strategię na taką, w której jego wypłata zostanie zwiększona.
 
 Problem szukania równowagi w strategiach czystych nie ma wydajnego rozwiązania \cite[str.~16]{FT-GT}. Wszystko, co
-możemy zrobić, to zoptymalizować metodę \textit{brute force} poprzez eliminację strategii zdominowanych
+możemy zrobić, to zoptymalizować algorytm siłowy\INENG{brute force} poprzez eliminację strategii zdominowanych
 \cite[str.~9--11]{FT-GT}.
 
 \begin{definition}
-\textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że:
-$$(\exists_{s'_i}) (\forall_{s_{-1} \in S}) u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
+\textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że dowolna strategia $s'_i$ jest równie dobra,
+jeśli nie lepsza od niej:
+$$(\exists_{s'_i}) (\forall_{s_{-i} \in S}) u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
-\textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że:
-$$(\exists_{s'_i}) (\forall_{s_{-1} \in S}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+\textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że dowolna strategia $s'_i$ jest lepsza od niej:
+$$(\exists_{s'_i}) (\forall_{s_{-i} \in S}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
-\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że dla danego podzbioru $S_{-1}'
-\subseteq S_{-1}$ zachodzi:
-$$(\exists_{s'_i}) (\forall_{s_{-1} \in S_{-1}'}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
+\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że wszystkie strategia z danego
+podzbioru $S_{-i}' \subseteq S_{-i}$ są lepsze:
+$$(\exists_{s'_i}) (\forall_{s_{-i} \in S_{-i'}}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~2]{PNS-NE}
 \end{definition}
 
-Strategia taka zawsze może zostać zastąpiona przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy ją
-pominąć w rozważaniach - z definicji nie może ona wchodzić w skład szukanego profilu.
+Strategie takie zawsze mogą zostać zastąpione przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy je
+pominąć w rozważaniach, z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle mówiąc możemy wyeliminować
+wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich lepsza, lub wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
 
-\textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania ich z rozważanej gry tak długo, aż
-zostaną wyłącznie strategie niezdominowane. Zdarza się, że prowadzi to do sytuacji gdzie równowaga jest oczywista, ale
-często konieczne jest jednak przeszukiwanie pozostałej przestrzeni rozwiązań, aż do znalezienia równowagi lub
-stwierdzenia jej braku.
+\textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania tych strategii z rozważanej gry
+tak długo, aż zostaną wyłącznie strategie niezdominowane. Zdarza się, że prowadzi to do sytuacji, gdzie równowaga jest
+oczywista, ale często konieczne jest jednak przeszukiwanie pozostałej przestrzeni rozwiązań aż do znalezienia
+równowagi lub stwierdzenia jej braku.
 
 \subsection{Równowagi w strategiach mieszanych}
 
@@ -146,11 +149,12 @@ tego problemu \cite{P-AGI}.
 $$(\forall_{s \in S}) \sum_{i \in I} u_i(s) = 0$$
 \end{definition}
 
-Gdy w grze bierze udział 2 graczy wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać przy
-pomocy macierzy $A_{ij}$, gdzie $i$ oznacza wybór strategii pierwszego gracza, a $j$ wybór gracza drugiego. Wartość
-stanowi wypłatę pierwszego z graczy.
+Gdy w grze bierze udział dwóch graczy, wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać
+przy pomocy pojedynczej macierzy $A_{ij}$ (stąd inna nazwa tego typu gier - gry jednomacierzowe), gdzie $i$ oznacza
+wybór strategii czystej pierwszego gracza, a $j$ wybór gracza drugiego. Wartość stanowi wypłatę pierwszego z graczy.
 
-W takiej sytuacji pierwszy z graczy będzie dążył do maksymalizacji wypłaty, zaś gracz drugi do jej minimalizacji:
+W takiej sytuacji pierwszy z graczy będzie dążył do maksymalizacji swojej wypłaty, zaś gracz drugi do minimalizacji
+wypłaty przeciwnika:
 
 $$\max_{\sigma_1} \{ \min_{j \in J} u_1(\sigma_1, j) \}$$
 $$\min_{\sigma_2} \{ \max_{i \in I} u_2(i, \sigma_2) \}$$
@@ -168,65 +172,71 @@ $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
 
-Dla każdej strategii czystej gracza $i$ obliczamy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi mieszanej
-gracza $-1$. Następnie wybieramy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej wypłaty jaką
-możemy dostać przy obecnej strategii mieszanej przeciwnika. Tak zapisany problem przekształćmy jednak do nieco innej
-postaci, w której można zaobserwować jego ciekawą właściwość. Podstawmy najpierw $x_i = \frac{\sigma_1(i)}{v}$:
+Dla każdej strategii czystej gracza $i$ obliczyliśmy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi
+mieszanej gracza $-i$. Następnie wybraliśmy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej
+wypłaty jaką możemy dostać przy obecnej strategii mieszanej przeciwnika. Tak zapisany problem przekształćmy jednak do
+nieco innej postaci, w której można zaobserwować jego ciekawą właściwość. Podstawmy najpierw $x_i = 
+\frac{\sigma_1(i)}{v}$:
 
 $$\max_{\sigma_1,v} v$$
-\begin{enumerate}
-\item $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} x_1(i) \geq 1$$
-\item $$\sum_{i \in I} x_1(i) = \frac{1}{v}$$
-\item $$(\forall_{i \in I}) x_1(i) \geq 0$$
-\end{enumerate}
+\begin{equation}
+(\forall_{j \in J}) \sum_{i \in I} A_{ij} x_1(i) \geq 1 \label{MTRX1a}
+\end{equation}
+\begin{equation}
+\sum_{i \in I} x_1(i) = \frac{1}{v} \label{MTRX1b}
+\end{equation}
+\begin{equation}
+(\forall_{i \in I}) x_1(i) \geq 0 \label{MTRX1c}
+\end{equation}
 
-Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskamy równanie sumujące się do $1$ co jest dla nas bardzo
-istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu:
+
+Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskamliśmy równanie sumujące się do $1$ co jest dla nas
+bardzo istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu:
 
 $$\min_x \sum_{i \in I} x_i$$
-\begin{enumerate}
-\item $$A^Tx \geq 1$$
-\item $$x \geq 0$$
-\end{enumerate}
+\begin{equation}
+A^Tx \geq 1 \label{MTRX2a}
+\end{equation}
+\begin{equation}
+x \geq 0 \label{MTRX2b}
+\end{equation}
 
-W pierwszym warunku sumę zamienia się na wynik mnożenia macierzy przez wektor. W drugim warunku zauważamy, że $v$ stało
-się dzielnikiem, a więc maksymalizując go, minimalizujemy sumę - możemy więc usunąć ten warunek przez zmianę funkcji
-celu. W ostatnim warunku przeskalowanie zmiennej nie zmienia ograniczenia $\geq 0$ i jej podmiana wystarczy do
-zakończenia przekształcenia. Należy jedynie pamiętać, że od tego momentu funkcja celu oblicza $\frac{1}{v}$.
-Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
+W warunku \ref{MTRX1a} sumę zamieniliśmy na wynik mnożenia macierzy przez wektor (\ref{MTRX1a}). W warunku \ref{MTRX1b}
+zauważyliśmy, że $v$ stało się dzielnikiem, a więc maksymalizując go, minimalizujemy sumę - mogliśmy więc usunąć ten
+warunek przez zmianę funkcji celu. W ostatnim warunku (\ref{MTRX1c}) przeskalowanie zmiennej nie zmieniło ograniczenia
+$\geq 0$ i jej podmiana wystarczyła do zakończenia przekształcenia (\ref{MTRX2b}). Należy jedynie pamiętać, że od tego
+momentu funkcja celu oblicza $\frac{1}{v}$. Przeprowadzając analogiczne rozumowanie dla gracza drugiego otrzymamy:
 
 $$\max_y \sum_{j \in J} y_i$$
-\begin{enumerate}
-\item $$Ay \leq 1$$
-\item $$y \geq 0$$
-\end{enumerate}
+$$Ay \leq 1 $$
+$$y \geq 0$$
 
-\marginnote{TODO: bibliografia do programowania liniowego}
-Okazuje się więc, że są to problemy dualne - odpowiednia implementacja algorytmu simpleks jest w stanie otrzymać oba
-rozwiązania przy jednym uruchomieniu procedury. Należy jedynie pamiętać, aby otrzymane wartości podzielić przez wartość
-funkcji celu (a więc pomnożyć przez odwrotność $v$), aby wrócić do ich oryginalnej postaci.
+\marginnote{TODO: wyjaśnienie i bibliografia do programowania liniowego}
+Okazuje się więc, że są to problemy dualne, zatem odpowiednia implementacja algorytmu simpleks jest w stanie otrzymać
+oba rozwiązania przy jednym uruchomieniu procedury. Należy jedynie pamiętać, aby otrzymane wartości podzielić przez
+wartość funkcji celu (a więc pomnożyć przez odwrotność $v$), aby wrócić do ich oryginalnej postaci.
 
 \subsubsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
 
-Dla gier dwumacierzowych (gier o sumie dowolnej) sytuacja się komplikuje. Istnieje kilka opisanych algorytmów, które
-pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych są to:
-\begin{itemize}
-\item algorytm \textbf{Lemkego-Howsona} - wykorzystujący podprocedury algorytmu simplex \cite{LH-NE},
-\item algorytm \textbf{Portera-Nudelmana-Shohama (PNS)} - korzysta z programowanie liniowego (wersja dla liczby graczy
-$n > 2$ jest nieliniowa) \cite{PNS-NE},
-\item algorytm \textbf{Govindana-Wilsona} \marginnote{TODO} \cite{GR-NE},
-\item algorytm \textbf{Sandholma-Gilpina-Conitzera} - wykorzystuje programowanie całkowitoliczbowe \cite{SCG-NE}.
-\end{itemize}
+Dla gier dwumacierzowych (gier 2-osobowych o sumie dowolnej) sytuacja się komplikuje. Istnieje kilka opisanych
+algorytmów, które pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych są to:
+\begin{description}
+\item[algorytm Lemkego-Howsona] wykorzystujący podprocedury algorytmu simplex \cite{LH-NE};
+\item[algorytm Portera-Nudelmana-Shohama (PNS)] korzystający z przeszukiwania z nawrotami oraz programowania liniowego
+(wersja dla liczby graczy $n > 2$ jest nieliniowa) \cite{PNS-NE};
+\item[algorytm Govindana-Wilsona] \marginnote{TODO} \cite{GR-NE};
+\item[algorytm Sandholma-Gilpina-Conitzera] wykorzystujący programowanie całkowitoliczbowe \cite{SCG-NE}.
+\end{description}
 
 Prawdopodobnie najbardziej rozpowszechnioną metodą szukania rozwiązań gier dwumacierzowych jest algorytm
-\textbf{Lemkego-Howsona}. Korzysta on z pewnych podprocedur programowania liniowego co upodabnia go do algorytmu
-simpleks. Pierwotnie pojawił się jako dowód konstrukcyjny istnienia równowag w grach 2-osobowych o sumie niezerowej.
+\textbf{Lemkego-Howsona}. Korzysta on z pewnych podprocedur programowania liniowego, co upodabnia go do algorytmu
+simpleks. Pierwotnie pojawił się jako dowód konstrukcyjny istnienia równowag w grach 2-osobowych o sumie dowolnej.
 
 Na początku zanotujmy, że wartości oczekiwane wypłat graczy $i$ oraz $j$, przy strategiach mieszanych zapisanych jako
-wektory prawdopodobieństw, odpowiednio $x$ oraz $y$, wynoszą:
-
+wektory prawdopodobieństw, odpowiednio $x$ oraz $y$ wynoszą:
 $$u_i = \sum_{s_i in S_i}\sum_{s_j \in S_j} x_{s_i}^{T} A_{i,j} y_{s_j}$$
 $$u_j = \sum_{s_i in S_i}\sum_{s_j \in S_j} x_{s_i}^{T} B_{i,j} y_{s_j}$$
+gdzie $A$ to macierz wypłat gracza $i$, zaś $B$ macierz wypłat gracza $j$.
 
 Możemy to przepisać na równoważne formy macierzowe:
 
@@ -235,33 +245,33 @@ $$u_j = x^{T} B y$$
 
 \marginnote{TODO: Lemke-Howson reszta}
 W dowodzie wykorzystuje się ten fakt, aby pokazać że nie jest możliwe ogólne rozwiązanie gier dwumacierzowych przy
-pomocy programowania liniowego przyjmując taki opis problemu (nie wyklucza to jednak istnienia inaczej zapisanego np.
-rozwiązania całkowitoliczbowego, co pokazuje algorytm SGC).
+pomocy programowania liniowego przy przyjętym opisie problemu (nie wyklucza to jednak istnienia inaczej zapisanego
+rozwiązania np. całkowitoliczbowego, co pokazuje algorytm SGC).
 
-Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia czy istnieje
+Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia, czy istnieje
 równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym prawdopodobieństwem (w pracy
-nazywanym \textit{określonym wsparciem} \INENG{particular support}) jest względnie prostym problemem spełnialności.
+nazywanych \textit{określonym wsparciem}\INENG{particular support}), jest względnie prostym problemem spełnialności.
 Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania zdefiniowanych ograniczeń.
 
-W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na używanie profilu strategii wspierających strategię
-mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i) > 0$.
-Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako $v_i$.
+W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na oznaczenie profilu strategii wspierających strategię
+mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i)$ jest
+niezerowe. Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako
+$v_i$.
 
-Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera strategii czystej). Ze względu na
-wykorzystane w rozwiązaniu ograniczenie $\sigma_{-1}(s_{-1}) = \prod_{j \ne i} \sigma_j(s_j)$ problem jest liniowy
-dla $n = 2$ oraz nieliniowy dla $n > 2$.
+Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera strategii czystej z
+prawdopodobieństwem $1$). Ze względu na wykorzystane w rozwiązaniu ograniczenie $\sigma_{-i}(s_{-i}) = \prod_{j \ne i}
+\sigma_j(s_j)$ problem jest liniowy dla $n = 2$ oraz nieliniowy dla $n > 2$.
 
-Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha używany jest następujący \textbf{Algorytm
-\ref{FEASNE}}.
+Do sprawdzania czy profil wspierający spełnia definicję równowagi Nasha używany jest \textbf{Algorytm \ref{FEASNE}}.
 \begin{algorithm}
 \caption{Spełnialność równowagi Nasha dla profilu wspierającego}
 \label{FEASNE}
 \begin{algorithmic}
 \REQUIRE{$S = (S_1, ..., S_n)$, profil wspierający}
-\ENSURE{równowaga Nasha $s^{*}$ jeśli istnieje zarówno profil strategii $s$ jak i wartość $v = (v_1, ..., v_n)$,
-takie, że:}
-$$(\forall_{i \in I, s_i \in S_i}) \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) = v_i$$
-$$(\forall_{i \in I, s_i \not\in S_i}) \sum_{s_{-1} \in S_{-1}} \sigma_{-1}(s_{-1}) u_i(s_i, s_{-1}) \leq v_i$$
+\ENSURE{równowaga Nasha $s^{*} = (\sigma_1, \sigma_2)$ jeśli istnieje zarówno profil strategii $s$ jak i wartość
+$v = (v_1, ..., v_n)$, takie, że:}
+$$(\forall_{i \in I, s_i \in S_i}) \sum_{s_{-i} \in S_{-i}} \sigma_{-i}(s_{-i}) u_i(s_i, s_{-i}) = v_i$$
+$$(\forall_{i \in I, s_i \not\in S_i}) \sum_{s_{-i} \in S_{-i}} \sigma_{-i}(s_{-i}) u_i(s_i, s_{-i}) \leq v_i$$
 $$(\forall_{i \in I} \sum_{s_i \in S_i}) \sigma_i(s_i) = 1$$
 $$(\forall_{i \in I, s_i \in S_i}) \sigma_i(s_i) \geq 0$$
 $$(\forall_{i \in I, s_i \not\in S_i}) \sigma_i(s_i) = 0$$
@@ -269,7 +279,7 @@ $$(\forall_{i \in I, s_i \not\in S_i}) \sigma_i(s_i) = 0$$
 \end{algorithm}
 
 Dysponując tym programem autorzy definiują pewien sposób wybierania profili, które mogą być testowane pod kątem bycia
-równowagą Nasha. Ich algorytm rozpatruje z osobna przypadki dla wsparć o różnych rozmiarach preferując mniejsze oraz
+równowagą Nasha. Ich algorytm rozpatruje z osobna przypadki dla wsparć o różnych rozmiarach, preferując mniejsze oraz
 bardziej zbalansowane. Usuwane są też strategie warunkowo zdominowane. Pełna definicja programu jest przedstawiona jako
 \textbf{Algorytm \ref{PNS2}}.
 
@@ -279,13 +289,15 @@ bardziej zbalansowane. Usuwane są też strategie warunkowo zdominowane. Pełna 
 \begin{algorithmic}
 \FORALL{możliwe rozmiary wsparcia profili $x = (x_1, x_2)$ posortowane rosnąco wg. najpierw $\ABS{x_1 - x_2}$, a
 następnie $x_1 + x_2$}
- \FORALL{$S_1^{*} \subseteq S_1$ takich, że $\ABS{S_1^{*}} = x_1$}
+ \FORALL{$S_1^{*} \subseteq S_1$ takich, że $\ABS{S_1^{*}} = x_1$ (zbiorów strategii niezdominowanych pierwszego gracza 
+ o rozmiarze $x_1$)}
   \STATE $S_2' \ASSIGN \{ s_2 \in S_2: s_2 \textrm{ nie warunkowo zdominowane wzgl. } S_1 \}$
   \IF{$(\not\exists_{s_1 \in S_1}) \textrm{ nie warunkowo zdominowana wzg. } S_2'$}
-   \FORALL{$S_2^{*} \subseteq S_2$ takich, że $\ABS{S_2^{*} = x_2}$}
+   \FORALL{$S_2^{*} \subseteq S_2$ takich, że $\ABS{S_2^{*} = x_2}$ (zbiorów strategii niezdominowanych drugiego gracza
+   o rozmiarze $x_2$)}
     \IF{$(\not\exists_{s_1 \in S_1}) \textrm{ nie warunkowo zdominowana wzg. } S_2^{*}$}
-      \IF{Zachodzi spełnialność równowagi Nasha dla profilu wspierającego}
-       \RETURN{równowaga Nasha $p$}
+      \IF{zachodzi spełnialność równowagi Nasha dla profilu wspierającego}
+       \RETURN{równowaga Nasha $s^{*}$}
       \ENDIF
     \ENDIF
    \ENDFOR
@@ -298,53 +310,65 @@ następnie $x_1 + x_2$}
 Wedle badań dokonanych przez autorów testy dokonane na pakiecie GAMUT algorytm ten zachowuje się dużo lepiej niż
 najczęściej opisywany algorytm Lemkego-Howsona. Zestaw ten jest powszechnie używany do testowania poprawności
 i wydajności różnych algorytmów z zakresu teorii gier, tak więc poprawa wyników w tych testach stanowi silny argument
-za wdrożeniem nowego rozwiązania.\cite{GAMUT}
+przemawiający za wdrożeniem nowego rozwiązania.\cite{GAMUT}
 
 \marginnote{TODO: Govindan-Wilson}
 
 Algorytm \textbf{Sandholma-Gilpina-Conitzera} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
-otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha) - nie definiuje on jednak funkcji celu,
-pozwalając jego użytkownikom na samodzielne ich zdefiniowanie. Każda liniowa funkcja celu może zostać wykorzystana.
+otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha). Nie definiuje on jednak funkcji celu,
+pozwalając jego użytkownikom na samodzielne zdefiniowanie dowolnej liniowej funkcji celu.
 
 Wykorzystane są: 
 \begin{itemize}
 \item zmienna $p_{s_i}$ - prawdopodobieństwo grania strategii $s_i$,
-\item zmienna pomocnicza $U_i$. Dla gracza $i$ zmienna ta oznacza różnicę między maksymalnym i minimalnym zyskiem jaki
-może on osiągnąć:
-$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{-1}^h, s_{-1}^l \in S_{-1}} u_i(s_i^h, s_{-1}^h) - u_i(s_i^l, s_{-1}^l)$$
+\item zmienna pomocnicza $U_i$. Dla gracza $i$ zmienna ta oznacza różnicę między maksymalnym (dla $s_i^h$) i minimalnym
+(dla $s_i^l$) zyskiem jaki może on osiągnąć:
+$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{-i}^h, s_{-i}^l \in S_{-i}} u_i(s_i^h, s_{-i}^h) - u_i(s_i^l, s_{-i}^l)$$
 \item zmienna $u_{s_i}$ - oznacza ono oczekiwaną wypłatę gracza grającego $s_i$ dla obecnej strategii mieszanej drugiego
 gracza,
-\item zmienną $r_{s_i}$ - ,,żal''. Wartość określającą różnicę między maksymalnym oczekiwanym zyskiem dla pewnej
-strategii czystej, a wartością oczekiwaną dla $s_i$,
+\item zmienną $r_{s_i}$ - ,,żal''\INENG{regret}. Wartość określającą różnicę między maksymalnym oczekiwanym zyskiem dla
+pewnej strategii czystej, a wartością oczekiwaną dla $s_i$,
 \item zmienna binarna $b_{s_i}$ - dla wartości równej $1$, prawdopodobieństwo użycia strategii $s_i$ jest zerowe,
 dla $0$, może ona się pojawić o ile żal wyniesie $0$.
 \end{itemize}
 
 Wówczas ograniczenia możemy zdefiniować następująco $(\forall_{i \in I})$:
-\begin{enumerate}
-\item $$\sum_{{s_i} \in S_i} p_{s_i} = 1$$
-\item $$(\forall_{s_i \in S_i}) u_{s_i} = \sum_{s_{-1} \in S_{-1}} p_{s_{-1}} u_i(s_i, s_{-1})$$
-\item $$(\forall_{s_i \in S_i}) u_i \geq u_{s_i}$$
-\item $$(\forall_{s_i \in S_i}) r_{s_i} = u_i - u_{s_i}$$
-\item $$(\forall_{s_i \in S_i}) p_{s_i} \leq 1-b_{s_i}$$
-\item $$(\forall_{s_i \in S_i}) r_{s_i} \leq U_i b_{s_i}$$
-\end{enumerate}
+\begin{equation}
+\sum_{{s_i} \in S_i} p_{s_i} = 1 \label{SGC2a}
+\end{equation}
+\begin{equation}
+(\forall_{s_i \in S_i}) u_{s_i} = \sum_{s_{-i} \in S_{-i}} p_{s_{-i}} u_i(s_i, s_{-i}) \label{SGC2b}
+\end{equation}
+\begin{equation}
+(\forall_{s_i \in S_i}) u_i \geq u_{s_i} \label{SGC2c}
+\end{equation}
+\begin{equation}
+(\forall_{s_i \in S_i}) r_{s_i} = u_i - u_{s_i} \label{SGC2d}
+\end{equation}
+\begin{equation}
+(\forall_{s_i \in S_i}) p_{s_i} \leq 1-b_{s_i} \label{SGC2e}
+\end{equation}
+\begin{equation}
+(\forall_{s_i \in S_i}) r_{s_i} \leq U_i b_{s_i} \label{SGC2f}
+\end{equation}
 
-Pierwsze ograniczenie gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$ gracza $i$.
-Drugi oblicz nam wartość oczekiwaną wypłaty dla strategii czystej $s_i$ gracza $i$ dla obecnej strategii mieszanej
-gracza $-1$. Warunek trzeci sprawia, że $u_i$ zawiera najmniejszą możliwą wartość oczekiwaną wypłaty dla strategii
-czystych gracza $i$ (tym samym stanowi ograniczenie dolne wypłaty dla strategii mieszanej jaką otrzyma przy obecnej
-strategii mieszanej gracza $-1$). Czwarte ograniczenie oblicza żal dla każdej ze strategii. Piąte gwarantuje, że
-$b_{s_i}$ będzie zmienną binarną określającą czy strategia jest używana (jej prawdopodobieństwo jest niezerowe). Szóste,
-upewnia nas, że żal nigdy nie przekroczy wartości maksymalnej dla strategii w użyciu, oraz będzie równy 0 dla strategii,
-dla których prawdopodobieństwo wynosi 0.
+Pierwsze ograniczenie (\ref{SGC2a}) gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$
+gracza $i$. Drugie (\ref{SGC2b}) oblicza nam wartość oczekiwaną wypłaty dla strategii czystej $s_i$ gracza $i$ przy
+obecnej strategii mieszanej gracza $-i$. Warunek trzeci (\ref{SGC2c}) sprawia, że $u_i$ zawiera najmniejszą możliwą
+wartość oczekiwaną wypłaty dla strategii czystych gracza $i$ (tym samym stanowi ograniczenie dolne wypłaty dla
+strategii mieszanej, jaką otrzyma przy obecnej strategii mieszanej gracza $-i$). Czwarte ograniczenie (\ref{SGC2d})
+oblicza żal dla każdej ze strategii. Piąte (\ref{SGC2e}) gwarantuje, że $b_{s_i}$ będzie zmienną binarną określającą,
+czy strategia jest używana (jej prawdopodobieństwo jest niezerowe). Szóste (\ref{SGC2f}), upewnia nas, że żal nigdy nie
+przekroczy wartości maksymalnej dla strategii w użyciu oraz będzie równy $0$ dla strategii, dla których
+prawdopodobieństwo wynosi $0$.
 
 Po dodaniu do tak zdefiniowanego problemu całokowitoliczbowego funkcji celu, każde osiągalne rozwiązanie będzie stanowić
 poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
 
-Autorzy dalej omawiają 3 kolejne specjalizacje tego problemu:
+Autorzy algorytmu w dalszej części swojej pracy omawiają 3 kolejne specjalizacje tego problemu:
 \begin{enumerate}
-\item wprowadzić ,,karę'' za żal, a następnie dążyć do jego minimalizacji - ograniczenia $1$, $2$, $3$, $4$, $5$ oraz:
+\item wprowadzenie,,kary'' za żal, a następnie dążenie do jego minimalizacji - ograniczenia \ref{SGC2a}, \ref{SGC2b},
+\ref{SGC2c}, \ref{SGC2d}, \ref{SGC2e} oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} - U_i b_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq r_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq U_i b_{s_i}$$
@@ -352,19 +376,20 @@ $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq U_i b_{s_i}$$
 
 Tutaj $f_{s_i}$ stanowi ,,karę'' za żal - dla danej strategii jest to $\max \{ r_{s_i}, U_i b_{s_i} \}$. Funkcja celu
 sumuje żale wszystkich graczy i odejmuje od każdej z nich wartość $U_{s_i}$ - w efekcie strategie niewykorzystane są
-usuwane z sumy, a prawdopodobne pozostają. Ostatecznie wartość stanowi suma wszystkich żali z prawdopodobnych strategii.
-\item uzależnić minimalizowaną ,,karę'' od prawdopodobieństwa wykorzystania strategii z niezerowym żalem - ograniczenia
-$1$, $2$, $3$,
-$4$, $6$ oraz:
+usuwane z sumy, a prawdopodobne pozostają. Ostateczna wartość stanowi sumę wszystkich żali z prawdopodobnych strategii.
+
+\item uzależnienie minimalizowanej ,,kary'' od prawdopodobieństwa wykorzystania strategii z niezerowym żalem
+- ograniczenia \ref{SGC2a}, \ref{SGC2b}, \ref{SGC2c}, \ref{SGC2d}, \ref{SGC2f} oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} g_{s_i} - (1 - b_{s_i})$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq p_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq 1 - b_{s_i}$$
 \cite[str.~2]{SCG-NE}
 
-Działa w analogiczny sposób do poprzedniego ograniczenia. W efekcie funkcja celu stanowi sumę wszystkich
-prawdopodobieństw strategii z niezerowym żalem.
-\item uzależnić minimalizowaną ,,karę'' zarówno od wartości żalu danej strategi jak i prawdopodobieństwo jej wystąpienia
-- ograniczenia $1$, $2$, $3$, $4$ oraz:
+Tak sformułowany problem działa w podobny sposób do poprzedniego. Funkcja celu stanowi sumę wszystkich
+prawdopodobieństw strategii z niezerowym żalem ($g_{s_i}$).
+
+\item uzależnienie minimalizowanej ,,kary'' zarówno od wartości żalu danej strategii, jak i prawdopodobieństwa jej
+wystąpienia - ograniczenia \ref{SGC2a}, \ref{SGC2b}, \ref{SGC2c}, \ref{SGC2d} oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} + g_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq \frac{r_{s_i}}{U_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq b_{s_i}$$
@@ -372,7 +397,7 @@ $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq p_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) g_{s_i} \geq 1 - b_{s_i}$$
 \cite[str.~2--3]{SCG-NE}
 
-Jest to przekształcenie dwóch pierwszych warunków do postaci, w której możemy sumować zarówno wartości żalu
+Jest to przekształcenie dwóch pierwszych problemów do postaci, w której możemy sumować zarówno wartości żalu
 prawdopodobnych strategii jak i prawdopodobieństwa strategii o niezerowym żalu.
 \end{enumerate}
 
@@ -382,7 +407,7 @@ istotniejszym wkładem badawczym niż tworzenie kolejnej wersji powszechnie stos
 
 \subsubsection{Gry o większej liczbie graczy}
 
-Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednym z częściej
+Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednymi z częściej
 wymienianych są:
 \begin{enumerate}
 \item algorytm \textbf{podziału symplicjalnego}\INENG{Simplicial Subdivision} \marginnote{TODO} \cite{LTH-NE},
@@ -392,26 +417,26 @@ wymienianych są:
 
 \marginnote{TODO: podział symplicjalny \newline TODO: Scarf}
 
-Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2 osobowa.
-Wykorzystuje on 2 kolejne procedury - rekurencyjne przeglądanie profili z nawrotami \INENG{Recursive Backtracking} oraz
-iteracyjne usuwanie strategii zdominowanych \INENG{Iterated Removal of Strictly Dominated Strategies} (IRSDS).
+Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2-osobowa.
+Wykorzystuje on dwie kolejne procedury - rekurencyjne przeglądanie profili z nawrotami\INENG{Recursive Backtracking}
+oraz iteracyjne usuwanie strategii zdominowanych\INENG{Iterated Removal of Strictly Dominated Strategies} (IRSDS).
 
-Procedura IRSDS przegląda przekazane jej profil dziedzin wszystkich graczy i dla każdego kolejnego gracza usuwa
-wszystkie zdominowane strategie czyste, tak długo jak po przejrzeniu wszystkich graczy w danej iteracji zmieniony 
-został przynajmniej jeden z zbiorów strategii. (Algorytm \ref*{IRSDS}.)
+Procedura IRSDS przegląda przekazany jej profil dziedzin wszystkich graczy i dla każdego kolejnego gracza usuwa
+wszystkie zdominowane strategie czyste, tak długo, jak po przejrzeniu wszystkich graczy w danej iteracji zmieniony 
+został przynajmniej jeden z zbiorów strategii. (\textbf{Algorytm \ref{IRSDS}}.)
 
 \begin{algorithm}
 \caption{IRSDS}
 \label{IRSDS}
 \begin{algorithmic}
 \REQUIRE{$D = (D_1, ..., D_n)$ - profil dziedzin}
-\ENSURE{Zaktualizowane zbiory lub \textit{failure}}
+\ENSURE{zaktualizowane zbiory lub \textit{failure}}
 \REPEAT
  \STATE $\textrm{zmieniono} \ASSIGN \textrm{false}$
  \FORALL{$i \in I$}
   \FORALL{$s_i \in d_i \in D_i$}
    \FORALL{$s_i' \in S_i$}
-    \IF{$(\forall_{s_{-1}) \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-1})$}
+    \IF{$(\forall_{s_{-i}) \in d_{-i} \in D_{-i}} u_i(s_i,s_{-i}) < u_i(s_i',s_{-i})$}
      \STATE $D_i \ASSIGN D_i - \{ d_i \in D_i: s_i \in d_i \}$
      \STATE $\textrm{zmieniono} \ASSIGN \textrm{true}$
      \IF{$D_i = \emptyset$}
@@ -427,11 +452,11 @@ został przynajmniej jeden z zbiorów strategii. (Algorytm \ref*{IRSDS}.)
 \end{algorithm}
 
 Jest to wykorzystywane w rekurencyjnym przeszukiwaniu z nawrotami w następujący sposób: jeśli przekazane procedurze
-wejście stanowi pełny profil dziedzin, uruchom program spełnialności \ref{FEASNE}. W przeciwnym wypadku dodaj kolejną
+wejście stanowi pełny profil dziedzin - uruchom program spełnialności \ref{FEASNE}. W przeciwnym wypadku dodaj kolejną
 dziedzinę strategii do profilu (o wyborze gracza decyduje poziom zagłębienia wskazywany przez przekazywaną procedurze
-zmienną), a następnie wywołaj rekurencyjnie procedurę i sprawdź czy odnaleziono równowagę Nasha. Jeśli tak, zwróć ją.
+zmienną), a następnie wywołaj rekurencyjnie procedurę i sprawdź czy odnaleziono równowagę Nasha. Jeśli tak - zwróć ją.
 W przeciwnym wypadku iteruj dalej, aż do wyczerpania możliwości - jeśli równowaga nie zostanie odnaleziona zwróć
-\textit{failure}. (Algorytm (\ref{RBT}).)
+\textit{failure}. (\textbf{Algorytm \ref{RBT}}.)
 
 \begin{algorithm}
 \caption{Przeszukiwanie z nawrotami}
@@ -450,7 +475,7 @@ wsparcia do wybrania}
  \FORALL{$d_i \in D_i$}
   \STATE $S_i \ASSIGN d_i$
   \STATE $D_i \ASSIGN D_1 - \{ d_i \}$
-  \IF{$IRSDS(S,D,i+1)$ (\textbf{Algorytm \ref{IRSDS})}) znajdzie równowagę Nasha $p$}
+  \IF{$IRSDS(S,D,i+1)$ (\textbf{Algorytm \ref{IRSDS}}) znajdzie równowagę Nasha $p$}
    \RETURN{$p$} 
   \ENDIF
  \ENDFOR 
@@ -459,7 +484,8 @@ wsparcia do wybrania}
 \end{algorithmic}
 \end{algorithm}
 
-Dysponując tymi procedurami wystarczy jedynie zainicjować wszystkie zmienne przy pierwszym wywołaniu procedury:
+Dysponując tymi procedurami wystarczy jedynie zainicjować wszystkie zmienne przy pierwszym wywołaniu procedury
+(\textbf{Algorytm \ref{PNSN}}).
 
 \begin{algorithm}
 \caption{PNS dla $n > 2$ graczy}
@@ -469,17 +495,17 @@ Dysponując tymi procedurami wystarczy jedynie zainicjować wszystkie zmienne pr
 (x_i - x_j$)}
  \STATE $(\forall_{i \in I}) S_i \ASSIGN NULL$
  \STATE $(\forall_{i \in I}) D_i \ASSIGN \{ S_i' \subseteq S_i : \ABS{S_i'} = x_i \}$
- \IF{Przeglądanie z nawracaniem znajdzie równowagę $p$}
+ \IF{przeglądanie z nawracaniem znajdzie równowagę $p$}
   \RETURN{$p$}
  \ENDIF
 \ENDFOR
 \end{algorithmic}
 \end{algorithm}
 
-Tak zdefiniowany algorytm będzie się zachowywał jak uogólniona wersja algorytmy PNS dla 2 graczy. W istocie,
-przyglądając się jego działaniu możemy zauważyć, że ciało wersji 2 osobowej powstało przez zastąpienie wywołań
-rozwinięciem funkcji, a usuwanie strategi zdominowanych realizowane jest na bieżąco nie zaś przed rozpoczęciem
-przeszukiwania ostatecznej przestrzeni rozwiązań. 
+Tak zdefiniowany algorytm będzie się zachowywał jak uogólniona wersja algorytmu PNS dla 2 graczy. W istocie,
+przyglądając się jego działaniu, możemy zauważyć, że ciało wersji 2-osobowej powstało przez zastąpienie wywołań
+rozwinięciem funkcji, a usuwanie strategi zdominowanych realizowane jest na bieżąco, nie zaś przed rozpoczęciem
+przeszukiwania ostatecznej przestrzeni rozwiązań.
 
 Z braku czasu nie udało się jednak wdrożyć żadnego z tych algorytmów do ostatecznej wersji projektu. Implementacja
 została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej wymienionych algorytmów w przyszłości.
@@ -499,21 +525,22 @@ została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej
 \cite[str.~77--78]{FT-GT}
 \end{definition}
 
-Taką grę można przedstawić jako drzewo, którego liście zawierają wypłaty, węzły momenty podejmowania decyzji przez
+Taką grę można przedstawić jako drzewo, którego liście zawierają wypłaty, węzły - momenty podejmowania decyzji przez
 określonego gracza, a krawędzie odpowiadają konkretnym decyzjom (ruchom). Ścieżka od korzenia do liścia to ciąg decyzji
-kolejnych graczy prowadzący do zakończenia gry i ustalenia wypłaty. Natura obrazuje zdarzenia losowe, bądź inne czynniki
-mające wpływ na losy gry, od których nie możemy jednak oczekiwać racjonalnego wybierania najkorzystniejszej dla siebie
-strategii (nie przypisujemy im wypłaty). Z tego powodu wypłaty ścieżek przechodzących przez węzeł w którym decyduje
-natura są wartościami oczekiwanymi po wypłatach w poszczególnych wychodzących z węzła poddrzewach (podgrach) względem
-przypisanego danemu węzłowi natury rozkładowi prawdopodobieństwa.
+kolejnych graczy prowadzący do zakończenia gry i ustalenia wypłaty. Natura obrazuje zdarzenia losowe, bądź inne
+czynniki, mające wpływ na losy gry, od których nie możemy jednak oczekiwać racjonalnego wybierania najkorzystniejszej
+dla siebie strategii (nie przypisujemy im wypłaty). Z tego powodu wypłaty ścieżek przechodzących przez węzeł, w którym
+decyduje natura, są wartościami oczekiwanymi po wypłatach w poszczególnych wychodzących z węzła poddrzewach (podgrach)
+względem przypisanego danemu węzłowi natury rozkładowi prawdopodobieństwa.
+\marginnote{TODO: co to jest zbiór informacyjny}
 
 \begin{definition}
-\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga, że dla każdej podgry dalej gry stanowi ona
-poprawne rozwiązanie.
+\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga, że dla każdej podgry danej gry stanowi ona
+poprawne rozwiązanie. \marginnote{TODO: cytat}
 \end{definition}
 
 \begin{theorem}
-Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w podgrach.
+Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w podgrach. \marginnote{TODO: cytat}
 \end{theorem}
 
 \subsection{Równowagi w strategiach czystych w grach z informacją doskonałą i zupełną}
@@ -523,18 +550,18 @@ Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w 
 wiodących do danej chwili ruchach.
 \end{definition}
 
-Dla przypadku gry w postaci ekstensywnej oznacza to, że możemy ją poprawnie sprowadzić do postaci, gdzie każdy węzeł
-znajduje się w jednoelementowym zbiorze informacyjnym. Z kolei taka gra posiada interesującą właściwość - wiedząc gdzie
-dokładnie znajdujemy się w drzewie gry zawsze możemy wybrać optymalną strategię, jeśli tylko wiemy jakie wypłaty
+W przypadku gry w postaci ekstensywnej oznacza to, że możemy ją poprawnie sprowadzić do postaci, gdzie każdy węzeł
+znajduje się w jednoelementowym zbiorze informacyjnym. Z kolei taka gra posiada interesującą właściwość: wiedząc gdzie
+dokładnie znajdujemy się w drzewie gry, zawsze możemy wybrać optymalną strategię, jeśli tylko wiemy jakie wypłaty
 ostatecznie otrzymalibyśmy dla każdej z możliwości. Ponieważ mamy do czynienia z graczami racjonalnymi możemy spodziewać
 się, że również oni wybraliby optymalne dla siebie strategie.
 
 Dysponując kompletną informacją możemy schodzić w głąb drzewa gry, aby ostatecznie dojść do liści zawierających wypłaty.
 Na tym poziomie bieżący gracz posiada już wszystkie informacje potrzebne do podjęcia najkorzystniejszej dla siebie
 decyzji. Gracz rozgrywający w poprzedzającym kroku jest z kolei w stanie ją przewidzieć. W ten sposób wychodząc od liści
-i przesuwając się ,,w górę'' drzewa gry dochodzimy w końcu do punktu wyjściowego - w tym momencie znamy już wszystkie
+i przesuwając się ,,w górę'' drzewa gry, dochodzimy w końcu do punktu wyjściowego - w tym momencie znamy już wszystkie
 decyzje jakie podjęliby gracze, a tym samym ich wypłaty. Jest to optymalna wartość wypłaty dla każdego z nich i żaden
-nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy w ten sposób równowagę Nasha w tej grze.
+nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy równowagę Nasha w tej grze.
 
 Algorytm ten opiera się na spostrzeżeniu, że do podjęcia decyzji konieczna jest znajomość rozwiązania w każdym
 poddrzewie gry i dla każdego poddrzewa również jest to rozwiązanie poprawne. Odnajduje więc on doskonałą równowagę
@@ -542,8 +569,8 @@ Nasha w podgrach gier z informacją doskonałą.
 
 \subsection{Inne gry w postaci ekstensywnej}
 
-W grach bez informacji doskonalej sytuacja komplikuje się. Z zbiorze informacyjnym może znajdować się kilka węzłów -
-wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdego z nich inny wybór strategii może być tym
+W grach bez informacji doskonalej sytuacja komplikuje się. Z zbiorze informacyjnym może znajdować się kilka węzłów.
+Wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdego z nich inny wybór strategii może być tym
 optymalnym. Proste przejrzenie drzewa od liści do korzenia nie pozwoli nam więc w oczywisty sposób wybrać najlepszych
 strategii.
 
@@ -555,9 +582,8 @@ W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiac
 i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
 \end{definition}
 
-Tymczasem
 \begin{definition}
-\textbf{strategie postępowania} \INENG{behavior strategy} określają rozkład nad wyborem w określonym wierzchołku.
+\textbf{Strategie postępowania}\INENG{behavior strategy} określają rozkład nad wyborem w określonym wierzchołku.
 \end{definition}
 
 Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji

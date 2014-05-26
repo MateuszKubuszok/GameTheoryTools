@@ -90,6 +90,27 @@
 
 \lstnewenvironment{code}[1][]{\lstset{#1}}
                              {}
+\lstnewenvironment{mathprog}[1][]{\lstset{
+                                    emph={set, param, var,
+                                          maximize, minimize, s.t.,
+                                          solve, data, end,
+                                          printf,
+                                          for, sum, product},
+                                    emphstyle={\bfseries\itshape}
+                                  }
+                                  \lstset{#1}}
+                                 {}
+\lstnewenvironment{gtl}[1][]{\lstset{
+                               emph={LOAD, STORE, EXECUTE,
+                                     LET, BE,
+                                     FIND, FOR,
+                                     PARAM,
+                                     PLAYER,
+                                     STRATEGIC, EXTENSIVE, GAME, SUCH, AS, WITH, END},
+                               emphstyle={\itshape}
+                             }
+                             \lstset{#1}}
+                            {}
 \newenvironment{proof}{\par\noindent {\bf Dowód.}}
                       {\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
 \newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}

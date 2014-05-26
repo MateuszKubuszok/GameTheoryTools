@@ -131,10 +131,10 @@ LET name BE value;
 
 Pod nazwą \CODE{name} dostępna będzie wartość \CODE{value}. Zapytania wyglądają następująco:
 
-\begin{code}
+\begin{gtl}
 FIND property[, property2[, ...]]
  FOR value[, value2[, ...]];
-\end{code}
+\end{gtl}
 
 dzięki czemu uzyskamy właściwości \CODE{property}, \CODE{propert2}, ... dla obiektów \CODE{value}, \CODE{value2}, ...
 
@@ -142,26 +142,26 @@ Zdefiniowane imiennie dane dostępne są w ramach pewnego kontekstu. Gdy urucham
 najwyższy kontekst i wszystkie zmienne jakie zdefiniujemy w konsoli będą do niego trafiać. Może on jednak posiadać
 konteksty potomne - uruchamiając polecenie:
 
-\begin{code}
+\begin{gtl}
 EXECUTE "plik.gtl";
-\end{code}
+\end{gtl}
 
 tworzymy nowy kontekst dla pliku \CODE{file}, do niego trafią wszystkie definiowane zmienne i gdy wczytywanie pliku
 dobiegnie końca, zostanie on zniszczony wraz ze wszystkimi zmiennymi jakie w nim zdefiniowano. Posiadać on będzie dostęp
 do wszystkich zmiennych zdefiniowanych w kontekście z którego uruchomiono plik, a w przypadku konfliktu nazw, zmienna
 oryginalna zostanie przesłonięta jedynie w kontekście potomnym. Dla odmiany polecenie:
 
-\begin{code}
+\begin{gtl}
 LOAD "plik.gtl";
-\end{code}
+\end{gtl}
 
 wczyta i wykona plik w bieżącym kontekście.
 
 Ostatnim poleceniem jest:
 
-\begin{code}
+\begin{gtl}
 STORE "plik.gtl";
-\end{code}
+\end{gtl}
 
 zapisujące wszystkie widziane w danym kontekście zmienne do pliku.
 
@@ -172,30 +172,30 @@ następować wyłącznie w ramach polecenie \CODE{LET ... BE ...;} lub \CODE{FIN
 
 Składnia tworzenia obiektu gracza wygląda następująco:
 
-\begin{code}
+\begin{gtl}
 PLAYER name { strategy1[, strategy2[, ...]] }
-\end{code}
+\end{gtl}
 
 definiuje one gracza \CODE{name}, o strategiach czystych \CODE{strategy1}, \CODE{strategy2}, ... W praktyce występuje
 ona wyłącznie w połączeniu z poleceniem \CODE{LET ... BE ...;}:
 
-\begin{code}
+\begin{gtl}
 LET player1 BE PLAYER { strategy1, strategy2 };
-\end{code}
+\end{gtl}
 
 lub z \CODE{FIND ... FOR ...;}:
 
-\begin{code}
+\begin{gtl}
 FIND name, strategies
  FOR PLAYER name1 { strategy1, strategy2 };
-\end{code}
+\end{gtl}
 
 \section{Gry w postaci strategicznej}
 
 Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategii
 czystych poszczególnych graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
 
-\begin{code}
+\begin{gtl}
 LET game1 BE
   STRATEGIC GAME
   WITH
@@ -210,7 +210,7 @@ LET game1 BE
     { player1=strategy2, player2=strategy1: 50, 60 },
     { player1=strategy2, player2=strategy2: 70, 80 }
   END;
-\end{code}
+\end{gtl}
 
 Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Kombinacje strategii z
 kolei mogą być podawane od razu w komplecie jak również rozbite na etapy. Każda definicja strategii ma postać
@@ -219,24 +219,24 @@ wszystkich wypłat jak również nie definiowane dwukrotnie wypłaty dla tej sam
 
 Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mieszanych:
 
-\begin{code}
+\begin{gtl}
 FIND pure_equilibrium FOR game1;
-\end{code}
+\end{gtl}
 
 Dla gier jednomacierzowych (tutaj: gier 2 graczy dla których każda kombinacja ma zdefiniowane 2 przeciwne wypłaty albo
 wręcz tylko jedną) oraz dwumacierzowych (gier 2 graczy gdzie każda kombinacja ma zdefiniowane 2 wypłaty) można dodatkowo
 próbować obliczyć równowagę w strategiach mieszanych:
 
-\begin{code}
+\begin{gtl}
 FIND mixed_equilibrium FOR game1;
-\end{code}
+\end{gtl}
 
 \section{Gry w postaci ekstensywnej}
 
 Gry w postaci ekstensywnej definiuje się niemal identycznie jak gry w postaci strategicznej. Jedyną różnicą jest
 ograniczenie, że struktura definicji musi odpowiadać strukturze drzewa gry:
 
-\begin{code}
+\begin{gtl}
 LET game2 BE
   EXTENSIVE GAME
   WITH
@@ -252,12 +252,12 @@ LET game2 BE
       { p2=s2 : 70, 80 }
     }
   END;
-\end{code}
+\end{gtl}
 
 Dla tak zdefiniowanego drzewa możemy poszukać równowagi w strategiach czystych:
 
-\begin{code}
+\begin{gtl}
 FIND pure_equilibrium FOR game2;
-\end{code}
+\end{gtl}
 
 \end{document}

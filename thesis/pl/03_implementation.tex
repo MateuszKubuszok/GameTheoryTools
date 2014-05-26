@@ -69,7 +69,7 @@ zrealizowana jest przy pomocy mapy, aby zminimalizować czas dostępu do żądan
 
 Ponieważ nie przyjęto odgórnego założenia na temat liczby graczy oraz ich strategi czystych, nie można było stworzyć
 modelu danych opartego na wielowymiarowej tablicy danych. Zamiast tego zdecydowano się wewnętrznie przechowywać dane
-w tablicy jednowymiarowej przy pomocy funkcji mieszającej \INENG{hash function}.
+w tablicy jednowymiarowej przy pomocy funkcji mieszającej\INENG{hash function}.
 
 Oznaczmy przez $\ABS{S_i}$ liczbę strategii gracza $i$ (gdzie $i = 1, 2, ..., n$).
 
@@ -125,7 +125,7 @@ liniowego/całkowitoliczbowego na jej procedury.
 
 Problem zapisano w języku \LANG{MathProg} następująco:
 
-\begin{code}[caption=Przykładowe dane]
+\begin{mathprog}[caption=Przykładowe dane]
 data;
 
 /* Definicje graczy */
@@ -140,9 +140,9 @@ param Payoff
     c -4  6  0  5;
  
 end;
-\end{code}
+\end{mathprog}
 
-\begin{code}[caption=Rozwiązanie dla gracza pierwszego]
+\begin{mathprog}[caption=Rozwiązanie dla gracza pierwszego]
 set P1S;
 set P2S;
 
@@ -166,9 +166,9 @@ for{i in P1S}
     printf "Found %s, actual %s\n", y[i], y[i]/GameValue; 
 
 end;
-\end{code}
+\end{mathprog}
 
-\begin{code}[caption=Rozwiązanie dla gracza drugiego]
+\begin{mathprog}[caption=Rozwiązanie dla gracza drugiego]
 set P1S;
 set P2S;
 
@@ -192,13 +192,13 @@ for{j in P2S}
     printf "Found %s, actual %s\n", x[j], x[j]/GameValue;
  
 end;
-\end{code}
+\end{mathprog}
 
 \subsubsection{Gra dwumacierzowa}
 
 Problem zapisano w jeżyku \LANG{MathProg} następująco:
 
-\begin{code}[caption=Przykładowe dane]
+\begin{mathprog}[caption=Przykładowe dane]
 data;
 
 /* Definicje graczy */
@@ -220,9 +220,9 @@ param Payoff2
     c  0  7  0  1;
  
 end;
-\end{code}
+\end{mathprog}
 
-\begin{code}[caption=Szukanie rozwiązania]
+\begin{mathprog}[caption=Szukanie rozwiązania]
 set P1S;
 set P2S;
 
@@ -304,7 +304,7 @@ for{j in P2S}
 	printf "%s -> %s\n", j, p2s[j];
 printf "Sum = %s, \n", sum{j in P2S} p2s[j] * u2s[j];
 printf "Max = %s, \n", U2;
-\end{code}
+\end{mathprog}
 
 Dla testów wybrano następującą funkcję celu:
 $$\textbf{minimalizuj} \frac{\sum_{s_1 \in S_1} r_{s_1} + \sum_{s_2 \in S_2} r_{s_2}}{2}$$
