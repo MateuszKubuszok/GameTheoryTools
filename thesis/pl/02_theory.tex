@@ -150,6 +150,7 @@ tego problemu \cite{P-AGI}.
 \begin{definition}
 \textbf{Gra o sumie zerowej} to taka gra, że:
 $$(\forall_{s \in S}) \sum_{i \in I} u_i(s) = 0$$
+\cite[str.~4]{FT-GT}
 \end{definition}
 
 Gdy w grze bierze udział dwóch graczy, wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać
@@ -165,16 +166,16 @@ $$\min_{\sigma_2} \{ \max_{i \in I} u_2(i, \sigma_2) \}$$
 
 Zagadnienia te należą więc to kategorii problemów optymalizacyjnych, tj. takich w których minimalizujemy
 (maksymalizujemy) wartość zadanej funkcji, zwanej \textit{funkcją celu}, poprzez dobór odpowiednich wartości jej
-parametrów, przy zachowaniu nałożonych na nie ograniczeń. Dla pierwszego gracza możemy to zapisać:
+parametrów, przy zachowaniu nałożonych na nie ograniczeń. \cite[str.~41]{O-GT} Dla pierwszego gracza możemy to zapisać:
 
 $$\max_{\sigma_1} \{ \min_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \}$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
 
 Tak zdefiniowany problem możemy przekształcić do postaci \textit{programowania liniowego}\INENG{linear programming}
-(LP). Jest to kategoria problemów optymalizacyjnych, w której zarówno funkcja celu jak i ograniczenia nałożone na
-rozpatrywane zmienne są zdefiniowane jako liniowe kombinacje owych zmiennych. W interesującym nas przypadku zadanie to
-przyjmuje następującą formę:
+(LP). \cite[str.~62]{O-GT} Jest to kategoria problemów optymalizacyjnych, w której zarówno funkcja celu jak
+i ograniczenia nałożone na rozpatrywane zmienne są zdefiniowane jako liniowe kombinacje owych zmiennych. W
+interesującym nas przypadku zadanie to przyjmuje następującą formę:
 
 $$\max_{\sigma_1,v} v$$
 $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
@@ -198,9 +199,9 @@ $$\max_{\sigma_1,v} v$$
 (\forall_{i \in I}) x_1(i) \geq 0 \label{MTRX1c}
 \end{equation}
 
-
 Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskaliśmy równanie sumujące się do $1$ co jest dla nas
-bardzo istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu:
+bardzo istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu
+\cite[str.~63]{O-GT}:
 
 $$\min_x \sum_{i \in I} x_i$$
 \begin{equation}
@@ -220,10 +221,10 @@ $$\max_y \sum_{j \in J} y_i$$
 $$Ay \leq 1 $$
 $$y \geq 0$$
 
-Okazuje się więc, że są to \textit{problemy dualne}. Odpowiednia implementacja algorytmu \textit{simpleks},
-rozwiązującego problemy LP, jest w stanie otrzymać oba rozwiązania przy jednym uruchomieniu procedury. Należy jedynie
-pamiętać, aby otrzymane wartości podzielić przez wartość funkcji celu (a więc pomnożyć przez odwrotność $v$), aby
-wrócić do ich oryginalnej postaci.
+Okazuje się więc, że są to \textit{problemy dualne}. \cite[str.~42--47]{O-GT} Odpowiednia implementacja algorytmu
+\textit{simpleks}, rozwiązującego problemy LP, jest w stanie otrzymać oba rozwiązania przy jednym uruchomieniu
+procedury \cite[str.~49--61]{O-GT}. Należy jedynie pamiętać, aby otrzymane wartości podzielić przez wartość funkcji
+celu (a więc pomnożyć przez odwrotność $v$), aby wrócić do ich oryginalnej postaci.
 
 \subsubsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
 
@@ -235,11 +236,11 @@ kilka opisanych algorytmów, które pozwalają na znalezienie równowagi Nasha. 
 (wersja dla liczby graczy $n > 2$ jest nieliniowa) \cite{PNS-NE};
 \item[algorytm Sandholma-Gilpina-Conitzera] wykorzystujący programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{description}
-Wszystkie zostaną dokładniej opisane.
 
 Prawdopodobnie najbardziej rozpowszechnioną metodą szukania rozwiązań gier dwumacierzowych jest algorytm
-\textbf{Lemkego-Howsona}. Korzysta on z pewnych podprocedur programowania liniowego, co upodabnia go do algorytmu
-simpleks. Pierwotnie pojawił się jako dowód konstrukcyjny istnienia równowag w grach 2-osobowych o sumie dowolnej.
+\textbf{Lemkego-Howsona}\cite{LH-NE}. Korzysta on z podprocedury \textit{pivot} programowania liniowego, co upodabnia
+go do algorytmu simpleks. Pierwotnie pojawił się jako dowód konstrukcyjny istnienia równowag w grach 2-osobowych o sumie
+dowolnej.
 
 Na początku zanotujmy, że wartości oczekiwane wypłat graczy $i$ oraz $j$, przy strategiach mieszanych zapisanych jako
 wektory prawdopodobieństw, odpowiednio $x$ oraz $y$ wynoszą:
@@ -324,7 +325,7 @@ wierzchołka w którym się one spotykają. Ponieważ nie wszystkie wierzchołki
 następnie przechodzić od wierzchołka do wierzchołka, aż któryś spełni postawione wymagania. Odpowiada za to procedura
 \textit{pivot}, wykorzystywana również w algorytmie simpleks.
 
-Najpierw zapis \ref{LHb1} jest wykorzystany do utworzenia macierzy rozszerzonej $D$:
+Najpierw zapis \ref{LHb1} jest wykorzystany do utworzenia macierzy rozszerzonej $D = [d_{ij}]$:
 \begin{center}
 \begin{tabular}[t]{ | c                       c      | c    | c                  }
                       \multicolumn{2}{|c|}{v}        &      &                    \\
@@ -356,17 +357,18 @@ których etykiety $v_i$ pozostały na swoich miejscach $r_i = 0$, dla pozostały
 elementu wektora zawierającego pierwotnie jedynki. Wówczas $r = [ x' y' ]$. Po znormalizowaniu $x'$ i $y'$ do $x$ i $y$
 (przeskalowaniu ich tak, aby $\sum_{x_i} = 1$ oraz $\sum_{y_i} = 1$), otrzymane $(x, y)$ będzie szukaną równowagą Nasha.
 
-Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia, czy istnieje
-równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym prawdopodobieństwem (w pracy
-nazywanych \textit{określonym wsparciem}\INENG{particular support}), jest względnie prostym problemem spełnialności.
-Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania zdefiniowanych ograniczeń.
+Algorytm \textbf{Portera-Nudelmana-Shohama}\cite{PNS-NE} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia,
+czy istnieje równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym
+prawdopodobieństwem (w pracy nazywanych \textit{określonym wsparciem}\INENG{particular support}), jest względnie
+prostym problemem spełnialności. Przestrzeń takich profili jest przeszukiwana z nawrotem pod kątem spełniania
+zdefiniowanych ograniczeń.
 
 W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na oznaczenie profilu strategii wspierających strategię
 mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i)$ jest
 niezerowe. Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako
 $v_i$.
 
-Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera strategii czystej z
+Zakłada się, że żaden z graczy nie preferuje jakiejkolwiek strategii (nie wybiera żadnej strategii czystej z
 prawdopodobieństwem $1$). Ze względu na wykorzystane w rozwiązaniu ograniczenie $\sigma_{-i}(s_{-i}) = \prod_{j \ne i}
 \sigma_j(s_j)$ problem jest liniowy dla $n = 2$ oraz nieliniowy dla $n > 2$.
 
@@ -420,8 +422,8 @@ najczęściej opisywany algorytm Lemkego-Howsona. Zestaw ten jest powszechnie u�
 i wydajności różnych algorytmów z zakresu teorii gier, tak więc poprawa wyników w tych testach stanowi silny argument
 przemawiający za wdrożeniem nowego rozwiązania.\cite{GAMUT}
 
-Algorytm \textbf{Sandholma-Gilpina-Conitzera} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
-otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha). Są to ograniczenia \textit{problemu
+Algorytm \textbf{Sandholma-Gilpina-Conitzera}\cite{SCG-NE} w podstawowej wersji definiuje kilka ograniczeń, dbających o
+to, aby otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha). Są to ograniczenia \textit{problemu
 całkowitoliczbowego}\INENG{integer programming}, rodzaju problemu LP, w którym wymagamy, aby przynajmniej jedna ze
 zmiennych miała wartość całkowitą. Podstawowy wariant nie definiuje jednak funkcji celu, pozwalając jego użytkownikom
 na samodzielne zdefiniowanie dowolnej liniowej/całkowitoliczbowej funkcji celu.
@@ -460,15 +462,14 @@ Wówczas ograniczenia możemy zdefiniować następująco $(\forall_{i \in I})$:
 (\forall_{s_i \in S_i}) r_{s_i} \leq U_i b_{s_i} \label{SGC2f}
 \end{equation}
 
-Pierwsze ograniczenie (\ref{SGC2a}) gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$
-gracza $i$. Drugie (\ref{SGC2b}) oblicza nam wartość oczekiwaną wypłaty dla strategii czystej $s_i$ gracza $i$ przy
-obecnej strategii mieszanej gracza $-i$. Warunek trzeci (\ref{SGC2c}) sprawia, że $u_i$ zawiera najmniejszą możliwą
-wartość oczekiwaną wypłaty dla strategii czystych gracza $i$ (tym samym stanowi ograniczenie dolne wypłaty dla
-strategii mieszanej, jaką otrzyma przy obecnej strategii mieszanej gracza $-i$). Czwarte ograniczenie (\ref{SGC2d})
-oblicza żal dla każdej ze strategii. Piąte (\ref{SGC2e}) gwarantuje, że $b_{s_i}$ będzie zmienną binarną określającą,
-czy strategia jest używana (jej prawdopodobieństwo jest niezerowe). Szóste (\ref{SGC2f}), upewnia nas, że żal nigdy nie
-przekroczy wartości maksymalnej dla strategii w użyciu oraz będzie równy $0$ dla strategii, dla których
-prawdopodobieństwo wynosi $0$.
+Ograniczenie \ref{SGC2a} gwarantuje nam, że $p_i$ będzie określać nam rozkład nad strategiami $s_i \in S_i$ gracza $i$.
+\ref{SGC2b} oblicza wartość oczekiwaną wypłaty dla strategii czystej $s_i$ gracza $i$ przy obecnej strategii mieszanej
+gracza $-i$. Warunek \ref{SGC2c} sprawia, że $u_i$ zawiera najmniejszą możliwą wartość oczekiwaną wypłaty dla strategii
+czystych gracza $i$ (tym samym stanowi ograniczenie dolne wypłaty dla strategii mieszanej, jaką otrzyma przy obecnej
+strategii mieszanej gracza $-i$). Ograniczenie \ref{SGC2d} oblicza żal dla każdej ze strategii. \ref{SGC2e} gwarantuje,
+że $b_{s_i}$ będzie zmienną binarną określającą, czy strategia jest używana (jej prawdopodobieństwo jest niezerowe).
+\ref{SGC2f}, upewnia nas, że żal nigdy nie przekroczy wartości maksymalnej dla strategii w użyciu oraz będzie równy $0$
+dla strategii, dla których prawdopodobieństwo wynosi $0$.
 
 Po dodaniu do tak zdefiniowanego problemu całokowitoliczbowego funkcji celu, każde osiągalne rozwiązanie będzie stanowić
 poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
@@ -525,9 +526,10 @@ w grach $n$-osobowych \cite{SCARF-NR},
 Definicja algorytmu Scarfa jest zbyt obszerna, aby opisywać ją w niniejszej pracy z należytą starannością. Dokładniej
 opiszemy więc, wyłącznie drugi z algorytmów.
 
-Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2-osobowa.
-Wykorzystuje on dwie kolejne procedury - rekurencyjne przeglądanie profili z nawrotami\INENG{Recursive Backtracking}
-oraz iteracyjne usuwanie strategii zdominowanych\INENG{Iterated Removal of Strictly Dominated Strategies} (IRSDS).
+Algorytm \textbf{Portera-Nudelmana-Shohama}\cite{PNS-NE} dla $n > 2$ graczy jest bardziej złożony niż jego wersja
+2-osobowa. Wykorzystuje on dwie kolejne procedury - rekurencyjne przeglądanie profili z nawrotami\INENG{Recursive
+Backtracking} oraz iteracyjne usuwanie strategii zdominowanych\INENG{Iterated Removal of Strictly Dominated Strategies}
+(IRSDS).
 
 Procedura IRSDS przegląda przekazany jej profil dziedzin wszystkich graczy i dla każdego kolejnego gracza usuwa
 wszystkie zdominowane strategie czyste, tak długo, jak po przejrzeniu wszystkich graczy w danej iteracji zmieniony 

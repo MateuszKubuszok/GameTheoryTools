@@ -15,14 +15,13 @@ rozwiązania.
 
 Jedynymi obecnie dostępnymi narzędziami spełniającymi postawiony cel są składowe pakietu \PROG{Gambit}, pakiet ten
 posiada jednak dość ograniczoną dokumentację, a jego kod źródłowy, choć otwarty, nie wydaje mi się łatwy w rozwijaniu.
-Poza tym pakiet ten jest rozbity na moduły, przez co każdy problem jest rozwiązywany przy pomocy osobnego narzędzia
-- może to stanowić problem dla użytkowników oczekujących jednego programu, którego sposób użycia określają w trakcie
-jego uruchomienia.
+Każdy algorytm jest też oddelegowany do osobnego modułu - nie jest możliwe automatyczne rozpoznanie problemu oraz wybranie metody jego rozwiązania.
 
 W takiej sytuacji dobrym pomysłem wydało mi się stworzenie alternatywy, nastawionej na możliwość łatwego rozwijania
 projektu oraz przyjaznego interfejsu umożliwiającego wykorzystanie programu nawet mniej zaawansowanym użytkownikom. Aby
-projekt taki miał rację bytu, powinien implementować pewną minimalną funkcjonalność obrazującą jego potencjalne
-możliwości. Stworzenie prototypu pozwoliłoby stwierdzić czy taka filozofia projektu przyniosłaby jakąkolwiek korzyść.
+projekt taki miał rację bytu, powinien implementować minimalną funkcjonalność obrazującą jego potencjalne możliwości
+- za taką przyjęto rozwiązywanie gier 2-osobowych. Stworzenie prototypu pozwoliłoby stwierdzić, czy taka filozofia
+projektu przyniosłaby jakąkolwiek korzyść.
 
 W trakcie pisania pracy stworzyłem prototyp demonstrujący opisywaną ideę. Zdecydowałem się na użycie języka \LANG{C++},
 który umożliwia programowanie z wysoką wydajnością, przy zachowaniu czytelności kodu. W przypadku algorytmów
@@ -30,35 +29,33 @@ wykorzystujących programowanie liniowe, skorzystano z funkcji biblioteki \LIB{G
 danych przy pomocy parsera, obliczenie rozwiązania zadanego problemu i wyświetlenie wyniku. Posiada zaimplementowane
 algorytmy obliczające równowagi Nasha w następujących grach:
 \begin{itemize}
-\item gry w postaci strategicznej (równowaga w strategiach czystych),
-\item gry jednomacierzowe (równowaga w strategiach mieszanych),
-\item gry dwumacierzowe (równowaga w strategiach mieszanych),
-\item gry w postaci ekstensywnej z informacją doskonałą (równowaga w strategiach czystych).
+\item w postaci strategicznej (równowagi w strategiach czystych),
+\item jednomacierzowych (równowagi w strategiach mieszanych),
+\item dwumacierzowych (równowagi w strategiach mieszanych),
+\item w postaci ekstensywnej z informacją doskonałą (równowagi w strategiach czystych).
 \end{itemize}
-Ustępuje on możliwościami wspomnianemu pakietowi \PROG{Gambit}, między innymi poprzez brak wsparcia dla:
+Ustępuje on możliwościami wspomnianemu pakietowi \PROG{Gambit}, między innymi poprzez brak wsparcia dla szukania
+równowag:
 \begin{itemize}
-\item szukania równowag w strategiach mieszanych dla gier w postaci strategicznej dla liczby graczy $\geq 2$,
-\item szukania równowag w strategiach czystych dla gier w postaci ekstensywnej bez informacji doskonałej,
-\item szukania równowag w strategiach mieszanych i postępowania w jakichkolwiek grach ekstensywnych.
+\item w strategiach mieszanych dla gier w postaci strategicznej dla $n$-graczy,
+\item w strategiach czystych dla dowolnych gier w postaci ekstensywnej,
+\item w strategiach mieszanych i postępowania w grach w postaci ekstensywnej.
 \end{itemize}
-Zakładamy też, że wszyscy gracze są racjonalni, więc mój program nie jest w stanie rozpatrzyć przypadków, gdzie któryś
-z graczy jest altruistyczny.
 
 W kolejnych rozdziałach opisałem szczegóły na temat podstaw teoretycznych oraz realizacji projektu:
 \begin{enumerate}
-\item w dziale \textbf{Teoria} opisano podstawy teoretyczne stojące za projektem. Wprowadzają one pojęcia \textit{gier},
-\textit{równowag Nasha}, \textit{strategii czystych i mieszanych}, postaci \textit{strategicznej}
-oraz \textit{ekstensywnej} gier. Opisuje również algorytmy służące do obliczenia równowag w rozpatrywanych przypadkach
-gier,
-\item w dziale \textbf{Implementacja} opisano szczegóły realizacji programu, strukturę wewnętrzną oraz przyjęty model
-danych, jak również algorytmy nie związane bezpośrednio z teorią gier ale wymagane do poprawnego działania programu,
-\item w dziale \textbf{Wnioski} opisano rezultaty otrzymane podczas wdrażania projektu oraz możliwości dalszego
-rozwoju powstałego programu,
-\item załączniki zawierają informacje na temat kompilacji i użytkowania projektu.
+\item w dziale \textbf{Teoria} opisałem podstawy teoretyczne stojące za projektem. Znajdują się tam definicje
+\textit{gier}, \textit{równowag Nasha}, \textit{strategii czystych i mieszanych}, postaci \textit{strategicznej}
+oraz \textit{ekstensywnej} gier. Dział ten opisuje również algorytmy służące do obliczenia równowag w rozpatrywanych
+przypadkach gier;
+\item w dziale \textbf{Implementacja} opisałem szczegóły realizacji programu, strukturę wewnętrzną oraz przyjęty model
+danych, jak również algorytmy nie związane bezpośrednio z teorią gier ale wymagane do poprawnego działania programu;
+\item w dziale \textbf{Wnioski} opisałem rezultaty otrzymane podczas wdrażania projektu oraz możliwości dalszego
+rozwoju powstałego programu;
+\item w załącznikach zawarłem informacje na temat kompilacji i użytkowania projektu.
 \end{enumerate}
 
-\marginnote{TODO: dopisać pozostałych jeśli użyję ich prac}
-Przy pisaniu pracy wykorzystano książki:
+Przy pisaniu pracy wykorzystałem książki:
 \begin{description}
 \item[Game Theory] \hfill \\ Fudenberg, Tirole \cite{FT-GT},
 \item[Teoria Gier] \hfill \\ Owen, \cite{O-GT}
@@ -70,10 +67,11 @@ oraz artykuły:
 \item[Mixed-Integer Programming Methods for Finding Nash Equilibria] \hfill \\ Sandholm, Gilpin, Conitzer \cite{SCG-NE}
 \item[The Computation of Equilibrium Prices: An Exposition] \hfill \\ Scarf \cite{SCARF-NR}
 \end{description}
-jako źródła wiedzy teoretycznej na temat rozważanych problemów.
+jako źródła wiedzy teoretycznej na temat rozważanych problemów, a także dokumentacje techniczne wykorzystanych bibliotek
+podczas rozwijania części praktycznej.
 
 W ogólności cele pracy można uznać za zrealizowane. Jej wynikiem jest działający program, który posiada wymaganą
-funkcjonalność co dowodzi realizowalności przyjętych założeń. Ograniczenia czasowe sprawiły jednak, że nie wszystkie
-rozpatrywane rozwiązania udało się zaimplementować, nie przeszkodziło to jednak rozważyć ich przynajmniej teoretycznie.
+funkcjonalność co dowodzi realizowalności przyjętych założeń. Choć ograniczenia czasowe sprawiły, że nie wszystkie
+rozpatrywane rozwiązania udało mi się zaimplementować, nie przeszkodziło mi to rozważyć ich przynajmniej teoretycznie.
 
 \end{document}
