@@ -56,7 +56,9 @@ Analogicznie
 $$S_{-i} = S_1 \times ... S_{i-1} \times S_{i+1} \times ... \times S_n$$
 oznaczać będzie profil wszystkich możliwych odpowiedzi na decyzję gracza $i$.
 
-Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy równocześnie decyduje się na jedną ze swoich strategii, a następnie na podstawie wyborów podjętych przez wszystkich graczy określamy wypłatę każdego z nich.
+Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy równocześnie decyduje się na jedną ze swoich
+strategii, a następnie na podstawie wyborów podjętych przez wszystkich graczy określamy wypłatę każdego z nich.
+W całym rozdziale będziemy też zakładać, że gracze są racjonalni, tzn. zawsze dążą do maksymalizacji swojej wypłaty.
 
 \begin{definition}
 \textbf{Strategią mieszaną}\INENG{mixed strategy} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi
@@ -121,7 +123,8 @@ $$(\exists_{s'_i}) (\forall_{s_{-i} \in S_{-i'}}) u_i(s_i, s_{-i}) < u_i(s'_i, s
 
 Strategie takie zawsze mogą zostać zastąpione przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy je
 pominąć w rozważaniach, z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle mówiąc możemy wyeliminować
-wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich lepsza, lub wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
+wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich lepsza, lub
+wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
 
 \textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania tych strategii z rozważanej gry
 tak długo, aż zostaną wyłącznie strategie niezdominowane. Zdarza się, że prowadzi to do sytuacji, gdzie równowaga jest
@@ -150,8 +153,9 @@ $$(\forall_{s \in S}) \sum_{i \in I} u_i(s) = 0$$
 \end{definition}
 
 Gdy w grze bierze udział dwóch graczy, wartości ich wypłat będą dokładnie przeciwne, można więc funkcję wypłaty zapisać
-przy pomocy pojedynczej macierzy $A_{ij}$ (stąd inna nazwa tego typu gier - gry jednomacierzowe), gdzie $i$ oznacza
-wybór strategii czystej pierwszego gracza, a $j$ wybór gracza drugiego. Wartość stanowi wypłatę pierwszego z graczy.
+przy pomocy pojedynczej macierzy $A_{ij}$ (stąd inna nazwa tego typu gier - gry jednomacierzowe\INENG{matrix games}),
+gdzie $i$ oznacza wybór strategii czystej pierwszego gracza, a $j$ wybór gracza drugiego. Wartość stanowi wypłatę
+pierwszego z graczy.
 
 W takiej sytuacji pierwszy z graczy będzie dążył do maksymalizacji swojej wypłaty, zaś gracz drugi do minimalizacji
 wypłaty przeciwnika:
@@ -159,13 +163,18 @@ wypłaty przeciwnika:
 $$\max_{\sigma_1} \{ \min_{j \in J} u_1(\sigma_1, j) \}$$
 $$\min_{\sigma_2} \{ \max_{i \in I} u_2(i, \sigma_2) \}$$
 
-Dla pierwszego gracza przyjmuje to postać następującego problemu optymalizacyjnego:
+Zagadnienia te należą więc to kategorii problemów optymalizacyjnych, tj. takich w których minimalizujemy
+(maksymalizujemy) wartość zadanej funkcji, zwanej \textit{funkcją celu}, poprzez dobór odpowiednich wartości jej
+parametrów, przy zachowaniu nałożonych na nie ograniczeń. Dla pierwszego gracza możemy to zapisać:
 
 $$\max_{\sigma_1} \{ \min_{j \in J} \sum_{i \in I} A_{ij} \sigma_1(i) \}$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
 
-Tak zdefiniowany problem możemy przekształcić do postaci programowania liniowego:
+Tak zdefiniowany problem możemy przekształcić do postaci \textit{programowania liniowego}\INENG{linear programming}
+(LP). Jest to kategoria problemów optymalizacyjnych, w której zarówno funkcja celu jak i ograniczenia nałożone na
+rozpatrywane zmienne są zdefiniowane jako liniowe kombinacje owych zmiennych. W interesującym nas przypadku zadanie to
+przyjmuje następującą formę:
 
 $$\max_{\sigma_1,v} v$$
 $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
@@ -190,7 +199,7 @@ $$\max_{\sigma_1,v} v$$
 \end{equation}
 
 
-Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskamliśmy równanie sumujące się do $1$ co jest dla nas
+Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskaliśmy równanie sumujące się do $1$ co jest dla nas
 bardzo istotne. Staje się to jasne po dokonaniu ostatniego przekształcenia już do docelowej postaci problemu:
 
 $$\min_x \sum_{i \in I} x_i$$
@@ -211,22 +220,22 @@ $$\max_y \sum_{j \in J} y_i$$
 $$Ay \leq 1 $$
 $$y \geq 0$$
 
-\marginnote{TODO: wyjaśnienie i bibliografia do programowania liniowego}
-Okazuje się więc, że są to problemy dualne, zatem odpowiednia implementacja algorytmu simpleks jest w stanie otrzymać
-oba rozwiązania przy jednym uruchomieniu procedury. Należy jedynie pamiętać, aby otrzymane wartości podzielić przez
-wartość funkcji celu (a więc pomnożyć przez odwrotność $v$), aby wrócić do ich oryginalnej postaci.
+Okazuje się więc, że są to \textit{problemy dualne}. Odpowiednia implementacja algorytmu \textit{simpleks},
+rozwiązującego problemy LP, jest w stanie otrzymać oba rozwiązania przy jednym uruchomieniu procedury. Należy jedynie
+pamiętać, aby otrzymane wartości podzielić przez wartość funkcji celu (a więc pomnożyć przez odwrotność $v$), aby
+wrócić do ich oryginalnej postaci.
 
 \subsubsection{Równowagi w strategiach mieszanych w grach dwumacierzowych}
 
-Dla gier dwumacierzowych (gier 2-osobowych o sumie dowolnej) sytuacja się komplikuje. Istnieje kilka opisanych
-algorytmów, które pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych są to:
+Dla gier dwumacierzowych\INENG{bimatrix games} (gier 2-osobowych o sumie dowolnej) sytuacja się komplikuje. Istnieje
+kilka opisanych algorytmów, które pozwalają na znalezienie równowagi Nasha. Wśród najczęściej wymienianych są to:
 \begin{description}
-\item[algorytm Lemkego-Howsona] wykorzystujący podprocedury algorytmu simplex \cite{LH-NE};
+\item[algorytm Lemkego-Howsona] wykorzystujący podprocedurę \textit{pivot} algorytmu simpleksowego \cite{LH-NE};
 \item[algorytm Portera-Nudelmana-Shohama (PNS)] korzystający z przeszukiwania z nawrotami oraz programowania liniowego
 (wersja dla liczby graczy $n > 2$ jest nieliniowa) \cite{PNS-NE};
-\item[algorytm Govindana-Wilsona] \marginnote{TODO} \cite{GR-NE};
 \item[algorytm Sandholma-Gilpina-Conitzera] wykorzystujący programowanie całkowitoliczbowe \cite{SCG-NE}.
 \end{description}
+Wszystkie zostaną dokładniej opisane.
 
 Prawdopodobnie najbardziej rozpowszechnioną metodą szukania rozwiązań gier dwumacierzowych jest algorytm
 \textbf{Lemkego-Howsona}. Korzysta on z pewnych podprocedur programowania liniowego, co upodabnia go do algorytmu
@@ -240,13 +249,112 @@ gdzie $A$ to macierz wypłat gracza $i$, zaś $B$ macierz wypłat gracza $j$.
 
 Możemy to przepisać na równoważne formy macierzowe:
 
-$$u_i = x^{T} A y$$
-$$u_j = x^{T} B y$$
+\begin{equation}
+u_i = x^{T} A y \label{LHa1}
+\end{equation}
+\begin{equation}
+u_j = x^{T} B y \label{LHa2}
+\end{equation}
 
-\marginnote{TODO: Lemke-Howson reszta}
+Wówczas równowaga Nasha $(x_0, y_0)$ gdy:
+$$(\forall_{x,y}) x_0^T A y_0 \geq x^T A y_0$$
+$$(\forall_{x,y}) x_0^T A y_0 \geq x_0^T A y$$
+
 W dowodzie wykorzystuje się ten fakt, aby pokazać że nie jest możliwe ogólne rozwiązanie gier dwumacierzowych przy
 pomocy programowania liniowego przy przyjętym opisie problemu (nie wyklucza to jednak istnienia inaczej zapisanego
 rozwiązania np. całkowitoliczbowego, co pokazuje algorytm SGC).
+
+Ideą stojącą za przedstawionym przez autorów algorytmem jest zapisanie problemu jako \textit{problemu komplementarności
+liniowej}\INENG{linear complementarity problem} (LCP), a następnie znalezieniu jego rozwiązania. Problem taki ma postać:
+\begin{equation}
+w = M z + q \label{LCP1}
+\end{equation}
+\begin{equation}
+w \geq 0 \label{LCP2}
+\end{equation}
+\begin{equation}
+z \geq 0 \label{LCP3}
+\end{equation}
+\begin{equation}
+(\forall_i) w_i z_i = 0 \label{LCP4}
+\end{equation}
+Szukamy w nim takich wektorów $w$ oraz $z$, aby przy podanej macierzy $M$ oraz wektorze $q$, nierówności były spełnione.
+Nierówność \ref{LCP4} odpowiada za \textit{komplementarność}, stąd też nazwa klasy problemów. Istotnie, autorzy pracy
+pokazali, że problem można zapisać w formie LCP:
+\begin{equation}
+\begin{pmatrix}
+0 & B^T \\
+A & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+y \\
+x \\
+\end{pmatrix}
+-
+\begin{bmatrix}
+1  \\
+...\\
+1  \\
+\end{bmatrix}
+= r
+\label{LHb1}
+\end{equation}
+\begin{equation}
+\begin{pmatrix}
+y \\
+x \\
+\end{pmatrix}
+\geq 0 \label{LHb2}
+\end{equation}
+\begin{equation}
+r \geq 0 \label{LHb3}
+\end{equation}
+\begin{equation}
+\begin{pmatrix}
+y \\
+x \\
+\end{pmatrix}^T
+r
+ = 0 \label{LHb4}
+\end{equation}
+
+Proponowane rozwiązanie opera się na spostrzeżeniu, że każde z $l$ ograniczeń opisuje ścianę wielowymiarowej figury
+wypukłej. Spełnienie wszystkich obwarowań jest więc znalezieniem punktu, który należy do $l$ ścian tego wielomianu -
+wierzchołka w którym się one spotykają. Ponieważ nie wszystkie wierzchołki stanowią rozwiązanie, musimy wybrać jeden, a
+następnie przechodzić od wierzchołka do wierzchołka, aż któryś spełni postawione wymagania. Odpowiada za to procedura
+\textit{pivot}, wykorzystywana również w algorytmie simpleks.
+
+Najpierw zapis \ref{LHb1} jest wykorzystany do utworzenia macierzy rozszerzonej $D$:
+\begin{center}
+\begin{tabular}[t]{ | c                       c      | c    | c                  }
+                      \multicolumn{2}{|c|}{v}        &      &                    \\
+\hline
+                      $0$                     & $-A$ &  $1$ & \multirow{2}{*}{w} \\
+                      $-B^T$                  & $0$  &  $1$ &                    \\
+\hline
+\end{tabular}
+\end{center}
+Początkowo nadajemy wszystkim elementom wektora $z$ wartość $0$, tak więc wektor $r$ składa się z samych $-1$. Po
+pomnożeniu obu stron równania przez $-1$ otrzymaliśmy powyższą reprezentację (wiersz jedynek wyznacza wartości $r$).
+W tej reprezentacji wektory $v = [ v_1, ..., v_{m+n} ]$ oraz $w = [ w_1, ..., w_{m+n} ]$ (gdzie $m$ i $n$ to ilości
+strategii czystych kolejno pierwszego i drugiego gracza) stanowią etykiety, pomocne przy opisie algorytmu. Wartości $r$
+stanowią rozwiązanie LCP, ale nie wyznaczają równowagi Nasha - jest to jeden z wierzchołków wielościanu, z którego
+możemy rozpocząć poszukiwanie wierzchołka docelowego. Wykonajmy teraz procedurę \textit{pivota}, która przesunie nas
+do następnego wierzchołka.
+
+Najpierw znajdźmy element usuwany z bazy (usuwany z pierwotnego wektora $v$-ów) - wybierzmy dowolną kolumną $j_0$.
+Następnie wybieramy wiersz $i_0$, tak aby element $d_{i_0,j_0} < 0$ oraz $\frac{d_{i_0,l+1}}{-d_{i+0,j_0}}$ najmniejsze
+możliwe (\textit{test najmniejszego ilorazu}). Skalujemy dla niego wiersz macierzy $D$, aby element stał się równy $1$.
+Tak przeskalowany wiersz wykorzystujemy do sprowadzenia wszystkich innych elementów znajdujących się w tej samej
+kolumnie do wartości $-d_{i_0,j_0}$. Po tej operacji etykiety $v_j$ oraz $w_i$ wymieniają się miejscami. W następnym
+kroku wybieramy kolumnę $v$, o indeksie odpowiadającym etykiecie $w$ z bieżącego kroku o ile jej numer jest różny od
+numeru etykiety $v$ wybranej na samym początku.
+
+Procedurę powtarzamy tak długo, aż pozycja etykiety $w$ wymienionej w danej iteracji będzie równa pozycji pierwszej
+wybranej do zamiany etykiety $v$. Wówczas algorytm się kończy i możemy odczytać rozwiązanie z tabeli: dla zmiennych
+których etykiety $v_i$ pozostały na swoich miejscach $r_i = 0$, dla pozostałych przyjmują wartości odpowiedniego
+elementu wektora zawierającego pierwotnie jedynki. Wówczas $r = [ x' y' ]$. Po znormalizowaniu $x'$ i $y'$ do $x$ i $y$
+(przeskalowaniu ich tak, aby $\sum_{x_i} = 1$ oraz $\sum_{y_i} = 1$), otrzymane $(x, y)$ będzie szukaną równowagą Nasha.
 
 Algorytm \textbf{Portera-Nudelmana-Shohama} dla dwóch graczy wykorzystuje fakt, że problem sprawdzenia, czy istnieje
 równowaga Nasha w strategiach mieszanych dla określonych strategii czystych z niezerowym prawdopodobieństwem (w pracy
@@ -312,11 +420,11 @@ najczęściej opisywany algorytm Lemkego-Howsona. Zestaw ten jest powszechnie u�
 i wydajności różnych algorytmów z zakresu teorii gier, tak więc poprawa wyników w tych testach stanowi silny argument
 przemawiający za wdrożeniem nowego rozwiązania.\cite{GAMUT}
 
-\marginnote{TODO: Govindan-Wilson}
-
 Algorytm \textbf{Sandholma-Gilpina-Conitzera} w podstawowej wersji definiuje kilka ograniczeń, dbających o to, aby 
-otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha). Nie definiuje on jednak funkcji celu,
-pozwalając jego użytkownikom na samodzielne zdefiniowanie dowolnej liniowej funkcji celu.
+otrzymane wartości zawsze stanowiły poprawne rozwiązanie (równowagę Nasha). Są to ograniczenia \textit{problemu
+całkowitoliczbowego}\INENG{integer programming}, rodzaju problemu LP, w którym wymagamy, aby przynajmniej jedna ze
+zmiennych miała wartość całkowitą. Podstawowy wariant nie definiuje jednak funkcji celu, pozwalając jego użytkownikom
+na samodzielne zdefiniowanie dowolnej liniowej/całkowitoliczbowej funkcji celu.
 
 Wykorzystane są: 
 \begin{itemize}
@@ -367,8 +475,8 @@ poprawne rozwiązanie. \cite[str.~2]{SCG-NE}
 
 Autorzy algorytmu w dalszej części swojej pracy omawiają 3 kolejne specjalizacje tego problemu:
 \begin{enumerate}
-\item wprowadzenie,,kary'' za żal, a następnie dążenie do jego minimalizacji - ograniczenia \ref{SGC2a}, \ref{SGC2b},
-\ref{SGC2c}, \ref{SGC2d}, \ref{SGC2e} oraz:
+\item wprowadzenie,,kary''\INENG{penalty} za żal, a następnie dążenie do jego minimalizacji - ograniczenia \ref{SGC2a},
+\ref{SGC2b}, \ref{SGC2c}, \ref{SGC2d}, \ref{SGC2e} oraz:
 $$\textbf{minimalizuj} \sum_{i \in \{0,1\}} \sum_{s_i \in S_i} f_{s_i} - U_i b_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq r_{s_i}$$
 $$(\forall_{i \in I}) (\forall_{s_i \in S_i}) f_{s_i} \geq U_i b_{s_i}$$
@@ -409,13 +517,13 @@ istotniejszym wkładem badawczym niż tworzenie kolejnej wersji powszechnie stos
 
 Dla gier o większej liczbie graczy istnieją odpowiednie algorytmy do szukania równowagi Nasha. Jednymi z częściej
 wymienianych są:
-\begin{enumerate}
-\item algorytm \textbf{podziału symplicjalnego}\INENG{Simplicial Subdivision} \marginnote{TODO} \cite{LTH-NE},
-\item algorytm \textbf{Scarfa} \marginnote{TODO} \cite{SCARF-NR},
-\item algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy. \cite{PNS-NE}.
-\end{enumerate}
-
-\marginnote{TODO: podział symplicjalny \newline TODO: Scarf}
+\begin{description}
+\item[algorytm Scarfa] - najstarszy z wymienionych, powstał jako dowód konstrukcyjny istnienia równowag mieszanych
+w grach $n$-osobowych \cite{SCARF-NR},
+\item[algorytm Portera-Nudelmana-Shohama] dla $n > 2$ graczy. \cite{PNS-NE}.
+\end{description}
+Definicja algorytmu Scarfa jest zbyt obszerna, aby opisywać ją w niniejszej pracy z należytą starannością. Dokładniej
+opiszemy więc, wyłącznie drugi z algorytmów.
 
 Algorytm \textbf{Portera-Nudelmana-Shohama} dla $n > 2$ graczy jest bardziej złożony niż jego wersja 2-osobowa.
 Wykorzystuje on dwie kolejne procedury - rekurencyjne przeglądanie profili z nawrotami\INENG{Recursive Backtracking}
@@ -513,7 +621,7 @@ została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej
 \section{Gra w postaci ekstensywnej}
 
 \begin{definition}
-\textbf{Grą w postaci ekstensywnej} nazywamy szóstkę, na którą składają się:
+\textbf{Grą w postaci ekstensywnej}\INENG{extensive-form game} nazywamy szóstkę, na którą składają się:
 \begin{enumerate}
 \item zbiór graczy,
 \item porządek ruchów graczy,
@@ -537,20 +645,13 @@ informacyjnego, gracz nie jest w stanie stwierdzić w którym z nich się znajdu
 możliwości do wyboru. Pozwala to opisywać np. stan gracza po zdarzeniu losowym lub brak informacji o ruchach
 przeciwników.
 
-\begin{definition}
-\textbf{Doskonała równowaga Nasha w podgrach} - jest to taka równowaga, że dla każdej podgry danej gry stanowi ona
-poprawne rozwiązanie. \marginnote{TODO: cytat}
-\end{definition}
-
-\begin{theorem}
-Każda skończona gra w postaci ekstensywnej ma doskonałą równowagę Nasha w podgrach. \marginnote{TODO: cytat}
-\end{theorem}
-
-\subsection{Równowagi w strategiach czystych w grach z informacją doskonałą i zupełną}
+\subsection{Równowagi w strategiach czystych w grach z informacją doskonałą}
 
 \begin{definition}
-\textbf{Gra z informacją doskonałą} to gra, w której każdy z graczy w dowolnym momencie jest poinformowany o wszystkich
-wiodących do danej chwili ruchach - każdy wierzchołek należy do jednoelementowego zbioru informacyjnego.
+\textbf{Gra z informacją (pamięcią) doskonałą}\INENG{perfect recall} to gra, w której każdy z graczy w dowolnym
+momencie jest poinformowany o wszystkich wiodących do danej chwili ruchach - każdy wierzchołek należy do
+jednoelementowego zbioru informacyjnego.
+\cite[str.~81]{FT-GT}
 \end{definition}
 
 W przypadku gry w postaci ekstensywnej oznacza to, że możemy ją poprawnie sprowadzić do postaci, gdzie każdy węzeł
@@ -559,16 +660,17 @@ dokładnie znajdujemy się w drzewie gry, zawsze możemy wybrać optymalną stra
 ostatecznie otrzymalibyśmy dla każdej z możliwości. Ponieważ mamy do czynienia z graczami racjonalnymi możemy spodziewać
 się, że również oni wybraliby optymalne dla siebie strategie.
 
+\begin{theorem}
+Każda gra w postaci ekstensywnej z informacją doskonałą posiada równowagę Nasha w strategiach czystych.
+\cite[str.~91]{FT-GT}
+\end{theorem}
+
 Dysponując kompletną informacją możemy schodzić w głąb drzewa gry, aby ostatecznie dojść do liści zawierających wypłaty.
 Na tym poziomie bieżący gracz posiada już wszystkie informacje potrzebne do podjęcia najkorzystniejszej dla siebie
 decyzji. Gracz rozgrywający w poprzedzającym kroku jest z kolei w stanie ją przewidzieć. W ten sposób wychodząc od liści
 i przesuwając się ,,w górę'' drzewa gry, dochodzimy w końcu do punktu wyjściowego - w tym momencie znamy już wszystkie
 decyzje jakie podjęliby gracze, a tym samym ich wypłaty. Jest to optymalna wartość wypłaty dla każdego z nich i żaden
 nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy równowagę Nasha w tej grze.
-
-Algorytm ten opiera się na spostrzeżeniu, że do podjęcia decyzji konieczna jest znajomość rozwiązania w każdym
-poddrzewie gry i dla każdego poddrzewa również jest to rozwiązanie poprawne. Odnajduje więc on doskonałą równowagę
-Nasha w podgrach gier z informacją doskonałą.
 
 \subsection{Inne gry w postaci ekstensywnej}
 
@@ -587,6 +689,7 @@ i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
 
 \begin{definition}
 \textbf{Strategie postępowania}\INENG{behavior strategy} określają rozkład nad wyborem w określonym wierzchołku.
+\cite[str.~83]{FT-GT}
 \end{definition}
 
 Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji
