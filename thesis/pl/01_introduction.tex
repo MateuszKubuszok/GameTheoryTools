@@ -9,9 +9,8 @@
 Celem mojej pracy było stworzenie zestawu narzędzi do obliczania równowag Nasha w pewnych rodzajach gier skończonych
 w rozumieniu teorii gier. Narzędzia te miały pobierać definicję gry w zdefiniowanym na potrzeby projektu formacie,
 odnajdywać równowagę, przy pomocy jednego z omówionych w tej pracy algorytmów, a następnie zwrócić wyniki użytkownikowi.
-Dodatkowo projekt ten stanowił okazję do przyjrzenia się istniejącym algorytmom i zaobserwowaniu różnych sposobów na
-szukanie równowag Nasha. Kolejni badacze próbowali odmiennych podjeść - nie są to jedynie kolejne ulepszenia jednego
-rozwiązania.
+W pracy przyjrzałem się istniejącym algorytmom i zaobserwowałem różne sposoby na szukanie równowag Nasha. Różni badacze
+próbowali odmiennych podjeść - nie są to kolejne ulepszenia jednego rozwiązania.
 
 Jedynymi obecnie dostępnymi narzędziami spełniającymi postawiony cel są składowe pakietu \PROG{Gambit}, pakiet ten
 posiada jednak dość ograniczoną dokumentację, a jego kod źródłowy, choć otwarty, nie wydaje mi się łatwy w rozwijaniu.
@@ -20,7 +19,7 @@ Każdy algorytm jest też oddelegowany do osobnego modułu - nie jest możliwe a
 W takiej sytuacji dobrym pomysłem wydało mi się stworzenie alternatywy, nastawionej na możliwość łatwego rozwijania
 projektu oraz przyjaznego interfejsu umożliwiającego wykorzystanie programu nawet mniej zaawansowanym użytkownikom. Aby
 projekt taki miał rację bytu, powinien implementować minimalną funkcjonalność obrazującą jego potencjalne możliwości
-- za taką przyjęto rozwiązywanie gier 2-osobowych. Stworzenie prototypu pozwoliłoby stwierdzić, czy taka filozofia
+- za taką przyjęto rozwiązywanie gier 2-osobowych. Stworzenie prototypu pozwoliłoby mi stwierdzić, czy taka filozofia
 projektu przyniosłaby jakąkolwiek korzyść.
 
 W trakcie pisania pracy stworzyłem prototyp demonstrujący opisywaną ideę. Zdecydowałem się na użycie języka \LANG{C++},
@@ -55,23 +54,8 @@ rozwoju powstałego programu;
 \item w załącznikach zawarłem informacje na temat kompilacji i użytkowania projektu.
 \end{enumerate}
 
-Przy pisaniu pracy wykorzystałem książki:
-\begin{description}
-\item[Game Theory] \hfill \\ Fudenberg, Tirole \cite{FT-GT},
-\item[Teoria Gier] \hfill \\ Owen, \cite{O-GT}
-\end{description}
-oraz artykuły:
-\begin{description}
-\item[Equilibrium Points of Bimatrix Games] \hfill \\ Lemke, Howson \cite{LH-NE}
-\item[Simple Search Methods for Finding a Nash Equilibrium] \hfill \\ Porter, Nudelman, Shoham \cite{PNS-NE}
-\item[Mixed-Integer Programming Methods for Finding Nash Equilibria] \hfill \\ Sandholm, Gilpin, Conitzer \cite{SCG-NE}
-\item[The Computation of Equilibrium Prices: An Exposition] \hfill \\ Scarf \cite{SCARF-NR}
-\end{description}
-jako źródła wiedzy teoretycznej na temat rozważanych problemów, a także dokumentacje techniczne wykorzystanych bibliotek
-podczas rozwijania części praktycznej.
+Przy pisaniu pracy wykorzystałem książki \cite{FT-GT}, \cite{O-GT} oraz artykuły \cite{LH-NE}, \cite{PNS-NE}, \cite{SCG-NE}, \cite{SCARF-NR} jako źródła wiedzy teoretycznej na temat rozważanych problemów, a także dokumentacje techniczne wykorzystanych bibliotek podczas rozwijania części praktycznej.
 
-W ogólności cele pracy można uznać za zrealizowane. Jej wynikiem jest działający program, który posiada wymaganą
-funkcjonalność, co dowodzi realizowalności przyjętych założeń. Choć ograniczenia czasowe sprawiły, że nie wszystkie
-rozpatrywane rozwiązania udało mi się zaimplementować, nie przeszkodziło mi to rozważyć ich przynajmniej teoretycznie.
+Większość celów pracy można uznać za zrealizowane. Jej wynikiem jest program, który wczytuje definicję gry od użytkownika i znajduje dla niej równowagę Nasha.
 
 \end{document}
