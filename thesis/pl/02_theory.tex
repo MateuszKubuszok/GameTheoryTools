@@ -7,7 +7,7 @@
 \chapter{Teoria}
 
 W tym rozdziale zajmiemy się podstawowymi pojęciami i problemami z zakresu teorii gier, jak również przedstawieniem
-rozwiązującymi je algorytmami, których wykorzystanie było rozważane. Wyjaśnimy też pokrótce sposób działania tych
+rozwiązujących je algorytmów, których wykorzystanie było rozważane. Wyjaśnimy też pokrótce sposób działania tych
 algorytmów.
 
 \section{Wprowadzenie}
@@ -57,7 +57,7 @@ $$S_{-i} = S_1 \times ... S_{i-1} \times S_{i+1} \times ... \times S_n$$
 oznaczać będzie profil wszystkich możliwych odpowiedzi na decyzję gracza $i$.
 
 Przy tak zdefiniowanej grze zakładamy, że najpierw każdy z graczy równocześnie decyduje się na jedną ze swoich
-strategii, a następnie na podstawie wyborów podjętych przez wszystkich graczy określamy wypłatę każdego z nich.
+strategii, a następnie na podstawie wyborów podjętych przez wszystkich graczy określamy wypłatę dla każdego z nich.
 W całym rozdziale będziemy też zakładać, że gracze są racjonalni, tzn. zawsze dążą do maksymalizacji swojej wypłaty.
 
 \begin{definition}
@@ -77,8 +77,7 @@ $$(\forall_{i \in I}) (\forall_{s_{-i} \in S_{-i}}) u_i(s) \geq u_i(s_i, s_{-i})
 \cite[str.~11]{FT-GT}
 \end{definition}
 
-Oznacza to, że równowagą jest profil strategii, dla którego żaden z graczy nie jest w stanie poprawić swojej wypłaty,
-jeśli pozostali gracze przystaną przy swoich strategiach.
+Oznacza to, że równowagą jest profil strategii, dla którego żadnemu z graczy nie opłaca się odstępować od swojej strategii, jeśli założy, że pozostali gracze również przystaną przy swoich strategiach.
 
 Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień-nożyce:
 \begin{center}
@@ -115,16 +114,16 @@ $$(\exists_{s'_i}) (\forall_{s_{-i} \in S}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})
 \end{definition}
 
 \begin{definition}
-\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że wszystkie strategia z danego
+\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że wszystkie strategie z danego
 podzbioru $S_{-i}' \subseteq S_{-i}$ są lepsze:
 $$(\exists_{s'_i}) (\forall_{s_{-i} \in S_{-i'}}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~2]{PNS-NE}
 \end{definition}
 
 Strategie takie zawsze mogą zostać zastąpione przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy je
-pominąć w rozważaniach, z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle mówiąc możemy wyeliminować
-wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich lepsza, lub
-wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
+pominąć w rozważaniach, gdyż z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle mówiąc możemy
+wyeliminować wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich
+lepsza, lub wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
 
 \textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania tych strategii z rozważanej gry
 tak długo, aż zostaną wyłącznie strategie niezdominowane. Zdarza się, że prowadzi to do sytuacji, gdzie równowaga jest

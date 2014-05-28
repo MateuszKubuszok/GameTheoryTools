@@ -17,7 +17,7 @@ Program został napisany z wykorzystaniem:
 \item biblioteki \LIB{GLPK},
 \item biblioteki \LIB{Boost} w wersji co najmniej \VER{1.48} (\PROG{g++}) lub \VER{1.50.0-beta1} (\PROG{clang++}),
 \item biblioteki \LIB{GMP},
-\item środowiska do budowania projektów \PROG{Scons}
+\item środowiska do budowania projektów \PROG{Scons},
 \end{itemize}
 konieczne jest więc zainstalowanie ich przed podjęciem próby zbudowania projektu.
 
@@ -29,12 +29,12 @@ i bezpieczną instalację programów wraz z zależnościami.
 \subsection{Windows}
 
 Na systemie Windows program był testowany w środowisku \PROG{Cygwin}, trzeba jednak zaznaczyć, że nie posiadało ono
-pełnej biblioteki \LIB{Boost} i konieczne było ręcznie zbudowanie jej w wymaganej wersji/ręczne instalowanie plików
-binarnych.
+w repozytorium pełnej biblioteki \LIB{Boost} i konieczne było ręczne zbudowanie jej w wymaganej wersji lub instalowanie
+jej plików binarnych.
 
 \section{Budowanie}
 
-Mając zainstalowane wszystkie wymagane biblioteki należy uruchomić linię komend oraz przejść do katalogu, w którym
+Mając zainstalowane wszystkie wymagane biblioteki, należy uruchomić linię komend oraz przejść do katalogu, w którym
 przechowujemy kod źródłowy projektu. Następnie należy uruchomić polecenie \CODE{scons} aby zbudować wszystkie pliki
 binarne (dostępne w katalogu \CODE{bin/release} lub \CODE{bin/debug}):
 \begin{itemize}
@@ -46,21 +46,21 @@ binarne (dostępne w katalogu \CODE{bin/release} lub \CODE{bin/debug}):
 \item \LIB{libGTT.a} - biblioteka statyczna projektu,
 \item \LIB{libGTT.so} - biblioteka dynamiczna projektu.
 \end{itemize}
-Dokumentacja zawiera dodatkowe wskazówki i sugestie pozwalające wybierać budowane pliki oraz przyspieszać proces 
+Dokumentacja zawiera dodatkowe wskazówki i sugestie, pozwalające wybierać budowane pliki oraz przyspieszać proces 
 budowania np. poprzez urównoleglenie kompilacji.
 
 \chapter{Instrukcja obsługi biblioteki}
 
 Po zbudowaniu biblioteka jest typową biblioteką języka \LANG{C++}. Oznacza to, że można ją dowolnie linkować do każdego
-programu pisanego w języku \LANG{C++} tak długo jak zapewniona będzie binarna kompatybilność między kompilatorem użytym
+programu pisanego w języku \LANG{C++}, tak długo jak zapewniona będzie binarna kompatybilność między kompilatorem użytym
 do zbudowania biblioteki, a tym wykorzystanym do kompilacji programu. W przypadku \PROG{g++} zgodność taka zachodzi
 między większością wersji (złamano ją tylko w 2 przypadkach w ciągu ostatnich 10 lat), zaś kompilator \PROG{Clang} stara
 się zachować zgodność z \PROG{GCC} na poziomie zarówno binarnym jak i API.
 
-W obu wyżej wymienionych przypadkach wystarczy podczas linkowania dodać parametr \CODE{-lścieżka\_do\_biblioteki}
+W obu wyżej wymienionych przypadkach wystarczy podczas linkowania dodać parametr \CODE{-lścieżka\_do\_biblioteki},
 aby linker mógł dołączyć bibliotekę do programu wykonywalnego.
 
-Aby korzystać z wszystkich obiektów i metod biblioteki konieczne jest również dołączenie nagłówków definiujących
+Aby korzystać ze wszystkich obiektów i metod biblioteki, konieczne jest również dołączenie nagłówków definiujących
 dane obiekty. Należy je dołączyć do ścieżki przeszukiwania poprzez parametr \CODE{-iścieżka\_do\_katalogu\_include}
 wskazujący na katalog \CODE{include}. Wówczas wystarczy użyć makra \CODE{\#incude} wskazującego na jeden z poniższych
 plików:
@@ -78,8 +78,8 @@ modułów,
 
 Przykładowo aby używać definicji modułu \MODULE{GTL} należy użyć dyrektywy \CODE{\#include "gt/gtl.hpp"}.
 
-Szczegóły wykorzystania poszczególnych klas dostępne są przy użyciu dokumentacji wygenerowanej przy pomocy programu
-\PROG{Doxygen}. Przygotowano 3 jej konfiguracje do uruchomienia z katalogu głównego projektu, umieszczone w podkatalogu
+Szczegóły wykorzystania poszczególnych klas dostępne są w dokumentacji wygenerowanej przy pomocy programu
+\PROG{Doxygen}. Przygotowano jej 3 konfiguracje do uruchomienia z katalogu głównego projektu, umieszczone w podkatalogu
 \CODE{doxygen}. Uruchamiając poszczególne konfiguracje uzyskamy:
 \begin{itemize}
 \item \CODE{doxygen doxygen/tutorial\_} - instrukcje kompilacji i uruchamiania projektu,
@@ -91,7 +91,7 @@ interfejsów projektu. Użyteczna głównie w celu rozwijania i ulepszania bibli
 
 Użyteczne w zrozumieniu działania poszczególnych metod mogą być ich testy jednostkowe - dostarczają one minimalny wzgląd
 w przypadki użycia poszczególnych klas oraz ich metod, a na podstawie ich kodu użytkownik biblioteki powinien być w
-stanie użyć ich własnoręcznie w swoim programie.
+stanie zrozumieć jak użyć ich własnoręcznie w swoim programie.
 
 \chapter{Instrukcja obsługi parsera}
 
@@ -99,7 +99,7 @@ stanie użyć ich własnoręcznie w swoim programie.
 
 Parser zdefiniowany jest w module \CODE{GTL}, a sterowany za pośrednictwem modułu \CODE{program}. Aby z niego skorzystać
 powinniśmy uruchomić plik \PROG{gtl\_program}. Jako domyślne strumienie przyjmuje on standardowe wejście, wyjście
-oraz wyjście błędów. Możliwe jednak jest wczytanie z/pisanie do pliku:
+oraz wyjście błędów. Możliwe jest jednak wczytanie z/pisanie do pliku:
 \begin{itemize}
 \item \CODE{gtl\_program -i plik} - wczytuje wejście z podanego pliku,
 \item \CODE{gtl\_program -o plik} - wypisuje wyjście do podanego pliku,
@@ -138,8 +138,8 @@ FIND property[, property2[, ...]]
 
 dzięki czemu uzyskamy właściwości \CODE{property}, \CODE{propert2}, ... dla obiektów \CODE{value}, \CODE{value2}, ...
 
-Zdefiniowane imiennie dane dostępne są w ramach pewnego kontekstu. Gdy uruchamiany program inicjalizujemy pewien
-najwyższy kontekst i wszystkie zmienne jakie zdefiniujemy w konsoli będą do niego trafiać. Może on jednak posiadać
+Zdefiniowane imiennie dane dostępne są w ramach pewnego kontekstu (zasięgu). Gdy uruchamiany program, inicjalizujemy 
+najwyższy kontekst i wszystkie zmienne jakie zdefiniujemy w konsoli, będą do niego trafiać. Może on jednak posiadać
 konteksty potomne - uruchamiając polecenie:
 
 \begin{gtl}
@@ -176,8 +176,8 @@ Składnia tworzenia obiektu gracza wygląda następująco:
 PLAYER name { strategy1[, strategy2[, ...]] }
 \end{gtl}
 
-definiuje one gracza \CODE{name}, o strategiach czystych \CODE{strategy1}, \CODE{strategy2}, ... W praktyce występuje
-ona wyłącznie w połączeniu z poleceniem \CODE{LET ... BE ...;}:
+definiuje ona gracza \CODE{name}, o strategiach czystych \CODE{strategy1}, \CODE{strategy2}, ... W praktyce, występuje
+ona głównie w połączeniu z poleceniem \CODE{LET ... BE ...;}:
 
 \begin{gtl}
 LET player1 BE PLAYER { strategy1, strategy2 };
@@ -192,7 +192,7 @@ FIND name, strategies
 
 \section{Gry w postaci strategicznej}
 
-Każda gra w postaci strategicznej powinna mieś zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategii
+Każda gra w postaci strategicznej powinna mieć zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategii
 czystych poszczególnych graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
 
 \begin{gtl}
@@ -213,7 +213,7 @@ LET game1 BE
 \end{gtl}
 
 Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Kombinacje strategii z
-kolei mogą być podawane od razu w komplecie jak również rozbite na etapy. Każda definicja strategii ma postać
+kolei mogą być podawane od razu w komplecie, jak również rozbite na etapy. Każda definicja strategii ma postać
 \CODE{\{ gracz=strategia[, gracz2=strategia2[, ...]] : [kolejne definicje lub wypłaty graczy] \}}. Wymagane jest podanie
 wszystkich wypłat jak również nie definiowane dwukrotnie wypłaty dla tej samej kombinacji strategii.
 
@@ -223,8 +223,8 @@ Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mies
 FIND pure_equilibrium FOR game1;
 \end{gtl}
 
-Dla gier jednomacierzowych (tutaj: gier 2 graczy dla których każda kombinacja ma zdefiniowane 2 przeciwne wypłaty albo
-wręcz tylko jedną) oraz dwumacierzowych (gier 2 graczy gdzie każda kombinacja ma zdefiniowane 2 wypłaty) można dodatkowo
+Dla gier jednomacierzowych (tutaj: gier 2-osobowych dla których każdy profil ma zdefiniowane 2 przeciwne wypłaty albo
+wręcz tylko jedną) oraz dwumacierzowych (gier 2-osobowych gdzie każdy profil ma zdefiniowane 2 wypłaty) można dodatkowo
 próbować obliczyć równowagę w strategiach mieszanych:
 
 \begin{gtl}

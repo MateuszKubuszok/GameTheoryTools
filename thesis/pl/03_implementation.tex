@@ -8,7 +8,7 @@
 
 \section{Wprowadzenie}
 
-W rozdziale tym zostaną opisane szczegóły implementacji projektu. Uwzględnia to zarówno wykorzystane narzędzia, sposób
+W rozdziale tym zostaną opisane szczegóły implementacji projektu. Uwzględnimy zarówno wykorzystane narzędzia, sposób
 organizacji kodu jak i informacje na temat zastosowanych rozwiązań. Nie będziemy się koncentrować na przeglądzie kodu
 źródłowego, ale raczej na wykorzystanych algorytmach i strukturach danych. Na koniec omówimy praktyki przyjęte, aby
 umożliwić stworzenie wysokiej jakości kodu.
@@ -27,12 +27,12 @@ bezkontekstowych - w projekcie do stworzenia parsera wczytującego dane wykorzys
 zdefiniowanego kodu \LANG{C}/\LANG{C++}.
 
 Projekt wykorzystuje również bibliotekę \LIB{Boost} - z wyjątkiem kilku miejsc \LIB{Boost.Container} całkowicie
-zastąpiła w nim bibliotekę \LIB{STL}, pozostałe komponenty biblioteki \LIB{Boost} zostały użyte jako uzupełnienie
-biblioteki \LIB{STL}.
+zastąpił w nim kontenery biblioteki \LIB{STL}, pozostałe komponenty biblioteki \LIB{Boost} zostały użyte jako
+uzupełnienie biblioteki \LIB{STL}.
 
 \subsection{Wewnętrzna struktura projektu}
 
-(Niemal) wszystkie komponenty umieszczone zostały we wspólnej przestrzeni nazw \CODE{GT}, przy czym klasy pogrupowano
+Niemal wszystkie komponenty umieszczone zostały we wspólnej przestrzeni nazw \CODE{GT}, przy czym klasy pogrupowano
 w kolejne 4 podprzestrzenie nazw:
 \begin{itemize}
 \item \CODE{Model} - klasy implementujące model danych bądź powiązane,
@@ -40,6 +40,8 @@ w kolejne 4 podprzestrzenie nazw:
 \item \CODE{GTL} - klasy parsera danych wejściowych,
 \item \CODE{Program} - klasy powiązane z utworzeniem pliku wykonywalnego parsera.
 \end{itemize}
+Wyjątek stanowiły jedynie elementy, które do poprawnego działania, wymagały umieszczenia w przestrzeni nazw \CODE{std},
+jak np. niektóre przeciążenia operatorów.
 
 \section{Model danych}
 
@@ -48,20 +50,20 @@ gry zdefiniowano osobny model danych (jednak tam, gdzie to możliwe, uwspólnion
 
 Przyjęto założenie, że raz utworzonego modelu danych nie modyfikuje się - z tego powodu wszystkie gotowe instancje
 przechowuje się przy pomocy inteligentnych wskaźników na stałe obiekty - zmniejsza to narzut związany z kopiowaniem
-obiektów, a także umożliwia zastosowanie co bardzie kosztownych operacji jako jednorazowy narzut związany z utworzeniem
-obiektu.
+obiektów, a także umożliwia zastosowanie co bardziej kosztownych operacji, jako jednorazowy koszt występujący
+w chwili utworzenia obiektu.
 
 \subsection{Gracz}
 
 Wspólnym elementem interfejsu są przede wszystkim instancje graczy. Każda z nich przechowuje informację na temat nazwy
-identyfikującej gracza, a także tablicę zawierającą strategię i mapę jego indeksów strategii - dzięki temu znalezienie
-jej nazwy na podstawie numeru jest możliwe w czasie $O(1)$, zaś nr indeksu na podstawie nazwy w czasie 
+identyfikującej gracza, a także tablicę zawierającą strategie oraz mapę indeksów jego strategii - dzięki temu
+znalezienie nazwy na podstawie jej numeru jest możliwe w czasie $O(1)$, zaś numeru indeksu na podstawie nazwy w czasie 
 $O(log\;\ABS{S})$ (gdzie $\ABS{S}$ to liczba strategii gracza) - obie te informacje są bardzo często wykorzystywane,
 więc szybkie ich przeliczanie warte jest jednorazowego narzutu związanego z wypełnieniem dwóch osobnych struktur danych.
 
 \subsection{Wartości funkcji wypłaty dla podanych strategii}
 
-Wartości wypłaty wszystkich graczy dla danej kombinacji strategii czystych zamknięto w osobnym obiekcie danych - jest on
+Wartości wypłaty wszystkich graczy dla danego profilu strategii czystych zamknięto w osobnym obiekcie danych - jest on
 kolejnym wspólnym elementem interfejsu. Obiekt ten zwraca wypłatę dla danego gracza - wewnętrzna reprezentacja danych
 zrealizowana jest przy pomocy mapy, aby zminimalizować czas dostępu do żądanej wartości ($O(log\;n)$ dla $n$ graczy).
 
@@ -99,31 +101,35 @@ właściwością - pozwala łatwo odzyskać profil na podstawie przydzielonego m
 \subsection{Gry w formie ekstensywnej}
 
 Gry w postaci ekstensywnej opisują struktury w formie drzewa i tak też są implementowane w programie. Każdemu 
-wierzchołkowi w grafie opowiada obiekt wierzchołka przechowujący mapę potomków - rozwiązane uznano za mniej
-problematyczne niż tablica mieszająca ze względu na brak wymogu obecności każdej zadeklarowanej strategii gracza
-podejmującego decyzję w danym wierzchołku w zbiorze potomków tego wierzchołka.
+wierzchołkowi w drzewie opowiada obiekt wierzchołka przechowujący mapę potomków - rozwiązane uznano za bardziej
+naturalne (ze względu na samą naturę reprezentowanego obiektu) oraz mniej problematyczne niż tablica mieszająca,
+która bez modyfikacji zakładałaby możliwość wyboru każdej z zadeklarowanych przez gracza strategii. Ponieważ dopuszczamy
+możliwość wyboru dowolnego co najmniej 2-elementowego podzbioru strategii jako zbioru możliwych wyborów w danym
+wierzchołku, byłby to jedynie dodatkowy problem do rozwiązania.
 
-Funkcja wypłaty przeszukuje drzewo i zwraca wartości przechowywane w odnalezionym węźle.
+Przy takiej definicji modelu funkcja wypłaty przeszukuje jedynie drzewo i zwraca wartości przechowywane
+w odnalezionym węźle.
 
 \section{Procedury obliczające równowagi}
 
 \subsection{Gry w formie strategicznej}
 
 Ponieważ nie jest znany żaden wydajny algorytm odnajdywania równowagi w strategiach czystych w grach strategicznych
-konieczne jest przeszukanie całej przestrzeni rozwiązań - testowania każdej kombinacji strategii jako potencjalnej
-równowagi Nasha. Jedyną możliwą do zastosowania optymalizacją jest eliminacja strategii zdominowanych, nie gwarantuje
-ona jednak, że wyeliminowane zostanie jakaś znacząca ilość strategii (w najgorszym przypadku żadna).
+konieczne jest przeszukanie całej przestrzeni rozwiązań - testowania każdego profilu strategii jako potencjalnej
+równowagi Nasha. Jedyną możliwą do zastosowania optymalizacją jest eliminacja strategii zdominowanych. Nie gwarantuje
+ona jednak, że wyeliminowana zostanie jakaś znacząca ilość strategii (w najgorszym przypadku żadna).
 
 Program korzysta z odwracalności przyjętej funkcji mieszającej, aby iterować po wszystkich jej wartościach, odzyskiwać
 z nich profil strategii i testować czy jest równowagą Nasha.
 
-Strategie mieszane w grach jedno- i dwumacierzowych jako obliczane przy pomocy algorytmu Simpleks są otrzymywane przez
-proste wypełnienie modeli biblioteki \LIB{GLPK} i oddelegowanie obliczenia wartości problemu
+Strategie mieszane w grach jedno- i dwumacierzowych jako wartości obliczane przy pomocy algorytmu simpleks, są
+otrzymywane przez wypełnienie modeli biblioteki \LIB{GLPK} i oddelegowanie obliczenia wartości problemu
 liniowego/całkowitoliczbowego na jej procedury.
 
 \subsubsection{Gry jednomacierzowe}
 
-Problem zapisano w języku \LANG{MathProg} następująco:
+Korzystając ze wzorów \ref{MTRX2a} oraz \ref{MTRX2b} możemy zapisać problem w języku \LANG{MathProg}. Wygląda on
+wówczas następująco:
 
 \begin{mathprog}[caption=Przykładowe dane]
 data;
@@ -196,7 +202,9 @@ end;
 
 \subsubsection{Gra dwumacierzowa}
 
-Problem zapisano w jeżyku \LANG{MathProg} następująco:
+Do obliczania wartości gry dwumacierzowej wykorzystujemy algorytm SGC. Ograniczenia \ref{SGC2a}, \ref{SGC2b},
+\ref{SGC2c}, \ref{SGC2d}, \ref{SGC2e} oraz \ref{SGC2f} wraz z definicjami zmiennych w języku \LANG{MathProg}, wyglądają
+następująco:
 
 \begin{mathprog}[caption=Przykładowe dane]
 data;
@@ -306,14 +314,14 @@ printf "Sum = %s, \n", sum{j in P2S} p2s[j] * u2s[j];
 printf "Max = %s, \n", U2;
 \end{mathprog}
 
-Dla testów wybrano następującą funkcję celu:
+Dla testów wybraliśmy następującą funkcję celu:
 $$\textbf{minimalizuj} \frac{\sum_{s_1 \in S_1} r_{s_1} + \sum_{s_2 \in S_2} r_{s_2}}{2}$$
 minimalizującą średnią wartość żalu przy założeniu rozkładu jednostajnego. Możliwym usprawnieniem jest zmiana na któreś
 z rozwiązań zaproponowanym przez autorów oryginalnej pracy.
 
 \subsection{Gry w formie ekstensywnej}
 
-Rozważane są wyłącznie gry z informacją doskonałą. Aby zaleźć w nich równowagę Nasha rekurencyjnie obliczamy wartości
+Rozważamy wyłącznie gry z informacją doskonałą. Aby zaleźć w nich równowagę Nasha rekurencyjnie obliczamy wartości
 podgier dla każdego z wierzchołków. W wywołaniach przekazujemy listę na którą dopisujemy optymalny wybór dla danego
 gracza. Po obliczeniu wartości dla wszystkich strategii, wybieramy najlepszą, dopisujemy ją do listy i zwracamy wartość
 gry. Po zakończeniu otrzymujemy listę wybranych strategii (równowagę Nasha) oraz wypłaty graczy.
@@ -321,10 +329,11 @@ gry. Po zakończeniu otrzymujemy listę wybranych strategii (równowagę Nasha) 
 \section{Parser danych wejściowych}
 
 Za przetwarzanie danych wejściowych odpowiada parser napisany przy pomocy pakietów \LIB{Flex} oraz \LIB{Bison}. Ponieważ
-przy ich udziale tworzy się parsery typu LALR możliwe jest pisane przejrzystej łatwej w rozwijaniu gramatyki, zaś 
-wyjściowy kod jest wydajny i bezpieczny. Gramatyka ta ma obecnie postać:
+przy ich udziale tworzy się parsery typu LALR, możliwe jest pisane przejrzystej, łatwej w rozwijaniu gramatyki, zaś 
+wyjściowy kod jest wydajny i bezpieczny. Przyjętą gramatykę przedstawiono na listingu \ref{GRAMMAR}.
 
 \begin{code}[caption=Gramatyka,
+             label=GRAMMAR,
              literate={->}{$\rightarrow$}{2}
                       {empty}{$\epsilon$}{1}]
 program          -> statements EOF
@@ -384,7 +393,7 @@ Definicje te są z kolei używane przy definiowaniu zmiennych (\textit{definitio
 
 \textit{program} składa się z sekwencji instrukcji (\textit{statement}) zakończonych średnikiem.
 
-Gramatyka przewiduje również dodatkowe możliwości języka takie, jak definiowanie warunków przy zapytaniach o równowagi,
+Gramatyka przewiduje również dodatkowe możliwości języka, takie, jak definiowanie warunków przy zapytaniach o równowagi,
 jak również wczytywanie i zapisywanie danych do plików. Budowanie parsera LALR rozpoznającego tą gramatykę nie prowadzi
 do konfliktów redukcji-przesunięcia. Przykłady rozpoznawanej składni można znaleźć w Dodatku \ref{GTL}.
 
