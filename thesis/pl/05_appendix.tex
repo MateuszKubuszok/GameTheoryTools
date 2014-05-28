@@ -192,7 +192,7 @@ FIND name, strategies
 
 \section{Gry w postaci strategicznej}
 
-Każda gra w postaci strategicznej powinna mieć zdefiniowane wartości funkcji wypłaty dla wszystkich kombinacji strategii
+Każda gra w postaci strategicznej powinna mieć zdefiniowane wartości funkcji wypłaty dla wszystkich profili strategii
 czystych poszczególnych graczy. Pozwala jednak na pewną dowolność w definiowaniu ich:
 
 \begin{gtl}
@@ -212,10 +212,10 @@ LET game1 BE
   END;
 \end{gtl}
 
-Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Kombinacje strategii z
+Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Profile strategii z
 kolei mogą być podawane od razu w komplecie, jak również rozbite na etapy. Każda definicja strategii ma postać
 \CODE{\{ gracz=strategia[, gracz2=strategia2[, ...]] : [kolejne definicje lub wypłaty graczy] \}}. Wymagane jest podanie
-wszystkich wypłat jak również nie definiowane dwukrotnie wypłaty dla tej samej kombinacji strategii.
+wszystkich wypłat, jak również nie definiowane dwukrotnie wypłaty dla tego samego profilu strategii.
 
 Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mieszanych:
 
