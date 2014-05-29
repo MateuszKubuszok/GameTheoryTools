@@ -120,10 +120,10 @@ $$(\exists_{s'_i}) (\forall_{s_{-i} \in S_{-i'}}) u_i(s_i, s_{-i}) < u_i(s'_i, s
 \cite[str.~2]{PNS-NE}
 \end{definition}
 
-Strategie takie zawsze mogą zostać zastąpione przez jakąś inną strategię, więc szukając punktu równowagi Nasha możemy je
-pominąć w rozważaniach, gdyż z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle mówiąc możemy
-wyeliminować wszystkie strategie, które są równie dobre jeśli istnieje przynajmniej jedna strategia zawsze od nich
-lepsza, lub wszystkie oprócz jednej dowolnej jeśli wszystkie są równie dobre).
+Strategie ściśle zdominowane zawsze mogą zostać zastąpione przez jakąś inną strategię, więc szukając punktu równowagi
+Nasha możemy je pominąć w rozważaniach, gdyż z definicji nie mogą one wchodzić w skład szukanego profilu. (Ściśle
+mówiąc możemy wyeliminować wszystkie strategie ściśle zdominowane oraz większość z słabo zdominowanych. Możliwe jest
+jednak wchodzenie w skład równowagi Nasha jednej bądź więcej strategi słabo zdominowanych).
 
 \textbf{Metoda eliminacji strategii zdominowanych} wykorzystuje ten fakt do usuwania tych strategii z rozważanej gry
 tak długo, aż zostaną wyłącznie strategie niezdominowane. Zdarza się, że prowadzi to do sytuacji, gdzie równowaga jest
@@ -523,7 +523,7 @@ w grach $n$-osobowych \cite{SCARF-NR},
 \item[algorytm Portera-Nudelmana-Shohama] dla $n > 2$ graczy. \cite{PNS-NE}.
 \end{description}
 Definicja algorytmu Scarfa jest zbyt obszerna, aby opisywać ją w niniejszej pracy z należytą starannością. Dokładniej
-opiszemy więc, wyłącznie drugi z algorytmów.
+opiszemy więc wyłącznie drugi z algorytmów.
 
 Algorytm \textbf{Portera-Nudelmana-Shohama}\cite{PNS-NE} dla $n > 2$ graczy jest bardziej złożony niż jego wersja
 2-osobowa. Wykorzystuje on dwie kolejne procedury - rekurencyjne przeglądanie profili z nawrotami\INENG{Recursive
@@ -642,14 +642,13 @@ dla siebie strategii (nie przypisujemy im wypłaty). Z tego powodu wypłaty ści
 decyduje natura, są wartościami oczekiwanymi po wypłatach w poszczególnych wychodzących z węzła poddrzewach (podgrach)
 względem przypisanego danemu węzłowi natury rozkładowi prawdopodobieństwa. Zbiór informacyjny stanowi opis wiedzy
 gracza o jego położeniu w chwili podejmowania decyzji. Jeśli kilka wierzchołków należy do tego samego zbioru
-informacyjnego, gracz nie jest w stanie stwierdzić w którym z nich się znajduje - we wszystkich ma takie same
-możliwości do wyboru. Pozwala to opisywać np. stan gracza po zdarzeniu losowym lub brak informacji o ruchach
-przeciwników.
+informacyjnego, gracz nie jest w stanie stwierdzić w którym z nich się znajduje. Pozwala to opisywać np. stan gracza po
+zdarzeniu losowym lub brak informacji o ruchach przeciwników.
 
-\subsection{Równowagi w strategiach czystych w grach z informacją doskonałą}
+\subsection{Równowagi w strategiach czystych w grach z pełną informacją}
 
 \begin{definition}
-\textbf{Gra z informacją (pamięcią) doskonałą}\INENG{perfect recall} to gra, w której każdy z graczy w dowolnym
+\textbf{Gra z pełną informacją}\INENG{complete information} to gra, w której każdy z graczy w dowolnym
 momencie jest poinformowany o wszystkich wiodących do danej chwili ruchach - każdy wierzchołek należy do
 jednoelementowego zbioru informacyjnego.
 \cite[str.~81]{FT-GT}
@@ -662,7 +661,7 @@ ostatecznie otrzymalibyśmy dla każdej z możliwości. Ponieważ mamy do czynie
 się, że również oni wybraliby optymalne dla siebie strategie.
 
 \begin{theorem}
-Każda gra w postaci ekstensywnej z informacją doskonałą posiada równowagę Nasha w strategiach czystych.
+Każda gra w postaci ekstensywnej z pełną informacją posiada równowagę Nasha w strategiach czystych.
 \cite[str.~91]{FT-GT}
 \end{theorem}
 
@@ -675,7 +674,7 @@ nie chciałby od niej odstąpić - tym samym odnaleźlibyśmy równowagę Nasha 
 
 \subsection{Inne gry w postaci ekstensywnej}
 
-W grach bez informacji doskonalej sytuacja komplikuje się. Z zbiorze informacyjnym może znajdować się kilka węzłów.
+W grach bez pełnej informacji sytuacja komplikuje się. Z zbiorze informacyjnym może znajdować się kilka węzłów.
 Wówczas nie wiemy dokładnie w którym z nich się znajdujemy, zaś dla każdego z nich inny wybór strategii może być tym
 optymalnym. Proste przejrzenie drzewa od liści do korzenia nie pozwoli nam więc w oczywisty sposób wybrać najlepszych
 strategii.
@@ -684,12 +683,13 @@ W takiej sytuacji można jednak znaleźć równowagę Nasha w \textbf{strategiac
 
 \begin{definition}
 \textbf{Strategie mieszane} definiuje się analogicznie jak w grach w postaci strategicznej - istotny jest jednak fakt,
-że strategią czystą jest podjęcie decyzji we wszystkich wierzchołkach drzewa, w których ruch należy do danego gracza
-i to nad takimi kompletnymi decyzjami jest ustanawiany rozkład.
+że strategią czystą jest jednoczesne podjęcie przez gracza decyzji dla każdego jego wierzchołka i to nad takimi
+kompletnymi decyzjami jest ustanawiany rozkład.
 \end{definition}
 
 \begin{definition}
-\textbf{Strategie postępowania}\INENG{behavior strategy} określają rozkład nad wyborem w określonym wierzchołku.
+\textbf{Strategie postępowania}\INENG{behavior strategy} w przeciwieństwie do strategii mieszanych przypisują rozkłady
+prawdopodobieństwa, nie całym strategiom czystym, ale ruchom możliwym do wykonania w poszczególnych wierzchołkach.
 \cite[str.~83]{FT-GT}
 \end{definition}
 
