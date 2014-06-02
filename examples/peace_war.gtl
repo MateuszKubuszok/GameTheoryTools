@@ -1,0 +1,24 @@
+/* Peace-war game.
+ *
+ * Peace benefit both nations. Aggression over peacful country gives huge benefit to aggressor and breaks
+ * economy of attacked country. Countries vary of each other invest in military slowing down their economy,
+ * but saves themselves from destruction.
+ */
+LET pw
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { peace, war },
+         PLAYER p2 { peace, war }
+    SUCH AS
+      { p1=peace:
+        { p2=peace: 2, 2 },
+        { p2=war:   0, 3 }
+      },
+      { p1=war:
+        { p2=peace: 3, 0 },
+        { p2=war:   1, 1 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR pw;

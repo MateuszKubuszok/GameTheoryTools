@@ -1,15 +1,23 @@
-/* Stag hunt */
+/* Stag hunt.
+ *
+ * Hunters go catch something to eat. If both of the go after stag thet will succees and both obtain a lot
+ * of meat. If one of them go after hare, he will catch it but the other one won't catch any stag - though
+ * hare while more sure prey has also less meat.
+ *
+ * Game shows choice between profitable but not sure cooperation and sure but small prise. Even though both
+ * of them should go after stag they'll choose to only every two hunts.
+ */
 LET sh
  BE STRATEGIC GAME
     WITH PLAYER p1 { stag, hare },
          PLAYER p2 { stag, hare }
     SUCH AS
       { p1=stag:
-        { p2=stag: 2, 2  },
-        { p2=hare: 0, 1  }
+        { p2=stag: 2, 2 },
+        { p2=hare: 0, 1 }
       },
       { p1=hare:
-        { p2=stag: 1, 0  },
+        { p2=stag: 1, 0 },
         { p2=hare: 1, 1 }
       }
     END;

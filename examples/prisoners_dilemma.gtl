@@ -1,4 +1,9 @@
-/* Prisoner's dilemma */
+/* Prisoner's dilemma.
+ *
+ * Two prisoners are given the choices: they can cooperate with each other or sell the other one to
+ * the police. If they both cooperate, both get short imprisonment (1 year). If one of them defects, he'll go
+ * away but the other one gets heavier sentence (3 years). If both defects, both gets 2 years in prison.
+ */
 LET pd
  BE STRATEGIC GAME
     WITH PLAYER p1 { cooperates, defects },
@@ -14,6 +19,9 @@ LET pd
       }
     END;
 
+/* Game show how 2 rational players might worsen their situation even though cooperation would benefit
+ * both of them.
+ */
 FIND pure_equilibrium,
      mixed_equilibrium
  FOR pd;

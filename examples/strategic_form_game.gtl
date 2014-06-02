@@ -1,14 +1,14 @@
 /**
- * Example: shows some features of language.
+ * Example shows some features of language.
  */
 
-// Players definition
+// Players can be definined as params.
 
-LET player1 BE
-PLAYER p1 { s1, s2 };
+LET player1
+ BE PLAYER p1 { s1, s2 };
 
-LET player2 BE
-PLAYER p2 { s1, s2 };
+LET player2
+ BE PLAYER p2 { s1, s2 };
 
 /**
  * Defines strategic-form game under 'game1' identifier.

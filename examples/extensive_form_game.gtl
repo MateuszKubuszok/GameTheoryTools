@@ -1,17 +1,17 @@
 /**
- * Example: shows some features of language.
+ * Example shows some features of language.
  */
 
-// Players definition
+// Players can be definined as params.
 
-LET player1 BE
-PLAYER p1 { s1, s2 };
+LET player1
+ BE PLAYER p1 { s1, s2 };
 
-LET player2 BE
-PLAYER p2 { s1, s2 };
+LET player2
+ BE PLAYER p2 { s1, s2 };
 
 /**
- * Defines strategic-form game under 'game2' identifier.
+ * Defines extensive-form game with 'game2' identifier.
  */
 LET game2 BE
   EXTENSIVE GAME
@@ -40,11 +40,11 @@ FIND value FOR game2;
 FIND pure_equilibrium FOR game2;
 
 /**
- * Searches for mixed-strategy equlibrium.
+ * Searches for mixed-strategy equlibrium (not yet implemented).
  */
 FIND mixed_equilibrium FOR game2;
 
 /**
- * Searches for behavior-strategy equlibrium (non-existent for strategic-form games).
+ * Searches for behavior-strategy equlibrium (not yet implemented).
  */
 FIND behavior_equilibrium FOR game2;

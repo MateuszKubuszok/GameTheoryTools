@@ -1,0 +1,23 @@
+/* Ultimatim game.
+ *
+ * Player 1 proposes way to split 10 dollars. It can be either fair (5-5) or unfair (8-2). If Player 2 accept
+ * proposal money are split. If he rejects it, none of them gets anything.
+ */
+LET ug
+ BE EXTENSIVE GAME
+    WITH PLAYER p1 { fair,   unfair },
+         PLAYER p2 { accept, reject }
+    SUCH AS
+      { p1=fair:
+        { p2=accept: 5, 5 },
+        { p2=reject: 0, 0 }
+      },
+      { p1=unfair:
+        { p2=accept: 8, 2 },
+        { p2=reject: 0, 0 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR ug;

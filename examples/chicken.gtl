@@ -1,4 +1,8 @@
-/* Chicken game */
+/* Chicken game.
+ *
+ * Both rivals try do drive cars agains each other - the one that will "chicken" (swerve) looses.
+ * The one that drove straight longer wins. If none of them turns, they will crash.
+ */
 LET ch
  BE STRATEGIC GAME
     WITH PLAYER p1 { swerve, straight },
