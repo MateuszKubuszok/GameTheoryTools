@@ -45,18 +45,35 @@ const NumberPtr& PlainDataPiece::getPayoff(
 ) const {
     if (!positionsHelper.checkPlayer(playerName))
         throw ExceptionFactory::getInstance().invalidPlayer(playerName);
-    return (*numbers)[positionsHelper.calculatePlayer(playerName)];
+    const size_t positionInStorage = positionsHelper.calculatePlayer(playerName);
+
+    if (positionInStorage < numbers->size())
+        return (*numbers)[positionInStorage];
+
+    if (positionsHelper.getPlayers()->size() == 2 && numbers->size() == 1) {
+        // In a matrix game we are allowed to deduce that: (player 2's payoff) = -1 * (player 1's payoff)
+        Numbers&     payoffs       = const_cast<Numbers&>(*numbers);
+        const Number player1Payoff = *(*numbers)[0];
+        NumberPtr    player2Payoff(new Number(player1Payoff * -1.0));
+        payoffs.push_back(player2Payoff);
+
+        return payoffs[positionInStorage];
+    }
+
+    throw ExceptionFactory::getInstance()
+              .noParamsForPositions(positionInStorage, positionsHelper.getUpperBound());
 }
 
 bool PlainDataPiece::is0Sum() const {
     if (positionsHelper.getPlayers()->size() == 2 && numbers->size() == 1)
         return true;
 
-    double sum = 0.0;
+    double sum   = 0.0;
     for (NumberPtr& number : *numbers)
         sum += number->get_d();
 
-    return (sum*sum) < 10e-16;
+    double delta = 10e-16;
+    return (sum*sum) < delta;
 }
 
 Message PlainDataPiece::toString() const {

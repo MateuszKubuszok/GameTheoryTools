@@ -67,7 +67,7 @@ public:
      *
      * @param playerName        name of Player for which payoff is required
      * @return                  value of a payoff
-     * @throw InvalidCoordinate thrown when player name is not known
+     * @throw InvalidCoordinate thrown when player name is not known or payoff for such player is not set
      */
     virtual const NumberPtr& getPayoff(
         const Identifier& playerName

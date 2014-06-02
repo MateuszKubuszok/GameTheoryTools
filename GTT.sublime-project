@@ -75,7 +75,7 @@
         },
         {
             "name":        "Executables",
-            "shell_cmd":   "scons -Q buildExecutables --implicit-deps-unchanged --jobs debug=1 12 2> errors.log",
+            "shell_cmd":   "scons -Q buildExecutables --implicit-deps-unchanged --jobs 12 debug=1 2> errors.log",
             "working_dir": "${project_path}"
         },
         {
