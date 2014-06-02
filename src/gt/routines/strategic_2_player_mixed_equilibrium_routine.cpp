@@ -208,6 +208,20 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
     const int rm1RowStart  = pb2RowStart  + player2.getStrategiesNumber();
     const int rm2RowStart  = rm1RowStart  + player1.getStrategiesNumber();
 
+    // LP problem definition does not allow negative values - we shift by const to make all non-negative
+    // value will be calculated manually in
+    // #solveProblem(LPProblem*,const StrategicDataAccessor&,const StrategicGamePositionsHelper&)const
+    // so we don't need to pass shift between methods
+    Number payoffShift = createNumber(0.0);
+    for (Index k = 0; k < upperBound; k++) {
+        const NumberPtr& p1Payoff = data[k]->getPayoff(player1Name);
+        if (*p1Payoff < payoffShift)
+            payoffShift = *p1Payoff;
+        const NumberPtr& p2Payoff = data[k]->getPayoff(player2Name);
+        if (*p2Payoff < payoffShift)
+            payoffShift = *p2Payoff;
+    }
+
     vector<int>     rows;
     vector<int>     cols;
     vector<double>  values;
@@ -225,8 +239,11 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
         const Identifier&  player2Strategy = positions->at(player2Name);
         const Index        i               = player1.getStrategyOrdinal(player1Strategy);
         const Index        j               = player2.getStrategyOrdinal(player2Strategy);
-        const double       player1Payoff   = data[positions]->getPayoff(player1Name)->get_d();
-        const double       player2Payoff   = data[positions]->getPayoff(player2Name)->get_d();
+        // shift value by calculated constans to ensure non-negativity
+        const Number       shiftedP1Payoff = (*data[positions]->getPayoff(player1Name)) - payoffShift;
+        const Number       shiftedP2Payoff = (*data[positions]->getPayoff(player2Name)) - payoffShift;
+        const double       player1Payoff   = shiftedP1Payoff.get_d();
+        const double       player2Payoff   = shiftedP2Payoff.get_d();
 
         if (p1Min > player1Payoff) p1Min = player1Payoff;
         if (p1Max < player1Payoff) p1Max = player1Payoff;

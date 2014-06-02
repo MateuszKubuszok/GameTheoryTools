@@ -184,6 +184,95 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_toString ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( prisonners_dilemma ) {
+    // given
+    GT::Model::ResultFactory::getInstance()
+        .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
+        .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
+
+    GT::IdentifierPtr  p1        = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  p2        = GT::createIdentifierPtr("p2");
+    GT::IdentifierPtr  cooperate = GT::createIdentifierPtr("cooperates");
+    GT::IdentifierPtr  defects   = GT::createIdentifierPtr("defects");
+    GT::IdentifiersPtr pd        = GT::createIdentifiersPtr();
+    pd->push_back( cooperate );
+    pd->push_back( defects );
+
+    GT::PositionsPtr p1Cooperate = GT::createPositionsPtr();
+    p1Cooperate->insert( GT::Positions::value_type( *p1, *cooperate ) );
+    GT::PositionsPtr p1Defects = GT::createPositionsPtr();
+    p1Defects->insert( GT::Positions::value_type( *p1, *defects ) );
+
+    GT::PositionsPtr p2Cooperate = GT::createPositionsPtr();
+    p2Cooperate->insert( GT::Positions::value_type( *p2, *cooperate ) );
+    GT::PositionsPtr p2Defects = GT::createPositionsPtr();
+    p2Defects->insert( GT::Positions::value_type( *p2, *defects ) );
+
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, pd));
+    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, pd));
+    players->insert( GT::Model::Players::value_type( *p1, player1 ) );
+    players->insert( GT::Model::Players::value_type( *p2, player2 ) );
+
+    GT::Model::GameBuilderPtr gameBuilder = GT::Model::GameFactory::getInstance().buildStrategicGame();
+    gameBuilder->setPlayers(players);
+
+    {
+        GT::NumbersPtr payoff = GT::createNumbersPtr();
+        payoff->push_back( GT::createNumberPtr( -1.0 ) );
+        payoff->push_back( GT::createNumberPtr( -1.0 ) );
+        gameBuilder->clone()->addNextPositions(p1Cooperate).addNextPositions(p2Cooperate).setPayoffs(payoff);
+    }
+    {
+        GT::NumbersPtr payoff = GT::createNumbersPtr();
+        payoff->push_back( GT::createNumberPtr( -3.0 ) );
+        payoff->push_back( GT::createNumberPtr(  0.0 ) );
+        gameBuilder->clone()->addNextPositions(p1Cooperate).addNextPositions(p2Defects).setPayoffs(payoff);
+    }
+    {
+        GT::NumbersPtr payoff = GT::createNumbersPtr();
+        payoff->push_back( GT::createNumberPtr(  0.0 ) );
+        payoff->push_back( GT::createNumberPtr( -3.0 ) );
+        gameBuilder->clone()->addNextPositions(p1Defects).addNextPositions(p2Cooperate).setPayoffs(payoff);
+    }
+    {
+        GT::NumbersPtr payoff = GT::createNumbersPtr();
+        payoff->push_back( GT::createNumberPtr( -2.0 ) );
+        payoff->push_back( GT::createNumberPtr( -2.0 ) );
+        gameBuilder->clone()->addNextPositions(p1Defects).addNextPositions(p2Defects).setPayoffs(payoff);
+    }
+
+
+    GT::Model::GamePtr          game       = gameBuilder->build();
+    GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
+
+    // when
+    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Model::ResultPtr result;
+
+    // then
+    BOOST_REQUIRE_NO_THROW( result = routine.findResultFor(game, conditions) );
+    BOOST_CHECK_EQUAL(
+        result->getResult(),
+        GT::Message() +
+        "Mixed Strategies:\n"
+        "\tp1:\n"
+        "\t\tcooperates:\n"
+        "\t\t\t0.00000\n"
+        "\t\tdefects:\n"
+        "\t\t\t1.00000\n"
+        "\tp2:\n"
+        "\t\tcooperates:\n"
+        "\t\t\t0.00000\n"
+        "\t\tdefects:\n"
+        "\t\t\t1.00000\n"
+        "Payoff:\n"
+        "\t\t\tp1,\tp2\n"
+        "\tPayoff:\n"
+        "\t\t\t-2.00000,\t-2.00000\n"
+    );
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

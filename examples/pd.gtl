@@ -1,0 +1,19 @@
+/* Prisonner's dilemma */
+LET pd
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { cooperates, defects },
+         PLAYER p2 { cooperates, defects }
+    SUCH AS
+      { p1=cooperates:
+        { p2=cooperates: -1, -1 },
+        { p2=defects:    -3,  0 }
+      },
+      { p1=defects:
+        { p2=cooperates:  0, -3 },
+        { p2=defects:    -2, -2 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR pd;
