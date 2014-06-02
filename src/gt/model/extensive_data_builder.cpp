@@ -50,6 +50,8 @@ DataBuilder& ExtensiveDataBuilder::setPlayers(
     if (data->isNotNull())
         throw ExceptionFactory::getInstance().playersAlreadySet();
 
+    checkPlayers(newPlayers);
+
     data    = ExtensiveDataPtr(new ExtensiveData(newPlayers));
     players = newPlayers;
 

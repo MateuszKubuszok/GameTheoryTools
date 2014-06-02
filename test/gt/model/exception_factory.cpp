@@ -4,6 +4,35 @@ BOOST_AUTO_TEST_SUITE( ExceptionFactory )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_duplicatedPlayerName ) {
+    // given
+    GT::Identifier playerName = GT::createIdentifier("player");
+
+    // when
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .duplicatedPlayerName(playerName);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Name 'player' already used for another player"
+    );
+}
+
+BOOST_AUTO_TEST_CASE( ExceptionFactory_emptyPlayerName ) {
+    // given
+    // when
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance().emptyPlayerName();
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Player's name cannot be empty"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_coordinatesAlreadySet ) {
     // given
     GT::Identifier playerName   = GT::createIdentifier("player");

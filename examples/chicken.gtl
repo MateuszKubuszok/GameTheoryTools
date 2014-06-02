@@ -2,7 +2,7 @@
 LET ch
  BE STRATEGIC GAME
     WITH PLAYER p1 { swerve, straight },
-         PLAYER p1 { swerve, straight }
+         PLAYER p2 { swerve, straight }
     SUCH AS
       { p1=swerve:
         { p2=swerve:    0,   0  },

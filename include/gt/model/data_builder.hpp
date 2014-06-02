@@ -69,7 +69,7 @@ public:
      * @param positions         Positions
      * @return                  reference to itself
      * @throw IllegalInnerState thrown when some of Positions are already set
-     * @throw InvalidCoordinate thrown when some of values are not valid strategies names
+     * @throw InvalidCoordinate thrown when some of values are not valid players/strategies names
      */
     virtual DataBuilder& addNextPositions(
         const PositionsPtr positions

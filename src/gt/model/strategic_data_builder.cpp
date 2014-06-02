@@ -53,6 +53,8 @@ DataBuilder& StrategicDataBuilder::setPlayers(
     if (data->isNotNull())
         throw ExceptionFactory::getInstance().playersAlreadySet();
 
+    checkPlayers(newPlayers);
+
     data    = StrategicDataPtr(new StrategicData(newPlayers));
     players = newPlayers;
 
@@ -65,7 +67,12 @@ DataBuilder& StrategicDataBuilder::addNextPositions(
     for (Positions::value_type& position : (*positions)) {
         if (currentlyKnownPositions.count(position.first) && currentlyKnownPositions[position.first])
             throw ExceptionFactory::getInstance().coordinatesAlreadySet(*positions);
-        if (!(*players)[position.first]->hasStrategy(position.second))
+
+        const PlayerPtr player = (*players)[position.first];
+        if (!player)
+            throw ExceptionFactory::getInstance().invalidPlayer(position.first);
+
+        if (!player->hasStrategy(position.second))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(*positions);
     }
 

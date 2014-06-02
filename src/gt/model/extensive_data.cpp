@@ -79,6 +79,11 @@ const DataPiecePtr ExtensiveData::getPayoffs(
         const PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
         const Identifier& strategy     = position.second;
 
+        if (!playedPlayer) {
+            Identifier nullPlayer("no player definition");
+            throw ExceptionFactory::getInstance().invalidPlayer(nullPlayer);
+        }
+
         if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);
 
@@ -104,6 +109,11 @@ Data& ExtensiveData::setPayoffs(
     for (const Positions::value_type& position : positions) {
         const PlayerPtr   playedPlayer = getPlayerInTurn(checkedPositions);
         const Identifier& strategy     = position.second;
+
+        if (!playedPlayer) {
+            Identifier nullPlayer("no player definition");
+            throw ExceptionFactory::getInstance().invalidPlayer(nullPlayer);
+        }
 
         if (!playedPlayer->hasStrategy(strategy))
             throw ExceptionFactory::getInstance().invalidCoordinateFormat(positions);

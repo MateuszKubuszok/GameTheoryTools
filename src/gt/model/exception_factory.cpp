@@ -37,6 +37,20 @@ ExceptionFactory& ExceptionFactory::getInstance() {
     return instance;
 }
 
+InvalidCoordinate ExceptionFactory::duplicatedPlayerName(
+    const Identifier& playerName
+) const {
+    stringstream result;
+
+    result << "Name '" << playerName << "' already used for another player";
+
+    return InvalidCoordinate(result.str());
+}
+
+InvalidCoordinate ExceptionFactory::emptyPlayerName() const {
+    return InvalidCoordinate("Player's name cannot be empty");
+}
+
 InvalidCoordinate ExceptionFactory::coordinatesAlreadySet(
     const Positions& positions
 ) const {

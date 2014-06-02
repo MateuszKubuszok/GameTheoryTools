@@ -44,6 +44,24 @@ public:
     static ExceptionFactory& getInstance();
 
     /**
+     * @brief Thrown when Players don't have unique names.
+     *
+     * @param playerName duplicated name
+     * @return           InvalidCoordinate exception to throw
+     */
+    InvalidCoordinate duplicatedPlayerName(
+        const Identifier& playerName
+    ) const;
+
+    /**
+     * @brief Thrown when Player has empty name.
+     *
+     * @param name duplicated name
+     * @return     InvalidCoordinate exception to throw
+     */
+    InvalidCoordinate emptyPlayerName() const;
+
+    /**
      * @brief Thrown when values for given Positions are already set.
      *
      * @param positions invalid Positions

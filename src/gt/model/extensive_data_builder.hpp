@@ -87,8 +87,9 @@ public:
     /**
      * @brief Sets Players' definitions.
      *
-     * @param newPlayers Players' definitions
-     * @return           reference to itself for chanining
+     * @param newPlayers        Players' definitions
+     * @return                  reference to itself for chanining
+     * @throw InvalidCoordinate thrown id some Player's name is empty or dupicated
      */
     virtual DataBuilder& setPlayers(
         const PlayersPtr newPlayers

@@ -115,4 +115,29 @@ IdentifierPtr createIdentifierPtr(
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+namespace Model {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void checkPlayers(
+    const PlayersPtr& players
+) {
+    for (Players::const_iterator player = players->begin(); player != players->end(); ++player) {
+        if (player->first.size() == 0)
+            throw ExceptionFactory::getInstance().emptyPlayerName();
+
+        Players::const_iterator anotherPlayer = player;
+        for (++anotherPlayer; anotherPlayer != players->end(); ++anotherPlayer) {
+            if (player->first == anotherPlayer->first)
+                throw ExceptionFactory::getInstance().duplicatedPlayerName(player->first);
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+} /* END namespace GT */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 } /* END namespace GT */
