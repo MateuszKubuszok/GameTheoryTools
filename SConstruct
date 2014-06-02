@@ -41,6 +41,8 @@ GccFlags = {
     'STATIC'       : [ '--static' ],
     'PCH'          : [ '-x', 'c++' ]
 }
+if not debugSymbols:
+    GccFlags['COMMON'].append('-DNDEBUG')
 
 # Select used flags
 Flags = GccFlags
