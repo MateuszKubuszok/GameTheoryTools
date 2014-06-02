@@ -1,0 +1,19 @@
+/* Chicken game */
+LET ch
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { swerve, straight },
+         PLAYER p1 { swerve, straight }
+    SUCH AS
+      { p1=swerve:
+        { p2=swerve:    0,   0  },
+        { p2=straight: -1,   1  }
+      },
+      { p1=straight:
+        { p2=swerve:    1,  -1  },
+        { p2=straight: -10, -10 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR ch;

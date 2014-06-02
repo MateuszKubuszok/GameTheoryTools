@@ -1,0 +1,19 @@
+/* Stag hunt */
+LET sh
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { stag, hare },
+         PLAYER p1 { stag, hare }
+    SUCH AS
+      { p1=stag:
+        { p2=stag: 2, 2  },
+        { p2=hare: 0, 1  }
+      },
+      { p1=hare:
+        { p2=stag: 1, 0  },
+        { p2=hare: 1, 1 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR sh;

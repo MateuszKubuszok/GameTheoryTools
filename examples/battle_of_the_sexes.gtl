@@ -1,0 +1,36 @@
+/* Battle of the sexes - variant 1 */
+LET bots1
+ BE STRATEGIC GAME
+    WITH PLAYER w { opera, football },
+         PLAYER h { opera, football }
+    SUCH AS
+      { w=opera:
+        { h=opera:    3, 2 },
+        { h=football: 0, 0 }
+      },
+      { w=football:
+        { h=opera:    0, 0 },
+        { h=football: 2, 3 }
+      }
+    END;
+
+/* Battle of the sexes - variant 2 */
+LET bots2
+ BE STRATEGIC GAME
+    WITH PLAYER w { opera, football },
+         PLAYER h { opera, football }
+    SUCH AS
+      { w=opera:
+        { h=opera:    3, 2 },
+        { h=football: 1, 1 }
+      },
+      { w=football:
+        { h=opera:    0, 0 },
+        { h=football: 2, 3 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR bots1,
+     bots2;
