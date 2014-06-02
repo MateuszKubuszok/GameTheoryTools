@@ -54,8 +54,8 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::findResultFor(
     }
 
     const StrategicGamePositionsHelper positionsHelper(data->getPlayers());
-    LPProblemPtr                       problemPtr = initializeProblem(players);
-    LPProblem*                         problem    = problemPtr.get();
+    LPProblemPtr                       problemPtr  = initializeProblem(players);
+    LPProblem*                         problem     = problemPtr.get();
 
     fillUpProblem(problem, *data, positionsHelper);
 
@@ -109,6 +109,17 @@ void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
     const Identifier& player2Name = *( player2.getName() );
     const Index       upperBound  = positionsHelper.getUpperBound();
 
+    // LP problem definition does not allow negative values - we shift by const to make all non-negative
+    // value will be calculated manually in
+    // #solveProblem(LPProblem*,const StrategicDataAccessor&,const StrategicGamePositionsHelper&)const
+    // so we don't need to pass shift between methods
+    Number payoffShift = createNumber(0.0);
+    for (Index k = 0; k < upperBound; k++) {
+        const NumberPtr& payoff = data[k]->getPayoff(player1Name);
+        if (*payoff < payoffShift)
+            payoffShift = *payoff;
+    }
+
     vector<int>     player1Strategies(upperBound+1);
     vector<int>     player2Strategies(upperBound+1);
     vector<double>  payoff(upperBound+1);
@@ -120,7 +131,9 @@ void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
         // change 0-indexing used in Model to 1-indexing used in GLPK
         const Index        player1Ordinal  = player1.getStrategyOrdinal(player1Strategy) + 1;
         const Index        player2Ordinal  = player2.getStrategyOrdinal(player2Strategy) + 1;
-        const double       player1Payoff   = data[positions]->getPayoff(player1Name)->get_d();
+        // shift value by calculated constans to ensure non-negativity
+        const Number       shiftedPayoff   = (*data[positions]->getPayoff(player1Name)) - payoffShift;
+        const double       player1Payoff   = shiftedPayoff.get_d();
 
         // GLPK uses 1 indeksing also in data arrays
         player1Strategies[k+1] = player1Ordinal;

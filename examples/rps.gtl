@@ -1,0 +1,30 @@
+/* Rock-Paper-Scissors game:
+ *  1 - p1 win, p2 lost,
+ * -1 - p1 lost, p2 win,
+ *  0 - draw
+ */
+LET rps
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { rock, paper, scissors },
+         PLAYER p2 { rock, paper, scissors }
+    SUCH AS
+      { p1=rock:
+        { p2=rock:      0 },
+        { p2=paper:     1 },
+        { p2=scissors: -1 }
+      },
+      { p1=paper:
+        { p2=rock:     -1 },
+        { p2=paper:     0 },
+        { p2=scissors:  1 }
+      },
+      { p1=scissors:
+        { p2=rock:      1 },
+        { p2=paper:    -1 },
+        { p2=scissors:  0 }
+      }
+    END;
+
+FIND pure_equilibrium, // no equilibrium should be found
+     mixed_equilibrium // each player should have distribution (1/3, 1/3, 1/3) with 0.0 expected payoff
+ FOR rps;
