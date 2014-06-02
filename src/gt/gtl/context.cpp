@@ -65,15 +65,17 @@ Context& Context::registerParam(
     const IdentifierPtr identifier,
     const ParamPtr      param
 ) {
-    knownObjects.insert( KnownObjects::value_type(*identifier, param) );
+    if (!knownObjects.count(*identifier))
+        knownObjects.insert( KnownObjects::value_type(*identifier, param) );
+    else
+        knownObjects[*identifier] = param;
     return *this;
 }
 
 Context& Context::registerParam(
     const DefinitionPtr definition
 ) {
-    knownObjects.insert( KnownObjects::value_type(*definition->getName(), definition->getValue()) );
-    return *this;
+    return registerParam(definition->getName(), definition->getValue());
 }
 
 bool Context::hasRegistered(
