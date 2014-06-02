@@ -1,4 +1,4 @@
-/* Prisonner's dilemma */
+/* Prisoner's dilemma */
 LET pd
  BE STRATEGIC GAME
     WITH PLAYER p1 { cooperates, defects },
