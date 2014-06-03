@@ -47,8 +47,10 @@ after_success:
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/prisoners_dilemma.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/rock_paper_scissors.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/stag_hunt.gtl
-              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/travellers_dilemma.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/ultimatum_game.gtl
+              -   if [ "$TARGET" = "release" ]; then
+              -     valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/travellers_dilemma.gtl
+              -   fi
               - fi
 branches:
   except:       gh-pages
