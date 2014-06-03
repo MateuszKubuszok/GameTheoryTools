@@ -41,8 +41,14 @@ after_success:
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/strategic_form_game.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/extensive_form_game.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/properties_querying.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/battle_of_the_sexes.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/chicken.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/peace_war.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/prisoners_dilemma.gtl
               -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/rock_paper_scissors.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/stag_hunt.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/travellers_dilemma.gtl
+              -   valgrind --leak-check=full bin/$TARGET/gtl_program -i examples/ultimatum_game.gtl
               - fi
 branches:
   except:       gh-pages

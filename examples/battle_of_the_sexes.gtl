@@ -8,7 +8,7 @@
  *  1 - both stay home,
  *  2 - go separately enjoing the evening less that if they go with partner.
  *
- * Game shows inefficiency of Nash eqilibria in some cases (other kinds of equilibria might work out better).
+ * Game shows inefficiency of Nash equilibria in some cases (other kinds of equilibria might work out better).
  */
 LET home
  BE 0;
