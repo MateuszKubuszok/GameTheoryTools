@@ -6,14 +6,39 @@
 
 \chapter{Wnioski}
 
-TODO: co udało mi się zrealizować
+W trakcie rozwijania projektu udało mi się zaimplementować procedury obliczające równowagi Nasha w kilku przypadkach
+gier. Procedura obliczająca równowagi w grach macierzowych to przykład zwykłego programowania liniowego. Do jej
+rozwiązania wystarczył algorytm simpleksowy. W grach dwumacierzowych wykorzystałem programowanie całkowitoliczbowe,
+przez co ponownie mogłem wykorzystać wspomniany algorytm. Równowagi czyste odnajdywałem przeszukując przestrzenie
+rozwiązań: iteracyjnie - w grach w postaci strategicznej - oraz rekurencyjnie - w grach w formie ekstensywnej z pełną
+informacją.
 
-TODO: czego nie udało mi się zrealizować
+Nie udało mi się niestety zaimplementować algorytmów szukających równowag w wieloosobowych grach w postaci normalnej.
+Opisałem zaledwie jeden z algorytmów, które mogą do tego celu posłużyć. Nie rozważyłem również algorytmów szukania
+równowag w grach w postaci ekstensywnej w strategiach innych niż czyste oraz bez pełnej informacji. Projekt zrealizował
+jedynie podstawową wymaganą funkcjonalność.
 
-TODO: jakie wnioski na temat algorytmów wyciągnąłem podczas pisania pracy
+Przedstawiając znane obecnie algorytmy zaważyłem pewne drobne podobieństwa w rozumowaniu autorów. W grach jedno- i
+dwyumacierzowych (Lemke-Howson) aby znaleźć równowagę przeszukujemy wierzchołki pewnego wielowymiarowego wypukłego
+wielościanu (sympleksu), wiedząc, że równowaga będzie się znajdować w jednym z wierzchołków. O ile jednak w grach
+macierzowych o wyborze następnego sprawdzanego wierzchołka decyduje funkcja celu, w grach dwumacierzowych Lemke oraz
+Howson szukają parametrów spełniających problem komplementarności liniowej. Podobne przeszukiwanie pojawia się w
+algorytmie Portera-Nudelmana-Shohama - w nich jednak o kolejności sprawdzania rozwiązań decyduje nie incydentność
+wierzchołków sympleksa ale heurystyka preferująca profile o mniejszym i bardziej zbalansowanym wsparciu. Możemy więc
+przypuszczać, że autorzy tych algorytmów opierali się oni na podobnych koncepcjach, ale wyraźne różnice pokazują, że są
+to mimo wszystko odrębnie rozwijane rozwiązania.
 
-TODO: co jeszcze mógłbym zrobić w projekcie
+Nie znalazłem podobieństw miedzy ww. a algorytmem Sandholma-Gilpina-Contizera. Nie jestem też wstanie wypowiedzieć się
+na temat podobieństw algorytmów stosowanych w grach w postaci ekstensywnej.
 
-TODO: podsumowanie
+Dalszym kierunkiem rozwoju prac nad projektem mogłoby być wdrożenie algorytmów obliczających równowagi strategiach
+mieszanych w wieloosobowych grach w postaci normalnej. Użytą funkcję celu w algorytmie Sandholma-Gilpina-Contizera można
+by zastąpić jednym z proponowanym przez nich rozszerzeń. Podobnie można by wprowadzić wsparcie dla gier w postaci
+ekstensywnej bez pełnej informacji i obliczać dla nich równowagi w strategiach mieszanych oraz postępowania.
+
+Tak więc, z powodzeniem udało mi się stworzyć narzędzie obliczające równowagi w podstawowych wymaganych rodzajach gier.
+W rozważanych przypadkach rozwiązania opierają się na algorytmie simpleks implementowanym przez bibliotekę GLPK lub
+przeszukiwaniu przestrzeni rozwiązań. Możliwy jest dalszy rozwój projektu w celu wspierania większej ilość rodzajów
+gier.
 
 \end{document}
