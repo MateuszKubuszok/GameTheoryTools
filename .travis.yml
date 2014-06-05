@@ -13,7 +13,7 @@ before_install:
               - sudo apt-get -qq update
               - if [[ "$TARGET" = "debug"]]; then
               -   export CONFIG=debug=1
-              -   if [[ "$TASK" = "buildExecutables" ]]
+              -   if [[ "$TASK" = "buildExecutables" ]]; then
               -     export MEMCHECK="valgrind --leak-check=full"
               -   fi
               - fi
