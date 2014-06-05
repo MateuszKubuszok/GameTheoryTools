@@ -11,20 +11,17 @@ before_install:
               - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
               - sudo add-apt-repository ppa:boost-latest/ppa -y
               - sudo apt-get -qq update
-              - if [ "$TARGET" = "debug" ]; then
+              - if [[ "$TARGET" = "debug" && "$TASK" = "buildExecutables" ]]; then
               -   export CONFIG=debug=1
               -   export MEMCHECK="valgrind --leak-check=full"
               - fi
-              - if [ "$TARGET" = "release" ]; then
-              -   export MEMCHECK=
-              - fi
 install:
-              - if [ "$CXX" = "g++" ]; then
+              - if [[ "$CXX" = "g++" ]]; then
               -   sudo apt-get -qq install gcc-4.8 g++-4.8
               -   export CXX="g++-4.8" CC="gcc-4.8"
               -   sudo apt-get -qq install libboost1.48-dev libboost-program-options1.48-dev libboost-program-options1.48.0 libboost-test1.48-dev libboost-test1.48.0
               - fi
-              - if [ "$CXX" = "clang++" ]; then
+              - if [[ "$CXX" = "clang++" ]]; then
               -   sudo apt-get -qq install libboost1.54-dev libboost-program-options1.54-dev libboost-program-options1.54.0 libboost-test1.54-dev libboost-test1.54.0
               - fi
               - sudo apt-get -qq install flex bison libgmp-dev glpk scons
@@ -32,18 +29,20 @@ install:
               - flex  --version
               - bison --version
               - scons --version
-              - if [ "$TARGET" = "debug" ]; then
+              - if [[ ! -z "$MEMCHECK" ]]; then
               -   sudo apt-get -qq install valgrind
               -   valgrind --version
               - fi
 script:         scons -Q $TASK --implicit-deps-unchanged --jobs 4 $CONFIG
 after_success:
               - ls -la bin/$TARGET
-              - $MEMCHECK bin/$TARGET/ModelsTests
-              - $MEMCHECK bin/$TARGET/RoutinesTests
-              - $MEMCHECK bin/$TARGET/GTLTests
-              - $MEMCHECK bin/$TARGET/ProgramsTests
-              - if [ "$TASK" = "buildExecutables" ]; then
+              - if [[ "$TASK" = "buildExecutables" ]]; then
+              -   if [[ "$TARGET" = "debug" ]]; then
+              -     $MEMCHECK bin/$TARGET/ModelsTests
+              -     $MEMCHECK bin/$TARGET/RoutinesTests
+              -     $MEMCHECK bin/$TARGET/GTLTests
+              -     $MEMCHECK bin/$TARGET/ProgramsTests
+              -   fi
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/strategic_form_game.gtl
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/extensive_form_game.gtl
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/properties_querying.gtl
@@ -54,7 +53,7 @@ after_success:
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/rock_paper_scissors.gtl
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/stag_hunt.gtl
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/ultimatum_game.gtl
-              -   if [ "$TARGET" = "release" ]; then
+              -   if [[ "$TARGET" = "release" ]]; then
               -     bin/$TARGET/gtl_program -i examples/strategic_form_game.gtl
               -   fi
               - fi
