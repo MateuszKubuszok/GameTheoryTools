@@ -54,7 +54,7 @@ after_success:
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/stag_hunt.gtl
               -   $MEMCHECK bin/$TARGET/gtl_program -i examples/ultimatum_game.gtl
               -   if [[ "$TARGET" = "release" ]]; then
-              -     bin/$TARGET/gtl_program -i examples/strategic_form_game.gtl
+              -     bin/$TARGET/gtl_program -i examples/travellers_dilemma.gtl
               -   fi
               - fi
 branches:
