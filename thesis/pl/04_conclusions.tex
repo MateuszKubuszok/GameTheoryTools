@@ -19,12 +19,12 @@ równowag w grach w postaci ekstensywnej w strategiach innych niż czyste oraz b
 jedynie podstawową wymaganą funkcjonalność.
 
 Przedstawiając znane obecnie algorytmy zaważyłem pewne drobne podobieństwa w rozumowaniu autorów. W grach jedno- i
-dwyumacierzowych (Lemke-Howson) aby znaleźć równowagę przeszukujemy wierzchołki pewnego wielowymiarowego wypukłego
+dwumacierzowych (Lemke-Howson), aby znaleźć równowagę, przeszukujemy wierzchołki pewnego wielowymiarowego wypukłego
 wielościanu (sympleksu), wiedząc, że równowaga będzie się znajdować w jednym z wierzchołków. O ile jednak w grach
 macierzowych o wyborze następnego sprawdzanego wierzchołka decyduje funkcja celu, w grach dwumacierzowych Lemke oraz
 Howson szukają parametrów spełniających problem komplementarności liniowej. Podobne przeszukiwanie pojawia się w
-algorytmie Portera-Nudelmana-Shohama - w nich jednak o kolejności sprawdzania rozwiązań decyduje nie incydentność
-wierzchołków sympleksa ale heurystyka preferująca profile o mniejszym i bardziej zbalansowanym wsparciu. Możemy więc
+algorytmie Portera-Nudelmana-Shohama. W nich jednak o kolejności sprawdzania rozwiązań decyduje nie incydentność
+wierzchołków sympleksa, ale heurystyka preferująca profile o mniejszym i bardziej zbalansowanym wsparciu. Możemy więc
 przypuszczać, że autorzy tych algorytmów opierali się oni na podobnych koncepcjach, ale wyraźne różnice pokazują, że są
 to mimo wszystko odrębnie rozwijane rozwiązania.
 
@@ -36,9 +36,9 @@ mieszanych w wieloosobowych grach w postaci normalnej. Użytą funkcję celu w a
 by zastąpić jednym z proponowanym przez nich rozszerzeń. Podobnie można by wprowadzić wsparcie dla gier w postaci
 ekstensywnej bez pełnej informacji i obliczać dla nich równowagi w strategiach mieszanych oraz postępowania.
 
-Tak więc, z powodzeniem udało mi się stworzyć narzędzie obliczające równowagi w podstawowych wymaganych rodzajach gier.
-W rozważanych przypadkach rozwiązania opierają się na algorytmie simpleks implementowanym przez bibliotekę GLPK lub
-przeszukiwaniu przestrzeni rozwiązań. Możliwy jest dalszy rozwój projektu w celu wspierania większej ilość rodzajów
+Podsumowując, z powodzeniem udało mi się stworzyć narzędzie obliczające równowagi w podstawowych wymaganych rodzajach
+gier. W rozważanych przypadkach rozwiązania opierają się na algorytmie simpleks implementowanym przez bibliotekę GLPK
+lub przeszukiwaniu przestrzeni rozwiązań. Możliwy jest dalszy rozwój projektu w celu wspierania większej ilość rodzajów
 gier.
 
 \end{document}
