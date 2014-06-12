@@ -95,6 +95,30 @@ BOOST_AUTO_TEST_CASE( Context_functional ) {
     BOOST_REQUIRE_THROW( context.getParam(*invalidIdentifier),  GT::GTL::NotDefinedParam );
 }
 
+BOOST_AUTO_TEST_CASE( Context_replaceParam ) {
+    // given
+    GT::IdentifierPtr  paramName                 = GT::createIdentifierPtr("paramName");
+
+    GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
+    GT::GTL::ParamPtr  numberParam               =
+        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+
+    GT::GTL::ObjectPtr objectParamValue          = GT::GTL::NullFactory::getInstance().createObject();
+    GT::GTL::ParamPtr  objectParam               =
+        GT::GTL::ParamPtr(new GT::GTL::ObjectParam(objectParamValue));
+
+    // when
+    GT::GTL::Context context;
+    context.registerParam(paramName, numberParam)
+           .registerParam(paramName, objectParam);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        context.getParam(*paramName),
+        objectParam
+    );
+}
+
 BOOST_AUTO_TEST_CASE( Context_serialize ) {
     // given
     GT::Model::ResultFactory::getInstance()
