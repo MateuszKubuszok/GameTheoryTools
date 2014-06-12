@@ -50,6 +50,64 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_build ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_noDuplicatedStrategies ) {
+    // given
+    GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s");
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
+    strategies->push_back( strategy );
+    strategies->push_back( strategy );
+    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*playerName, player) );
+
+    // when
+    GT::Model::ExtensiveDataBuilder dataBuilder;
+
+    // then
+    BOOST_CHECK_THROW( dataBuilder.setPlayers(players), GT::Model::InvalidCoordinate );
+}
+
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_noUnnamedPlayers ) {
+    // given
+    GT::IdentifierPtr  playerName  = GT::createIdentifierPtr("");
+    GT::IdentifierPtr  strategy1   = GT::createIdentifierPtr("p1s1");
+    GT::IdentifierPtr  strategy2   = GT::createIdentifierPtr("p1s2");
+    GT::IdentifiersPtr strategies  = GT::createIdentifiersPtr();
+    strategies->push_back( strategy1 );
+    strategies->push_back( strategy2 );
+    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*playerName,  player) );
+
+    // when
+    GT::Model::ExtensiveDataBuilder dataBuilder;
+
+    // then
+    BOOST_CHECK_THROW( dataBuilder.setPlayers(players), GT::Model::InvalidCoordinate );
+}
+
+BOOST_AUTO_TEST_CASE( StrategicDataBuilder_noDuplicatedPlayers ) {
+    // given
+    GT::IdentifierPtr  playerName  = GT::createIdentifierPtr("p1");
+    GT::IdentifierPtr  playerName2 = GT::createIdentifierPtr("p2");
+    GT::IdentifierPtr  strategy1   = GT::createIdentifierPtr("p1s1");
+    GT::IdentifierPtr  strategy2   = GT::createIdentifierPtr("p1s2");
+    GT::IdentifiersPtr strategies  = GT::createIdentifiersPtr();
+    strategies->push_back( strategy1 );
+    strategies->push_back( strategy2 );
+    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
+    GT::Model::PlayersPtr players(new GT::Model::Players());
+    players->insert( GT::Model::Players::value_type(*playerName,  player) );
+    players->insert( GT::Model::Players::value_type(*playerName2, player) );
+
+    // when
+    GT::Model::ExtensiveDataBuilder dataBuilder;
+
+    // then
+    BOOST_CHECK_THROW( dataBuilder.setPlayers(players), GT::Model::InvalidCoordinate );
+}
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataBuilder_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
