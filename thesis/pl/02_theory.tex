@@ -31,23 +31,38 @@ przeszukiwania przestrzeni rozwiązań.
 \section{Gra w postaci strategicznej}
 
 \begin{definition}
+\textbf{Gracz} to strona konfliktu reprezentowana przez element skończonego zbioru $I$ nazywanego zbiorem graczy.
+\cite[str.~4]{FT-GT}
+\end{definition}
+
+\begin{definition}
+Przez \textbf{strategię czystą} $s_i$ rozumiemy wybór na jaki może zdecydować się strona $i$ - w danej chwili może ona
+grać tylko jedną strategią. Przez $S_i$ rozumiemy zbiór wszystkich strategii czystych gracza $i$.
+\cite[str.~4]{FT-GT}
+\end{definition}
+
+Kombinację strategii wybranych przez graczy w danej chwili nazywamy \textit{profilem} i zapisujemy:
+$$s = (s_1, s_2, ..., s_n)$$
+Oznacza to, że gracz $1$ gra $s_1$, gracz $2$ gra $s_2$, itd. Podobnie
+$$S = S_1 \times S_2 \times ... \times S_n$$
+jest zapisem zbioru wszystkich możliwych profili $s$.
+
+\begin{definition}
+\textbf{Wypłatą} nazywamy subiektywny zysk gracza zdefiniowany dla danego profilu gry.
+\cite[str.~4]{FT-GT}
+\end{definition}
+
+\begin{definition}
 \textbf{Grą w postaci strategicznej (normalnej)}\INENG{strategic-form (normal-form) game} nazywamy trójkę
 $(I, S_i, u_i)$, gdzie:
 \begin{enumerate}
 \item $I = \{ 1, 2, 3, ..., n \}$ - skończony zbiór $n$-graczy,
-\item $S_i$ - przestrzeń strategii czystych\INENG{pure strategy} zdefiniowana dla każdego gracza $i \in I$,
+\item $S_i$ - zbiór strategii czystych \INENG{pure strategy} zdefiniowany dla każdego gracza $i \in I$,
 \item $u_i(s)$ - funkcja wypłaty\INENG{payoff function} określająca wypłatę gracza $i \in I$ dla każdego profilu
 $s \in S$.
 \end{enumerate}
 \cite[str.~4]{FT-GT}
 \end{definition}
-
-Przez strategię czystą rozumiemy wybór na jaki może zdecydować się dana strona - w danej chwili może ona grać tylko
-jedną strategią. Kombinację strategii wybranych przez graczy w danej chwili nazywamy \textit{profilem} i zapisujemy:
-$$s = (s_1, s_2, ..., s_n)$$
-Oznacza to, że gracz $1$ gra $s_1$, gracz $2$ gra $s_2$, itd. Podobnie
-$$S = S_1 \times S_2 \times ... \times S_n$$
-jest zapisem zbioru wszystkich możliwych profili $s$.
 
 Możemy przyjąć, że dla tak przyjętych oznaczeń, $s_i$ oznacza wybór $i$-tego gracza dla profilu $s$, a $s_{-i}$ opisywać
 będzie profil wszystkich wyborów oprócz wyboru gracza $i$:
@@ -62,8 +77,8 @@ W całym rozdziale będziemy też zakładać, że gracze są racjonalni, tzn. za
 
 \begin{definition}
 \textbf{Strategią mieszaną}\INENG{mixed strategy} gracza $i$ nazywamy rozkład $\sigma_i$ nad strategiami czystymi
-$S_i$. Za pomocą $\sigma^{*}$ oznaczymy profil strategii mieszanych pozostałych graczy. Wówczas funkcja wypłaty ma
-postać $u_i(\sigma_i, \sigma^{*})$ i jest równa wartości oczekiwanej funkcji wypłat dla strategii mieszanych wszystkich
+$S_i$. Za pomocą $\sigma_{-i}$ oznaczymy profil strategii mieszanych pozostałych graczy. Wówczas funkcja wypłaty ma
+postać $u_i(\sigma_i, \sigma_{-i})$ i jest równa wartości oczekiwanej funkcji wypłat dla strategii mieszanych wszystkich
 graczy.
 \cite[str.~5]{FT-GT}
 \end{definition}
@@ -77,7 +92,7 @@ $$(\forall_{i \in I}) (\forall_{s_{-i} \in S_{-i}}) u_i(s) \geq u_i(s_i, s_{-i})
 \cite[str.~11]{FT-GT}
 \end{definition}
 
-Oznacza to, że równowagą jest profil strategii, dla którego żadnemu z graczy nie opłaca się odstępować od swojej strategii, jeśli założy, że pozostali gracze również przystaną przy swoich strategiach.
+Oznacza to, że równowagą jest profil strategii, dla którego żadnemu z graczy nie opłaca się odstępować od swojej strategii, jeśli założy, że pozostali gracze również pozostaną przy swoich strategiach.
 
 Równowaga taka nie zawsze istnieje, czego przykładem jest gra w papier-kamień-nożyce:
 \begin{center}
@@ -101,21 +116,21 @@ możemy zrobić, to zoptymalizować algorytm siłowy\INENG{brute force} poprzez 
 \cite[str.~9--11]{FT-GT}.
 
 \begin{definition}
-\textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że dowolna strategia $s'_i$ jest równie dobra,
+\textbf{Strategia (słabo) zdominowana} to taka strategia $s_i \in S_i$, że istnieje strategia $s'_i$ równie dobra,
 jeśli nie lepsza od niej:
 $$(\exists_{s'_i}) (\forall_{s_{-i} \in S}) u_i(s_i, s_{-i}) \leq u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
-\textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że dowolna strategia $s'_i$ jest lepsza od niej:
+\textbf{Strategia ściśle zdominowana} to taka strategia $s_i \in S_i$, że istnieje strategia $s'_i$ lepsza od niej:
 $$(\exists_{s'_i}) (\forall_{s_{-i} \in S}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~6--7]{FT-GT}
 \end{definition}
 
 \begin{definition}
-\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że wszystkie strategie z danego
-podzbioru $S_{-i}' \subseteq S_{-i}$ są lepsze:
+\textbf{Strategia (ściśle) warunkowo zdominowana} to taka strategia $s_i \in S_i$, że istnieje lepsza strategia z danego
+podzbioru $S_{-i}' \subseteq S_{-i}$:
 $$(\exists_{s'_i}) (\forall_{s_{-i} \in S_{-i'}}) u_i(s_i, s_{-i}) < u_i(s'_i, s_{-i})$$
 \cite[str.~2]{PNS-NE}
 \end{definition}
@@ -138,7 +153,7 @@ mieszanych.
 \cite[str.~29]{FT-GT}
 \end{theorem}
 
-Fakt ten dowodzony jest to przy pomocy \textbf{twierdzenia Kakutaniego o punkcie stałym} \cite[str.~29]{FT-GT}.
+Fakt ten dowodzony jest przy pomocy \textbf{twierdzenia Kakutaniego o punkcie stałym} \cite[str.~29]{FT-GT}.
 
 Gwarantuje nam to możliwość znalezienia równowagi (w strategiach mieszanych) w każdej grze skończonej, nie mówi nam
 jednak jak je znaleźć. Szukanie równowag wydaje się być problemem trudnym, nie ma jednak dokładnych oszacowań złożoności
@@ -180,6 +195,7 @@ $$\max_{\sigma_1,v} v$$
 $$(\forall_{j \in J}) \sum_{i \in I} A_{ij} \sigma_1(i) \geq v$$
 $$\sum_{i \in I} \sigma_1(i) = 1$$
 $$(\forall_{i \in I}) \sigma_1(i) \geq 0$$
+$$v > 0$$
 
 Dla każdej strategii czystej gracza $i$ obliczyliśmy wartość oczekiwaną wypłaty uzyskanej przy obecnej strategi
 mieszanej gracza $-i$. Następnie wybraliśmy najmniejszą z nich - $v$ jest właśnie ograniczeniem dolnym oczekiwanej
@@ -196,6 +212,9 @@ $$\max_{\sigma_1,v} v$$
 \end{equation}
 \begin{equation}
 (\forall_{i \in I}) x_1(i) \geq 0 \label{MTRX1c}
+\end{equation}
+\begin{equation}
+v > 0
 \end{equation}
 
 Dzieląc wszystkie składniki sumujące się do $v$ przez $v$ uzyskaliśmy równanie sumujące się do $1$ co jest dla nas
@@ -319,7 +338,7 @@ r
 \end{equation}
 
 Proponowane rozwiązanie opera się na spostrzeżeniu, że każde z $l$ ograniczeń opisuje ścianę wielowymiarowej figury
-wypukłej. Spełnienie wszystkich obwarowań jest więc znalezieniem punktu, który należy do $l$ ścian tego wielomianu -
+wypukłej. Spełnienie wszystkich obwarowań jest więc znalezieniem punktu, który należy do $l$ ścian tego wielościanu -
 wierzchołka w którym się one spotykają. Ponieważ nie wszystkie wierzchołki stanowią rozwiązanie, musimy wybrać jeden, a
 następnie przechodzić od wierzchołka do wierzchołka, aż któryś spełni postawione wymagania. Odpowiada za to procedura
 \textit{pivot}, wykorzystywana również w algorytmie simpleks.
@@ -363,7 +382,7 @@ prostym problemem spełnialności. Przestrzeń takich profili jest przeszukiwana
 zdefiniowanych ograniczeń.
 
 W dalszej części będziemy używali oznaczenia $x_{\sigma_i}$ na oznaczenie profilu strategii wspierających strategię
-mieszaną $\sigma_i$ tj. zbiór strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i)$ jest
+mieszaną $\sigma_i$ tj. zbioru strategii czystych $s_i$ gracza $i$ dla których prawdopodobieństwo $\sigma_i(s_i)$ jest
 niezerowe. Profil równowagi Nasha oznaczymy jako $s^{*}$, zaś wartość oczekiwaną wypłaty gracza $i$ dla równowagi jako
 $v_i$.
 
@@ -626,7 +645,7 @@ została więc tak zaplanowana, aby możliwe było wdrożenie wybranego z wyżej
 \begin{enumerate}
 \item zbiór graczy,
 \item porządek ruchów graczy,
-\item funkcję wypłaty gracza od ciągu poczynionych ruchów,
+\item funkcja wypłaty gracza od ciągu poczynionych ruchów,
 \item wybory graczy dostępne w danym ruchu,
 \item wiedza gracza w chwili podejmowania decyzji,
 \item rozkład prawdopodobieństwa nad zdarzeniami zewnętrznymi (\textit{naturą}).
@@ -694,7 +713,6 @@ prawdopodobieństwa, nie całym strategiom czystym, ale ruchom możliwym do wyko
 \end{definition}
 
 Ponownie ograniczenia czasowe spowodowały, że jedynie najprostszy do rozpatrzenia przypadek wszedł w skład implementacji
-projektu, zaś poszukiwanie równowag w strategiach mieszanych i postępowania przeznaczono do zaimplementowania
-w przyszłości.
+projektu, zaś poszukiwanie równowag w bez pełnej informacji przeznaczono do zaimplementowania w przyszłości.
 
 \end{document}

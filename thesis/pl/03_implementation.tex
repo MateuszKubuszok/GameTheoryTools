@@ -21,7 +21,7 @@ za pośrednictwem adapterów, bądź bezpośrednio. Po uwzględnieniu narzędzi 
 zdecydowano się na wybór języka \LANG{C++} - adaptacja bibliotek z \LANG{C} jest naturalna, a przy tym sam język
 udostępnia możliwość programowania obiektowego, jak i dużą elastyczność przy zachowaniu szybkości działania.
 
-Kolejnym istotnym argumentem za \LANG{C++} było dostępność bibliotek i pakietów do tworzenia parserów gramatyk
+Kolejnym istotnym argumentem za \LANG{C++} była dostępność bibliotek i pakietów do tworzenia parserów gramatyk
 bezkontekstowych - w projekcie do stworzenia parsera wczytującego dane wykorzystane zostały \PROG{flex} oraz
 \PROG{bison}. Umożliwiają one utworzenie bardzo wydajnego parsera \CODE{LALR(1)}, zdolnego do uruchamiania
 zdefiniowanego kodu \LANG{C}/\LANG{C++}.
@@ -50,7 +50,7 @@ gry zdefiniowano osobny model danych (jednak tam, gdzie to możliwe, uwspólnion
 
 Przyjęto założenie, że raz utworzonego modelu danych nie modyfikuje się - z tego powodu wszystkie gotowe instancje
 przechowuje się przy pomocy inteligentnych wskaźników na stałe obiekty - zmniejsza to narzut związany z kopiowaniem
-obiektów, a także umożliwia zastosowanie co bardziej kosztownych operacji, jako jednorazowy koszt występujący
+obiektów, a także umożliwia zastosowanie co bardziej kosztownych operacji, jako jednorazowych kosztów występujących
 w chwili utworzenia obiektu.
 
 \subsection{Gracz}
@@ -77,10 +77,10 @@ Oznaczmy przez $\ABS{S_i}$ liczbę strategii gracza $i$ (gdzie $i = 1, 2, ..., n
 
 Oznaczmy przez $H_1 = 1$ oraz $H_i = H_{i-1} * \ABS{S_i}$.
 
-Oznaczmy przez $s \in S$ krotkę zawierająca po 1 strategii czystej każdego gracza, zaś $s_i$ ową strategię
+Oznaczmy przez $s \in S$ krotkę zawierającą po 1 strategii czystej każdego gracza, zaś $s_i$ ową strategię
 dla gracza $i$.
 
-Przypiszmy wszystkim strategiom $s_i$ gracza $i$ unikalną liczbę porządkową $O_i(s_i) = 0, 1, ..., \ABS{S_i}-1$.
+Przypiszmy wszystkim strategiom $s_i$ gracza $i$ unikalne liczby porządkowe $O_i(s_i) = 0, 1, ..., \ABS{S_i}-1$.
 
 Wówczas funkcję mieszającą można zdefiniować jako:
 $$h(s) = \sum\limits_{i=0}^{n-1} H_i O_i(s_i)$$
@@ -317,7 +317,7 @@ printf "Max = %s, \n", U2;
 Dla testów wybraliśmy następującą funkcję celu:
 $$\textbf{minimalizuj} \frac{\sum_{s_1 \in S_1} r_{s_1} + \sum_{s_2 \in S_2} r_{s_2}}{2}$$
 minimalizującą średnią wartość żalu przy założeniu rozkładu jednostajnego. Możliwym usprawnieniem jest zmiana na któreś
-z rozwiązań zaproponowanym przez autorów oryginalnej pracy.
+z rozwiązań zaproponowanych przez autorów oryginalnej pracy.
 
 \subsection{Gry w formie ekstensywnej}
 
@@ -387,7 +387,8 @@ dostępnych dla niego strategii.
 profili/sekwencji ruchów (\textit{data}).
 
 \textit{param} odpowiada liczbom (\textit{number}) i identyfikatorom zmiennych (\textit{identifier}) podczas wykonywania
-zapytań, \textit{object} to obiektu na których wykonujemy zapytania - a więc gry, gracze oraz parametry.
+zapytań, \textit{object} to reprezentacja każdego obiektu na którym możemy wykonać zapytania - obiektami tymi są gry,
+gracze oraz parametry.
 
 Definicje te są z kolei używane przy definiowaniu zmiennych (\textit{definition}) oraz zapytaniach (\textit{query}).
 

@@ -89,7 +89,7 @@ normalnym użytkowaniu biblioteki,
 interfejsów projektu. Użyteczna głównie w celu rozwijania i ulepszania biblioteki.
 \end{itemize}
 
-Użyteczne w zrozumieniu działania poszczególnych metod mogą być ich testy jednostkowe - dostarczają one minimalny wzgląd
+Użyteczne w zrozumieniu działania poszczególnych metod mogą być ich testy jednostkowe - dostarczają one minimalny wgląd
 w przypadki użycia poszczególnych klas oraz ich metod, a na podstawie ich kodu użytkownik biblioteki powinien być w
 stanie zrozumieć jak użyć ich własnoręcznie w swoim programie.
 
@@ -215,9 +215,9 @@ LET game1 BE
 Możliwe jest więc zarówno przekazywanie definicji graczy wg nazwy jak i podawanie ich jawnie. Profile strategii z
 kolei mogą być podawane od razu w komplecie, jak również rozbite na etapy. Każda definicja strategii ma postać
 \CODE{\{ gracz=strategia[, gracz2=strategia2[, ...]] : [kolejne definicje lub wypłaty graczy] \}}. Wymagane jest podanie
-wszystkich wypłat, jak również nie definiowane dwukrotnie wypłaty dla tego samego profilu strategii.
+wszystkich wypłat, jak również niezdefiniowanie dwukrotnie wypłaty dla tego samego profilu strategii.
 
-Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach mieszanych:
+Dla każdej gry można podjąć próbę obliczenia równowagi w strategiach czystych
 
 \begin{gtl}
 FIND pure_equilibrium FOR game1;
