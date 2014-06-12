@@ -47,6 +47,18 @@ InvalidCoordinate ExceptionFactory::duplicatedPlayerName(
     return InvalidCoordinate(result.str());
 }
 
+InvalidCoordinate ExceptionFactory::duplicatedStrategyName(
+    const Identifier& playerName,
+    const Identifier& strategyName
+) const {
+    stringstream result;
+
+    result << "Name '" << strategyName << "' already used for another strategy for player '"
+                       << playerName << "'";
+
+    return InvalidCoordinate(result.str());
+}
+
 InvalidCoordinate ExceptionFactory::emptyPlayerName() const {
     return InvalidCoordinate("Player's name cannot be empty");
 }

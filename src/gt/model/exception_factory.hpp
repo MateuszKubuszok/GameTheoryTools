@@ -54,6 +54,18 @@ public:
     ) const;
 
     /**
+     * @brief Thrown when Player doesn't have unique strategies.
+     *
+     * @param playerName   Player's name
+     * @param strategyName duplicated name
+     * @return             InvalidCoordinate exception to throw
+     */
+    InvalidCoordinate duplicatedStrategyName(
+        const Identifier& playerName,
+        const Identifier& strategyName
+    ) const;
+
+    /**
      * @brief Thrown when Player has empty name.
      *
      * @param name duplicated name

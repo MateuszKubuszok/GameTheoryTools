@@ -20,6 +20,23 @@ BOOST_AUTO_TEST_CASE( ExceptionFactory_duplicatedPlayerName ) {
     );
 }
 
+BOOST_AUTO_TEST_CASE( ExceptionFactory_duplicatedStrategyName ) {
+    // given
+    GT::Identifier playerName   = GT::createIdentifier("player");
+    GT::Identifier strategyName = GT::createIdentifier("strategy");
+
+    // when
+    GT::Model::InvalidCoordinate exception = GT::Model::ExceptionFactory::getInstance()
+                                                .duplicatedStrategyName(playerName, strategyName);
+
+    // then
+    BOOST_CHECK_EQUAL(
+        exception.what(),
+        GT::Message() +
+        "Name 'strategy' already used for another strategy for player 'player'"
+    );
+}
+
 BOOST_AUTO_TEST_CASE( ExceptionFactory_emptyPlayerName ) {
     // given
     // when

@@ -57,7 +57,8 @@ public:
      *
      * @param players           Players
      * @return                  reference to itself
-     * @throw IllegalInnerState thrown when Players are already set
+     * @throw IllegalInnerState thrown when Players are already set or Players or their Strategies are not
+     *                          unique
      */
     virtual DataBuilder& setPlayers(
         const PlayersPtr players

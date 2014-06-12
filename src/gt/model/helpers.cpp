@@ -128,8 +128,21 @@ void checkPlayers(
 
         Players::const_iterator anotherPlayer = player;
         for (++anotherPlayer; anotherPlayer != players->end(); ++anotherPlayer) {
-            if (player->first == anotherPlayer->first)
+            if (    player->first             ==  anotherPlayer->first
+                || *player->second->getName() == *anotherPlayer->second->getName())
                 throw ExceptionFactory::getInstance().duplicatedPlayerName(player->first);
+        }
+
+        const IdentifiersPtr strategies     = player->second->getStrategies();
+        const Index          strategiesSize = player->second->getStrategiesNumber();
+        for (Index i = 0; i < strategiesSize; i++) {
+            const Identifier& strategy = *(*strategies)[i];
+            for (Index j = i+1; j < strategiesSize; j++) {
+                const Identifier& anotherStrategy = *(*strategies)[j];
+                if ( strategy == anotherStrategy ) {
+                    throw ExceptionFactory::getInstance().duplicatedStrategyName(player->first, strategy);
+                }
+            }
         }
     }
 }
