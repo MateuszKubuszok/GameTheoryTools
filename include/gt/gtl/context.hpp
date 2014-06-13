@@ -55,6 +55,11 @@ using boost::container::map;
  */
 class Context : public virtual Root {
     /**
+     * @brief Maximal depth considered legal (defaults to 30).
+     */
+    static Index maxLegalDepth;
+
+    /**
      * @brief Possible parent Context.
      */
     ContextPtr parentContext;
@@ -64,11 +69,32 @@ class Context : public virtual Root {
      */
     map<Identifier, ParamPtr> knownObjects;
 
+    /**
+     * @brief Depth of Context.
+     */
+    const Index depth;
+
 public:
     /**
      * @brief Known objects map.
      */
     typedef map<Identifier, ParamPtr> KnownObjects;
+
+    /**
+     * @brief Returns maximal allowed depth.
+     *
+     * @return maximal legal depth
+     */
+    static Index getMaxLegalDepth();
+
+    /**
+     * @brief Sets new maximal allowed depth.
+     *
+     * @param maxLegalDepth new maximal legal depth
+     */
+    static void setMaxLegalDepth(
+        Index maxLegalDepth
+    );
 
     /**
      * @brief Default constructor.
@@ -119,6 +145,11 @@ public:
     virtual bool hasRegistered(
         const Identifier& identifier
     ) const;
+
+    /**
+     * @brief Whether child of this node has depth lesser or equal to maximal allowed.
+     */
+    virtual bool canLegallySpawnChild() const;
 
     /**
      * @brief Obtains value from context by identifer.
@@ -195,6 +226,10 @@ public:
         const DefinitionPtr
     ) override {
         return *this;
+    }
+
+    virtual bool canLegallySpawnChild() const override {
+        return false;
     }
 
     virtual const NumberPtr getNumber(

@@ -159,6 +159,14 @@ void ExecutionDriver::load(
         return;
     }
 
+    if (!context->canLegallySpawnChild()) {
+        stringstream builder;
+        builder << "Maximal depth level (" << Context::getMaxLegalDepth() << ") exceeded";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
+    }
+
     Scanner scanner(file.get());
     Parser  parser(scanner, *this);
 
@@ -188,6 +196,14 @@ void ExecutionDriver::save(
 
         showError(location, errorMessage);
         return;
+    }
+
+    if (!context->canLegallySpawnChild()) {
+        stringstream builder;
+        builder << "Maximal depth level (" << Context::getMaxLegalDepth() << ") exceeded";
+        string errorMessage(builder.str());
+
+        showError(location, errorMessage);
     }
 
     file << context->serialize();

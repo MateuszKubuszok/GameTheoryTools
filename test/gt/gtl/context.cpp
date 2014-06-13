@@ -95,6 +95,25 @@ BOOST_AUTO_TEST_CASE( Context_functional ) {
     BOOST_REQUIRE_THROW( context.getParam(*invalidIdentifier),  GT::GTL::NotDefinedParam );
 }
 
+BOOST_AUTO_TEST_CASE( Context_depthChecking ) {
+    // given
+    GT::GTL::Context::setMaxLegalDepth(3);
+
+    // when
+    GT::GTL::ContextPtr context1(new GT::GTL::Context);
+    GT::GTL::ContextPtr context2(new GT::GTL::Context(context1));
+    GT::GTL::ContextPtr context3(new GT::GTL::Context(context2));
+
+    // then
+    BOOST_CHECK_EQUAL(
+        GT::GTL::Context::getMaxLegalDepth(),
+        3
+    );
+    BOOST_CHECK(  context1->canLegallySpawnChild() );
+    BOOST_CHECK(  context2->canLegallySpawnChild() );
+    BOOST_CHECK( !context3->canLegallySpawnChild() );
+}
+
 BOOST_AUTO_TEST_CASE( Context_replaceParam ) {
     // given
     GT::IdentifierPtr  paramName                 = GT::createIdentifierPtr("paramName");

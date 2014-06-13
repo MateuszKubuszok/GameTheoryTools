@@ -31,11 +31,25 @@ using std::stringstream;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class Context : public virtual Root {
+
+Index Context::maxLegalDepth = 30;
+
 // public:
+
+Index Context::getMaxLegalDepth() {
+    return maxLegalDepth;
+}
+
+void Context::setMaxLegalDepth(
+    Index newMaxLegalDepth
+) {
+    maxLegalDepth = newMaxLegalDepth;
+}
 
 Context::Context() :
     parentContext(),
-    knownObjects()
+    knownObjects(),
+    depth(1)
 {
     registerParam(
         createIdentifierPtr("context"),
@@ -49,7 +63,8 @@ Context::Context(
     const ContextPtr parentContext
 ) :
     parentContext(parentContext),
-    knownObjects()
+    knownObjects(),
+    depth(parentContext->depth + 1)
 {
     registerParam(
         createIdentifierPtr("context"),
@@ -82,6 +97,10 @@ bool Context::hasRegistered(
     const Identifier& identifier
 ) const {
     return knownObjects.count(identifier) || (parentContext && parentContext->hasRegistered(identifier));
+}
+
+bool Context::canLegallySpawnChild() const {
+    return (depth + 1) <= maxLegalDepth;
 }
 
 const NumberPtr Context::getNumber(
