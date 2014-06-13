@@ -36,7 +36,7 @@ void intrusive_ptr_add_ref(
 void intrusive_ptr_release(
     ExtensiveDataNode* parent
 ) {
-    // ExtensiveDataNode implementation has parent set to nullptr - need to null check first
+    // NullExtensiveDataNode has its parent set to nullptr to avoid cycle - need to null check first
     if (parent && parent->isNull())
         delete parent;
 }
