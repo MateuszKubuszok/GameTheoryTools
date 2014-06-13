@@ -130,8 +130,8 @@ LPProblemPtr createLPProblem();
 #include "gt/routines/extensive_pure_equilibrium_routine.hpp"
 #include "gt/routines/extensive_pure_equilibrium_routine_config.hpp"
 
-#include "gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.hpp"
-#include "gt/routines/strategic_2_player_mixed_equilibrium_routine.hpp"
+#include "gt/routines/matrix_mixed_equilibrium_routine.hpp"
+#include "gt/routines/bimatrix_mixed_equilibrium_routine.hpp"
 
 #include "gt/routines/player_choice_condition.hpp"
 #include "gt/routines/player_range_condition.hpp"
