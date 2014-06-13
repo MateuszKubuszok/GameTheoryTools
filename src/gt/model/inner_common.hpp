@@ -28,6 +28,7 @@
 #include <iomanip>
 
 /* Includes boost libraries */
+#include <boost/intrusive_ptr.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/range/adaptor/map.hpp>

@@ -38,40 +38,52 @@ namespace Model {
  */
 class ExtensiveDataNode : public virtual Root {
     /**
+     * @brief Pointer deleting only NullExtensiveDataNode objects (roots' mock parents).
+     */
+    typedef boost::intrusive_ptr<ExtensiveDataNode> ExtensiveDataNodeInnerPtr;
+    /**
+     * @brief Reference incrementation for ExtensiveDataNodeInnerPtr.
+     */
+    friend void intrusive_ptr_add_ref(
+        ExtensiveDataNode* parent
+    );
+    /**
+     * @brief Reference release for ExtensiveDataNodeInnerPtr.
+     */
+    friend void intrusive_ptr_release(
+        ExtensiveDataNode* parent
+    );
+
+    /**
      * @brief Parent of this node.
      */
-    ExtensiveDataNode*    parent;
+    ExtensiveDataNodeInnerPtr parent;
     /**
      * @brief Player which strategis are allowed in this Node.
      */
-    PlayerPtr             player;
+    PlayerPtr                 player;
     /**
      * @brief Payoff values.
      */
-    NumbersPtr            payoff;
+    NumbersPtr                payoff;
     /**
      * @brief Children of this node (choices).
      */
-    ExtensiveDataNodesPtr nodes;
+    ExtensiveDataNodesPtr     nodes;
     /**
      * @brief Current depth's value.
      */
-    Index                 depthValue;
+    Index                     depthValue;
     /**
      * @brief Current depth's name.
      */
-    Identifier            depthName;
+    Identifier                depthName;
 
 public:
     /**
      * @brief Tree's root's constructor.
      */
     ExtensiveDataNode();
-
-    /**
-     * @brief Tree's root's destructor.
-     */
-    virtual ~ExtensiveDataNode();
 
     /**
      * @brief Returns parent of this Node (Null object for Root).

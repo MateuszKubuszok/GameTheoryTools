@@ -29,6 +29,20 @@ using boost::adaptors::map_keys;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void intrusive_ptr_add_ref(
+    ExtensiveDataNode*
+) {}
+
+void intrusive_ptr_release(
+    ExtensiveDataNode* parent
+) {
+    // ExtensiveDataNode implementation has parent set to nullptr - need to null check first
+    if (parent && parent->isNull())
+        delete parent;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //class ExtensiveDataNode : public virtual Root {
 // public:
 
@@ -40,15 +54,6 @@ ExtensiveDataNode::ExtensiveDataNode() :
     depthValue(1),
     depthName(createIdentifier(1))
     {}
-
-ExtensiveDataNode::~ExtensiveDataNode() {
-    // 1) ExtensiveDataNode implementation has parent set to nullptr - need to null check first
-    if (parent && parent->isNull()) {
-        // 2) root's "Parent" is set to ExtensiveDataNode - it needs to be freed manually since no one owns it
-        delete parent;
-        parent = nullptr;
-    }
-}
 
 const ExtensiveDataNode& ExtensiveDataNode::getParent() const {
     return *parent;
