@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/strategic_2_player_mixed_equilibrium_routine.cpp
- * @brief     Defines GT::Routines::Strategic2PlayerMixedEquilibriumRoutine methods.
+ * @file      gt/routines/bimatrix_mixed_equilibrium_routine.cpp
+ * @brief     Defines GT::Routines::BimatrixMixedEquilibriumRoutine methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -41,10 +41,10 @@ using Model::StrategicDataAccessorPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Strategic2PlayerMixedEquilibriumRoutine final : public Routine {
+// class BimatrixMixedEquilibriumRoutine final : public Routine {
 // public:
 
-ResultPtr Strategic2PlayerMixedEquilibriumRoutine::findResultFor(
+ResultPtr BimatrixMixedEquilibriumRoutine::findResultFor(
     const GamePtr       game,
     const ConditionsPtr
 ) const {
@@ -64,13 +64,13 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::findResultFor(
     return solveProblem(problem, *data, positionsHelper);
 }
 
-Message Strategic2PlayerMixedEquilibriumRoutine::toString() const {
-    return Message("Strategic2PlayerMixedEquilibriumRoutine");
+Message BimatrixMixedEquilibriumRoutine::toString() const {
+    return Message("BimatrixMixedEquilibriumRoutine");
 }
 
 // private:
 
-LPProblemPtr Strategic2PlayerMixedEquilibriumRoutine::initializeProblem(
+LPProblemPtr BimatrixMixedEquilibriumRoutine::initializeProblem(
     const Players& players
 ) const {
     const Player& player1 = *( players.begin()->second );
@@ -173,7 +173,7 @@ LPProblemPtr Strategic2PlayerMixedEquilibriumRoutine::initializeProblem(
     return problemPtr;
 }
 
-void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
+void BimatrixMixedEquilibriumRoutine::fillUpProblem(
     LPProblem*                          problem,
     const StrategicDataAccessor&        data,
     const StrategicGamePositionsHelper& positionsHelper
@@ -362,7 +362,7 @@ void Strategic2PlayerMixedEquilibriumRoutine::fillUpProblem(
     glp_load_matrix(problem, rows.size()-1, &rows[0], &cols[0], &values[0]);
 }
 
-ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
+ResultPtr BimatrixMixedEquilibriumRoutine::solveProblem(
     LPProblem*                          problem,
     const StrategicDataAccessor&        data,
     const StrategicGamePositionsHelper& positionsHelper
@@ -467,7 +467,7 @@ ResultPtr Strategic2PlayerMixedEquilibriumRoutine::solveProblem(
     return resultBuilder->build();
 }
 
-// }; /* END class Strategic2PlayerMixedEquilibriumRoutine */
+// }; /* END class BimatrixMixedEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,10 +1,10 @@
 #include "gt/routines/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( Strategic2PlayerMixedEquilibriumRoutine )
+BOOST_AUTO_TEST_SUITE( BimatrixMixedEquilibriumRoutine )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor ) {
+BOOST_AUTO_TEST_CASE( BimatrixMixedEquilibriumRoutine_findResultsFor ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -167,20 +167,20 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     );
 }
 
-BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_toString ) {
+BOOST_AUTO_TEST_CASE( BimatrixMixedEquilibriumRoutine_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
 
     // then
     BOOST_CHECK_EQUAL(
         routine.toString(),
         GT::Message() +
-        "Strategic2PlayerMixedEquilibriumRoutine"
+        "BimatrixMixedEquilibriumRoutine"
     );
 }
 
@@ -247,7 +247,7 @@ BOOST_AUTO_TEST_CASE( battle_of_the_sexes ) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -336,7 +336,7 @@ BOOST_AUTO_TEST_CASE( chicken ) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -425,7 +425,7 @@ BOOST_AUTO_TEST_CASE( peace_war ) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -514,7 +514,7 @@ BOOST_AUTO_TEST_CASE( prisonners_dilemma ) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -603,7 +603,7 @@ BOOST_AUTO_TEST_CASE( stag_hunt ) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2PlayerMixedEquilibriumRoutine routine;
+    GT::Routines::BimatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then

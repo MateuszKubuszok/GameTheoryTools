@@ -1,11 +1,11 @@
-#ifndef GT_ROUTINES_STRATEGIC_2PLAYER_0_SUM_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
-#define GT_ROUTINES_STRATEGIC_2PLAYER_0_SUM_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
+#ifndef GT_ROUTINES_MATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
+#define GT_ROUTINES_MATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.hpp
- * @brief     Defines GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine class.
+ * @file      gt/routines/matrix_mixed_equilibrium_routine.hpp
+ * @brief     Defines GT::Routines::MatrixMixedEquilibriumRoutine class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,14 +29,14 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class Strategic2Player0SumMixedEquilibriumRoutine
+ * @class MatrixMixedEquilibriumRoutine
  * @brief Routune returning mixed strategy equilibrium for 0-sum Strategic Game with 2 Players.
  *
  * @author Mateusz Kubuszok
  *
  * @see Condition
  */
-class Strategic2Player0SumMixedEquilibriumRoutine final : public Routine {
+class MatrixMixedEquilibriumRoutine final : public Routine {
 public:
     /**
      * @brief Returns mixed strategy equilibrium for Strategic Game with 2 Players when game is 0-sum type.
@@ -101,11 +101,11 @@ private:
         const StrategicDataAccessor&        data,
         const StrategicGamePositionsHelper& positionsHelper
     ) const;
-}; /* END class Strategic2Player0SumMixedEquilibriumRoutine */
+}; /* END class MatrixMixedEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef GT_ROUTINES_STRATEGIC_2PLAYER_0_SUM_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED */
+#endif /* #ifndef GT_ROUTINES_MATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED */

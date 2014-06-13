@@ -1,6 +1,6 @@
 /**
- * @file      gt/routines/strategic_2_player_0_sum_mixed_equilibrium_routine.cpp
- * @brief     Defines GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine methods.
+ * @file      gt/routines/matrix_mixed_equilibrium_routine.cpp
+ * @brief     Defines GT::Routines::MatrixMixedEquilibriumRoutine methods.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -39,10 +39,10 @@ using Model::StrategicDataAccessorPtr;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// class Strategic2Player0SumMixedEquilibriumRoutine final : public Routine {
+// class MatrixMixedEquilibriumRoutine final : public Routine {
 // public:
 
-ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::findResultFor(
+ResultPtr MatrixMixedEquilibriumRoutine::findResultFor(
     const GamePtr       game,
     const ConditionsPtr
 ) const {
@@ -62,13 +62,13 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::findResultFor(
     return solveProblem(problem, *data, positionsHelper);
 }
 
-Message Strategic2Player0SumMixedEquilibriumRoutine::toString() const {
-    return Message("Strategic2Player0SumMixedEquilibriumRoutine");
+Message MatrixMixedEquilibriumRoutine::toString() const {
+    return Message("MatrixMixedEquilibriumRoutine");
 }
 
 // private:
 
-LPProblemPtr Strategic2Player0SumMixedEquilibriumRoutine::initializeProblem(
+LPProblemPtr MatrixMixedEquilibriumRoutine::initializeProblem(
     const Players& players
 ) const {
     const Player& player1 = *( players.begin()->second );
@@ -98,7 +98,7 @@ LPProblemPtr Strategic2Player0SumMixedEquilibriumRoutine::initializeProblem(
     return problemPtr;
 }
 
-void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
+void MatrixMixedEquilibriumRoutine::fillUpProblem(
     LPProblem*                          problem,
     const StrategicDataAccessor&        data,
     const StrategicGamePositionsHelper& positionsHelper
@@ -145,7 +145,7 @@ void Strategic2Player0SumMixedEquilibriumRoutine::fillUpProblem(
     glp_load_matrix(problem, upperBound, &player1Strategies[0], &player2Strategies[0], &payoff[0]);
 }
 
-ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
+ResultPtr MatrixMixedEquilibriumRoutine::solveProblem(
     LPProblem*                          problem,
     const StrategicDataAccessor&        data,
     const StrategicGamePositionsHelper& positionsHelper
@@ -246,7 +246,7 @@ ResultPtr Strategic2Player0SumMixedEquilibriumRoutine::solveProblem(
     return resultBuilder->build();
 }
 
-// }; /* END class Strategic2Player0SumMixedEquilibriumRoutine */
+// }; /* END class MatrixMixedEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

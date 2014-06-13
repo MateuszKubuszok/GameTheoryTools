@@ -219,23 +219,23 @@ BOOST_AUTO_TEST_CASE( RoutineFactory_mixedStrategyEquilibriumFindingRoutineFor )
         _2PGameBuilder->clone()->addNextPositions(p1s3Choice).addNextPositions(p2s4Choice).setPayoffs(payoff);
     }
 
-    GT::Model::GamePtr strategic2Player0SumGame = _0SGameBuilder->build();
-    GT::Model::GamePtr strategic2PlayerGame     = _2PGameBuilder->build();
+    GT::Model::GamePtr matrixGame   = _0SGameBuilder->build();
+    GT::Model::GamePtr bimatrixGame = _2PGameBuilder->build();
 
     // when
-    GT::Routines::RoutinePtr strategic2Player0SumMixedEquilibriumRoutine =
+    GT::Routines::RoutinePtr matrixMixedEquilibriumRoutine =
         GT::Routines::RoutineFactory::getInstance()
-        .mixedStrategyEquilibriumFindingRoutineFor(strategic2Player0SumGame);
-    GT::Routines::RoutinePtr strategic2PlayerMixedEquilibriumRoutine =
+        .mixedStrategyEquilibriumFindingRoutineFor(matrixGame);
+    GT::Routines::RoutinePtr bimatrixMixedEquilibriumRoutine =
         GT::Routines::RoutineFactory::getInstance()
-        .mixedStrategyEquilibriumFindingRoutineFor(strategic2PlayerGame);
+        .mixedStrategyEquilibriumFindingRoutineFor(bimatrixGame);
 
     // then
-    BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine>(
-        strategic2Player0SumMixedEquilibriumRoutine
+    BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::MatrixMixedEquilibriumRoutine>(
+        matrixMixedEquilibriumRoutine
     ) );
-    BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::Strategic2PlayerMixedEquilibriumRoutine>(
-        strategic2PlayerMixedEquilibriumRoutine
+    BOOST_CHECK( boost::dynamic_pointer_cast<GT::Routines::BimatrixMixedEquilibriumRoutine>(
+        bimatrixMixedEquilibriumRoutine
     ) );
 }
 

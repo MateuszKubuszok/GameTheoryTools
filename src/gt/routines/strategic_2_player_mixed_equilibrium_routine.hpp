@@ -1,11 +1,11 @@
-#ifndef GT_ROUTINES_STRATEGIC_2PLAYER_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
-#define GT_ROUTINES_STRATEGIC_2PLAYER_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
+#ifndef GT_ROUTINES_STRATEGIC_BIMATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
+#define GT_ROUTINES_STRATEGIC_BIMATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @file      gt/routines/strategic_2_player_mixed_equilibrium_routine.hpp
- * @brief     Defines GT::Routines::Strategic2PlayerMixedEquilibriumRoutine class.
+ * @file      gt/routines/bimatrix_mixed_equilibrium_routine.hpp
+ * @brief     Defines GT::Routines::BimatrixMixedEquilibriumRoutine class.
  * @copyright (C) 2013-2014
  * @author    Mateusz Kubuszok
  *
@@ -29,14 +29,14 @@ namespace Routines {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @class Strategic2PlayerMixedEquilibriumRoutine
+ * @class BimatrixMixedEquilibriumRoutine
  * @brief Routune returning mixed strategy equilibrium for any sum Strategic Game with 2 Players.
  *
  * @author Mateusz Kubuszok
  *
  * @see Condition
  */
-class Strategic2PlayerMixedEquilibriumRoutine final : public Routine {
+class BimatrixMixedEquilibriumRoutine final : public Routine {
 public:
     /**
      * @brief Returns mixed strategy equilibrium for Strategic Game with 2 Players.
@@ -102,11 +102,11 @@ private:
         const StrategicDataAccessor&        data,
         const StrategicGamePositionsHelper& positionsHelper
     ) const;
-}; /* END class Strategic2PlayerMixedEquilibriumRoutine */
+}; /* END class BimatrixMixedEquilibriumRoutine */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* END namespace Routines */
 } /* END namespace GT */
 
-#endif /* #ifndef GT_ROUTINES_STRATEGIC_2PLAYER_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED */
+#endif /* #ifndef GT_ROUTINES_STRATEGIC_BIMATRIX_MIXED_EQUILIBRIUM_ROUTINE_HPP_INCLUDED */

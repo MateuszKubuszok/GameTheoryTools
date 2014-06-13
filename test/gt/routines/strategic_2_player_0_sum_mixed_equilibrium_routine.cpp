@@ -1,10 +1,10 @@
 #include "gt/routines/test_common.hpp"
 
-BOOST_AUTO_TEST_SUITE( Strategic2Player0SumMixedEquilibriumRoutine )
+BOOST_AUTO_TEST_SUITE( MatrixMixedEquilibriumRoutine )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor ) {
+BOOST_AUTO_TEST_CASE( MatrixMixedEquilibriumRoutine_findResultsFor ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine routine;
+    GT::Routines::MatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then
@@ -155,20 +155,20 @@ BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_findResultsFor
     );
 }
 
-BOOST_AUTO_TEST_CASE( Strategic2Player0SumMixedEquilibriumRoutine_toString ) {
+BOOST_AUTO_TEST_CASE( MatrixMixedEquilibriumRoutine_toString ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
     // when
-    GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine routine;
+    GT::Routines::MatrixMixedEquilibriumRoutine routine;
 
     // then
     BOOST_CHECK_EQUAL(
         routine.toString(),
         GT::Message() +
-        "Strategic2Player0SumMixedEquilibriumRoutine"
+        "MatrixMixedEquilibriumRoutine"
     );
 }
 
@@ -232,7 +232,7 @@ BOOST_AUTO_TEST_CASE(rock_paper_scissors) {
     GT::Routines::ConditionsPtr conditions = GT::Routines::NullFactory::getInstance().createConditions();
 
     // when
-    GT::Routines::Strategic2Player0SumMixedEquilibriumRoutine routine;
+    GT::Routines::MatrixMixedEquilibriumRoutine routine;
     GT::Model::ResultPtr result;
 
     // then

@@ -77,8 +77,8 @@ RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
                 }
 
             if (is0Sum)
-                return RoutinePtr( new Strategic2Player0SumMixedEquilibriumRoutine() );
-            return RoutinePtr( new Strategic2PlayerMixedEquilibriumRoutine() );
+                return RoutinePtr( new MatrixMixedEquilibriumRoutine() );
+            return RoutinePtr( new BimatrixMixedEquilibriumRoutine() );
         }
     }
 
