@@ -1,35 +1,83 @@
-\documentclass{beamer}
+\documentclass[xcolor=x11names,compress]{beamer}
 
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} % input encoding
 \usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
 \usepackage{polski}         % i18n package
 \usepackage[polish]{babel}  % i18n package
-\usepackage{makeidx}        % indexing package
-
 \usepackage{listings}       % actual code package
-
-\usetheme{Median}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals}
 
 \lstset{
   language={[Sharp]C},
   basicstyle=\tiny
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Narzędzia do równowag Nasha]{Narzędzia do obliczania równowag Nasha}
-\author[M. Kubuszok]{Mateusz Kubuszok}
-\institute[Politechnika Wrocławska]{
-  Promotor\\
-  Dr inż. Piotr Więcek\\[1ex]
-}
-\date[Marzec 2014]{4.3.2014}
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\definecolor{firebrick}{rgb}{.60, .20, .17}
+\definecolor{sienna}{rgb}{.95, .82, .64}
+
+\setbeamercolor*{title}{bg=white}
+\setbeamercolor*{titlelike}{bg=sienna}
+\setbeamercolor*{lower separation line head}{bg=firebrick} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
 
-\begin{frame}[plain]
-  \titlepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRONA TYTUŁOWA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\title{Narzędzia do obliczania równowag Nasha}
+\subtitle{przy pomocy biblioteki MathProg}
+\author[M. Kubuszok]{
+  Mateusz Kubuszok\\
+  \bigskip
+  \tiny{promotor}\\
+  \scriptsize{inż. Piotr Więcek}\\
+}
+\institute[Politechnika Wrocławska]{
+  \IfFileExists{pion-pl.png}
+               {}
+               {\write18{wget http://www.logotyp.pwr.wroc.pl/img/Graph/ZnakPWr/WersjaPionowa/pion-pl.png}}
+  \includegraphics[width=35pt, height=50pt]{pion-pl.png}
+}
+\date[Lipiec 2014]{\tiny{03.07.2014r.}}
+\titlepage
 \end{frame}
 
-\begin{frame}{Cel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CEL PRACY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Cel pracy}
+\begin{frame}{Cel pracy}
 Narzędzia do obliczania pewnych równowag Nasha:
 \begin{itemize}
 \item otwarte oprogramowanie,
@@ -40,134 +88,257 @@ Narzędzia do obliczania pewnych równowag Nasha:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Istniejące rozwiązania}
-\begin{itemize}
 
-\item pakiet Gambit
-\begin{itemize}
-\item duże możliwości,
-\item mało przyjazny interfejs CLI,
-\item słabo udokumentowany.
-\end{itemize}
-
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Implementacja}
-Zaimplementowano algorytmy szukania równowag:
-\begin{itemize}
-\item dla strategii czystych w grach strategicznych,
-\item dla strategii mieszanych w jednomacierzowych (LP),
-\item dla strategii mieszanych w dwumacierzowych (MIP),
-\item dla strategii czystych w grach ekstensywnych.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Narzędzia}
-Wykorzystane narzędzia:
-\begin{itemize}
-\item język C++11,
-\item biblioteka Boost,
-\item biblioteka GLPK,
-\item programy Flex oraz Bison.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Przykład: gra dwumacierzowa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% GRY JEDNOMACIERZOWE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Gry jednomacierzowe}
+\subsection{Gry jednomacierzowe}
+\begin{frame}[fragile]{Gry jednomacierzowe - paper-kamień-nożyce}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
 \begin{lstlisting}
-LET player1 BE
-  PLAYER p1 { s1, s2 };
+LET rock_paper_scissors
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { rock, paper, scissors },
+         PLAYER p2 { rock, paper, scissors }
+    SUCH AS
+      { p1=rock:
+        { p2=rock:      0 },
+        { p2=paper:     1 },
+        { p2=scissors: -1 }
+      },
+      { p1=paper:
+        { p2=rock:     -1 },
+        { p2=paper:     0 },
+        { p2=scissors:  1 }
+      },
+      { p1=scissors:
+        { p2=rock:      1 },
+        { p2=paper:    -1 },
+        { p2=scissors:  0 }
+      }
+    END;
 
-LET game1 BE
-  STRATEGIC GAME
-  WITH
-    player1,
-    PLAYER p2 { s1, s2 }
-  SUCH AS
-    { p1=s1, p2=s1 : 10, 20 },
-    { p1=s1, p2=s2 : 30, 40 },
-    { p1=s2 :
-      { p2=s1 : 50, 60 },
-      { p2=s2 : 70, 80 }
-    }
-  END;
-
-FIND pure_equilibrium, mixed_equilibrium FOR game1;
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR rock_paper_scissors;
 \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Przykład: gra dwumacierzowa}
+\end{column}
+\vrule
+\begin{column}{.5\textwidth}
 \begin{lstlisting}
+Result:
+  Param defined successfully
 1:
-    pure_equilibrium:
-        Pure Strategies:
-            p1:
-                s2
-            p2:
-                s2
-        Payoff:
-                    p1, p2
-            Payoff:
-                    70, 80
-    mixed_equilibrium:
-        Mixed Strategies:
-            p1:
-                s1:
-                    0.333333
-                s2:
-                    0.666667
-            p2:
-                s1:
-                    0.666667
-                s2:
-                    0.333333
-        Payoff:
-                    p1, p2
-            Payoff:
-                    43.3333, 53.3333
+  pure_equilibrium:
+    No Nash equilibrium found
+  mixed_equilibrium:
+    Mixed Strategies:
+      p1:
+        rock:
+          0.33333
+        paper:
+          0.33333
+        scissors:
+          0.33333
+      p2:
+        rock:
+          0.33333
+        paper:
+          0.33333
+        scissors:
+          0.33333
+    Payoff:
+          p1,       p2
+      Payoff:
+          0.00000,  -0.00000
 \end{lstlisting}
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Przykład: gra w postaci ekstensywnej}
-\begin{lstlisting}
-LET game2 BE
-  EXTENSIVE GAME
-  WITH
-    player1,
-    PLAYER p2 { s1, s2 }
-  SUCH AS
-    { p1=s1 :
-      { p2=s1 : 10, 20 },
-      { p2=s2 : 30, 40 }
-    },
-    { p1=s2 :
-      { p2=s1 : 50, 60 },
-      { p2=s2 : 70, 80 }
-    }
-  END;
 
-FIND pure_equilibrium FOR game2;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% GRY DWUMACIERZOWE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Gry dwumacierzowe}
+\subsection{Gry dwumacierzowa}
+\begin{frame}[fragile]{Gry dwumacierzowa - dylemat więźnia}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{lstlisting}
+LET prisoners_dilemma
+ BE STRATEGIC GAME
+    WITH PLAYER p1 { cooperates, defects },
+         PLAYER p2 { cooperates, defects }
+    SUCH AS
+      { p1=cooperates:
+        { p2=cooperates: -1, -1 },
+        { p2=defects:    -3,  0 }
+      },
+      { p1=defects:
+        { p2=cooperates:  0, -3 },
+        { p2=defects:    -2, -2 }
+      }
+    END;
+
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR prisoners_dilemma;
 \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Przykład: gra w postaci ekstensywnej}
+\end{column}
+\vrule
+\begin{column}{.5\textwidth}
 \begin{lstlisting}
+Result:
+  Param defined successfully
 1:
-    pure_equilibrium:
-        Pure Strategies:
-            p1:
-                1:
-                    s2
-            p2:
-                1:
-                    s2
-                2:
-                    s2
-        Payoff:
-                    p1, p2
-            Payoff:
-                    70, 80
+  pure_equilibrium:
+    Pure Strategies:
+      p1:
+        defects
+      p2:
+        defects
+    Payoff:
+          p1,        p2
+      Payoff:
+          -2.00000,  -2.00000
+  mixed_equilibrium:
+    Mixed Strategies:
+      p1:
+        cooperates:
+          0.00000
+        defects:
+          1.00000
+      p2:
+        cooperates:
+          0.00000
+        defects:
+          1.00000
+    Payoff:
+          p1,        p2
+      Payoff:
+          -2.00000,  -2.00000
 \end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Gry dwumacierzowa - bitwa płci}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{lstlisting}
+LET battle_of_the_sexes
+ BE STRATEGIC GAME
+    WITH PLAYER w { opera, football },
+         PLAYER h { opera, football }
+    SUCH AS
+      { w=opera:
+        { h=opera:    3, 2 },
+        { h=football: 0, 0 }
+      },
+      { w=football:
+        { h=opera:    0, 0 },
+        { h=football: 2, 3 }
+      }
+    END;
+    
+FIND pure_equilibrium,
+     mixed_equilibrium
+ FOR battle_of_the_sexes;
+\end{lstlisting}
+\end{column}
+\vrule
+\begin{column}{.5\textwidth}
+\begin{lstlisting}
+Result:
+  Param defined successfully
+1:
+  pure_equilibrium:
+    Pure Strategies:
+      h:
+        opera
+      w:
+        opera
+    Payoff:
+          h,        w
+      Payoff:
+          3.00000,  2.00000
+  mixed_equilibrium:
+    Mixed Strategies:
+      h:
+        opera:
+          0.60000
+        football:
+          0.40000
+      w:
+        opera:
+          0.40000
+        football:
+          0.60000
+    Payoff:
+          h,        w
+      Payoff:
+          1.20000,  1.20000
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% GRY Z INFORMACJĄ PEŁNĄ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Gry z informacją pełną}
+\subsection{Gry z informacją pełną}
+\begin{frame}[fragile]{Gry z informacją pełną - ultimatum}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{lstlisting}
+LET ultimatum_game
+ BE EXTENSIVE GAME
+    WITH PLAYER p1 { fair,   unfair },
+         PLAYER p2 { accept, reject }
+    SUCH AS
+      { p1=fair:
+        { p2=accept: 5, 5 },
+        { p2=reject: 0, 0 }
+      },
+      { p1=unfair:
+        { p2=accept: 8, 2 },
+        { p2=reject: 0, 0 }
+      }
+    END;
+
+FIND pure_equilibrium
+ FOR ultimatum_game;
+\end{lstlisting}
+\end{column}
+\vrule
+\begin{column}{.5\textwidth}
+\begin{lstlisting}
+Result:
+  Param defined successfully
+1:
+  pure_equilibrium:
+    Pure Strategies:
+      p1:
+        1:
+          unfair
+      p2:
+        1:
+          accept
+        2:
+          accept
+    Payoff:
+          p1,       p2
+      Payoff:
+          8.00000,  2.00000
+\end{lstlisting}
+\end{column}
+\end{columns}
 \end{frame}
 
 \end{document}
