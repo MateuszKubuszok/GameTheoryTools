@@ -1,6 +1,6 @@
 # Game Theory Tools
 
-[![Build Status](https://travis-ci.org/MateuszKubuszok/MasterThesis.png)](https://travis-ci.org/MateuszKubuszok/MasterThesis)
+[![Build Status](https://travis-ci.org/MateuszKubuszok/GameTheoryTools.png)](https://travis-ci.org/MateuszKubuszok/GameTheoryTools)
 
 Project of a tool for finding Nash equilibria for given Games. Currently should be able to find:
 
@@ -170,7 +170,7 @@ programmer - run command `doxygen doxygen/private_api` from main directory.
 
 ## Documentation
 
-Documentation itself can also be found [here](https://github.com/MateuszKubuszok/MasterThesis/wiki).
+Documentation itself can also be found [here](https://github.com/MateuszKubuszok/GameTheoryTools/wiki).
 
 Additional information about SCons builder can be found on a [project's site](http://www.scons.org/).
 
