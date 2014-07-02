@@ -30,11 +30,11 @@
 /**
  * @brief GT minor version number.
  */
-#define GT_VERSION_MINOR   5
+#define GT_VERSION_MINOR   6
 /**
  * @brief GT release version number.
  */
-#define GT_VERSION_RELEASE 1
+#define GT_VERSION_RELEASE 0
 /**
  * @brief GT version number.
  *
