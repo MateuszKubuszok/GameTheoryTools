@@ -5,12 +5,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} % input encoding
 \usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
-\usepackage{polski}         % i18n package
-\usepackage[polish]{babel}  % i18n package
 \usepackage{listings}       % actual code package
 \usepackage{diagbox}        % diagonal line in table header cell
-\usepackage{graphicx}       % layout manipulation
 \usepackage{tikz}           % draw graphs
+\usepackage{mathtools}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,7 +64,7 @@
   \scriptsize{dr inż. Piotr Więcek}\\
 }
 \institute[Politechnika Wrocławska]{
-  \IfFileExists{pion-pl.png}
+  \IfFileExists{znak-pwr_pion-pl-cmyk.eps}
                {}
                {\write18{wget http://www.logotyp.pwr.wroc.pl/img/Graph/ZnakPWr/WersjaPionowa/Files/Cmyk/znak-pwr_pion-pl-cmyk.eps}}
   \includegraphics[width=38pt, height=52pt]{znak-pwr_pion-pl-cmyk.eps}
@@ -151,15 +149,19 @@ Postać strategiczna:
 \end{center}
 \begin{center}
 Macierz wypłat:
-\[\begin{bmatrix}
+\[\begin{bmatrix*}[r]
   0 &  1 & -1 \\
  -1 &  0 &  1 \\
   1 & -1 &  0 \\
-\end{bmatrix}\]
+\end{bmatrix*}\]
 \end{center}
 \end{column}
 \begin{column}{.5\textwidth}
-Grafika
+\begin{center}
+\includegraphics[width=0.7\textwidth]{kps.pdf}
+$$\sigma_1(p) = \sigma_1(k) = \sigma_1(n) = \frac{1}{3}$$
+$$\sigma_2(p) = \sigma_2(k) = \sigma_2(n) = \frac{1}{3}$$
+\end{center}
 \end{column}
 \end{columns}
 \end{frame}
@@ -266,30 +268,29 @@ Wypłaty w formie dwóch macierzy:
 \begin{column}{.5\textwidth}
 \begin{center}
 Postać strategiczna:
-\begin{tabular}[t]{| c              | c      | c      |}
+\begin{tabular}[t]{| c              | c      | c               |}
 \hline
-                     \diagbox{1}{2} & c      & \textbf{d}      \\
+                     \diagbox{1}{2} & c      & d               \\
 \hline
                      c              & -1, -1 & -3,  0          \\
 \hline
-                     \textbf{d}     &  0, -3 & \textbf{-2, -2} \\
+                     d              &  0, -3 & \textbf{-2, -2} \\
 \hline
 \end{tabular}
 \end{center}
-\begin{center}
-Macierze wypłat:
-\[\begin{bmatrix}
- -1 & -3 \\
-  0 & -2 \\
-\end{bmatrix}\]
-\[\begin{bmatrix}
- -1 &  0 \\
- -3 & -2 \\
-\end{bmatrix}\]
-\end{center}
 \end{column}
 \begin{column}{.5\textwidth}
-Grafika
+\begin{center}
+Macierze wypłat:
+\[\begin{bmatrix*}[r]
+ -1 & -3 \\
+  0 & -2 \\
+\end{bmatrix*}\]
+\[\begin{bmatrix*}[r]
+ -1 &  0 \\
+ -3 & -2 \\
+\end{bmatrix*}\]
+\end{center}
 \end{column}
 \end{columns}
 \end{frame}
@@ -374,6 +375,8 @@ Postać strategiczna:
 \hline
 \end{tabular}
 \end{center}
+\end{column}
+\begin{column}{.5\textwidth}
 \begin{center}
 Macierze wypłat:
 \[\begin{bmatrix}
@@ -385,9 +388,6 @@ Macierze wypłat:
  0 & 3 \\
 \end{bmatrix}\]
 \end{center}
-\end{column}
-\begin{column}{.5\textwidth}
-Grafika
 \end{column}
 \end{columns}
 \end{frame}
