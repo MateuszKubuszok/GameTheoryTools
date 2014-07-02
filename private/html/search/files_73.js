@@ -1,8 +1,6 @@
 var searchData=
 [
   ['scanner_2ehpp',['scanner.hpp',['../dd/dbc/scanner_8hpp.html',1,'']]],
-  ['stack_2ehh',['stack.hh',['../d9/d6f/include_2gt_2gtl_2stack_8hh.html',1,'']]],
-  ['stack_2ehh',['stack.hh',['../de/dfc/src_2gt_2gtl_2stack_8hh.html',1,'']]],
   ['statement_5fdriver_2ehpp',['statement_driver.hpp',['../d8/d83/statement__driver_8hpp.html',1,'']]],
   ['strategic_5fdata_2ecpp',['strategic_data.cpp',['../de/d80/strategic__data_8cpp.html',1,'']]],
   ['strategic_5fdata_2ehpp',['strategic_data.hpp',['../d8/d05/strategic__data_8hpp.html',1,'']]],

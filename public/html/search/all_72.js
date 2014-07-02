@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['range_5f',['range_',['../d1/df5/classGT_1_1GTL_1_1slice.html#a0a9864e37c58f2d10e3d76aee1d12236',1,'GT::GTL::slice']]],
-  ['rcbr',['RCBR',['../d6/d80/structGT_1_1GTL_1_1Parser_1_1token.html#a46f3f0d5caf43cbf22726f8dc98b5bdba49e68fce77cbb5de3395e3116c42c6c6',1,'GT::GTL::Parser::token']]],
   ['registeredproperties',['registeredProperties',['../d1/dde/classGT_1_1GTL_1_1Object.html#acb6a8b578ff5a38f2cfc20995f62cf06',1,'GT::GTL::Object']]],
   ['registerparam',['registerParam',['../d5/dfe/classGT_1_1GTL_1_1Context.html#a24653830621cc15ba61306a527c83f7a',1,'GT::GTL::Context::registerParam(const IdentifierPtr identifier, const ParamPtr param)'],['../d5/dfe/classGT_1_1GTL_1_1Context.html#aab879d3aaea16914096490e8f1c2230a',1,'GT::GTL::Context::registerParam(const DefinitionPtr definition)'],['../de/d8f/classGT_1_1GTL_1_1NullContext.html#ab217cb6d526b9528eccad8d7c80eae22',1,'GT::GTL::NullContext::registerParam(const IdentifierPtr, const ParamPtr) override'],['../de/d8f/classGT_1_1GTL_1_1NullContext.html#a47f0ab931436219e24e28f9646d80598',1,'GT::GTL::NullContext::registerParam(const DefinitionPtr) override']]],
   ['registerproperty',['registerProperty',['../d1/dde/classGT_1_1GTL_1_1Object.html#a1c43342f36a237b86e4cecc7f0102140',1,'GT::GTL::Object']]],
@@ -18,9 +16,8 @@ var searchData=
   ['resultfactory',['ResultFactory',['../d1/d1f/classGT_1_1Model_1_1ResultFactory.html',1,'GT::Model']]],
   ['resultindentationmode',['resultIndentationMode',['../de/d44/classGT_1_1Program_1_1ProgramController.html#a9f2e7eb3b5c7a8e0b8e21bbef7a5ca6d',1,'GT::Program::ProgramController::resultIndentationMode()'],['../d8/df6/namespaceGT_1_1Model.html#ad429f8972313f49fde164c17a0b40fc3',1,'GT::Model::ResultIndentationMode()']]],
   ['resultptr',['ResultPtr',['../d0/dea/namespaceGT_1_1GTL.html#ab2890d3d698ea888b94926488a606636',1,'GT::GTL::ResultPtr()'],['../d8/df6/namespaceGT_1_1Model.html#a81d7ed4004e272fb1fb03a4e6407f4ad',1,'GT::Model::ResultPtr()'],['../dd/d1f/namespaceGT_1_1Routines.html#a09c2ec4f719dd90fa83c865ddaf1b60c',1,'GT::Routines::ResultPtr()']]],
-  ['rhs_5fnumber_5ftype',['rhs_number_type',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a48da8de6baa0ac947b763c3ae5a3dc08',1,'GT::GTL::Parser']]],
-  ['root',['Root',['../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9',1,'GT::GTL::Root()'],['../dd/d1f/namespaceGT_1_1Routines.html#a2b07a0f60ec77812c28c7e2a010fea77',1,'GT::Routines::Root()']]],
   ['root',['Root',['../df/d6e/classGT_1_1Model_1_1Root.html',1,'GT::Model']]],
+  ['root',['Root',['../d0/dea/namespaceGT_1_1GTL.html#a820e0b75d2a4a4ebdbe40869ebf573f9',1,'GT::GTL::Root()'],['../dd/d1f/namespaceGT_1_1Routines.html#a2b07a0f60ec77812c28c7e2a010fea77',1,'GT::Routines::Root()']]],
   ['root_2ehpp',['root.hpp',['../da/d66/root_8hpp.html',1,'']]],
   ['routine',['Routine',['../d4/d62/classGT_1_1Routines_1_1Routine.html',1,'GT::Routines']]],
   ['routine_2ehpp',['routine.hpp',['../de/df5/routine_8hpp.html',1,'']]],
