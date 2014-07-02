@@ -8,8 +8,7 @@
 \usepackage{listings}       % actual code package
 \usepackage{diagbox}        % diagonal line in table header cell
 \usepackage{tikz}           % draw graphs
-\usepackage{mathtools}
-
+\usepackage{mathtools}      % matrices manipulation
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LAYOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,7 +47,6 @@
 \newcommand{\<}[1]{\begin{column}{#1}}
 \renewcommand{\>}{\end{column}}
 
-
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -69,7 +67,7 @@
                {\write18{wget http://www.logotyp.pwr.wroc.pl/img/Graph/ZnakPWr/WersjaPionowa/Files/Cmyk/znak-pwr_pion-pl-cmyk.eps}}
   \includegraphics[width=38pt, height=52pt]{znak-pwr_pion-pl-cmyk.eps}
 }
-\date[Lipiec 2014]{\tiny{03.07.2014r.}}
+\date{\tiny{Wrocław, 03.07.2014r.}}
 \titlepage
 \end{frame}
 
@@ -585,6 +583,112 @@ Result:
 \item możliwość dalszego rozszerzania funkcjonalności.
 \end{itemize}
 \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DZIĘKUJĘ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{center}
+{\LARGE Dziękuję!}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DODATKI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Dodatki}
+
+\subsection{LP dla gry jednomacierzowej}
+\begin{frame}{LP dla gry jednomacierzowej}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+Gracz 1.
+$$\min_x \sum_{i \in I} x_i$$
+$$A^Tx \geq 1$$
+$$x \geq 0$$
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+Gracz 2.
+$$\max_y \sum_{j \in J} y_i$$
+$$Ay \leq 1 $$
+$$y \geq 0$$
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Sandholm-Gilpin-Conitzer}
+\begin{frame}{Sandholm-Gilpin-Conitzer}
+\LARGE $\forall_{i \in I}$:
+\bigskip
+\normalsize
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+$$\sum_{{s_i} \in S_i} p_{s_i} = 1$$
+$$(\forall_{s_i \in S_i}) u_{s_i} = \sum_{s_{-i} \in S_{-i}} p_{s_{-i}} u_i(s_i, s_{-i})$$
+$$(\forall_{s_i \in S_i}) u_i \geq u_{s_i}$$
+\end{column}
+\begin{column}{.5\textwidth}
+$$(\forall_{s_i \in S_i}) r_{s_i} = u_i - u_{s_i}$$
+$$(\forall_{s_i \in S_i}) p_{s_i} \leq 1-b_{s_i}$$
+$$(\forall_{s_i \in S_i}) r_{s_i} \leq U_i b_{s_i}$$
+\end{column}
+\end{columns}
+\bigskip
+$$U_i = \max_{s_i^h, s_i^l \in S_i, s_{-i}^h, s_{-i}^l \in S_{-i}} u_i(s_i^h, s_{-i}^h) - u_i(s_i^l, s_{-i}^l)$$
+\end{frame}
+
+\subsection{Problemy dualne}
+\begin{frame}{Problemy dualne}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+Prymalny:
+$$\min c^{T}x$$
+$$Ax \geq b$$
+$$x \geq 0$$
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{center}
+Dualny:
+$$\max y^{T}b$$
+$$y^{T}A \leq c$$
+$$y \geq 0$$
+\end{center}
+\end{column}
+\end{columns}
+\begin{center}
+\begin{tabular}{ | c c | }
+\hline
+rozw. skończone & rozw. skończone (identyczne) \\
+\hline
+nieograniczony  & sprzeczny                    \\
+\hline
+sprzeczny       & sprzeczny lub nieograniczony \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\subsection{Twierdzenie minimaksowe}
+\begin{frame}{Twierdzenie minimaksowe}
+Twierdzenie minimaksowe:
+$$\max_x \{ \min_{y} \{ f(x,y) \} \} \leq \min_{y} \{ \max_x \{ f(x,y) \} \}$$
+
+$(x^*,y^*)$ punkt siodłowy jeśli:
+$$(\forall_{x})(\forall_{y}) f(x,y^*) \leq f(x^*,y^*) \leq f(x^*,y)$$
+
+Jeśli $f$ posiada punkt siodłowy $(x^*,y^*)$ wówczas:
+$$\max_x \{ \min_{y} \{ f(x,y) \} \} = \min_{y} \{ \max_x \{ f(x,y) \} \} = f(x^*,y^*)$$
 \end{frame}
 
 \end{document}
