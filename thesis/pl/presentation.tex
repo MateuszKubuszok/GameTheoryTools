@@ -1,23 +1,28 @@
 \documentclass[xcolor=x11names,compress]{beamer}
 
-%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAKIETY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} % input encoding
 \usepackage[T1]{fontenc}    % 8-bit font encoding (needed by e.g. PDFs)
 \usepackage{polski}         % i18n package
 \usepackage[polish]{babel}  % i18n package
 \usepackage{listings}       % actual code package
-\usepackage{graphicx}
-\usepackage{tikz}
+\usepackage{diagbox}        % diagonal line in table header cell
+\usepackage{graphicx}       % layout manipulation
+\usepackage{tikz}           % draw graphs
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LAYOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetikzlibrary{decorations.fractals}
 
 \lstset{
   language={[Sharp]C},
   basicstyle=\tiny
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \useoutertheme[subsection=false,shadow]{miniframes}
 \useinnertheme{default}
 \usefonttheme{serif}
@@ -44,11 +49,9 @@
 \renewcommand{\)}{\end{columns}}
 \newcommand{\<}[1]{\begin{column}{#1}}
 \renewcommand{\>}{\end{column}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{document}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% STRONA TYTUŁOWA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,14 +81,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Cel pracy}
 
+\subsection{Cel pracy}
 \begin{frame}{Cel pracy}
-Narzędzia do obliczania pewnych równowag Nasha:
+Narzędzia do obliczania wybranych równowag Nasha:
 \begin{itemize}
-\item otwarte oprogramowanie,
-\item projekt zorientowany obiektowo,
-\item szybki w działaniu,
-\item łatwy w utrzymaniu i rozbudowie,
-\item dobrze udokumentowany.
+\item szybkie w działaniu,
+\item łatwe w utrzymaniu i rozbudowie,
+\item dobrze udokumentowane.
+\end{itemize}
+\end{frame}
+
+\subsection{Cel pracy}
+\begin{frame}{Cel pracy}
+Rozważane przypadki:
+\begin{itemize}
+\item gry jednomacierzowe,
+\item gry dwumacierzowe,
+\item gry z informacją doskonałą.
 \end{itemize}
 \end{frame}
 
@@ -94,8 +106,65 @@ Narzędzia do obliczania pewnych równowag Nasha:
 %%%%%%%%%%%%%%%%%%%%%%%%%%% GRY JEDNOMACIERZOWE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Gry jednomacierzowe}
-\subsection{Gry jednomacierzowe}
 
+\subsection{Gry jednomacierzowe}
+\begin{frame}{Gry jednomacierzowe}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+Gra:
+\begin{itemize}
+\item w postaci strategicznej,
+\item 2-osobowa,
+\item o sumie zerowej.
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+Wypłaty w formie macierzy:
+\begin{itemize}
+\item wiersze $\rightarrow$ strategie 1. gracza,
+\item kolumny $\rightarrow$ strategie 2. gracza,
+\item wartości $\rightarrow$ wypłaty 1. gracza.
+\end{itemize} 
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gry jednomacierzowe}
+\begin{frame}{Gry jednomacierzowe - paper-kamień-nożyce}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+Postać strategiczna:
+\begin{tabular}[t]{| c              | c      | c      | c      |}
+\hline
+                     \diagbox{1}{2} & p      &  k     & n      \\
+\hline
+                     p              &  0,  0 &  1, -1 & -1,  1 \\
+\hline
+                     k              & -1,  1 &  0,  0 &  1, -1 \\
+\hline
+                     n              &  1, -1 & -1,  1 &  0,  0 \\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Macierz wypłat:
+\[\begin{bmatrix}
+  0 &  1 & -1 \\
+ -1 &  0 &  1 \\
+  1 & -1 &  0 \\
+\end{bmatrix}\]
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+Grafika
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Gry jednomacierzowe}
 \begin{frame}[fragile]{Gry jednomacierzowe - paper-kamień-nożyce}
 \begin{columns}[c]
 \begin{column}{.5\textwidth}
@@ -127,7 +196,7 @@ FIND pure_equilibrium,
  FOR rock_paper_scissors;
 \end{lstlisting}
 \end{column}
-\vrule
+\hspace{5pt}\vrule\hspace{5pt}
 \begin{column}{.5\textwidth}
 \begin{lstlisting}
 Result:
@@ -165,8 +234,67 @@ Result:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% GRY DWUMACIERZOWE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Gry dwumacierzowe}
-\subsection{Gry dwumacierzowe}
 
+\subsection{Gry dwumacierzowe}
+\begin{frame}{Gry dwumacierzowe}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+Gra:
+\begin{itemize}
+\item w postaci strategicznej,
+\item 2-osobowa,
+\item o sumie dowolnej.
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+Wypłaty w formie dwóch macierzy:
+\begin{itemize}
+\item wiersze $\rightarrow$ strategie 1. gracza,
+\item kolumny $\rightarrow$ strategie 2. gracza,
+\item wartości 1. macierzy $\rightarrow$ wypłaty 1 gracza,
+\item wartości 2. macierzy $\rightarrow$ wypłaty 2 gracza.
+\end{itemize} 
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gry dwumacierzowe}
+\begin{frame}{Gry dwumacierzowe - dylemat więźnia}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+Postać strategiczna:
+\begin{tabular}[t]{| c              | c      | c      |}
+\hline
+                     \diagbox{1}{2} & c      & \textbf{d}      \\
+\hline
+                     c              & -1, -1 & -3,  0          \\
+\hline
+                     \textbf{d}     &  0, -3 & \textbf{-2, -2} \\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Macierze wypłat:
+\[\begin{bmatrix}
+ -1 & -3 \\
+  0 & -2 \\
+\end{bmatrix}\]
+\[\begin{bmatrix}
+ -1 &  0 \\
+ -3 & -2 \\
+\end{bmatrix}\]
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+Grafika
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Gry dwumacierzowe}
 \begin{frame}[fragile]{Gry dwumacierzowe - dylemat więźnia}
 \begin{columns}[c]
 \begin{column}{.5\textwidth}
@@ -191,7 +319,7 @@ FIND pure_equilibrium,
  FOR prisoners_dilemma;
 \end{lstlisting}
 \end{column}
-\vrule
+\hspace{5pt}\vrule\hspace{5pt}
 \begin{column}{.5\textwidth}
 \begin{lstlisting}
 Result:
@@ -230,6 +358,41 @@ Result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Gry dwumacierzowe}
+\begin{frame}{Gry dwumacierzowe - bitwa płci}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+Postać strategiczna:
+\begin{tabular}[t]{| c              | c             | c             |}
+\hline
+                     \diagbox{1}{2} & p             & f             \\
+\hline
+                     o              & \textbf{3, 2} & 0, 0          \\
+\hline
+                     f              & 0, 0          & \textbf{2, 3} \\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Macierze wypłat:
+\[\begin{bmatrix}
+ 3 & 0 \\
+ 0 & 2 \\
+\end{bmatrix}\]
+\[\begin{bmatrix}
+ 2 & 0 \\
+ 0 & 3 \\
+\end{bmatrix}\]
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+Grafika
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Gry dwumacierzowe}
 \begin{frame}[fragile]{Gry dwumacierzowe - bitwa płci}
 \begin{columns}[c]
 \begin{column}{.5\textwidth}
@@ -254,7 +417,7 @@ FIND pure_equilibrium,
  FOR battle_of_the_sexes;
 \end{lstlisting}
 \end{column}
-\vrule
+\hspace{5pt}\vrule\hspace{5pt}
 \begin{column}{.5\textwidth}
 \begin{lstlisting}
 Result:
@@ -296,8 +459,68 @@ Result:
 %%%%%%%%%%%%%%%%%%%%%%%%% GRY Z INFORMACJĄ PEŁNĄ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Gry z informacją pełną}
-\subsection{Gry z informacją pełną}
 
+\subsection{Gry z informacją pełną}
+\begin{frame}{Gry z informacją pełną}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+Gra:
+\begin{itemize}
+\item w postaci ekstensywnej,
+\item 1-elementowe zbiory informacyjne,
+\item gwarantowane istnienie NE.
+\end{itemize}
+\end{column}
+\begin{column}{.5\textwidth}
+Reprezentowana przy pomocy drzewa:
+\begin{itemize}
+\item wierzchołki $\rightarrow$ wybór ruchu,
+\item krawędzie $\rightarrow$ ruchy graczy,
+\item liście $\rightarrow$ koniec gry - wypłata,
+\item zb. informacyjny $\rightarrow$ wiedza gracza.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gry z informacją pełną}
+\begin{frame}[fragile]{Gry z informacją pełną - ultimatum}
+\begin{center}
+\begin{tikzpicture}[scale=.6,auto=left]
+  \tikzset{IS/.style={circle, draw=black,scale=3}}
+  \tikzset{P1/.style={circle, fill=sienna}}
+  \tikzset{P2/.style={circle, fill=firebrick}}
+  \tikzset{R/.style={draw=firebrick}}
+  \node [P1] (n1)   at (0,8)  {1};
+  \node [IS] (n1is) at (0,8)  {};
+  \node [P2] (n2)   at (-4,4) {2};
+  \node [IS] (n2is) at (-4,4) {};
+  \node [P2] (n3)   at (4,4)  {2};
+  \node [IS] (n3is) at (4,4)  {};
+  \node [R]  (n4)   at (-6,0) {(5,5)};
+  \node [R]  (n5)   at (-2,0) {(0,0)};
+  \node [R]  (n6)   at (2,0)  {(8,2)};
+  \node [R]  (n7)   at (6,0)  {(0,0)};
+
+  \foreach \from/\to in {n1/n2}
+    \draw (\from) -- node [above] {f} (\to);
+  \foreach \from/\to in {n1/n3}
+    \draw (\from) -- node [above] {u} (\to);
+  \foreach \from/\to in {n2/n4,n3/n6}
+    \draw (\from) -- node [above] {a} (\to);
+  \foreach \from/\to in {n2/n5,n3/n7}
+    \draw (\from) -- node [above] {r} (\to);
+    
+  \tikzset{NE/.style={ultra thick}}
+  \foreach \from/\to in {n1/n3,n2/n4,n3/n6}
+    \draw[NE] (\from) -- (\to);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\subsection{Gry z informacją pełną}
 \begin{frame}[fragile]{Gry z informacją pełną - ultimatum}
 \begin{columns}[c]
 \begin{column}{.5\textwidth}
@@ -321,7 +544,7 @@ FIND pure_equilibrium
  FOR ultimatum_game;
 \end{lstlisting}
 \end{column}
-\vrule
+\hspace{5pt}\vrule\hspace{5pt}
 \begin{column}{.5\textwidth}
 \begin{lstlisting}
 Result:
@@ -344,6 +567,24 @@ Result:
 \end{lstlisting}
 \end{column}
 \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PODSUMOWANIE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Podsumowanie}
+
+\subsection{Podsumowanie}
+\begin{frame}{Podsumowanie}
+\begin{center}
+\textbf{Podsumowanie}
+\begin{itemize}
+\item projekt zakończony sukcesem,
+\item poprawne obliczane NE w rozpatrywanych przypadkach,
+\item możliwość dalszego rozszerzania funkcjonalności.
+\end{itemize}
+\end{center}
 \end{frame}
 
 \end{document}
