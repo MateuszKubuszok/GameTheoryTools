@@ -7,8 +7,6 @@ var searchData=
   ['stack_3c_20semantic_5ftype_20_3e',['stack&lt; semantic_type &gt;',['../d8/d34/classGT_1_1GTL_1_1stack.html',1,'GT::GTL']]],
   ['stack_3c_20state_5ftype_20_3e',['stack&lt; state_type &gt;',['../d8/d34/classGT_1_1GTL_1_1stack.html',1,'GT::GTL']]],
   ['statementdriver',['StatementDriver',['../dc/de9/classGT_1_1GTL_1_1StatementDriver.html',1,'GT::GTL']]],
-  ['strategic2player0summixedequilibriumroutine',['Strategic2Player0SumMixedEquilibriumRoutine',['../d2/da6/classGT_1_1Routines_1_1Strategic2Player0SumMixedEquilibriumRoutine.html',1,'GT::Routines']]],
-  ['strategic2playermixedequilibriumroutine',['Strategic2PlayerMixedEquilibriumRoutine',['../d5/dca/classGT_1_1Routines_1_1Strategic2PlayerMixedEquilibriumRoutine.html',1,'GT::Routines']]],
   ['strategicdata',['StrategicData',['../d3/d2b/classGT_1_1Model_1_1StrategicData.html',1,'GT::Model']]],
   ['strategicdataaccessor',['StrategicDataAccessor',['../d7/d95/classGT_1_1Model_1_1StrategicDataAccessor.html',1,'GT::Model']]],
   ['strategicdatabuilder',['StrategicDataBuilder',['../db/d8d/classGT_1_1Model_1_1StrategicDataBuilder.html',1,'GT::Model']]],

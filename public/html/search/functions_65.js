@@ -8,7 +8,7 @@ var searchData=
   ['errorcoordinate',['ErrorCoordinate',['../de/ddb/classGT_1_1GTL_1_1ErrorCoordinate.html#a3b4040733cf5a67dd230d5f87235b1c3',1,'GT::GTL::ErrorCoordinate']]],
   ['errordefinition',['ErrorDefinition',['../dd/dd1/classGT_1_1GTL_1_1ErrorDefinition.html#afde98e2c57db2955a6d0cd2dd9f90a56',1,'GT::GTL::ErrorDefinition']]],
   ['errordetails',['ErrorDetails',['../df/d37/classGT_1_1GTL_1_1ErrorDetails.html#a56eedb5211abb1b3749f0754626ef588',1,'GT::GTL::ErrorDetails']]],
-  ['errorfactory',['ErrorFactory',['../db/dad/classGT_1_1GTL_1_1ErrorFactory.html#a21bc3c7e51e2f084cc60b1e86ddee9e7',1,'GT::GTL::ErrorFactory::ErrorFactory()'],['../db/dad/classGT_1_1GTL_1_1ErrorFactory.html#a63311384451c350d287b113a00cc900c',1,'GT::GTL::ErrorFactory::ErrorFactory(const ErrorFactory &amp;errorFactory)']]],
+  ['errorfactory',['ErrorFactory',['../db/dad/classGT_1_1GTL_1_1ErrorFactory.html#ade1d8a20a450072227ba62d8b1dcc9a0',1,'GT::GTL::ErrorFactory::ErrorFactory()=default'],['../db/dad/classGT_1_1GTL_1_1ErrorFactory.html#a3ec62bc2093883569457fdd58c715572',1,'GT::GTL::ErrorFactory::ErrorFactory(const ErrorFactory &amp;errorFactory)=delete']]],
   ['errorgame',['ErrorGame',['../d0/d1e/classGT_1_1GTL_1_1ErrorGame.html#ae8302681bb1343b0c820246e52f9275e',1,'GT::GTL::ErrorGame']]],
   ['errorobject',['ErrorObject',['../da/d2d/classGT_1_1GTL_1_1ErrorObject.html#a619cf24c23f7a4e94ce25a9e42b0fed7',1,'GT::GTL::ErrorObject']]],
   ['errorparam',['ErrorParam',['../d3/d95/classGT_1_1GTL_1_1ErrorParam.html#a4c037b154d0c9af8a3202dea191ef2f4',1,'GT::GTL::ErrorParam']]],

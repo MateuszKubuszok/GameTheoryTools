@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['canlegallyspawnchild',['canLegallySpawnChild',['../d5/dfe/classGT_1_1GTL_1_1Context.html#add9537e499cd88e7945f02457dc347fd',1,'GT::GTL::Context::canLegallySpawnChild()'],['../de/d8f/classGT_1_1GTL_1_1NullContext.html#a44d8f4f8c9e6623aa2242f05bad808b7',1,'GT::GTL::NullContext::canLegallySpawnChild()']]],
+  ['checkplayers',['checkPlayers',['../d8/df6/namespaceGT_1_1Model.html#a28478d1839a0e49b868e73076d487af7',1,'GT::Model']]],
   ['checkvisitedidentifiers',['checkVisitedIdentifiers',['../da/dac/classGT_1_1GTL_1_1Param.html#adc6435c3b633826f41d24053e6b486d7',1,'GT::GTL::Param']]],
   ['choose',['CHOOSE',['../d6/d80/structGT_1_1GTL_1_1Parser_1_1token.html#a46f3f0d5caf43cbf22726f8dc98b5bdbad680ec70645c72d25d08b421ed88950e',1,'GT::GTL::Parser::token']]],
   ['clone',['clone',['../d3/d1b/classGT_1_1Model_1_1DataBuilder.html#a924feb6a70433fcf307dc12129923770',1,'GT::Model::DataBuilder::clone()'],['../df/d41/classGT_1_1Model_1_1NullDataBuilder.html#ac6ece27f950fe3b981c343ae5034fad8',1,'GT::Model::NullDataBuilder::clone()'],['../d7/d51/classGT_1_1Model_1_1NullGameBuilder.html#ac5e1e6d71968b6bcd5c04a6f6f465152',1,'GT::Model::NullGameBuilder::clone()']]],
@@ -30,7 +32,7 @@ var searchData=
   ['condition_5ffactory_2ehpp',['condition_factory.hpp',['../de/d1e/routines_2condition__factory_8hpp.html',1,'']]],
   ['conditiondriver',['ConditionDriver',['../dc/de3/classGT_1_1GTL_1_1ConditionDriver.html',1,'GT::GTL']]],
   ['conditiondriverptr',['ConditionDriverPtr',['../d0/dea/namespaceGT_1_1GTL.html#a33a0c9be01118ced2b2eaa369ea43a9e',1,'GT::GTL']]],
-  ['conditionfactory',['ConditionFactory',['../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a90a2906882444106c8a5160cb4a4cee5',1,'GT::GTL::ConditionFactory::ConditionFactory()'],['../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a1c52c970ea20f17eb1c2e0363272dd1f',1,'GT::GTL::ConditionFactory::ConditionFactory(const ConditionFactory &amp;conditionFactory)'],['../d2/d29/classGT_1_1Routines_1_1ConditionFactory.html#ade22d5a38ed2cdee6b8b039544f77653',1,'GT::Routines::ConditionFactory::ConditionFactory()'],['../d2/d29/classGT_1_1Routines_1_1ConditionFactory.html#ac77b9feed09684cdbaf7dcfaf1dc779b',1,'GT::Routines::ConditionFactory::ConditionFactory(const ConditionFactory &amp;conditionFactory)']]],
+  ['conditionfactory',['ConditionFactory',['../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#ade65561aeb470c306d74b1dce82dd859',1,'GT::GTL::ConditionFactory::ConditionFactory()=default'],['../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#aa86457991f2006e3d762cb96616c8703',1,'GT::GTL::ConditionFactory::ConditionFactory(const ConditionFactory &amp;conditionFactory)=delete'],['../d2/d29/classGT_1_1Routines_1_1ConditionFactory.html#ab435e422ecea03d78fcc3abdbc9684fd',1,'GT::Routines::ConditionFactory::ConditionFactory()=default'],['../d2/d29/classGT_1_1Routines_1_1ConditionFactory.html#acb78799b6d63ffaee90bdeac769e66c7',1,'GT::Routines::ConditionFactory::ConditionFactory(const ConditionFactory &amp;conditionFactory)=delete']]],
   ['conditionfactory',['ConditionFactory',['../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html',1,'GT::GTL']]],
   ['conditionfactory',['ConditionFactory',['../d2/d29/classGT_1_1Routines_1_1ConditionFactory.html',1,'GT::Routines']]],
   ['conditionptr',['ConditionPtr',['../d0/dea/namespaceGT_1_1GTL.html#ab8dbf984b0faf1e6a89f047f6f547778',1,'GT::GTL::ConditionPtr()'],['../dd/d1f/namespaceGT_1_1Routines.html#a7082b6aa3f8c3d5a04b8481ba53725df',1,'GT::Routines::ConditionPtr()']]],
@@ -113,6 +115,6 @@ var searchData=
   ['createstatementdriver',['createStatementDriver',['../d3/d7a/classGT_1_1GTL_1_1NullFactory.html#a0f11e439c23292103f29f8ee86bd6223',1,'GT::GTL::NullFactory']]],
   ['createstrategic',['createStrategic',['../d5/d0f/classGT_1_1GTL_1_1GameDriver.html#a3388d569bc74f898e25540c7c8e79e92',1,'GT::GTL::GameDriver::createStrategic()'],['../de/d06/classGT_1_1GTL_1_1NullGameDriver.html#aa3747eeeec39c4181d5b8399b6664b7c',1,'GT::GTL::NullGameDriver::createStrategic()']]],
   ['createvaluedriver',['createValueDriver',['../d3/d7a/classGT_1_1GTL_1_1NullFactory.html#a0008433f26f4f1238506a2809e62e2da',1,'GT::GTL::NullFactory']]],
-  ['cyclicidentifiers',['CyclicIdentifiers',['../d3/d09/classGT_1_1GTL_1_1CyclicIdentifiers.html',1,'GT::GTL']]],
-  ['cyclicidentifiers',['CyclicIdentifiers',['../d3/d09/classGT_1_1GTL_1_1CyclicIdentifiers.html#afd1ef8e4cbd98edafd61273b792ff914',1,'GT::GTL::CyclicIdentifiers']]]
+  ['cyclicidentifiers',['CyclicIdentifiers',['../d3/d09/classGT_1_1GTL_1_1CyclicIdentifiers.html#afd1ef8e4cbd98edafd61273b792ff914',1,'GT::GTL::CyclicIdentifiers']]],
+  ['cyclicidentifiers',['CyclicIdentifiers',['../d3/d09/classGT_1_1GTL_1_1CyclicIdentifiers.html',1,'GT::GTL']]]
 ];

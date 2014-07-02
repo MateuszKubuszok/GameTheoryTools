@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -93,7 +93,9 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d1/dfb/classGT_1_1GTL_1_1Context-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">GT::GTL::Context Class Reference</div>  </div>
@@ -143,6 +145,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac7bce5e710211ef901be75d357e0aa5f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#ac7bce5e710211ef901be75d357e0aa5f">hasRegistered</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;identifier) const </td></tr>
 <tr class="memdesc:ac7bce5e710211ef901be75d357e0aa5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if Identifier has been registed.  <a href="#ac7bce5e710211ef901be75d357e0aa5f">More...</a><br/></td></tr>
 <tr class="separator:ac7bce5e710211ef901be75d357e0aa5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add9537e499cd88e7945f02457dc347fd"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#add9537e499cd88e7945f02457dc347fd">canLegallySpawnChild</a> () const </td></tr>
+<tr class="memdesc:add9537e499cd88e7945f02457dc347fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether child of this node has depth lesser or equal to maximal allowed.  <a href="#add9537e499cd88e7945f02457dc347fd">More...</a><br/></td></tr>
+<tr class="separator:add9537e499cd88e7945f02457dc347fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d7fbe0d1cd6fa32f8ccab0c2183a350"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d0/d65/namespaceGT.html#a72ac25c350c624c43d44fd1faa6fc15f">NumberPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a5d7fbe0d1cd6fa32f8ccab0c2183a350">getNumber</a> (const <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a> &amp;identifier) const </td></tr>
 <tr class="memdesc:a5d7fbe0d1cd6fa32f8ccab0c2183a350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains value from context by identifer.  <a href="#a5d7fbe0d1cd6fa32f8ccab0c2183a350">More...</a><br/></td></tr>
 <tr class="separator:a5d7fbe0d1cd6fa32f8ccab0c2183a350"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,6 +180,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afcc8438bd70ad34e7b8e2b67be0150cd inherit pub_methods_classGT_1_1Model_1_1Root"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wheter <a class="el" href="../../df/d6e/classGT_1_1Model_1_1Root.html" title="Basic interface of many classes used in the project. ">Root</a> is a null Object (null guardian).  <a href="#afcc8438bd70ad34e7b8e2b67be0150cd">More...</a><br/></td></tr>
 <tr class="separator:afcc8438bd70ad34e7b8e2b67be0150cd inherit pub_methods_classGT_1_1Model_1_1Root"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3c30223b47663a3854a0d0db084aa60a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a3c30223b47663a3854a0d0db084aa60a">getMaxLegalDepth</a> ()</td></tr>
+<tr class="memdesc:a3c30223b47663a3854a0d0db084aa60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns maximal allowed depth.  <a href="#a3c30223b47663a3854a0d0db084aa60a">More...</a><br/></td></tr>
+<tr class="separator:a3c30223b47663a3854a0d0db084aa60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92126adee63582700caca4e4a0ce4414"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a92126adee63582700caca4e4a0ce4414">setMaxLegalDepth</a> (<a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a2fb52d338f5df6eb6809bff448e0fd3c">maxLegalDepth</a>)</td></tr>
+<tr class="memdesc:a92126adee63582700caca4e4a0ce4414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets new maximal allowed depth.  <a href="#a92126adee63582700caca4e4a0ce4414">More...</a><br/></td></tr>
+<tr class="separator:a92126adee63582700caca4e4a0ce4414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af8f1d70de103d7288b22ae5029583ceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#a1b8686c0a0aa60a3be21fe18adefafbe">ContextPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#af8f1d70de103d7288b22ae5029583ceb">parentContext</a></td></tr>
@@ -183,6 +197,15 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a344f6b174c0d7a64cdc1a8515aa42bb3"><td class="memItemLeft" align="right" valign="top">map&lt; <a class="el" href="../../d0/d65/namespaceGT.html#a8f19b695ad22a8a8943299159cb0f13c">Identifier</a>, <a class="el" href="../../d0/dea/namespaceGT_1_1GTL.html#aa66a02f216fa739d3c506949e4c2454c">ParamPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a344f6b174c0d7a64cdc1a8515aa42bb3">knownObjects</a></td></tr>
 <tr class="memdesc:a344f6b174c0d7a64cdc1a8515aa42bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registerd Objects.  <a href="#a344f6b174c0d7a64cdc1a8515aa42bb3">More...</a><br/></td></tr>
 <tr class="separator:a344f6b174c0d7a64cdc1a8515aa42bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11048180716f3fbd095a49c244e06a5e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a11048180716f3fbd095a49c244e06a5e">depth</a></td></tr>
+<tr class="memdesc:a11048180716f3fbd095a49c244e06a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth of <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a>.  <a href="#a11048180716f3fbd095a49c244e06a5e">More...</a><br/></td></tr>
+<tr class="separator:a11048180716f3fbd095a49c244e06a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a2fb52d338f5df6eb6809bff448e0fd3c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html#a2fb52d338f5df6eb6809bff448e0fd3c">maxLegalDepth</a></td></tr>
+<tr class="memdesc:a2fb52d338f5df6eb6809bff448e0fd3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal depth considered legal (defaults to 30).  <a href="#a2fb52d338f5df6eb6809bff448e0fd3c">More...</a><br/></td></tr>
+<tr class="separator:a2fb52d338f5df6eb6809bff448e0fd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a> containing identifiers and values befind then. </p>
@@ -212,7 +235,7 @@ Private Attributes</h2></td></tr>
 
 <p>Known objects map. </p>
 
-<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00081">81</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
 
 </div>
 </div>
@@ -292,6 +315,33 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="add9537e499cd88e7945f02457dc347fd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool GT::GTL::Context::canLegallySpawnChild </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether child of this node has depth lesser or equal to maximal allowed. </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d8f/classGT_1_1GTL_1_1NullContext.html#a44d8f4f8c9e6623aa2242f05bad808b7">GT::GTL::NullContext</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a3fb798bd89c50094348def271de484f4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -315,6 +365,32 @@ Private Attributes</h2></td></tr>
 
 <p>Returns map of KnownObjects. </p>
 <dl class="section return"><dt>Returns</dt><dd>KnownObjects map </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3c30223b47663a3854a0d0db084aa60a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> GT::GTL::Context::getMaxLegalDepth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns maximal allowed depth. </p>
+<dl class="section return"><dt>Returns</dt><dd>maximal legal depth </dd></dl>
 
 </div>
 </div>
@@ -560,6 +636,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a92126adee63582700caca4e4a0ce4414"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void GT::GTL::Context::setMaxLegalDepth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a>&#160;</td>
+          <td class="paramname"><em>maxLegalDepth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets new maximal allowed depth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxLegalDepth</td><td>new maximal legal depth </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a25a1a91d940c8cc17f36c9a026392f6f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -591,6 +699,30 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a11048180716f3fbd095a49c244e06a5e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> GT::GTL::Context::depth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Depth of <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a>. </p>
+
+<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a344f6b174c0d7a64cdc1a8515aa42bb3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -611,7 +743,31 @@ Private Attributes</h2></td></tr>
 
 <p>Registerd Objects. </p>
 
-<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2fb52d338f5df6eb6809bff448e0fd3c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d65/namespaceGT.html#a17f154b64ff7f40b1f64b58b96adeffd">Index</a> GT::GTL::Context::maxLegalDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximal depth considered legal (defaults to 30). </p>
+
+<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
 
 </div>
 </div>
@@ -635,7 +791,7 @@ Private Attributes</h2></td></tr>
 
 <p>Possible parent <a class="el" href="../../d5/dfe/classGT_1_1GTL_1_1Context.html" title="Context containing identifiers and values befind then. ">Context</a>. </p>
 
-<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
 
 </div>
 </div>
@@ -650,7 +806,7 @@ Private Attributes</h2></td></tr>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

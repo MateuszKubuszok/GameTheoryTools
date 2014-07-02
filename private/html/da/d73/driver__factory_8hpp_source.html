@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="title">driver_factory.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/d73/driver__factory_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __GT_GTL_DRIVER_FACTORY_HPP__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __GT_GTL_DRIVER_FACTORY_HPP__</span></div>
+<a href="../../da/d73/driver__factory_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GT_GTL_DRIVER_FACTORY_HPP_INCLUDED</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GT_GTL_DRIVER_FACTORY_HPP_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"></span><span class="comment"></span></div>
@@ -163,21 +163,21 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">     * @brief Default constructor hidden from programmers.</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aa6e23d006849dcf70ea4299000bb2384">DriverFactory</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#af51d353d597d4875d037c207c7378880">DriverFactory</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     * @brief Default copy constructor hidden from programmers.</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     * @param driverFactory object to copy</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aa6e23d006849dcf70ea4299000bb2384">DriverFactory</a>(</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#af51d353d597d4875d037c207c7378880">DriverFactory</a>(</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html">DriverFactory</a>&amp; driverFactory</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * @brief Default destructor hidden from programmers.</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aa525e9dbf7a5092c8deff21af7ae0b9b">~DriverFactory</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#abb277a0294b861c043908fd72ae2d1b3">~DriverFactory</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}; <span class="comment">/* END class DriverFactory */</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
@@ -185,14 +185,14 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_DRIVER_FACTORY_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef GT_GTL_DRIVER_FACTORY_HPP_INCLUDED */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_html_a5b386782ae2fd0278a91f5ca55c14a90"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a5b386782ae2fd0278a91f5ca55c14a90">GT::OutputStream</a></div><div class="ttdeci">ostream OutputStream</div><div class="ttdoc">Output stream alias. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00072">common.hpp:72</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_aff18e3eb767c8b2f92704f267f63f81d"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aff18e3eb767c8b2f92704f267f63f81d">GT::GTL::DriverFactory::createExecutionDriver</a></div><div class="ttdeci">DriverPtr createExecutionDriver(OutputStream *outputStream, OutputStream *errorStream) const </div><div class="ttdoc">Creates Driver that executes input. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00043">driver_factory.cpp:43</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_aa6e23d006849dcf70ea4299000bb2384"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aa6e23d006849dcf70ea4299000bb2384">GT::GTL::DriverFactory::DriverFactory</a></div><div class="ttdeci">DriverFactory()</div><div class="ttdoc">Default constructor hidden from programmers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00052">driver_factory.cpp:52</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_a39c7d6dfc0b250201da48b95ae64c725"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#a39c7d6dfc0b250201da48b95ae64c725">GT::GTL::DriverFactory::createCheckingDriver</a></div><div class="ttdeci">DriverPtr createCheckingDriver(OutputStream *errorStream) const </div><div class="ttdoc">Creates Driver that only checks errors. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00037">driver_factory.cpp:37</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_aa525e9dbf7a5092c8deff21af7ae0b9b"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aa525e9dbf7a5092c8deff21af7ae0b9b">GT::GTL::DriverFactory::~DriverFactory</a></div><div class="ttdeci">~DriverFactory()</div><div class="ttdoc">Default destructor hidden from programmers. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00054">driver_factory.cpp:54</a></div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_a7f2805987281ac16267bc9c2ade90f57"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#a7f2805987281ac16267bc9c2ade90f57">GT::GTL::DriverFactory::getInstance</a></div><div class="ttdeci">static DriverFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a DriverFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00030">driver_factory.cpp:30</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_aff18e3eb767c8b2f92704f267f63f81d"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#aff18e3eb767c8b2f92704f267f63f81d">GT::GTL::DriverFactory::createExecutionDriver</a></div><div class="ttdeci">DriverPtr createExecutionDriver(OutputStream *outputStream, OutputStream *errorStream) const </div><div class="ttdoc">Creates Driver that executes input. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00042">driver_factory.cpp:42</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_af51d353d597d4875d037c207c7378880"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#af51d353d597d4875d037c207c7378880">GT::GTL::DriverFactory::DriverFactory</a></div><div class="ttdeci">DriverFactory()=default</div><div class="ttdoc">Default constructor hidden from programmers. </div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_a39c7d6dfc0b250201da48b95ae64c725"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#a39c7d6dfc0b250201da48b95ae64c725">GT::GTL::DriverFactory::createCheckingDriver</a></div><div class="ttdeci">DriverPtr createCheckingDriver(OutputStream *errorStream) const </div><div class="ttdoc">Creates Driver that only checks errors. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00036">driver_factory.cpp:36</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_a7f2805987281ac16267bc9c2ade90f57"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#a7f2805987281ac16267bc9c2ade90f57">GT::GTL::DriverFactory::getInstance</a></div><div class="ttdeci">static DriverFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a DriverFactory. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddd/driver__factory_8cpp_source.html#l00031">driver_factory.cpp:31</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html">GT::GTL::DriverFactory</a></div><div class="ttdoc">Used for creation of Error instances for GTL classes. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d73/driver__factory_8hpp_source.html#l00037">driver_factory.hpp:37</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1DriverFactory_html_abb277a0294b861c043908fd72ae2d1b3"><div class="ttname"><a href="../../d0/d4c/classGT_1_1GTL_1_1DriverFactory.html#abb277a0294b861c043908fd72ae2d1b3">GT::GTL::DriverFactory::~DriverFactory</a></div><div class="ttdeci">~DriverFactory()=default</div><div class="ttdoc">Default destructor hidden from programmers. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_ac3d110150a6c469c98ff7e5f0c313263"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#ac3d110150a6c469c98ff7e5f0c313263">GT::GTL::DriverPtr</a></div><div class="ttdeci">shared_ptr&lt; Driver &gt; DriverPtr</div><div class="ttdoc">Smart pointer to Driver. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00120">common.hpp:120</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -202,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

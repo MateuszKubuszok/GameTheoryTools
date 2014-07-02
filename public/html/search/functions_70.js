@@ -1,7 +1,7 @@
 var searchData=
 [
   ['param',['Param',['../da/dac/classGT_1_1GTL_1_1Param.html#aea269a06d5f37b037f0275eda762e46c',1,'GT::GTL::Param']]],
-  ['paramfactory',['ParamFactory',['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#aaafa1b682ce4eba62937008249439021',1,'GT::GTL::ParamFactory::ParamFactory()'],['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#af75e7aea3db9a34036ad2205b61b6b04',1,'GT::GTL::ParamFactory::ParamFactory(const ParamFactory &amp;paramFactory)']]],
+  ['paramfactory',['ParamFactory',['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#ab2214731ce30a65c1d4c7be22ba434fe',1,'GT::GTL::ParamFactory::ParamFactory()=default'],['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#a1311b8a9e9d907b3bfdac013681c0b32',1,'GT::GTL::ParamFactory::ParamFactory(const ParamFactory &amp;paramFactory)=delete']]],
   ['parse',['parse',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a8f0beee3979bfd4c237dfa286d89c87b',1,'GT::GTL::Parser']]],
   ['parser',['Parser',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a3c1d3dd5e5de405e679288ec17dc6abf',1,'GT::GTL::Parser']]],
   ['player',['Player',['../d8/d9b/classGT_1_1GTL_1_1Player.html#a773d0ec4aa182443fee383636ffa65e9',1,'GT::GTL::Player::Player()'],['../db/d5d/classGT_1_1Model_1_1Player.html#ad4ff6a1ff03c17f7c9a490219b236b51',1,'GT::Model::Player::Player()']]],

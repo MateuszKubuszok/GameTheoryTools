@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="title">helpers.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../dd/d0f/model_2helpers_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __GT_MODEL_HELPERS_HPP__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __GT_MODEL_HELPERS_HPP__</span></div>
+<a href="../../dd/d0f/model_2helpers_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GT_MODEL_HELPERS_HPP_INCLUDED</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GT_MODEL_HELPERS_HPP_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"></span><span class="comment"></span></div>
@@ -137,17 +137,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">PlayersPtr</a> <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a8761c35a21cd239f2b466359a72420fc">createPlayersPtr</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d81/model_2helpers_8ipp.html">gt/model/helpers.ipp</a>&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">/* END namespace Model */</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_MODEL_HELPERS_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span><span class="comment"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @brief Checks if Players are fulfilling criteria of nonemtyness and uniqueness.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @param players               Players</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @throw EmptyPlayerName       thrown when player have an empty name</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @throw PlayersNameDuplicated thrown when some Player&#39;s name is duplicated</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a28478d1839a0e49b868e73076d487af7">checkPlayers</a>(</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">PlayersPtr</a>&amp; players</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d81/model_2helpers_8ipp.html">gt/model/helpers.ipp</a>&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">/* END namespace Model */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef GT_MODEL_HELPERS_HPP_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="namespaceGT_1_1Model_html_a28478d1839a0e49b868e73076d487af7"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a28478d1839a0e49b868e73076d487af7">GT::Model::checkPlayers</a></div><div class="ttdeci">void checkPlayers(const PlayersPtr &amp;players)</div><div class="ttdoc">Checks if Players are fulfilling criteria of nonemtyness and uniqueness. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1b/model_2helpers_8cpp_source.html#l00122">helpers.cpp:122</a></div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a590dc52fba78487da24978b0917f69a8"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a590dc52fba78487da24978b0917f69a8">GT::Model::PlayersPtr</a></div><div class="ttdeci">shared_ptr&lt; Players &gt; PlayersPtr</div><div class="ttdoc">Smart pointer to Players. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d65/model_2common_8hpp_source.html#l00081">common.hpp:81</a></div></div>
 <div class="ttc" id="model_2helpers_8ipp_html"><div class="ttname"><a href="../../dc/d81/model_2helpers_8ipp.html">helpers.ipp</a></div><div class="ttdoc">Defines GT::Model helpers. </div></div>
 <div class="ttc" id="namespaceGT_1_1Model_html_a079fa7381f7933ea2c7f2ea29b9b499e"><div class="ttname"><a href="../../d8/df6/namespaceGT_1_1Model.html#a079fa7381f7933ea2c7f2ea29b9b499e">GT::Model::createPlayers</a></div><div class="ttdeci">Players createPlayers()</div><div class="ttdoc">Creates Players. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/model_2helpers_8hpp_source.html#l00027">helpers.hpp:27</a></div></div>
@@ -161,7 +175,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

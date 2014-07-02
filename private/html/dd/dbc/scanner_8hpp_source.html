@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (full documentation)
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="title">scanner.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../dd/dbc/scanner_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __GT_GTL_SCANNER_HPP__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __GT_GTL_SCANNER_HPP__</span></div>
+<a href="../../dd/dbc/scanner_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GT_GTL_SCANNER_HPP_INCLUDED</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GT_GTL_SCANNER_HPP_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"></span><span class="comment"></span></div>
@@ -127,13 +127,13 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * Similar code is executed inside scanner.cpp generated with Flex - code in if instuction is repeated,</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * so that other classes (Scanner in particular) would see see ::GTLFlexLexer.</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __GTL_FLEX_LEXER__</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  __GTL_FLEX_LEXER__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef GT_GTL_FLEX_LEXER_DEFINED</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  GT_GTL_FLEX_LEXER_DEFINED</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    undef   yyFlexLexer</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define  yyFlexLexer GTLFlexLexer</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    include &lt;FlexLexer.h&gt;</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#    undef   yyFlexLexer</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GTL_FLEX_LEXER__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* END #ifndef GT_GTL_FLEX_LEXER_DEFINED */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * @brief Makes Scanner::lex() function signature of generated main scanning function.</span></div>
@@ -226,7 +226,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/** @endcond */</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_SCANNER_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef GT_GTL_SCANNER_HPP_INCLUDED */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_html_a6aefaddd6afab0b3a939cb03262d2f33"><div class="ttname"><a href="../../d0/d65/namespaceGT.html#a6aefaddd6afab0b3a939cb03262d2f33">GT::InputStream</a></div><div class="ttdeci">istream InputStream</div><div class="ttdoc">Input stream alias. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/common_8hpp_source.html#l00071">common.hpp:71</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1Parser_html_ab2f46fc8ffe16ebbf0db2a307189cf9c"><div class="ttname"><a href="../../d1/d03/classGT_1_1GTL_1_1Parser.html#ab2f46fc8ffe16ebbf0db2a307189cf9c">GT::GTL::Parser::location_type</a></div><div class="ttdeci">location location_type</div><div class="ttdoc">Symbol locations. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/parser_8hpp_source.html#l00126">parser.hpp:126</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -237,7 +237,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

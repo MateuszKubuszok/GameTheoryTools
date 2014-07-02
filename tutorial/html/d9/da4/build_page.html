@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools - tutorial
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -132,7 +132,7 @@ Windows systems</h1>
 <div class="line">/usr/include/boost/container/allocator/allocator_traits.hpp:167:54: error: missing <span class="stringliteral">&#39;typename&#39;</span> prior to dependent type name <span class="stringliteral">&#39;boost::intrusive::detail::type_rebinder&lt;Alloc, T&gt;::type&#39;</span></div>
 <div class="line">      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">using</span> rebind_alloc  = boost::intrusive::detail::type_rebinder&lt;Alloc, T&gt;::type;</div>
 <div class="line">                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
-</div><!-- fragment --><p> It is caused by lack of <code>typename</code> word that was fixed somwhere between <code>1.48</code> and <code>1.54</code>. GCC didn't treated it as error (mistakingly?) and so it ended up in a released version.</p>
+</div><!-- fragment --><p> It is caused by lack of <code>typename</code> word that was fixed somwhere between <code>1.49</code> and <code>1.50.0-beta1</code> (see <a href="https://github.com/boostorg/container/commit/7f1456c30fa5ed58af912d67352f55bc961be55e">https://github.com/boostorg/container/commit/7f1456c30fa5ed58af912d67352f55bc961be55e</a> ). GCC didn't treated it as error (mistakingly?) and so it ended up in a released version.</p>
 <h1><a class="anchor" id="project_sec"></a>
 Building project</h1>
 <p>Once all dependencies are available project can be build with <code>scons</code> script. Navigate to the project directory with terminal and call chosen command to build respective target:</p>
@@ -160,7 +160,13 @@ Building project</h1>
 <div class="line">scons                       # <span class="keywordflow">for</span> whole shell</div>
 </div><!-- fragment --><p>To build project with statically linked libraries use <code>static=1</code> argument e.g.: </p>
 <div class="fragment"><div class="line">scons -Q buildExecutables <span class="keyword">static</span>=1</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><p>To build project in debug mode use <code>debug=1</code> argument e.g.: </p>
+<div class="fragment"><div class="line">scons -Q buildExecutables debug=1</div>
+</div><!-- fragment --><p> By default it is turend off (release mode).</p>
+<p>To build project with optimized binaries use <code>optimize=1</code> argument e.g.: </p>
+<div class="fragment"><div class="line">scons -Q buildExecutables optimize=1</div>
+</div><!-- fragment --><p> It's by default turned on on release and turned off on debug mode. </p>
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
@@ -168,7 +174,7 @@ Building project</h1>
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

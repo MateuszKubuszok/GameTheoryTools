@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Game Theory Tools (public API)
-   &#160;<span id="projectnumber">v0.5.1</span>
+   &#160;<span id="projectnumber">v0.6.0</span>
    </div>
    <div id="projectbrief">Tools for calculating Nash equilibria</div>
   </td>
@@ -92,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="title">condition_factory.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/d66/gtl_2condition__factory_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __GT_GTL_CONDITION_FACTORY_HPP__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __GT_GTL_CONDITION_FACTORY_HPP__</span></div>
+<a href="../../da/d66/gtl_2condition__factory_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GT_GTL_CONDITION_FACTORY_HPP_INCLUDED</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GT_GTL_CONDITION_FACTORY_HPP_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"></span><span class="comment"></span></div>
@@ -193,21 +193,21 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * @brief Default constructor hidden from programmers.</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a90a2906882444106c8a5160cb4a4cee5">ConditionFactory</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#ade65561aeb470c306d74b1dce82dd859">ConditionFactory</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     * @brief Default copy constructor hidden from programmers.</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     *</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     * @param conditionFactory object to copy</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a90a2906882444106c8a5160cb4a4cee5">ConditionFactory</a>(</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#ade65561aeb470c306d74b1dce82dd859">ConditionFactory</a>(</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html">ConditionFactory</a>&amp; conditionFactory</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    );</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">    /**</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">     * @brief Default destructor hidden from programmers.</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#adf926299612965b9b1eb9c5b03f293c5">~ConditionFactory</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#aad4dabf839eaf21d4082c1486fe1fc22">~ConditionFactory</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}; <span class="comment">/* END class ConditionFactory */</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////</span></div>
@@ -215,15 +215,15 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">/* END namespace GTL */</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;} <span class="comment">/* END namespace GT */</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef __GT_GTL_CONDITION_FACTORY_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* END #ifndef GT_GTL_CONDITION_FACTORY_HPP_INCLUDED */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_ab8dbf984b0faf1e6a89f047f6f547778"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#ab8dbf984b0faf1e6a89f047f6f547778">GT::GTL::ConditionPtr</a></div><div class="ttdeci">shared_ptr&lt; Condition &gt; ConditionPtr</div><div class="ttdoc">Smart pointer to Condition. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00098">common.hpp:98</a></div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_aad4dabf839eaf21d4082c1486fe1fc22"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#aad4dabf839eaf21d4082c1486fe1fc22">GT::GTL::ConditionFactory::~ConditionFactory</a></div><div class="ttdeci">~ConditionFactory()=default</div><div class="ttdoc">Default destructor hidden from programmers. </div></div>
+<div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_ade65561aeb470c306d74b1dce82dd859"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#ade65561aeb470c306d74b1dce82dd859">GT::GTL::ConditionFactory::ConditionFactory</a></div><div class="ttdeci">ConditionFactory()=default</div><div class="ttdoc">Default constructor hidden from programmers. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_a556262991e949fa97d6ab0a19cceb0e2"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a556262991e949fa97d6ab0a19cceb0e2">GT::GTL::ConditionFactory::createPlayerRangeCondition</a></div><div class="ttdeci">ConditionPtr createPlayerRangeCondition(const ObjectPtr player, const ObjectsPtr strategies) const </div><div class="ttdoc">Creates Condition for a Player limiting strategies beforehand. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html">GT::GTL::ConditionFactory</a></div><div class="ttdoc">Used for creation of Conditions for GT model. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d66/gtl_2condition__factory_8hpp_source.html#l00037">condition_factory.hpp:37</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_af7127d6be86a9b4bd63758c9506535f0"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#af7127d6be86a9b4bd63758c9506535f0">GT::GTL::ConditionFactory::createInformationSetChoiceCondition</a></div><div class="ttdeci">ConditionPtr createInformationSetChoiceCondition(const ObjectPtr player, const ObjectPtr informationSet, const ObjectPtr strategy) const </div><div class="ttdoc">Creates Condition for a Player choosing strategy beforehand. </div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_a90a2906882444106c8a5160cb4a4cee5"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a90a2906882444106c8a5160cb4a4cee5">GT::GTL::ConditionFactory::ConditionFactory</a></div><div class="ttdeci">ConditionFactory()</div><div class="ttdoc">Default constructor hidden from programmers. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_a52147116bfd05531e54d2c86716eea6c"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#a52147116bfd05531e54d2c86716eea6c">GT::GTL::ConditionFactory::createPlayerChoiceCondition</a></div><div class="ttdeci">ConditionPtr createPlayerChoiceCondition(const ObjectPtr player, const ObjectPtr strategy) const </div><div class="ttdoc">Creates Condition for a Player choosing strategy beforehand. </div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_adc63dea419b0217eadb8d30efe864115"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#adc63dea419b0217eadb8d30efe864115">GT::GTL::ConditionFactory::createInformationSetRangeCondition</a></div><div class="ttdeci">ConditionPtr createInformationSetRangeCondition(const ObjectPtr player, const ObjectPtr informationSet, const ObjectsPtr strategies) const </div><div class="ttdoc">Creates Condition for a Player limiting strategies beforehand. </div></div>
-<div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_adf926299612965b9b1eb9c5b03f293c5"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#adf926299612965b9b1eb9c5b03f293c5">GT::GTL::ConditionFactory::~ConditionFactory</a></div><div class="ttdeci">~ConditionFactory()</div><div class="ttdoc">Default destructor hidden from programmers. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_acbd05d558ccbcda70405be3c1d1fd686"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#acbd05d558ccbcda70405be3c1d1fd686">GT::GTL::ObjectPtr</a></div><div class="ttdeci">shared_ptr&lt; Object &gt; ObjectPtr</div><div class="ttdoc">Smart pointer to Object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00090">common.hpp:90</a></div></div>
 <div class="ttc" id="classGT_1_1GTL_1_1ConditionFactory_html_ac6578c30398639d24c2fc5e78095c973"><div class="ttname"><a href="../../d8/d39/classGT_1_1GTL_1_1ConditionFactory.html#ac6578c30398639d24c2fc5e78095c973">GT::GTL::ConditionFactory::getInstance</a></div><div class="ttdeci">static ConditionFactory &amp; getInstance()</div><div class="ttdoc">Returns the instance of a ResultFactory. </div></div>
 <div class="ttc" id="namespaceGT_1_1GTL_html_a3a16205b7ef19a12305746207ff56ff4"><div class="ttname"><a href="../../d0/dea/namespaceGT_1_1GTL.html#a3a16205b7ef19a12305746207ff56ff4">GT::GTL::ObjectsPtr</a></div><div class="ttdeci">shared_ptr&lt; Objects &gt; ObjectsPtr</div><div class="ttdoc">Smart pointer to Objects. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8a/gtl_2common_8hpp_source.html#l00113">common.hpp:113</a></div></div>
@@ -235,7 +235,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 by
 <i><a href="https://github.com/MateuszKubuszok">Mateusz Kubuszok</a></i>
 <br />
-Version <b>v0.5.1</b>
+Version <b>v0.6.0</b>
 </small></address>
 </body>
 </html>

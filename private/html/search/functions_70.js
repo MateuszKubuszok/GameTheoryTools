@@ -1,7 +1,7 @@
 var searchData=
 [
   ['param',['Param',['../da/dac/classGT_1_1GTL_1_1Param.html#aea269a06d5f37b037f0275eda762e46c',1,'GT::GTL::Param']]],
-  ['paramfactory',['ParamFactory',['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#aaafa1b682ce4eba62937008249439021',1,'GT::GTL::ParamFactory::ParamFactory()'],['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#af75e7aea3db9a34036ad2205b61b6b04',1,'GT::GTL::ParamFactory::ParamFactory(const ParamFactory &amp;paramFactory)']]],
+  ['paramfactory',['ParamFactory',['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#ab2214731ce30a65c1d4c7be22ba434fe',1,'GT::GTL::ParamFactory::ParamFactory()=default'],['../d3/d05/classGT_1_1GTL_1_1ParamFactory.html#a1311b8a9e9d907b3bfdac013681c0b32',1,'GT::GTL::ParamFactory::ParamFactory(const ParamFactory &amp;paramFactory)=delete']]],
   ['paramknownproperties',['ParamKnownProperties',['../d7/d54/classGT_1_1GTL_1_1ParamKnownProperties.html#a24b1eceeade1b9433d51fb8b6653504c',1,'GT::GTL::ParamKnownProperties']]],
   ['paramvalueproperty',['ParamValueProperty',['../d4/dd9/classGT_1_1GTL_1_1ParamValueProperty.html#a95694013fdbc5ced190858453d4991fd',1,'GT::GTL::ParamValueProperty']]],
   ['parse',['parse',['../d1/d03/classGT_1_1GTL_1_1Parser.html#a8f0beee3979bfd4c237dfa286d89c87b',1,'GT::GTL::Parser']]],
