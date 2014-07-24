@@ -28,6 +28,8 @@ namespace GTL {
 using std::endl;
 using std::stringstream;
 
+using boost::make_shared;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class Context : public virtual Root {
@@ -54,7 +56,7 @@ Context::Context() :
     registerParam(
         createIdentifierPtr("context"),
         ParamFactory::getInstance().createParam(
-            ObjectPtr(new CurrentContext(this))
+            make_shared<CurrentContext>(this)
         )
     );
 }
@@ -69,7 +71,7 @@ Context::Context(
     registerParam(
         createIdentifierPtr("context"),
         ParamFactory::getInstance().createParam(
-            ObjectPtr(new CurrentContext(this))
+            make_shared<CurrentContext>(this)
         )
     );
 }

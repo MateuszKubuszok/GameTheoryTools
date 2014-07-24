@@ -28,6 +28,7 @@ namespace Routines {
 using std::find_if;
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 using Model::ExtensiveDataAccessor;
 using Model::ExtensiveDataAccessorPtr;
@@ -110,7 +111,7 @@ ExtensivePureEquilibriumRoutineConfig ExtensivePureEquilibriumRoutine::applyCond
     const ExtensiveDataNodePtr extensiveGameRoot,
     const Conditions&          conditions
 ) const {
-    RoutineConfigPtr routineConfig(new ExtensivePureEquilibriumRoutineConfig(extensiveGameRoot));
+    RoutineConfigPtr routineConfig = make_shared<ExtensivePureEquilibriumRoutineConfig>(extensiveGameRoot);
     for (const ConditionPtr& condition : conditions)
         condition->configureRoutine(routineConfig);
     return *dynamic_pointer_cast<ExtensivePureEquilibriumRoutineConfig>(routineConfig);

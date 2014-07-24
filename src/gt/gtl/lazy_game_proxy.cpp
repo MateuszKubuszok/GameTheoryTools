@@ -26,6 +26,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 using Model::DataBuilderPtr;
 using Model::GameBuilderPtr;
@@ -74,7 +75,7 @@ Message LazyGameProxy::toString() const {
 const Model::GamePtr LazyGameProxy::accessGame() const {
     GameBuilderPtr currentGameBuilder = gameBuilder->cloneBuilder();
 
-    PlayersPtr modelPlayers(new Players());
+    PlayersPtr modelPlayers = make_shared<Players>();
     for (const ObjectPtr& objectPtr : *players) {
         const Player& player = objectPtr->toPlayer();
         const Param&  param  = objectPtr->toParam();

@@ -28,6 +28,7 @@ namespace Routines {
 using std::find_if;
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 using boost::shared_ptr;
 
 using Model::DataAccessorPtr;
@@ -52,13 +53,13 @@ RoutinePtr RoutineFactory::pureStrategyEquilibriumFindingRoutineFor(
 
     shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
     if (strategicData)
-        return RoutinePtr( new StrategicPureEquilibriumRoutine() );
+        return make_shared<StrategicPureEquilibriumRoutine>();
 
     shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     if (extensiveData)
-        return RoutinePtr( new ExtensivePureEquilibriumRoutine() );
+        return make_shared<ExtensivePureEquilibriumRoutine>();
 
-    return RoutinePtr(new NotYetImplementedRoutine());
+    return make_shared<NotYetImplementedRoutine>();
 }
 
 RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
@@ -77,16 +78,16 @@ RoutinePtr RoutineFactory::mixedStrategyEquilibriumFindingRoutineFor(
                 }
 
             if (is0Sum)
-                return RoutinePtr( new MatrixMixedEquilibriumRoutine() );
-            return RoutinePtr( new BimatrixMixedEquilibriumRoutine() );
+                return make_shared<MatrixMixedEquilibriumRoutine>();
+            return make_shared<BimatrixMixedEquilibriumRoutine>();
         }
     }
 
     // shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     // if (extensiveData)
-    //     return RoutinePtr( new ExtensiveMixedEquilibriumRoutine() );
+    //     return make_shared<ExtensiveMixedEquilibriumRoutine>();
 
-    return RoutinePtr(new NotYetImplementedRoutine());
+    return make_shared<NotYetImplementedRoutine>();
 }
 
 RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
@@ -96,13 +97,13 @@ RoutinePtr RoutineFactory::behaviourStrategyEquilibriumFindingRoutineFor(
 
     shared_ptr<StrategicDataAccessor> strategicData( dynamic_pointer_cast<StrategicDataAccessor>(data) );
     if (strategicData)
-        return RoutinePtr( new PropertyUndefinedRoutine() );
+        return make_shared<PropertyUndefinedRoutine>();
 
     // shared_ptr<ExtensiveDataAccessor> extensiveData( dynamic_pointer_cast<ExtensiveDataAccessor>(data) );
     // if (extensiveData)
-    //     return RoutinePtr( new ExtensiveBehaviourEquilibriumRoutine(players) );
+    //     return make_shared<ExtensiveBehaviourEquilibriumRoutine>(players;
 
-    return RoutinePtr(new NotYetImplementedRoutine());
+    return make_shared<NotYetImplementedRoutine>();
 }
 
 // }; /* END class RoutineFactory */

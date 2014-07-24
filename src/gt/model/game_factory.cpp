@@ -24,6 +24,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class GameFactory final {
 // public:
 
@@ -33,11 +37,11 @@ GameFactory& GameFactory::getInstance() {
 }
 
 GameBuilderPtr GameFactory::buildStrategicGame() const {
-    return GameBuilderPtr(new StrategicGameBuilder());
+    return make_shared<StrategicGameBuilder>();
 }
 
 GameBuilderPtr GameFactory::buildExtensiveGame() const {
-    return GameBuilderPtr(new ExtensiveGameBuilder());
+    return make_shared<ExtensiveGameBuilder>();
 }
 
 // }; /* END class GameFactory */

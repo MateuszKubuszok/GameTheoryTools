@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ExtensiveData final : public Data {
 // public:
 
@@ -32,7 +36,7 @@ ExtensiveData::ExtensiveData(
     const PlayersPtr playersDefinitions
 ) :
     players(playersDefinitions),
-    root(new ExtensiveDataNode())
+    root(make_shared<ExtensiveDataNode>())
     {}
 
 const ExtensiveDataNodePtr ExtensiveData::getRoot() const {
@@ -91,7 +95,7 @@ const DataPiecePtr ExtensiveData::getPayoffs(
     }
 
     NumbersPtr payoff = root->getPayoffs(positions);
-    return DataPiecePtr(new PlainDataPiece(players, payoff));
+    return make_shared<PlainDataPiece>(players, payoff);
 }
 
 const DataPiecePtr ExtensiveData::getPayoffs(

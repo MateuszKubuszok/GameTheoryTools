@@ -25,14 +25,18 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Param : public Object {
 // public:
 
 Param::Param() :
     Object(createIdentifier("Param"))
 {
-    registerProperty(Identifier("referred_properties"), ObjectPropertyPtr(new ParamKnownProperties(this)));
-    registerProperty(Identifier("value"),               ObjectPropertyPtr(new ParamValueProperty(this)));
+    registerProperty(Identifier("referred_properties"), make_shared<ParamKnownProperties>(this));
+    registerProperty(Identifier("value"),               make_shared<ParamValueProperty>(this));
 }
 
 ResultPtr Param::findProperty(

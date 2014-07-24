@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class StrategicGame final : public Game {
 // public:
 
@@ -41,7 +45,7 @@ const PlayersPtr StrategicGame::getPlayers() const {
 }
 
 const DataAccessorPtr StrategicGame::getData() const {
-    return DataAccessorPtr(new StrategicDataAccessor(data));
+    return make_shared<StrategicDataAccessor>(data);
 }
 
 Message StrategicGame::toString() const {

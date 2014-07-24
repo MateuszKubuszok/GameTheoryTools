@@ -32,6 +32,7 @@
 #include <boost/container/set.hpp>
 #include <boost/container/vector.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 
 /* GNU MultiPrecision library */
 #include <gmpxx.h>

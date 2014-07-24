@@ -26,6 +26,7 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,7 +34,7 @@ using boost::dynamic_pointer_cast;
 // public:
 
 ExtensiveGameBuilder::ExtensiveGameBuilder() :
-    extensiveDataBuilder(new ExtensiveDataBuilder())
+    extensiveDataBuilder(make_shared<ExtensiveDataBuilder>())
     {}
 
 const PlayersPtr ExtensiveGameBuilder::getPlayers() const {
@@ -66,20 +67,17 @@ DataBuilderPtr ExtensiveGameBuilder::clone() const {
 }
 
 GameBuilderPtr ExtensiveGameBuilder::cloneBuilder() const {
-    return GameBuilderPtr(new ExtensiveGameBuilder());
+    return make_shared<ExtensiveGameBuilder>();
 }
 
 DataBuilderPtr ExtensiveGameBuilder::dataBuilder() const {
     return dynamic_pointer_cast<DataBuilder>(extensiveDataBuilder);
 }
 
-
 GamePtr ExtensiveGameBuilder::build() const {
-    return GamePtr(
-        new ExtensiveGame(
-            extensiveDataBuilder->getPlayers(),
-            extensiveDataBuilder->build()
-        )
+    return make_shared<ExtensiveGame>(
+        extensiveDataBuilder->getPlayers(),
+        extensiveDataBuilder->build()
     );
 }
 

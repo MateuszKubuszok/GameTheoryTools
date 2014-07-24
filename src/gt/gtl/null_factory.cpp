@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class NullFactory final {
 // public:
 
@@ -34,115 +38,115 @@ NullFactory& NullFactory::getInstance() {
 }
 
 ConditionPtr NullFactory::createCondition() const {
-    return ConditionPtr(new NullCondition());
+    return make_shared<NullCondition>();
 }
 
 ConditionsPtr NullFactory::createConditions() const {
-    return ConditionsPtr(new Conditions());
+    return make_shared<Conditions>();
 }
 
 ContextPtr NullFactory::createContext() const {
-    return ContextPtr(new NullContext());
+    return make_shared<NullContext>();
 }
 
 CoordinatePtr NullFactory::createCoordinate() const {
-    return CoordinatePtr(new NullCoordinate());
+    return make_shared<NullCoordinate>();
 }
 
 CoordinatesPtr NullFactory::createCoordinates() const {
-    return CoordinatesPtr(new Coordinates());
+    return make_shared<Coordinates>();
 }
 
 DefinitionPtr NullFactory::createDefinition() const {
-    return DefinitionPtr(new NullDefinition());
+    return make_shared<NullDefinition>();
 }
 
 DetailsPtr NullFactory::createDetails() const {
-    return DetailsPtr(new NullDetails());
+    return make_shared<NullDetails>();
 }
 
 GamePtr NullFactory::createGame() const {
-    return GamePtr(new NullGame());
+    return make_shared<NullGame>();
 }
 
 ObjectPtr NullFactory::createObject() const {
-    return ObjectPtr(new NullObject());
+    return make_shared<NullObject>();
 }
 
 ObjectsPtr NullFactory::createObjects() const {
-    return ObjectsPtr(new Objects());
+    return make_shared<Objects>();
 }
 
 ParamPtr NullFactory::createParam() const {
-    return ParamPtr(new NullParam());
+    return make_shared<NullParam>();
 }
 
 ParamsPtr NullFactory::createParams() const {
-    return ParamsPtr(new Params());
+    return make_shared<Params>();
 }
 
 PlayerPtr NullFactory::createPlayer() const {
-    return PlayerPtr(new NullPlayer());
+    return make_shared<NullPlayer>();
 }
 
 PositionsPtr NullFactory::createPositions() const {
-    return PositionsPtr(new Positions());
+    return make_shared<Positions>();
 }
 
 ResultPtr NullFactory::createResult() const {
-    return ResultPtr(new NullResult());
+    return make_shared<NullResult>();
 }
 
 QueryPtr NullFactory::createQuery() const {
-    return QueryPtr(new NullQuery());
+    return make_shared<NullQuery>();
 }
 
 DriverPtr NullFactory::createDriver() const {
-    return DriverPtr(new NullDriver());
+    return make_shared<NullDriver>();
 }
 
 ConditionDriverPtr NullFactory::createConditionDriver() const {
-    return ConditionDriverPtr(new NullConditionDriver());
+    return make_shared<NullConditionDriver>();
 }
 
 CoordinateDriverPtr NullFactory::createCoordinateDriver() const {
-    return CoordinateDriverPtr(new NullCoordinateDriver());
+    return make_shared<NullCoordinateDriver>();
 }
 
 GameDriverPtr NullFactory::createGameDriver() const {
-    return GameDriverPtr(new NullGameDriver());
+    return make_shared<NullGameDriver>();
 }
 
 ValueDriverPtr NullFactory::createValueDriver() const {
-    return ValueDriverPtr(new NullValueDriver());
+    return make_shared<NullValueDriver>();
 }
 
 StatementDriverPtr NullFactory::createStatementDriver() const {
-    return StatementDriverPtr(new NullStatementDriver());
+    return make_shared<NullStatementDriver>();
 }
 
 CollectionsDriverPtr<Coordinate> NullFactory::createCoordinatesDriver() const {
-    return CollectionsDriverPtr<Coordinate>(new NullCollectionsDriver<Coordinate>());
+    return make_shared<NullCollectionsDriver<Coordinate>>();
 }
 
 CollectionsDriverPtr<Condition> NullFactory::createConditionsDriver() const {
-    return CollectionsDriverPtr<Condition>(new NullCollectionsDriver<Condition>());
+    return make_shared<NullCollectionsDriver<Condition>>();
 }
 
 CollectionsDriverPtr<Identifier> NullFactory::createIdentifiersDriver() const {
-    return CollectionsDriverPtr<Identifier>(new NullCollectionsDriver<Identifier>());
+    return make_shared<NullCollectionsDriver<Identifier>>();
 }
 
 CollectionsDriverPtr<Object> NullFactory::createObjectsDriver() const {
-    return CollectionsDriverPtr<Object>(new NullCollectionsDriver<Object>());
+    return make_shared<NullCollectionsDriver<Object>>();
 }
 
 CollectionsDriverPtr<Param> NullFactory::createParamsDriver() const {
-    return CollectionsDriverPtr<Param>(new NullCollectionsDriver<Param>());
+    return make_shared<NullCollectionsDriver<Param>>();
 }
 
 InputLocationPtr NullFactory::createInputLocation() const {
-    return InputLocationPtr(new InputLocation());
+    return make_shared<InputLocation>();
 }
 
 // }; /* END class NullFactory */

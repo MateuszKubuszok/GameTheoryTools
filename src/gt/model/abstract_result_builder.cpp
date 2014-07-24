@@ -39,7 +39,7 @@ using boost::split;
 AbstractResultBuilder::AbstractResultBuilder(
     const Message indentation
 ) :
-    propertiesNames(new Identifiers()),
+    propertiesNames(createIdentifiersPtr()),
     partialResults(),
     subResults(),
     indent(indentation)

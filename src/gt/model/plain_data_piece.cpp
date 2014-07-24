@@ -26,6 +26,7 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::adaptors::map_keys;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +55,7 @@ const NumberPtr& PlainDataPiece::getPayoff(
         // In a matrix game we are allowed to deduce that: (player 2's payoff) = -1 * (player 1's payoff)
         Numbers&     payoffs       = const_cast<Numbers&>(*numbers);
         const Number player1Payoff = *(*numbers)[0];
-        NumberPtr    player2Payoff(new Number(player1Payoff * -1.0));
+        NumberPtr    player2Payoff = createNumberPtr(player1Payoff * -1.0);
         payoffs.push_back(player2Payoff);
 
         return payoffs[positionInStorage];
@@ -77,9 +78,9 @@ bool PlainDataPiece::is0Sum() const {
 }
 
 Message PlainDataPiece::toString() const {
-    static const IdentifierPtr  name = createIdentifierPtr("Payoff");
-    const IdentifiersPtr        players(new Identifiers());
-    const MessagesPtr           values(new Messages());
+    static const IdentifierPtr  name    = createIdentifierPtr("Payoff");
+    const IdentifiersPtr        players = createIdentifiersPtr();
+    const MessagesPtr           values  = createMessagesPtr();
 
     for (Identifier playerName : (*positionsHelper.getPlayers()) | map_keys) {
         players->push_back( createIdentifierPtr(playerName) );

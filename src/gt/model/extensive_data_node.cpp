@@ -26,6 +26,7 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::adaptors::map_keys;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,8 +50,8 @@ void intrusive_ptr_release(
 ExtensiveDataNode::ExtensiveDataNode() :
     parent(new NullExtensiveDataNode()),
     player(NullFactory::getInstance().createPlayer()),
-    payoff(new Numbers()),
-    nodes(new ExtensiveDataNodes()),
+    payoff(createNumbersPtr()),
+    nodes(make_shared<ExtensiveDataNodes>()),
     depthValue(1),
     depthName(createIdentifier(1))
     {}
@@ -251,8 +252,8 @@ ExtensiveDataNode::ExtensiveDataNode(
 ) :
     parent(definedParent),
     player(NullFactory::getInstance().createPlayer()),
-    payoff(new Numbers()),
-    nodes(new ExtensiveDataNodes()),
+    payoff(createNumbersPtr()),
+    nodes(make_shared<ExtensiveDataNodes>()),
     depthValue(currentDepth),
     depthName(createIdentifier(currentDepth))
     {}
@@ -264,7 +265,7 @@ ExtensiveDataNode::ExtensiveDataNode(
     parent(definedParent),
     player(NullFactory::getInstance().createPlayer()),
     payoff(values),
-    nodes(new ExtensiveDataNodes()),
+    nodes(make_shared<ExtensiveDataNodes>()),
     depthValue(0),
     depthName("")
     {}

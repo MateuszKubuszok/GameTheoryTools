@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class InnerNullFactory final {
 // public:
 
@@ -34,15 +38,15 @@ InnerNullFactory& InnerNullFactory::getInstance() {
 }
 
 StrategicDataPtr InnerNullFactory::createStrategicData() {
-    return StrategicDataPtr(new NullStrategicData());
+    return make_shared<NullStrategicData>();
 }
 
 ExtensiveDataPtr InnerNullFactory::createExtensiveData() {
-    return ExtensiveDataPtr(new NullExtensiveData());
+    return make_shared<NullExtensiveData>();
 }
 
 ExtensiveDataNodePtr InnerNullFactory::createExtensiveDataNode() {
-    return ExtensiveDataNodePtr(new NullExtensiveDataNode());
+    return make_shared<NullExtensiveDataNode>();
 }
 
 // }; /* END class InnerNullFactory */

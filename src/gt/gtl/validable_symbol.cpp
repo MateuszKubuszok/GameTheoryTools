@@ -30,6 +30,7 @@ using std::stringstream;
 
 using boost::algorithm::is_any_of;
 using boost::algorithm::split;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,7 +41,7 @@ void ValidableSymbol::comparisonsAreNotAllowed() const {}
 // public:
 
 ValidableSymbol::ValidableSymbol() :
-    inputLocation(new InputLocation())
+    inputLocation(make_shared<InputLocation>())
     {}
 
 ValidableSymbol::~ValidableSymbol() {}

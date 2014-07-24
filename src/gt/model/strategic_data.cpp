@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class StrategicData : public Data {
 // public:
 
@@ -55,11 +59,9 @@ const DataPiecePtr StrategicData::getPayoffs(
             positionsHelper.getUpperBound()
         );
 
-    return DataPiecePtr(
-        new PlainDataPiece(
-            positionsHelper.getPlayers(),
-            payoffStorage.at(positionInStorage)
-        )
+    return make_shared<PlainDataPiece>(
+        positionsHelper.getPlayers(),
+        payoffStorage.at(positionInStorage)
     );
 }
 

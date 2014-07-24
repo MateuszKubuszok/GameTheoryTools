@@ -28,6 +28,7 @@ namespace Routines {
 using std::find_if;
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 using Model::DataPiecePtr;
 using Model::Players;
@@ -101,7 +102,7 @@ StrategicPureEquilibriumRoutineConfig StrategicPureEquilibriumRoutine::applyCond
     const PlayersPtr  players,
     const Conditions& conditions
 ) const {
-    RoutineConfigPtr routineConfig(new StrategicPureEquilibriumRoutineConfig(players));
+    RoutineConfigPtr routineConfig = make_shared<StrategicPureEquilibriumRoutineConfig>(players);
     for (const ConditionPtr& condition : conditions)
         condition->configureRoutine(routineConfig);
     return *dynamic_pointer_cast<StrategicPureEquilibriumRoutineConfig>(routineConfig);

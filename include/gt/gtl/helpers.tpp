@@ -23,6 +23,6 @@ shared_ptr<Symbol> setupLocation(
     shared_ptr<Symbol>   symbol,
     const InputLocation& inputLocation
 ) {
-    symbol->setInputLocation(InputLocationPtr(new InputLocation(inputLocation)));
+    symbol->setInputLocation(boost::make_shared<InputLocation>(inputLocation));
     return symbol;
 }

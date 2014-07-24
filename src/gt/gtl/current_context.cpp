@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class CurrentContext : public Object {
 // public:
 
@@ -33,7 +37,7 @@ CurrentContext::CurrentContext(
 ) :
     Object(createIdentifier("Context"))
 {
-    registerProperty(Identifier("values"), ObjectPropertyPtr(new CurrentContextValuesProperty(context)));
+    registerProperty(Identifier("values"), make_shared<CurrentContextValuesProperty>(context));
 }
 
 // }; /* END class CurrentContext */

@@ -43,13 +43,13 @@ inline Message createMessage(
 inline MessagePtr createMessagePtr(
     const char* message
 ) {
-    return MessagePtr(new Message(message));
+    return boost::make_shared<Message>(message);
 }
 
 inline MessagePtr createMessagePtr(
     string message
 ) {
-    return MessagePtr(new Message(message));
+    return boost::make_shared<Message>(message);
 }
 
 inline MessagePtr createMessagePtr(
@@ -63,13 +63,13 @@ inline Messages createMessages() {
 }
 
 inline MessagesPtr createMessagesPtr() {
-    return MessagesPtr(new Messages());
+    return boost::make_shared<Messages>();
 }
 
 inline MessagesPtr createMessagesPtr(
     Messages messages
 ) {
-    return MessagesPtr(new Messages(messages));
+    return boost::make_shared<Messages>(messages);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,13 +95,13 @@ inline Identifier createIdentifier(
 inline IdentifierPtr createIdentifierPtr(
     const char* identifier
 ) {
-    return IdentifierPtr(new Identifier(identifier));
+    return boost::make_shared<Identifier>(identifier);
 }
 
 inline IdentifierPtr createIdentifierPtr(
     string identifier
 ) {
-    return IdentifierPtr(new Identifier(identifier));
+    return boost::make_shared<Identifier>(identifier);
 }
 
 inline IdentifierPtr createIdentifierPtr(
@@ -115,13 +115,13 @@ inline Identifiers createIdentifiers() {
 }
 
 inline IdentifiersPtr createIdentifiersPtr() {
-    return IdentifiersPtr(new Identifiers());
+    return boost::make_shared<Identifiers>();
 }
 
 inline IdentifiersPtr createIdentifiersPtr(
     Identifiers identifiers
 ) {
-    return IdentifiersPtr(new Identifiers(identifiers));
+    return boost::make_shared<Identifiers>(identifiers);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,37 +171,37 @@ inline Number createNumber(
 inline NumberPtr createNumberPtr(
     int number
 ) {
-    return NumberPtr(new Number(number));
+    return boost::make_shared<Number>(number);
 }
 
 inline NumberPtr createNumberPtr(
     float number
 ) {
-    return NumberPtr(new Number(number));
+    return boost::make_shared<Number>(number);
 }
 
 inline NumberPtr createNumberPtr(
     double number
 ) {
-    return NumberPtr(new Number(number));
+    return boost::make_shared<Number>(number);
 }
 
 inline NumberPtr createNumberPtr(
     string number
 ) {
-    return NumberPtr(new Number(number));
+    return boost::make_shared<Number>(number);
 }
 
 inline NumberPtr createNumberPtr(
     shared_ptr<string> number
 ) {
-    return NumberPtr(new Number(*number));
+    return boost::make_shared<Number>(*number);
 }
 
 inline NumberPtr createNumberPtr(
     Number number
 ) {
-    return NumberPtr(new Number(number));
+    return boost::make_shared<Number>(number);
 }
 
 inline NumberPtr createNumberPtr(
@@ -215,13 +215,13 @@ inline Numbers createNumbers() {
 }
 
 inline NumbersPtr createNumbersPtr() {
-    return NumbersPtr(new Numbers());
+    return boost::make_shared<Numbers>();
 }
 
 inline NumbersPtr createNumbersPtr(
     Numbers numbers
 ) {
-    return NumbersPtr(new Numbers(numbers));
+    return boost::make_shared<Numbers>(numbers);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,7 +231,7 @@ inline Positions createPositions() {
 }
 
 inline PositionsPtr createPositionsPtr() {
-    return PositionsPtr(new Positions());
+    return boost::make_shared<Positions>();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

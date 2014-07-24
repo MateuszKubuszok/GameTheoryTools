@@ -25,6 +25,8 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
 using Model::GameBuilder;
 using Model::GameBuilderPtr;
 
@@ -89,7 +91,7 @@ DetailsPtr* ExecutionGameDriver::createDetails(
 
     return new DetailsPtr(
         setupLocation<Details>(
-            DetailsPtr(new Details(objectPlayers, coordinates)),
+            make_shared<Details>(objectPlayers, coordinates),
             inputLocation
         )
     );
@@ -110,7 +112,7 @@ PlayerPtr* ExecutionGameDriver::createPlayer(
 
     return new PlayerPtr(
         setupLocation<Player>(
-            PlayerPtr(new Player(player, strategies)),
+            make_shared<Player>(player, strategies),
             inputLocation
         )
     );
@@ -128,18 +130,16 @@ GamePtr* ExecutionGameDriver::createGameWithBuilder(
     const GameBuilder&   gameBuilder,
     const IdentifierPtr& gameType
 ) const {
-    Model::GamePtr lazyGame(
-        new LazyGameProxy(
-            gameBuilder.cloneBuilder(),
-            details.getPlayers(),
-            details.getCoordinates(),
-            context
-        )
+    Model::GamePtr lazyGame = make_shared<LazyGameProxy>(
+        gameBuilder.cloneBuilder(),
+        details.getPlayers(),
+        details.getCoordinates(),
+        context
     );
 
     return new GamePtr(
        setupLocation<Game>(
-            GamePtr(new Game(lazyGame, gameType)),
+            make_shared<Game>(lazyGame, gameType),
             inputLocation
         )
     );

@@ -26,6 +26,7 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::adaptors::map_keys;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,7 +56,7 @@ DataBuilder& StrategicDataBuilder::setPlayers(
 
     checkPlayers(newPlayers);
 
-    data    = StrategicDataPtr(new StrategicData(newPlayers));
+    data    = make_shared<StrategicData>(newPlayers);
     players = newPlayers;
 
     return *this;
@@ -97,7 +98,7 @@ DataBuilder& StrategicDataBuilder::setPayoffs(
 }
 
 DataBuilderPtr StrategicDataBuilder::clone() const {
-    return DataBuilderPtr(new StrategicDataBuilder(*this));
+    return make_shared<StrategicDataBuilder>(*this);
 }
 
 Message StrategicDataBuilder::toString() const {

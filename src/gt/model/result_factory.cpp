@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ResultFactory {
 // public:
 
@@ -48,23 +52,23 @@ ResultBuilderPtr ResultFactory::buildResult() const {
 
     switch (builderMode) {
     case ResultBuilderMode::JSON:
-        return ResultBuilderPtr(new JSONResultBuilder(indent));
+        return make_shared<JSONResultBuilder>(indent);
     case ResultBuilderMode::XML:
-        return ResultBuilderPtr(new XMLResultBuilder(indent));
+        return make_shared<XMLResultBuilder>(indent);
     case ResultBuilderMode::PLAIN:
     default:
-        return ResultBuilderPtr(new PlainResultBuilder(indent));
+        return make_shared<PlainResultBuilder>(indent);
     }
 }
 
 ResultPtr ResultFactory::constResult(
     const Message& content
 ) const {
-    return ResultPtr(new ConstResult(content));
+    return make_shared<ConstResult>(content);
 }
 
 ResultPtr ResultFactory::emptyResult() const {
-    return ResultPtr(new EmptyResult());
+    return make_shared<EmptyResult>();
 }
 
 ResultBuilderMode ResultFactory::getBuilderMode() const {

@@ -28,7 +28,7 @@ inline Players createPlayers() {
 }
 
 inline PlayersPtr createPlayersPtr() {
-    return PlayersPtr(new Players());
+    return boost::make_shared<Players>();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

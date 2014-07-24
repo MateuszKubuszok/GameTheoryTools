@@ -27,6 +27,8 @@ namespace GTL {
 
 using std::exception;
 
+using boost::make_shared;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class ExecutionStatementDriver final : public StatementDriver {
@@ -90,7 +92,7 @@ DefinitionPtr* ExecutionStatementDriver::createDefinition(
 
     return new DefinitionPtr(
         setupLocation<Definition>(
-            DefinitionPtr(new Definition(identifier, ParamFactory::getInstance().createParam(object))),
+            make_shared<Definition>(identifier, ParamFactory::getInstance().createParam(object)),
             inputLocation
         )
     );
@@ -114,7 +116,7 @@ QueryPtr* ExecutionStatementDriver::createQuery(
 
     return new QueryPtr(
         setupLocation<Query>(
-            QueryPtr(new Query(identifiers, objects, conditions)),
+            make_shared<Query>(identifiers, objects, conditions),
             inputLocation
         )
     );

@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ExecutionCoordinateDriver final : public CoordinateDriver {
 // public:
 
@@ -40,7 +44,7 @@ CoordinatePtr* ExecutionCoordinateDriver::create(
 
     return new CoordinatePtr(
         setupLocation<Coordinate>(
-            CoordinatePtr(new Coordinate(*playerPtr, *strategyPtr)),
+            make_shared<Coordinate>(*playerPtr, *strategyPtr),
             inputLocation
         )
     );
@@ -101,7 +105,7 @@ CoordinatePtr* ExecutionCoordinateDriver::merge(
 
     return new CoordinatePtr(
         setupLocation<Coordinate>(
-            CoordinatePtr(new Coordinate(coordinate1 + coordinate2)),
+            make_shared<Coordinate>(coordinate1 + coordinate2),
             inputLocation
         )
     );

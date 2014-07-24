@@ -26,6 +26,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::adaptors::map_keys;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,8 +45,8 @@ Object::Object() :
     registeredProperties(),
     typeName(createIdentifierPtr("Object"))
 {
-    registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
-    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty(this)));
+    registerProperty(Identifier("properties"), make_shared<ObjectKnownProperties>(this));
+    registerProperty(Identifier("type"),       make_shared<ObjectTypeProperty>(this));
 }
 
 Object::Object(
@@ -55,8 +56,8 @@ Object::Object(
     registeredProperties(),
     typeName(createIdentifierPtr(type))
 {
-    registerProperty(Identifier("properties"), ObjectPropertyPtr(new ObjectKnownProperties(this)));
-    registerProperty(Identifier("type"),       ObjectPropertyPtr(new ObjectTypeProperty(this)));
+    registerProperty(Identifier("properties"), make_shared<ObjectKnownProperties>(this));
+    registerProperty(Identifier("type"),       make_shared<ObjectTypeProperty>(this));
 }
 
 Object::~Object() {}

@@ -26,6 +26,7 @@ namespace Model {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,7 +34,7 @@ using boost::dynamic_pointer_cast;
 // public:
 
 StrategicGameBuilder::StrategicGameBuilder() :
-    strategicDataBuilder(new StrategicDataBuilder())
+    strategicDataBuilder(make_shared<StrategicDataBuilder>())
     {}
 
 const PlayersPtr StrategicGameBuilder::getPlayers() const {
@@ -66,7 +67,7 @@ DataBuilderPtr StrategicGameBuilder::clone() const {
 }
 
 GameBuilderPtr StrategicGameBuilder::cloneBuilder() const {
-    return GameBuilderPtr(new StrategicGameBuilder());
+    return make_shared<StrategicGameBuilder>();
 }
 
 DataBuilderPtr StrategicGameBuilder::dataBuilder() const {
@@ -74,11 +75,9 @@ DataBuilderPtr StrategicGameBuilder::dataBuilder() const {
 }
 
 GamePtr StrategicGameBuilder::build() const {
-    return GamePtr(
-        new StrategicGame(
-            strategicDataBuilder->getPlayers(),
-            strategicDataBuilder->build()
-        )
+    return make_shared<StrategicGame>(
+        strategicDataBuilder->getPlayers(),
+        strategicDataBuilder->build()
     );
 }
 

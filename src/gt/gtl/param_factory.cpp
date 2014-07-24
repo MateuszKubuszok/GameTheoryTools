@@ -26,6 +26,7 @@ namespace GTL {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using boost::dynamic_pointer_cast;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,33 +41,33 @@ ParamFactory& ParamFactory::getInstance() {
 ParamPtr ParamFactory::createParam(
     const Identifier& identifier
 ) const {
-    return ParamPtr(new IdentifierParam(identifier));
+    return make_shared<IdentifierParam>(identifier);
 }
 
 ParamPtr ParamFactory::createParam(
     const IdentifierPtr identifier
 ) const {
-    return ParamPtr(new IdentifierParam(*identifier));
+    return make_shared<IdentifierParam>(*identifier);
 }
 
 ParamPtr ParamFactory::createParam(
     const Number& number
 ) const {
-    NumberPtr value(new Number(number));
-    return ParamPtr(new NumberParam(value));
+    NumberPtr value = make_shared<Number>(number);
+    return make_shared<NumberParam>(value);
 }
 
 ParamPtr ParamFactory::createParam(
     const NumberPtr number
 ) const {
-    return ParamPtr(new NumberParam(number));
+    return make_shared<NumberParam>(number);
 }
 
 ParamPtr ParamFactory::createParam(
     const ObjectPtr object
 ) const {
     const Param& param = object->toParam();
-    return param ? dynamic_pointer_cast<Param>(object) : ParamPtr(new ObjectParam(object));
+    return param ? dynamic_pointer_cast<Param>(object) : make_shared<ObjectParam>(object);
 }
 
 // }; /* END class ParamFactory */

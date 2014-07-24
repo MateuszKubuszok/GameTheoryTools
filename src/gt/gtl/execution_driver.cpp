@@ -30,6 +30,7 @@ using std::ofstream;
 using std::stringstream;
 
 using boost::scoped_ptr;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,7 +42,7 @@ ExecutionDriver::ExecutionDriver(
     OutputStream* newErrorStream
 ) :
     checkingDriver(newErrorStream),
-    context(new Context()),
+    context(make_shared<Context>()),
     coordinate(),
     condition(),
     game(context.get()),
@@ -234,7 +235,7 @@ ExecutionDriver::ExecutionDriver(
     ContextPtr    parentContext
 ) :
     checkingDriver(newErrorStream),
-    context(new Context(parentContext)),
+    context(make_shared<Context>(parentContext)),
     coordinate(),
     condition(),
     game(context.get()),

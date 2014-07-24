@@ -25,6 +25,10 @@ namespace Routines {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class NullFactory final {
 // public:
 
@@ -34,19 +38,19 @@ NullFactory& NullFactory::getInstance() {
 }
 
 ConditionPtr NullFactory::createCondition() const {
-    return ConditionPtr(new NullCondition());
+    return make_shared<NullCondition>();
 }
 
 ConditionsPtr NullFactory::createConditions() const {
-    return ConditionsPtr(new Conditions());
+    return make_shared<Conditions>();
 }
 
 RoutinePtr NullFactory::createRoutine() const {
-    return RoutinePtr(new NullRoutine());
+    return make_shared<NullRoutine>();
 }
 
 RoutinesPtr NullFactory::createRoutines() const {
-    return RoutinesPtr(new Routines());
+    return make_shared<Routines>();
 }
 
 // }; /* END class NullFactory */

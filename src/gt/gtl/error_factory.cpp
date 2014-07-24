@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ErrorFactory {
 // public:
 
@@ -36,55 +40,55 @@ ErrorFactory& ErrorFactory::getInstance() {
 ConditionPtr ErrorFactory::createCondition(
     const Message errorMessage
 ) const {
-    return ConditionPtr(new ErrorCondition(errorMessage));
+    return make_shared<ErrorCondition>(errorMessage);
 }
 
 CoordinatePtr ErrorFactory::createCoordinate(
     const Message errorMessage
 ) const {
-    return CoordinatePtr(new ErrorCoordinate(errorMessage));
+    return make_shared<ErrorCoordinate>(errorMessage);
 }
 
 DefinitionPtr ErrorFactory::createDefinition(
     const Message errorMessage
 ) const {
-    return DefinitionPtr(new ErrorDefinition(errorMessage));
+    return make_shared<ErrorDefinition>(errorMessage);
 }
 
 DetailsPtr ErrorFactory::createDetails(
     const Message errorMessage
 ) const {
-    return DetailsPtr(new ErrorDetails(errorMessage));
+    return make_shared<ErrorDetails>(errorMessage);
 }
 
 GamePtr ErrorFactory::createGame(
     const Message errorMessage
 ) const {
-    return GamePtr(new ErrorGame(errorMessage));
+    return make_shared<ErrorGame>(errorMessage);
 }
 
 ObjectPtr ErrorFactory::createObject(
     const Message errorMessage
 ) const {
-    return ObjectPtr(new ErrorObject(errorMessage));
+    return make_shared<ErrorObject>(errorMessage);
 }
 
 ParamPtr ErrorFactory::createParam(
     const Message errorMessage
 ) const {
-    return ParamPtr(new ErrorParam(errorMessage));
+    return make_shared<ErrorParam>(errorMessage);
 }
 
 PlayerPtr ErrorFactory::createPlayer(
     const Message errorMessage
 ) const {
-    return PlayerPtr(new ErrorPlayer(errorMessage));
+    return make_shared<ErrorPlayer>(errorMessage);
 }
 
 QueryPtr ErrorFactory::createQuery(
     const Message errorMessage
 ) const {
-    return QueryPtr(new ErrorQuery(errorMessage));
+    return make_shared<ErrorQuery>(errorMessage);
 }
 
 // }; /* END class ErrorFactory */

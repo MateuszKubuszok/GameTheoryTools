@@ -30,6 +30,7 @@ using std::stringstream;
 
 using boost::dynamic_pointer_cast;
 using boost::shared_ptr;
+using boost::make_shared;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,13 +45,13 @@ Game::Game(
     gameType(createIdentifierPtr(""))
 {
     registerProperty(
-        Identifier("pure_equilibrium"),     ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
+        Identifier("pure_equilibrium"),     make_shared<GamePureEquilibriumProperty>(this)
     );
     registerProperty(
-        Identifier("mixed_equilibrium"),    ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
+        Identifier("mixed_equilibrium"),    make_shared<GameMixedEquilibriumProperty>(this)
     );
     registerProperty(
-        Identifier("behavior_equilibrium"), ObjectPropertyPtr(new GameBehaviorEquilibriumProperty(this))
+        Identifier("behavior_equilibrium"), make_shared<GameBehaviorEquilibriumProperty>(this)
     );
 }
 
@@ -63,13 +64,13 @@ Game::Game(
     gameType(gameTypeName)
 {
     registerProperty(
-        Identifier("pure_equilibrium"),     ObjectPropertyPtr(new GamePureEquilibriumProperty(this))
+        Identifier("pure_equilibrium"),     make_shared<GamePureEquilibriumProperty>(this)
     );
     registerProperty(
-        Identifier("mixed_equilibrium"),    ObjectPropertyPtr(new GameMixedEquilibriumProperty(this))
+        Identifier("mixed_equilibrium"),    make_shared<GameMixedEquilibriumProperty>(this)
     );
     registerProperty(
-        Identifier("behavior_equilibrium"), ObjectPropertyPtr(new GameBehaviorEquilibriumProperty(this))
+        Identifier("behavior_equilibrium"), make_shared<GameBehaviorEquilibriumProperty>(this)
     );
 }
 
@@ -80,7 +81,7 @@ ResultPtr Game::pureEquilibrium(
     Routines::RoutinePtr routine =
         Routines::RoutineFactory::getInstance().pureStrategyEquilibriumFindingRoutineFor(game);
 
-    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    Routines::ConditionsPtr routineConditions = make_shared<Routines::Conditions>();
     for (const ConditionPtr& condition : conditions)
         routineConditions->push_back(condition->getCondition(context));
 
@@ -94,7 +95,7 @@ ResultPtr Game::mixedEquilibrium(
     Routines::RoutinePtr routine =
         Routines::RoutineFactory::getInstance().mixedStrategyEquilibriumFindingRoutineFor(game);
 
-    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    Routines::ConditionsPtr routineConditions = make_shared<Routines::Conditions>();
     for (const ConditionPtr& condition : conditions)
         routineConditions->push_back(condition->getCondition(context));
 
@@ -108,7 +109,7 @@ ResultPtr Game::behaviorEquilibrium(
     Routines::RoutinePtr routine =
         Routines::RoutineFactory::getInstance().behaviourStrategyEquilibriumFindingRoutineFor(game);
 
-    Routines::ConditionsPtr routineConditions(new Routines::Conditions());
+    Routines::ConditionsPtr routineConditions = make_shared<Routines::Conditions>();
     for (const ConditionPtr& condition : conditions)
         routineConditions->push_back(condition->getCondition(context));
 

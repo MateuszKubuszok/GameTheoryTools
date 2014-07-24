@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class DriverFactory {
 // public:
 
@@ -36,14 +40,14 @@ DriverFactory& DriverFactory::getInstance() {
 DriverPtr DriverFactory::createCheckingDriver(
     OutputStream* errorStream
 ) const {
-    return DriverPtr(new CheckingDriver(errorStream));
+    return make_shared<CheckingDriver>(errorStream);
 }
 
 DriverPtr DriverFactory::createExecutionDriver(
     OutputStream* outputStream,
     OutputStream* errorStream
 ) const {
-    return DriverPtr(new ExecutionDriver(outputStream, errorStream));
+    return make_shared<ExecutionDriver>(outputStream, errorStream);
 }
 
 // }; /* END class DriverFactory */

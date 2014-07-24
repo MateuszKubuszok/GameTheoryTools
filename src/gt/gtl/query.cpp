@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class Query : public virtual ValidableSymbol {
 // public:
 
@@ -111,7 +115,7 @@ ResultPtr Query::execute(
 Message Query::toString() const {
     static const IdentifierPtr  propertiesName = createIdentifierPtr("Properties");
     static const Identifiers    properties     = boost::assign::list_of( propertiesName );
-    static const IdentifiersPtr propertiesPtr(new Identifiers(properties));
+    static const IdentifiersPtr propertiesPtr  = make_shared<Identifiers>(properties);
 
     static const IdentifierPtr  name = createIdentifierPtr("Property Name");
 
@@ -119,7 +123,7 @@ Message Query::toString() const {
     resultBuilder->setHeaders(propertiesPtr);
 
     for (IdentifierPtr& value : *propertiesNames) {
-        MessagesPtr results(new Messages());
+        MessagesPtr results = createMessagesPtr();
         results->push_back( value );
 
         resultBuilder->addRecord(name, results);

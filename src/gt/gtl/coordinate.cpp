@@ -28,6 +28,8 @@ namespace GTL {
 using std::endl;
 using std::stringstream;
 
+using boost::make_shared;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class Coordinate : public virtual ValidableSymbol {
@@ -35,9 +37,9 @@ using std::stringstream;
 
 Coordinate::Coordinate() :
     Root(),
-    positions(new Positions()),
-    params(new Params()),
-    subCoordinates(new Coordinates())
+    positions(make_shared<Positions>()),
+    params(make_shared<Params>()),
+    subCoordinates(make_shared<Coordinates>())
     {}
 
 Coordinate::Coordinate(
@@ -45,9 +47,9 @@ Coordinate::Coordinate(
     const IdentifierPtr strategy
 ) :
     Root(),
-    positions(new Positions()),
-    params(new Params()),
-    subCoordinates(new Coordinates())
+    positions(make_shared<Positions>()),
+    params(make_shared<Params>()),
+    subCoordinates(make_shared<Coordinates>())
 {
     positions->insert( Positions::value_type(*player, *strategy) );
 }
@@ -110,7 +112,7 @@ void Coordinate::fillDataBuilder(
         dataBuilder->addNextPositions(positions);
 
     if (params->size()) {
-        NumbersPtr values(new Numbers());
+        NumbersPtr values = make_shared<Numbers>();
         for (ParamPtr& param : *params)
             values->push_back(param->getNumber(context));
         dataBuilder->setPayoffs(values);

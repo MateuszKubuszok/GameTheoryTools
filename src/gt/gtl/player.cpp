@@ -27,6 +27,8 @@ namespace GTL {
 
 using std::stringstream;
 
+using boost::make_shared;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // class Player : public Object, public Model::Player {
@@ -39,8 +41,8 @@ Player::Player(
     Object(createIdentifier("Player")),
     Model::Player(playerName, playerStrategies)
 {
-    registerProperty(createIdentifier("name"),       ObjectPropertyPtr(new PlayerNameProperty(this)));
-    registerProperty(createIdentifier("strategies"), ObjectPropertyPtr(new PlayerStrategiesProperty(this)));
+    registerProperty(createIdentifier("name"),       make_shared<PlayerNameProperty>(this));
+    registerProperty(createIdentifier("strategies"), make_shared<PlayerStrategiesProperty>(this));
 }
 
 Message Player::serialize() const {

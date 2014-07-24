@@ -28,6 +28,8 @@ using std::fixed;
 using std::setprecision;
 using std::stringstream;
 
+using boost::make_shared;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Message createMessage(
@@ -68,7 +70,7 @@ MessagePtr createMessagePtr(
 ) {
     stringstream result;
     result << message;
-    return MessagePtr(new Message(result.str()));
+    return make_shared<Message>(result.str());
 }
 
 MessagePtr createMessagePtr(
@@ -76,7 +78,7 @@ MessagePtr createMessagePtr(
 ) {
     stringstream result;
     result << setprecision(5) << fixed << message;
-    return MessagePtr(new Message(result.str()));
+    return make_shared<Message>(result.str());
 }
 
 MessagePtr createMessagePtr(
@@ -84,7 +86,7 @@ MessagePtr createMessagePtr(
 ) {
     stringstream result;
     result << setprecision(5) << fixed << number;
-    return MessagePtr(new Message(result.str()));
+    return make_shared<Message>(result.str());
 }
 
 MessagePtr createMessagePtr(
@@ -92,7 +94,7 @@ MessagePtr createMessagePtr(
 ) {
     stringstream result;
     result << setprecision(5) << fixed << (*number);
-    return MessagePtr(new Message(result.str()));
+    return make_shared<Message>(result.str());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +112,7 @@ IdentifierPtr createIdentifierPtr(
 ) {
     stringstream result;
     result << identifier;
-    return IdentifierPtr(new Identifier(result.str()));
+    return make_shared<Identifier>(result.str());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

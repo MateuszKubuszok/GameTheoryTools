@@ -25,6 +25,10 @@ namespace GTL {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ConditionFactory {
 // public:
 
@@ -38,9 +42,7 @@ ConditionPtr ConditionFactory::createInformationSetChoiceCondition(
     const ObjectPtr informationSet,
     const ObjectPtr strategy
 ) const {
-    return ConditionPtr(
-        new InformationSetChoiceCondition(player, informationSet, strategy)
-    );
+    return make_shared<InformationSetChoiceCondition>(player, informationSet, strategy);
 }
 
 ConditionPtr ConditionFactory::createInformationSetRangeCondition(
@@ -48,27 +50,21 @@ ConditionPtr ConditionFactory::createInformationSetRangeCondition(
     const ObjectPtr  informationSet,
     const ObjectsPtr strategies
 ) const {
-    return ConditionPtr(
-        new InformationSetRangeCondition(player, informationSet, strategies)
-    );
+    return make_shared<InformationSetRangeCondition>(player, informationSet, strategies);
 }
 
 ConditionPtr ConditionFactory::createPlayerChoiceCondition(
     const ObjectPtr player,
     const ObjectPtr strategy
 ) const {
-    return ConditionPtr(
-        new PlayerChoiceCondition(player, strategy)
-    );
+    return make_shared<PlayerChoiceCondition>(player, strategy);
 }
 
 ConditionPtr ConditionFactory::createPlayerRangeCondition(
     const ObjectPtr  player,
     const ObjectsPtr strategies
 ) const {
-    return ConditionPtr(
-        new PlayerRangeCondition(player, strategies)
-    );
+    return make_shared<PlayerRangeCondition>(player, strategies);
 }
 
 // }; /* END class ConditionFactory */

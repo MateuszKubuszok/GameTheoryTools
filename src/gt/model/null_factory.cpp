@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class NullFactory final {
 // public:
 
@@ -34,67 +38,67 @@ NullFactory& NullFactory::getInstance() {
 }
 
 IdentifierPtr NullFactory::createIdentifier() const {
-    return IdentifierPtr(new Identifier("NullIdentifier"));
+    return make_shared<Identifier>("NullIdentifier");
 }
 
 IdentifiersPtr NullFactory::createIdentifiers() const {
-    return IdentifiersPtr(new Identifiers());
+    return make_shared<Identifiers>();
 }
 
 MessagePtr NullFactory::createMessage() const {
-    return MessagePtr(new Message("NullMessage"));
+    return make_shared<Message>("NullMessage");
 }
 
 MessagesPtr NullFactory::createMessages() const {
-    return MessagesPtr(new Messages());
+    return make_shared<Messages>();
 }
 
 NumberPtr NullFactory::createNumber() const {
-    return NumberPtr(new Number(0));
+    return make_shared<Number>(0);
 }
 
 NumbersPtr NullFactory::createNumbers() const {
-    return NumbersPtr(new Numbers());
+    return make_shared<Numbers>();
 }
 
 PlayerPtr NullFactory::createPlayer() const {
-    return PlayerPtr(new NullPlayer());
+    return make_shared<NullPlayer>();
 }
 
 PlayersPtr NullFactory::createPlayers() const {
-    return PlayersPtr(new Players());
+    return make_shared<Players>();
 }
 
 DataPtr NullFactory::createData() const {
-    return DataPtr(new NullData());
+    return make_shared<NullData>();
 }
 
 DataAccessorPtr NullFactory::createDataAccessor() const {
-    return DataAccessorPtr(new NullDataAccessor());
+    return make_shared<NullDataAccessor>();
 }
 
 DataPiecePtr NullFactory::createDataPiece() const {
-    return DataPiecePtr(new NullDataPiece());
+    return make_shared<NullDataPiece>();
 }
 
 DataBuilderPtr NullFactory::createDataBuilder() const {
-    return DataBuilderPtr(new NullDataBuilder());
+    return make_shared<NullDataBuilder>();
 }
 
 GamePtr NullFactory::createGame() const {
-    return GamePtr(new NullGame());
+    return make_shared<NullGame>();
 }
 
 GameBuilderPtr NullFactory::createGameBuilder() const {
-    return GameBuilderPtr(new NullGameBuilder());
+    return make_shared<NullGameBuilder>();
 }
 
 ResultPtr NullFactory::createResult() const {
-    return ResultPtr(new NullResult());
+    return make_shared<NullResult>();
 }
 
 ResultBuilderPtr NullFactory::createResultBuilder() const {
-    return ResultBuilderPtr(new NullResultBuilder());
+    return make_shared<NullResultBuilder>();
 }
 
 // }; /* END class NullFactory */

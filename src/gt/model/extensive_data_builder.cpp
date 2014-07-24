@@ -25,6 +25,10 @@ namespace Model {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // class ExtensiveDataBuilder final : public DataBuilder {
 // public:
 
@@ -52,7 +56,7 @@ DataBuilder& ExtensiveDataBuilder::setPlayers(
 
     checkPlayers(newPlayers);
 
-    data    = ExtensiveDataPtr(new ExtensiveData(newPlayers));
+    data    = make_shared<ExtensiveData>(newPlayers);
     players = newPlayers;
 
     return *this;
@@ -89,7 +93,7 @@ DataBuilder& ExtensiveDataBuilder::setPayoffs(
 }
 
 DataBuilderPtr ExtensiveDataBuilder::clone() const {
-    return DataBuilderPtr(new ExtensiveDataBuilder(*this));
+    return make_shared<ExtensiveDataBuilder>(*this);
 }
 
 Message ExtensiveDataBuilder::toString() const {
