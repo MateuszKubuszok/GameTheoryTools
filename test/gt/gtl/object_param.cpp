@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ObjectParam )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
@@ -11,7 +15,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
     GT::GTL::ObjectPtr  objectPtr  = GT::GTL::NullFactory::getInstance().createObject();
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::ObjectParam>(objectPtr);
 
     // then
     BOOST_REQUIRE_THROW(
@@ -28,10 +32,10 @@ BOOST_AUTO_TEST_CASE( ObjectParam_functional ) {
 BOOST_AUTO_TEST_CASE( ObjectParam_serialize ) {
     // given
     GT::NumberPtr      numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
-    GT::GTL::ObjectPtr objectPtr(new GT::GTL::NumberParam(numberPtr));
+    GT::GTL::ObjectPtr objectPtr = make_shared<GT::GTL::NumberParam>(numberPtr);
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::ObjectParam>(objectPtr);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -50,7 +54,7 @@ BOOST_AUTO_TEST_CASE( ObjectParam_toString ) {
     GT::GTL::ObjectPtr objectPtr  = GT::GTL::NullFactory::getInstance().createObject();
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::ObjectParam(objectPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::ObjectParam>(objectPtr);
 
     // then
     BOOST_CHECK_EQUAL(

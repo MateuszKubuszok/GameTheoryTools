@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( IdentifierParam )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( IdentifierParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
@@ -11,7 +15,7 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_functional ) {
     GT::Identifier      mockID     = GT::createIdentifier("mockID");
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::IdentifierParam>(mockID);
 
     // then
     BOOST_REQUIRE_NO_THROW(param->getNumber(context));
@@ -23,7 +27,7 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_serialize ) {
     GT::Identifier mockID = GT::createIdentifier("mockID");
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::IdentifierParam>(mockID);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -44,7 +48,7 @@ BOOST_AUTO_TEST_CASE( IdentifierParam_toString ) {
     GT::Identifier      mockID     = GT::createIdentifier("mockID");
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::IdentifierParam(mockID));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::IdentifierParam>(mockID);
 
     // then
     BOOST_REQUIRE_NO_THROW(param->getNumber(context));

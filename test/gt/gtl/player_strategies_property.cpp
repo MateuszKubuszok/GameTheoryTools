@@ -11,8 +11,8 @@ BOOST_AUTO_TEST_CASE( PlayerStrategiesProperty_findForConditions ) {
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
 
-    GT::IdentifierPtr  playerName = GT::createIdentifierPtr("P");
-    GT::IdentifiersPtr playerStrategies(new GT::Identifiers());
+    GT::IdentifierPtr  playerName       = GT::createIdentifierPtr("P");
+    GT::IdentifiersPtr playerStrategies = GT::createIdentifiersPtr();
     playerStrategies->push_back( GT::createIdentifierPtr("1") );
     playerStrategies->push_back( GT::createIdentifierPtr("2") );
     GT::GTL::Player player(playerName, playerStrategies);

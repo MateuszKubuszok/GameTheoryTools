@@ -4,18 +4,22 @@ BOOST_AUTO_TEST_SUITE( PlainDataPiece )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlainDataPiece_getPayoff ) {
     // given
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
 
-    GT::Model::PlayersPtr playersMap(new GT::Model::Players());
+    GT::Model::PlayersPtr playersMap = make_shared<GT::Model::Players>();
     playersMap->insert(
         GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
     playersMap->insert(
         GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
-    GT::NumbersPtr numbers(new GT::Numbers());
+    GT::NumbersPtr numbers = make_shared<GT::Numbers>();
     numbers->push_back( GT::createNumberPtr(10) );
     numbers->push_back( GT::createNumberPtr(100) );
 
@@ -41,13 +45,13 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_throwExceptionOnInvalidPlayer ) {
     GT::Identifier player2("player2");
     GT::Identifier player3("player3");
 
-    GT::Model::PlayersPtr playersMap(new GT::Model::Players());
+    GT::Model::PlayersPtr playersMap = make_shared<GT::Model::Players>();
     playersMap->insert(
         GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
     playersMap->insert(
         GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
-    GT::NumbersPtr numbers(new GT::Numbers());
+    GT::NumbersPtr numbers = make_shared<GT::Numbers>();
     numbers->push_back( GT::createNumberPtr(10) );
     numbers->push_back( GT::createNumberPtr(100) );
 
@@ -66,18 +70,18 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_is0Sum ) {
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
 
-    GT::Model::PlayersPtr playersMap(new GT::Model::Players());
+    GT::Model::PlayersPtr playersMap = make_shared<GT::Model::Players>();
     playersMap->insert(
         GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
     playersMap->insert(
         GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
-    GT::NumbersPtr numbers(new GT::Numbers());
+    GT::NumbersPtr numbers = make_shared<GT::Numbers>();
     numbers->push_back( GT::createNumberPtr(10) );
     numbers->push_back( GT::createNumberPtr(-10) );
-    GT::NumbersPtr numbers2(new GT::Numbers());
+    GT::NumbersPtr numbers2 = make_shared<GT::Numbers>();
     numbers2->push_back( GT::createNumberPtr(100) );
-    GT::NumbersPtr numbers3(new GT::Numbers());
+    GT::NumbersPtr numbers3 = make_shared<GT::Numbers>();
     numbers3->push_back( GT::createNumberPtr(100) );
     numbers3->push_back( GT::createNumberPtr(100) );
 
@@ -101,13 +105,13 @@ BOOST_AUTO_TEST_CASE( PlainDataPiece_toString ) {
     GT::Identifier player1("player1");
     GT::Identifier player2("player2");
 
-    GT::Model::PlayersPtr playersMap(new GT::Model::Players());
+    GT::Model::PlayersPtr playersMap = make_shared<GT::Model::Players>();
     playersMap->insert(
         GT::Model::Players::value_type(player1, GT::Model::NullFactory::getInstance().createPlayer()) );
     playersMap->insert(
         GT::Model::Players::value_type(player2, GT::Model::NullFactory::getInstance().createPlayer()) );
 
-    GT::NumbersPtr numbers(new GT::Numbers());
+    GT::NumbersPtr numbers = make_shared<GT::Numbers>();
     numbers->push_back( GT::createNumberPtr(10) );
     numbers->push_back( GT::createNumberPtr(100) );
 

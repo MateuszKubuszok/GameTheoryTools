@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( BimatrixMixedEquilibriumRoutine )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( BimatrixMixedEquilibriumRoutine_findResultsFor ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -46,9 +50,9 @@ BOOST_AUTO_TEST_CASE( BimatrixMixedEquilibriumRoutine_findResultsFor ) {
     GT::PositionsPtr p2s4Choice = GT::createPositionsPtr();
     p2s4Choice->insert( GT::Positions::value_type( *p2, *p2s4 ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -208,9 +212,9 @@ BOOST_AUTO_TEST_CASE( battle_of_the_sexes ) {
     GT::PositionsPtr p2Football = GT::createPositionsPtr();
     p2Football->insert( GT::Positions::value_type( *w, *football ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  husband(new GT::Model::Player(h, bots));
-    GT::Model::PlayerPtr  wife(new GT::Model::Player(w, bots));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  husband = make_shared<GT::Model::Player>(h, bots);
+    GT::Model::PlayerPtr  wife = make_shared<GT::Model::Player>(w, bots);
     players->insert( GT::Model::Players::value_type( *h, husband ) );
     players->insert( GT::Model::Players::value_type( *w, wife ) );
 
@@ -297,9 +301,9 @@ BOOST_AUTO_TEST_CASE( chicken ) {
     GT::PositionsPtr p2dStraight = GT::createPositionsPtr();
     p2dStraight->insert( GT::Positions::value_type( *p2, *straight ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, ch));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, ch));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, ch);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, ch);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -386,9 +390,9 @@ BOOST_AUTO_TEST_CASE( peace_war ) {
     GT::PositionsPtr p2War = GT::createPositionsPtr();
     p2War->insert( GT::Positions::value_type( *p2, *war ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, pw));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, pw));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, pw);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, pw);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -475,9 +479,9 @@ BOOST_AUTO_TEST_CASE( prisonners_dilemma ) {
     GT::PositionsPtr p2Defects = GT::createPositionsPtr();
     p2Defects->insert( GT::Positions::value_type( *p2, *defects ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, pd));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, pd));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, pd);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, pd);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -564,9 +568,9 @@ BOOST_AUTO_TEST_CASE( stag_hunt ) {
     GT::PositionsPtr p2Hare = GT::createPositionsPtr();
     p2Hare->insert( GT::Positions::value_type( *p2, *hare ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, sh));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, sh));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, sh);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, sh);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 

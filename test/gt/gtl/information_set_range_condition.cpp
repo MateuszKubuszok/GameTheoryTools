@@ -4,16 +4,20 @@ BOOST_AUTO_TEST_SUITE( InformationSetRangeCondition )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( InformationSetRangeCondition_getCondition ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectPtr informationSet(new GT::GTL::IdentifierParam( GT::createIdentifier("InformationSet") ));
-    GT::GTL::ObjectsPtr strategies(new GT::GTL::Objects() );
+    GT::GTL::ObjectPtr  player         = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectPtr  informationSet = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("InformationSet") );
+    GT::GTL::ObjectsPtr strategies     = make_shared<GT::GTL::Objects>() ;
     strategies->push_back(
-        GT::GTL::ObjectPtr(new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 1")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 1"))
     );
     strategies->push_back(
-        GT::GTL::ObjectPtr(new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 2")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 2"))
     );
 
     GT::GTL::Context context;
@@ -31,14 +35,14 @@ BOOST_AUTO_TEST_CASE( InformationSetRangeCondition_getCondition ) {
 
 BOOST_AUTO_TEST_CASE( InformationSetRangeCondition_toString ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectPtr informationSet(new GT::GTL::IdentifierParam( GT::createIdentifier("InformationSet") ));
-    GT::GTL::ObjectsPtr strategies(new GT::GTL::Objects());
+    GT::GTL::ObjectPtr  player         = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectPtr  informationSet = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("InformationSet") );
+    GT::GTL::ObjectsPtr strategies     = make_shared<GT::GTL::Objects>() ;
     strategies->push_back(
-        GT::GTL::ObjectPtr( new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 1")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 1"))
     );
     strategies->push_back(
-        GT::GTL::ObjectPtr( new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 2")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 2"))
     );
 
     // when

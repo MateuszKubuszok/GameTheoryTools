@@ -4,17 +4,21 @@ BOOST_AUTO_TEST_SUITE( RoutineFactory )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( RoutineFactory_pureStrategyEquilibriumFindingRoutineFor ) {
     // given
     GT::Model::PlayersPtr players = GT::Model::NullFactory::getInstance().createPlayers();
 
     GT::Model::StrategicDataPtr strategicData =
         GT::Model::InnerNullFactory::getInstance().createStrategicData();
-    GT::Model::GamePtr strategicGame(new GT::Model::StrategicGame(players, strategicData));
+    GT::Model::GamePtr strategicGame = make_shared<GT::Model::StrategicGame>(players, strategicData);
 
     GT::Model::ExtensiveDataPtr extensiveData =
         GT::Model::InnerNullFactory::getInstance().createExtensiveData();
-    GT::Model::GamePtr extensiveGame(new GT::Model::ExtensiveGame(players, extensiveData));
+    GT::Model::GamePtr extensiveGame = make_shared<GT::Model::ExtensiveGame>(players, extensiveData);
 
     // when
     GT::Routines::RoutinePtr strategicPureEquilibriumRoutine =
@@ -69,9 +73,9 @@ BOOST_AUTO_TEST_CASE( RoutineFactory_mixedStrategyEquilibriumFindingRoutineFor )
     GT::PositionsPtr p2s4Choice = GT::createPositionsPtr();
     p2s4Choice->insert( GT::Positions::value_type( *p2, *p2s4 ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 

@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExtensiveGamePositionsHelper )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveGamePositionsHelper_functional ) {
     // given
     GT::Identifier l1 = GT::createIdentifier("1");
@@ -15,7 +19,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveGamePositionsHelper_functional ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back(GT::createIdentifierPtr(s1));
     strategies->push_back(GT::createIdentifierPtr(s2));
-    GT::Model::PlayerPtr  player(new GT::Model::Player(p, strategies));
+    GT::Model::PlayerPtr  player = make_shared<GT::Model::Player>(p, strategies);
 
     GT::Positions plRoot = GT::createPositions();
     GT::Positions pl11 = GT::createPositions();
@@ -49,7 +53,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveGamePositionsHelper_functional ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::ExtensiveDataNodePtr root(new GT::Model::ExtensiveDataNode());
+    GT::Model::ExtensiveDataNodePtr root = make_shared<GT::Model::ExtensiveDataNode>();
 
     (*root)
         .setPlayer(  plRoot, player )
@@ -92,7 +96,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveGamePositionsHelper_toString ) {
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    GT::Model::ExtensiveDataNodePtr root(new GT::Model::ExtensiveDataNode());
+    GT::Model::ExtensiveDataNodePtr root = make_shared<GT::Model::ExtensiveDataNode>();
 
     // when
     GT::Model::ExtensiveGamePositionsHelper positionsHelper(root);

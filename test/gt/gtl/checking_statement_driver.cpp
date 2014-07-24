@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( CheckingStatementDriver )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( CheckingStatementDriver_executeDefinition ) {
     // given
     TestDriverImpl         driver;
@@ -89,22 +93,22 @@ BOOST_AUTO_TEST_CASE( CheckingStatementDriver_createQuery ) {
     TestDriverImpl driver;
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
-    GT::IdentifiersPtr identifiers(new GT::Identifiers());
+    GT::IdentifiersPtr identifiers = GT::createIdentifiersPtr();
     identifiers->push_back(GT::createIdentifierPtr("type"));
     identifiers->push_back(GT::createIdentifierPtr("properties"));
 
-    GT::GTL::ObjectsPtr invalidObjects(new GT::GTL::Objects());
+    GT::GTL::ObjectsPtr invalidObjects = make_shared<GT::GTL::Objects>();
     invalidObjects->push_back(GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object 1"));
     invalidObjects->push_back(GT::GTL::ErrorFactory::getInstance().createObject("Invalid Object 2"));
 
-    GT::GTL::ObjectsPtr validObjects(new GT::GTL::Objects());
-    validObjects->push_back(GT::GTL::ObjectPtr(new GT::GTL::Object()));
-    validObjects->push_back(GT::GTL::ObjectPtr(new GT::GTL::Object()));
+    GT::GTL::ObjectsPtr validObjects = make_shared<GT::GTL::Objects>();
+    validObjects->push_back(make_shared<GT::GTL::Object>());
+    validObjects->push_back(make_shared<GT::GTL::Object>());
 
-    GT::GTL::ConditionsPtr invalidConditions(new GT::GTL::Conditions());
+    GT::GTL::ConditionsPtr invalidConditions = make_shared<GT::GTL::Conditions>();
     invalidConditions->push_back(GT::GTL::ErrorFactory::getInstance().createCondition("Invalid Condition"));
 
-    GT::GTL::ConditionsPtr validConditions(new GT::GTL::Conditions());
+    GT::GTL::ConditionsPtr validConditions = make_shared<GT::GTL::Conditions>();
     validConditions->push_back(GT::GTL::NullFactory::getInstance().createCondition());
 
     boost::scoped_ptr<GT::IdentifiersPtr>     identifiersPtr(new GT::IdentifiersPtr(identifiers));

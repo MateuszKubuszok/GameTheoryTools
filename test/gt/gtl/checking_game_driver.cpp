@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( CheckingGameDriver )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( CheckingGameDriver_createStrategic ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
@@ -56,19 +60,19 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createDetails ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
-    GT::GTL::ObjectsPtr invalidPlayers(new GT::GTL::Objects());
+    GT::GTL::ObjectsPtr invalidPlayers = make_shared<GT::GTL::Objects>();
     invalidPlayers->push_back(boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ErrorFactory::getInstance().createPlayer("Invalid Player")));
 
-    GT::GTL::ObjectsPtr validPlayers(new GT::GTL::Objects());
+    GT::GTL::ObjectsPtr validPlayers = make_shared<GT::GTL::Objects>();
     validPlayers->push_back(
         boost::dynamic_pointer_cast<GT::GTL::Object>(GT::GTL::NullFactory::getInstance().createPlayer()));
 
-    GT::GTL::CoordinatesPtr invalidCoordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatesPtr invalidCoordinates = make_shared<GT::GTL::Coordinates>();
     invalidCoordinates->push_back(
         GT::GTL::ErrorFactory::getInstance().createCoordinate("Invalid Coordinate"));
 
-    GT::GTL::CoordinatesPtr validCoordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatesPtr validCoordinates = make_shared<GT::GTL::Coordinates>();
     validCoordinates->push_back(GT::GTL::NullFactory::getInstance().createCoordinate());
 
     boost::scoped_ptr<GT::GTL::ObjectsPtr>
@@ -108,7 +112,7 @@ BOOST_AUTO_TEST_CASE( CheckingGameDriver_createPlayer ) {
 
     GT::IdentifierPtr playerName   = GT::Model::NullFactory::getInstance().createIdentifier();
 
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back(GT::Model::NullFactory::getInstance().createIdentifier());
 
     boost::scoped_ptr<GT::IdentifierPtr>  playerNamePtr(new GT::IdentifierPtr(playerName));

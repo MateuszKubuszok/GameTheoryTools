@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExtensivePureEquilibriumRoutine )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -34,9 +38,9 @@ BOOST_AUTO_TEST_CASE( ExtensivePureEquilibriumRoutine_findResultsFor ) {
     GT::PositionsPtr p2s2Choice = GT::createPositionsPtr();
     p2s2Choice->insert( GT::Positions::value_type( *p2, *p2s2 ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -165,9 +169,9 @@ BOOST_AUTO_TEST_CASE( ultimatum_game ) {
     GT::PositionsPtr p2Reject = GT::createPositionsPtr();
     p2Reject->insert( GT::Positions::value_type( *p2, *reject ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 

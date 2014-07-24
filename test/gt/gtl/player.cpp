@@ -28,8 +28,8 @@ BOOST_AUTO_TEST_CASE( Player_respondsTo ) {
 
 BOOST_AUTO_TEST_CASE( Player_serialize ) {
     // given
-    GT::IdentifierPtr  playerName = GT::createIdentifierPtr("P");
-    GT::IdentifiersPtr playerStrategies(new GT::Identifiers());
+    GT::IdentifierPtr  playerName       = GT::createIdentifierPtr("P");
+    GT::IdentifiersPtr playerStrategies = GT::createIdentifiersPtr();
     playerStrategies->push_back( GT::createIdentifierPtr("1") );
     playerStrategies->push_back( GT::createIdentifierPtr("2") );
 

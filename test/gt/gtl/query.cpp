@@ -4,23 +4,27 @@ BOOST_AUTO_TEST_SUITE( Query )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Query_execute ) {
     // given
     GT::Model::ResultFactory::getInstance()
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    GT::IdentifiersPtr properties(new GT::Identifiers());
+    GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
     properties->push_back( GT::createIdentifierPtr("properties") );
     properties->push_back( GT::createIdentifierPtr("type") );
 
-    GT::GTL::ObjectsPtr objects(new GT::GTL::Objects());
-    objects->push_back( GT::GTL::ObjectPtr(new GT::GTL::Object()) );
+    GT::GTL::ObjectsPtr objects = make_shared<GT::GTL::Objects>();
+    objects->push_back( make_shared<GT::GTL::Object>() );
     objects->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ParamFactory::getInstance().createParam(GT::createIdentifierPtr("Name"))
     ) );
 
-    GT::GTL::ConditionsPtr conditions(new GT::GTL::Conditions());
+    GT::GTL::ConditionsPtr conditions = make_shared<GT::GTL::Conditions>();
 
     GT::GTL::Context context;
 
@@ -64,17 +68,17 @@ BOOST_AUTO_TEST_CASE( Query_toString ) {
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    GT::IdentifiersPtr properties(new GT::Identifiers());
+    GT::IdentifiersPtr properties = GT::createIdentifiersPtr();
     properties->push_back( GT::createIdentifierPtr("properties") );
     properties->push_back( GT::createIdentifierPtr("type") );
 
-    GT::GTL::ObjectsPtr objects(new GT::GTL::Objects());
-    objects->push_back( GT::GTL::ObjectPtr(new GT::GTL::Object()) );
+    GT::GTL::ObjectsPtr objects = make_shared<GT::GTL::Objects>();
+    objects->push_back( make_shared<GT::GTL::Object>() );
     objects->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(
         GT::GTL::ParamFactory::getInstance().createParam(GT::createIdentifierPtr("Name"))
     ) );
 
-    GT::GTL::ConditionsPtr conditions(new GT::GTL::Conditions());
+    GT::GTL::ConditionsPtr conditions = make_shared<GT::GTL::Conditions>();
 
     // when
     GT::GTL::Query query(properties, objects, conditions);

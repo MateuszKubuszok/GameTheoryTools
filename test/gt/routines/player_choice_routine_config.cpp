@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( PlayerChoiceRoutineConfig )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class PlayerChoiceRoutineConfigImpl : public GT::Routines::PlayerChoiceRoutineConfig {
 public:
     explicit PlayerChoiceRoutineConfigImpl(
@@ -49,9 +53,9 @@ BOOST_AUTO_TEST_CASE( PlayerChoiceRoutineConfig_functional ) {
     GT::PositionsPtr p2s2Choice = GT::createPositionsPtr();
     p2s2Choice->insert( GT::Positions::value_type( *p2, *p2s2 ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 

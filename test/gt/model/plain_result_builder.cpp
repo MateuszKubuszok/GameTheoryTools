@@ -2,7 +2,11 @@
 
 BOOST_AUTO_TEST_SUITE( PlainResultBuilder )
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
     // given
@@ -19,7 +23,7 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_build ) {
     GT::MessagePtr    result = GT::createMessagePtr("result");
 
     // when
-    GT::Model::ResultBuilderPtr builder(new GT::Model::PlainResultBuilder(GT::createMessage("\t")));
+    GT::Model::ResultBuilderPtr builder = make_shared<GT::Model::PlainResultBuilder>(GT::createMessage("\t"));
     builder->setHeaders(properties);
     builder->addRecord(object, results);
     builder->addResult(name, result);
@@ -51,7 +55,7 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_buildRaw ) {
     GT::MessagePtr    result = GT::createMessagePtr("result");
 
     // when
-    GT::Model::ResultBuilderPtr builder(new GT::Model::PlainResultBuilder(GT::createMessage("\t")));
+    GT::Model::ResultBuilderPtr builder = make_shared<GT::Model::PlainResultBuilder>(GT::createMessage("\t"));
     builder->setHeaders(properties);
     builder->addRecord(object, results);
     builder->addResult(name, result);
@@ -79,7 +83,7 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_throwExceptionOnError ) {
     results->push_back( GT::createMessagePtr("result1") );
 
     // when
-    GT::Model::ResultBuilderPtr builder(new GT::Model::PlainResultBuilder(GT::createMessage("\t")));
+    GT::Model::ResultBuilderPtr builder = make_shared<GT::Model::PlainResultBuilder>(GT::createMessage("\t"));
     builder->setHeaders(properties);
     builder->addRecord(object, results);
 
@@ -90,6 +94,6 @@ BOOST_AUTO_TEST_CASE( PlainResultBuilder_throwExceptionOnError ) {
     );
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( MatrixMixedEquilibriumRoutine )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( MatrixMixedEquilibriumRoutine_findResultsFor ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -46,9 +50,9 @@ BOOST_AUTO_TEST_CASE( MatrixMixedEquilibriumRoutine_findResultsFor ) {
     GT::PositionsPtr p2s4Choice = GT::createPositionsPtr();
     p2s4Choice->insert( GT::Positions::value_type( *p2, *p2s4 ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, p1s));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, p2s));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, p1s);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, p2s);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 
@@ -202,9 +206,9 @@ BOOST_AUTO_TEST_CASE(rock_paper_scissors) {
     GT::PositionsPtr p2Scissors = GT::createPositionsPtr();
     p2Scissors->insert( GT::Positions::value_type( *p2, *scissors ) );
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, rps));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, rps));
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, rps);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, rps);
     players->insert( GT::Model::Players::value_type( *p1, player1 ) );
     players->insert( GT::Model::Players::value_type( *p2, player2 ) );
 

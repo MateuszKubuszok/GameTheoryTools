@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExtensivePureStrategyPath )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_setPayoff_getPayoff ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
@@ -17,9 +21,9 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_setPayoff_getPayoff ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -27,7 +31,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_setPayoff_getPayoff ) {
     payoff->push_back( GT::createNumberPtr(10) );
     payoff->push_back( GT::createNumberPtr(20) );
 
-    GT::Model::DataPiecePtr dataPiece(new GT::Model::PlainDataPiece(players, payoff));
+    GT::Model::DataPiecePtr dataPiece = make_shared<GT::Model::PlainDataPiece>(players, payoff);
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);
@@ -53,9 +57,9 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_addOlderChoice_getPlayersChoices
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -93,9 +97,9 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -103,7 +107,7 @@ BOOST_AUTO_TEST_CASE( ExtensivePureStrategyPath_toString ) {
     payoff->push_back( GT::createNumberPtr(10) );
     payoff->push_back( GT::createNumberPtr(20) );
 
-    GT::Model::DataPiecePtr dataPiece(new GT::Model::PlainDataPiece(players, payoff));
+    GT::Model::DataPiecePtr dataPiece = make_shared<GT::Model::PlainDataPiece>(players, payoff);
 
     // when
     GT::Routines::ExtensivePureStrategyPath path(players);

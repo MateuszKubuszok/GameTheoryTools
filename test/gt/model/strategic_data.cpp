@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( StrategicData )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getPayoff ) {
     // given
     GT::IdentifierPtr player1name      = GT::createIdentifierPtr("player1");
@@ -12,7 +16,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getPayoff ) {
     GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+    GT::Model::PlayerPtr player1 = make_shared<GT::Model::Player>(player1name, strategies1);
 
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
@@ -20,9 +24,9 @@ BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getPayoff ) {
     GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
     strategies2->push_back(player2strategy1);
     strategies2->push_back(player2strategy2);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+    GT::Model::PlayerPtr player2 = make_shared<GT::Model::Player>(player2name, strategies2);
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*player1name, player1) );
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
@@ -81,7 +85,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getUpperBound ) {
     GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+    GT::Model::PlayerPtr player1 = make_shared<GT::Model::Player>(player1name, strategies1);
 
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
@@ -89,9 +93,9 @@ BOOST_AUTO_TEST_CASE( StrategicData_setPayoff_getUpperBound ) {
     GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
     strategies2->push_back(player2strategy1);
     strategies2->push_back(player2strategy2);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+    GT::Model::PlayerPtr player2 = make_shared<GT::Model::Player>(player2name, strategies2);
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*player1name, player1) );
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
@@ -140,7 +144,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
     GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+    GT::Model::PlayerPtr player1 = make_shared<GT::Model::Player>(player1name, strategies1);
 
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
@@ -148,9 +152,9 @@ BOOST_AUTO_TEST_CASE( StrategicData_operatorOverload ) {
     GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
     strategies2->push_back(player2strategy1);
     strategies2->push_back(player2strategy2);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+    GT::Model::PlayerPtr player2 = make_shared<GT::Model::Player>(player2name, strategies2);
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*player1name, player1) );
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
@@ -209,18 +213,18 @@ BOOST_AUTO_TEST_CASE( StrategicData_throwExceptionOnInvalidCoordinate ) {
     GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+    GT::Model::PlayerPtr player1 = make_shared<GT::Model::Player>(player1name, strategies1);
 
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("player2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
     GT::IdentifierPtr player2strategy2 = GT::createIdentifierPtr("p2s2");
     GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
     strategies2->push_back(player2strategy1);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+    GT::Model::PlayerPtr player2 = make_shared<GT::Model::Player>(player2name, strategies2);
 
     GT::IdentifierPtr player3name      = GT::createIdentifierPtr("player3");
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*player1name, player1) );
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 
@@ -264,7 +268,7 @@ BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
     GT::IdentifiersPtr strategies1     = GT::createIdentifiersPtr();
     strategies1->push_back(player1strategy1);
     strategies1->push_back(player1strategy2);
-    GT::Model::PlayerPtr player1(new GT::Model::Player(player1name, strategies1));
+    GT::Model::PlayerPtr player1 = make_shared<GT::Model::Player>(player1name, strategies1);
 
     GT::IdentifierPtr player2name      = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr player2strategy1 = GT::createIdentifierPtr("p2s1");
@@ -272,9 +276,9 @@ BOOST_AUTO_TEST_CASE( StrategicData_toString ) {
     GT::IdentifiersPtr strategies2     = GT::createIdentifiersPtr();
     strategies2->push_back(player2strategy1);
     strategies2->push_back(player2strategy2);
-    GT::Model::PlayerPtr player2(new GT::Model::Player(player2name, strategies2));
+    GT::Model::PlayerPtr player2 = make_shared<GT::Model::Player>(player2name, strategies2);
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*player1name, player1) );
     players->insert( GT::Model::Players::value_type(*player2name, player2) );
 

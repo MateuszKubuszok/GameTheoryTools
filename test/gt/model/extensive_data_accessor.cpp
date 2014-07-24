@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExtensiveDataAccessor )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataAccesor_getRoot ) {
     // given
     GT::IdentifierPtr p1 = GT::createIdentifierPtr("p1");
@@ -17,13 +21,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccesor_getRoot ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -47,13 +51,13 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccesor_getPlayers ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     // when
     GT::Model::ExtensiveDataAccessor extensiveDataAccessor(extensiveData);
@@ -79,9 +83,9 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_functional ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -117,7 +121,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_functional ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     extensiveData->setPlayerInTurn(plRoot, player1);
     extensiveData->setPlayerInTurn(pl11, player2);
@@ -160,9 +164,9 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -198,7 +202,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_operatorOverload ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     extensiveData->setPlayerInTurn(plRoot, player1);
     extensiveData->setPlayerInTurn(pl11, player2);
@@ -241,9 +245,9 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -279,7 +283,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_throwExceptionOnInvalidCoordinate ) 
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     extensiveData->setPlayerInTurn(plRoot, player1);
     extensiveData->setPlayerInTurn(pl11, player2);
@@ -333,9 +337,9 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
     GT::Identifier l1 = GT::createIdentifier("1");
     GT::Identifier l2 = GT::createIdentifier("2");
 
-    GT::Model::PlayerPtr  player1(new GT::Model::Player(p1, strategies));
-    GT::Model::PlayerPtr  player2(new GT::Model::Player(p2, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player1 = make_shared<GT::Model::Player>(p1, strategies);
+    GT::Model::PlayerPtr  player2 = make_shared<GT::Model::Player>(p2, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type(*p1, player1) );
     players->insert( GT::Model::Players::value_type(*p2, player2) );
 
@@ -371,7 +375,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataAccessor_toString ) {
     payoff22->push_back(GT::createNumberPtr(70));
     payoff22->push_back(GT::createNumberPtr(80));
 
-    GT::Model::ExtensiveDataPtr extensiveData(new GT::Model::ExtensiveData(players));
+    GT::Model::ExtensiveDataPtr extensiveData = make_shared<GT::Model::ExtensiveData>(players);
 
     extensiveData->setPlayerInTurn(plRoot, player1);
     extensiveData->setPlayerInTurn(pl11, player2);

@@ -4,17 +4,21 @@ BOOST_AUTO_TEST_SUITE( Details )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Details_getCoordinates ) {
     // given
-    GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::PlayerPtr player2 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::ObjectsPtr players(new GT::GTL::Objects());
+    GT::GTL::PlayerPtr  player1 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::PlayerPtr  player2 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::ObjectsPtr players = make_shared<GT::GTL::Objects>();
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player1) );
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player2) );
 
-    GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatePtr  coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatePtr  coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatesPtr coordinates = make_shared<GT::GTL::Coordinates>();
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -32,15 +36,15 @@ BOOST_AUTO_TEST_CASE( Details_getCoordinates ) {
 
 BOOST_AUTO_TEST_CASE( Details_getPlayers ) {
     // given
-    GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::PlayerPtr player2 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::ObjectsPtr players(new GT::GTL::Objects());
+    GT::GTL::PlayerPtr  player1 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::PlayerPtr  player2 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::ObjectsPtr players = make_shared<GT::GTL::Objects>();
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player1) );
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player2) );
 
-    GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatePtr  coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatePtr  coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatesPtr coordinates = make_shared<GT::GTL::Coordinates>();
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -61,15 +65,15 @@ BOOST_AUTO_TEST_CASE( Details_toString ) {
         .setBuilderMode(GT::Model::ResultBuilderMode::PLAIN)
         .setIndentationMode(GT::Model::ResultIndentationMode::TABS);
 
-    GT::GTL::PlayerPtr player1 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::PlayerPtr player2 = GT::GTL::NullFactory::getInstance().createPlayer();
-    GT::GTL::ObjectsPtr players(new GT::GTL::Objects());
+    GT::GTL::PlayerPtr  player1 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::PlayerPtr  player2 = GT::GTL::NullFactory::getInstance().createPlayer();
+    GT::GTL::ObjectsPtr players = make_shared<GT::GTL::Objects>();
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player1) );
     players->push_back( boost::dynamic_pointer_cast<GT::GTL::Object>(player2) );
 
-    GT::GTL::CoordinatePtr coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatePtr coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatePtr  coordinate1 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatePtr  coordinate2 = GT::GTL::NullFactory::getInstance().createCoordinate();
+    GT::GTL::CoordinatesPtr coordinates = make_shared<GT::GTL::Coordinates>();
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 

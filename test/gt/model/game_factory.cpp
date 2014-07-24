@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( GameFactory )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     // given
     GT::Model::ResultFactory::getInstance()
@@ -16,8 +20,8 @@ BOOST_AUTO_TEST_CASE( GameFactory_buildStrategicGame ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy1 );
     strategies->push_back( strategy2 );
-    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player  = make_shared<GT::Model::Player>(playerName, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     GT::NumbersPtr params1 = GT::createNumbersPtr();
@@ -73,8 +77,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveGameBuilder_buildExtensiveGame ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy1 );
     strategies->push_back( strategy2 );
-    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player  = make_shared<GT::Model::Player>(playerName, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     GT::NumbersPtr params1 = GT::createNumbersPtr();

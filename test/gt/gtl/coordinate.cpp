@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( Coordinate )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Coordinate_addParam_addParams_getParams ) {
     // given
     GT::GTL::ParamPtr  param1 = GT::GTL::NullFactory::getInstance().createParam();
@@ -78,17 +82,17 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
 
     GT::IdentifierPtr  player1Name = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  strategy1   = GT::createIdentifierPtr("p1s1");
-    GT::IdentifiersPtr strategies1(new GT::Identifiers());
+    GT::IdentifiersPtr strategies1 = GT::createIdentifiersPtr();
     strategies1->push_back( strategy1 );
-    GT::GTL::PlayerPtr player1(new GT::GTL::Player(player1Name, strategies1));
+    GT::GTL::PlayerPtr player1 = make_shared<GT::GTL::Player>(player1Name, strategies1);
 
     GT::IdentifierPtr  player2Name = GT::createIdentifierPtr("p2");
     GT::IdentifierPtr  strategy2   = GT::createIdentifierPtr("p2s1");
-    GT::IdentifiersPtr strategies2(new GT::Identifiers());
+    GT::IdentifiersPtr strategies2 = GT::createIdentifiersPtr();
     strategies2->push_back( strategy2 );
-    GT::GTL::PlayerPtr player2(new GT::GTL::Player(player2Name, strategies2));
+    GT::GTL::PlayerPtr player2 = make_shared<GT::GTL::Player>(player2Name, strategies2);
 
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert(
         GT::Model::Players::value_type(*player1Name, boost::dynamic_pointer_cast<GT::Model::Player>(player1))
     );
@@ -96,22 +100,22 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
         GT::Model::Players::value_type(*player2Name, boost::dynamic_pointer_cast<GT::Model::Player>(player2))
     );
 
-    GT::GTL::ParamsPtr payoff(new GT::GTL::Params());
+    GT::GTL::ParamsPtr payoff = make_shared<GT::GTL::Params>();
     payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
     payoff->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(20)) );
 
     GT::GTL::Context context;
 
-    GT::Model::DataBuilderPtr dataBuilder(new GT::Model::StrategicDataBuilder());
+    GT::Model::DataBuilderPtr dataBuilder = make_shared<GT::Model::StrategicDataBuilder>();
     dataBuilder->setPlayers(players);
 
-    GT::PositionsPtr positions(new GT::Positions());
+    GT::PositionsPtr positions = make_shared<GT::Positions>();
     positions->insert( GT::Positions::value_type(*player1Name, *strategy1) );
     positions->insert( GT::Positions::value_type(*player2Name, *strategy2) );
 
     // when
-    GT::GTL::CoordinatePtr coordinate1(new GT::GTL::Coordinate(player1Name, strategy1) );
-    GT::GTL::CoordinatePtr coordinate2(new GT::GTL::Coordinate(player2Name, strategy2));
+    GT::GTL::CoordinatePtr coordinate1 = make_shared<GT::GTL::Coordinate>(player1Name, strategy1);
+    GT::GTL::CoordinatePtr coordinate2 = make_shared<GT::GTL::Coordinate>(player2Name, strategy2);
     coordinate2->addParams(payoff);
     coordinate1->addSubCoordinate(coordinate2);
     coordinate1->fillDataBuilder(context, dataBuilder);
@@ -132,9 +136,9 @@ BOOST_AUTO_TEST_CASE( Coordinate_fillDataBuilder ) {
 
 BOOST_AUTO_TEST_CASE( Coordinate_serialize ) {
     // given
-    GT::GTL::ParamPtr  param1(new GT::GTL::NumberParam(GT::createNumberPtr(10)));
-    GT::GTL::ParamPtr  param2(new GT::GTL::NumberParam(GT::createNumberPtr(20)));
-    GT::GTL::ParamPtr  param3(new GT::GTL::NumberParam(GT::createNumberPtr(30)));
+    GT::GTL::ParamPtr  param1 = make_shared<GT::GTL::NumberParam>(GT::createNumberPtr(10));
+    GT::GTL::ParamPtr  param2 = make_shared<GT::GTL::NumberParam>(GT::createNumberPtr(20));
+    GT::GTL::ParamPtr  param3 = make_shared<GT::GTL::NumberParam>(GT::createNumberPtr(30));
     GT::GTL::ParamsPtr params = GT::GTL::NullFactory::getInstance().createParams();
     params->push_back(param2);
     params->push_back(param3);
@@ -143,8 +147,8 @@ BOOST_AUTO_TEST_CASE( Coordinate_serialize ) {
     GT::IdentifierPtr strategy = GT::Model::NullFactory::getInstance().createIdentifier();
 
     // when
-    GT::GTL::CoordinatePtr coordinatePtr(new GT::GTL::Coordinate());
-    GT::GTL::Coordinate&   coordinate = *coordinatePtr;
+    GT::GTL::CoordinatePtr coordinatePtr = make_shared<GT::GTL::Coordinate>();
+    GT::GTL::Coordinate&   coordinate    = *coordinatePtr;
     coordinate.addParam(param1)
               .addParams(params)
               .addPosition(player, strategy);

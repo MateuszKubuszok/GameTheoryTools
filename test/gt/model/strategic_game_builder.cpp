@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( StrategicGameBuilder )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( StrategicGameBuilder_cloneBuilder ) {
     // given
     // when
@@ -23,8 +27,8 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_setPlayers ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy1 );
     strategies->push_back( strategy2 );
-    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player  = make_shared<GT::Model::Player>(playerName, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     // when
@@ -54,8 +58,8 @@ BOOST_AUTO_TEST_CASE( StrategicGameBuilder_functional ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy1 );
     strategies->push_back( strategy2 );
-    GT::Model::PlayerPtr  player(new GT::Model::Player(playerName, strategies));
-    GT::Model::PlayersPtr players(new GT::Model::Players());
+    GT::Model::PlayerPtr  player  = make_shared<GT::Model::Player>(playerName, strategies);
+    GT::Model::PlayersPtr players = make_shared<GT::Model::Players>();
     players->insert( GT::Model::Players::value_type( *playerName, player) );
 
     GT::NumbersPtr params1 = GT::createNumbersPtr();

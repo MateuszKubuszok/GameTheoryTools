@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( NumberParam )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( NumberParam_functional ) {
     // given
     GT::GTL::ContextPtr contextPtr = GT::GTL::NullFactory::getInstance().createContext();
@@ -11,7 +15,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_functional ) {
     GT::NumberPtr       numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::NumberParam(numberPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::NumberParam>(numberPtr);
 
     // then
     BOOST_REQUIRE_NO_THROW(param->getNumber(context));
@@ -30,7 +34,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_serialize ) {
     GT::NumberPtr numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::NumberParam(numberPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::NumberParam>(numberPtr);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -49,7 +53,7 @@ BOOST_AUTO_TEST_CASE( NumberParam_toString ) {
     GT::NumberPtr numberPtr  = GT::Model::NullFactory::getInstance().createNumber();
 
     // when
-    GT::GTL::ParamPtr param(new GT::GTL::NumberParam(numberPtr));
+    GT::GTL::ParamPtr param = make_shared<GT::GTL::NumberParam>(numberPtr);
 
     // then
     BOOST_CHECK_EQUAL(

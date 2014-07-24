@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExtensiveDataNode )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExtensiveDataNode_setPlayer_getPlayer ) {
     // given
     GT::Model::PlayerPtr player = GT::Model::NullFactory::getInstance().createPlayer();
@@ -30,7 +34,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_functional ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back(GT::createIdentifierPtr(s1));
     strategies->push_back(GT::createIdentifierPtr(s2));
-    GT::Model::PlayerPtr  player(new GT::Model::Player(p, strategies));
+    GT::Model::PlayerPtr  player = make_shared<GT::Model::Player>(p, strategies);
 
     GT::Positions plRoot = GT::createPositions();
     GT::Positions pl11 = GT::createPositions();
@@ -145,7 +149,7 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back(GT::createIdentifierPtr(s1));
     strategies->push_back(GT::createIdentifierPtr(s2));
-    GT::Model::PlayerPtr  player(new GT::Model::Player(p, strategies));
+    GT::Model::PlayerPtr  player = make_shared<GT::Model::Player>(p, strategies);
 
     GT::Positions plRoot = GT::createPositions();
     GT::Positions pl11 = GT::createPositions();
@@ -180,8 +184,8 @@ BOOST_AUTO_TEST_CASE( ExtensiveDataNode_toString ) {
     payoff22->push_back(GT::createNumberPtr(80));
 
     // when
-    GT::Model::ExtensiveDataNodePtr rootPtr(new GT::Model::ExtensiveDataNode);
-    GT::Model::ExtensiveDataNode&   root = *rootPtr;
+    GT::Model::ExtensiveDataNodePtr rootPtr = make_shared<GT::Model::ExtensiveDataNode>();
+    GT::Model::ExtensiveDataNode&   root    = *rootPtr;
 
     root.setPlayer( plRoot, player )
         .setPlayer( pl11,   player ).setPlayer( pl12, player );

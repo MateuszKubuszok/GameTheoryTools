@@ -4,15 +4,19 @@ BOOST_AUTO_TEST_SUITE( PlayerRangeCondition )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlayerRangeCondition_getCondition ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectsPtr strategies(new GT::GTL::Objects() );
+    GT::GTL::ObjectPtr  player     = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectsPtr strategies = make_shared<GT::GTL::Objects>();
     strategies->push_back(
-        GT::GTL::ObjectPtr(new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 1")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 1"))
     );
     strategies->push_back(
-        GT::GTL::ObjectPtr(new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 2")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 2"))
     );
 
     GT::GTL::Context context;
@@ -29,13 +33,13 @@ BOOST_AUTO_TEST_CASE( PlayerRangeCondition_getCondition ) {
 
 BOOST_AUTO_TEST_CASE( PlayerRangeCondition_toString ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectsPtr strategies(new GT::GTL::Objects());
+    GT::GTL::ObjectPtr  player     = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectsPtr strategies = make_shared<GT::GTL::Objects>();
     strategies->push_back(
-        GT::GTL::ObjectPtr( new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 1")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 1"))
     );
     strategies->push_back(
-        GT::GTL::ObjectPtr( new GT::GTL::IdentifierParam(GT::createIdentifier("Strategy 2")))
+        make_shared<GT::GTL::IdentifierParam>(GT::createIdentifier("Strategy 2"))
     );
 
     // when
@@ -59,7 +63,6 @@ BOOST_AUTO_TEST_CASE( PlayerRangeCondition_toString ) {
         "\t\t2:\n"
         "\t\t\tIdentifierParam:\n"
         "\t\t\t\tStrategy 2\n"
-
     );
 }
 

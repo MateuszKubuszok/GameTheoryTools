@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( ExecutionCoordinateDriver )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_create ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
@@ -31,25 +35,25 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_fillWithData ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
-    GT::GTL::ParamsPtr        params(new GT::GTL::Params());
+    GT::GTL::ParamsPtr        params = make_shared<GT::GTL::Params>();
     params->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(10)) );
     params->push_back( GT::GTL::ParamFactory::getInstance().createParam(GT::createNumberPtr(20)) );
 
-    GT::IdentifierPtr         player0       = GT::createIdentifierPtr("Player0");
-    GT::IdentifierPtr         strategy0     = GT::createIdentifierPtr("Strategy0");
-    GT::GTL::CoordinatePtr    coordinate(new GT::GTL::Coordinate(player0, strategy0));
+    GT::IdentifierPtr         player0    = GT::createIdentifierPtr("Player0");
+    GT::IdentifierPtr         strategy0  = GT::createIdentifierPtr("Strategy0");
+    GT::GTL::CoordinatePtr    coordinate = make_shared<GT::GTL::Coordinate>(player0, strategy0);
 
-    GT::IdentifierPtr         player1       = GT::createIdentifierPtr("Player1");
-    GT::IdentifierPtr         strategy1     = GT::createIdentifierPtr("Strategy1");
-    GT::GTL::CoordinatePtr    coordinate1(new GT::GTL::Coordinate(player1, strategy1));
+    GT::IdentifierPtr         player1     = GT::createIdentifierPtr("Player1");
+    GT::IdentifierPtr         strategy1   = GT::createIdentifierPtr("Strategy1");
+    GT::GTL::CoordinatePtr    coordinate1 = make_shared<GT::GTL::Coordinate>(player1, strategy1);
     coordinate1->addParams(params);
 
-    GT::IdentifierPtr         player2       = GT::createIdentifierPtr("Player2");
-    GT::IdentifierPtr         strategy2     = GT::createIdentifierPtr("Strategy2");
-    GT::GTL::CoordinatePtr    coordinate2(new GT::GTL::Coordinate(player2, strategy2));
+    GT::IdentifierPtr         player2     = GT::createIdentifierPtr("Player2");
+    GT::IdentifierPtr         strategy2   = GT::createIdentifierPtr("Strategy2");
+    GT::GTL::CoordinatePtr    coordinate2 = make_shared<GT::GTL::Coordinate>(player2, strategy2);
     coordinate2->addParams(params);
 
-    GT::GTL::CoordinatesPtr coordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatesPtr coordinates = make_shared<GT::GTL::Coordinates>();
     coordinates->push_back( coordinate1 );
     coordinates->push_back( coordinate2 );
 
@@ -81,16 +85,16 @@ BOOST_AUTO_TEST_CASE( ExecutionCoordinateDriver_merge ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
 
-    GT::IdentifierPtr         player1       = GT::createIdentifierPtr("Player1");
-    GT::IdentifierPtr         strategy1     = GT::createIdentifierPtr("Strategy1");
-    GT::GTL::CoordinatePtr    coordinate1(new GT::GTL::Coordinate(player1, strategy1));
+    GT::IdentifierPtr         player1     = GT::createIdentifierPtr("Player1");
+    GT::IdentifierPtr         strategy1   = GT::createIdentifierPtr("Strategy1");
+    GT::GTL::CoordinatePtr    coordinate1 = make_shared<GT::GTL::Coordinate>(player1, strategy1);
 
-    GT::IdentifierPtr         player2       = GT::createIdentifierPtr("Player2");
-    GT::IdentifierPtr         strategy2     = GT::createIdentifierPtr("Strategy2");
-    GT::GTL::CoordinatePtr    coordinate2(new GT::GTL::Coordinate(player2, strategy2));
+    GT::IdentifierPtr         player2     = GT::createIdentifierPtr("Player2");
+    GT::IdentifierPtr         strategy2   = GT::createIdentifierPtr("Strategy2");
+    GT::GTL::CoordinatePtr    coordinate2 = make_shared<GT::GTL::Coordinate>(player2, strategy2);
 
-    boost::scoped_ptr<GT::GTL::CoordinatePtr>  coordinate1Ptr(new GT::GTL::CoordinatePtr(coordinate1));
-    boost::scoped_ptr<GT::GTL::CoordinatePtr>  coordinate2Ptr(new GT::GTL::CoordinatePtr(coordinate2));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate1Ptr(new GT::GTL::CoordinatePtr(coordinate1));
+    boost::scoped_ptr<GT::GTL::CoordinatePtr> coordinate2Ptr(new GT::GTL::CoordinatePtr(coordinate2));
 
     // when
     GT::GTL::ExecutionCoordinateDriver coordinateDriver;

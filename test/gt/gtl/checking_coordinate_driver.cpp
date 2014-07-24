@@ -4,6 +4,10 @@ BOOST_AUTO_TEST_SUITE( CheckingCoordinateDriver )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_create ) {
     // given
     GT::GTL::InputLocationPtr inputLocation = GT::GTL::NullFactory::getInstance().createInputLocation();
@@ -32,17 +36,17 @@ BOOST_AUTO_TEST_CASE( CheckingCoordinateDriver_fillWithData ) {
     GT::GTL::CoordinatePtr    validCoordinate   =
         GT::GTL::NullFactory::getInstance().createCoordinate();
 
-    GT::GTL::CoordinatesPtr invalidCoordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatesPtr invalidCoordinates = make_shared<GT::GTL::Coordinates>();
     invalidCoordinates->push_back(
         GT::GTL::ErrorFactory::getInstance().createCoordinate("Invalid Coordinate"));
 
-    GT::GTL::CoordinatesPtr validCoordinates(new GT::GTL::Coordinates());
+    GT::GTL::CoordinatesPtr validCoordinates = make_shared<GT::GTL::Coordinates>();
     validCoordinates->push_back(GT::GTL::NullFactory::getInstance().createCoordinate());
 
-    GT::GTL::ParamsPtr invalidParams(new GT::GTL::Params());
+    GT::GTL::ParamsPtr invalidParams = make_shared<GT::GTL::Params>();
     invalidParams->push_back(GT::GTL::ErrorFactory::getInstance().createParam("Invalid Param"));
 
-    GT::GTL::ParamsPtr validParams(new GT::GTL::Params());
+    GT::GTL::ParamsPtr validParams = make_shared<GT::GTL::Params>();
     validParams->push_back(GT::GTL::NullFactory::getInstance().createParam());
 
     boost::scoped_ptr<GT::GTL::CoordinatePtr>

@@ -4,14 +4,18 @@ BOOST_AUTO_TEST_SUITE( ExecutionConditionDriver )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetChoosed ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  setName    = GT::createIdentifierPtr("1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy );
-    GT::GTL::PlayerPtr player(new GT::GTL::Player(playerName, strategies));
+    GT::GTL::PlayerPtr player = make_shared<GT::GTL::Player>(playerName, strategies);
 
     GT::GTL::ParamPtr  setParam      = GT::GTL::ParamFactory::getInstance().createParam(setName);
     GT::GTL::ParamPtr  strategyParam = GT::GTL::ParamFactory::getInstance().createParam(strategy);
@@ -41,9 +45,9 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetWithin ) {
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  setName    = GT::createIdentifierPtr("1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy );
-    GT::GTL::PlayerPtr player(new GT::GTL::Player(playerName, strategies));
+    GT::GTL::PlayerPtr player = make_shared<GT::GTL::Player>(playerName, strategies);
 
     GT::GTL::ParamPtr  setParam      = GT::GTL::ParamFactory::getInstance().createParam(setName);
     GT::GTL::ParamPtr  strategyParam = GT::GTL::ParamFactory::getInstance().createParam(strategy);
@@ -51,7 +55,7 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_informationSetWithin ) {
     GT::GTL::InputLocationPtr inputLocation    = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        objectPlayer     = boost::dynamic_pointer_cast<GT::GTL::Object>(player);
     GT::GTL::ObjectPtr        objectSet        = boost::dynamic_pointer_cast<GT::GTL::Object>(setParam);
-    GT::GTL::ObjectsPtr       objectStrategies(new GT::GTL::Objects());
+    GT::GTL::ObjectsPtr       objectStrategies = make_shared<GT::GTL::Objects>();
     objectStrategies->push_back( strategyParam );
 
     boost::scoped_ptr<GT::GTL::ObjectPtr>  playerPtr(new GT::GTL::ObjectPtr(objectPlayer));
@@ -73,9 +77,9 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerChoosed ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy );
-    GT::GTL::PlayerPtr player(new GT::GTL::Player(playerName, strategies));
+    GT::GTL::PlayerPtr player = make_shared<GT::GTL::Player>(playerName, strategies);
 
     GT::GTL::ParamPtr  strategyParam = GT::GTL::ParamFactory::getInstance().createParam(strategy);
 
@@ -100,15 +104,15 @@ BOOST_AUTO_TEST_CASE( ExecutionConditionDriver_playerWithin ) {
     // given
     GT::IdentifierPtr  playerName = GT::createIdentifierPtr("p1");
     GT::IdentifierPtr  strategy   = GT::createIdentifierPtr("p1s1");
-    GT::IdentifiersPtr strategies(new GT::Identifiers());
+    GT::IdentifiersPtr strategies = GT::createIdentifiersPtr();
     strategies->push_back( strategy );
-    GT::GTL::PlayerPtr player(new GT::GTL::Player(playerName, strategies));
+    GT::GTL::PlayerPtr player = make_shared<GT::GTL::Player>(playerName, strategies);
 
     GT::GTL::ParamPtr  strategyParam = GT::GTL::ParamFactory::getInstance().createParam(strategy);
 
     GT::GTL::InputLocationPtr inputLocation    = GT::GTL::NullFactory::getInstance().createInputLocation();
     GT::GTL::ObjectPtr        objectPlayer     = boost::dynamic_pointer_cast<GT::GTL::Object>(player);
-    GT::GTL::ObjectsPtr       objectStrategies(new GT::GTL::Objects());
+    GT::GTL::ObjectsPtr       objectStrategies = make_shared<GT::GTL::Objects>();
     objectStrategies->push_back( strategyParam );
 
     boost::scoped_ptr<GT::GTL::ObjectPtr>  playerPtr(new GT::GTL::ObjectPtr(objectPlayer));

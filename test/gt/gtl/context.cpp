@@ -4,32 +4,30 @@ BOOST_AUTO_TEST_SUITE( Context )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( Context_functional ) {
     // given
     GT::IdentifierPtr  contextParamName          = GT::createIdentifierPtr("context");
 
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
-    GT::GTL::ParamPtr  numberParam               =
-        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+    GT::GTL::ParamPtr  numberParam               = make_shared<GT::GTL::NumberParam>(numberParamValue);
     GT::IdentifierPtr  numberParamIdentifierName = GT::createIdentifierPtr("numberParamIdentifier");
-    GT::GTL::ParamPtr  numberParamIdentifier     =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*numberParamName));
+    GT::GTL::ParamPtr  numberParamIdentifier     = make_shared<GT::GTL::IdentifierParam>(*numberParamName);
 
     GT::IdentifierPtr  objectParamName           = GT::createIdentifierPtr("objectParam");
     GT::GTL::ObjectPtr objectParamValue          = GT::GTL::NullFactory::getInstance().createObject();
-    GT::GTL::ParamPtr  objectParam               =
-        GT::GTL::ParamPtr(new GT::GTL::ObjectParam(objectParamValue));
+    GT::GTL::ParamPtr  objectParam               = make_shared<GT::GTL::ObjectParam>(objectParamValue);
     GT::IdentifierPtr  objectParamIdentifierName = GT::createIdentifierPtr("objectParamIdentifier");
-    GT::GTL::ParamPtr  objectParamIdentifier     =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*objectParamName));
+    GT::GTL::ParamPtr  objectParamIdentifier     = make_shared<GT::GTL::IdentifierParam>(*objectParamName);
 
     GT::IdentifierPtr  cyclicParam1Name          = GT::createIdentifierPtr("cyclicParam1");
     GT::IdentifierPtr  cyclicParam2Name          = GT::createIdentifierPtr("cyclicParam2");
-    GT::GTL::ParamPtr  cyclicParam1              =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*cyclicParam2Name));
-    GT::GTL::ParamPtr  cyclicParam2              =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*cyclicParam1Name));
+    GT::GTL::ParamPtr  cyclicParam1              = make_shared<GT::GTL::IdentifierParam>(*cyclicParam2Name);
+    GT::GTL::ParamPtr  cyclicParam2              = make_shared<GT::GTL::IdentifierParam>(*cyclicParam1Name);
 
     GT::IdentifierPtr  invalidIdentifier         = GT::createIdentifierPtr("invalidIdentifier");
 
@@ -100,9 +98,9 @@ BOOST_AUTO_TEST_CASE( Context_depthChecking ) {
     GT::GTL::Context::setMaxLegalDepth(3);
 
     // when
-    GT::GTL::ContextPtr context1(new GT::GTL::Context);
-    GT::GTL::ContextPtr context2(new GT::GTL::Context(context1));
-    GT::GTL::ContextPtr context3(new GT::GTL::Context(context2));
+    GT::GTL::ContextPtr context1 = make_shared<GT::GTL::Context>();
+    GT::GTL::ContextPtr context2 = make_shared<GT::GTL::Context>(context1);
+    GT::GTL::ContextPtr context3 = make_shared<GT::GTL::Context>(context2);
 
     // then
     BOOST_CHECK_EQUAL(
@@ -119,12 +117,10 @@ BOOST_AUTO_TEST_CASE( Context_replaceParam ) {
     GT::IdentifierPtr  paramName                 = GT::createIdentifierPtr("paramName");
 
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
-    GT::GTL::ParamPtr  numberParam               =
-        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+    GT::GTL::ParamPtr  numberParam               = make_shared<GT::GTL::NumberParam>(numberParamValue);
 
     GT::GTL::ObjectPtr objectParamValue          = GT::GTL::NullFactory::getInstance().createObject();
-    GT::GTL::ParamPtr  objectParam               =
-        GT::GTL::ParamPtr(new GT::GTL::ObjectParam(objectParamValue));
+    GT::GTL::ParamPtr  objectParam               = make_shared<GT::GTL::ObjectParam>(objectParamValue);
 
     // when
     GT::GTL::Context context;
@@ -146,17 +142,13 @@ BOOST_AUTO_TEST_CASE( Context_serialize ) {
 
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
-    GT::GTL::ParamPtr  numberParam               =
-        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+    GT::GTL::ParamPtr  numberParam               = make_shared<GT::GTL::NumberParam>(numberParamValue);
     GT::IdentifierPtr  numberParamIdentifierName = GT::createIdentifierPtr("numberParamIdentifier");
-    GT::GTL::ParamPtr  numberParamIdentifier     =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*numberParamName));
+    GT::GTL::ParamPtr  numberParamIdentifier     = make_shared<GT::GTL::IdentifierParam>(*numberParamName);
 
     GT::IdentifierPtr identifierParamName  = GT::createIdentifierPtr("identifierParam");
     GT::IdentifierPtr identifierParamValue = GT::Model::NullFactory::getInstance().createIdentifier();
-    GT::GTL::ParamPtr identifierParam      = GT::GTL::ParamPtr(
-        new GT::GTL::IdentifierParam(*identifierParamValue)
-    );
+    GT::GTL::ParamPtr identifierParam      = make_shared<GT::GTL::IdentifierParam>(*identifierParamValue);
 
     // when
     GT::GTL::Context context;
@@ -185,19 +177,15 @@ BOOST_AUTO_TEST_CASE( Context_toString ) {
 
     GT::IdentifierPtr  numberParamName           = GT::createIdentifierPtr("numberParam");
     GT::NumberPtr      numberParamValue          = GT::Model::NullFactory::getInstance().createNumber();
-    GT::GTL::ParamPtr  numberParam               =
-        GT::GTL::ParamPtr(new GT::GTL::NumberParam(numberParamValue));
+    GT::GTL::ParamPtr  numberParam               = make_shared<GT::GTL::NumberParam>(numberParamValue);
     GT::IdentifierPtr  numberParamIdentifierName = GT::createIdentifierPtr("numberParamIdentifier");
-    GT::GTL::ParamPtr  numberParamIdentifier     =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*numberParamName));
+    GT::GTL::ParamPtr  numberParamIdentifier     = make_shared<GT::GTL::IdentifierParam>(*numberParamName);
 
     GT::IdentifierPtr  objectParamName           = GT::createIdentifierPtr("objectParam");
     GT::GTL::ObjectPtr objectParamValue          = GT::GTL::NullFactory::getInstance().createObject();
-    GT::GTL::ParamPtr  objectParam               =
-        GT::GTL::ParamPtr(new GT::GTL::ObjectParam(objectParamValue));
+    GT::GTL::ParamPtr  objectParam               = make_shared<GT::GTL::ObjectParam>(objectParamValue);
     GT::IdentifierPtr  objectParamIdentifierName = GT::createIdentifierPtr("objectParamIdentifier");
-    GT::GTL::ParamPtr  objectParamIdentifier     =
-        GT::GTL::ParamPtr(new GT::GTL::IdentifierParam(*objectParamName));
+    GT::GTL::ParamPtr  objectParamIdentifier     = make_shared<GT::GTL::IdentifierParam>(*objectParamName);
 
     // when
     GT::GTL::Context context;

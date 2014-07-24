@@ -4,10 +4,14 @@ BOOST_AUTO_TEST_SUITE( PlayerChoiceCondition )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using boost::make_shared;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_getCondition ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectPtr strategy(new GT::GTL::IdentifierParam( GT::createIdentifier("Strategy") ));
+    GT::GTL::ObjectPtr player   = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectPtr strategy = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Strategy") );
 
     GT::GTL::Context context;
 
@@ -23,8 +27,8 @@ BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_getCondition ) {
 
 BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_toString ) {
     // given
-    GT::GTL::ObjectPtr player(new GT::GTL::IdentifierParam( GT::createIdentifier("Player") ));
-    GT::GTL::ObjectPtr strategy(new GT::GTL::IdentifierParam( GT::createIdentifier("Strategy") ));
+    GT::GTL::ObjectPtr player   = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Player") );
+    GT::GTL::ObjectPtr strategy = make_shared<GT::GTL::IdentifierParam>( GT::createIdentifier("Strategy") );
 
     // when
     GT::GTL::PlayerChoiceCondition condition(
@@ -43,7 +47,6 @@ BOOST_AUTO_TEST_CASE( PlayerChoiceCondition_toString ) {
         "\tChosen:\n"
         "\t\tIdentifierParam:\n"
         "\t\t\tStrategy\n"
-
     );
 }
 
